@@ -1,6 +1,6 @@
 #include "client.hpp"
-#include <QtNetwork>
 #include <iostream>
+//À des fins de débogage.
 
 Client::Client(QObject * parent): QObject(parent)
 {
@@ -10,13 +10,17 @@ Client::Client(QObject * parent): QObject(parent)
 		   this, SIGNAL(deconnecte()));
   QObject::connect(&sock, SIGNAL(readyRead()),
 		   this, SLOT(recevoir()));
+  //Connexion de la socket pour transmettre les signaux connected() et
+  //disconnected(), et pour vérifier la présence d'un message.
 }
 
 void Client::connecter(QHostAddress addr, unsigned int port)
 {
   sock.connectToHost(addr, port);
+  //Connexion
   hote = addr;
   Client::port = port;
+  //Préparation de la reconnexion
 }
 
 void Client::reconnecter()
@@ -31,23 +35,27 @@ void Client::deconnecter()
 
 void Client::envoyer(Message m)
 {
-  QByteArray paquet;
-  QDataStream out(&paquet, QIODevice::WriteOnly);
+  QDataStream out(&sock);
+  //le QDataStream écrit directement sur la socket.
   ::ecrire(m, out);
-  sock.write(paquet);
+  //On écrit le message dans le QDataStream, grâce au protocole.
   sock.flush();
+  //On envoie.
 }
 
 void Client::envoyer(QByteArray p)
 {
   sock.write(p);
+  //On envoie le paquet tel quel.
   sock.flush();
 }
 
 void Client::recevoir()
 {
   QDataStream in(&sock);
-  Message m;
-  ::lire(in, m); 
-  emit recu(m);
+  //Le QDataStream lit directement depuis la socket.
+  Message m; //À remplir.
+  ::lire(in, m); //Que la lecture ait réussi ou pas, on 
+  emit recu(m);  //tient compte du message. Il faut tester si le message
+  //est lisible.
 }

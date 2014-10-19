@@ -4,8 +4,6 @@
 
 #include <iostream>
 
-#define DEBUG
-
 Table::Table(QObject * parent) : QObject(parent)
 {
   //Création des ordres :
@@ -60,10 +58,9 @@ void Table::ajouter(unsigned int sock)
 void Table::comprendre(unsigned int sock, Message m)
 {
   //Attention : je ne suis pas sûr que sock fasse partie de la table !
-  //Ben, je suis bien embêté tant que je n'ai pas les règles...
-#ifdef DEBUG
-  std::cout<<"Message de "<<sock<<std::endl;
-#endif
+  //Pour le contenu, je suis bien embêté tant que je n'ai pas les règles...
+  //Attention 2 : ce ne sera peut-être pas la Table qui gèrera les règles,
+  //mais peut-être un Arbitre partagé avec l'IA.
 }
 
 void Table::enlever(unsigned int sock)
@@ -72,12 +69,11 @@ void Table::enlever(unsigned int sock)
   unsigned int i = 0 ;
   while(i < joueurs.size() && 
 	(joueurs[i] < 0 || (unsigned int)joueurs[i] != sock)) i++;
-  if(i < joueurs.size())
+  if(i == joueurs.size() - 1)
     {
       joueurs[i] = -1 ;
       emit incomplet(this);
-#ifdef DEBUG
-      std::cout<<"Déconnexion de "<<sock<<" (joueur "<<ordre[i]<<")"<<std::endl;
-#endif
     }
+  // Si on a 5 joueurs et qu'on en perd 3, on ne va pas émettre 3 fois 
+  // incomplet(), car le ServeurJeu ajouterait 3 fois la même Table...
 }

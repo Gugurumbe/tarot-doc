@@ -17,6 +17,8 @@ public slots :
   void detacher_table(Table *);
   //La table n'est plus pleine : il faut trouver un candidat.
   void rattacher_table(Table *);
+  //Appelé lorsqu'une Table est détruite :
+  void oublier_table(QObject *);
 private:
   std::vector<Table *> incompletes;
 };

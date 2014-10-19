@@ -5,11 +5,7 @@ Serveur::Serveur(QObject * parent) : QObject(parent), ppl(0)
 {
   QObject::connect(&listener, SIGNAL(newConnection()), 
 		   this, SLOT(accepter()));
-}
-
-Serveur::~Serveur()
-{
-  //Fermer les socket
+  //listener est la socket permettant d'accepter des connexions.
 }
 
 unsigned int Serveur::push(QTcpSocket * sock)
@@ -17,35 +13,41 @@ unsigned int Serveur::push(QTcpSocket * sock)
   unsigned int i = 0; //Sert à retenir la position occupée
   while(ppl < clients.size() && clients[ppl]) ppl++; //Cherche un endroit vide
   while(ppl >= clients.size()) clients.push_back(0); 
-  //Rajoute un endroit vide à la fin
+  //Rajoute un endroit vide à la fin si tout est plein.
   i = ppl;
   clients[i] = sock;
   while(ppl < clients.size() && clients[ppl]) ppl++;
   while(ppl >= clients.size()) clients.push_back(0);
-  return i;
+  return i; //retourne la position occupée.
 }
 
 void Serveur::remove(unsigned int i)
 {
   clients[i]->disconnect(this); // Déconnecte les signaux émis du serveur
   clients[i] = 0;               // Vide la place
-  if(i < ppl) ppl = i ;
+  if(i < ppl) ppl = i ;         // avance la première place libre
+  // On ne détruit pas le client.
 }
 
 unsigned int Serveur::ouvrir_local()
 {
   listener.listen(QHostAddress("127.0.0.1"));
+  //On liste sur l'adresse loopback, pour n'accepter que les sockets de la
+  //même machine. On peut spécifier le port explicitement, mais rien ne dit
+  //qu'il soit déjà pris.
   return listener.serverPort();
 }
 
 unsigned int Serveur::ouvrir_global()
 {
   listener.listen(QHostAddress::Any);
+  // On accepte les connexions venant de n'importe où.
   return listener.serverPort();
 }
 
 unsigned int Serveur::find(QObject * sock)
 {
+  //Retourne la position occupée par la socket sock.
   unsigned int i = 0 ;
   while(i < clients.size() && clients[i] != sock) i++;
   return i;
@@ -53,6 +55,7 @@ unsigned int Serveur::find(QObject * sock)
 
 void Serveur::accepter()
 {
+  //Récupération d'une nouvelle socket.
   QTcpSocket * sock = 0;
   while(listener.hasPendingConnections())
     {
@@ -65,6 +68,7 @@ void Serveur::accepter()
 		       this, SLOT(enlever()));
       QObject::connect(sock, SIGNAL(disconnected()),
 		       sock, SLOT(deleteLater()));
+      //Pas besoin de garder une socket si elle est déconnectée.
       emit connexion(push(sock));
     }
 }
@@ -86,6 +90,11 @@ void Serveur::enlever()
 
 void Serveur::lire()
 {
+  //Il y a deux solutions : regarder les messages de tout le monde
+  // ou regarder les messages de l'émetteur. C'est la même complexité :
+  // find() peut potentiellement passer toutes les socket en revue avant
+  // d'avoir trouvé l'appelant. Cependant, je préfère ne vérifier les 
+  // nouveaux messages que quand le signal readyRead() a été émis.
   unsigned int sock = find(QObject::sender());
   if(sock < clients.size())
     {
@@ -100,7 +109,9 @@ void Serveur::lire()
 
 void Serveur::deconnecter(unsigned int i)
 {
-  if(i < clients.size()) clients[i]->close();
+  if(i < clients.size()) clients[i]->close(); 
+  //Le signal disconnected() sera émis, donc on mettra proprement le client
+  //à la poubelle au prochain tour d'événements.
 }
 
 void Serveur::envoyer(unsigned int i, QByteArray paquet)

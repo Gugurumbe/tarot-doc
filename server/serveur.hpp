@@ -9,29 +9,38 @@
 
 #include <vector>
 
+//Définit une classe de Serveur qui ne sait pas réagir.
+
 class Serveur : public QObject
 {
   Q_OBJECT;
+  //C'est un abject QObject
  public:
   Serveur(QObject * parent = 0);
-  virtual ~Serveur();
+  unsigned int ouvrir_local();
+  // Ouvre une partie "solo"
+  unsigned int ouvrir_global();
+  //Ouvre une partie sur internet.
 
 public slots:
-  unsigned int ouvrir_local();
-  unsigned int ouvrir_global();
   void accepter();
-  void enlever(QObject * sock);
-  void enlever();
-  void lire();
-  void deconnecter(unsigned int);
-  void envoyer(unsigned int, QByteArray);
-  void envoyer(unsigned int, Message);
+  // Regarde si par hasard il n'y aurait pas des connexions à accepter.
+  void enlever(QObject * sock); // Enlève ce client de la liste des clients.
+  void enlever(); //Enlève l'objet appelant.
+  void lire(); //Regarde s'il n'y aurait pas des nouveaux messages 
+  void deconnecter(unsigned int); //Vire sans scrupule un client.
+  void envoyer(unsigned int, QByteArray); //Envoie au client un paquet brut.
+  void envoyer(unsigned int, Message); //Envoie au client un message.
 
  signals:
-  void connexion(unsigned int);
-  void message_brut(unsigned int, QByteArray);
+  void connexion(unsigned int); //émis lorsqu'un client s'est connecté.
+  void message_brut(unsigned int, QByteArray); //.......envoie un paquet
+  //(il n'est pas conseillé d'en tenir compte, un signal Message() est 
+  //simultanément émis)
   void deconnexion(unsigned int);
+  //émis lorsqu'un client se déconnecte.
   void message(unsigned int, Message);
+  //émis lorsqu'un client envoie un message.
 
  private:
   unsigned int push(QTcpSocket * sock); 

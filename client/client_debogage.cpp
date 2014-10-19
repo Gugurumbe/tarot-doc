@@ -9,28 +9,34 @@ ClientDebogage::ClientDebogage(QObject * parent): Client(parent)
 		   this, SLOT(traiter_deconnexion()));
   QObject::connect(this, SIGNAL(recu(Message)),
 		   this, SLOT(traiter_message(Message)));
+  //Comme promis, on connecte les signaux Client aux réactions de débogage.
 }
 
 void ClientDebogage::traiter_connexion()
 {
   std::cout<<"Vous êtes connecté."<<std::endl;
+  // Merci capitaine.
   demander_ordres();
+  //On demande à l'utilisateur ce qu'il veut envoyer.
 }
 
 void ClientDebogage::traiter_deconnexion()
 {
   std::cout<<"Vous êtes déconnecté."<<std::endl;
+  //Merci capitaine.
 }
 
 void ClientDebogage::demander_ordres()
 {
+  //Réaction face à un nouveau message : on en envoie un.
   Message m;
   std::cout<<"À vous maintenant : entrez le numéro de type."<<std::endl;
-  std::cin>>m.type;
-  char * paquet_perso;
-  int taille;
-  int octet;
-  QByteArray ba_perso;
+  std::cin>>m.type; // Le type de message.
+  char * paquet_perso; //Le paquet perso à compléter
+  int taille; //la taille
+  int octet; //Sert à demander 1 octet
+  QByteArray ba_perso; //Sert à envoyer le paquet perso sous une forme
+  //que Qt comprend.
   switch(m.type)
     {
     case ERREUR_PROTOCOLE:
@@ -80,7 +86,7 @@ void ClientDebogage::demander_ordres()
       envoyer(m);
       break;
     case CONTRAT_FINAL:
-      std::cout<<"Quel contrat final décide le sereur ?"<<std::endl;
+      std::cout<<"Quel contrat final décide le serveur ?"<<std::endl;
       std::cout<<"Preneur : ";
       std::cin>>m.m.contrat_final.preneur;
       std::cout<<"Niveau : ";
@@ -144,7 +150,7 @@ void ClientDebogage::demander_ordres()
 	       <<std::endl;
       std::cin>>taille;
       paquet_perso = new char[taille];
-      std::cout<<"Entrez les octets en base 10 : ";
+      std::cout<<"Entrez les octets en base 10 (positifs) : ";
       for(int i = 0 ; i < taille ; i++)
 	{
 	  std::cin>>octet;
@@ -153,11 +159,16 @@ void ClientDebogage::demander_ordres()
       ba_perso.append(paquet_perso, taille);
       std::cout<<"Envoi du paquet perso..."<<std::endl;
       envoyer(ba_perso);
+      delete[] paquet_perso;
     }
 }
 
 void ClientDebogage::traiter_message(Message m)
 {
+  //Attention : on affiche tous les champs de message, pour être exhaustif.
+  //Ils n'ont peut-être rien de pertinent : si le serveur vous dit que vous
+  //avez fait une erreur de protocole, les cartes du chien n'ont pas à vous
+  //inquiéter.
   std::cout<<"Vous avez un message : "<<std::endl;
   std::cout<<"Type : "<<m.type<<std::endl;
   std::cout<<(m.compris?"Le message est compris.":

@@ -8,7 +8,15 @@ DEPENDPATH += .
 INCLUDEPATH += . ../shared
 
 # Input
-HEADERS += client.hpp ../shared/protocole.hpp client_jeu.hpp
-SOURCES += main.cpp client.cpp ../shared/protocole.cpp client_jeu.cpp
+HEADERS += client.hpp \
+../shared/protocole.hpp \
+client_jeu.hpp \
+client_debogage.hpp
+
+SOURCES += main.cpp \
+client.cpp \
+../shared/protocole.cpp \
+client_jeu.cpp\ 
+client_debogage.cpp
 
 QT += network
