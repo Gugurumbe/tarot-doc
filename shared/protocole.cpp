@@ -183,15 +183,122 @@ void ecrire_ecart(struct Msg_ecart const & ecart,
     }
 }
 
+bool lire_chelem(QDataStream & in, struct Msg_chelem & chelem)
+{
+  quint8 b;
+  in>>b;
+  chelem.demande = (b != 0);
+  return in.status() == QDataStream::Ok;
+}
+
+void ecrire_chelem(struct Msg_chelem const & chelem,
+		   QDataStream & out)
+{
+  out<<(quint8)(chelem.demande?1:0);
+}
+
 bool lire_jeu(QDataStream & in,
 	      struct Msg_jeu & jeu)
 {
+  quint8 demandeur;
+  in>>demandeur;
+  jeu.chelem = demandeur;
   return in.status() == QDataStream::Ok;
 }
 
 void ecrire_jeu(struct Msg_jeu const & jeu,
 		QDataStream & out)
 {
+  out<<(quint8)jeu.chelem;
+}
+
+bool lire_montrer_poignee(QDataStream & in,
+			  struct Msg_montrer_poignee & montrer_poignee)
+{
+  quint8 atout;
+  // On regarde si c'est plus qu'une simple poignée...
+  for(int i = 0 ; i < 8 ; i++)
+    {
+      in>>atout;
+      montrer_poignee.atouts[i] = atout;
+    }
+  if(in.atEnd() && in.status() == QDataStream::Ok)
+    {
+      montrer_poignee.taille = 8 ;
+      return true;
+    }
+  // On regarde si c'est plus qu'une double poignée...
+  for(int i = 8 ; i < 10 ; i++)
+    {
+      in>>atout;
+      montrer_poignee.atouts[i] = atout;
+    }
+  if(in.atEnd() && in.status() == QDataStream::Ok)
+    {
+      montrer_poignee.taille = 10;
+      return true;
+    }
+  //C'est peut-être une triple poignée...
+  for(int i = 10 ; i < 13 ; i++)
+    {
+      in>>atout;
+      montrer_poignee.atouts[i] = atout;
+    }
+  montrer_poignee.taille = 13;
+  return (in.status() == QDataStream::Ok);
+}
+
+void ecrire_montrer_poignee(struct Msg_montrer_poignee const & montrer_poignee,
+			    QDataStream & out)
+{
+  for(int i = 0 ; i < montrer_poignee.taille && i < 13 ; i++)
+    {
+      out<<(quint8)(montrer_poignee.atouts[i]);
+    }
+}
+
+bool lire_poignee(QDataStream & in, struct Msg_poignee & poignee)
+{
+  quint8 atout;
+  // On regarde si c'est plus qu'une simple poignée...
+  for(int i = 0 ; i < 8 ; i++)
+    {
+      in>>atout;
+      poignee.atouts[i] = atout;
+    }
+  if(in.atEnd() && in.status() == QDataStream::Ok)
+    {
+      poignee.taille = 8 ;
+      return true;
+    }
+  // On regarde si c'est plus qu'une double poignée...
+  for(int i = 8 ; i < 10 ; i++)
+    {
+      in>>atout;
+      poignee.atouts[i] = atout;
+    }
+  if(in.atEnd() && in.status() == QDataStream::Ok)
+    {
+      poignee.taille = 10;
+      return true;
+    }
+  //C'est peut-être une triple poignée...
+  for(int i = 10 ; i < 13 ; i++)
+    {
+      in>>atout;
+      poignee.atouts[i] = atout;
+    }
+  poignee.taille = 13;
+  return (in.status() == QDataStream::Ok);
+}
+
+void ecrire_poignee(struct Msg_poignee const & poignee,
+			    QDataStream & out)
+{
+  for(int i = 0 ; i < poignee.taille && i < 13 ; i++)
+    {
+      out<<(quint8)(poignee.atouts[i]);
+    }
 }
 
 bool lire_requete(QDataStream & in,
@@ -308,8 +415,17 @@ bool lire(QDataStream & in, struct Message & m)
 	case ECART:
 	  lu = lire_ecart(in, m.m.ecart);
 	  break;
+	case CHELEM:
+	  lu = lire_chelem(in, m.m.chelem);
+	  break;
 	case JEU:
 	  lu = lire_jeu(in, m.m.jeu);
+	  break;
+	case MONTRER_POIGNEE:
+	  lu = lire_montrer_poignee(in, m.m.montrer_poignee);
+	  break;
+	case POIGNEE:
+	  lu = lire_poignee(in, m.m.poignee);
 	  break;
 	case REQUETE:
 	  lu = lire_requete(in, m.m.requete);
@@ -371,8 +487,17 @@ void ecrire(struct Message const & m, QDataStream & out)
     case ECART:
       ecrire_ecart(m.m.ecart, out);
       break;
+    case CHELEM:
+      ecrire_chelem(m.m.chelem, out);
+      break;
     case JEU:
       ecrire_jeu(m.m.jeu, out);
+      break;
+    case MONTRER_POIGNEE:
+      ecrire_montrer_poignee(m.m.montrer_poignee, out);
+      break;
+    case POIGNEE:
+      ecrire_poignee(m.m.poignee, out);
       break;
     case REQUETE:
       ecrire_requete(m.m.requete, out);

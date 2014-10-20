@@ -7,8 +7,8 @@
 //Il y a un easter egg, le vois-tu ????
 
 enum {ERREUR_PROTOCOLE, REFUSE, NUMERO, DISTRIBUTION, DECISION, CONTRAT,
-      APPEL, APPELER, CONTRAT_FINAL, CHIEN, ECART, JEU, REQUETE, CARTE, 
-      PLI, RESULTAT/*, TRESORERIE*/};
+      APPEL, APPELER, CONTRAT_FINAL, CHIEN, ECART, CHELEM, JEU, 
+      MONTRER_POIGNEE, POIGNEE, REQUETE, CARTE, PLI, RESULTAT/*, TRESORERIE*/};
 
 struct Msg_erreur_protocole
 {
@@ -64,8 +64,27 @@ struct Msg_ecart
   int ecart[3];
 };
 
+struct Msg_chelem
+{
+  bool demande;
+};
+
 struct Msg_jeu
 {
+  int chelem; //Vaut éventuellement 5 ou plus
+};
+
+struct Msg_montrer_poignee
+{
+  int taille;
+  int atouts[13]; //Éventuellement, selon la taille, on en utilise 
+  //8 ou 10
+};
+
+struct Msg_poignee
+{
+  int taille;
+  int atouts[13];
 };
 
 struct Msg_requete
@@ -101,7 +120,10 @@ union Msg
   struct Msg_contrat_final contrat_final;
   struct Msg_chien chien;
   struct Msg_ecart ecart;
+  struct Msg_chelem chelem;
   struct Msg_jeu jeu;
+  struct Msg_montrer_poignee montrer_poignee;
+  struct Msg_poignee poignee;
   struct Msg_requete requete;
   struct Msg_carte carte;
   struct Msg_pli pli;
