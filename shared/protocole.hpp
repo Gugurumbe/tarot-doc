@@ -3,7 +3,7 @@
 
 #include <QDataStream>
 
-//Implémente le protocole 1.0
+//Implémente le protocole 1.1
 //Il y a un easter egg, le vois-tu ????
 
 enum {ERREUR_PROTOCOLE, REFUSE, NUMERO, DISTRIBUTION, DECISION, CONTRAT,
