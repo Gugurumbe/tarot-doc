@@ -7,6 +7,8 @@ TARGET =
 DEPENDPATH += .
 INCLUDEPATH += . ../shared
 
+QT += widgets
+
 # Input
 HEADERS += serveur.hpp \
 serveur_jeu.hpp \
