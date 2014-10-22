@@ -3,11 +3,11 @@
 ######################################################################
 
 TEMPLATE = app
-TARGET = 
+TARGET = client
 DEPENDPATH += .
 INCLUDEPATH += . ../shared
 
-QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 # Input
 HEADERS += client.hpp \
