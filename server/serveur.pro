@@ -14,13 +14,15 @@ HEADERS += serveur.hpp \
 serveur_jeu.hpp \
 ../shared/protocole.hpp \
 table.hpp \
-serveur_debogage.hpp
+serveur_debogage.hpp \
+../shared/carte.hpp
 
 SOURCES += main.cpp \
 serveur.cpp \
 ../shared/protocole.cpp \
 serveur_jeu.cpp \
 table.cpp \
-serveur_debogage.cpp
+serveur_debogage.cpp \
+../shared/carte.cpp
 
 QT += network
