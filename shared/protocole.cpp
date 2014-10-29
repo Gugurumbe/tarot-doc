@@ -183,6 +183,30 @@ void ecrire_ecart(struct Msg_ecart const & ecart,
     }
 }
 
+bool lire_atout(QDataStream & in, 
+		struct Msg_atout & atout)
+{
+  quint8 carte;
+  int i = 0;
+  while(i < 3 && in.status() == QDataStream::Ok && !(in.atEnd()))
+    {
+      in>>carte;
+      atout.cartes[i] = carte;
+      i++;
+    }
+  atout.nombre = i;
+  return in.status() == QDataStream::Ok;
+}
+
+void ecrire_atout(struct Msg_atout const & atout,
+		  QDataStream & out)
+{
+  for(int i = 0 ; i < atout.nombre ; i++)
+    {
+      out<<(quint8)atout.cartes[i];
+    }
+}
+
 bool lire_chelem(QDataStream & in, struct Msg_chelem & chelem)
 {
   quint8 b;
@@ -415,6 +439,9 @@ bool lire(QDataStream & in, struct Message & m)
 	case ECART:
 	  lu = lire_ecart(in, m.m.ecart);
 	  break;
+	case ATOUT:
+	  lu = lire_atout(in, m.m.atout);
+	  break;
 	case CHELEM:
 	  lu = lire_chelem(in, m.m.chelem);
 	  break;
@@ -486,6 +513,9 @@ void ecrire(struct Message const & m, QDataStream & out)
       break;
     case ECART:
       ecrire_ecart(m.m.ecart, out);
+      break;
+    case ATOUT:
+      ecrire_atout(m.m.atout, out);
       break;
     case CHELEM:
       ecrire_chelem(m.m.chelem, out);

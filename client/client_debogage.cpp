@@ -117,6 +117,18 @@ void ClientDebogage::demander_ordres()
       std::cout<<"Envoi du message \"ecart\"..."<<std::endl;
       envoyer(m);
       break;      
+    case ATOUT:
+      std::cout<<"Combien d'atouts souhaitez-vous mettre au chien ?"<<std::endl;
+      std::cin>>m.m.atout.nombre;
+      if(m.m.atout.nombre > 3) m.m.atout.nombre = 3;
+      std::cout<<"Entrez les numéros de carte des "<<m.m.atout.nombre<<" atouts : ";
+      for(int i = 0 ; i < m.m.atout.nombre ; i++)
+	{
+	  std::cin>>m.m.atout.cartes[i];
+	}
+      std::cout<<"Envoi du message \"atout\"..."<<std::endl;
+      envoyer(m);
+      break;
     case CHELEM:
       std::cout<<"Voulez-vous demander un chelem ? o/*"<<std::endl;
       std::cin>>chaine;
@@ -229,6 +241,10 @@ void ClientDebogage::traiter_message(Message m)
   std::cout<<std::endl;
   std::cout<<ECART<<" : Écart : ";
   for(int i = 0 ; i < 3 ; i ++) std::cout<<m.m.ecart.ecart[i]<<", ";
+  std::cout<<std::endl;
+  std::cout<<ATOUT<<" : Atout : taille "<<m.m.atout.nombre<<", ";
+  for(int i = 0 ; i < 3 ; i++)
+    std::cout<<m.m.atout.cartes[i]<<", ";
   std::cout<<std::endl;
   std::cout<<CHELEM<<" : Chelem : "
 	   <<(m.m.chelem.demande != 0 ?"demandé":"non demandé")
