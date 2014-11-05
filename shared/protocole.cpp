@@ -64,19 +64,19 @@ void ecrire_distribution(struct Msg_distribution const & distribution,
     }
 }
 
-bool lire_decision(QDataStream & in,
-		   struct Msg_decision & decision)
+bool lire_prise(QDataStream & in,
+		   struct Msg_prise & prise)
 {
   quint8 niv;
   in>>niv;
-  decision.niveau = niv;
+  prise.niveau = niv;
   return in.status() == QDataStream::Ok;
 }
 
-void ecrire_decision(struct Msg_decision const & decision,
+void ecrire_prise(struct Msg_prise const & prise,
 		     QDataStream & out)
 {
-  out<<(quint8)decision.niveau;
+  out<<(quint8)prise.niveau;
 }
 
 bool lire_contrat(QDataStream & in,
@@ -418,8 +418,8 @@ bool lire(QDataStream & in, struct Message & m)
 	case DISTRIBUTION:
 	  lu = lire_distribution(in, m.m.distribution);
 	  break;
-	case DECISION:
-	  lu = lire_decision(in, m.m.decision);
+	case PRISE:
+	  lu = lire_prise(in, m.m.prise);
 	  break;
 	case CONTRAT:
 	  lu = lire_contrat(in, m.m.contrat);
@@ -493,8 +493,8 @@ void ecrire(struct Message const & m, QDataStream & out)
     case DISTRIBUTION:
       ecrire_distribution(m.m.distribution, out);
       break;
-    case DECISION:
-      ecrire_decision(m.m.decision, out);
+    case PRISE:
+      ecrire_prise(m.m.prise, out);
       break;
     case CONTRAT:
       ecrire_contrat(m.m.contrat, out);

@@ -66,10 +66,10 @@ void ClientDebogage::demander_ordres()
       std::cout<<"Envoi du message \"distribution\"..."<<std::endl;
       envoyer(m);
       break;
-    case DECISION:
+    case PRISE:
       std::cout<<"Alors, vous prenez ? (nombre) "<<std::endl;
-      std::cin>>m.m.decision.niveau;
-      std::cout<<"Envoi du message \"decision\"..."<<std::endl;
+      std::cin>>m.m.prise.niveau;
+      std::cout<<"Envoi du message \"prise\"..."<<std::endl;
       envoyer(m);
       break;
     case CONTRAT:
@@ -228,7 +228,7 @@ void ClientDebogage::traiter_message(Message m)
   std::cout<<DISTRIBUTION<<" : Distribution : ";
   for(int i = 0 ; i < 15 ; i ++) std::cout<<m.m.distribution.cartes[i]<<", ";
   std::cout<<std::endl;
-  std::cout<<DECISION<<" : Décision : "<<m.m.decision.niveau<<std::endl;
+  std::cout<<PRISE<<" : Prise : "<<m.m.prise.niveau<<std::endl;
   std::cout<<CONTRAT<<" : Contrat : "<<m.m.contrat.niveau<<std::endl;
   std::cout<<APPEL<<" : Appel"<<std::endl;
   std::cout<<APPELER<<" : Appeler : "<<m.m.appeler.carte<<std::endl;

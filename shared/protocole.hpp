@@ -6,7 +6,7 @@
 //Implémente le protocole 1.1
 //Il y a un easter egg, le vois-tu ????
 
-enum {ERREUR_PROTOCOLE, REFUSE, NUMERO, DISTRIBUTION, DECISION, CONTRAT,
+enum {ERREUR_PROTOCOLE, REFUSE, NUMERO, DISTRIBUTION, PRISE, CONTRAT,
       APPEL, APPELER, CONTRAT_FINAL, CHIEN, ECART, ATOUT, CHELEM, JEU, 
       MONTRER_POIGNEE, POIGNEE, REQUETE, CARTE, PLI, RESULTAT/*, TRESORERIE*/};
 
@@ -28,7 +28,7 @@ struct Msg_distribution
   int cartes[15];
 };
 
-struct Msg_decision
+struct Msg_prise
 {
   int niveau;
 };
@@ -119,7 +119,7 @@ union Msg
   struct Msg_refuse refuse;
   struct Msg_numero numero;
   struct Msg_distribution distribution;
-  struct Msg_decision decision;
+  struct Msg_prise prise;
   struct Msg_contrat contrat;
   struct Msg_appel appel;
   struct Msg_appeler appeler;
