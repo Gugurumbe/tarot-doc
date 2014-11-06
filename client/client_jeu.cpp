@@ -1,7 +1,7 @@
 #include "client_jeu.hpp"
 #include <iostream>
 
-ClientJeu::ClientJeu(QObject * parent) : Client(parent), m_numero(-1)
+ClientJeu::ClientJeu(QObject * parent) : Client(parent)
 {
   QObject::connect(this, SIGNAL(connecte()),
 		   this, SLOT(traiter_connexion()));
@@ -30,15 +30,9 @@ void ClientJeu::traiter_message(Message m)
   switch(m.type)
     {
     case NUMERO:
-      m_numero = m.m.numero.n;
-      std::cout<<"Vous avez le numéro "<<m_numero<<std::endl;
+      std::cout<<"Vous avez le numéro "<<m.m.numero.n<<std::endl;
       break;
     default :
       std::cout<<"Message de type "<<m.type<<"."<<std::endl;
     }
-}
-
-int ClientJeu::numero() const
-{
-  return m_numero;
 }

@@ -18,7 +18,7 @@ client_debogage.hpp
 SOURCES += main.cpp \
 client.cpp \
 ../shared/protocole.cpp \
-client_jeu.cpp\ 
+client_jeu.cpp \ 
 client_debogage.cpp
 
 QT += network

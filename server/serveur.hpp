@@ -1,4 +1,13 @@
+/**
+   @file server/serveur.hpp
+   @brief Définit le moteur "réseau" du serveur.
+ */
+
 #ifndef SERVEUR_DEFINI
+
+/**
+   Empêche les inclusions récursives.
+ */
 #define SERVEUR_DEFINI
 
 #include "protocole.hpp"
@@ -9,51 +18,244 @@
 
 #include <vector>
 
-//Définit une classe de Serveur qui ne sait pas réagir.
+/**
+   @brief Définit une classe communiquant sur le réseau.
+   
+   La classe Serveur utilise les outils Qt pour établir des
+   transmissions en mode connecté (Tcp), grâce auxquelles il peut
+   envoyer et recevoir des Messages tels que définis dans
+   shared/protocole.hpp.
 
+   Telle quelle, cette classe ne sait pas quoi faire des Messages
+   reçus et des déconnexions des clients, et ne sait pas quand envoyer
+   des Messages aux clients. Il y a pour l'instant 2 comportements :
+   ServeurDebogage, qui répète inlassablement tous les Messages reçus,
+   en envoyant ERREUR_PROTOCOLE en cas de besoin, et ServeurJeu, en
+   construction, qui va réagir selon les règles du tarot.
+
+   L'interaction entre les classes ServeurJeu / ServeurDebogage, Table
+   et les joueurs ne se fait pas avec des QTcpSocket, mais avec un
+   numéro d'identification unique des clients, utilisé pour envoyer un
+   message, pour forcer une déconnexion, pour savoir d'où vient un
+   message et pour savoir qui s'est déconnecté.
+   
+   Les identifiants des clients déconnectés sont réutilisés.
+
+   Il existe une symétrie de construction entre le Client et le
+   Serveur : une classe générale qui relaye des Message à une classe
+   spécialisée pour le débogage ou à une classe spécialisée pour le
+   jeu, qui utilise une spécialisation de Partie.
+ */
 class Serveur : public QObject
 {
   Q_OBJECT;
-  //C'est un abject QObject
  public:
+
+  /**
+     @brief Constructeur par défaut.
+
+     Constructeur par défaut "à la Qt". N'ouvre aucune partie pour
+     l'instant. 
+   */
   Serveur(QObject * parent = 0);
+
+  /**
+     @brief Ouvre une partie 1 joueur.
+     
+     Lance le serveur sur l'adresse loopback, c'est-à-dire que seuls
+     les programmes utilisant le même ordi peuvent jouer sur ce
+     serveur. L'avantage, c'est qu'on n'accède absolument pas à
+     Internet. 
+
+     @return Le port de listage.
+   */
   unsigned int ouvrir_local();
-  // Ouvre une partie "solo"
+
+  /**
+     @brief Ouvre une partie multijoueur.
+     
+     Lance le serveur sur toutes les interfaces. N'importe qui peut
+     jouer sur ce serveur, mais il faut préparer le routeur (ouvrir le
+     pare-feu et rediriger les paquets reçus vers le serveur) et le
+     pare-feu que vous pouvez peut-être utiliser sur votre ordi.
+
+     @return Le port de listage. Communiquez-le à vos clients.
+   */
   unsigned int ouvrir_global();
-  //Ouvre une partie sur internet.
 
 public slots:
+
+  /**
+     @brief Vérifie les nouvelles connexions.
+
+     En cas de nouvelle connexion, émet le signal
+     Serveur::connexion(unsigned int) avec l'identification qui lui a
+     été attribuée.
+
+     Le déclenchement de ce slot est automatique.
+   */
   void accepter();
-  // Regarde si par hasard il n'y aurait pas des connexions à accepter.
-  void enlever(QObject * sock); // Enlève ce client de la liste des clients.
-  void enlever(); //Enlève l'objet appelant.
-  void lire(); //Regarde s'il n'y aurait pas des nouveaux messages 
-  void deconnecter(unsigned int); //Vire sans scrupule un client.
-  void envoyer(unsigned int, QByteArray); //Envoie au client un paquet brut.
-  void envoyer(unsigned int, Message); //Envoie au client un message.
+
+  /**
+     @brief Nettoie la liste des socket.
+     
+     Envoie le message deconnexion(unsigned int) si l'objet sock est
+     une socket de la liste.
+
+     Le déclenchement de ce slot est automatique.
+
+     @param sock : la QTcpSocket à enlever de la liste.
+   */
+  void enlever(QObject * sock);
+
+  /**
+     @brief Enlève l'objet appelant de la liste des sockets.
+
+     Le déclenchement de ce slot est automatique.
+
+     @see Serveur::enlever(QObject *)
+   */
+  void enlever();
+
+  /**
+     @brief Regarde si on peut lire un Message.
+
+     Au besoin, émet message(unsigned int, Message) et
+     message_brut(unsigned int, QByteArray) ou 
+     deconnexion(unsigned int).
+
+     Le déclenchement de ce slot est automatique.
+   */
+  void lire();
+
+  /**
+     @brief Élimine le client.
+
+     Déconnecte sans scrupule le client.
+     @param c : le client à déconnecter.
+   */
+  void deconnecter(unsigned int c);
+
+  /**
+     @brief Envoie au client un paquet brut.
+     
+     @note Il est plus intéressant d'envoyer un Message avec
+     Serveur::envoyer(unsigned int, Message), pour utiliser les
+     fonctions de lecture/écriture de shared/protocole.hpp.
+
+     À des fins de débogage, on peut avoir envie d'envoyer un paquet
+     qui ne respecte pas le protocole.
+     @param c : le numéro du destinataire.
+     @param p : le paquet d'octets à envoyer.
+     
+     @see Serveur::envoyer(unsigned int, Message)
+   */
+  void envoyer(unsigned int c, QByteArray p);
+
+  /**
+     @brief Envoie au client un Message.
+
+     @param c : le numéro du destinataire.
+     @param m : le Message respectant le protocole.
+
+     @see Serveur::envoyer(unsigned int, QByteArray)
+   */
+  void envoyer(unsigned int c, Message m); 
 
  signals:
-  void connexion(unsigned int); //émis lorsqu'un client s'est connecté.
-  void message_brut(unsigned int, QByteArray); //.......envoie un paquet
-  //(il n'est pas conseillé d'en tenir compte, un signal Message() est 
-  //simultanément émis)
-  void deconnexion(unsigned int);
-  //émis lorsqu'un client se déconnecte.
-  void message(unsigned int, Message);
-  //émis lorsqu'un client envoie un message.
+
+  /**
+     @brief Émis lorsqu'un client se connecte.
+
+     @param c : l'identification qui lui a été attribuée.
+   */
+  void connexion(unsigned int c);
+
+  /**
+     @brief Émis lorsqu'un client envoie un paquet.
+     
+     @note Le signal Serveur::message(unsigned int, Message) est
+     simultanément émis, il n'y a pas besoin de tenir compte de ce
+     signal (sauf à des fins de débogage).
+     
+     @param c : l'identification de l'émetteur.
+     @param p : le paquet reçu.
+
+     @see Serveur::message(unsigned int, Message)
+   */
+  void message_brut(unsigned int c, QByteArray p);
+
+  /**
+     @brief Émis lorsqu'un client se déconnecte.
+     
+     @param c : l'identification du client sortant.
+   */
+  void deconnexion(unsigned int c);
+
+  /**
+     @brief Émis lorsqu'un Message est reçu.
+
+     @param c : l'identification du client.
+     @param m : le Message reçu.
+     
+     @see Serveur::message(unsigned int, QByteArray)
+   */
+  void message(unsigned int c, Message m);
 
  private:
-  unsigned int push(QTcpSocket * sock); 
-  // Rajoute la socket à la liste des clients.
-                               // Ne connecte aucun signal à aucun slot !
-  void remove(unsigned int i);          
-  // Enlève le client. Déconnecte les signaux.
+
+  /**
+     @brief Ajoute une socket.
+     
+     @note Aucun signal n'est connecté à aucun slot.
+     
+     @param sock : l'objet Qt qui correspond.
+     @return L'identification du nouveau client.
+   */
+  unsigned int push(QTcpSocket * sock);
+
+  /**
+     @brief Enlève le client.
+     
+     Déconnecte les signaux liés à l'objet Qt correspondant. De cette
+     façon, l'objet peut être détruit sereinement.
+
+     @param i : l'identification du client.
+   */
+  void remove(unsigned int i);
+
+  /**
+     @brief Retrouve une identification.
+
+     À partir de l'objet Qt, retrouve l'identification du client.
+     
+     @param sock : la QTcpSocket.
+     @return Le numéro d'identification.
+   */
   unsigned int find(QObject * sock);
-  //Retrouve la socket à partir de son adresse
-  QTcpServer listener;         // Sert à accepter les connexions entrantes.
-  std::vector<QTcpSocket *> clients;// Tableau des clients
-  unsigned int ppl; //Première Place Libre : 
-  //dans le tableau, premier pointeur nul.
+
+  /**
+     @brief Socket de listage.
+     
+     Permet d'ouvrir des parties réseau et d'accepter les connexions
+     entrantes.
+   */
+  QTcpServer listener;
+
+  /**
+     @brief Tableau des clients.
+
+     Ce tableau est indexé par les numéros d'identifications. Il
+     contient les objets Qt de socket.
+   */
+  std::vector<QTcpSocket *> clients;
+
+  /**
+     @brief Première place libre.
+
+     La plus petite identification non utilisée.
+   */
+  unsigned int ppl;
 };
 
 #endif
