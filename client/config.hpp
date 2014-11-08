@@ -1,6 +1,6 @@
 /**
    @file client/config.hpp
-   Définit les options de compilation du client.
+   @brief Définit les options de compilation du client.
 */
 
 

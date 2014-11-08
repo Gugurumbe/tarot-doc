@@ -1,5 +1,5 @@
 /**
-   @file server/serveur_debogage.hpp
+   @file server/serveur_jeu.hpp
    @brief Définit un Serveur qui joue au tarot.
  */
 
