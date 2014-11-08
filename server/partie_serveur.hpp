@@ -81,6 +81,8 @@ public slots:
      @brief Distribution des cartes.
      
      Émet des signaux doit_emettre(). Doit être appelée au début. 
+     
+     Au cas où une Main ne contiendrait que le Petit, on redistribue.
    */
   void distribuer();
   

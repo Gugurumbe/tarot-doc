@@ -120,18 +120,38 @@ void PartieServeur::distribuer()
       chien.push_back(Carte(nums[i]));
     }
   jeu_reel.clear();
+  int nbr_atouts = 0;
+  bool a_petit = false;
+  bool petit_sec = false;
+  Carte c(PETIT);
   for(unsigned int i = 0 ; i < 4 ; i++)
     {
       Main m;
+      nbr_atouts = 0;
+      a_petit = false;
       for(unsigned int j = 0 ; j < 15 ; j++)
 	{
-	  m.ajouter(Carte(nums[3 + i*15 + j]));
+	  c = nums[3 + i*15 + j];
+	  if(c == PETIT) a_petit = true;
+	  if(c.atout()) nbr_atouts++;
+	  m.ajouter(c);
 	}
       jeu_reel.push_back(m);
-      Protocole::Message mess;
-      mess.type = Protocole::DISTRIBUTION;
-      m.distribution(mess.m.distribution);
-      emit doit_emettre(i, mess);
+      if(a_petit && nbr_atouts == 1)
+	{
+	  petit_sec = true;
+	}
     }
-  set_phase(Partie::ENCHERES);
+  if(!petit_sec)
+    {
+      for(unsigned int i = 0 ; i < 4 ; i++)
+	{
+	  Protocole::Message mess;
+	  mess.type = Protocole::DISTRIBUTION;
+	  jeu_reel[i].distribution(mess.m.distribution);
+	  emit doit_emettre(i, mess);
+	}
+      set_phase(Partie::ENCHERES);
+    }
+  else distribuer();
 }
