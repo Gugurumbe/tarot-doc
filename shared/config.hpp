@@ -6,8 +6,8 @@
    (2014), notre équipe travaille sur une implémentation du jeu de
    tarot afin d'élaborer une intelligence artificielle. Nous avons
    choisi Qt et C++ pour la partie programmation. La documentation est
-   créée avec Doxygen. Pour des soucis de compréhension, et en nous 
-   excusant auprès des anglicistes, nous utilisons uniquement la 
+   créée avec Doxygen. Par souci de compréhension, et en nous 
+   excusant auprès des anglicistes, nous utiliserons uniquement la 
    langue de Molière.
 
    @section install_sec Installation
@@ -27,7 +27,7 @@
    5.3. Pensez à prendre les paquets de développement.
    Pour gcc, les versions 4.6 (Debian wheezy) et 4.8 (Windows) sont testées.
    Il vous faut également Doxygen si vous voulez compiler la
-   documentation (avec tout le mal que je me suis donné pour l'écrire,
+   documentation (avec tout le mal que nous nous sommes donné pour l'écrire,
    vous pourriez bien le faire, tout de même !)
 
    @subsection etape3 Étape 3 : Compilez les programmes
