@@ -20,6 +20,7 @@
  */
 #include "carte.hpp"
 #include "protocole.hpp"
+#include <vector>
 
 /**
    @brief Représente les cartes face visible sur la table.
@@ -53,7 +54,7 @@ public:
      @see Message
      @see Tapis::set_ouverture(unsigned int)
   */
-  void ajouter(const Msg_carte & carte);
+  void ajouter(const Protocole::Msg_carte & carte);
 
   /**
      Lorsqu'on ajoute la première carte du tour, il faut également 

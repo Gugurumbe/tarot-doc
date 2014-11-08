@@ -11,6 +11,7 @@
 #define SERVEUR_DEFINI
 
 #include "protocole.hpp"
+#include "config.hpp"
 
 #include <QObject>
 #include <QTcpServer>
@@ -23,13 +24,13 @@
    
    La classe Serveur utilise les outils Qt pour établir des
    transmissions en mode connecté (Tcp), grâce auxquelles il peut
-   envoyer et recevoir des Messages tels que définis dans
+   envoyer et recevoir des Protocole::Messages tels que définis dans
    shared/protocole.hpp.
 
-   Telle quelle, cette classe ne sait pas quoi faire des Messages
+   Telle quelle, cette classe ne sait pas quoi faire des Protocole::Messages
    reçus et des déconnexions des clients, et ne sait pas quand envoyer
-   des Messages aux clients. Il y a pour l'instant 2 comportements :
-   ServeurDebogage, qui répète inlassablement tous les Messages reçus,
+   des Protocole::Messages aux clients. Il y a pour l'instant 2 comportements :
+   ServeurDebogage, qui répète inlassablement tous les Protocole::Messages reçus,
    en envoyant ERREUR_PROTOCOLE en cas de besoin, et ServeurJeu, en
    construction, qui va réagir selon les règles du tarot.
 
@@ -42,7 +43,7 @@
    Les identifiants des clients déconnectés sont réutilisés.
 
    Il existe une symétrie de construction entre le Client et le
-   Serveur : une classe générale qui relaye des Message à une classe
+   Serveur : une classe générale qui relaye des Protocole::Message à une classe
    spécialisée pour le débogage ou à une classe spécialisée pour le
    jeu, qui utilise une spécialisation de Partie.
  */
@@ -118,9 +119,9 @@ public slots:
   void enlever();
 
   /**
-     @brief Regarde si on peut lire un Message.
+     @brief Regarde si on peut lire un Protocole::Message.
 
-     Au besoin, émet message(unsigned int, Message) et
+     Au besoin, émet message(unsigned int, Protocole::Message) et
      message_brut(unsigned int, QByteArray) ou 
      deconnexion(unsigned int).
 
@@ -139,8 +140,8 @@ public slots:
   /**
      @brief Envoie au client un paquet brut.
      
-     @note Il est plus intéressant d'envoyer un Message avec
-     Serveur::envoyer(unsigned int, Message), pour utiliser les
+     @note Il est plus intéressant d'envoyer un Protocole::Message avec
+     Serveur::envoyer(unsigned int, Protocole::Message), pour utiliser les
      fonctions de lecture/écriture de shared/protocole.hpp.
 
      À des fins de débogage, on peut avoir envie d'envoyer un paquet
@@ -148,19 +149,19 @@ public slots:
      @param c : le numéro du destinataire.
      @param p : le paquet d'octets à envoyer.
      
-     @see Serveur::envoyer(unsigned int, Message)
+     @see Serveur::envoyer(unsigned int, Protocole::Message)
    */
   void envoyer(unsigned int c, QByteArray p);
 
   /**
-     @brief Envoie au client un Message.
+     @brief Envoie au client un Protocole::Message.
 
      @param c : le numéro du destinataire.
-     @param m : le Message respectant le protocole.
+     @param m : le Protocole::Message respectant le protocole.
 
      @see Serveur::envoyer(unsigned int, QByteArray)
    */
-  void envoyer(unsigned int c, Message m); 
+  void envoyer(unsigned int c, Protocole::Message m); 
 
  signals:
 
@@ -174,14 +175,14 @@ public slots:
   /**
      @brief Émis lorsqu'un client envoie un paquet.
      
-     @note Le signal Serveur::message(unsigned int, Message) est
+     @note Le signal Serveur::message(unsigned int, Protocole::Message) est
      simultanément émis, il n'y a pas besoin de tenir compte de ce
      signal (sauf à des fins de débogage).
      
      @param c : l'identification de l'émetteur.
      @param p : le paquet reçu.
 
-     @see Serveur::message(unsigned int, Message)
+     @see Serveur::message(unsigned int, Protocole::Message)
    */
   void message_brut(unsigned int c, QByteArray p);
 
@@ -193,14 +194,14 @@ public slots:
   void deconnexion(unsigned int c);
 
   /**
-     @brief Émis lorsqu'un Message est reçu.
+     @brief Émis lorsqu'un Protocole::Message est reçu.
 
      @param c : l'identification du client.
      @param m : le Message reçu.
      
      @see Serveur::message(unsigned int, QByteArray)
    */
-  void message(unsigned int c, Message m);
+  void message(unsigned int c, Protocole::Message m);
 
  private:
 

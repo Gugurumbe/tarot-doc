@@ -13,6 +13,7 @@
 #include <QObject>
 
 #include "protocole.hpp"
+#include "partie_serveur.hpp"
 
 #include <vector>
 
@@ -49,7 +50,7 @@ signals:
 
      @see Serveur::envoyer(unsigned int, Message)
    */
-  void doit_emettre(unsigned int c, Message m);
+  void doit_emettre(unsigned int c, Protocole::Message m);
 
   /**
      @brief Relaye l'ordre de déconnexion.
@@ -108,7 +109,7 @@ public slots:
 
      @see Serveur::message(unsigned int, Message)
    */
-  void comprendre(unsigned int c, Message m);
+  void comprendre(unsigned int c, Protocole::Message m);
 
   /**
      @brief Enlève un joueur de la Table.
@@ -124,6 +125,20 @@ public slots:
      @see Serveur::deconnexion(unsigned int)
    */
   void enlever(unsigned int c);
+
+  /**
+     @brief Transmet un message.
+     
+     Émet le signal Table::doit_emettre(unsigned int,Message) en
+     transformant le numéro du joueur en l'identification du client
+     correspondant. 
+     
+     @param j : le joueur concerné (0..4).
+     @param m : le message à transmettre.
+     @see Serveur::envoyer(unsigned int, Message)
+   */
+  void doit_transmettre(unsigned int j, Protocole::Message m);
+  
 private:
   
   /**
@@ -134,7 +149,12 @@ private:
   /**
      @brief Numéros des joueurs.
    */
-  std::vector<int> ordre;
+  std::vector<unsigned int> ordre;
+
+  /**
+     @brief Environnement de jeu.
+   */
+  PartieServeur partie;
 };
 
 #endif

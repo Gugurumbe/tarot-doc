@@ -57,7 +57,7 @@ public slots:
      
      @see Client::recu(Message)
    */
-  void traiter_message(Message m);
+  void traiter_message(Protocole::Message m);
 
   /**
      @brief Demande à l'utilisateur d'entrer un Message.

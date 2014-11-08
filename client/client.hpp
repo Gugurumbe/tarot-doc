@@ -100,7 +100,7 @@ public slots:
      
      Ce slot est à préférer à Client::envoyer(QByteArray).
    */
-  void envoyer(Message m);
+  void envoyer(Protocole::Message m);
 
   /**
      @brief Envoie un paquet au serveur.
@@ -138,7 +138,7 @@ signals:
 
      @param m : le Message reçu du serveur.
    */
-  void recu(Message m);
+  void recu(Protocole::Message m);
 		      
 private slots:
 

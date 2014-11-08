@@ -11,7 +11,7 @@ Main::Main()
 Main::Main(const Main & m): m_cartes(m.m_cartes)
 {}
 
-Main::Main(const Msg_distribution & m)
+Main::Main(const Protocole::Msg_distribution & m)
 {
   m_cartes.reserve(18);
   for(unsigned int i = 0 ; i < 15 ; i++)
@@ -27,7 +27,7 @@ void Main::enlever(const Carte & carte)
     {
       if(*i == carte)
 	{
-	  m_cartes.remove(i);
+	  m_cartes.erase(i);
 	  i=m_cartes.end();
 	}
     }
@@ -35,7 +35,8 @@ void Main::enlever(const Carte & carte)
 
 bool Main::possede(const Carte & carte) const
 {
-  for(std::vector<Carte>::iterator_const i = m_cartes.begin();
+  std::vector<Carte>::const_iterator i = m_cartes.begin();
+  for(i = m_cartes.begin();
       i != m_cartes.end() && *i != carte; i++);
   return i != m_cartes.end();
 }
@@ -45,25 +46,25 @@ void Main::ajouter(const Carte & carte)
   m_cartes.push_back(carte);
 }
 
-bool Main::peut_appeler(const Carte & carte) const;
+bool Main::peut_appeler(const Carte & carte) const
 {
   //Si le joueur n'a pas tous les rois, il ne peut pas appeler
   //une dame.
-  int valeur_incomplete = ROI; //La première valeur pour laquelle
+  Carte::Valeur valeur_incomplete = Carte::ROI; //La première valeur pour laquelle
   // il manque une carte dans la main du joueur.
   while(valeur_incomplete > carte.valeur() &&
 	(
-	 possede(Carte(PIQUE * 14 + valeur_incomplete)) &&
-	 possede(Carte(TREFLE * 14 + valeur_incomplete))&&
-	 possede(Carte(CARREAU* 14 + valeur_incomplete))&&
-	 possede(Carte(COEUR * 14 + valeur_incomplete))))
+	 possede(Carte(Carte::PIQUE * 14 + valeur_incomplete)) &&
+	 possede(Carte(Carte::TREFLE * 14 + valeur_incomplete))&&
+	 possede(Carte(Carte::CARREAU* 14 + valeur_incomplete))&&
+	 possede(Carte(Carte::COEUR * 14 + valeur_incomplete))))
     {
-      valeur_incomplete--;
+      valeur_incomplete = (Carte::Valeur)((int)valeur_incomplete - 1);
     }
   return possede(carte) && carte.tete() && valeur_incomplete <= carte.valeur();
 }
 
-bool Main::peut_declarer(const std::vector<const Carte &> & poignee) const
+bool Main::peut_declarer(const std::vector<Carte> & poignee) const
 {
   if(poignee.size() == 8 || poignee.size() == 10 || poignee.size() == 13)
     {
@@ -108,7 +109,7 @@ bool Main::peut_declarer(const std::vector<const Carte &> & poignee) const
 		  //Le joueur doit posséder exactement poignee.size() atouts,
 		  //puisque l'excuse est un atout.
 		  unsigned int nombre_atouts = 0;
-		  for(unsigned int i = 0 ; i < m_cartes ; i++)
+		  for(unsigned int i = 0 ; i < m_cartes.size() ; i++)
 		    {
 		      if(m_cartes[i].atout())nombre_atouts++;
 		    }
@@ -129,15 +130,15 @@ const Main & Main::operator=(const Main & m)
   return *this;
 }
 
-void Main::distribution(Msg_distribution & m)
+void Main::distribution(Protocole::Msg_distribution & m)
 {
   for(unsigned int i = 0 ; i < 15 && i < m_cartes.size() ; i++)
     {
-      m.cartes[i] = m_cartes[i];
+      m.cartes[i] = m_cartes[i].numero();
     }
 }
 
-std::vector<Carte::ModaliteEcart> Main::peut_ecarter(const std::vector<const Carte &> & ecart) const
+std::vector<Carte::ModaliteEcart> Main::peut_ecarter(const std::vector<Carte> & ecart) const
 {
   std::vector<Carte::ModaliteEcart> resultat(ecart.size());
   std::vector<Carte> cartes_restantes = m_cartes;

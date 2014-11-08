@@ -44,7 +44,7 @@ public:
       Msg_distribution.
       @param m : le message à analyser.
    */
-  Main(const Msg_distribution & m);
+  Main(const Protocole::Msg_distribution & m);
 
   /**
      Enlève une carte de la main du joueur.
@@ -98,6 +98,7 @@ public:
      3. Si la Carte est un atout, aucune Carte de la Main du joueur
      n'est écartable après avoir décompté les autres Cartes de
      l'écart.
+     4. De plus, on vérifie que les cartes sont différentes.
 
      @note Le fait que les cartes soient au nombre de 3 n'est pas 
      testé.
@@ -106,7 +107,7 @@ public:
      @see Carte::ecartable() const
    */
   std::vector<Carte::ModaliteEcart>
-  peut_ecarter(const std::vector<const Carte &> & ecart) const;
+  peut_ecarter(const std::vector<Carte> & ecart) const;
 
   /**
      Vérifie qu'un joueur peut déclarer cette Poignée.
@@ -120,7 +121,7 @@ public:
      @param poignee : la déclaration à tester.
      @return vrai ssi on peut déclarer la poignée.
    */
-  bool peut_declarer(const std::vector<const Carte &> & poignee) const;
+  bool peut_declarer(const std::vector<Carte> & poignee) const;
 
   /**
      Affecte la Main.
@@ -134,7 +135,7 @@ public:
      @param m : le message du serveur.
      @return une copie de la Main.
   */
-  const Main & operator=(const Msg_distribution & m);
+  const Main & operator=(const Protocole::Msg_distribution & m);
 
   /**
      Crée un message de type distribution.
@@ -143,7 +144,7 @@ public:
      peut remplir ce message pour l'envoyer au client.
      @param[out] m : le message à remplir.
    */
-  void distribution(Msg_distribution & m);
+  void distribution(Protocole::Msg_distribution & m);
 private:
   std::vector<Carte> m_cartes;
 };

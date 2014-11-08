@@ -48,9 +48,9 @@ unsigned int Carte::numero() const
   return m_numero;
 }
 
-unsigned int Carte::couleur() const
+Carte::Couleur Carte::couleur() const
 {
-  if(m_numero < DEBUT_ATOUT) return m_numero / 14;
+  if(m_numero < DEBUT_ATOUT) return (Carte::Couleur)(m_numero / 14);
   return ATOUT;
 }
 
@@ -76,11 +76,11 @@ bool Carte::bout() const
     || m_numero == VINGTETUN;
 }
 
-unsigned int Carte::valeur() const
+Carte::Valeur Carte::valeur() const
 {
-  if(m_numero < DEBUT_ATOUT) return m_numero % 14;
-  if(m_numero == EXCUSE || m_numero == DETTE_EXCUSE) return 0;
-  return m_numero - DEBUT_ATOUT + 1;
+  if(m_numero < DEBUT_ATOUT) return Carte::Valeur(m_numero % 14);
+  if(m_numero == EXCUSE || m_numero == DETTE_EXCUSE) return Carte::Valeur(0);
+  return Carte::Valeur(m_numero - DEBUT_ATOUT + 1);
   /* Ainsi, le petit a la valeur 1 (supérieure à l'excuse) */
 }
 

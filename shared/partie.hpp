@@ -143,6 +143,17 @@ public:
   const Enchere & contrat_final() const;
 
   /**
+     @brief Retourne l'enchère d'un joueur donné.
+
+     @warning Il faut vérifier que le joueur a bien effectué une
+     Enchère auparavant.
+
+     @param j : le joueur à tester.
+     @return L'enchère effectuée.
+   */
+  const Enchere & enchere_de(unsigned int joueur) const;
+
+  /**
      @brief Teste si un chelem a été déclaré.
      
      @return -1 si aucun chelem n'a été demandé.
@@ -222,7 +233,7 @@ public:
      @see PartieClient::assimiler(const Message &)
      @see PartieServeur::assimiler(const Message &)
    */
-  void assimiler(const Message & m);
+  void assimiler(const Protocole::Message & m);
 protected:
 
   /**

@@ -31,7 +31,7 @@ void Serveur::remove(unsigned int i)
 
 unsigned int Serveur::ouvrir_local()
 {
-  listener.listen(QHostAddress("127.0.0.1"));
+  listener.listen(QHostAddress("127.0.0.1"), PORT);
   //On liste sur l'adresse loopback, pour n'accepter que les sockets de la
   //même machine. On peut spécifier le port explicitement, mais rien ne dit
   //qu'il soit déjà pris.
@@ -40,7 +40,7 @@ unsigned int Serveur::ouvrir_local()
 
 unsigned int Serveur::ouvrir_global()
 {
-  listener.listen(QHostAddress::Any);
+  listener.listen(QHostAddress::Any, PORT);
   // On accepte les connexions venant de n'importe où.
   return listener.serverPort();
 }
@@ -101,8 +101,8 @@ void Serveur::lire()
       QByteArray paquet = clients[sock]->readAll();
       emit message_brut(sock, paquet);
       QDataStream in(paquet);
-      Message m;
-      ::lire(in, m);
+      Protocole::Message m;
+      Protocole::lire(in, m);
       emit message(sock, m);
     }
 }
@@ -123,7 +123,7 @@ void Serveur::envoyer(unsigned int i, QByteArray paquet)
     }
 }
 
-void Serveur::envoyer(unsigned int i, Message m)
+void Serveur::envoyer(unsigned int i, Protocole::Message m)
 {
   QByteArray paquet;
   QDataStream out(&paquet, QIODevice::WriteOnly);

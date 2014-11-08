@@ -10,17 +10,30 @@ INCLUDEPATH += . ../shared
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 # Input
-HEADERS += serveur.hpp \
-serveur_jeu.hpp \
-../shared/protocole.hpp \
-table.hpp \
-serveur_debogage.hpp 
+HEADERS += serveur.hpp             \
+serveur_jeu.hpp                    \
+../shared/protocole.hpp            \
+table.hpp                          \
+serveur_debogage.hpp               \
+../shared/partie.hpp               \
+../shared/carte.hpp                \
+../shared/main.hpp                 \
+../shared/tapis.hpp                \
+partie_serveur.hpp                 \
+../shared/enchere.hpp              \
+config.hpp
 
-SOURCES += main.cpp \
-serveur.cpp \
-../shared/protocole.cpp \
-serveur_jeu.cpp \
-table.cpp \
-serveur_debogage.cpp
+SOURCES += main_program.cpp        \
+serveur.cpp                        \
+../shared/protocole.cpp            \
+serveur_jeu.cpp                    \
+table.cpp                          \
+serveur_debogage.cpp               \
+../shared/partie.cpp               \
+../shared/carte.cpp                \
+../shared/main.cpp                 \
+../shared/tapis.cpp                \
+partie_serveur.cpp                 \
+../shared/enchere.cpp
 
 QT += network

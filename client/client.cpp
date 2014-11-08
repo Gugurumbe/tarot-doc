@@ -33,11 +33,11 @@ void Client::deconnecter()
   sock.disconnectFromHost();
 }
 
-void Client::envoyer(Message m)
+void Client::envoyer(Protocole::Message m)
 {
   QDataStream out(&sock);
   //le QDataStream écrit directement sur la socket.
-  ::ecrire(m, out);
+  Protocole::ecrire(m, out);
   //On écrit le message dans le QDataStream, grâce au protocole.
   sock.flush();
   //On envoie.
@@ -54,8 +54,8 @@ void Client::recevoir()
 {
   QDataStream in(&sock);
   //Le QDataStream lit directement depuis la socket.
-  Message m; //À remplir.
-  ::lire(in, m); //Que la lecture ait réussi ou pas, on 
+  Protocole::Message m; //À remplir.
+  Protocole::lire(in, m); //Que la lecture ait réussi ou pas, on 
   emit recu(m);  //tient compte du message. Il faut tester si le message
   //est lisible.
 }

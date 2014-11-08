@@ -7,8 +7,8 @@ ClientJeu::ClientJeu(QObject * parent) : Client(parent)
 		   this, SLOT(traiter_connexion()));
   QObject::connect(this, SIGNAL(deconnecte()),
 		   this, SLOT(traiter_deconnexion()));
-  QObject::connect(this, SIGNAL(recu(Message)),
-		   this, SLOT(traiter_message(Message)));
+  QObject::connect(this, SIGNAL(recu(Protocole::Message)),
+		   this, SLOT(traiter_message(Protocole::Message)));
 }
 
 void ClientJeu::traiter_connexion()
@@ -25,11 +25,11 @@ void ClientJeu::traiter_deconnexion()
   //à ce genre d'attaque.
 }
 
-void ClientJeu::traiter_message(Message m)
+void ClientJeu::traiter_message(Protocole::Message m)
 {
   switch(m.type)
     {
-    case NUMERO:
+    case Protocole::NUMERO:
       std::cout<<"Vous avez le numéro "<<m.m.numero.n<<std::endl;
       break;
     default :

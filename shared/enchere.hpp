@@ -92,7 +92,7 @@ public:
      @see Enchere::Enchere(const Msg_contrat_final &)
      @see Msg_prise
    */
-  Enchere(unsigned int joueur, const Msg_prise & m);
+  Enchere(unsigned int joueur, const Protocole::Msg_prise & m);
 
   /**
      Constructeur à partir d'un Msg_contrat.
@@ -106,7 +106,7 @@ public:
      @see Enchere::Enchere(const Msg_contrat_final &)
      @see Msg_contrat
    */
-  Enchere(unsigned int tour, const Msg_contrat & c);
+  Enchere(unsigned int tour, const Protocole::Msg_contrat & c);
 
   /**
      Constructeur à partir d'un Msg_contrat_final.
@@ -117,7 +117,7 @@ public:
      @see Enchere::Enchere(unsigned int, const Msg_contrat &)
      @see Msg_contrat_final
    */
-  Enchere(const Msg_contrat_final & m);
+  Enchere(const Protocole::Msg_contrat_final & m);
 
   /**
      Destructeur.
@@ -189,7 +189,7 @@ public:
      @see Enchere::Enchere(const Msg_contrat_final &)
      @see Enchere::operator=(const Enchere &)
    */
-  const Enchere & operator=(const Msg_contrat_final & m);
+  const Enchere & operator=(const Protocole::Msg_contrat_final & m);
 
   /**
      Teste la supériorité d'une enchère.

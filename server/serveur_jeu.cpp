@@ -7,6 +7,7 @@ ServeurJeu::ServeurJeu(QObject * parent) : Serveur(parent)
 		   this, SLOT(reagir_connexion(unsigned int)));
   // Les déconnexions et messages seront directement transmis à toutes
   // les tables.n
+  std::cout<<"Serveur de jeu prêt."<<std::endl;
 }
 
 void ServeurJeu::reagir_connexion(unsigned int i)
@@ -34,17 +35,17 @@ void ServeurJeu::reagir_connexion(unsigned int i)
 		       this, SLOT(rattacher_table(Table *)));
       // Gestion de la liste des Table.
       QObject::connect(incompletes[0], 
-		       SIGNAL(doit_emettre(unsigned int, Message)),
-		       this, SLOT(envoyer(unsigned int, Message)));
+		       SIGNAL(doit_emettre(unsigned int, Protocole::Message)),
+		       this, SLOT(envoyer(unsigned int, Protocole::Message)));
       QObject::connect(incompletes[0], SIGNAL(doit_deconnecter(unsigned int)),
 		       this, SLOT(deconnecter(unsigned int)));
       // Si la Table estime qu'il faut envoyer un message à / déconnecter
       // un client, on le fait.
       QObject::connect(this, SIGNAL(deconnexion(unsigned int)),
 		       incompletes[0], SLOT(enlever(unsigned int)));
-      QObject::connect(this, SIGNAL(message(unsigned int, Message)),
+      QObject::connect(this, SIGNAL(message(unsigned int, Protocole::Message)),
 		       incompletes[0], 
-		       SLOT(comprendre(unsigned int, Message)));
+		       SLOT(comprendre(unsigned int, Protocole::Message)));
       // Si un client réagit, on en informe toutes les Tables.
       reagir_connexion(i);
       //Et on ajoute le client en faisant un appel récursif (on tombe dans

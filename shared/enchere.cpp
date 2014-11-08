@@ -10,14 +10,19 @@ Enchere::Enchere(const Enchere & e):
 {
 }
 
-Enchere::Enchere(unsigned int joueur, const Msg_decision & m):
-  m_joueur(joueur), m_prise(m.niveau), m_carte_appelee(0)
+Enchere::Enchere(unsigned int joueur, const Protocole::Msg_prise & m):
+  m_joueur(joueur), m_prise(Enchere::Prise(m.niveau)), m_carte_appelee(0)
 {
 }
 
-Enchere::Enchere(const Msg_contrat_final & m):
-  m_joueur(m.joueur), m_prise(m.niveau),
-  m_carte_appelee(new Carte(m.carte_appelee))
+Enchere::Enchere(unsigned int joueur, const Protocole::Msg_contrat & m):
+  m_joueur(joueur), m_prise(Enchere::Prise(m.niveau)), m_carte_appelee(0)
+{
+}
+
+Enchere::Enchere(const Protocole::Msg_contrat_final & m):
+  m_joueur(m.preneur), m_prise(Enchere::Prise(m.niveau)),
+  m_carte_appelee(new Carte(m.appel))
 {
 }
 
@@ -45,7 +50,7 @@ void Enchere::appeler(const Carte & carte)
   m_carte_appelee = new Carte(carte);
 }
 
-Prise Enchere::prise() const
+Enchere::Prise Enchere::prise() const
 {
   return m_prise;
 }
@@ -64,11 +69,12 @@ const Enchere & Enchere::operator=(const Enchere & e)
       delete m_carte_appelee;
       m_carte_appelee = 0;
     }
-  m_carte_appelee = new Carte(e.m_carte_appelee);
+  if(e.m_carte_appelee)
+    m_carte_appelee = new Carte(*e.m_carte_appelee);
   return *this;
 }
 
-const Enchere & Enchere::operator=(const Msg_contrat_final & m)
+const Enchere & Enchere::operator=(const Protocole::Msg_contrat_final & m)
 {
   return operator=(Enchere(m));
 }

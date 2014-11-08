@@ -62,7 +62,7 @@ public slots :
      @param c : l'identification du client.
      @param m : le message reçu.
    */
-  void reagir_message(unsigned int c, Message m);
+  void reagir_message(unsigned int c, Protocole::Message m);
 };
 
 #endif

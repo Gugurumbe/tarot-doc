@@ -1,113 +1,137 @@
 #include "partie_serveur.hpp"
 
-PartieServeur::PartieServeur(QObject * parent): Partie(parent),
-						jeu_reel(5),
-						prets(5, false)
+#include <iostream>
+
+PartieServeur::PartieServeur(QObject * parent):
+  QObject(parent), Partie(), jeu_reel(5)
 {
-  distribuer();
 }
 
-void PartieServeur::assimiler(Message const & message)
+void PartieServeur::assimiler(Protocole::Message const & message)
 {
-  Partie::assimiler(entrant);
+  Partie::assimiler(message);
   /* Le serveur met à jour les mains des joueurs et le tapis. */
-  switch(
+  switch(message.type)
+    {
+    default :
+      std::cout<<"Penser à assimiler côté serveur.\n";
+    }
 }
 
-bool PartieServeur::tester(unsigned int joueur, Message const & message) const
+int PartieServeur::tester(unsigned int joueur, Protocole::Message const & message) const
 {
-  bool ok = false;
-  switch(message.m.type)
+  int ok = 0;
+  switch(message.type)
     {
-    case DECISION:
-      // Ok si on en est aux enchères, que c'est son tour et qu'il monte
-      ok = (phase() == ENCHERES && 
-	    tour() == joueur &&
-	    (message.m.decision.niveau == 0 
-	     || message.m.decision.niveau > encheres[(tour + 4) % 5]));
-      break;
-    case APPELER:
-      //Ok si on en est aux enchères, si c'est l'attaquant et que la carte
-      //appelée n'est pas définie. Comme l'attaquant est initialisé à 5,
-      //on ne peut pas appeler une carte tant qu'on n'a pas proposé le meilleur
-      //contrat.
-      //La carte appelée doit être un roi, ou une tête si le joueur a tous les rois
-      ok = (phase() == ENCHERES &&
-	    joueur == attaquant() &&
-	    !(carte_appelee().defini()) && 
-	    carte_appelee.tete());
-      if(!carte_appelee().roi())
+    case Protocole::PRISE:
+      // Ok si on en est aux enchères, que c'est son tour et qu'il
+      // monte
+      if(phase() == ENCHERES && tour() == joueur)
 	{
-	  int nombre_rois = 0;
-	  for(unsigned int i = 0 ; i < jeu_reel[joueur].size(); i++)
+	  Enchere e(joueur, message.m.prise);
+	  if(!(e.prise()) || tour() == 0
+	     || e > enchere_de((tour() + 4) % 5))
 	    {
-	      if(jeu_reel[joueur][i].roi()) nombre_rois++;
+	      //C'est valide, et on n'accèdera pas à encheres[4] au
+	      //premier tour.
 	    }
-	  ok = (nombre_rois == 4);
+	  else ok = 2;
 	}
+      else ok = 1;
       break;
-    case ECART:
-      //Ok si on en est à la phase de constitution de l'écart, 
-      //si c'est l'attaquant qui cause,
-      //si son enchère est inférieure strictement à une garde sans,
-      //s'il dispose des 3 cartes dans son jeu et dans le chien,
-      //si les 3 carts sont différentes.
-      if(phase() == CONSTITUTION_ECART 
-	 && joueur == attaquant() 
-	 && encheres[joueur] < 3)
+    case Protocole::APPELER:
+      if(phase() == ENCHERES && joueur == attaquant())
 	{
-	  ok = true;
-	  for(unsigned int i = 0 ; ok && i < 3 ; i++)
+	  if(jeu_reel[joueur].peut_appeler
+	     (Carte(message.m.appeler.carte)))
 	    {
-	      ok = false;
-	      //On cherche la i-ième carte de l'écart.
-	      //Si on la trouve, on remet ok à true.
-	      for(unsigned int j = 0 ; j < jeu_reel[joueur].size() ; j++)
+	      //C'est bon !
+	    }
+	  else ok = 2;
+	}
+      else ok = 1;
+      break;
+    case Protocole::ECART:
+      if(phase() == CONSTITUTION_ECART &&
+	 joueur == attaquant() &&
+	 Enchere::GARDE_SANS > enchere_de(joueur).prise())
+	{
+	  std::vector<Carte> ecart;
+	  for(unsigned int i = 0 ; i < 3 ; i ++)
+	    {
+	      ecart[i] = message.m.ecart.ecart[i];
+	    }
+	  std::vector<Carte::ModaliteEcart> resultat;
+	  resultat = jeu_reel[joueur].peut_ecarter(ecart);
+	  for(unsigned int i = 0 ; i < resultat.size() ; i++)
+	    {
+	      switch(resultat[i])
 		{
-		  if(jeu_reel[joueur][j] == m.m.ecart.carte[i])
-		    {
-		      ok = true;
-		      j = jeu_reel[joueur].size();
-		    }
-		}
-	      if(!ok)
-		{
-		  //On cherche dans le chien
-		  for(unsigned int j = 0 ; j < chien.size() ; j++)
-		    {
-		      if(chien[j] == m.m.ecart.carte[i])
-			{
-			  ok = true;
-			  j = chien.size();
-			}
-		    }
+		case Carte::NON_ECARTABLE :
+		  ok = 2 ;
+		  i = 3;
+		default:
+		  break;
 		}
 	    }
-	  ok = ok && (m.m.ecart.carte[0] != m.m.ecart.carte[1])
-	    && (m.m.ecart.carte[0] != m.m.ecart.carte[2])
-	    && (m.m.ecart.carte[1] != m.m.ecart.carte[2])
-	    && Carte(m.m.ecart.carte[0]).ecartable()
-	    && Carte(m.m.ecart.carte[1]).ecartable()
-	    && Carte(m.m.ecart.carte[2]).ecartable();
 	}
-      else ok = false;
+      else ok = 1;
       break;
-    case CHELEM:
-      // On en tient compte indépendamment du tour du joueur
-      ok = prets[joueur];
+    case Protocole::CHELEM:
+      ok = 1; //Pas encore implémenté.
       break;
-    case MONTRER_POIGNEE:
-      //Ok si on en est à la phase de jeu,
-      //si c'est le tour du joueur,
-      //si il a encore 15 cartes,
-      //si la poignée est de 8, 10 ou 13 cartes
-      //si le joueur possède ces cartes
-      //si toutes les cartes sont différentes
-      //si toutes les cartes sont des atouts
-      ok = (phase() == JEU) &&
-	tour() == joueur &&
-	jeu_reel[joueur] == 15;
+    case Protocole::MONTRER_POIGNEE:
+      ok = 1;
       break;
     }
   return ok;
+}
+
+template <class T>
+void swap(unsigned int i, unsigned int j, std::vector<T> & tab)
+{
+  T temp(tab[i]);
+  tab[i] = tab[j];
+  tab[j] = temp;
+}
+
+template<class T>
+void shuffle(std::vector<T> & tab)
+{
+  for(unsigned int i = 1 ; i < tab.size() ; i++)
+    {
+      swap(i, rand() % i, tab);
+    }
+}
+
+void PartieServeur::distribuer()
+{
+  std::vector<int> nums (78);
+  for(unsigned int i = 0 ; i < nums.size() ; i++)
+    {
+      nums[i] = i;
+    }
+  shuffle(nums);
+  // Les 3 premières cartes sont pour le chien, les autres pour les
+  // joueurs.
+  chien.clear();
+  for(unsigned int i = 0 ; i < 3 ; i++)
+    {
+      chien.push_back(Carte(nums[i]));
+    }
+  jeu_reel.clear();
+  for(unsigned int i = 0 ; i < 4 ; i++)
+    {
+      Main m;
+      for(unsigned int j = 0 ; j < 15 ; j++)
+	{
+	  m.ajouter(Carte(nums[3 + i*15 + j]));
+	}
+      jeu_reel.push_back(m);
+      Protocole::Message mess;
+      mess.type = Protocole::DISTRIBUTION;
+      m.distribution(mess.m.distribution);
+      emit doit_emettre(i, mess);
+    }
+  set_phase(Partie::ENCHERES);
 }

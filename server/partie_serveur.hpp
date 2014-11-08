@@ -11,6 +11,7 @@
 #define PARTIE_SERVEUR_DEFINIE
 
 #include "partie.hpp"
+#include "main.hpp"
 #include <QObject>
 
 /**
@@ -25,14 +26,15 @@
  */
 class PartieServeur: public QObject, public Partie
 {
+  Q_OBJECT;
 public:
 
   /**
      @brief Constructeur par défaut.
 
-     Lance la distribution des cartes.
+     Ne lance pas la distribution des cartes.
    */
-  PartieServeur();
+  PartieServeur(QObject * parent = 0);
 
   /**
      @brief Réimplémente Partie::assimiler(const Message &).
@@ -41,7 +43,7 @@ public:
      @param message : le Message à assimiler. Peut provenir du serveur
      lui-même. 
    */
-  void assimiler(const Message & message);
+  void assimiler(const Protocole::Message & message);
 
   /**
      @brief Teste une requête.
@@ -53,7 +55,7 @@ public:
      @return 1 si la requête est une erreur de protocole.
      @return 2 si la requête est refusée.
    */
-  int tester(unsigned int joueur, const Message & m) const;
+  int tester(unsigned int joueur, const Protocole::Message & m) const;
 private:
 
   /**
@@ -72,24 +74,26 @@ private:
      @brief Le chien.
    */
   std::vector<Carte> chien;
+			  
+public slots:
 
   /**
      @brief Distribution des cartes.
      
-     Émet des signaux doit_emettre(). Est appelée au début. 
+     Émet des signaux doit_emettre(). Doit être appelée au début. 
    */
   void distribuer();
-public slots:
+  
 signals:
   
   /**
      @brief Signal à connecter à 
-     Table::doit_emettre(unsigned int,Message)
+     Table::doit_relayer(unsigned int,Message)
 
      @param j : le joueur à qui adresser le Message.
      @param m : le Message à adresser.
    */
-  void doit_emettre(unsigned int j, Message m);
+  void doit_emettre(unsigned int j, Protocole::Message m);
 };
 
 #endif

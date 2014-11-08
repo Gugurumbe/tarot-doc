@@ -23,6 +23,8 @@ Table::Table(QObject * parent) : QObject(parent)
       ordre[r] = ordre[i];
       ordre[i] = tmp;
     }
+  QObject::connect(&partie, SIGNAL(doit_emettre(unsigned int, Protocole::Message)),
+		   this, SLOT(doit_transmettre(unsigned int, Protocole::Message)));
 }
 
 void Table::ajouter(unsigned int sock)
@@ -32,8 +34,8 @@ void Table::ajouter(unsigned int sock)
   if(i < joueurs.size())
     {
       joueurs[i] = sock;
-      Message m;
-      m.type = NUMERO;
+      Protocole::Message m;
+      m.type = Protocole::NUMERO;
       m.m.numero.n = ordre[i];
       emit doit_emettre(sock, m);
       //Si on est complet, on lance la partie
@@ -42,6 +44,7 @@ void Table::ajouter(unsigned int sock)
       if(i >= joueurs.size())
 	{
 	  std::cout<<"La partie commence..."<<std::endl;
+	  partie.distribuer();
 	  emit complet(this);
 	}
     }
@@ -55,12 +58,29 @@ void Table::ajouter(unsigned int sock)
     }
 }
 
-void Table::comprendre(unsigned int sock, Message m)
+void Table::comprendre(unsigned int sock, Protocole::Message m)
 {
   //Attention : je ne suis pas sûr que sock fasse partie de la table !
-  //Pour le contenu, je suis bien embêté tant que je n'ai pas les règles...
-  //Attention 2 : ce ne sera peut-être pas la Table qui gèrera les règles,
-  //mais peut-être un Arbitre partagé avec l'IA.
+  for(unsigned int i = 0 ; i < joueurs.size() ; i++)
+    {
+      if(joueurs[i] == (int)sock)
+	{
+	  Protocole::Message reponse;
+	  switch(partie.tester(sock, m))
+	    {
+	    case 1 :
+	      reponse.type = Protocole::ERREUR_PROTOCOLE;
+	      emit doit_emettre(sock, reponse);
+	      break;
+	    case 2 :
+	      reponse.type = Protocole::REFUSE;
+	      emit doit_emettre(sock, reponse);
+	      break;
+	    default :
+	      partie.assimiler(m);
+	    }
+	}
+    }
 }
 
 void Table::enlever(unsigned int sock)
@@ -75,5 +95,9 @@ void Table::enlever(unsigned int sock)
       emit incomplet(this);
     }
   // Si on a 5 joueurs et qu'on en perd 3, on ne va pas émettre 3 fois 
-  // incomplet(), car le ServeurJeu ajouterait 3 fois la même Table...
+  // incomplet(), car le ServeurJeu ajouterait 3 fois la même.
+}
+void Table::doit_transmettre(unsigned int j, Protocole::Message m)
+{
+  emit doit_emettre(joueurs[j], m);
 }

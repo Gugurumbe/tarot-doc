@@ -9,8 +9,8 @@ ClientDebogage::ClientDebogage(QObject * parent): Client(parent)
 		   this, SLOT(traiter_connexion()));
   QObject::connect(this, SIGNAL(deconnecte()),
 		   this, SLOT(traiter_deconnexion()));
-  QObject::connect(this, SIGNAL(recu(Message)),
-		   this, SLOT(traiter_message(Message)));
+  QObject::connect(this, SIGNAL(recu(Protocole::Message)),
+		   this, SLOT(traiter_message(Protocole::Message)));
   //Comme promis, on connecte les signaux Client aux réactions de débogage.
 }
 
@@ -31,7 +31,7 @@ void ClientDebogage::traiter_deconnexion()
 void ClientDebogage::demander_ordres()
 {
   //Réaction face à un nouveau message : on en envoie un.
-  Message m;
+  Protocole::Message m;
   std::cout<<"À vous maintenant : entrez le numéro de type."<<std::endl;
   std::cin>>m.type; // Le type de message.
   char * paquet_perso; //Le paquet perso à compléter
@@ -42,22 +42,22 @@ void ClientDebogage::demander_ordres()
   std::string chaine; //Oui ou non
   switch(m.type)
     {
-    case ERREUR_PROTOCOLE:
+    case Protocole::ERREUR_PROTOCOLE:
       std::cout<<"Envoi du message \"erreur_protocole\"..."<<std::endl;
       envoyer(m);
       break;
-    case REFUSE:
+    case Protocole::REFUSE:
       std::cout<<"Envoi du message \"refuse\"..."<<std::endl;
       envoyer(m);
       break;
-    case NUMERO:
+    case Protocole::NUMERO:
       std::cout<<"Choisissez le numéro : ";
       std::cin>>m.m.numero.n;
       std::cout<<"Envoi du message \"numero\"("<<m.m.numero.n<<")..."<<
 	std::endl;
       envoyer(m);
       break;
-    case DISTRIBUTION:
+    case Protocole::DISTRIBUTION:
       std::cout<<"Choisissez les 15 cartes : "<<std::endl;
       for(int i = 0 ; i < 15 ; i ++)
 	{
@@ -66,29 +66,29 @@ void ClientDebogage::demander_ordres()
       std::cout<<"Envoi du message \"distribution\"..."<<std::endl;
       envoyer(m);
       break;
-    case PRISE:
+    case Protocole::PRISE:
       std::cout<<"Alors, vous prenez ? (nombre) "<<std::endl;
       std::cin>>m.m.prise.niveau;
       std::cout<<"Envoi du message \"prise\"..."<<std::endl;
       envoyer(m);
       break;
-    case CONTRAT:
+    case Protocole::CONTRAT:
       std::cout<<"Quel contrat allez-vous déclarer ? (nombre) "<<std::endl;
       std::cin>>m.m.contrat.niveau;
       std::cout<<"Envoi du message \"contrat\"..."<<std::endl;
       envoyer(m);
       break;
-    case APPEL:
+    case Protocole::APPEL:
       std::cout<<"Envoi du message \"appel\"..."<<std::endl;
       envoyer(m);
       break;
-    case APPELER:
+    case Protocole::APPELER:
       std::cout<<"Quelle carte allez-vous appeler ?"<<std::endl;
       std::cin>>m.m.appeler.carte;
       std::cout<<"Envoi du message \"appeler\"..."<<std::endl;
       envoyer(m);
       break;
-    case CONTRAT_FINAL:
+    case Protocole::CONTRAT_FINAL:
       std::cout<<"Quel contrat final décide le serveur ?"<<std::endl;
       std::cout<<"Preneur : ";
       std::cin>>m.m.contrat_final.preneur;
@@ -99,7 +99,7 @@ void ClientDebogage::demander_ordres()
       std::cout<<"Envoi du message \"contrat_final\"..."<<std::endl;
       envoyer(m);
       break;
-    case CHIEN:
+    case Protocole::CHIEN:
       std::cout<<"Quel chien montrez-vous au preneur ?"<<std::endl;
       for(int i = 0 ; i < 3 ; i ++)
 	{
@@ -108,7 +108,7 @@ void ClientDebogage::demander_ordres()
       std::cout<<"Envoi du message \"chien\"..."<<std::endl;
       envoyer(m);
       break;
-    case ECART:
+    case Protocole::ECART:
       std::cout<<"Quel écart souhaitez-vous faire ?"<<std::endl;
       for(int i = 0 ; i < 3 ; i ++)
 	{
@@ -117,7 +117,7 @@ void ClientDebogage::demander_ordres()
       std::cout<<"Envoi du message \"ecart\"..."<<std::endl;
       envoyer(m);
       break;      
-    case ATOUT:
+    case Protocole::ATOUT:
       std::cout<<"Combien d'atouts souhaitez-vous mettre au chien ?"<<std::endl;
       std::cin>>m.m.atout.nombre;
       if(m.m.atout.nombre > 3) m.m.atout.nombre = 3;
@@ -129,14 +129,14 @@ void ClientDebogage::demander_ordres()
       std::cout<<"Envoi du message \"atout\"..."<<std::endl;
       envoyer(m);
       break;
-    case CHELEM:
+    case Protocole::CHELEM:
       std::cout<<"Voulez-vous demander un chelem ? o/*"<<std::endl;
       std::cin>>chaine;
       m.m.chelem.demande = (QString(chaine.c_str()).trimmed() == "o");
       std::cout<<"Envoi du message \"chelem\"..."<<std::endl;
       envoyer(m);
       break;
-    case JEU:
+    case Protocole::JEU:
       std::cout<<"Voulez-vous attribuer un chelem à quelqu'un ? "
 	       <<"Si oui, entrez son numéro (0-4), sinon entrez 5 ou"
 	       <<" plus."<<std::endl;
@@ -144,7 +144,7 @@ void ClientDebogage::demander_ordres()
       std::cout<<"Envoi du message \"jeu\"..."<<std::endl;
       envoyer(m);
       break;
-    case MONTRER_POIGNEE:
+    case Protocole::MONTRER_POIGNEE:
       std::cout<<"Entrez la taille de la poignée (8, 10 ou 13)..."<<std::endl;
       std::cin>>m.m.montrer_poignee.taille;
       std::cout<<"Entrez les "<<min(m.m.montrer_poignee.taille, 13)
@@ -156,7 +156,7 @@ void ClientDebogage::demander_ordres()
       std::cout<<"Envoi du message \"montrer_poignee\"..."<<std::endl;
       envoyer(m);
       break;
-    case POIGNEE:
+    case Protocole::POIGNEE:
       std::cout<<"Entrez la taille de la poignée (8, 10 ou 13)..."<<std::endl;
       std::cin>>m.m.poignee.taille;
       std::cout<<"Entrez les "<<min(m.m.poignee.taille, 13)<<" cartes : ";
@@ -167,25 +167,25 @@ void ClientDebogage::demander_ordres()
       std::cout<<"Envoi du message \"poignee\"..."<<std::endl;
       envoyer(m);
       break;
-    case REQUETE:
+    case Protocole::REQUETE:
       std::cout<<"Quelle carte voulez-vous jouer ?"<<std::endl;
       std::cin>>m.m.requete.carte;
       std::cout<<"Envoi du message \"requete\"..."<<std::endl;
       envoyer(m);
       break;
-    case CARTE:
+    case Protocole::CARTE:
       std::cout<<"Quelle carte voulez-vous faire jouer ?"<<std::endl;
       std::cin>>m.m.carte.carte;
       std::cout<<"Envoi du message \"carte\"..."<<std::endl;
       envoyer(m);
       break;
-    case PLI:
+    case Protocole::PLI:
       std::cout<<"À qui revient le pli ?"<<std::endl;
       std::cin>>m.m.pli.joueur;
       std::cout<<"Envoi du message \"pli\"..."<<std::endl;
       envoyer(m);
       break;
-    case RESULTAT:
+    case Protocole::RESULTAT:
       std::cout<<"Rentrez les résultats des 5 joueurs : ";
       for(int i = 0 ; i < 5 ; i ++)
 	{
@@ -212,7 +212,7 @@ void ClientDebogage::demander_ordres()
     }
 }
 
-void ClientDebogage::traiter_message(Message m)
+void ClientDebogage::traiter_message(Protocole::Message m)
 {
   //Attention : on affiche tous les champs de message, pour être exhaustif.
   //Ils n'ont peut-être rien de pertinent : si le serveur vous dit que vous
@@ -222,49 +222,49 @@ void ClientDebogage::traiter_message(Message m)
   std::cout<<"Type : "<<m.type<<std::endl;
   std::cout<<(m.compris?"Le message est compris.":
 	      "Le message n'a pas été compris.")<<std::endl;
-  std::cout<<ERREUR_PROTOCOLE<<" : Erreur protocole"<<std::endl;
-  std::cout<<REFUSE<<" : Refuse"<<std::endl;
-  std::cout<<NUMERO<<" : Numéro : "<<m.m.numero.n<<std::endl;
-  std::cout<<DISTRIBUTION<<" : Distribution : ";
+  std::cout<<Protocole::ERREUR_PROTOCOLE<<" : Erreur protocole"<<std::endl;
+  std::cout<<Protocole::REFUSE<<" : Refuse"<<std::endl;
+  std::cout<<Protocole::NUMERO<<" : Numéro : "<<m.m.numero.n<<std::endl;
+  std::cout<<Protocole::DISTRIBUTION<<" : Distribution : ";
   for(int i = 0 ; i < 15 ; i ++) std::cout<<m.m.distribution.cartes[i]<<", ";
   std::cout<<std::endl;
-  std::cout<<PRISE<<" : Prise : "<<m.m.prise.niveau<<std::endl;
-  std::cout<<CONTRAT<<" : Contrat : "<<m.m.contrat.niveau<<std::endl;
-  std::cout<<APPEL<<" : Appel"<<std::endl;
-  std::cout<<APPELER<<" : Appeler : "<<m.m.appeler.carte<<std::endl;
-  std::cout<<CONTRAT_FINAL<<" : Contrat final : "
+  std::cout<<Protocole::PRISE<<" : Prise : "<<m.m.prise.niveau<<std::endl;
+  std::cout<<Protocole::CONTRAT<<" : Contrat : "<<m.m.contrat.niveau<<std::endl;
+  std::cout<<Protocole::APPEL<<" : Appel"<<std::endl;
+  std::cout<<Protocole::APPELER<<" : Appeler : "<<m.m.appeler.carte<<std::endl;
+  std::cout<<Protocole::CONTRAT_FINAL<<" : Contrat final : "
 	   <<m.m.contrat_final.preneur<<", "
 	   <<m.m.contrat_final.niveau<<", "
 	   <<m.m.contrat_final.appel<<std::endl;
-  std::cout<<CHIEN<<" : Chien : ";
+  std::cout<<Protocole::CHIEN<<" : Chien : ";
   for(int i = 0 ; i < 3 ; i ++) std::cout<<m.m.chien.chien[i]<<", ";
   std::cout<<std::endl;
-  std::cout<<ECART<<" : Écart : ";
+  std::cout<<Protocole::ECART<<" : Écart : ";
   for(int i = 0 ; i < 3 ; i ++) std::cout<<m.m.ecart.ecart[i]<<", ";
   std::cout<<std::endl;
-  std::cout<<ATOUT<<" : Atout : taille "<<m.m.atout.nombre<<", ";
+  std::cout<<Protocole::ATOUT<<" : Atout : taille "<<m.m.atout.nombre<<", ";
   for(int i = 0 ; i < 3 ; i++)
     std::cout<<m.m.atout.cartes[i]<<", ";
   std::cout<<std::endl;
-  std::cout<<CHELEM<<" : Chelem : "
+  std::cout<<Protocole::CHELEM<<" : Chelem : "
 	   <<(m.m.chelem.demande != 0 ?"demandé":"non demandé")
 	   <<std::endl;
-  std::cout<<JEU<<" : Jeu : "
+  std::cout<<Protocole::JEU<<" : Jeu : "
 	   <<(m.m.jeu.chelem >= 5 ? "sans chelem (":"avec chelem (")
 	   <<m.m.jeu.chelem<<")"<<std::endl;
-  std::cout<<MONTRER_POIGNEE<<" : Montrer poignée : taille "
+  std::cout<<Protocole::MONTRER_POIGNEE<<" : Montrer poignée : taille "
 	   <<(m.m.montrer_poignee.taille)<< " : ";
   for(int i = 0 ; i < 13 && i < m.m.montrer_poignee.taille ; i++)
     std::cout<<m.m.montrer_poignee.atouts[i]<<", ";
   std::cout<<std::endl;
-  std::cout<<POIGNEE<<" : Poignée : taille "<<(m.m.poignee.taille)<< " : ";
+  std::cout<<Protocole::POIGNEE<<" : Poignée : taille "<<(m.m.poignee.taille)<< " : ";
   for(int i = 0 ; i < 13 && i < m.m.poignee.taille ; i++) 
     std::cout<<m.m.poignee.atouts[i]<<", ";
   std::cout<<std::endl;
-  std::cout<<REQUETE<<" : Requête : " << m.m.requete.carte<<std::endl;
-  std::cout<<CARTE<<" : Carte : "<<m.m.carte.carte<<std::endl;
-  std::cout<<PLI<<" : Pli : "<<m.m.pli.joueur<<std::endl;
-  std::cout<<RESULTAT<<" : Résultat : ";
+  std::cout<<Protocole::REQUETE<<" : Requête : " << m.m.requete.carte<<std::endl;
+  std::cout<<Protocole::CARTE<<" : Carte : "<<m.m.carte.carte<<std::endl;
+  std::cout<<Protocole::PLI<<" : Pli : "<<m.m.pli.joueur<<std::endl;
+  std::cout<<Protocole::RESULTAT<<" : Résultat : ";
   for(int i = 0 ; i < 5 ; i ++) std::cout<<m.m.resultat.resultats[i]<<", ";
   std::cout<<std::endl;
   demander_ordres();

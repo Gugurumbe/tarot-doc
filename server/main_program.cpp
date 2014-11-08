@@ -1,16 +1,9 @@
-#define DEBUG
-//Commenter pour passer en mode jeu
-
+#include "./config.hpp"
 #include <iostream>
 #include <QApplication>
 
-#ifdef DEBUG
 #include "serveur_debogage.hpp"
-#define SERVEUR ServeurDebogage
-#else
 #include "serveur_jeu.hpp"
-#define SERVEUR ServeurJeu
-#endif
 
 int main(int argc, char * argv[])
 {

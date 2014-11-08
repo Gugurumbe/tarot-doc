@@ -50,7 +50,7 @@ public slots:
 
      @see Client::recu(Message)
    */
-  void traiter_message(Message m);
+  void traiter_message(Protocole::Message m);
 private:
 };
 

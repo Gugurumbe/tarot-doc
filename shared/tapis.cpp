@@ -4,7 +4,7 @@ Tapis::Tapis():joueur_ouverture(-1)
 {
 }
 
-void Tapis::ajouter(const Msg_carte & carte)
+void Tapis::ajouter(const Protocole::Msg_carte & carte)
 {
   Carte c(carte.carte);
   m_tapis.push_back(c);
@@ -25,6 +25,22 @@ bool Tapis::complet() const
       if(*i != DETTE_EXCUSE) cartes_reelles++;
     }
   return cartes_reelles >= 5;
+}
+
+std::vector<Carte> concat(const std::vector<Carte> & t1,
+			  const std::vector<Carte> & t2)
+{
+  std::vector<Carte> t;
+  t.reserve(t1.size() + t2.size());
+  for(unsigned int i = 0 ; i < t1.size() ; i++)
+    {
+      t.push_back(t1[i]);
+    }
+  for(unsigned int i = 0 ; i < t2.size() ; i++)
+    {
+      t.push_back(t2[i]);
+    }
+  return t;
 }
 
 std::vector<Carte> Tapis::terminer(
@@ -63,8 +79,8 @@ std::vector<Carte> Tapis::terminer(
 		  gagnees.push_back(m_tapis[i]);
 		}
 	      //Elle n'est pas attribuée au gagnant
-	      m_tapis.remove(m_tapis.begin() + i);
-	      possesseurs.remove(possesseurs.begin() + i);
+	      m_tapis.erase(m_tapis.begin() + i);
+	      possesseurs.erase(possesseurs.begin() + i);
 	      i = m_tapis.size();
 	    }
 	  if(i < m_tapis.size() && m_tapis[i] != DETTE_EXCUSE)
@@ -87,6 +103,6 @@ std::vector<Carte> Tapis::terminer(
 	}
     }
   if(gagnant == attaquant || gagnant == appele)
-    gagnees.push_back(m_tapis);
+    return concat(gagnees, m_tapis);
   return gagnees;
 }

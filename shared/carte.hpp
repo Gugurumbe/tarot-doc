@@ -16,49 +16,24 @@
 #define DEBUT_ATOUT 56
 
 /**
-  Numéro de la couleur Pique.
-*/
-#define PIQUE 0
-
-/**
-  Numéro de la couleur Cœur.
-*/
-#define COEUR 1
-
-/**
-  Numéro de la couleur Carreau.
-*/
-#define CARREAU 2
-
-/**
-  Numéro de la couleur Trèfle.
-*/
-#define TREFLE 3
-
-/**
-  Numéro de la couleur Atout. L'excuse est un atout.
-*/
-#define ATOUT 4
-
-/**
    Première carte de pique.
  */
-#define DEBUT_PIQUE PIQUE * 14
+#define DEBUT_PIQUE Carte::PIQUE * 14
 
 /**
    Première carte de cœur.
  */
-#define DEBUT_COEUR COEUR * 14
+#define DEBUT_COEUR Carte::COEUR * 14
 
 /**
    Première carte de carreau.
  */
-#define DEBUT_CARREAU CARREAU * 14
+#define DEBUT_CARREAU Carte::CARREAU * 14
 
 /**
    Première carte de trèfle.
  */
-#define DEBUT_TREFLE TREFLE * 14
+#define DEBUT_TREFLE Carte::TREFLE * 14
 
 /**
    Numéro du Petit.
@@ -104,37 +79,50 @@ class Carte
 public:
 
   /**
-     Représente la valeur des cartes de couleur non atout.
+     @brief Énumère les 5 couleurs.
+
+     L'excuse est un atout. C'est la dernière carte d'atout. La fausse
+     excuse est également un atout, elle arrive après la vraie.
+   */
+  enum Couleur{PIQUE, CARREAU, TREFLE, COEUR, ATOUT};
+  
+  /**
+     @brief Représente la valeur des cartes de couleur non atout.
+
      @see Carte::valeur() const
   */
-  enum{AS, DEUX, TROIS, QUATRE, CINQ, SIX,
+  enum Valeur{AS, DEUX, TROIS, QUATRE, CINQ, SIX,
        SEPT, HUIT, NEUF, DIX, VALET, CAVALIER, DAME, ROI};
   
   /**
-     Sert à dire si une carte peut être écartée ou non, et les
+     @brief Sert à dire si une carte peut être écartée ou non, et les
      modalités éventuelles (montrer les atouts).
+
      @see Carte::ecartable() const
   */  
   enum ModaliteEcart
     {
-      ECARTABLE,     /**<La carte est écartable.*/
-      MONTRER_CARTE, /**<Il faut montrer la carte.*/
-      NON_ECARTABLE  /**<On ne peut pas écarter cette carte.*/
+      ECARTABLE,     /**<@brief La carte est écartable.*/
+      MONTRER_CARTE, /**<@brief Il faut montrer la carte.*/
+      NON_ECARTABLE  /**<@brief On ne peut pas écarter cette carte.*/
     };
   
   /** 
-      Constructeur principal.
+      @brief Constructeur principal.
+
       Le constructeur attend un numéro de carte valide.
       @param numero : le numéro entre 0 et 78.
   */
   Carte(unsigned int numero);
   /**
-     Constructeur de copie.
+     @brief Constructeur de copie.
+
      @param carte : la carte à copier.
   */
   Carte(const Carte & carte);
   /**
-     Comparaison des cartes.
+     @brief Comparaison des cartes.
+
      Les cartes sont toutes comparables. La relation carte1 > carte2
      veut dire : "Si je joue carte1 puis qu'on joue carte2, c'est a
      priori moi qui remporte le pli". Il ne s'agit pas d'une relation
@@ -145,47 +133,54 @@ public:
    */
   bool operator>(unsigned int carte) const;
   /**
-     Comparaison des cartes (2).
+     @brief Comparaison des cartes (2).
+
      @param carte : l'objet carte à comparer à "this".
      @see Carte::operator>(unsigned int) const
   */
   bool operator>(const Carte & carte) const;
   /**
-     Test d'égalité entre les cartes.
+     @brief Test d'égalité entre les cartes.
+
      Puisque les cartes sont copiables, on veut tester l'égalité.
      @param carte : le numéro de la carte à comparer à "this".
      @return vrai ssi la carte a ce numéro.
    */
   bool operator==(unsigned int carte) const;
   /**
-     Test d'égalité entre les cartes (2).
+     @brief Test d'égalité entre les cartes (2).
+
      @param carte : l'objet Carte à comparer à "this".
      @see Carte::operator==(unsigned int) const
   */
   bool operator==(const Carte & carte) const;
   /**
-     Test de différence entre 2 cartes.
+     @brief Test de différence entre 2 cartes.
+
      @param carte : le numéro de la carte à comparer à "this".
      @return vrai ssi les cartes sont différentes.
      @see Carte::operator==(unsigned int) const
   */
   bool operator!=(unsigned int carte) const;
   /**
-     Test de différence entre 2 cartes (2).
+     @brief Test de différence entre 2 cartes (2).
+
      @param carte : l'objet carte à comparer à "this".
      @see Carte::operator==(const Carte &) const
      @see Carte::operator!=(unsigned int) const
   */
   bool operator!=(const Carte & carte) const;
   /**
-     Retourne le numéro de la carte.
+     @brief Retourne le numéro de la carte.
+
      Le numéro de la carte est un entier entre 0 et 78.
      @return le numéro de la carte.
      @see Carte::Carte(unsigned int)
    */
   unsigned int numero() const;
   /**
-     Retourne la couleur de la carte.
+     @brief Retourne la couleur de la carte.
+
      La couleur de la carte est un nombre entre 0 et 4. La dernière
      couleur est la couleur atout. L'excuse est considérée comme un
      atout. Avant de faire des tests, il peut être utile de vérifier
@@ -205,9 +200,10 @@ public:
      @return la couleur de la carte.
      @see Carte::operator==(unsigned int) const
    */
-  unsigned int couleur() const;
+  Couleur couleur() const;
   /**
-     Indique si la carte est de l'atout.
+     @brief Indique si la carte est de l'atout.
+
      Peut être utile pour écarter des cartes ou pour déclarer des
      poignées. L'excuse est considérée comme un atout.
      @return vrai ssi la carte est l'excuse ou un atout.
@@ -218,7 +214,8 @@ public:
    */
   bool atout() const;
   /**
-     Indique si la carte est une tête.
+     @brief Indique si la carte est une tête.
+
      Les têtes sont les valets, cavaliers, dames et rois.
      Peut être utile pour appeler une carte.
      @return vrai ssi la carte est une tête.
@@ -229,7 +226,8 @@ public:
    */
   bool tete() const;
   /**
-     Indique si la carte est un roi.
+     @brief Indique si la carte est un roi.
+
      @return vrai ssi la carte est un roi.
      @see Carte::atout() const
      @see Carte::tete() const
@@ -238,7 +236,8 @@ public:
    */
   bool roi() const;
   /**
-     Indique si la carte est un bout.
+     @brief Indique si la carte est un bout.
+
      @return vrai ssi la carte est un bout.
      @see Carte::atout() const
      @see Carte::tete() const
@@ -247,7 +246,8 @@ public:
    */
   bool bout() const;
   /**
-     Retourne la valeur d'une carte.
+     @brief Retourne la valeur d'une carte.
+
      La valeur d'une carte est son ordre dans le classement par ordre
      croissant des cartes d'une même couleur. Par exemple, la valeur
      d'une Dame est 12. La valeur des Excuses est 0, celle du Petit
@@ -258,9 +258,11 @@ public:
      @see Carte::couleur() const
      @see Carte::demipoints() const
    */
-  unsigned int valeur() const;
+  Valeur valeur() const;
   /**
-     Retourne le nombre de demi-points que cette carte rapporte.
+     @brief Retourne le nombre de demi-points que cette carte
+     rapporte.
+
      Le nombre de demi-points d'une carte basse et de la dette
      d'excuse est 1. Le nombre de demi-points de l'excuse est 8 (4
      points). Le nombre de demi-points d'un autre bout est 9 (4.5
@@ -273,7 +275,8 @@ public:
    */
   unsigned int demipoints() const;
   /**
-     Indique si la carte est écartable.
+     @brief Indique si la carte est écartable.
+
      Lors de la constitution d'un écart, le joueur peut ou ne peut pas
      mettre certaines cartes dans le chien. Les bouts et les rois sont
      interdits, et les atouts sont tolérés dans une certaine mesure :
@@ -286,7 +289,8 @@ public:
    */
   ModaliteEcart ecartable() const;
   /**
-     Affecte la carte (1).
+     @brief Affecte la carte (1).
+
      Modifie le numéro de la carte pour qu'il corresponde à celui
      d'une autre carte.
      @param carte : la carte à copier.
@@ -296,7 +300,8 @@ public:
    */
   Carte const & operator=(const Carte & carte);
   /**
-     Affecte la carte (2).
+     @brief Affecte la carte (2).
+
      Change le numéro de la carte. S'il n'est pas inférieur à 79, le
      résultat modulo 79 est utilisé.
      @param carte : le numéro à utiliser. 
@@ -308,7 +313,7 @@ public:
   Carte const & operator=(unsigned int carte);
 private:
   /**
-     Le numéro interne de la carte.
+     @brief Le numéro interne de la carte.
    */
   unsigned int m_numero;
 };
