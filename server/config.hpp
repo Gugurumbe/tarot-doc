@@ -38,4 +38,14 @@
  */
 #define DETRUIRE_INCOMPLETE 1
 
+/**
+   @brief Donne plus d'informations sur l'écriture dans les socket.
+   
+   Comme on n'utilise pas flush(), il y a des signaux qui sont envoyés
+   lorsque la socket est prête à écrire. Il faut contrôler ça parfois.
+
+   Prend la valeur 0 (non) ou 1 (oui).
+ */
+#define DEBUG_WRITESTACK 0
+
 #endif
