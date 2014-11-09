@@ -148,7 +148,7 @@ public:
      @warning Il faut vérifier que le joueur a bien effectué une
      Enchère auparavant.
 
-     @param j : le joueur à tester.
+     @param joueur : le joueur à tester.
      @return L'enchère effectuée.
    */
   const Enchere & enchere_de(unsigned int joueur) const;
