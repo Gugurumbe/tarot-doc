@@ -120,6 +120,7 @@ void PartieServeur::distribuer()
       chien.push_back(Carte(nums[i]));
     }
   jeu_reel.clear();
+  //On prévoit le cas "petit sec"
   int nbr_atouts = 0;
   bool a_petit = false;
   bool petit_sec = false;
@@ -144,7 +145,7 @@ void PartieServeur::distribuer()
     }
   if(!petit_sec)
     {
-      for(unsigned int i = 0 ; i < 4 ; i++)
+      for(unsigned int i = 0 ; i < 5 ; i++)
 	{
 	  Protocole::Message mess;
 	  mess.type = Protocole::DISTRIBUTION;

@@ -1,4 +1,5 @@
 #include "serveur.hpp"
+#include "config.hpp"
 #include <iostream>
 
 Serveur::Serveur(QObject * parent) : QObject(parent), ppl(0)
@@ -12,12 +13,22 @@ unsigned int Serveur::push(QTcpSocket * sock)
 {
   unsigned int i = 0; //Sert à retenir la position occupée
   while(ppl < clients.size() && clients[ppl]) ppl++; //Cherche un endroit vide
-  while(ppl >= clients.size()) clients.push_back(0); 
+  while(ppl >= clients.size())
+    {
+      clients.push_back(0);
+      en_attente.push_back(std::queue<QByteArray>());
+      taille_restante.push_back(0);
+    }
   //Rajoute un endroit vide à la fin si tout est plein.
   i = ppl;
   clients[i] = sock;
   while(ppl < clients.size() && clients[ppl]) ppl++;
-  while(ppl >= clients.size()) clients.push_back(0);
+  while(ppl >= clients.size())
+    {
+      clients.push_back(0);
+      en_attente.push_back(std::queue<QByteArray>());
+      taille_restante.push_back(0);
+    }
   return i; //retourne la position occupée.
 }
 
@@ -27,6 +38,9 @@ void Serveur::remove(unsigned int i)
   clients[i] = 0;               // Vide la place
   if(i < ppl) ppl = i ;         // avance la première place libre
   // On ne détruit pas le client.
+  //On vide la file d'attente
+  en_attente[i] = std::queue<QByteArray>();
+  taille_restante[i] = 0;
 }
 
 unsigned int Serveur::ouvrir_local()
@@ -69,6 +83,8 @@ void Serveur::accepter()
       QObject::connect(sock, SIGNAL(disconnected()),
 		       sock, SLOT(deleteLater()));
       //Pas besoin de garder une socket si elle est déconnectée.
+      QObject::connect(sock, SIGNAL(bytesWritten(qint64)),
+		       this, SLOT(envoyer_suivant(qint64)));
       emit connexion(push(sock));
     }
 }
@@ -116,10 +132,40 @@ void Serveur::deconnecter(unsigned int i)
 
 void Serveur::envoyer(unsigned int i, QByteArray paquet)
 {
+#if DEBUG_WRITESTACK == 1
+  std::cout<<"Envoi à "<<i<<" un paquet de taille "<<
+    paquet.size()<<std::endl;
+#endif
   if(i < clients.size()) 
     {
-      clients[i]->write(paquet);  
-      clients[i]->flush();
+#if DEBUG_WRITESTACK == 1
+      std::cout<<(en_attente[i].empty()?"La file d'attente est vide. "
+		  :"Il reste des paquets à envoyer. ")
+	       << "Il reste "<<taille_restante[i]
+	       << " octets du paquet précédent à envoyer."
+	       << std::endl;
+#endif
+      if(en_attente[i].empty() && taille_restante[i] == 0)
+	{
+	  taille_restante[i] = paquet.size();
+	  clients[i]->write(paquet);  
+	  //clients[i]->flush();
+#if DEBUG_WRITESTACK == 1
+	  std::cout<< "Envoi direct du paquet. "
+		   <<(en_attente[i].empty()?"La file d'attente est vide. "
+		      :"Il reste des paquets à envoyer. ")
+		   << "Il reste "<<taille_restante[i]
+		   << " octets du paquet précédent à envoyer."
+		   << std::endl;
+#endif
+	}
+      else
+	{
+	  en_attente[i].push(paquet);
+#if DEBUG_WRITESTACK == 1
+	  std::cout<<"Envoi différé du paquet."<<std::endl;
+#endif
+	}
     }
 }
 
@@ -129,4 +175,40 @@ void Serveur::envoyer(unsigned int i, Protocole::Message m)
   QDataStream out(&paquet, QIODevice::WriteOnly);
   ecrire(m, out);
   envoyer(i, paquet);
+}
+
+void Serveur::envoyer_suivant(qint64 t)
+{
+  unsigned int i = find(sender());
+  if(i < clients.size())
+    {
+#if DEBUG_WRITESTACK == 1
+      std::cout<<"Envoi d'un morceau du paquet de "<<i<<" de taille "<<t<<std::endl;
+      std::cout<<"Il restait "<<taille_restante[i]<<" octets à écrire."<<std::endl;
+#endif
+      taille_restante[i] -= t ;
+      if(taille_restante[i] <= 0)
+	{
+	  if(taille_restante[i] < 0)
+	    std::cerr<<"Taille négative."<<std::endl;
+	  if(en_attente[i].empty())
+	    {
+#if DEBUG_WRITESTACK == 1
+	      std::cout<<"On n'a plus rien à écrire."<<std::endl;
+#endif
+	    }
+	  else
+	    {
+	      QByteArray to_send = en_attente[i].front();
+	      en_attente[i].pop();
+	      taille_restante[i] = to_send.size();
+	      clients[i]->write(to_send);
+	      //clients[i]->flush();
+#if DEBUG_WRITESTACK == 1
+	      std::cout<<"On envoie le paquet suivant de taille "<<
+		to_send.size()<<std::endl;
+#endif
+	    }
+	}
+    }
 }

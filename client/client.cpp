@@ -55,7 +55,6 @@ void Client::recevoir()
   QDataStream in(&sock);
   //Le QDataStream lit directement depuis la socket.
   Protocole::Message m; //À remplir.
-  Protocole::lire(in, m); //Que la lecture ait réussi ou pas, on 
-  emit recu(m);  //tient compte du message. Il faut tester si le message
-  //est lisible.
+  while(Protocole::lire(in, m))
+    emit recu(m);
 }

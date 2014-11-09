@@ -30,4 +30,12 @@
  */
 #define PORT 45678
 
+/**
+   @brief Définit le comportement en cas de déconnexion.
+   
+   On n'a malheureusement pas d'autre choix que de détruire la Table
+   toute entière si un client sort.
+ */
+#define DETRUIRE_INCOMPLETE 1
+
 #endif

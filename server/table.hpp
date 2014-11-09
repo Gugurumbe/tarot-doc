@@ -37,6 +37,11 @@ public:
      @brief Constructeur par défaut.
    */
   Table(QObject * parent = 0);
+
+  /**
+     @brief Déconnecte tous les joueurs encore présents.
+   */
+  virtual ~Table();
 signals:
   
   /**
@@ -72,9 +77,9 @@ signals:
 
   /**
      @brief Signale au ServeurJeu que la Table doit être complétée. 
-     
-     @note Pour l'instant, la Table préfèrera s'autodétruire que
-     d'émettre ce signal.
+
+     @note Pour l'instant, les Table émettant ce signal seront
+     détruites. 
 
      @param t : la Table courante (this).
 
@@ -155,6 +160,11 @@ private:
      @brief Environnement de jeu.
    */
   PartieServeur partie;
+
+  /**
+     @brief Nombre de Tables
+  */
+  static int nombre_tables;
 };
 
 #endif

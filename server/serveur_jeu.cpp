@@ -61,13 +61,26 @@ void ServeurJeu::detacher_table(Table * t)
   unsigned int i = 0 ;
   for(i = 0 ; i < incompletes.size() && incompletes[i] != t ; i++);
   //Recherche
-  if(i < incompletes.size()) incompletes.erase(incompletes.begin() + i);
+  if(i < incompletes.size())
+    {
+      incompletes.erase(incompletes.begin() + i);
+      std::cout<<"Table complète."<<std::endl;
+    }
   //Suppression éventuelle
 }
 
 void ServeurJeu::rattacher_table(Table * t)
 {
-  incompletes.push_back(t);
+  if(DETRUIRE_INCOMPLETE == 1)
+    {
+      std::cout<<"Destruction programmée d'une Table."<<std::endl;
+      t->deleteLater();
+    }
+  else
+    {
+      std::cout<<"Table incomplète."<<std::endl;
+      incompletes.push_back(t);
+    }
 }
 
 void ServeurJeu::oublier_table(QObject * t)

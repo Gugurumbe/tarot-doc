@@ -4,6 +4,8 @@
 
 #include <iostream>
 
+int Table::nombre_tables = 0;
+
 Table::Table(QObject * parent) : QObject(parent)
 {
   //Création des ordres :
@@ -25,6 +27,19 @@ Table::Table(QObject * parent) : QObject(parent)
     }
   QObject::connect(&partie, SIGNAL(doit_emettre(unsigned int, Protocole::Message)),
 		   this, SLOT(doit_transmettre(unsigned int, Protocole::Message)));
+  nombre_tables++;
+  std::cout<<"Il y a maintenant "<<nombre_tables<<" table(s)."<<std::endl;
+}
+
+Table::~Table()
+{
+  for(unsigned int i = 0 ; i < joueurs.size() ; i++)
+    {
+      if(joueurs[i]>=0)
+	emit doit_deconnecter(joueurs[i]);
+    }
+  nombre_tables--;
+  std::cout<<"Il n'y a plus que "<<nombre_tables<<" table(s)."<<std::endl;
 }
 
 void Table::ajouter(unsigned int sock)
@@ -89,13 +104,21 @@ void Table::enlever(unsigned int sock)
   unsigned int i = 0 ;
   while(i < joueurs.size() && 
 	(joueurs[i] < 0 || (unsigned int)joueurs[i] != sock)) i++;
-  if(i == joueurs.size() - 1)
+  if(i < joueurs.size())
     {
       joueurs[i] = -1 ;
-      emit incomplet(this);
-    }
-  // Si on a 5 joueurs et qu'on en perd 3, on ne va pas émettre 3 fois 
-  // incomplet(), car le ServeurJeu ajouterait 3 fois la même.
+      //Comptons les joueurs restants. S'ils sont 4, il faut envoyer
+      //le signal incomplet.
+      unsigned int j = 0 ;
+      for(unsigned int k = 0 ; k < joueurs.size() ; k++)
+	if(joueurs[k]>=0) j++;
+      if(j == 4)
+	{
+	  std::cout<<"Émission de Table::incomplet(Table *)..."
+		   <<std::endl;
+	  emit incomplet(this);
+	}
+    } 
 }
 void Table::doit_transmettre(unsigned int j, Protocole::Message m)
 {

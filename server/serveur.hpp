@@ -18,6 +18,7 @@
 #include <QTcpSocket>
 
 #include <vector>
+#include <queue>
 
 /**
    @brief Définit une classe communiquant sur le réseau.
@@ -161,7 +162,21 @@ public slots:
 
      @see Serveur::envoyer(unsigned int, QByteArray)
    */
-  void envoyer(unsigned int c, Protocole::Message m); 
+  void envoyer(unsigned int c, Protocole::Message m);
+
+  /**
+     @brief Envoie le message suivant sur la liste de l'objet
+     appelant. 
+
+     Le déclenchement de ce slot est automatique.
+
+     @warning En cas de déclenchement précoce de ce slot, le client
+     pourrait recevoir un paquet corrompu.
+
+     @param t : le nombre d'octets écrits. Attention : il en reste
+     peut-être encore à écrire.
+   */
+  void envoyer_suivant(qint64 t);
 
  signals:
 
@@ -257,6 +272,23 @@ public slots:
      La plus petite identification non utilisée.
    */
   unsigned int ppl;
+
+  /**
+     @brief Files d'attente pour les envois de paquet.
+     
+     Dans plusieurs situations, il faut envoyer plusieurs paquets à la
+     fois au même client, et dans ce cas il ne reçoit que le
+     premier. Il faut donc attendre qu'un paquet soit envoyé avant
+     d'en envoyer un autre.
+  */
+  std::vector<std::queue<QByteArray> > en_attente;
+
+  /**
+     @brief Tailles des paquets en cours d'envoi
+     
+     Tailles restantes à envoyer avant que la socket soit libre.
+  */
+  std::vector<qint64> taille_restante;
 };
 
 #endif
