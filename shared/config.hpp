@@ -43,9 +43,13 @@
    Après avoir installé doxygen, lancez-le sur le fichier doc.conf. La
    documentation est disponible dans le dossier doc.
    
-   @subsection etape5 Étape 5 : Prenez du bon temps
-   
-   Lancez le programme client. Il s'occupe tout seul du serveur.
+   @subsection etape5 Étape 5 : Utilisez
+
+   Pour l'instant, ce n'est pas jouable. Il faut lancer un serveur et
+   lancer des clients.
+
+   Quand ce sera jouable, il n'y aura pas besoin de lancer le
+   serveur. 
 */
 
 /**
