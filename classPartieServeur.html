@@ -113,8 +113,10 @@ Connecteurs publics</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="signals"></a>
 Signaux</h2></td></tr>
-<tr class="memitem:a2f6f569eaaa3b006fbb7b1fd7548d4e9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartieServeur.html#a2f6f569eaaa3b006fbb7b1fd7548d4e9">doit_emettre</a> (unsigned int j, <a class="el" href="structProtocole_1_1Message.html">Protocole::Message</a> m)</td></tr>
-<tr class="memdesc:a2f6f569eaaa3b006fbb7b1fd7548d4e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal à connecter à Table::doit_relayer(unsigned int,Message)  <a href="#a2f6f569eaaa3b006fbb7b1fd7548d4e9"></a><br/></td></tr>
+<tr class="memitem:a60c558d4c86798ee46f255c18a52630b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartieServeur.html#a60c558d4c86798ee46f255c18a52630b">doit_emettre</a> (unsigned int j, <a class="el" href="structProtocole_1_1Message.html">Protocole::Message</a> m, bool <a class="el" href="classPartieServeur.html#a4b5f9bf1bc24db303a31e8a77bf683ed">assimiler</a>)</td></tr>
+<tr class="memdesc:a60c558d4c86798ee46f255c18a52630b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal à connecter à Table::doit_transmettre(unsigned int,Message,bool)  <a href="#a60c558d4c86798ee46f255c18a52630b"></a><br/></td></tr>
+<tr class="memitem:ad934af02a962fb0d7d7cec0dbdb90177"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartieServeur.html#ad934af02a962fb0d7d7cec0dbdb90177">doit_emettre_a_tous</a> (<a class="el" href="structProtocole_1_1Message.html">Protocole::Message</a> m)</td></tr>
+<tr class="memdesc:ad934af02a962fb0d7d7cec0dbdb90177"><td class="mdescLeft">&#160;</td><td class="mdescRight">Signal à connecter à Table::doit_transmettre_a_tous(Message)  <a href="#ad934af02a962fb0d7d7cec0dbdb90177"></a><br/></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="pub-methods"></a>
 Fonctions membres publiques</h2></td></tr>
@@ -137,6 +139,8 @@ Fonctions membres publiques</h2></td></tr>
 <tr class="memdesc:a8e85cd52fcb26ee887b5c5441ffc00b2 inherit pub_methods_classPartie"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accès à l'état du pli.  <a href="#a8e85cd52fcb26ee887b5c5441ffc00b2"></a><br/></td></tr>
 <tr class="memitem:abb22c4e65f62fdcab2600376ed9ea5a6 inherit pub_methods_classPartie"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartie.html#abb22c4e65f62fdcab2600376ed9ea5a6">attaquant</a> () const </td></tr>
 <tr class="memdesc:abb22c4e65f62fdcab2600376ed9ea5a6 inherit pub_methods_classPartie"><td class="mdescLeft">&#160;</td><td class="mdescRight">Accès au joueur qui prise.  <a href="#abb22c4e65f62fdcab2600376ed9ea5a6"></a><br/></td></tr>
+<tr class="memitem:a6bd294a0e3cdb55bb24ee2b6a2809bc4 inherit pub_methods_classPartie"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartie.html#a6bd294a0e3cdb55bb24ee2b6a2809bc4">set_attaquant</a> (unsigned int j)</td></tr>
+<tr class="memdesc:a6bd294a0e3cdb55bb24ee2b6a2809bc4 inherit pub_methods_classPartie"><td class="mdescLeft">&#160;</td><td class="mdescRight">Modification de l'attaquant.  <a href="#a6bd294a0e3cdb55bb24ee2b6a2809bc4"></a><br/></td></tr>
 <tr class="memitem:a34e5fc20f35fa22c89a3151bc8a56d55 inherit pub_methods_classPartie"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartie.html#a34e5fc20f35fa22c89a3151bc8a56d55">tour</a> () const </td></tr>
 <tr class="memdesc:a34e5fc20f35fa22c89a3151bc8a56d55 inherit pub_methods_classPartie"><td class="mdescLeft">&#160;</td><td class="mdescRight">À qui de jouer ?  <a href="#a34e5fc20f35fa22c89a3151bc8a56d55"></a><br/></td></tr>
 <tr class="memitem:a59c52f0345c8acddeb03011295f8b1b1 inherit pub_methods_classPartie"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartie.html#a59c52f0345c8acddeb03011295f8b1b1">poignee</a> (unsigned int joueur) const </td></tr>
@@ -241,12 +245,12 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Distribution des cartes. </p>
-<p>Émet des signaux <a class="el" href="classPartieServeur.html#a2f6f569eaaa3b006fbb7b1fd7548d4e9" title="Signal à connecter à Table::doit_relayer(unsigned int,Message)">doit_emettre()</a>. Doit être appelée au début.</p>
+<p>Émet des signaux <a class="el" href="classPartieServeur.html#a60c558d4c86798ee46f255c18a52630b" title="Signal à connecter à Table::doit_transmettre(unsigned int,Message,bool)">doit_emettre()</a>. Doit être appelée au début.</p>
 <p>Au cas où une <a class="el" href="classMain.html" title="Une Main est un ensemble de cartes.">Main</a> ne contiendrait que le Petit, on redistribue. </p>
 
 </div>
 </div>
-<a class="anchor" id="a2f6f569eaaa3b006fbb7b1fd7548d4e9"></a>
+<a class="anchor" id="a60c558d4c86798ee46f255c18a52630b"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -263,7 +267,13 @@ Additional Inherited Members</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="structProtocole_1_1Message.html">Protocole::Message</a>&#160;</td>
-          <td class="paramname"><em>m</em>&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>assimiler</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -278,10 +288,44 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Signal à connecter à Table::doit_relayer(unsigned int,Message) </p>
+<p>Signal à connecter à Table::doit_transmettre(unsigned int,Message,bool) </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">j</td><td>: le joueur à qui adresser le Message. </td></tr>
+    <tr><td class="paramname">m</td><td>: le Message à adresser. </td></tr>
+    <tr><td class="paramname">analyser</td><td>: dit si le Message doit être assimilé. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ad934af02a962fb0d7d7cec0dbdb90177"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PartieServeur::doit_emettre_a_tous </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structProtocole_1_1Message.html">Protocole::Message</a>&#160;</td>
+          <td class="paramname"><em>m</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Signal à connecter à Table::doit_transmettre_a_tous(Message) </p>
+<p>Lorsqu'un Message issu du serveur doit être envoyé à tous, il est analysé 5 fois par la <a class="el" href="classPartie.html" title="Environnement de partie de Tarot.">Partie</a>, au lieu d'une.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
     <tr><td class="paramname">m</td><td>: le Message à adresser. </td></tr>
   </table>
   </dd>
@@ -331,12 +375,13 @@ Additional Inherited Members</h2></td></tr>
 </div>
 <hr/>La documentation de cette classe a été générée à partir des fichiers suivants :<ul>
 <li>server/<a class="el" href="partie__serveur_8hpp_source.html">partie_serveur.hpp</a></li>
+<li>server/moc_partie_serveur.cpp</li>
 <li>server/partie_serveur.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Novembre 9 2014 14:46:04 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Lundi Novembre 10 2014 12:03:20 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

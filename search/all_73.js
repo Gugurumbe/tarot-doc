@@ -11,6 +11,7 @@ var searchData=
   ['serveur_5fjeu_5fdefini',['SERVEUR_JEU_DEFINI',['../serveur__jeu_8hpp.html#a5dce8862f0dac44154ba4373489ee0f7',1,'serveur_jeu.hpp']]],
   ['serveurdebogage',['ServeurDebogage',['../classServeurDebogage.html',1,'ServeurDebogage'],['../classServeurDebogage.html#a574a34defe7200caa599b5ffa4b51008',1,'ServeurDebogage::ServeurDebogage()']]],
   ['serveurjeu',['ServeurJeu',['../classServeurJeu.html',1,'ServeurJeu'],['../classServeurJeu.html#a42732713b6d1da78b632fdb80df6fb02',1,'ServeurJeu::ServeurJeu()']]],
+  ['set_5fattaquant',['set_attaquant',['../classPartie.html#a6bd294a0e3cdb55bb24ee2b6a2809bc4',1,'Partie']]],
   ['set_5fouverture',['set_ouverture',['../classTapis.html#ad99507e33564528fcbdab023200a6677',1,'Tapis']]],
   ['set_5fphase',['set_phase',['../classPartie.html#afdc3a79eba2d966d967225df81873693',1,'Partie']]]
 ];

@@ -105,8 +105,8 @@ Connecteurs publics</h2></td></tr>
 <tr class="memdesc:afb140b691eda8c0704cea1aeda9cd300"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transmet un Message à la <a class="el" href="classPartie.html" title="Environnement de partie de Tarot.">Partie</a>.  <a href="#afb140b691eda8c0704cea1aeda9cd300"></a><br/></td></tr>
 <tr class="memitem:a2508504a656f681899fcb97eb4269cf1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTable.html#a2508504a656f681899fcb97eb4269cf1">enlever</a> (unsigned int c)</td></tr>
 <tr class="memdesc:a2508504a656f681899fcb97eb4269cf1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enlève un joueur de la <a class="el" href="classTable.html" title="Classe de Table.">Table</a>.  <a href="#a2508504a656f681899fcb97eb4269cf1"></a><br/></td></tr>
-<tr class="memitem:a07033d61c4b777c87bbb7f36729cfac0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTable.html#a07033d61c4b777c87bbb7f36729cfac0">doit_transmettre</a> (unsigned int j, <a class="el" href="structProtocole_1_1Message.html">Protocole::Message</a> m)</td></tr>
-<tr class="memdesc:a07033d61c4b777c87bbb7f36729cfac0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transmet un message.  <a href="#a07033d61c4b777c87bbb7f36729cfac0"></a><br/></td></tr>
+<tr class="memitem:ab59f7e6f1b2d9603bbcce881182c4b9c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTable.html#ab59f7e6f1b2d9603bbcce881182c4b9c">doit_transmettre</a> (unsigned int j, <a class="el" href="structProtocole_1_1Message.html">Protocole::Message</a> m, bool analyser)</td></tr>
+<tr class="memdesc:ab59f7e6f1b2d9603bbcce881182c4b9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transmet un message.  <a href="#ab59f7e6f1b2d9603bbcce881182c4b9c"></a><br/></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2><a name="signals"></a>
 Signaux</h2></td></tr>
@@ -325,7 +325,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 </div>
 </div>
-<a class="anchor" id="a07033d61c4b777c87bbb7f36729cfac0"></a>
+<a class="anchor" id="ab59f7e6f1b2d9603bbcce881182c4b9c"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -342,7 +342,13 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="structProtocole_1_1Message.html">Protocole::Message</a>&#160;</td>
-          <td class="paramname"><em>m</em>&#160;</td>
+          <td class="paramname"><em>m</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>analyser</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -359,14 +365,15 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 <p>Transmet un message. </p>
 <p>Émet le signal Table::doit_emettre(unsigned int,Message) en transformant le numéro du joueur en l'identification du client correspondant.</p>
+<p>Fait analyser le Message par la <a class="el" href="classPartie.html" title="Environnement de partie de Tarot.">Partie</a> en cas de demande.</p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">j</td><td>: le joueur concerné (0..4). </td></tr>
     <tr><td class="paramname">m</td><td>: le message à transmettre. </td></tr>
+    <tr><td class="paramname">analyser</td><td>: vrai s'il faut faire analyser le message. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>Voir également</dt><dd>Serveur::envoyer(unsigned int, Message) </dd></dl>
 
 </div>
 </div>
@@ -441,12 +448,13 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 </div>
 <hr/>La documentation de cette classe a été générée à partir des fichiers suivants :<ul>
 <li>server/<a class="el" href="table_8hpp_source.html">table.hpp</a></li>
+<li>server/moc_table.cpp</li>
 <li>server/table.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Dimanche Novembre 9 2014 14:46:04 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Lundi Novembre 10 2014 12:03:21 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>
