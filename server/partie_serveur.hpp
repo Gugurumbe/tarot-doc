@@ -68,7 +68,7 @@ private:
      
      On compte les points à la fin.
   */
-  std::vector<std::vector<Carte> > carte_gagnees;
+  std::vector<std::vector<Carte> > cartes_gagnees;
 
   /**
      @brief Le chien.
@@ -90,12 +90,24 @@ signals:
   
   /**
      @brief Signal à connecter à 
-     Table::doit_relayer(unsigned int,Message)
+     Table::doit_transmettre(unsigned int,Message,bool)
 
      @param j : le joueur à qui adresser le Message.
      @param m : le Message à adresser.
+     @param analyser : dit si le Message doit être assimilé.
    */
-  void doit_emettre(unsigned int j, Protocole::Message m);
+  void doit_emettre(unsigned int j, Protocole::Message m, bool assimiler);
+
+  /**
+     @brief Signal à connecter à
+     Table::doit_transmettre_a_tous(Message)
+
+     Lorsqu'un Message issu du serveur doit être envoyé à tous, il est
+     analysé 5 fois par la Partie, au lieu d'une.
+
+     @param m : le Message à adresser.
+   */
+  void doit_emettre_a_tous(Protocole::Message m);
 };
 
 #endif

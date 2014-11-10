@@ -119,7 +119,8 @@ void Serveur::lire()
       QDataStream in(paquet);
       Protocole::Message m;
       Protocole::lire(in, m);
-      emit message(sock, m);
+      if(m.compris)
+	emit message(sock, m);
     }
 }
 

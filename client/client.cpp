@@ -35,12 +35,14 @@ void Client::deconnecter()
 
 void Client::envoyer(Protocole::Message m)
 {
+  std::cout<<"Envoyer..."<<std::endl;
   QDataStream out(&sock);
   //le QDataStream écrit directement sur la socket.
   Protocole::ecrire(m, out);
   //On écrit le message dans le QDataStream, grâce au protocole.
   sock.flush();
   //On envoie.
+  std::cout<<"Envoyé."<<std::endl;
 }
 
 void Client::envoyer(QByteArray p)

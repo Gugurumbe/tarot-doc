@@ -25,8 +25,8 @@ Table::Table(QObject * parent) : QObject(parent)
       ordre[r] = ordre[i];
       ordre[i] = tmp;
     }
-  QObject::connect(&partie, SIGNAL(doit_emettre(unsigned int, Protocole::Message)),
-		   this, SLOT(doit_transmettre(unsigned int, Protocole::Message)));
+  QObject::connect(&partie, SIGNAL(doit_emettre(unsigned int, Protocole::Message, bool)),
+		   this, SLOT(doit_transmettre(unsigned int, Protocole::Message, bool)));
   nombre_tables++;
   std::cout<<"Il y a maintenant "<<nombre_tables<<" table(s)."<<std::endl;
 }
@@ -46,7 +46,7 @@ void Table::ajouter(unsigned int sock)
 {
   unsigned int i = 0;
   while(i < joueurs.size() && joueurs[i] >= 0) i++;
-  if(i < joueurs.size())
+ if(i < joueurs.size())
     {
       joueurs[i] = sock;
       Protocole::Message m;
@@ -81,7 +81,7 @@ void Table::comprendre(unsigned int sock, Protocole::Message m)
       if(joueurs[i] == (int)sock)
 	{
 	  Protocole::Message reponse;
-	  switch(partie.tester(sock, m))
+	  switch(partie.tester(ordre[i], m))
 	    {
 	    case 1 :
 	      reponse.type = Protocole::ERREUR_PROTOCOLE;
@@ -120,7 +120,10 @@ void Table::enlever(unsigned int sock)
 	}
     } 
 }
-void Table::doit_transmettre(unsigned int j, Protocole::Message m)
+void Table::doit_transmettre(unsigned int j, Protocole::Message m,
+			     bool analyser)
 {
+  if(analyser)
+    partie.assimiler(m);
   emit doit_emettre(joueurs[j], m);
 }

@@ -2,6 +2,11 @@
 
 #include <iostream>
 
+#define EMETTRE_A_TOUS(m) 		\
+  for(unsigned int i = 0 ; i < 4 ; i++) \
+    emit doit_emettre(i, m, false);	\
+  emit doit_emettre(4, m, true);
+
 PartieServeur::PartieServeur(QObject * parent):
   QObject(parent), Partie(), jeu_reel(5)
 {
@@ -13,6 +18,73 @@ void PartieServeur::assimiler(Protocole::Message const & message)
   /* Le serveur met à jour les mains des joueurs et le tapis. */
   switch(message.type)
     {
+    case Protocole::ERREUR_PROTOCOLE:
+      std::cout<<"Un client n'a pas compris mon message."<<std::endl;
+      break;
+    case Protocole::REFUSE:
+      break;
+    case Protocole::NUMERO:
+    case Protocole::DISTRIBUTION:
+      //Dans le cas de Distribution, les jeux sont déjà à jour.
+      break;
+    case Protocole::PRISE:
+      Protocole::Message contrat;
+      contrat.type = Protocole::CONTRAT;
+      contrat.m.contrat.niveau = message.m.prise.niveau;
+      EMETTRE_A_TOUS(contrat);
+      break;
+    case Protocole::CONTRAT:
+      if(tour() == 0)
+	{
+	  //Les enchères sont terminées.
+	  //Détermination de l'enchère maximale.
+	  std::cout<<"Enchères terminées."<<std::endl;
+	  int i_attaquant = 0;
+	  for(int i = 0 ; i < 5 ; i++)
+	    {
+	      if(enchere_de(i) > enchere_de(i_attaquant))
+		{
+		  i_attaquant = i;
+		}
+	    }
+	  set_attaquant(i_attaquant);
+	  //Envoi du message "appel"
+	  Protocole::Message appel;
+	  appel.type = Protocole::APPEL;
+	  emit doit_emettre(i_attaquant, appel, true);
+	}
+    case Protocole::APPEL:
+      break;
+    case Protocole::APPELER:
+      Protocole::Message mess_contrat_final;
+      mess_contrat_final.type = Protocole::CONTRAT_FINAL;
+      mess_contrat_final.m.contrat_final.preneur = attaquant();
+      mess_contrat_final.m.contrat_final.niveau = (int)contrat_final().prise();
+      mess_contrat_final.m.contrat_final.appel = message.m.appeler.carte;
+      EMETTRE_A_TOUS(mess_contrat_final);
+      if(contrat_final().prise() >= Enchere::GARDE_SANS)
+	{
+	  if(contrat_final().prise() == Enchere::GARDE_SANS)
+	    {
+	      cartes_gagnees.push_back(chien);
+	    }
+	  Protocole::Message jeu;
+	  jeu.type = Protocole::JEU;
+	  jeu.m.jeu.chelem = (chelem() >= 0 ? chelem() : 5);
+	  EMETTRE_A_TOUS(jeu);
+	}
+      else
+	{
+	  // Il faut montrer le chien
+	  Protocole::Message mess_chien;
+	  mess_chien.type = Protocole::CHIEN;
+	  for(unsigned int i = 0 ; i < 3 ; i++)
+	    {
+	      mess_chien.m.chien.chien[i] = chien[i].numero();
+	    }
+	  EMETTRE_A_TOUS(mess_chien);
+	}
+      break;
     default :
       std::cout<<"Penser à assimiler côté serveur.\n";
     }
@@ -37,7 +109,15 @@ int PartieServeur::tester(unsigned int joueur, Protocole::Message const & messag
 	    }
 	  else ok = 2;
 	}
-      else ok = 1;
+      else
+	{
+	  ok = 1;
+	    std::cout<<"Erreur de protocole sur Protocole::PRISE. ";
+	  if(phase() != ENCHERES)
+	    std::cout<<"On n'en est pas aux enchères."<<std::endl;
+	  else std::cout<<"Ce n'est pas le tour du joueur "<<joueur
+			<<" mais plutôt celui de "<<tour()<<std::endl;
+	}
       break;
     case Protocole::APPELER:
       if(phase() == ENCHERES && joueur == attaquant())
@@ -83,6 +163,9 @@ int PartieServeur::tester(unsigned int joueur, Protocole::Message const & messag
     case Protocole::MONTRER_POIGNEE:
       ok = 1;
       break;
+    default :
+      ok = 1;
+      break;
     }
   return ok;
 }
@@ -125,7 +208,7 @@ void PartieServeur::distribuer()
   bool a_petit = false;
   bool petit_sec = false;
   Carte c(PETIT);
-  for(unsigned int i = 0 ; i < 4 ; i++)
+  for(unsigned int i = 0 ; i < 5 ; i++)
     {
       Main m;
       nbr_atouts = 0;
@@ -150,7 +233,7 @@ void PartieServeur::distribuer()
 	  Protocole::Message mess;
 	  mess.type = Protocole::DISTRIBUTION;
 	  jeu_reel[i].distribution(mess.m.distribution);
-	  emit doit_emettre(i, mess);
+	  emit doit_emettre(i, mess, true);
 	}
       set_phase(Partie::ENCHERES);
     }

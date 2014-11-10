@@ -137,12 +137,14 @@ public slots:
      Émet le signal Table::doit_emettre(unsigned int,Message) en
      transformant le numéro du joueur en l'identification du client
      correspondant. 
+
+     Fait analyser le Message par la Partie en cas de demande.
      
      @param j : le joueur concerné (0..4).
      @param m : le message à transmettre.
-     @see Serveur::envoyer(unsigned int, Message)
+     @param analyser : vrai s'il faut faire analyser le message.
    */
-  void doit_transmettre(unsigned int j, Protocole::Message m);
+  void doit_transmettre(unsigned int j, Protocole::Message m, bool analyser);
   
 private:
   

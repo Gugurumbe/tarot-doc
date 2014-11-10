@@ -176,6 +176,23 @@ public:
   unsigned int attaquant() const;
 
   /**
+     @brief Modification de l'attaquant.
+
+     @warning L'attaquant est déterminé lors de la réception du
+     Msg_contrat_final. Cependant, du côté du serveur, il faut pouvoir
+     obtenir le numéro de l'attaquant pour valider un
+     Msg_appeler, qui arrive avant. Donc, le serveur doit donner un
+     indice sur l'attaquant avant qu'il soit donné.
+
+     Ne pas utiliser hors du serveur.
+
+     Ne fait rien si un attaquant a déjà été déterminé.
+
+     @param j : le numéro du joueur attaquant.
+   */
+  void set_attaquant(unsigned int j);
+
+  /**
      @brief À qui de jouer ?
 
      @return Le numéro du joueur dont c'est le tour.
