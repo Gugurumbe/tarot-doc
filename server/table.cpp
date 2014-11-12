@@ -75,6 +75,7 @@ void Table::ajouter(unsigned int sock)
 
 void Table::comprendre(unsigned int sock, Protocole::Message m)
 {
+  std::cout<<"->Table::comprendre(unsigned int, Message)"<<std::endl;
   //Attention : je ne suis pas sûr que sock fasse partie de la table !
   for(unsigned int i = 0 ; i < joueurs.size() ; i++)
     {
@@ -94,8 +95,10 @@ void Table::comprendre(unsigned int sock, Protocole::Message m)
 	    default :
 	      partie.assimiler(m);
 	    }
+	  i = joueurs.size();
 	}
     }
+  std::cout<<"<-Table::comprendre(unsigned int, Message)"<<std::endl;
 }
 
 void Table::enlever(unsigned int sock)
@@ -123,7 +126,15 @@ void Table::enlever(unsigned int sock)
 void Table::doit_transmettre(unsigned int j, Protocole::Message m,
 			     bool analyser)
 {
+  std::cout<<"Transmission à "<<j<<std::endl;
   if(analyser)
     partie.assimiler(m);
-  emit doit_emettre(joueurs[j], m);
+  for(unsigned int i = 0 ; i < joueurs.size() ; i++)
+    {
+      if(ordre[i] == j)
+	{
+	  emit doit_emettre(joueurs[j], m);
+	  std::cout<<"C'est "<<i<<std::endl;
+	}
+    }
 }

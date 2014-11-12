@@ -11,6 +11,7 @@
 #define CLIENT_DEBOGAGE_DEFINI
 
 #include "client.hpp"
+#include "partie_client.hpp"
 
 /**
    @brief Spécialise la classe Client, en adoptant le comportement
@@ -63,6 +64,14 @@ public slots:
      @brief Demande à l'utilisateur d'entrer un Message.
    */
   void demander_ordres();
+
+  /**
+     @brief Affiche l'état de la partie.
+   */
+  void afficher_etat();
+
+private:
+  PartieClient *m_partie;
 };
 
 #endif

@@ -176,7 +176,7 @@ public slots:
      @param t : le nombre d'octets écrits. Attention : il en reste
      peut-être encore à écrire.
    */
-  void envoyer_suivant(qint64 t);
+  //void envoyer_suivant(qint64 t);
 
  signals:
 
@@ -193,6 +193,10 @@ public slots:
      @note Le signal Serveur::message(unsigned int, Protocole::Message) est
      simultanément émis, il n'y a pas besoin de tenir compte de ce
      signal (sauf à des fins de débogage).
+
+     @warning Ce signal est désactivé, car il suppose l'utilisation de
+     QAbstractSocket::readAll() qui ne marche pas toujours bien (le
+     signal ReadyRead est émis plusieurs fois).
      
      @param c : l'identification de l'émetteur.
      @param p : le paquet reçu.
@@ -281,14 +285,14 @@ public slots:
      premier. Il faut donc attendre qu'un paquet soit envoyé avant
      d'en envoyer un autre.
   */
-  std::vector<std::queue<QByteArray> > en_attente;
+  //std::vector<std::queue<QByteArray> > en_attente;
 
   /**
      @brief Tailles des paquets en cours d'envoi
      
      Tailles restantes à envoyer avant que la socket soit libre.
   */
-  std::vector<qint64> taille_restante;
+  //std::vector<qint64> taille_restante;
 };
 
 #endif

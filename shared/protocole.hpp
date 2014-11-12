@@ -634,8 +634,9 @@ namespace Protocole
    
      Pour transformer un Message de/vers un paquet d'octets,
      la traduction est la suivante :
-     1. Un octet, qui prend la valeur du type.
-     2. Des octets réservés à la partie spécialisée du Message. En règle
+     1. Un octet, qui contient la taille du paquet.
+     2. Un octet, qui prend la valeur du type.
+     3. Des octets réservés à la partie spécialisée du Message. En règle
      générale, les entiers sont transformés en octets (non signés) dans
      l'ordre d'apparition des champs dans la structure Msg_*, les
      booléens sont transformés en "1" ou "0" sur un octet (non
@@ -664,6 +665,9 @@ namespace Protocole
   /**
      @brief Lit un Message.
    
+     @note On suppose qu'on a déjà lu l'otet de taille et qu'il y a
+     exactement le nombre d'octets spécifiés disponible dans in.
+     
      @param[in, out] in : flux d'entrée brut (Qt).
      @param[out] m : Message à remplir.
      @return Vrai ssi on a pu lire le Message en entier. En général,
@@ -673,7 +677,9 @@ namespace Protocole
 
   /**
      @brief Écrit un Message.
-   
+
+     @note Ne rajoute pas la taille du message.
+
      @param m : Message à envoyer.
      @param[out] out : flux de sortie brut (Qt).
   */

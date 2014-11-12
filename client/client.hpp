@@ -52,6 +52,13 @@ public:
      N'ouvre aucune connexion pour l'instant.
    */
   Client(QObject * parent = 0);
+
+  /**
+     @brief Considère des octets comme n'ayant pas été reçus.
+     
+     @param paquet : les octets lus par erreur.
+   */
+  void unread(QByteArray const & paquet);
 public slots:
 
   /**

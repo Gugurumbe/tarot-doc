@@ -48,6 +48,7 @@ void PartieServeur::assimiler(Protocole::Message const & message)
 		}
 	    }
 	  set_attaquant(i_attaquant);
+	  std::cout<<"Attaquant : "<<i_attaquant<<std::endl;
 	  //Envoi du message "appel"
 	  Protocole::Message appel;
 	  appel.type = Protocole::APPEL;
@@ -104,6 +105,7 @@ int PartieServeur::tester(unsigned int joueur, Protocole::Message const & messag
 	  if(!(e.prise()) || tour() == 0
 	     || e > enchere_de((tour() + 4) % 5))
 	    {
+	      std::cout<<"L'enchère "<<e.prise()<<" est validée."<<std::endl;
 	      //C'est valide, et on n'accèdera pas à encheres[4] au
 	      //premier tour.
 	    }

@@ -36,10 +36,10 @@ void Client::deconnecter()
 void Client::envoyer(Protocole::Message m)
 {
   std::cout<<"Envoyer..."<<std::endl;
-  QDataStream out(&sock);
-  //le QDataStream écrit directement sur la socket.
+  QByteArray paquet;
+  QDataStream out(&paquet, QIODevice::WriteOnly);
   Protocole::ecrire(m, out);
-  //On écrit le message dans le QDataStream, grâce au protocole.
+  sock.write(paquet.prepend((quint8)(1 + paquet.size())));
   sock.flush();
   //On envoie.
   std::cout<<"Envoyé."<<std::endl;
@@ -54,9 +54,33 @@ void Client::envoyer(QByteArray p)
 
 void Client::recevoir()
 {
-  QDataStream in(&sock);
-  //Le QDataStream lit directement depuis la socket.
-  Protocole::Message m; //À remplir.
-  while(Protocole::lire(in, m))
-    emit recu(m);
+  QByteArray paquet = sock.readAll();
+  QDataStream in(paquet);
+  quint8 taille = 0;
+  in>>taille;
+  if(paquet.size() >= taille)
+    {
+      Protocole::Message m; 
+      if(Protocole::lire(in, m))
+	{
+	  emit recu(m);
+	  QByteArray non_lu;
+	  while(!in.atEnd())
+	    {
+	      quint8 c ;
+	      in>>c ;
+	      non_lu.append(c);
+	    }
+	  unread(non_lu);
+	  recevoir();
+	}
+    }
+}
+
+void Client::unread(QByteArray const & paquet)
+{
+  for(int i = paquet.size() - 1 ; i >= 0 ; i--)
+    {
+      sock.ungetChar(paquet[i]);
+    }
 }

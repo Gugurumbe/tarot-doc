@@ -1,10 +1,27 @@
 #include "client_debogage.hpp"
 #include <iostream>
 #include <QtConcurrentRun>
+#include <string>
 
 #define min(a,b) (a<b?a:b)
 
-ClientDebogage::ClientDebogage(QObject * parent): Client(parent)
+std::string nom(unsigned int i)
+{
+  std::string r;
+  switch(i)
+    {
+    case 0 : r="Agathe";break;
+    case 1 : r="Emmanuel";break;
+    case 2 : r="Isidore";break;
+    case 3 : r="Olivier";break;
+    case 4 : r="Ursula";break;
+    default: r="un inconnu";break;
+    }
+  return r ;
+}
+
+ClientDebogage::ClientDebogage(QObject * parent):
+  Client(parent), m_partie(0)
 {
   QObject::connect(this, SIGNAL(connecte()),
 		   this, SLOT(traiter_connexion()));
@@ -13,19 +30,22 @@ ClientDebogage::ClientDebogage(QObject * parent): Client(parent)
   QObject::connect(this, SIGNAL(recu(Protocole::Message)),
 		   this, SLOT(traiter_message(Protocole::Message)));
   //Comme promis, on connecte les signaux Client aux réactions de débogage.
+  QtConcurrent::run(this, &ClientDebogage::demander_ordres);
 }
 
 void ClientDebogage::traiter_connexion()
 {
   std::cout<<"Vous êtes connecté."<<std::endl;
-  // Merci capitaine.
-  QtConcurrent::run(this, &ClientDebogage::demander_ordres);
+  m_partie = new PartieClient(this);
+  QObject::connect(m_partie, SIGNAL(doit_emettre(Protocole::Message)),
+		   this, SLOT(envoyer(Protocole::Message)));
 }
 
 void ClientDebogage::traiter_deconnexion()
 {
   std::cout<<"Vous êtes déconnecté."<<std::endl;
-  //Merci capitaine.
+  m_partie->deleteLater();
+  m_partie = 0;
   reconnecter();
 }
 
@@ -271,4 +291,152 @@ void ClientDebogage::traiter_message(Protocole::Message m)
   std::cout<<Protocole::RESULTAT<<" : Résultat : ";
   for(int i = 0 ; i < 5 ; i ++) std::cout<<m.m.resultat.resultats[i]<<", ";
   std::cout<<std::endl;
+
+  m_partie->assimiler(m);
+  afficher_etat();
+}
+
+std::string nom_d_atout(Carte::Valeur i)
+{
+  std::string r = "\x1B[33m";
+  switch((int)i)
+    {
+    case 1 : r+="Petit";break;
+    case 2 : r+="Deux d'Atout";break;
+    case 3 : r+="Trois d'Atout";break;
+    case 4 : r+="Quatre d'Atout";break;
+    case 5 : r+="Cinq d'Atout";break;
+    case 6 : r+="Six d'Atout";break;
+    case 7 : r+="Sept d'Atout";break;
+    case 8 : r+="Huit d'Atout";break;
+    case 9 : r+="Neuf d'Atout";break;
+    case 10 : r+="Dix d'Atout";break;
+    case 11 : r+="Onze d'Atout";break;
+    case 12 : r+="Douze d'Atout";break;
+    case 13 : r+="Treize d'Atout";break;
+    case 14 : r+="Quatorze d'Atout";break;
+    case 15 : r+="Quinze d'Atout";break;
+    case 16 : r+="Seize d'Atout";break;
+    case 17 : r+="Dix-sept d'Atout";break;
+    case 18 : r+="Dix-huit d'Atout";break;
+    case 19 : r+="Dix-neuf d'Atout";break;
+    case 20 : r+="Vingt d'Atout";break;
+    case 21 : r+="Vingt-et-un d'Atout";break;
+    default : r+="Un atout inconnu";
+    }
+  r += "\x1B[0m";
+  return r;
+}
+
+std::string nom_valeur(Carte::Valeur v)
+{
+  std::string r;
+  switch(v)
+    {
+    case 0 : r+="As";break;
+    case 1 : r+="Deux";break;
+    case 2 : r+="Trois";break;
+    case 3 : r+="Quatre";break;
+    case 4 : r+="Cinq";break;
+    case 5 : r+="Six";break;
+    case 6 : r+="Sept";break;
+    case 7 : r+="Huit";break;
+    case 8 : r+="Neuf";break;
+    case 9 : r+="Dix";break;
+    case 10 : r+="Valet";break;
+    case 11 : r+="Cavalier";break;
+    case 12 : r+="Dame";break;
+    case 13 : r+="Roi";break;
+    default : r+="Valeur inconnue";
+    }
+  return r;
+}
+
+std::string nom_carte(Carte c)
+{
+  std::string r;
+  if(c == EXCUSE)r="\x1B[33mExcuse";
+  else switch(c.couleur())
+	 {
+	 case Carte::PIQUE :
+	   r="\x1B[34m"+nom_valeur(c.valeur())+" de Pique";
+	   break;
+	 case Carte::TREFLE :
+	   r="\x1B[32m"+nom_valeur(c.valeur())+" de Trèfle";
+	   break;
+	 case Carte::CARREAU :
+	   r="\x1B[31m"+nom_valeur(c.valeur())+" de Carreau";
+	   break;
+	 case Carte::COEUR :
+	   r="\x1B[35m"+nom_valeur(c.valeur())+" de Coœur";
+	   break;
+	 default :
+	   r=nom_d_atout(c.valeur());
+	 }
+  r += "\x1B[0m";
+  return r;
+}
+
+void presenter_jeu(const Main & m)
+{
+  std::cout<<"Votre jeu : ["<<std::endl;
+  for(unsigned int i = 0 ; i < 78 ; i++)
+    {
+      if(m.possede(Carte(i)))
+	{
+	  std::cout<<nom_carte(Carte(i))<<";"<<std::endl;
+	}
+    }
+  std::cout<<"]"<<std::endl;
+}
+
+void ClientDebogage::afficher_etat()
+{
+  std::cout<<std::endl;
+  if(m_partie)
+    {
+      std::cout<<"Vous êtes "<<nom(m_partie->mon_numero())<<"."<<std::endl;
+      presenter_jeu(m_partie->mon_jeu());
+      switch(m_partie->phase())
+	{
+	case Partie::CONSTITUTION_TABLE :
+	  std::cout<<"On en est à la constitution de la Table."
+		   <<std::endl;
+	  break;
+	case Partie::ENCHERES :
+	  std::cout<<"On en est aux enchères."<<std::endl;
+	  if(m_partie->mon_tour())
+	    std::cout<<"C'est à votre tour, "
+		     <<nom(m_partie->mon_numero())<<std::endl;
+	  else
+	    std::cout<<"C'est au tour d'"
+		     <<nom(m_partie->tour())<<"."<<std::endl;
+	  break;
+	case Partie::CONSTITUTION_ECART :
+	  std::cout<<"On en est à la constitution de l'écart."
+		   <<std::endl;
+	  if(m_partie->mon_numero() == m_partie->attaquant())
+	    {
+	      std::cout<<"Vous devez composer un écart."<<std::endl;
+	    }
+	  break;
+	case Partie::PHASE_JEU :
+	  std::cout<<"On en est à la phase de jeu."<<std::endl;
+	  if(m_partie->mon_tour())
+	    std::cout<<"C'est à votre tour, "
+		     <<nom(m_partie->mon_numero())<<std::endl;
+	  else
+	    std::cout<<"C'est au tour d'"
+		     <<nom(m_partie->tour())<<"."<<std::endl;
+	  break;
+	case Partie::FIN :
+	  std::cout<<"C'est fini."<<std::endl;
+	  break;
+	default :
+	  std::cout<<"Erreur dans l'implémentation de Partie."
+		   <<std::endl;
+	}
+    }
+  else
+    std::cout<<"Connexion en cours..."<<std::endl;
 }

@@ -16,7 +16,7 @@ Main::Main(const Protocole::Msg_distribution & m)
   m_cartes.reserve(18);
   for(unsigned int i = 0 ; i < 15 ; i++)
     {
-      m_cartes[i]=m.cartes[i];
+      m_cartes.push_back(m.cartes[i]);
     }
 }
 

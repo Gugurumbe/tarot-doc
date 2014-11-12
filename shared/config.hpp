@@ -30,6 +30,10 @@
    documentation (avec tout le mal que nous nous sommes donné pour l'écrire,
    vous pourriez bien le faire, tout de même !)
 
+   Qt : http://www.qt.io/download-open-source/
+   MinGW sans Qt : http://www.mingw.org/wiki/Getting_Started
+   Doxygen : http://www.stack.nl/~dimitri/doxygen/download.html 
+
    @subsection etape3 Étape 3 : Compilez les programmes
    
    Il y a deux programmes : un dans le dossier client et un autre dans
@@ -37,6 +41,18 @@
    méthode. Il faut tout d'abord utiliser qmake pour générer le
    Makefile, puis lancer make. Alternativement, on peut ouvrir les
    fichiers server/serveur.pro et client/client.pro avec QtCreator.
+
+   Compilation bash : 
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   cd chemin/vers/tarot
+   doxygen doc.conf              #Compile la doc
+   cd server                     #Répertoire du serveur
+   qmake                         #Prépare le Makefile
+   make                          #Compile le serveur
+   cd ../client                  #Répertoire du client
+   qmake                         #Prépare le Makefile
+   make                          #Compile le client
+   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    @subsection etape4 Étape 4 : Compilez la documentation
    

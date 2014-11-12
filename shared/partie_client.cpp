@@ -1,6 +1,6 @@
 #include "partie_client.hpp"
 
-PartieClient::PartieClient(QObject * parent = 0):
+PartieClient::PartieClient(QObject * parent):
   QObject(parent), Partie(), m_mon_tour(5)
 {
   mon_equipe.reserve(4);
@@ -11,65 +11,71 @@ bool PartieClient::mon_tour() const
   return tour() == m_mon_tour;
 }
 
+unsigned int PartieClient::mon_numero() const
+{
+  return m_mon_tour;
+}
+
 bool PartieClient::est_ami(unsigned int joueur) const
 {
-  for(std::vector<unsigned int>::iterator i = mon_equipe.begin();
+  std::vector<unsigned int>::const_iterator i = mon_equipe.begin();
+  for(i = mon_equipe.begin();
       i != mon_equipe.end() && *i != joueur ; i++);
   return i != mon_equipe.end();
 }
 
-void PartieClient::assimiler(const Message & m)
+void PartieClient::assimiler(const Protocole::Message & m)
 {
   switch(m.type)
     {
-    case ERREUR_PROTOCOLE:
+    case Protocole::ERREUR_PROTOCOLE:
       break;
-    case REFUSE:
+    case Protocole::REFUSE:
       emit action_refusee();
       break;
-    case NUMERO:
-      mon_tour = m.m.numero.n;
+    case Protocole::NUMERO:
+      m_mon_tour = m.m.numero.n;
       mon_equipe.push_back(m.m.numero.n);
       break;
-    case DISTRIBUTION:
+    case Protocole::DISTRIBUTION:
       mes_cartes = Main(m.m.distribution);
       set_phase(ENCHERES);
       break;
-    case DECISION:
+    case Protocole::PRISE:
       break;
-    case CONTRAT:
+    case Protocole::CONTRAT:
       break;
-    case APPEL:
+    case Protocole::APPEL:
       emit doit_appeler();
       break;
-    case APPELER:
+    case Protocole::APPELER:
       break;
-    case CONTRAT_FINAL:
+    case Protocole::CONTRAT_FINAL:
       /* A-t-on la carte appelée ? */
-      if(m_mon_tour == m.m.contrat_final.joueur)
+      if(m_mon_tour == (unsigned int)m.m.contrat_final.preneur)
 	{
 	  /* Ah, ben c'est moi qui prends. */
 	  /* Que j'aie la carte appelée ou pas, je ne connais */
 	  /* pas d'autre allié. */
 	}
-      else if(mes_cartes.possede(m.m.contrat_final.carte))
+      else if(mes_cartes.possede(m.m.contrat_final.appel))
 	    /* Je suis appelé ! */
-	mon_equipe.push_back(m.m.contrat_final.joueur);
-      if(m.m.contrat_final.niveau >= GARDE_SANS)
+	mon_equipe.push_back(m.m.contrat_final.preneur);
+      if(m.m.contrat_final.niveau >= Enchere::GARDE_SANS)
 	{
 	  // On ne parle pas du chien, donc c'est à nous !
 	  emit doit_demander_chelem();
 	}
       break;
-    case CHIEN:
+    case Protocole::CHIEN:
       /* Si la carte appelée est dans le chien et que je n'ai pas */
       /* pris, alors je suis avec tous les autres défenseurs */
       if(attaquant() != m_mon_tour)
 	{
-	  Carte appelee = *(contrat_final().carte_appelee());
-	  if(appelee == m.m.chien.cartes[0]
-	     ||appelee == m.m.chien.cartes[1]
-	     ||appelee == m.m.chien.cartes[2])
+	  Carte appelee = *(enchere_de(attaquant()).carte_appelee());
+	  if(appelee == m.m.chien.chien[0]
+	     ||appelee == m.m.chien.chien[1]
+	     ||appelee == m.m.chien.chien[2])
 	    {
 	      mon_equipe.clear();
 	      for(unsigned int i = 0 ; i < 5 ; i++)
@@ -87,27 +93,27 @@ void PartieClient::assimiler(const Message & m)
 	  emit doit_ecarter();
 	}
       break;
-    case ECART:
+    case Protocole::ECART:
       break;
-    case ATOUT:
+    case Protocole::ATOUT:
       break;
-    case CHELEM:
+    case Protocole::CHELEM:
       break;
-    case JEU:
+    case Protocole::JEU:
       break;
-    case MONTRER_POIGNEE:
+    case Protocole::MONTRER_POIGNEE:
       break;
-    case POIGNEE:
+    case Protocole::POIGNEE:
       break;
-    case REQUETE:
+    case Protocole::REQUETE:
       break;
-    case CARTE:
+    case Protocole::CARTE:
       if(mon_tour())
 	{
 	  //C'est moi qui ai joué ça
 	  mes_cartes.enlever(m.m.carte.carte);
 	}
-      else if(*(contrat_final().carte_appelee()) == m.m.carte.carte)
+      else if(*(enchere_de(attaquant()).carte_appelee()) == m.m.carte.carte)
 	{
 	  /* Je suis un défenseur */
 	  mon_equipe.clear();
@@ -120,9 +126,9 @@ void PartieClient::assimiler(const Message & m)
 	    }
 	}
       break;
-    case PLI:
+    case Protocole::PLI:
       break;
-    case RESULTAT:
+    case Protocole::RESULTAT:
       break;
     default:
       break;
@@ -132,30 +138,88 @@ void PartieClient::assimiler(const Message & m)
     {
       switch(phase())
 	{
-	case CONSTITUTION_TABLE:
+	case Partie::CONSTITUTION_TABLE:
 	  break; //Rien à faire
-	case ENCHERES:
-	  if(m.type != APPEL)
+	case Partie::ENCHERES:
+	  if(m.type != Protocole::APPEL)
 	    {
-	      emit doit_decider();
+	      emit doit_priser();
 	    }
 	  //Dans le cas où le message est un appel,
 	  // le tour n'a pas de sens
 	  break;
-	case CONSTITUTION_ECART:
+	case Partie::CONSTITUTION_ECART:
 	  //Déjà géré dans le cas CHIEN
 	  break;
-	case ATTENTE_CHELEM:
-	  emit doit_demander_chelem; //Attention : peut-être
+	case Partie::ATTENTE_CHELEM:
+	  emit doit_demander_chelem(); //Attention : peut-être
 	  //que ça a déjà été fait
 	  break;
-	case PHASE_JEU:
+	case Partie::PHASE_JEU:
 	  emit doit_jouer();
 	  break;
-	case FIN:
+	case Partie::FIN:
 	  break;
 	default:
 	  break;
 	}
     }
+}
+
+void PartieClient::montrer_poignee(std::vector<Carte> const & p)
+{
+  Protocole::Message m;
+  m.type = Protocole::MONTRER_POIGNEE;
+  m.m.montrer_poignee.taille = p.size();
+  for(unsigned int i = 0 ; i < p.size() ; i++)
+    {
+      m.m.montrer_poignee.atouts[i] = p[i].numero();
+    }
+  emit doit_emettre(m);
+}
+
+void PartieClient::jouer(const Carte & c)
+{
+  Protocole::Message m;
+  m.type = Protocole::REQUETE;
+  m.m.requete.carte = c.numero();
+  emit doit_emettre(m);
+}
+
+void PartieClient::formuler_prise(Enchere::Prise p)
+{
+  Protocole::Message m;
+  m.type = Protocole::PRISE;
+  m.m.prise.niveau = (int)p;
+  emit doit_emettre(m);
+}
+
+void PartieClient::appeler(const Carte & c)
+{
+  Protocole::Message m;
+  m.type = Protocole::APPELER;
+  m.m.appeler.carte = c.numero();
+  emit doit_emettre(m);
+}
+
+void PartieClient::ecarter(std::vector<Carte> const & c)
+{
+  Protocole::Message m;
+  m.type = Protocole::ECART;
+  for(unsigned int i = 0 ; i < 3 && i < c.size() ; i++)
+    m.m.ecart.ecart[i] = c[i].numero();
+  emit doit_emettre(m);
+}
+
+void PartieClient::demander_chelem()
+{
+}
+
+void PartieClient::demander_jeu()
+{
+}
+
+const Main & PartieClient::mon_jeu() const
+{
+  return mes_cartes;
 }

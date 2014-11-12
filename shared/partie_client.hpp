@@ -58,7 +58,17 @@ public:
   bool est_ami(unsigned int joueur) const;
 
   /**
-     @brief Comprend un Message.
+     @brief Retourne le numéro du joueur.
+
+     mon_numero() == tour() est équivalent à mon_tour().
+     
+     @return Le numéro du joueur.
+     @see PartieClient::mon_tour() const
+  */
+  unsigned int mon_numero() const;
+  
+  /**
+     @brief Comprend un Protocole::Message.
     
      La mise à jour du contenu de la Partie côté client s'effectue de
      la façon suivante :
@@ -73,7 +83,14 @@ public:
 
      @see Partie::assimiler(unsigned int)
    */
-  void assimiler(const Message & message);
+  void assimiler(const Protocole::Message & message);
+
+  /**
+     @brief Regarder mon jeu.
+
+     @return Mon jeu.
+   */
+  const Main & mon_jeu() const;
 private:
 
   /** Retient le numéro de mon tour. */
@@ -160,7 +177,7 @@ signals:
      ou par l'un des slots de PartieClient.
      @param m : le Message à envoyer au serveur.
    */
-  void doit_emettre(Message m);
+  void doit_emettre(Protocole::Message m);
 
   /**
      @brief Quitter l'application.
