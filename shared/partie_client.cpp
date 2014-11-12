@@ -92,8 +92,21 @@ void PartieClient::assimiler(const Protocole::Message & m)
 	  //Je dois écarter !
 	  emit doit_ecarter();
 	}
+      chien_si_devoile.clear();
+      for(unsigned int i = 0 ; i < 3 ; i++)
+	chien_si_devoile.push_back(Carte(m.m.chien.chien[i]));
       break;
     case Protocole::ECART:
+      //J'enlève ces cartes de mon jeu si c'est moi qui ai pris,
+      //et je les remplace par celles du chien.
+      for(unsigned int i = 0 ; i < chien_si_devoile.size() ; i++)
+	{
+	  mes_cartes.ajouter(chien_si_devoile[i]);
+	}
+      for(unsigned int i = 0 ; i < 3 ; i++)
+	{
+	  mes_cartes.enlever(Carte(m.m.ecart.ecart[i]));
+	}
       break;
     case Protocole::ATOUT:
       break;
@@ -219,7 +232,15 @@ void PartieClient::demander_jeu()
 {
 }
 
-const Main & PartieClient::mon_jeu() const
+Main PartieClient::mon_jeu() const
 {
-  return mes_cartes;
+  Main m(mes_cartes);
+  if(phase() == CONSTITUTION_ECART && attaquant() == m_mon_tour)
+    {
+      for(unsigned int i = 0 ; i < chien_si_devoile.size() ; i++)
+	{
+	  m.ajouter(chien_si_devoile[i]);
+	}
+    }
+  return m;
 }

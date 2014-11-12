@@ -2,6 +2,8 @@
 
 #include "main.hpp"
 
+#include <iostream>
+
 Main::Main()
 {
   m_cartes.reserve(18);
@@ -48,6 +50,8 @@ void Main::ajouter(const Carte & carte)
 
 bool Main::peut_appeler(const Carte & carte) const
 {
+  std::cout<<"->bool Main::peut_appeler(const Carte & carte) const";
+  std::cout<<", given carte.numero() = "<<carte.numero()<<std::endl;
   //Si le joueur n'a pas tous les rois, il ne peut pas appeler
   //une dame.
   Carte::Valeur valeur_incomplete = Carte::ROI; //La première valeur pour laquelle
@@ -59,9 +63,25 @@ bool Main::peut_appeler(const Carte & carte) const
 	 possede(Carte(Carte::CARREAU* 14 + valeur_incomplete))&&
 	 possede(Carte(Carte::COEUR * 14 + valeur_incomplete))))
     {
+      std::cout<<"Le joueur possède toutes les valeurs "<<valeur_incomplete;
+      std::cout<<std::endl;
       valeur_incomplete = (Carte::Valeur)((int)valeur_incomplete - 1);
     }
-  return possede(carte) && carte.tete() && valeur_incomplete <= carte.valeur();
+  bool b = carte.tete() && valeur_incomplete <= carte.valeur();
+  if(!b)
+    {
+      if(!carte.tete())
+	std::cout<<"Erreur : ce n'est même pas une tête."<<std::endl;
+      if(valeur_incomplete > carte.valeur())
+	std::cout<<"Erreur : avant d'appeler une Carte de valeur "
+		 <<carte.valeur()
+		 <<", il faut avoir toutes les Cartes de valeur "
+		 <<valeur_incomplete<<std::endl;
+    }
+  std::cout<<"<-bool Main::peut_appeler(const Cate & carte) const"
+	   <<", given carte.numero() = "<<carte.numero()
+	   <<" : return "<<(std::string)(b?"true":"false")<<std::endl;
+  return b;
 }
 
 bool Main::peut_declarer(const std::vector<Carte> & poignee) const

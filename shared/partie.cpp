@@ -112,6 +112,7 @@ void Partie::assimiler(const Protocole::Message & m)
       m_phase = PHASE_JEU;
       m_chelem = (m.m.jeu.chelem >= 5 ? -1 : m.m.jeu.chelem);
       if(m_chelem >= 0) m_tour = m_chelem;
+      else m_tour = 0;
       //Le joueur ayant demandé un chelem joue.
       break;
     case Protocole::POIGNEE:

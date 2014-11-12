@@ -88,15 +88,18 @@ public:
   /**
      @brief Regarder mon jeu.
 
-     @return Mon jeu.
+     @return Mon jeu, augmenté des Cartes de l'écart si elles sont
+     disponibles. 
    */
-  const Main & mon_jeu() const;
+  Main mon_jeu() const;
 private:
 
   /** Retient le numéro de mon tour. */
   unsigned int m_mon_tour;
   /** Retient mes Cartes. */
   Main mes_cartes;
+  /** Retient les 3 cartes que j'écarte a priori.*/
+  std::vector<Carte> chien_si_devoile;
   /** Retient les numéros des joueurs de mon équipe. */
   std::vector<unsigned int> mon_equipe;
 public slots:

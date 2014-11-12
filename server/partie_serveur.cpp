@@ -31,6 +31,7 @@ void PartieServeur::assimiler(Protocole::Message const & message)
       Protocole::Message contrat;
       contrat.type = Protocole::CONTRAT;
       contrat.m.contrat.niveau = message.m.prise.niveau;
+      e_max = Enchere((tour() + 4) % 5, contrat.m.contrat);
       EMETTRE_A_TOUS(contrat);
       break;
     case Protocole::CONTRAT:
@@ -47,12 +48,28 @@ void PartieServeur::assimiler(Protocole::Message const & message)
 		  i_attaquant = i;
 		}
 	    }
-	  set_attaquant(i_attaquant);
-	  std::cout<<"Attaquant : "<<i_attaquant<<std::endl;
-	  //Envoi du message "appel"
-	  Protocole::Message appel;
-	  appel.type = Protocole::APPEL;
-	  emit doit_emettre(i_attaquant, appel, true);
+	  if(enchere_de(i_attaquant).prise())
+	    {
+	      //Quelqu'un a pris.
+	      set_attaquant(i_attaquant);
+	      std::cout<<"Attaquant : "<<i_attaquant<<std::endl;
+	      //Envoi du message "appel"
+	      Protocole::Message appel;
+	      appel.type = Protocole::APPEL;
+	      emit doit_emettre(i_attaquant, appel, true);
+	    }
+	  else
+	    {
+	      //Personne n'a pris.
+	      set_phase(Partie::FIN);
+	      Protocole::Message fin;
+	      fin.type = Protocole::RESULTAT;
+	      for(unsigned int i = 0 ; i < 5 ; i++)
+		{
+		  fin.m.resultat.resultats[i] = 0;
+		}
+	      EMETTRE_A_TOUS(fin);
+	    }
 	}
     case Protocole::APPEL:
       break;
@@ -86,6 +103,50 @@ void PartieServeur::assimiler(Protocole::Message const & message)
 	  EMETTRE_A_TOUS(mess_chien);
 	}
       break;
+    case Protocole::ECART:
+      if(true) //On n'aime pas les déclarations dans les "case"
+	{
+	  std::vector<Carte> ecart;
+	  for(unsigned int i = 0 ; i < 3 ; i++)
+	    {
+	      ecart.push_back(message.m.ecart.ecart[i]);
+	    }
+	  // On donne les 3 cartes du chien au preneur et on lui enlève
+	  // les 3 cartes de l'écart
+	  for(unsigned int i = 0 ; i < chien.size() ; i++)
+	    {
+	      jeu_reel[attaquant()].ajouter(chien[i]);
+	    }
+	  for(unsigned int i = 0 ; i < 3 ; i++)
+	    {
+	      jeu_reel[attaquant()].enlever(Carte(message.m.ecart.ecart[i]));
+	    }
+	  //Gestion des atouts :
+	  std::vector<Carte::ModaliteEcart> resultat =
+	    jeu_reel[attaquant()].peut_ecarter(ecart);
+	  std::vector<Carte> montrees;
+	  for(unsigned int i = 0 ; i < resultat.size() ; i++)
+	    {
+	      if(resultat[i] == Carte::MONTRER_CARTE)
+		{
+		  montrees.push_back(ecart[i]);
+		}
+	    }
+	  Protocole::Message atout;
+	  atout.type = Protocole::ATOUT;
+	  atout.m.atout.nombre = montrees.size();
+	  for(unsigned int i = 0 ; i < montrees.size() ; i++)
+	    {
+	      atout.m.atout.cartes[i] = montrees[i].numero();
+	    }
+	  EMETTRE_A_TOUS(atout);
+	  //Envoi du message Jeu
+	  Protocole::Message mess_jeu;
+	  mess_jeu.type = Protocole::JEU;
+	  mess_jeu.m.jeu.chelem = (chelem() < 0 ? 5 : chelem());
+	  EMETTRE_A_TOUS(mess_jeu);
+	}
+      break;
     default :
       std::cout<<"Penser à assimiler côté serveur.\n";
     }
@@ -102,12 +163,9 @@ int PartieServeur::tester(unsigned int joueur, Protocole::Message const & messag
       if(phase() == ENCHERES && tour() == joueur)
 	{
 	  Enchere e(joueur, message.m.prise);
-	  if(!(e.prise()) || tour() == 0
-	     || e > enchere_de((tour() + 4) % 5))
+	  if(!(e.prise()) || e > e_max)
 	    {
 	      std::cout<<"L'enchère "<<e.prise()<<" est validée."<<std::endl;
-	      //C'est valide, et on n'accèdera pas à encheres[4] au
-	      //premier tour.
 	    }
 	  else ok = 2;
 	}
@@ -134,14 +192,18 @@ int PartieServeur::tester(unsigned int joueur, Protocole::Message const & messag
       else ok = 1;
       break;
     case Protocole::ECART:
+      std::cout<<"Test d'un écart : ";
       if(phase() == CONSTITUTION_ECART &&
 	 joueur == attaquant() &&
 	 Enchere::GARDE_SANS > enchere_de(joueur).prise())
 	{
+	  std::cout<<"c'est bien à son tour."<<std::endl;
+	  std::cout<<"Cartes demandées : ";
 	  std::vector<Carte> ecart;
 	  for(unsigned int i = 0 ; i < 3 ; i ++)
 	    {
-	      ecart[i] = message.m.ecart.ecart[i];
+	      ecart.push_back(message.m.ecart.ecart[i]);
+	      std::cout<<ecart[i].numero()<<", ";
 	    }
 	  std::vector<Carte::ModaliteEcart> resultat;
 	  resultat = jeu_reel[joueur].peut_ecarter(ecart);
@@ -150,6 +212,8 @@ int PartieServeur::tester(unsigned int joueur, Protocole::Message const & messag
 	      switch(resultat[i])
 		{
 		case Carte::NON_ECARTABLE :
+		  std::cout<<"La carte "<<i<<" ne peut pas être écartée."
+			   <<std::endl;
 		  ok = 2 ;
 		  i = 3;
 		default:
@@ -158,6 +222,7 @@ int PartieServeur::tester(unsigned int joueur, Protocole::Message const & messag
 	    }
 	}
       else ok = 1;
+      std::cout<<"Fin du test, ok = "<<ok<<std::endl;
       break;
     case Protocole::CHELEM:
       ok = 1; //Pas encore implémenté.

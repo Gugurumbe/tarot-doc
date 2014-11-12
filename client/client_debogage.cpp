@@ -384,7 +384,7 @@ void presenter_jeu(const Main & m)
     {
       if(m.possede(Carte(i)))
 	{
-	  std::cout<<nom_carte(Carte(i))<<";"<<std::endl;
+	  std::cout<<nom_carte(Carte(i))<<" ("<<i<<");"<<std::endl;
 	}
     }
   std::cout<<"]"<<std::endl;

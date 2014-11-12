@@ -127,14 +127,14 @@ void Table::doit_transmettre(unsigned int j, Protocole::Message m,
 			     bool analyser)
 {
   std::cout<<"Transmission à "<<j<<std::endl;
-  if(analyser)
-    partie.assimiler(m);
   for(unsigned int i = 0 ; i < joueurs.size() ; i++)
     {
       if(ordre[i] == j)
 	{
-	  emit doit_emettre(joueurs[j], m);
+	  emit doit_emettre(joueurs[i], m);
 	  std::cout<<"C'est "<<i<<std::endl;
 	}
     }
+  if(analyser)
+    partie.assimiler(m);
 }

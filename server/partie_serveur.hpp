@@ -74,6 +74,11 @@ private:
      @brief Le chien.
    */
   std::vector<Carte> chien;
+
+  /**
+     @brief L'enchère maximale pendant la phase des Enchères. 
+  */
+  Enchere e_max;
 			  
 public slots:
 
