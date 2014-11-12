@@ -116,6 +116,7 @@ union <a class="el" href="unionProtocole_1_1Msg.html">Msg</a>&#160;</td><td clas
 <dl class="section see"><dt>Voir également</dt><dd>Partie::assimiler(const Message &amp;)</dd></dl>
 <p>Pour transformer un <a class="el" href="structProtocole_1_1Message.html" title="Structure de Message universel.">Message</a> de/vers un paquet d'octets, la traduction est la suivante :</p>
 <ol type="1">
+<li>Un octet, qui contient la taille du paquet.</li>
 <li>Un octet, qui prend la valeur du type.</li>
 <li>Des octets réservés à la partie spécialisée du <a class="el" href="structProtocole_1_1Message.html" title="Structure de Message universel.">Message</a>. En règle générale, les entiers sont transformés en octets (non signés) dans l'ordre d'apparition des champs dans la structure Msg_*, les booléens sont transformés en "1" ou "0" sur un octet (non signé). Lorsqu'il faut envoyer un nombre variable d'octets (poignées, atouts au chien), on les envoie sans spécifier la taille. La lecture reste possible. Confère le code source. </li>
 </ol>
@@ -141,7 +142,7 @@ union <a class="el" href="unionProtocole_1_1Msg.html">Msg</a>&#160;</td><td clas
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Lundi Novembre 10 2014 12:03:21 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Mercredi Novembre 12 2014 08:00:29 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

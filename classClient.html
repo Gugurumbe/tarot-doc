@@ -133,6 +133,8 @@ Signaux</h2></td></tr>
 Fonctions membres publiques</h2></td></tr>
 <tr class="memitem:a7832757f3fa37f564a21cb2b79b2baad"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient.html#a7832757f3fa37f564a21cb2b79b2baad">Client</a> (QObject *parent=0)</td></tr>
 <tr class="memdesc:a7832757f3fa37f564a21cb2b79b2baad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur par défaut.  <a href="#a7832757f3fa37f564a21cb2b79b2baad"></a><br/></td></tr>
+<tr class="memitem:aacb4a0b177777896dbd775cb0c28a778"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient.html#aacb4a0b177777896dbd775cb0c28a778">unread</a> (QByteArray const &amp;paquet)</td></tr>
+<tr class="memdesc:aacb4a0b177777896dbd775cb0c28a778"><td class="mdescLeft">&#160;</td><td class="mdescRight">Considère des octets comme n'ayant pas été reçus.  <a href="#aacb4a0b177777896dbd775cb0c28a778"></a><br/></td></tr>
 </table>
 <a name="details" id="details"></a><h2>Description détaillée</h2>
 <div class="textblock"><p>Définit une classe communiquant avec un serveur sur le réseau. </p>
@@ -410,15 +412,38 @@ Fonctions membres publiques</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="aacb4a0b177777896dbd775cb0c28a778"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Client::unread </td>
+          <td>(</td>
+          <td class="paramtype">QByteArray const &amp;&#160;</td>
+          <td class="paramname"><em>paquet</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Considère des octets comme n'ayant pas été reçus. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">paquet</td><td>: les octets lus par erreur. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>La documentation de cette classe a été générée à partir des fichiers suivants :<ul>
 <li>client/<a class="el" href="client_8hpp_source.html">client.hpp</a></li>
 <li>client/client.cpp</li>
-<li>client/moc_client.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Lundi Novembre 10 2014 12:03:19 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Mercredi Novembre 12 2014 08:00:27 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

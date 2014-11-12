@@ -94,28 +94,34 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00011"></a><span class="lineno"><a class="code" href="client__debogage_8hpp.html#ae4ccf95ec04e48837d341a1d066f75c4">   11</a></span>&#160;<span class="preprocessor">#define CLIENT_DEBOGAGE_DEFINI</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="client_8hpp.html" title="Définit le moteur &quot;réseau&quot; du client et de l&#39;IA.">client.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="code" href="classClientDebogage.html">   24</a></span>&#160;<span class="keyword">class </span><a class="code" href="classClientDebogage.html" title="Spécialise la classe Client, en adoptant le comportement suivant :">ClientDebogage</a> : <span class="keyword">public</span> <a class="code" href="classClient.html" title="Définit une classe communiquant avec un serveur sur le réseau.">Client</a></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  Q_OBJECT;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <a class="code" href="classClientDebogage.html#a505112ff732e3a96bb01baf3e580b680" title="Constructeur par défaut.">ClientDebogage</a>(QObject * parent = 0);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="keyword">public</span> slots:</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classClientDebogage.html#a9cb844a37a05695079f9ca7462ce1393" title="Réaction personnalisée (connexion).">traiter_connexion</a>();</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classClientDebogage.html#afb096bce05949007eba1b7b8e6e86969" title="Réaction personnalisée (déconnexion).">traiter_deconnexion</a>();</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classClientDebogage.html#ad9edd74f3f47aa148ba61d4671b1d780" title="Réaction personnalisée (message).">traiter_message</a>(<a class="code" href="structProtocole_1_1Message.html" title="Structure de Message universel.">Protocole::Message</a> m);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classClientDebogage.html#ae8e9e30cd6bea93700f0c904ee24605d" title="Demande à l&#39;utilisateur d&#39;entrer un Message.">demander_ordres</a>();</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;};</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="partie__client_8hpp.html" title="Particularise une Partie côté client.">partie_client.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="code" href="classClientDebogage.html">   25</a></span>&#160;<span class="keyword">class </span><a class="code" href="classClientDebogage.html" title="Spécialise la classe Client, en adoptant le comportement suivant :">ClientDebogage</a> : <span class="keyword">public</span> <a class="code" href="classClient.html" title="Définit une classe communiquant avec un serveur sur le réseau.">Client</a></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;{</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  Q_OBJECT;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <a class="code" href="classClientDebogage.html#a505112ff732e3a96bb01baf3e580b680" title="Constructeur par défaut.">ClientDebogage</a>(QObject * parent = 0);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">public</span> slots:</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classClientDebogage.html#a9cb844a37a05695079f9ca7462ce1393" title="Réaction personnalisée (connexion).">traiter_connexion</a>();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classClientDebogage.html#afb096bce05949007eba1b7b8e6e86969" title="Réaction personnalisée (déconnexion).">traiter_deconnexion</a>();</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classClientDebogage.html#ad9edd74f3f47aa148ba61d4671b1d780" title="Réaction personnalisée (message).">traiter_message</a>(<a class="code" href="structProtocole_1_1Message.html" title="Structure de Message universel.">Protocole::Message</a> m);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classClientDebogage.html#ae8e9e30cd6bea93700f0c904ee24605d" title="Demande à l&#39;utilisateur d&#39;entrer un Message.">demander_ordres</a>();</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classClientDebogage.html#addf769230997d81158c6755d4f84bc4c" title="Affiche l&#39;état de la partie.">afficher_etat</a>();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <a class="code" href="classPartieClient.html" title="Précision d&#39;une Partie, côté client.">PartieClient</a> *m_partie;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;};</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Lundi Novembre 10 2014 12:03:17 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Mercredi Novembre 12 2014 08:00:25 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

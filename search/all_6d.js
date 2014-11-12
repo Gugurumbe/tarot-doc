@@ -8,6 +8,8 @@ var searchData=
   ['message',['message',['../classServeur.html#aff70684b2bfe448696cc2cf273f21754',1,'Serveur']]],
   ['message_5fbrut',['message_brut',['../classServeur.html#a12ffc8082b8d0419295899bc710f6cf4',1,'Serveur']]],
   ['modaliteecart',['ModaliteEcart',['../classCarte.html#ab766c46bfc445d84ad35af4149f76802',1,'Carte']]],
+  ['mon_5fjeu',['mon_jeu',['../classPartieClient.html#a304bbc3b5068d36ed72bbccbb54c7fc2',1,'PartieClient']]],
+  ['mon_5fnumero',['mon_numero',['../classPartieClient.html#ab8a66e1a4f5b21a4687923844ff12a49',1,'PartieClient']]],
   ['mon_5ftour',['mon_tour',['../classPartieClient.html#ad0f3ad8eec624ad558c0317d289cfec6',1,'PartieClient']]],
   ['montrer_5fcarte',['MONTRER_CARTE',['../classCarte.html#ab766c46bfc445d84ad35af4149f76802a896a78ffcbe24a7e0b0de467b03f801c',1,'Carte']]],
   ['montrer_5fpoignee',['montrer_poignee',['../unionProtocole_1_1Msg.html#a9cfd5024b27968f768bf76d4092f0efb',1,'Protocole::Msg::montrer_poignee()'],['../classPartieClient.html#ae863676488572a8aa570231bce23da49',1,'PartieClient::montrer_poignee()'],['../namespaceProtocole.html#a0aedd8434bf6fd4173e483eb39f72a4cab91095a9ce7929af1640e0a1e2025af4',1,'Protocole::MONTRER_POIGNEE()']]],

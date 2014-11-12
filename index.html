@@ -89,10 +89,20 @@ Installation</h1>
 <h2><a class="anchor" id="etape2"></a>
 Étape 2 : Obtenez les outils</h2>
 <p>Il faut Qt. Les versions testées par notre équipe sont 4.8 et 5.3. Pensez à prendre les paquets de développement. Pour gcc, les versions 4.6 (Debian wheezy) et 4.8 (Windows) sont testées. Il vous faut également Doxygen si vous voulez compiler la documentation (avec tout le mal que nous nous sommes donné pour l'écrire, vous pourriez bien le faire, tout de même !)</p>
+<p>Qt : <a href="http://www.qt.io/download-open-source/">http://www.qt.io/download-open-source/</a> MinGW sans Qt : <a href="http://www.mingw.org/wiki/Getting_Started">http://www.mingw.org/wiki/Getting_Started</a> Doxygen : <a href="http://www.stack.nl/~dimitri/doxygen/download.html">http://www.stack.nl/~dimitri/doxygen/download.html</a></p>
 <h2><a class="anchor" id="etape3"></a>
 Étape 3 : Compilez les programmes</h2>
 <p>Il y a deux programmes : un dans le dossier client et un autre dans le dossier server. Pour les deux programmes, c'est la même méthode. Il faut tout d'abord utiliser qmake pour générer le Makefile, puis lancer make. Alternativement, on peut ouvrir les fichiers server/serveur.pro et client/client.pro avec QtCreator.</p>
-<h2><a class="anchor" id="etape4"></a>
+<p>Compilation bash : </p>
+<pre class="fragment">cd chemin/vers/tarot
+doxygen doc.conf              #Compile la doc
+cd server                     #Répertoire du serveur
+qmake                         #Prépare le Makefile
+make                          #Compile le serveur
+cd ../client                  #Répertoire du client
+qmake                         #Prépare le Makefile
+make                          #Compile le client
+</pre><h2><a class="anchor" id="etape4"></a>
 Étape 4 : Compilez la documentation</h2>
 <p>Après avoir installé doxygen, lancez-le sur le fichier doc.conf. La documentation est disponible dans le dossier doc.</p>
 <h2><a class="anchor" id="etape5"></a>
@@ -102,7 +112,7 @@ Installation</h1>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Lundi Novembre 10 2014 12:03:21 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Mercredi Novembre 12 2014 08:00:29 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

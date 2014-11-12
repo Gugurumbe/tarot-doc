@@ -271,22 +271,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00625"></a><span class="lineno"><a class="code" href="unionProtocole_1_1Msg.html#a64ad00ab34d4ca67c36357fda1de466d">  625</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="structProtocole_1_1Msg__resultat.html" title="Contenu d&#39;un Message d&#39;information de fin de partie.">Msg_resultat</a> <a class="code" href="unionProtocole_1_1Msg.html#a64ad00ab34d4ca67c36357fda1de466d" title="Champ de RESULTAT.">resultat</a>;</div>
 <div class="line"><a name="l00626"></a><span class="lineno">  626</span>&#160;  };</div>
 <div class="line"><a name="l00627"></a><span class="lineno">  627</span>&#160;</div>
-<div class="line"><a name="l00646"></a><span class="lineno"><a class="code" href="structProtocole_1_1Message.html">  646</a></span>&#160;  <span class="keyword">struct </span><a class="code" href="structProtocole_1_1Message.html" title="Structure de Message universel.">Message</a></div>
-<div class="line"><a name="l00647"></a><span class="lineno">  647</span>&#160;  {</div>
-<div class="line"><a name="l00653"></a><span class="lineno"><a class="code" href="structProtocole_1_1Message.html#a370f8009bd840b29e1d1522623555bca">  653</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structProtocole_1_1Message.html#a370f8009bd840b29e1d1522623555bca" title="Type du Message.">type</a>;</div>
-<div class="line"><a name="l00657"></a><span class="lineno"><a class="code" href="structProtocole_1_1Message.html#ac7dd18300272ad00474c1d491b4545db">  657</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structProtocole_1_1Message.html#ac7dd18300272ad00474c1d491b4545db" title="Sait si le Message a pu être déchiffré.">compris</a>;</div>
-<div class="line"><a name="l00661"></a><span class="lineno"><a class="code" href="structProtocole_1_1Message.html#a9d5dd049cf6b9561a374798091c4fa8c">  661</a></span>&#160;    <span class="keyword">union </span><a class="code" href="unionProtocole_1_1Msg.html" title="Somme de tous les messages possibles.">Msg</a> <a class="code" href="structProtocole_1_1Message.html#a9d5dd049cf6b9561a374798091c4fa8c" title="Contenu du Message.">m</a>;</div>
-<div class="line"><a name="l00662"></a><span class="lineno">  662</span>&#160;  };</div>
-<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;</div>
-<div class="line"><a name="l00672"></a><span class="lineno">  672</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="namespaceProtocole.html#ab8fa186e1e1ed40607ab6b1e3660e487" title="Lit un Message.">lire</a>(QDataStream &amp; in, <span class="keyword">struct</span> <a class="code" href="structProtocole_1_1Message.html" title="Structure de Message universel.">Message</a> &amp; m);</div>
-<div class="line"><a name="l00673"></a><span class="lineno">  673</span>&#160;</div>
-<div class="line"><a name="l00680"></a><span class="lineno">  680</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="namespaceProtocole.html#a77a1491149caf0b716f25ddb51faf613" title="Écrit un Message.">ecrire</a>(<span class="keyword">struct</span> <a class="code" href="structProtocole_1_1Message.html" title="Structure de Message universel.">Message</a> <span class="keyword">const</span> &amp; m, QDataStream &amp; out);</div>
-<div class="line"><a name="l00681"></a><span class="lineno">  681</span>&#160;}</div>
-<div class="line"><a name="l00682"></a><span class="lineno">  682</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00647"></a><span class="lineno"><a class="code" href="structProtocole_1_1Message.html">  647</a></span>&#160;  <span class="keyword">struct </span><a class="code" href="structProtocole_1_1Message.html" title="Structure de Message universel.">Message</a></div>
+<div class="line"><a name="l00648"></a><span class="lineno">  648</span>&#160;  {</div>
+<div class="line"><a name="l00654"></a><span class="lineno"><a class="code" href="structProtocole_1_1Message.html#a370f8009bd840b29e1d1522623555bca">  654</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structProtocole_1_1Message.html#a370f8009bd840b29e1d1522623555bca" title="Type du Message.">type</a>;</div>
+<div class="line"><a name="l00658"></a><span class="lineno"><a class="code" href="structProtocole_1_1Message.html#ac7dd18300272ad00474c1d491b4545db">  658</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="structProtocole_1_1Message.html#ac7dd18300272ad00474c1d491b4545db" title="Sait si le Message a pu être déchiffré.">compris</a>;</div>
+<div class="line"><a name="l00662"></a><span class="lineno"><a class="code" href="structProtocole_1_1Message.html#a9d5dd049cf6b9561a374798091c4fa8c">  662</a></span>&#160;    <span class="keyword">union </span><a class="code" href="unionProtocole_1_1Msg.html" title="Somme de tous les messages possibles.">Msg</a> <a class="code" href="structProtocole_1_1Message.html#a9d5dd049cf6b9561a374798091c4fa8c" title="Contenu du Message.">m</a>;</div>
+<div class="line"><a name="l00663"></a><span class="lineno">  663</span>&#160;  };</div>
+<div class="line"><a name="l00664"></a><span class="lineno">  664</span>&#160;</div>
+<div class="line"><a name="l00676"></a><span class="lineno">  676</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="namespaceProtocole.html#ab8fa186e1e1ed40607ab6b1e3660e487" title="Lit un Message.">lire</a>(QDataStream &amp; in, <span class="keyword">struct</span> <a class="code" href="structProtocole_1_1Message.html" title="Structure de Message universel.">Message</a> &amp; m);</div>
+<div class="line"><a name="l00677"></a><span class="lineno">  677</span>&#160;</div>
+<div class="line"><a name="l00686"></a><span class="lineno">  686</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="namespaceProtocole.html#a77a1491149caf0b716f25ddb51faf613" title="Écrit un Message.">ecrire</a>(<span class="keyword">struct</span> <a class="code" href="structProtocole_1_1Message.html" title="Structure de Message universel.">Message</a> <span class="keyword">const</span> &amp; m, QDataStream &amp; out);</div>
+<div class="line"><a name="l00687"></a><span class="lineno">  687</span>&#160;}</div>
+<div class="line"><a name="l00688"></a><span class="lineno">  688</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Lundi Novembre 10 2014 12:03:18 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Mercredi Novembre 12 2014 08:00:25 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>
