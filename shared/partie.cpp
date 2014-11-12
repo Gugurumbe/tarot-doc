@@ -63,6 +63,8 @@ void Partie::set_phase(Partie::PhaseJeu p)
 
 void Partie::assimiler(const Protocole::Message & m)
 {
+  std::cout<<"->Partie::assimiler(const Protocole::Message & m),"
+	   <<" given m.type = "<<m.type<<std::endl;
   switch(m.type)
     {
     case Protocole::ERREUR_PROTOCOLE:
@@ -137,4 +139,6 @@ void Partie::assimiler(const Protocole::Message & m)
       break;
     }
   std::cout<<"Phase : "<<m_phase<<", tour : "<<m_tour<<std::endl;;
+  std::cout<<"<-Partie::assimiler(const Protocole::Message & m),"
+	   <<" given m.type = "<<m.type<<" : return"<<std::endl;
 }

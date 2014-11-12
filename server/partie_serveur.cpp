@@ -31,10 +31,25 @@ void PartieServeur::assimiler(Protocole::Message const & message)
       Protocole::Message contrat;
       contrat.type = Protocole::CONTRAT;
       contrat.m.contrat.niveau = message.m.prise.niveau;
-      e_max = Enchere((tour() + 4) % 5, contrat.m.contrat);
       EMETTRE_A_TOUS(contrat);
       break;
     case Protocole::CONTRAT:
+      if(true)
+	{
+	  Enchere e((tour() + 4) % 5, message.m.contrat);
+	  std::cout<<"L'enchère a la valeur ";
+	  std::cout<<(int)(e.prise());
+	  std::cout<<" = ";
+	  std::cout<<message.m.contrat.niveau<<std::endl;
+	  std::cout<<"L'enchère maximale a la valeur ";
+	  std::cout<<(int)(e_max.prise());
+	  std::cout<<std::endl;
+	  if(e > e_max)
+	    {
+	      e_max = e;
+	    }
+	  std::cout<<"e_max a la valeur "<<e_max.prise()<<std::endl;
+	}
       if(tour() == 0)
 	{
 	  //Les enchères sont terminées.

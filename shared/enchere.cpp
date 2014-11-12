@@ -81,10 +81,10 @@ const Enchere & Enchere::operator=(const Protocole::Msg_contrat_final & m)
 
 bool Enchere::operator>(const Enchere & e) const
 {
-  return m_prise > e.m_prise;
+  return (int)m_prise > (int)e.m_prise;
 }
 
 bool Enchere::operator>(Prise p) const
 {
-  return m_prise > p;
+  return (int)m_prise > (int)p;
 }
