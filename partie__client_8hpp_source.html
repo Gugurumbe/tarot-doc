@@ -113,68 +113,69 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  </div>
 <div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#a013caa86cc6b2dbfaf04a7b872bcfe75" title="Comprend un Protocole::Message.">assimiler</a>(<span class="keyword">const</span> <a class="code" href="structProtocole_1_1Message.html" title="Structure de Message universel.">Protocole::Message</a> &amp; message);</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <span class="keyword">const</span> <a class="code" href="classMain.html" title="Une Main est un ensemble de cartes.">Main</a> &amp; <a class="code" href="classPartieClient.html#a304bbc3b5068d36ed72bbccbb54c7fc2" title="Regarder mon jeu.">mon_jeu</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> m_mon_tour;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <a class="code" href="classMain.html" title="Une Main est un ensemble de cartes.">Main</a> mes_cartes;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  std::vector&lt;unsigned int&gt; mon_equipe;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="keyword">public</span> slots:</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#a1591988be7b721fae20d45a1c8b869a0" title="Construit un Message.">formuler_prise</a>(<a class="code" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3f">Enchere::Prise</a> p);</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#ae37c34664850ef27f4c1b5aaa183bf4b" title="Construit un Message.">appeler</a>(<span class="keyword">const</span> <a class="code" href="classCarte.html" title="Définition d&#39;une Carte du jeu.">Carte</a> &amp; carte);</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#a303f62176f502d55b7f2995df16453e7" title="Construit un Message.">ecarter</a>(std::vector&lt;Carte&gt; <span class="keyword">const</span> &amp; cartes);</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#af2b4386f91d646e3f4ede4fe17a179d6" title="Construit un Message.">demander_chelem</a>();</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#a69d50fe756fb33cf9c1d7a24414a14b1" title="Construit un Message.">demander_jeu</a>();</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#ae863676488572a8aa570231bce23da49" title="Construit un Message.">montrer_poignee</a>(std::vector&lt;Carte&gt; <span class="keyword">const</span> &amp; requete);</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#a830bc935819cc4fdaa1640ce0e8b5e6d" title="Construit un Message.">jouer</a>(<span class="keyword">const</span> <a class="code" href="classCarte.html" title="Définition d&#39;une Carte du jeu.">Carte</a> &amp; carte);</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;  </div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;signals:</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  </div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#a7e3ab24706fbe76f8c448ac8d71eae97" title="Envoyer un Message.">doit_emettre</a>(<a class="code" href="structProtocole_1_1Message.html" title="Structure de Message universel.">Protocole::Message</a> m);</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#ac110cd921caa3341a15571a461de0313" title="Quitter l&#39;application.">doit_quitter</a>();</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#af026ee1b7dd327da63570c1ea2739175" title="Action refusée.">action_refusee</a>();</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#a2429db229d7bb2719cc0c460e5538af0" title="C&#39;est à vous de priser.">doit_priser</a>();</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#afbb417cef49e2055b734599e83b40a34" title="Une enchère vient d&#39;être annoncée.">contrat_intermediaire</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> joueur, <a class="code" href="classEnchere.html" title="Définit une classe pour les enchères.">Enchere</a> e);</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#ab343eaec323f4d92771b2e46193b96b6" title="Vous devez appeler une Carte.">doit_appeler</a>();</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartie.html#a75eef78c18e161c2698ba3f88e465525" title="Retourne le contrat final.">contrat_final</a>(<a class="code" href="classEnchere.html" title="Définit une classe pour les enchères.">Enchere</a> e);</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#a3ac845b5c37413a57c1478ccf2528c6d" title="Voici les 3 cartes du Chien.">chien_devoile</a>(<a class="code" href="classCarte.html" title="Définition d&#39;une Carte du jeu.">Carte</a> carte1, <a class="code" href="classCarte.html" title="Définition d&#39;une Carte du jeu.">Carte</a> carte2, <a class="code" href="classCarte.html" title="Définition d&#39;une Carte du jeu.">Carte</a> carte3);</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#af7a71f0a2aefa407519be0787f8d1936" title="Vous devez écarter 3 cartes.">doit_ecarter</a>();</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#afdb35f34768fc6f1964ebbdf12da1f69" title="On a écarté cette (ces) carte(s).">atout_au_chien</a>(std::vector&lt;Carte&gt; atouts);</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#a401255df5a76b7307a7c8f29cbda78fb" title="Vous devez dire si vous souhaitez un chelem.">doit_demander_chelem</a>();</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#a0b45022ef5206211d519dbca74582752" title="Un chelem a été demandé !">chelem_demande</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> joueur);</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#a7cfe308b121505900fb451140976efda" title="Une poignée a été montrée !">poignee_montree</a>(std::vector&lt;Carte&gt; <a class="code" href="classPartie.html#a59c52f0345c8acddeb03011295f8b1b1" title="Taille des poignées déclarées.">poignee</a>);</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;</div>
-<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#a1e4aa3b1ba12b4748859a2fc600fe016" title="C&#39;est à vous de jouer.">doit_jouer</a>();</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;</div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#a71d8622803e0afde9cc6d40fb4e37144" title="Une Carte a été jouée;.">carte_jouee</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> joueur, <a class="code" href="classCarte.html" title="Définition d&#39;une Carte du jeu.">Carte</a> carte);</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#a27847c55ed5fe875ebf4fdfcd3f2e3e6" title="La partie est finie.">score</a>(std::vector&lt;int&gt; scores);</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;};</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <a class="code" href="classMain.html" title="Une Main est un ensemble de cartes.">Main</a> <a class="code" href="classPartieClient.html#aa393f410574366ab537fa2bb6e668229" title="Regarder mon jeu.">mon_jeu</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> m_mon_tour;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  <a class="code" href="classMain.html" title="Une Main est un ensemble de cartes.">Main</a> mes_cartes;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  std::vector&lt;Carte&gt; chien_si_devoile;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  std::vector&lt;unsigned int&gt; mon_equipe;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="keyword">public</span> slots:</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#a1591988be7b721fae20d45a1c8b869a0" title="Construit un Message.">formuler_prise</a>(<a class="code" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3f">Enchere::Prise</a> p);</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#ae37c34664850ef27f4c1b5aaa183bf4b" title="Construit un Message.">appeler</a>(<span class="keyword">const</span> <a class="code" href="classCarte.html" title="Définition d&#39;une Carte du jeu.">Carte</a> &amp; carte);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#a303f62176f502d55b7f2995df16453e7" title="Construit un Message.">ecarter</a>(std::vector&lt;Carte&gt; <span class="keyword">const</span> &amp; cartes);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#af2b4386f91d646e3f4ede4fe17a179d6" title="Construit un Message.">demander_chelem</a>();</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#a69d50fe756fb33cf9c1d7a24414a14b1" title="Construit un Message.">demander_jeu</a>();</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#ae863676488572a8aa570231bce23da49" title="Construit un Message.">montrer_poignee</a>(std::vector&lt;Carte&gt; <span class="keyword">const</span> &amp; requete);</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#a830bc935819cc4fdaa1640ce0e8b5e6d" title="Construit un Message.">jouer</a>(<span class="keyword">const</span> <a class="code" href="classCarte.html" title="Définition d&#39;une Carte du jeu.">Carte</a> &amp; carte);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;  </div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;signals:</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;  </div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#a7e3ab24706fbe76f8c448ac8d71eae97" title="Envoyer un Message.">doit_emettre</a>(<a class="code" href="structProtocole_1_1Message.html" title="Structure de Message universel.">Protocole::Message</a> m);</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#ac110cd921caa3341a15571a461de0313" title="Quitter l&#39;application.">doit_quitter</a>();</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#af026ee1b7dd327da63570c1ea2739175" title="Action refusée.">action_refusee</a>();</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#a2429db229d7bb2719cc0c460e5538af0" title="C&#39;est à vous de priser.">doit_priser</a>();</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#afbb417cef49e2055b734599e83b40a34" title="Une enchère vient d&#39;être annoncée.">contrat_intermediaire</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> joueur, <a class="code" href="classEnchere.html" title="Définit une classe pour les enchères.">Enchere</a> e);</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#ab343eaec323f4d92771b2e46193b96b6" title="Vous devez appeler une Carte.">doit_appeler</a>();</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartie.html#a75eef78c18e161c2698ba3f88e465525" title="Retourne le contrat final.">contrat_final</a>(<a class="code" href="classEnchere.html" title="Définit une classe pour les enchères.">Enchere</a> e);</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#a3ac845b5c37413a57c1478ccf2528c6d" title="Voici les 3 cartes du Chien.">chien_devoile</a>(<a class="code" href="classCarte.html" title="Définition d&#39;une Carte du jeu.">Carte</a> carte1, <a class="code" href="classCarte.html" title="Définition d&#39;une Carte du jeu.">Carte</a> carte2, <a class="code" href="classCarte.html" title="Définition d&#39;une Carte du jeu.">Carte</a> carte3);</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#af7a71f0a2aefa407519be0787f8d1936" title="Vous devez écarter 3 cartes.">doit_ecarter</a>();</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#afdb35f34768fc6f1964ebbdf12da1f69" title="On a écarté cette (ces) carte(s).">atout_au_chien</a>(std::vector&lt;Carte&gt; atouts);</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#a401255df5a76b7307a7c8f29cbda78fb" title="Vous devez dire si vous souhaitez un chelem.">doit_demander_chelem</a>();</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#a0b45022ef5206211d519dbca74582752" title="Un chelem a été demandé !">chelem_demande</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> joueur);</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#a7cfe308b121505900fb451140976efda" title="Une poignée a été montrée !">poignee_montree</a>(std::vector&lt;Carte&gt; <a class="code" href="classPartie.html#a59c52f0345c8acddeb03011295f8b1b1" title="Taille des poignées déclarées.">poignee</a>);</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#a1e4aa3b1ba12b4748859a2fc600fe016" title="C&#39;est à vous de jouer.">doit_jouer</a>();</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#a71d8622803e0afde9cc6d40fb4e37144" title="Une Carte a été jouée;.">carte_jouee</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> joueur, <a class="code" href="classCarte.html" title="Définition d&#39;une Carte du jeu.">Carte</a> carte);</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieClient.html#a27847c55ed5fe875ebf4fdfcd3f2e3e6" title="La partie est finie.">score</a>(std::vector&lt;int&gt; scores);</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;};</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mercredi Novembre 12 2014 08:00:25 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Mercredi Novembre 12 2014 14:59:07 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

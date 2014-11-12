@@ -114,23 +114,25 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  std::vector&lt;std::vector&lt;Carte&gt; &gt; cartes_gagnees;</div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
 <div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  std::vector&lt;Carte&gt; chien;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                          </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keyword">public</span> slots:</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieServeur.html#a135a3037f89478ccb40547fca9ceec75" title="Distribution des cartes.">distribuer</a>();</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;signals:</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  </div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieServeur.html#a60c558d4c86798ee46f255c18a52630b" title="Signal à connecter à Table::doit_transmettre(unsigned int,Message,bool)">doit_emettre</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j, <a class="code" href="structProtocole_1_1Message.html" title="Structure de Message universel.">Protocole::Message</a> m, <span class="keywordtype">bool</span> assimiler);</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieServeur.html#ad934af02a962fb0d7d7cec0dbdb90177" title="Signal à connecter à Table::doit_transmettre_a_tous(Message)">doit_emettre_a_tous</a>(<a class="code" href="structProtocole_1_1Message.html" title="Structure de Message universel.">Protocole::Message</a> m);</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;};</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <a class="code" href="classEnchere.html" title="Définit une classe pour les enchères.">Enchere</a> e_max;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                          </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keyword">public</span> slots:</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieServeur.html#a135a3037f89478ccb40547fca9ceec75" title="Distribution des cartes.">distribuer</a>();</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;signals:</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  </div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieServeur.html#a60c558d4c86798ee46f255c18a52630b" title="Signal à connecter à Table::doit_transmettre(unsigned int,Message,bool)">doit_emettre</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j, <a class="code" href="structProtocole_1_1Message.html" title="Structure de Message universel.">Protocole::Message</a> m, <span class="keywordtype">bool</span> assimiler);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieServeur.html#ad934af02a962fb0d7d7cec0dbdb90177" title="Signal à connecter à Table::doit_transmettre_a_tous(Message)">doit_emettre_a_tous</a>(<a class="code" href="structProtocole_1_1Message.html" title="Structure de Message universel.">Protocole::Message</a> m);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;};</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mercredi Novembre 12 2014 08:00:25 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Mercredi Novembre 12 2014 14:59:07 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>
