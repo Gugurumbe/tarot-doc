@@ -24,15 +24,21 @@ Main::Main(const Protocole::Msg_distribution & m)
 
 void Main::enlever(const Carte & carte)
 {
-  for(std::vector<Carte>::iterator i = m_cartes.begin();
-      i != m_cartes.end(); i++)
+  std::cout<<"->Main::enlever(const Carte & carte)"
+	   <<", given carte.numero() = "<<carte.numero()
+	   <<std::endl;
+  for(unsigned int i = 0;
+      i < m_cartes.size() ; i++)
     {
-      if(*i == carte)
+      if(m_cartes[i] == carte)
 	{
-	  m_cartes.erase(i);
-	  i=m_cartes.end();
+	  m_cartes.erase(m_cartes.begin() + i);
+	  i=m_cartes.size();
 	}
     }
+  std::cout<<"<-Main::enlever(const Carte & carte)"
+	   <<", given carte.numero() = "<<carte.numero()
+	   <<std::endl;
 }
 
 bool Main::possede(const Carte & carte) const

@@ -14,6 +14,8 @@ PartieServeur::PartieServeur(QObject * parent):
 
 void PartieServeur::assimiler(Protocole::Message const & message)
 {
+  std::cout<<"->PartieServeur::assimiler(Protocole::Message const & message)"
+	   <<", given message.type = "<<message.type<<std::endl;
   Partie::assimiler(message);
   /* Le serveur met à jour les mains des joueurs et le tapis. */
   switch(message.type)
@@ -118,24 +120,29 @@ void PartieServeur::assimiler(Protocole::Message const & message)
 	  EMETTRE_A_TOUS(mess_chien);
 	}
       break;
+    case Protocole::CHIEN:
+      //On donne à l'attaquant les cartes du chien.
+      for(unsigned int i = 0 ; i < chien.size() ; i++)
+	{
+	  jeu_reel[attaquant()].ajouter(chien[i]);
+	}
+      break;
     case Protocole::ECART:
       if(true) //On n'aime pas les déclarations dans les "case"
 	{
+	  std::cout<<"Gestion d'un écart..."<<std::endl;
 	  std::vector<Carte> ecart;
 	  for(unsigned int i = 0 ; i < 3 ; i++)
 	    {
 	      ecart.push_back(message.m.ecart.ecart[i]);
 	    }
-	  // On donne les 3 cartes du chien au preneur et on lui enlève
-	  // les 3 cartes de l'écart
-	  for(unsigned int i = 0 ; i < chien.size() ; i++)
-	    {
-	      jeu_reel[attaquant()].ajouter(chien[i]);
-	    }
+	  std::cout<<"Écart compris."<<std::endl;
+	  //On enlève les cartes de la main de l'attaquant.
 	  for(unsigned int i = 0 ; i < 3 ; i++)
 	    {
 	      jeu_reel[attaquant()].enlever(Carte(message.m.ecart.ecart[i]));
 	    }
+	  std::cout<<"Cartes enlevées."<<std::endl;
 	  //Gestion des atouts :
 	  std::vector<Carte::ModaliteEcart> resultat =
 	    jeu_reel[attaquant()].peut_ecarter(ecart);
@@ -147,24 +154,31 @@ void PartieServeur::assimiler(Protocole::Message const & message)
 		  montrees.push_back(ecart[i]);
 		}
 	    }
-	  Protocole::Message atout;
-	  atout.type = Protocole::ATOUT;
-	  atout.m.atout.nombre = montrees.size();
-	  for(unsigned int i = 0 ; i < montrees.size() ; i++)
+	  std::cout<<"Cartes à montrer déterminées."<<std::endl;
+	  if(montrees.size() != 0)
 	    {
-	      atout.m.atout.cartes[i] = montrees[i].numero();
+	      Protocole::Message atout;
+	      atout.type = Protocole::ATOUT;
+	      atout.m.atout.nombre = montrees.size();
+	      for(unsigned int i = 0 ; i < montrees.size() ; i++)
+		{
+		  atout.m.atout.cartes[i] = montrees[i].numero();
+		}
+	      std::cout<<"Construction du Msg_atout terminée."<<std::endl;
+	      EMETTRE_A_TOUS(atout);
 	    }
-	  EMETTRE_A_TOUS(atout);
 	  //Envoi du message Jeu
 	  Protocole::Message mess_jeu;
 	  mess_jeu.type = Protocole::JEU;
-	  mess_jeu.m.jeu.chelem = (chelem() < 0 ? 5 : chelem());
+	  mess_jeu.m.jeu.chelem = (chelem() >= 0 ? chelem() : 5);
 	  EMETTRE_A_TOUS(mess_jeu);
 	}
       break;
     default :
       std::cout<<"Penser à assimiler côté serveur.\n";
     }
+  std::cout<<"<-PartieServeur::assimiler(Protocole::Message const & message)"
+	   <<", given message.type = "<<message.type<<std::endl;
 }
 
 int PartieServeur::tester(unsigned int joueur, Protocole::Message const & message) const
