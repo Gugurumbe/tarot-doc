@@ -28,7 +28,7 @@ Table::Table(QObject * parent) : QObject(parent)
   QObject::connect(&partie, SIGNAL(doit_emettre(unsigned int, Protocole::Message, bool)),
 		   this, SLOT(doit_transmettre(unsigned int, Protocole::Message, bool)));
   nombre_tables++;
-  std::cout<<"Il y a maintenant "<<nombre_tables<<" table(s)."<<std::endl;
+  // std::cout<<"Il y a maintenant "<<nombre_tables<<" table(s)."<<std::endl;
 }
 
 Table::~Table()
@@ -39,7 +39,7 @@ Table::~Table()
 	emit doit_deconnecter(joueurs[i]);
     }
   nombre_tables--;
-  std::cout<<"Il n'y a plus que "<<nombre_tables<<" table(s)."<<std::endl;
+  // std::cout<<"Il n'y a plus que "<<nombre_tables<<" table(s)."<<std::endl;
 }
 
 void Table::ajouter(unsigned int sock)
@@ -58,7 +58,7 @@ void Table::ajouter(unsigned int sock)
       while(i < joueurs.size() && joueurs[i] >= 0) i++;
       if(i >= joueurs.size())
 	{
-	  std::cout<<"La partie commence..."<<std::endl;
+	  // std::cout<<"La partie commence..."<<std::endl;
 	  partie.distribuer();
 	  emit complet(this);
 	}
@@ -75,7 +75,7 @@ void Table::ajouter(unsigned int sock)
 
 void Table::comprendre(unsigned int sock, Protocole::Message m)
 {
-  std::cout<<"->Table::comprendre(unsigned int, Message)"<<std::endl;
+  // std::cout<<"->Table::comprendre(unsigned int, Message)"<<std::endl;
   //Attention : je ne suis pas sûr que sock fasse partie de la table !
   for(unsigned int i = 0 ; i < joueurs.size() ; i++)
     {
@@ -86,7 +86,10 @@ void Table::comprendre(unsigned int sock, Protocole::Message m)
 	    {
 	    case 1 :
 	      reponse.type = Protocole::ERREUR_PROTOCOLE;
+	      std::cout<<"Erreur de protocole détectée."<<std::endl;
 	      emit doit_emettre(sock, reponse);
+	      std::cout<<"Erreur de protocole, arrêt."<<std::endl;
+	      exit(-1);
 	      break;
 	    case 2 :
 	      reponse.type = Protocole::REFUSE;
@@ -98,7 +101,7 @@ void Table::comprendre(unsigned int sock, Protocole::Message m)
 	  i = joueurs.size();
 	}
     }
-  std::cout<<"<-Table::comprendre(unsigned int, Message)"<<std::endl;
+  // std::cout<<"<-Table::comprendre(unsigned int, Message)"<<std::endl;
 }
 
 void Table::enlever(unsigned int sock)
@@ -117,8 +120,7 @@ void Table::enlever(unsigned int sock)
 	if(joueurs[k]>=0) j++;
       if(j == 4)
 	{
-	  std::cout<<"Émission de Table::incomplet(Table *)..."
-		   <<std::endl;
+	  // std::cout<<"Émission de Table::incomplet(Table *)..."<<std::endl;
 	  emit incomplet(this);
 	}
     } 
@@ -126,13 +128,13 @@ void Table::enlever(unsigned int sock)
 void Table::doit_transmettre(unsigned int j, Protocole::Message m,
 			     bool analyser)
 {
-  std::cout<<"Transmission à "<<j<<std::endl;
+  // std::cout<<"Transmission à "<<j<<std::endl;
   for(unsigned int i = 0 ; i < joueurs.size() ; i++)
     {
       if(ordre[i] == j)
 	{
 	  emit doit_emettre(joueurs[i], m);
-	  std::cout<<"C'est "<<i<<std::endl;
+	  // std::cout<<"C'est "<<i<<std::endl;
 	}
     }
   if(analyser)

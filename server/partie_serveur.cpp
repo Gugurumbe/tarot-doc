@@ -1,4 +1,5 @@
 #include "partie_serveur.hpp"
+#include "debogueur.hpp"
 
 #include <iostream>
 
@@ -10,18 +11,20 @@
 PartieServeur::PartieServeur(QObject * parent):
   QObject(parent), Partie(), jeu_reel(5)
 {
+  ENTER("PartieServeur", "PartieServeur(QObject * parent)");
+  ADD_ARG("parent", (void *)parent);
 }
 
 void PartieServeur::assimiler(Protocole::Message const & message)
 {
-  std::cout<<"->PartieServeur::assimiler(Protocole::Message const & message)"
-	   <<", given message.type = "<<message.type<<std::endl;
+  ENTER("PartieServeur", "assimiler(Message message)");
+  ADD_ARG("message.type", message.type);
   Partie::assimiler(message);
   /* Le serveur met à jour les mains des joueurs et le tapis. */
   switch(message.type)
     {
     case Protocole::ERREUR_PROTOCOLE:
-      std::cout<<"Un client n'a pas compris mon message."<<std::endl;
+      DEBUG<<"Un client n'a pas compris mon message."<<std::endl;
       break;
     case Protocole::REFUSE:
       break;
@@ -39,24 +42,24 @@ void PartieServeur::assimiler(Protocole::Message const & message)
       if(true)
 	{
 	  Enchere e((tour() + 4) % 5, message.m.contrat);
-	  std::cout<<"L'enchère a la valeur ";
-	  std::cout<<(int)(e.prise());
-	  std::cout<<" = ";
-	  std::cout<<message.m.contrat.niveau<<std::endl;
-	  std::cout<<"L'enchère maximale a la valeur ";
-	  std::cout<<(int)(e_max.prise());
-	  std::cout<<std::endl;
+	  DEBUG<<"L'enchère a la valeur "
+	       <<(int)(e.prise())
+	       <<" = "
+	       <<message.m.contrat.niveau<<std::endl;
+	  DEBUG<<"L'enchère maximale a la valeur "
+	       <<(int)(e_max.prise())
+	       <<std::endl;
 	  if(e > e_max)
 	    {
 	      e_max = e;
 	    }
-	  std::cout<<"e_max a la valeur "<<e_max.prise()<<std::endl;
+	  DEBUG<<"e_max a la valeur "<<e_max.prise()<<std::endl;
 	}
       if(tour() == 0)
 	{
 	  //Les enchères sont terminées.
 	  //Détermination de l'enchère maximale.
-	  std::cout<<"Enchères terminées."<<std::endl;
+	  DEBUG<<"Enchères terminées."<<std::endl;
 	  int i_attaquant = 0;
 	  for(int i = 0 ; i < 5 ; i++)
 	    {
@@ -69,7 +72,7 @@ void PartieServeur::assimiler(Protocole::Message const & message)
 	    {
 	      //Quelqu'un a pris.
 	      set_attaquant(i_attaquant);
-	      std::cout<<"Attaquant : "<<i_attaquant<<std::endl;
+	      DEBUG<<"Attaquant : "<<i_attaquant<<std::endl;
 	      //Envoi du message "appel"
 	      Protocole::Message appel;
 	      appel.type = Protocole::APPEL;
@@ -130,19 +133,19 @@ void PartieServeur::assimiler(Protocole::Message const & message)
     case Protocole::ECART:
       if(true) //On n'aime pas les déclarations dans les "case"
 	{
-	  std::cout<<"Gestion d'un écart..."<<std::endl;
+	  DEBUG<<"Gestion d'un écart..."<<std::endl;
 	  std::vector<Carte> ecart;
 	  for(unsigned int i = 0 ; i < 3 ; i++)
 	    {
 	      ecart.push_back(message.m.ecart.ecart[i]);
 	    }
-	  std::cout<<"Écart compris."<<std::endl;
+	  DEBUG<<"Écart compris."<<std::endl;
 	  //On enlève les cartes de la main de l'attaquant.
 	  for(unsigned int i = 0 ; i < 3 ; i++)
 	    {
 	      jeu_reel[attaquant()].enlever(Carte(message.m.ecart.ecart[i]));
 	    }
-	  std::cout<<"Cartes enlevées."<<std::endl;
+	  DEBUG<<"Cartes enlevées."<<std::endl;
 	  //Gestion des atouts :
 	  std::vector<Carte::ModaliteEcart> resultat =
 	    jeu_reel[attaquant()].peut_ecarter(ecart);
@@ -154,7 +157,7 @@ void PartieServeur::assimiler(Protocole::Message const & message)
 		  montrees.push_back(ecart[i]);
 		}
 	    }
-	  std::cout<<"Cartes à montrer déterminées."<<std::endl;
+	  DEBUG<<"Cartes à montrer déterminées."<<std::endl;
 	  if(montrees.size() != 0)
 	    {
 	      Protocole::Message atout;
@@ -164,7 +167,7 @@ void PartieServeur::assimiler(Protocole::Message const & message)
 		{
 		  atout.m.atout.cartes[i] = montrees[i].numero();
 		}
-	      std::cout<<"Construction du Msg_atout terminée."<<std::endl;
+	      DEBUG<<"Construction du Msg_atout terminée."<<std::endl;
 	      EMETTRE_A_TOUS(atout);
 	    }
 	  //Envoi du message Jeu
@@ -175,14 +178,15 @@ void PartieServeur::assimiler(Protocole::Message const & message)
 	}
       break;
     default :
-      std::cout<<"Penser à assimiler côté serveur.\n";
+      DEBUG<<"Penser à assimiler côté serveur.\n";
     }
-  std::cout<<"<-PartieServeur::assimiler(Protocole::Message const & message)"
-	   <<", given message.type = "<<message.type<<std::endl;
 }
 
 int PartieServeur::tester(unsigned int joueur, Protocole::Message const & message) const
 {
+  ENTER("PartieServeur", "tester(unsigned int joueur, Message message) const");
+  ADD_ARG("joueur", joueur);
+  ADD_ARG("message.type", message.type);
   int ok = 0;
   switch(message.type)
     {
@@ -194,17 +198,17 @@ int PartieServeur::tester(unsigned int joueur, Protocole::Message const & messag
 	  Enchere e(joueur, message.m.prise);
 	  if(!(e.prise()) || e > e_max)
 	    {
-	      std::cout<<"L'enchère "<<e.prise()<<" est validée."<<std::endl;
+	      DEBUG<<"L'enchère "<<e.prise()<<" est validée."<<std::endl;
 	    }
 	  else ok = 2;
 	}
       else
 	{
 	  ok = 1;
-	    std::cout<<"Erreur de protocole sur Protocole::PRISE. ";
+	  ERROR<<"Erreur de protocole sur Protocole::PRISE. ";
 	  if(phase() != ENCHERES)
-	    std::cout<<"On n'en est pas aux enchères."<<std::endl;
-	  else std::cout<<"Ce n'est pas le tour du joueur "<<joueur
+	    ERROR<<"On n'en est pas aux enchères."<<std::endl;
+	  else ERROR<<"Ce n'est pas le tour du joueur "<<joueur
 			<<" mais plutôt celui de "<<tour()<<std::endl;
 	}
       break;
@@ -221,13 +225,13 @@ int PartieServeur::tester(unsigned int joueur, Protocole::Message const & messag
       else ok = 1;
       break;
     case Protocole::ECART:
-      std::cout<<"Test d'un écart : ";
+      DEBUG<<"Test d'un écart : ";
       if(phase() == CONSTITUTION_ECART &&
 	 joueur == attaquant() &&
 	 Enchere::GARDE_SANS > enchere_de(joueur).prise())
 	{
-	  std::cout<<"c'est bien à son tour."<<std::endl;
-	  std::cout<<"Cartes demandées : ";
+	  DEBUG<<"c'est bien à son tour."<<std::endl;
+	  DEBUG<<"Cartes demandées : ";
 	  std::vector<Carte> ecart;
 	  for(unsigned int i = 0 ; i < 3 ; i ++)
 	    {
@@ -241,7 +245,7 @@ int PartieServeur::tester(unsigned int joueur, Protocole::Message const & messag
 	      switch(resultat[i])
 		{
 		case Carte::NON_ECARTABLE :
-		  std::cout<<"La carte "<<i<<" ne peut pas être écartée."
+		  DEBUG<<"La carte "<<i<<" ne peut pas être écartée."
 			   <<std::endl;
 		  ok = 2 ;
 		  i = 3;
@@ -251,7 +255,7 @@ int PartieServeur::tester(unsigned int joueur, Protocole::Message const & messag
 	    }
 	}
       else ok = 1;
-      std::cout<<"Fin du test, ok = "<<ok<<std::endl;
+      DEBUG<<"Fin du test, ok = "<<ok<<std::endl;
       break;
     case Protocole::CHELEM:
       ok = 1; //Pas encore implémenté.
@@ -263,6 +267,7 @@ int PartieServeur::tester(unsigned int joueur, Protocole::Message const & messag
       ok = 1;
       break;
     }
+  EXIT(ok);
   return ok;
 }
 
@@ -285,6 +290,7 @@ void shuffle(std::vector<T> & tab)
 
 void PartieServeur::distribuer()
 {
+  ENTER("PartieServeur", "distribuer()");
   std::vector<int> nums (78);
   for(unsigned int i = 0 ; i < nums.size() ; i++)
     {

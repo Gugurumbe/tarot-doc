@@ -16,7 +16,8 @@ config.hpp                       \
 ../shared/tapis.hpp              \
 ../shared/enchere.hpp            \
 ../shared/carte.hpp              \
-../shared/main.hpp               
+../shared/main.hpp               \
+../shared/debogueur.hpp
 
 SOURCES += main_program.cpp      \
 client.cpp                       \
@@ -28,6 +29,7 @@ client_debogage.cpp              \
 ../shared/tapis.cpp              \
 ../shared/enchere.cpp            \
 ../shared/carte.cpp              \
-../shared/main.cpp               
+../shared/main.cpp               \
+../shared/debogueur.cpp
 
 QT += network

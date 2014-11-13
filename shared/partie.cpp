@@ -1,40 +1,85 @@
 #include "partie.hpp"
+#include "debogueur.hpp"
 #include <iostream>
+
+#define ENTER_(nom_meth) ENTER("Partie", nom_meth)
 
 Partie::Partie(): m_encheres(5), m_chelem(-1), m_attaquant(5),
 		  m_tour(0), m_phase(CONSTITUTION_TABLE),
 		  m_tailles_poignees(5, 0)
 {
+  ENTER_("Partie()");
 }
 
 const Enchere & Partie::contrat_final() const
 {
+  ENTER_("contrat_final() const");
   /* assert(m_attaquant < 5); */
+  std::stringstream ret;
+  ret<<"(joueur : "<<m_encheres[m_attaquant].joueur()
+     <<", prise : "<<m_encheres[m_attaquant].prise()
+     <<", carte appelée : ";
+  if(m_encheres[m_attaquant].carte_appelee())
+    {
+      ret<<"numéro ";
+      ret<<m_encheres[m_attaquant].carte_appelee()->numero();
+    }
+  else
+    {
+      ret<<"inconnue";
+    }
+  ret<<")";
+  EXIT(ret.str());
   return m_encheres[m_attaquant];
 }
 
 const Enchere & Partie::enchere_de(unsigned int joueur) const
 {
+  ENTER_("enchere_de(unsigned int joueur) const");
+  ADD_ARG("joueur", joueur);
+  std::stringstream ret;
+  ret<<"(joueur : "<<m_encheres[joueur].joueur()
+     <<", prise : "<<m_encheres[joueur].prise()
+     <<", carte appelée : ";
+  if(m_encheres[joueur].carte_appelee())
+    {
+      ret<<"numéro ";
+      ret<<m_encheres[joueur].carte_appelee()->numero();
+    }
+  else
+    {
+      ret<<"inconnue";
+    }
+  ret<<")";
+  EXIT(ret.str());
   return m_encheres[joueur];
 }
 
 int Partie::chelem() const
 {
+  ENTER_("chelem() const");
+  EXIT(m_chelem);
   return m_chelem;
 }
 
 const Tapis & Partie::tapis() const
 {
+  ENTER_("tapis() const");
+  EXIT("Le tapis");
   return m_tapis;
 }
 
 unsigned int Partie::attaquant() const
 {
+  ENTER_("attaquant() const");
+  EXIT(m_attaquant);
   return m_attaquant;
 }
 
 void Partie::set_attaquant(unsigned int j)
 {
+  ENTER_("set_attaquant(unsigned int j)");
+  ADD_ARG("j", j);
   if(m_attaquant >= 5)
     {
       m_attaquant = j;
@@ -43,28 +88,37 @@ void Partie::set_attaquant(unsigned int j)
 
 unsigned int Partie::tour() const
 {
+  ENTER_("tour() const");
+  EXIT(m_tour);
   return m_tour;
 }
 
 unsigned int Partie::poignee(unsigned int joueur) const
 {
+  ENTER_("poignee(unsigned int joueur const");
+  ADD_ARG("joueur", joueur);
+  EXIT(m_tailles_poignees[joueur]);
   return m_tailles_poignees[joueur];
 }
 
 Partie::PhaseJeu Partie::phase() const
 {
+  ENTER_("phase() const");
+  EXIT(m_phase);
   return m_phase;
 }
 
 void Partie::set_phase(Partie::PhaseJeu p)
 {
+  ENTER_("set_phase(PhaseJeu p)");
+  ADD_ARG("p", p);
   m_phase = p;
 }
 
 void Partie::assimiler(const Protocole::Message & m)
 {
-  std::cout<<"->Partie::assimiler(const Protocole::Message & m),"
-	   <<" given m.type = "<<m.type<<std::endl;
+  ENTER_("assimiler(Message m)");
+  ADD_ARG("m.type", m.type);
   switch(m.type)
     {
     case Protocole::ERREUR_PROTOCOLE:
@@ -138,7 +192,5 @@ void Partie::assimiler(const Protocole::Message & m)
     default:
       break;
     }
-  std::cout<<"Phase : "<<m_phase<<", tour : "<<m_tour<<std::endl;;
-  std::cout<<"<-Partie::assimiler(const Protocole::Message & m),"
-	   <<" given m.type = "<<m.type<<" : return"<<std::endl;
+  DEBUG"Phase : "<<m_phase<<", tour : "<<m_tour<<std::endl;;
 }
