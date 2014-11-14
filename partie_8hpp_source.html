@@ -126,49 +126,47 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classPartie.html#ad16a77a20a5699a3910766c6bda50033" title="Teste si un chelem a été déclaré.">chelem</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;  <span class="keyword">const</span> <a class="code" href="classTapis.html" title="Représente les cartes face visible sur la table.">Tapis</a> &amp; <a class="code" href="classPartie.html#a8e85cd52fcb26ee887b5c5441ffc00b2" title="Accès à l&#39;état du pli.">tapis</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classPartie.html#abb22c4e65f62fdcab2600376ed9ea5a6" title="Accès au joueur qui prise.">attaquant</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classPartie.html#abb22c4e65f62fdcab2600376ed9ea5a6" title="Accès au joueur qui prise.">attaquant</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartie.html#a6bd294a0e3cdb55bb24ee2b6a2809bc4" title="Modification de l&#39;attaquant.">set_attaquant</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j);</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartie.html#a6bd294a0e3cdb55bb24ee2b6a2809bc4" title="Modification de l&#39;attaquant.">set_attaquant</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j);</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classPartie.html#a34e5fc20f35fa22c89a3151bc8a56d55" title="À qui de jouer ?">tour</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classPartie.html#a34e5fc20f35fa22c89a3151bc8a56d55" title="À qui de jouer ?">tour</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classPartie.html#a59c52f0345c8acddeb03011295f8b1b1" title="Taille des poignées déclarées.">poignee</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> joueur) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;  <a class="code" href="classPartie.html#aa94cf37ae5f9f1f87ac640b8dc0048c9" title="Étape d&#39;une partie de Tarot.">PhaseJeu</a> <a class="code" href="classPartie.html#a45201ab9e442170839bf1380e11500c4" title="Où en est-on ?">phase</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartie.html#afdc3a79eba2d966d967225df81873693" title="On en est là !">set_phase</a>(<a class="code" href="classPartie.html#aa94cf37ae5f9f1f87ac640b8dc0048c9" title="Étape d&#39;une partie de Tarot.">PhaseJeu</a> p);</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartie.html#ae4420e42e81aa5b5697dc69e55ca4ab8" title="Analyse un Message.">assimiler</a>(<span class="keyword">const</span> <a class="code" href="structProtocole_1_1Message.html" title="Structure de Message universel.">Protocole::Message</a> &amp; m);</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;  std::vector&lt;Carte&gt; <a class="code" href="classPartie.html#adba70eb9ababdf3e128952996099092d" title="Termine le pli.">terminer_tapis</a>(</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                                    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classPartie.html#abb22c4e65f62fdcab2600376ed9ea5a6" title="Accès au joueur qui prise.">attaquant</a>,</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                                    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> appele,</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                                    <span class="keywordtype">bool</span> dernier_pli);</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;  std::vector&lt;Enchere&gt; m_encheres;</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;  </div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;  <span class="keywordtype">int</span> m_chelem;</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;  <a class="code" href="classTapis.html" title="Représente les cartes face visible sur la table.">Tapis</a> m_tapis;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classPartie.html#a59c52f0345c8acddeb03011295f8b1b1" title="Taille des poignées déclarées.">poignee</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> joueur) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;  <a class="code" href="classPartie.html#aa94cf37ae5f9f1f87ac640b8dc0048c9" title="Étape d&#39;une partie de Tarot.">PhaseJeu</a> <a class="code" href="classPartie.html#a45201ab9e442170839bf1380e11500c4" title="Où en est-on ?">phase</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartie.html#afdc3a79eba2d966d967225df81873693" title="On en est là !">set_phase</a>(<a class="code" href="classPartie.html#aa94cf37ae5f9f1f87ac640b8dc0048c9" title="Étape d&#39;une partie de Tarot.">PhaseJeu</a> p);</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartie.html#ae4420e42e81aa5b5697dc69e55ca4ab8" title="Analyse un Message.">assimiler</a>(<span class="keyword">const</span> <a class="code" href="structProtocole_1_1Message.html" title="Structure de Message universel.">Protocole::Message</a> &amp; m);</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;  std::vector&lt;Carte&gt; <a class="code" href="classPartie.html#adba70eb9ababdf3e128952996099092d" title="Termine le pli.">terminer_tapis</a>(</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                                    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classPartie.html#abb22c4e65f62fdcab2600376ed9ea5a6" title="Accès au joueur qui prise.">attaquant</a>,</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                                    <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> appele,</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                                    <span class="keywordtype">bool</span> dernier_pli);</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;  std::vector&lt;Enchere&gt; m_encheres;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;  </div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;  <span class="keywordtype">int</span> m_chelem;</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;  <a class="code" href="classTapis.html" title="Représente les cartes face visible sur la table.">Tapis</a> m_tapis;</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> m_attaquant;</div>
 <div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> m_attaquant;</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> m_tour;</div>
 <div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> m_tour;</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;  <a class="code" href="classPartie.html#aa94cf37ae5f9f1f87ac640b8dc0048c9" title="Étape d&#39;une partie de Tarot.">PhaseJeu</a> m_phase;</div>
 <div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;  <a class="code" href="classPartie.html#aa94cf37ae5f9f1f87ac640b8dc0048c9" title="Étape d&#39;une partie de Tarot.">PhaseJeu</a> m_phase;</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;  std::vector&lt;unsigned int&gt; m_tailles_poignees;</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;};</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;  std::vector&lt;unsigned int&gt; m_tailles_poignees;</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;};</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mercredi Novembre 12 2014 16:24:09 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Vendredi Novembre 14 2014 20:07:31 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

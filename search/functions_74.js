@@ -1,8 +1,8 @@
 var searchData=
 [
   ['table',['Table',['../classTable.html#a8c20b32ca7349af63e31717016103e66',1,'Table']]],
-  ['tapis',['Tapis',['../classTapis.html#a7323828e91137c08c7a84f279b679ca3',1,'Tapis::Tapis()'],['../classPartie.html#a8e85cd52fcb26ee887b5c5441ffc00b2',1,'Partie::tapis()']]],
-  ['terminer',['terminer',['../classTapis.html#ad12014d7aca5329282a99e7ab5fa5cb9',1,'Tapis']]],
+  ['tapis',['Tapis',['../classTapis.html#a7323828e91137c08c7a84f279b679ca3',1,'Tapis']]],
+  ['terminer',['terminer',['../classTapis.html#a932d33ec70ab170413e9403420edb404',1,'Tapis']]],
   ['terminer_5ftapis',['terminer_tapis',['../classPartie.html#adba70eb9ababdf3e128952996099092d',1,'Partie']]],
   ['tester',['tester',['../classPartieServeur.html#a53ae35e1da76a5602f3223019df36e83',1,'PartieServeur']]],
   ['tete',['tete',['../classCarte.html#ab978ce739fa511ddbfbd392543ff0700',1,'Carte']]],

@@ -101,7 +101,11 @@ Fonctions membres publiques</h2></td></tr>
 <tr class="memitem:ab805d8355dce81bb288da77c4f0c4b26"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTapis.html#ab805d8355dce81bb288da77c4f0c4b26">ajouter</a> (const <a class="el" href="structProtocole_1_1Msg__carte.html">Protocole::Msg_carte</a> &amp;carte)</td></tr>
 <tr class="memitem:ad99507e33564528fcbdab023200a6677"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTapis.html#ad99507e33564528fcbdab023200a6677">set_ouverture</a> (unsigned int joueur)</td></tr>
 <tr class="memitem:a5900f861fcb2ab970746db18ea2284f0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTapis.html#a5900f861fcb2ab970746db18ea2284f0">complet</a> () const </td></tr>
-<tr class="memitem:ad12014d7aca5329282a99e7ab5fa5cb9"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classCarte.html">Carte</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTapis.html#ad12014d7aca5329282a99e7ab5fa5cb9">terminer</a> (unsigned int attaquant, unsigned int appele, bool dernier_pli)</td></tr>
+<tr class="memitem:a932d33ec70ab170413e9403420edb404"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classCarte.html">Carte</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTapis.html#a932d33ec70ab170413e9403420edb404">terminer</a> (unsigned int attaquant, unsigned int appele, bool dernier_pli, unsigned int &amp;suivant)</td></tr>
+<tr class="memitem:a15937239ea122355c7d13890bf79fb16"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTapis.html#a15937239ea122355c7d13890bf79fb16">plus_gros_atout</a> (<a class="el" href="classCarte.html">Carte</a> &amp;c) const </td></tr>
+<tr class="memdesc:a15937239ea122355c7d13890bf79fb16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le plus gros atout joué.  <a href="#a15937239ea122355c7d13890bf79fb16"></a><br/></td></tr>
+<tr class="memitem:a3c8a5d72c2606c0c2753db9940aff178"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTapis.html#a3c8a5d72c2606c0c2753db9940aff178">entame</a> (<a class="el" href="classCarte.html">Carte</a> &amp;c) const </td></tr>
+<tr class="memdesc:a3c8a5d72c2606c0c2753db9940aff178"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la carte d'entame.  <a href="#a3c8a5d72c2606c0c2753db9940aff178"></a><br/></td></tr>
 </table>
 <a name="details" id="details"></a><h2>Description détaillée</h2>
 <div class="textblock"><p>Représente les cartes face visible sur la table. </p>
@@ -110,8 +114,8 @@ Fonctions membres publiques</h2></td></tr>
 <dl class="section see"><dt>Voir également</dt><dd><a class="el" href="classCarte.html" title="Définition d&#39;une Carte du jeu.">Carte</a> </dd>
 <dd>
 Message La classe <a class="el" href="classTapis.html" title="Représente les cartes face visible sur la table.">Tapis</a> permet de connaître l'état du tour de jeu, c'est-à-dire les cartes jouées ce tour-ci et les numéros des joueurs (0 à 4) qui jouent ces cartes.</dd></dl>
-<p>La méthode <a class="el" href="classTapis.html#ad12014d7aca5329282a99e7ab5fa5cb9">Tapis::terminer(unsigned int, unsigned int, bool)</a> retourne la liste des cartes gagnées par l' « attaque », c'est-à-dire le joueur qui a pris et le joueur appelé, lorsque le pli est <a class="el" href="classTapis.html#a5900f861fcb2ab970746db18ea2284f0">Tapis::complet() const</a>.</p>
-<dl class="section see"><dt>Voir également</dt><dd><a class="el" href="classTapis.html#ad12014d7aca5329282a99e7ab5fa5cb9">Tapis::terminer(unsigned int, unsigned int, bool)</a> </dd>
+<p>La méthode Tapis::terminer(unsigned int, unsigned int, bool) retourne la liste des cartes gagnées par l' « attaque », c'est-à-dire le joueur qui a pris et le joueur appelé, lorsque le pli est <a class="el" href="classTapis.html#a5900f861fcb2ab970746db18ea2284f0">Tapis::complet() const</a>.</p>
+<dl class="section see"><dt>Voir également</dt><dd>Tapis::terminer(unsigned int, unsigned int, bool) </dd>
 <dd>
 <a class="el" href="classTapis.html#a5900f861fcb2ab970746db18ea2284f0">Tapis::complet() const</a> </dd></dl>
 </div><h2>Documentation des constructeurs et destructeur</h2>
@@ -172,7 +176,58 @@ Message La classe <a class="el" href="classTapis.html" title="Représente les ca
 </div><div class="memdoc">
 <p>Indique si un tour est terminé. Lorsque 5 cartes réelles ont été jouées, le tour est terminé. </p>
 <dl class="section return"><dt>Renvoie</dt><dd>Vrai ssi le tour est terminé. </dd></dl>
-<dl class="section see"><dt>Voir également</dt><dd><a class="el" href="classTapis.html#ad12014d7aca5329282a99e7ab5fa5cb9">Tapis::terminer(unsigned int, unsigned int, bool)</a> </dd></dl>
+<dl class="section see"><dt>Voir également</dt><dd>Tapis::terminer(unsigned int, unsigned int, bool) </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a3c8a5d72c2606c0c2753db9940aff178"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Tapis::entame </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCarte.html">Carte</a> &amp;&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne la carte d'entame. </p>
+<dl class="section note"><dt>Note</dt><dd>Si la <a class="el" href="classCarte.html" title="Définition d&#39;une Carte du jeu.">Carte</a> d'entame est l'Excuse, la carte considérée est la suivante.</dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">c</td><td>La <a class="el" href="classCarte.html" title="Définition d&#39;une Carte du jeu.">Carte</a> à remplir. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>vrai ssi il y a une carte d'entame. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a15937239ea122355c7d13890bf79fb16"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Tapis::plus_gros_atout </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classCarte.html">Carte</a> &amp;&#160;</td>
+          <td class="paramname"><em>c</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne le plus gros atout joué. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">c</td><td>La <a class="el" href="classCarte.html" title="Définition d&#39;une Carte du jeu.">Carte</a> qui contiendra le plus gros atout. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>vrai ssi la carte a été remplie. </dd></dl>
 
 </div>
 </div>
@@ -189,7 +244,7 @@ Message La classe <a class="el" href="classTapis.html" title="Représente les ca
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Lorsqu'on ajoute la première carte du tour, il faut également spécifié le joueur qui joue cette première carte, afin d'en déduire tous les autres. </p>
+<p>Lorsqu'on ajoute la première carte du tour, il faut également spécifier le joueur qui joue cette première carte, afin d'en déduire tous les autres. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">joueur</td><td>: numéro du joueur </td></tr>
@@ -200,7 +255,7 @@ Message La classe <a class="el" href="classTapis.html" title="Représente les ca
 
 </div>
 </div>
-<a class="anchor" id="ad12014d7aca5329282a99e7ab5fa5cb9"></a>
+<a class="anchor" id="a932d33ec70ab170413e9403420edb404"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -220,7 +275,13 @@ Message La classe <a class="el" href="classTapis.html" title="Représente les ca
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>dernier_pli</em>&#160;</td>
+          <td class="paramname"><em>dernier_pli</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int &amp;&#160;</td>
+          <td class="paramname"><em>suivant</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -232,9 +293,10 @@ Message La classe <a class="el" href="classTapis.html" title="Représente les ca
 <p>Termine le tour. Lorsque le tour est terminé, il est nécessaire d'attribuer les cartes gagnées par l'attaque. Pour cela, il faut connaître le JOUEUR appelé. Cette méthode n'est à appeler que du côté serveur. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">attaquant</td><td>: numéro du joueur qui a pris. </td></tr>
-    <tr><td class="paramname">appele</td><td>: numéro du joueur appelé. </td></tr>
-    <tr><td class="paramname">dernier_pli</td><td>: indique si la vraie excuse peut être prise. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">attaquant</td><td>Numéro du joueur qui a pris. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">appele</td><td>Numéro du joueur appelé. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">dernier_pli</td><td>Indique si la vraie excuse peut être prise. </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">suivant</td><td>Le joueur suivant. </td></tr>
   </table>
   </dd>
 </dl>
@@ -250,7 +312,7 @@ Message La classe <a class="el" href="classTapis.html" title="Représente les ca
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mercredi Novembre 12 2014 16:24:13 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Vendredi Novembre 14 2014 20:07:34 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>

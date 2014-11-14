@@ -125,15 +125,23 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  <span class="keyword">const</span> <a class="code" href="classMain.html" title="Une Main est un ensemble de cartes.">Main</a> &amp; <a class="code" href="classMain.html#a6df2b8fedb77ea13507fc4621e6b2ed1">operator=</a>(<span class="keyword">const</span> <a class="code" href="structProtocole_1_1Msg__distribution.html" title="Contenu d&#39;un Message de distribution des cartes.">Protocole::Msg_distribution</a> &amp; m);</div>
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classMain.html#ac31fb90cebfa1d62f14995fb3393151e">distribution</a>(<a class="code" href="structProtocole_1_1Msg__distribution.html" title="Contenu d&#39;un Message de distribution des cartes.">Protocole::Msg_distribution</a> &amp; m);</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  std::vector&lt;Carte&gt; m_cartes;</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;};</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classMain.html#a120f0c2a92b0f005935306f287bbe882" title="Indique si le joueur n&#39;a plus d&#39;une couleur.">peut_couper</a>(<a class="code" href="classCarte.html#aa4b4c15fb6d1f697985b8ff04a67c45e" title="Énumère les 5 couleurs.">Carte::Couleur</a> col) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classMain.html#add661748c8e69831dafaf52fe047822f" title="Indique si le joueur peut &quot;pisser&quot;.">peut_pisser</a>(<a class="code" href="classCarte.html#ad549901ec17f99028b361164be137b7b" title="Représente la valeur des cartes de couleur non atout.">Carte::Valeur</a> atout_max) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classMain.html#ad052677f64d47b36c22758615af2769e" title="Indique si le joueur peut &quot;défausser&quot;.">peut_defausser</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classMain.html#a4a584a9244bbe3721c45bf79261d0a82" title="Nombre de Cartes.">nombre_cartes</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;  std::vector&lt;Carte&gt; m_cartes;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;};</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mercredi Novembre 12 2014 16:24:09 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Vendredi Novembre 14 2014 20:07:31 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.1.2
 </small></address>
