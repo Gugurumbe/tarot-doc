@@ -162,13 +162,6 @@ public:
   int chelem() const;
 
   /**
-     @brief Accès à l'état du pli.
-
-     @return L'état du pli (Tapis).
-   */
-  const Tapis & tapis() const;
-
-  /**
      @brief Accès au joueur qui prise.
 
      @return Le numéro du joueur.

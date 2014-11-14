@@ -79,6 +79,16 @@ private:
      @brief L'enchère maximale pendant la phase des Enchères. 
   */
   Enchere e_max;
+
+  /**
+     @brief Le joueur appelé.
+  */
+  unsigned int joueur_appele;
+
+  /**
+     @brief Le tapis.
+  */
+  Tapis m_tapis;
 			  
 public slots:
 

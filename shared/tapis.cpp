@@ -46,7 +46,8 @@ std::vector<Carte> concat(const std::vector<Carte> & t1,
 std::vector<Carte> Tapis::terminer(
 				   unsigned int attaquant,
 				   unsigned int appele,
-				   bool dernier_pli)
+				   bool dernier_pli,
+				   unsigned int & suivant)
 {
   unsigned int gagnant = joueur_ouverture;
   unsigned int joueur = joueur_ouverture;
@@ -100,9 +101,43 @@ std::vector<Carte> Tapis::terminer(
 	{
 	  gagnante = m_tapis[i];
 	  gagnant = possesseurs[i];
+	  suivant = gagnant;
 	}
     }
   if(gagnant == attaquant || gagnant == appele)
     return concat(gagnees, m_tapis);
   return gagnees;
+}
+
+bool Tapis::plus_gros_atout(Carte & c) const
+{
+  bool b = false;
+  int max = 0;
+  int i_max = 0;
+  for(unsigned int i = 0 ; i < m_tapis.size() ; i++)
+    {
+      if(m_tapis[i] != EXCUSE && m_tapis[i].atout())
+	{
+	  b = true;
+	  if(max == 0 || m_tapis[i].valeur() > m_tapis[i_max].valeur())
+	    {
+	      max = m_tapis[i].valeur();
+	      i_max = i;
+	    }
+	}
+    }
+  if(b)
+    {
+      c = m_tapis[i_max];
+    }
+  return b;
+}
+
+bool Tapis::entame(Carte & c) const
+{
+  if(m_tapis.size() == 0) return false;
+  if(m_tapis[0] == EXCUSE && m_tapis.size() == 2) return false;
+  if(m_tapis[0] == EXCUSE) c = m_tapis[1];
+  else c = m_tapis[0];
+  return true;
 }

@@ -225,3 +225,56 @@ std::vector<Carte::ModaliteEcart> Main::peut_ecarter(const std::vector<Carte> & 
     }
   return resultat;
 }
+
+bool Main::peut_couper(Carte::Couleur col) const
+{
+  //Si on n'a plus de cette couleur, ou si c'est un atout.
+  bool b = true;
+  if(col == Carte::ATOUT)
+    {
+      b = true; //Inutile, en fait.
+    }
+  else
+    for(unsigned int i = 0 ; i < m_cartes.size() ; i++)
+      {
+	if(m_cartes[i].couleur() == col)
+	  {
+	    b = false;
+	    i = m_cartes.size();
+	  }
+      }
+  return b;
+}
+
+bool Main::peut_pisser(Carte::Valeur atout_max) const
+{
+  bool b = true;
+  for(unsigned int i = 0 ; i < m_cartes.size() ; i++)
+    {
+      if(m_cartes[i].atout() && m_cartes[i].valeur() > atout_max)
+	{
+	  b = false ;
+	  i = m_cartes.size();
+	}
+    }
+  return b;
+}
+
+bool Main::peut_defausser() const
+{
+  bool b = true;
+  for(unsigned int i = 0 ; i < m_cartes.size() ; i++)
+    {
+      if(m_cartes[i].atout())
+	{
+	  b = false;
+	  i = m_cartes.size();
+	}
+    }
+  return b;
+}
+
+unsigned int Main::nombre_cartes() const
+{
+  return m_cartes.size();
+}

@@ -1,6 +1,16 @@
 #include "partie_serveur.hpp"
 #include "debogueur.hpp"
 
+//#define DEBUG_THIS_FILE
+
+#ifndef DEBUG_THIS_FILE
+#define ENTER(truc, machin)
+#define ADD_ARG(truc, machin)
+#define EXIT(truc)
+#define DEBUG std::cout
+#define ERROR std::cerr
+#endif
+
 #include <iostream>
 
 #define EMETTRE_A_TOUS(m) 		\
@@ -9,7 +19,8 @@
   emit doit_emettre(4, m, true);
 
 PartieServeur::PartieServeur(QObject * parent):
-  QObject(parent), Partie(), jeu_reel(5)
+  QObject(parent), Partie(), jeu_reel(5),
+  joueur_appele(5)
 {
   ENTER("PartieServeur", "PartieServeur(QObject * parent)");
   ADD_ARG("parent", (void *)parent);
@@ -122,6 +133,20 @@ void PartieServeur::assimiler(Protocole::Message const & message)
 	    }
 	  EMETTRE_A_TOUS(mess_chien);
 	}
+      // Cherche le joueur appelé
+      for(unsigned int i = 0 ; i < jeu_reel.size() ; i++)
+	{
+	  if(jeu_reel[i].possede(Carte(message.m.appeler.carte)))
+	    {
+	      joueur_appele = i;
+	      i = jeu_reel.size();
+	    }
+	}
+      if(joueur_appele >= 5)
+	{
+	  //Dans le chien
+	  joueur_appele = attaquant();
+	}
       break;
     case Protocole::CHIEN:
       //On donne à l'attaquant les cartes du chien.
@@ -176,6 +201,52 @@ void PartieServeur::assimiler(Protocole::Message const & message)
 	  mess_jeu.m.jeu.chelem = (chelem() >= 0 ? chelem() : 5);
 	  EMETTRE_A_TOUS(mess_jeu);
 	}
+      break;
+    case Protocole::REQUETE:
+      if(true)
+	{
+	  Protocole::Message msg_carte;
+	  msg_carte.type = Protocole::CARTE;
+	  msg_carte.m.carte.carte = message.m.requete.carte;
+	  EMETTRE_A_TOUS(msg_carte);
+	}
+      break;
+    case Protocole::CARTE:
+      if(true)
+	{
+	  Carte c(message.m.carte.carte);
+	  unsigned int j = (tour() + 4) % 5;
+	  jeu_reel[j].enlever(c);
+	  m_tapis.ajouter(message.m.carte);
+	  if(m_tapis.complet())
+	    {
+	      unsigned int gagnant = 5;
+	      cartes_gagnees.push_back
+		(m_tapis.terminer(attaquant(), joueur_appele,
+				  jeu_reel[j].nombre_cartes() == 0,
+				  gagnant)
+		 );
+	      Protocole::Message pli;
+	      pli.type = Protocole::PLI;
+	      pli.m.pli.joueur = gagnant;
+	      EMETTRE_A_TOUS(pli);
+	      if(jeu_reel[j].nombre_cartes() == 0)
+		{
+		  //C'est terminé
+		  Protocole::Message fin;
+		  fin.type = Protocole::RESULTAT;
+		  for(unsigned int i = 0 ; i < 5 ; i++)
+		    {
+		      fin.m.resultat.resultats[i] = 0;
+		    }
+		  EMETTRE_A_TOUS(fin);
+		}
+	    }
+	}
+    case Protocole::PLI:
+      m_tapis.set_ouverture(tour()); //La Partie a déjà compris.
+      break;
+    case Protocole::RESULTAT:
       break;
     default :
       DEBUG<<"Penser à assimiler côté serveur.\n";
@@ -262,6 +333,80 @@ int PartieServeur::tester(unsigned int joueur, Protocole::Message const & messag
       break;
     case Protocole::MONTRER_POIGNEE:
       ok = 1;
+      break;
+    case Protocole::REQUETE:
+      //On teste :
+      //1. Si on en est à la phase de jeu.
+      //2. Si c'est bien au tour de ce joueur.
+      // (si 1. ou 2. n'est pas vérifié, c'est une erreur de protocole)
+      //3. Si le joueur possède cette carte.
+      //4.a. Si c'est le premier tour (15 cartes) : si c'est la Carte appelée
+      //     ou si ce n'est pas la couleur de la Carte appelée.
+      //4.b. Si c'est un atout : si le joueur peut couper à la couleur
+      //     de l'entame, et s'il monte ou s'il peut pisser.
+      //4.c. Sinon, si ce n'est pas la couleur de l'entame : si le joueur
+      //     peut couper et s'il peut défausser.
+      if(phase() == Partie::PHASE_JEU && tour() == joueur)
+	{
+	  ok = 0;
+	  Carte c(message.m.requete.carte);
+	  Carte appelee(*(contrat_final().carte_appelee()));
+	  if(jeu_reel[joueur].possede(c))
+	    {
+	      if(jeu_reel[joueur].nombre_cartes() == 15)
+		{
+		  //Premier tour
+		  if(c != appelee && c.couleur() == appelee.couleur())
+		    {
+		      ok = 2;
+		    }
+		}
+	      if(c.atout())
+		{
+		  Carte entame(0);
+		  if(m_tapis.entame(entame))
+		    {
+		      if(jeu_reel[joueur].peut_couper(entame.couleur()))
+			{
+			  Carte pgo(56);
+			  if(m_tapis.plus_gros_atout(pgo))
+			    {
+			      if(c > pgo ||
+				 jeu_reel[joueur].peut_pisser(pgo.valeur()))
+				ok = 0;
+			    }
+			  //Aucun atout n'a encore été joué
+			  else ok = 0;
+			}
+		      //Vous ne pouvez pas couper.
+		    }
+		}
+	      else
+		{
+		  Carte entame(0);
+		  if(m_tapis.entame(entame))
+		    {
+		      if(c.couleur() == entame.couleur())
+			{
+			  ok = 0;
+			  //Rien d'interdit : on fournit
+			}
+		      else
+			{
+			  //On n'a plus d'atout
+			  if(jeu_reel[joueur].peut_couper(c.couleur())
+			     &&jeu_reel[joueur].peut_defausser())
+			    {
+			      ok = 0;
+			    }
+			  //Sinon, vous ne pouvez pas défausser.
+			}
+		    }
+		}
+	    }
+	  else ok = 2;
+	}
+      else ok = 1;
       break;
     default :
       ok = 1;

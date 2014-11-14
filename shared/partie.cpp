@@ -2,7 +2,16 @@
 #include "debogueur.hpp"
 #include <iostream>
 
+//#define DEBUG_THIS_FILE
+
+#ifdef DEBUG_THIS_FILE
 #define ENTER_(nom_meth) ENTER("Partie", nom_meth)
+#else
+#define ENTER_(truc)
+#define EXIT(truc)
+#define ADD_ARG(machin, chose)
+#define DEBUG std::cout
+#endif
 
 Partie::Partie(): m_encheres(5), m_chelem(-1), m_attaquant(5),
 		  m_tour(0), m_phase(CONSTITUTION_TABLE),
@@ -60,13 +69,6 @@ int Partie::chelem() const
   ENTER_("chelem() const");
   EXIT(m_chelem);
   return m_chelem;
-}
-
-const Tapis & Partie::tapis() const
-{
-  ENTER_("tapis() const");
-  EXIT("Le tapis");
-  return m_tapis;
 }
 
 unsigned int Partie::attaquant() const
@@ -180,7 +182,6 @@ void Partie::assimiler(const Protocole::Message & m)
       break;
     case Protocole::CARTE:
       m_phase = PHASE_JEU;
-      m_tapis.ajouter(m.m.carte);
       m_tour = (m_tour + 1) % 5 ;
       break;
     case Protocole::PLI:
@@ -192,5 +193,5 @@ void Partie::assimiler(const Protocole::Message & m)
     default:
       break;
     }
-  DEBUG"Phase : "<<m_phase<<", tour : "<<m_tour<<std::endl;;
+  DEBUG<<"Phase : "<<m_phase<<", tour : "<<m_tour<<std::endl;;
 }

@@ -58,7 +58,7 @@ public:
 
   /**
      Lorsqu'on ajoute la première carte du tour, il faut également 
-     spécifié le joueur qui joue cette première carte, afin d'en
+     spécifier le joueur qui joue cette première carte, afin d'en
      déduire tous les autres.
      @param joueur : numéro du joueur
      @see Tapis::ajouter(const Msg_carte &)
@@ -78,16 +78,38 @@ public:
      Lorsque le tour est terminé, il est nécessaire d'attribuer les
      cartes gagnées par l'attaque. Pour cela, il faut connaître le
      JOUEUR appelé. Cette méthode n'est à appeler que du côté serveur.
-     @param attaquant : numéro du joueur qui a pris.
-     @param appele : numéro du joueur appelé.
-     @param dernier_pli : indique si la vraie excuse peut être prise.
+     @param attaquant Numéro du joueur qui a pris.
+     @param appele Numéro du joueur appelé.
+     @param dernier_pli Indique si la vraie excuse peut être prise.
+     @param[out] suivant Le joueur suivant.
      @return Les cartes gagnées par le camp attaquant.
      @see Tapis::complet() const
    */
   std::vector<Carte> terminer(
 			      unsigned int attaquant,
 			      unsigned int appele,
-			      bool dernier_pli);
+			      bool dernier_pli,
+			      unsigned int & suivant
+			      );
+
+  /**
+     @brief Retourne le plus gros atout joué.
+
+     @param[out] c La Carte qui contiendra le plus gros atout.
+     @return vrai ssi la carte a été remplie.
+   */
+  bool plus_gros_atout(Carte & c) const;
+
+  /**
+     @brief Retourne la carte d'entame.
+
+     @note Si la Carte d'entame est l'Excuse, la carte considérée est
+     la suivante.
+
+     @param[out] c La Carte à remplir.
+     @return vrai ssi il y a une carte d'entame.
+   */
+  bool entame(Carte & c) const;
 private:
 
   /**

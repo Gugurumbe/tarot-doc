@@ -16,17 +16,17 @@
 
 #define ENTER(classe,methode)					\
   Debogueur autogen_debugger(methode, classe, (void *)this);    \
-  std::stringstream autogen_debugger_stream;
+  std::stringstream autogen_debugger_stream;		        
 
-#define ADD_ARG(nom, valeur)				\
-  autogen_debugger_stream.str(std::string());	\
-  autogen_debugger_stream<<valeur;			\
+#define ADD_ARG(nom, valeur)						\
+  autogen_debugger_stream.str(std::string());				\
+  autogen_debugger_stream<<valeur;					\
   autogen_debugger.ajouter_argument(nom, autogen_debugger_stream.str());
 
-#define EXIT(ret)					\
-  autogen_debugger_stream.str(std::string());	\
-  autogen_debugger_stream<<ret;				\
-  autogen_debugger.retourner(autogen_debugger_stream.str())
+#define EXIT(ret)						\
+  autogen_debugger_stream.str(std::string());			\
+  autogen_debugger_stream<<ret;					\
+  autogen_debugger.retourner(autogen_debugger_stream.str())	
 
 #define DEBUG \
   std::cout<<"\x1B[33m"<<std::setw(autogen_debugger.indentation())<<" "<<"DBG : \x1B[0m"

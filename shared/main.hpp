@@ -145,6 +145,50 @@ public:
      @param[out] m : le message à remplir.
    */
   void distribution(Protocole::Msg_distribution & m);
+
+  /**
+     @brief Indique si le joueur n'a plus d'une couleur.
+
+     @note Même si le joueur n'a plus d'atout, ou s'il ne peut pas
+     monter, cette méthode renvoie vrai. 
+
+     @param col La couleur jouée.
+     @return vrai ssi on peut couper.
+   */
+  bool peut_couper(Carte::Couleur col) const;
+
+  /**
+     @brief Indique si le joueur peut "pisser".
+     
+     @note Même si le joueur n'a plus d'atout, cette méthode renvoie
+     vrai.
+
+     @note Si la couleur est Atout, renvoie toujours vrai.
+
+     @param atout_max La plus grosse valeur d'atout jouée,
+     éventuellement 0.
+
+     @return vrai ssi on peut pisser.
+   */
+  bool peut_pisser(Carte::Valeur atout_max) const;
+
+  /**
+     @brief Indique si le joueur peut "défausser".
+
+     @warning Retourne vrai ssi on n'a pas d'atout. Il faut vérifier
+     si on peut couper pour qu'on puisse accepter n'importe quelle
+     carte. 
+     
+     @return vrai ssi on n'a pas d'atout.
+   */
+  bool peut_defausser() const;
+
+  /**
+     @brief Nombre de Cartes.
+     
+     @return Le nombre de cartes de la main du joueur.
+   */
+  unsigned int nombre_cartes() const;
 private:
   std::vector<Carte> m_cartes;
 };

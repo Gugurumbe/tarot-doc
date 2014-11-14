@@ -3,6 +3,17 @@
 #include "debogueur.hpp"
 #include <stack>
 
+//#define DEBUG_THIS_FILE
+
+#ifndef DEBUG_THIS_FILE
+#define ENTER(truc, machin)
+#define ADD_ARG(truc, machin)
+#define EXIT(truc)
+#define DEBUG std::cout
+#define ERROR std::cerr
+#endif
+
+
 Serveur::Serveur(QObject * parent) : QObject(parent), ppl(0)
 {
   ENTER("Serveur", "Serveur(QObject * parent)");
