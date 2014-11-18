@@ -1,17 +1,9 @@
 #include "partie_serveur.hpp"
 #include "debogueur.hpp"
 
-//#define DEBUG_THIS_FILE
+#define NOM_CLASSE "PartieServeur"
 
-#ifndef DEBUG_THIS_FILE
-#define ENTER(truc, machin)
-#define ADD_ARG(truc, machin)
-#define EXIT(truc)
-#define DEBUG std::cout
-#define ERROR std::cerr
-#endif
-
-#include <iostream>
+#include "deboguer.hpp"
 
 #define EMETTRE_A_TOUS(m) 		\
   for(unsigned int i = 0 ; i < 4 ; i++) \
@@ -22,13 +14,13 @@ PartieServeur::PartieServeur(QObject * parent):
   QObject(parent), Partie(), jeu_reel(5),
   joueur_appele(5)
 {
-  ENTER("PartieServeur", "PartieServeur(QObject * parent)");
+  ENTER("PartieServeur(QObject * parent)");
   ADD_ARG("parent", (void *)parent);
 }
 
 void PartieServeur::assimiler(Protocole::Message const & message)
 {
-  ENTER("PartieServeur", "assimiler(Message message)");
+  ENTER("assimiler(Message message)");
   ADD_ARG("message.type", message.type);
   Partie::assimiler(message);
   /* Le serveur met à jour les mains des joueurs et le tapis. */
@@ -38,12 +30,17 @@ void PartieServeur::assimiler(Protocole::Message const & message)
       DEBUG<<"Un client n'a pas compris mon message."<<std::endl;
       break;
     case Protocole::REFUSE:
+      DEBUG<<"Le Message a été refusé."<<std::endl;
       break;
     case Protocole::NUMERO:
+      DEBUG<<"Rien à faire."<<std::endl;
+      break;
     case Protocole::DISTRIBUTION:
-      //Dans le cas de Distribution, les jeux sont déjà à jour.
+      //les jeux sont déjà à jour.
+      DEBUG<<"Rien à faire."<<std::endl;
       break;
     case Protocole::PRISE:
+      DEBUG<<"Fabrication d'un Message de type contrat."<<std::endl;
       Protocole::Message contrat;
       contrat.type = Protocole::CONTRAT;
       contrat.m.contrat.niveau = message.m.prise.niveau;
@@ -92,6 +89,7 @@ void PartieServeur::assimiler(Protocole::Message const & message)
 	  else
 	    {
 	      //Personne n'a pris.
+	      DEBUG<<"Personne n'a pris."<<std::endl;
 	      set_phase(Partie::FIN);
 	      Protocole::Message fin;
 	      fin.type = Protocole::RESULTAT;
@@ -103,6 +101,7 @@ void PartieServeur::assimiler(Protocole::Message const & message)
 	    }
 	}
     case Protocole::APPEL:
+      DEBUG<<"Rien à faire."<<std::endl;
       break;
     case Protocole::APPELER:
       Protocole::Message mess_contrat_final;
@@ -113,8 +112,11 @@ void PartieServeur::assimiler(Protocole::Message const & message)
       EMETTRE_A_TOUS(mess_contrat_final);
       if(contrat_final().prise() >= Enchere::GARDE_SANS)
 	{
+	  DEBUG<<"On ne montre pas le chien."<<std::endl;
 	  if(contrat_final().prise() == Enchere::GARDE_SANS)
 	    {
+	      DEBUG<<"L'attaque gagne quand même les cartes du chien."
+		   <<std::endl;
 	      cartes_gagnees.push_back(chien);
 	    }
 	  Protocole::Message jeu;
@@ -126,11 +128,14 @@ void PartieServeur::assimiler(Protocole::Message const & message)
 	{
 	  // Il faut montrer le chien
 	  Protocole::Message mess_chien;
+	  DEBUG<<"Chien : ["<<std::endl;
 	  mess_chien.type = Protocole::CHIEN;
 	  for(unsigned int i = 0 ; i < 3 ; i++)
 	    {
+	      DEBUG<<chien[i].numero()<<std::endl;
 	      mess_chien.m.chien.chien[i] = chien[i].numero();
 	    }
+	  DEBUG<<"]";
 	  EMETTRE_A_TOUS(mess_chien);
 	}
       // Cherche le joueur appelé
@@ -138,6 +143,7 @@ void PartieServeur::assimiler(Protocole::Message const & message)
 	{
 	  if(jeu_reel[i].possede(Carte(message.m.appeler.carte)))
 	    {
+	      DEBUG<<"Le joueur appelé est "<<i<<std::endl;
 	      joueur_appele = i;
 	      i = jeu_reel.size();
 	    }
@@ -145,11 +151,13 @@ void PartieServeur::assimiler(Protocole::Message const & message)
       if(joueur_appele >= 5)
 	{
 	  //Dans le chien
+	  DEBUG<<"La carte appelée est dans le chien."<<std::endl;
 	  joueur_appele = attaquant();
 	}
       break;
     case Protocole::CHIEN:
       //On donne à l'attaquant les cartes du chien.
+      DEBUG<<"Don des 3 cartes du chien à l'attaquant."<<std::endl;
       for(unsigned int i = 0 ; i < chien.size() ; i++)
 	{
 	  jeu_reel[attaquant()].ajouter(chien[i]);
@@ -205,6 +213,8 @@ void PartieServeur::assimiler(Protocole::Message const & message)
     case Protocole::REQUETE:
       if(true)
 	{
+	  DEBUG<<"Jeu de la carte "<<message.m.requete.carte
+	       <<" accepté."<<std::endl;
 	  Protocole::Message msg_carte;
 	  msg_carte.type = Protocole::CARTE;
 	  msg_carte.m.carte.carte = message.m.requete.carte;
@@ -214,12 +224,15 @@ void PartieServeur::assimiler(Protocole::Message const & message)
     case Protocole::CARTE:
       if(true)
 	{
+	  DEBUG<<"Jeu de la carte "<<message.m.carte.carte
+	       <<std::endl;
 	  Carte c(message.m.carte.carte);
 	  unsigned int j = (tour() + 4) % 5;
 	  jeu_reel[j].enlever(c);
 	  m_tapis.ajouter(message.m.carte);
 	  if(m_tapis.complet())
 	    {
+	      DEBUG<<"Tapis complet."<<std::endl;
 	      unsigned int gagnant = 5;
 	      cartes_gagnees.push_back
 		(m_tapis.terminer(attaquant(), joueur_appele,
@@ -232,6 +245,7 @@ void PartieServeur::assimiler(Protocole::Message const & message)
 	      EMETTRE_A_TOUS(pli);
 	      if(jeu_reel[j].nombre_cartes() == 0)
 		{
+		  DEBUG<<"Partie terminée."<<std::endl;
 		  //C'est terminé
 		  Protocole::Message fin;
 		  fin.type = Protocole::RESULTAT;
@@ -244,6 +258,7 @@ void PartieServeur::assimiler(Protocole::Message const & message)
 	    }
 	}
     case Protocole::PLI:
+      DEBUG<<"Prochain joueur : "<<tour()<<std::endl;
       m_tapis.set_ouverture(tour()); //La Partie a déjà compris.
       break;
     case Protocole::RESULTAT:
@@ -255,7 +270,7 @@ void PartieServeur::assimiler(Protocole::Message const & message)
 
 int PartieServeur::tester(unsigned int joueur, Protocole::Message const & message) const
 {
-  ENTER("PartieServeur", "tester(unsigned int joueur, Message message) const");
+  ENTER("tester(unsigned int joueur, Message message) const");
   ADD_ARG("joueur", joueur);
   ADD_ARG("message.type", message.type);
   int ok = 0;
@@ -276,7 +291,7 @@ int PartieServeur::tester(unsigned int joueur, Protocole::Message const & messag
       else
 	{
 	  ok = 1;
-	  ERROR<<"Erreur de protocole sur Protocole::PRISE. ";
+	  ERROR<<"Erreur de protocole sur Protocole::PRISE. "<<std::endl;
 	  if(phase() != ENCHERES)
 	    ERROR<<"On n'en est pas aux enchères."<<std::endl;
 	  else ERROR<<"Ce n'est pas le tour du joueur "<<joueur
@@ -348,31 +363,38 @@ int PartieServeur::tester(unsigned int joueur, Protocole::Message const & messag
       //     peut couper et s'il peut défausser.
       if(phase() == Partie::PHASE_JEU && tour() == joueur)
 	{
+	  DEBUG<<"Déjà, c'est le tour du joueur."<<std::endl;
 	  ok = 0;
 	  Carte c(message.m.requete.carte);
 	  Carte appelee(*(contrat_final().carte_appelee()));
 	  if(jeu_reel[joueur].possede(c))
 	    {
+	      DEBUG<<"Le joueur possède cette Carte."<<std::endl;
 	      if(jeu_reel[joueur].nombre_cartes() == 15)
 		{
+		  DEBUG<<"On en est au premier tour."<<std::endl;
 		  //Premier tour
 		  if(c != appelee && c.couleur() == appelee.couleur())
 		    {
+		      DEBUG<<"Cette couleur est interdite."<<std::endl;
 		      ok = 2;
 		    }
 		}
 	      if(c.atout())
 		{
+		  DEBUG<<"C'est un atout."<<std::endl;
 		  Carte entame(0);
 		  if(m_tapis.entame(entame))
 		    {
 		      if(jeu_reel[joueur].peut_couper(entame.couleur()))
 			{
+			  DEBUG<<"Vous pouvez couper, a priori."<<std::endl;
 			  Carte pgo(56);
 			  if(m_tapis.plus_gros_atout(pgo))
 			    {
 			      if(c > pgo ||
 				 jeu_reel[joueur].peut_pisser(pgo.valeur()))
+				DEBUG<<"Vous pouvez couper.";
 				ok = 0;
 			    }
 			  //Aucun atout n'a encore été joué
@@ -380,9 +402,11 @@ int PartieServeur::tester(unsigned int joueur, Protocole::Message const & messag
 			}
 		      //Vous ne pouvez pas couper.
 		    }
+		  else ok = 0; //Première carte
 		}
 	      else
 		{
+		  DEBUG<<"Ce n'est pas un atout."<<std::endl;
 		  Carte entame(0);
 		  if(m_tapis.entame(entame))
 		    {
@@ -402,6 +426,7 @@ int PartieServeur::tester(unsigned int joueur, Protocole::Message const & messag
 			  //Sinon, vous ne pouvez pas défausser.
 			}
 		    }
+		  else ok = 0;//Première carte.
 		}
 	    }
 	  else ok = 2;
@@ -435,7 +460,7 @@ void shuffle(std::vector<T> & tab)
 
 void PartieServeur::distribuer()
 {
-  ENTER("PartieServeur", "distribuer()");
+  ENTER("distribuer()");
   std::vector<int> nums (78);
   for(unsigned int i = 0 ; i < nums.size() ; i++)
     {

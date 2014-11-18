@@ -17,7 +17,8 @@ int main(int argc, char * argv[])
     {
       std::stringstream str;
       str<<"argv["<<i<<"]";
-      Debogueur::arg(str.str(), argv[i]);
+      Debogueur::arg(str.str(), 
+		     "\"" + std::string(argv[i]) + "\"");
     }
   QApplication app(argc, argv);
   srand(time(NULL));

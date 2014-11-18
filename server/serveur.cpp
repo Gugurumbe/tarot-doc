@@ -1,24 +1,10 @@
 #include "serveur.hpp"
 #include "config.hpp"
-#include "debogueur.hpp"
 #include <stack>
 
-#define DEBUG_THIS_FILE
+#define NOM_CLASSE "Serveur"
 
-#ifndef DEBUG_THIS_FILE
-#define ENTER(machin)
-#define ADD_ARG(truc, machin)
-#define EXIT(truc)
-#define DEBUG std::cout
-#define ERROR std::cerr
-#else
-#define ENTER(meth) ENTER_CLASS(meth, "Serveur")
-#define ADD_ARG(truc, machin) Debogueur::arg(truc, machin)
-#define EXIT(truc) Debogueur::ret(truc)
-#define DEBUG Debogueur::debug()
-#define ERROR std::cerr<<"!"
-#endif
-
+#include "ne_pas_deboguer.hpp"
 
 Serveur::Serveur(QObject * parent) : QObject(parent), ppl(0)
 {

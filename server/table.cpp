@@ -4,10 +4,16 @@
 
 #include <iostream>
 
+#define NOM_CLASSE "Table"
+
+#include "deboguer.hpp"
+
 int Table::nombre_tables = 0;
 
 Table::Table(QObject * parent) : QObject(parent)
 {
+  ENTER("Table(QObject * parent)");
+  ADD_ARG("parent", parent);
   //Création des ordres :
   for(int i = 0 ; i < 5 ; i++)
     {
@@ -28,22 +34,25 @@ Table::Table(QObject * parent) : QObject(parent)
   QObject::connect(&partie, SIGNAL(doit_emettre(unsigned int, Protocole::Message, bool)),
 		   this, SLOT(doit_transmettre(unsigned int, Protocole::Message, bool)));
   nombre_tables++;
-  // std::cout<<"Il y a maintenant "<<nombre_tables<<" table(s)."<<std::endl;
+  DEBUG<<"Il y a maintenant "<<nombre_tables<<" table(s)."<<std::endl;
 }
 
 Table::~Table()
 {
+  ENTER("~Table()");
   for(unsigned int i = 0 ; i < joueurs.size() ; i++)
     {
       if(joueurs[i]>=0)
 	emit doit_deconnecter(joueurs[i]);
     }
   nombre_tables--;
-  // std::cout<<"Il n'y a plus que "<<nombre_tables<<" table(s)."<<std::endl;
+  DEBUG<<"Il n'y a plus que "<<nombre_tables<<" table(s)."<<std::endl;
 }
 
 void Table::ajouter(unsigned int sock)
 {
+  ENTER("ajouter(unsigned int sock)");
+  ADD_ARG("sock", sock);
   unsigned int i = 0;
   while(i < joueurs.size() && joueurs[i] >= 0) i++;
  if(i < joueurs.size())
@@ -58,7 +67,7 @@ void Table::ajouter(unsigned int sock)
       while(i < joueurs.size() && joueurs[i] >= 0) i++;
       if(i >= joueurs.size())
 	{
-	  // std::cout<<"La partie commence..."<<std::endl;
+	  DEBUG<<"La partie commence..."<<std::endl;
 	  partie.distribuer();
 	  emit complet(this);
 	}
@@ -66,7 +75,7 @@ void Table::ajouter(unsigned int sock)
   else
     {
       //En fait, la table était déjà pleine !
-      std::cerr << "Erreur : la table est pleine."<<std::endl;
+      ERROR<<"Erreur : la table est pleine."<<std::endl;
       emit complet(this);
       emit doit_deconnecter(sock);
       //Sinon, la socket sera perdue
@@ -75,7 +84,9 @@ void Table::ajouter(unsigned int sock)
 
 void Table::comprendre(unsigned int sock, Protocole::Message m)
 {
-  // std::cout<<"->Table::comprendre(unsigned int, Message)"<<std::endl;
+  ENTER("comprendre(unsigned int sock, Message m)");
+  ADD_ARG("sock", sock);
+  ADD_ARG("m.type", m.type);
   //Attention : je ne suis pas sûr que sock fasse partie de la table !
   for(unsigned int i = 0 ; i < joueurs.size() ; i++)
     {
@@ -86,10 +97,8 @@ void Table::comprendre(unsigned int sock, Protocole::Message m)
 	    {
 	    case 1 :
 	      reponse.type = Protocole::ERREUR_PROTOCOLE;
-	      std::cout<<"Erreur de protocole détectée."<<std::endl;
+	      DEBUG<<"Erreur de protocole détectée."<<std::endl;
 	      emit doit_emettre(sock, reponse);
-	      std::cout<<"Erreur de protocole, arrêt."<<std::endl;
-	      exit(-1);
 	      break;
 	    case 2 :
 	      reponse.type = Protocole::REFUSE;
@@ -101,11 +110,12 @@ void Table::comprendre(unsigned int sock, Protocole::Message m)
 	  i = joueurs.size();
 	}
     }
-  // std::cout<<"<-Table::comprendre(unsigned int, Message)"<<std::endl;
 }
 
 void Table::enlever(unsigned int sock)
 {
+  ENTER("enlever(unsigned int sock)");
+  ADD_ARG("sock", sock);
   //Attention : sock ne fait peut-être pas partie de la table !
   unsigned int i = 0 ;
   while(i < joueurs.size() && 
@@ -120,7 +130,7 @@ void Table::enlever(unsigned int sock)
 	if(joueurs[k]>=0) j++;
       if(j == 4)
 	{
-	  // std::cout<<"Émission de Table::incomplet(Table *)..."<<std::endl;
+	  DEBUG<<"Émission de Table::incomplet(Table *)..."<<std::endl;
 	  emit incomplet(this);
 	}
     } 
@@ -128,13 +138,17 @@ void Table::enlever(unsigned int sock)
 void Table::doit_transmettre(unsigned int j, Protocole::Message m,
 			     bool analyser)
 {
-  // std::cout<<"Transmission à "<<j<<std::endl;
+  ENTER("doit_transmettre(unsigned int j, Protocole::Message m, bool analyser)");
+  ADD_ARG("j", j);
+  ADD_ARG("m.type", m.type);
+  ADD_ARG("analyser", analyser);
+  DEBUG<<"Transmission à "<<j<<std::endl;
   for(unsigned int i = 0 ; i < joueurs.size() ; i++)
     {
       if(ordre[i] == j)
 	{
 	  emit doit_emettre(joueurs[i], m);
-	  // std::cout<<"C'est "<<i<<std::endl;
+	  DEBUG<<"C'est "<<i<<std::endl;
 	}
     }
   if(analyser)
