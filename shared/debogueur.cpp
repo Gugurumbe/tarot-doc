@@ -69,3 +69,57 @@ unsigned int Debogueur::indentation() const
     }
   return 1;
 }
+
+std::ostream & Debogueur::debug()
+{
+  if(current)
+    {
+      return std::cout<<(std::setw(current->indentation()))
+		      <<"."
+		      <<C_JAUNE
+		      <<"[DBG] : "
+		      <<C_NORMAL;
+    }
+  return std::cout<<"."<<C_JAUNE<<"[DBG] : "<<C_NORMAL;
+}
+
+void Debogueur::arg(std::string const & nom, 
+		    std::string const & valeur)
+{
+  if(current)
+    current->ajouter_argument(nom, valeur);
+}
+
+void Debogueur::arg(std::string const & nom, long int valeur)
+{
+  std::stringstream out;
+  out<<valeur;
+  arg(nom, out.str());
+}
+
+void Debogueur::arg(std::string const & nom, void * valeur)
+{
+  std::stringstream out;
+  out<<valeur;
+  arg(nom, out.str());
+}
+
+void Debogueur::ret(std::string const & valeur)
+{
+  if(current)
+    current->retourner(valeur);
+}
+
+void Debogueur::ret(long int valeur)
+{
+  std::stringstream out;
+  out<<valeur;
+  ret(out.str());
+}
+
+void Debogueur::ret(void * valeur)
+{
+  std::stringstream out;
+  out<<valeur;
+  ret(out.str());
+}

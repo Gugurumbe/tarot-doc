@@ -1,4 +1,5 @@
 #include "./config.hpp"
+#include "debogueur.hpp"
 #include <iostream>
 #include <QApplication>
 
@@ -10,9 +11,19 @@
 
 int main(int argc, char * argv[])
 {
+  ENTER_FUNCTION("main(int argc, char * argv[])");
+  Debogueur::arg("argc", argc);
+  for(int i = 0 ; i < argc ; i++)
+    {
+      std::stringstream str;
+      str<<"argv["<<i<<"]";
+      Debogueur::arg(str.str(), argv[i]);
+    }
   QApplication app(argc, argv);
   srand(time(NULL));
   SERVEUR s;
-  std::cout<<"Ouverture du port "<<s.ouvrir_global()<<std::endl;
-  return app.exec();
+  Debogueur::debug()<<"Ouverture du port "<<s.ouvrir_global()<<std::endl;
+  long int ret = app.exec();
+  Debogueur::ret(ret);
+  return ret;
 }

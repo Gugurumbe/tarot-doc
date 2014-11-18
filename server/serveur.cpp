@@ -3,20 +3,26 @@
 #include "debogueur.hpp"
 #include <stack>
 
-//#define DEBUG_THIS_FILE
+#define DEBUG_THIS_FILE
 
 #ifndef DEBUG_THIS_FILE
-#define ENTER(truc, machin)
+#define ENTER(machin)
 #define ADD_ARG(truc, machin)
 #define EXIT(truc)
 #define DEBUG std::cout
 #define ERROR std::cerr
+#else
+#define ENTER(meth) ENTER_CLASS(meth, "Serveur")
+#define ADD_ARG(truc, machin) Debogueur::arg(truc, machin)
+#define EXIT(truc) Debogueur::ret(truc)
+#define DEBUG Debogueur::debug()
+#define ERROR std::cerr<<"!"
 #endif
 
 
 Serveur::Serveur(QObject * parent) : QObject(parent), ppl(0)
 {
-  ENTER("Serveur", "Serveur(QObject * parent)");
+  ENTER("Serveur(QObject * parent)");
   ADD_ARG("parent", (void *)parent);
   QObject::connect(&listener, SIGNAL(newConnection()), 
 		   this, SLOT(accepter()));
@@ -25,7 +31,7 @@ Serveur::Serveur(QObject * parent) : QObject(parent), ppl(0)
 
 unsigned int Serveur::push(QTcpSocket * sock)
 {
-  ENTER("Serveur","push(QTcpSocket * sock");
+  ENTER("push(QTcpSocket * sock");
   ADD_ARG("sock", (void *)sock);
   unsigned int i = 0; //Sert à retenir la position occupée
   while(ppl < clients.size() && clients[ppl]) ppl++; //Cherche un endroit vide
@@ -51,7 +57,7 @@ unsigned int Serveur::push(QTcpSocket * sock)
 
 void Serveur::remove(unsigned int i)
 {
-  ENTER("Serveur", "remove(unsigned int i)");
+  ENTER("remove(unsigned int i)");
   ADD_ARG("i", i);
   clients[i]->disconnect(this); // Déconnecte les signaux émis du serveur
   clients[i] = 0;               // Vide la place
@@ -64,7 +70,7 @@ void Serveur::remove(unsigned int i)
 
 unsigned int Serveur::ouvrir_local()
 {
-  ENTER("Serveur", "ouvrir_local()");
+  ENTER("ouvrir_local()");
   listener.listen(QHostAddress("127.0.0.1"), PORT);
   //On liste sur l'adresse loopback, pour n'accepter que les sockets de la
   //même machine. On peut spécifier le port explicitement, mais rien ne dit
@@ -76,7 +82,7 @@ unsigned int Serveur::ouvrir_local()
 
 unsigned int Serveur::ouvrir_global()
 {
-  ENTER("Serveur", "ouvrir_global()");
+  ENTER("ouvrir_global()");
   listener.listen(QHostAddress::Any, PORT);
   // On accepte les connexions venant de n'importe où.
   quint16 port = listener.serverPort();
@@ -86,7 +92,7 @@ unsigned int Serveur::ouvrir_global()
 
 unsigned int Serveur::find(QObject * sock)
 {
-  ENTER("Serveur", "find(QObject * sock)");
+  ENTER("find(QObject * sock)");
   ADD_ARG("sock", (void *)sock);
   //Retourne la position occupée par la socket sock.
   unsigned int i = 0 ;
@@ -97,7 +103,7 @@ unsigned int Serveur::find(QObject * sock)
 
 void Serveur::accepter()
 {
-  ENTER("Serveur", "accepter()");
+  ENTER("accepter()");
   //Récupération d'une nouvelle socket.
   QTcpSocket * sock = 0;
   while(listener.hasPendingConnections())
@@ -120,7 +126,7 @@ void Serveur::accepter()
 
 void Serveur::enlever(QObject * sock)
 {
-  ENTER("Serveur", "enlever(QObject * sock)");
+  ENTER("enlever(QObject * sock)");
   ADD_ARG("sock", (void *)sock);
   unsigned int i = 0 ;
   while((i=find(sock)) < clients.size()) 
@@ -132,7 +138,7 @@ void Serveur::enlever(QObject * sock)
 
 void Serveur::enlever()
 {
-  ENTER("Serveur", "enlever()");
+  ENTER("enlever()");
   QObject * s = QObject::sender();
   DEBUG<<"L'objet appelant est "<<(void *)s<<std::endl;;
   enlever(s);
@@ -140,7 +146,7 @@ void Serveur::enlever()
 
 void Serveur::lire()
 {
-  ENTER("Serveur", "lire()");
+  ENTER("lire()");
   //Il y a deux solutions : regarder les messages de tout le monde
   // ou regarder les messages de l'émetteur. C'est la même complexité :
   // find() peut potentiellement passer toutes les socket en revue avant
@@ -197,7 +203,7 @@ void Serveur::lire()
 
 void Serveur::deconnecter(unsigned int i)
 {
-  ENTER("Serveur", "deconnecter(unsigned int i)");
+  ENTER("deconnecter(unsigned int i)");
   ADD_ARG("i", i);
   if(i < clients.size()) clients[i]->close(); 
   //Le signal disconnected() sera émis, donc on mettra proprement le client
@@ -206,7 +212,7 @@ void Serveur::deconnecter(unsigned int i)
 
 void Serveur::envoyer(unsigned int i, QByteArray paquet)
 {
-  ENTER("Serveur", "envoyer(unsigned int i, QByteArray paquet)");
+  ENTER("envoyer(unsigned int i, QByteArray paquet)");
   ADD_ARG("i", i);
   ADD_ARG("paquet.toHex()", paquet.toHex().data());
   if(i < clients.size()) 
@@ -218,7 +224,7 @@ void Serveur::envoyer(unsigned int i, QByteArray paquet)
 
 void Serveur::envoyer(unsigned int i, Protocole::Message m)
 {
-  ENTER("Serveur", "envoyer(unsigned int i, Protocole::Message m)");
+  ENTER("envoyer(unsigned int i, Protocole::Message m)");
   ADD_ARG("i", i);
   ADD_ARG("m.type", m.type);
   QByteArray paquet;
@@ -227,40 +233,3 @@ void Serveur::envoyer(unsigned int i, Protocole::Message m)
   paquet.prepend((quint8)(1 + paquet.size()));
   envoyer(i, paquet);
 }
-/*
-void Serveur::envoyer_suivant(qint64 t)
-{
-  unsigned int i = find(sender());
-  if(i < clients.size())
-    {
-#if DEBUG_WRITESTACK == 1
-      std::cout<<"Envoi d'un morceau du paquet de "<<i<<" de taille "<<t<<std::endl;
-      std::cout<<"Il restait "<<taille_restante[i]<<" octets à écrire."<<std::endl;
-#endif
-      taille_restante[i] -= t ;
-      if(taille_restante[i] <= 0)
-	{
-	  if(taille_restante[i] < 0)
-	    std::cerr<<"Taille négative."<<std::endl;
-	  if(en_attente[i].empty())
-	    {
-#if DEBUG_WRITESTACK == 1
-	      std::cout<<"On n'a plus rien à écrire."<<std::endl;
-#endif
-	    }
-	  else
-	    {
-	      QByteArray to_send = en_attente[i].front();
-	      en_attente[i].pop();
-	      taille_restante[i] = to_send.size();
-	      clients[i]->write(to_send);
-	      //clients[i]->flush();
-#if DEBUG_WRITESTACK == 1
-	      std::cout<<"On envoie le paquet suivant de taille "<<
-		to_send.size()<<std::endl;
-#endif
-	    }
-	}
-    }
-}
-*/
