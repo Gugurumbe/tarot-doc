@@ -27,5 +27,6 @@ var searchData=
   ['contrat',['contrat',['../unionProtocole_1_1Msg.html#aacaf17da53e7d8e5d4ba7b76f003dd4a',1,'Protocole::Msg::contrat()'],['../namespaceProtocole.html#a0aedd8434bf6fd4173e483eb39f72a4ca2fa2066054dd5a506a045deb007959eb',1,'Protocole::CONTRAT()']]],
   ['contrat_5ffinal',['contrat_final',['../unionProtocole_1_1Msg.html#a53febe42daa3148c77a91f01971621d9',1,'Protocole::Msg::contrat_final()'],['../classPartie.html#a75eef78c18e161c2698ba3f88e465525',1,'Partie::contrat_final()'],['../classPartieClient.html#a46b703ffdbdaae8ac4eeeea494c16304',1,'PartieClient::contrat_final()'],['../namespaceProtocole.html#a0aedd8434bf6fd4173e483eb39f72a4ca29ef5afd2cf06910f9752605efff5f7e',1,'Protocole::CONTRAT_FINAL()']]],
   ['contrat_5fintermediaire',['contrat_intermediaire',['../classPartieClient.html#afbb417cef49e2055b734599e83b40a34',1,'PartieClient']]],
-  ['couleur',['Couleur',['../classCarte.html#aa4b4c15fb6d1f697985b8ff04a67c45e',1,'Carte::Couleur()'],['../classCarte.html#adf755285455670fdeb10ad62e3909f0f',1,'Carte::couleur() const ']]]
+  ['couleur',['Couleur',['../classCarte.html#aa4b4c15fb6d1f697985b8ff04a67c45e',1,'Carte::Couleur()'],['../classCarte.html#adf755285455670fdeb10ad62e3909f0f',1,'Carte::couleur() const ']]],
+  ['couleurs',['COULEURS',['../server_2config_8hpp.html#ae10a7af627981fa7ff14419f505e15bb',1,'config.hpp']]]
 ];

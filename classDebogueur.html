@@ -98,9 +98,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Fonctions membres publiques</h2></td></tr>
-<tr class="memitem:a643d9912bfe747d4137a4b2738ced37d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDebogueur.html#a643d9912bfe747d4137a4b2738ced37d">Debogueur</a> (std::string const &amp;nom_methode, std::string const &amp;nom_classe=&quot;&quot;, void *objet=0)</td></tr>
-<tr class="memdesc:a643d9912bfe747d4137a4b2738ced37d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crée un nouveau débogueur.  <a href="#a643d9912bfe747d4137a4b2738ced37d">Plus de détails...</a><br/></td></tr>
-<tr class="separator:a643d9912bfe747d4137a4b2738ced37d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70abc28ed9ccc4e939b1b60178907905"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDebogueur.html#a70abc28ed9ccc4e939b1b60178907905">Debogueur</a> (std::string const &amp;nom_methode, std::string const &amp;nom_classe, const void *objet)</td></tr>
+<tr class="memdesc:a70abc28ed9ccc4e939b1b60178907905"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crée un nouveau débogueur.  <a href="#a70abc28ed9ccc4e939b1b60178907905">Plus de détails...</a><br/></td></tr>
+<tr class="separator:a70abc28ed9ccc4e939b1b60178907905"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b677cd38577bba5631340a4cff54d52"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDebogueur.html#a8b677cd38577bba5631340a4cff54d52">Debogueur</a> (std::string const &amp;nom_fonction)</td></tr>
+<tr class="memdesc:a8b677cd38577bba5631340a4cff54d52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Crée un nouveau débogueur.  <a href="#a8b677cd38577bba5631340a4cff54d52">Plus de détails...</a><br/></td></tr>
+<tr class="separator:a8b677cd38577bba5631340a4cff54d52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:addbd682df2a05687eacda1c83e5176cc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="addbd682df2a05687eacda1c83e5176cc"></a>
 virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDebogueur.html#addbd682df2a05687eacda1c83e5176cc">~Debogueur</a> ()</td></tr>
 <tr class="memdesc:addbd682df2a05687eacda1c83e5176cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appelé à la fin de l'exécution de la méthode. <br/></td></tr>
@@ -111,7 +114,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <p>La classe <a class="el" href="classDebogueur.html" title="Liste les appels / retours de fonction. ">Debogueur</a> se base sur le fait suivant : Dans une fonction, la durée de vie des objets est égale à la durée d'exécution de la fonction. Pour envoyer un message au début de l'exécution et un autre à la fin de l'exécution, il faut créer un objet au début de l'exécution. Cet objet a un constructeur et un destructeur qui envoie ce genre de messages.</p>
 <p>Les débogueurs créés dans chaque appel suivent une hiérarchie : chaque débogueur a un parent, dont il respecte l'indentation. </p>
 </div><h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
-<a class="anchor" id="a643d9912bfe747d4137a4b2738ced37d"></a>
+<a class="anchor" id="a70abc28ed9ccc4e939b1b60178907905"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -125,13 +128,13 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">std::string const &amp;&#160;</td>
-          <td class="paramname"><em>nom_classe</em> = <code>&quot;&quot;</code>, </td>
+          <td class="paramname"><em>nom_classe</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">void *&#160;</td>
-          <td class="paramname"><em>objet</em> = <code>0</code>&#160;</td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>objet</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -153,6 +156,31 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 </div>
 </div>
+<a class="anchor" id="a8b677cd38577bba5631340a4cff54d52"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Debogueur::Debogueur </td>
+          <td>(</td>
+          <td class="paramtype">std::string const &amp;&#160;</td>
+          <td class="paramname"><em>nom_fonction</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Crée un nouveau débogueur. </p>
+<p>Celui-ci est adapté à une fonction c.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nom_fonction</td><td>: le nom de la fonction. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>La documentation de cette classe a été générée à partir des fichiers suivants :<ul>
 <li>shared/<a class="el" href="debogueur_8hpp_source.html">debogueur.hpp</a></li>
 <li>shared/debogueur.cpp</li>
@@ -160,7 +188,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi 18 Novembre 2014 13:39:43 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Mardi 18 Novembre 2014 17:37:34 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

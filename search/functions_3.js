@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['debogueur',['Debogueur',['../classDebogueur.html#a643d9912bfe747d4137a4b2738ced37d',1,'Debogueur']]],
+  ['debogueur',['Debogueur',['../classDebogueur.html#a70abc28ed9ccc4e939b1b60178907905',1,'Debogueur::Debogueur(std::string const &amp;nom_methode, std::string const &amp;nom_classe, const void *objet)'],['../classDebogueur.html#a8b677cd38577bba5631340a4cff54d52',1,'Debogueur::Debogueur(std::string const &amp;nom_fonction)']]],
   ['deconnecte',['deconnecte',['../classClient.html#a70a5396cfd7c4bf077982ef79dbbb53e',1,'Client']]],
   ['deconnecter',['deconnecter',['../classClient.html#a89db92336bc6b59fa17ec70fdacb9776',1,'Client::deconnecter()'],['../classServeur.html#ac7297f2d0d3ac8058c663f91b1ecc75d',1,'Serveur::deconnecter()']]],
   ['deconnexion',['deconnexion',['../classServeur.html#a50171a13c9d0659c94ba2099b8c20dc1',1,'Serveur']]],
