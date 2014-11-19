@@ -25,7 +25,7 @@ var searchData=
   ['doit_5fdeconnecter',['doit_deconnecter',['../classTable.html#abba1c52883cb52f2aaa33f6ffa9493a5',1,'Table']]],
   ['doit_5fdemander_5fchelem',['doit_demander_chelem',['../classPartieClient.html#a401255df5a76b7307a7c8f29cbda78fb',1,'PartieClient']]],
   ['doit_5fecarter',['doit_ecarter',['../classPartieClient.html#af7a71f0a2aefa407519be0787f8d1936',1,'PartieClient']]],
-  ['doit_5femettre',['doit_emettre',['../classPartieServeur.html#a60c558d4c86798ee46f255c18a52630b',1,'PartieServeur::doit_emettre()'],['../classTable.html#a147a6a6c82fa213c3f89ef2250ee5d09',1,'Table::doit_emettre()'],['../classPartieClient.html#a7e3ab24706fbe76f8c448ac8d71eae97',1,'PartieClient::doit_emettre()']]],
+  ['doit_5femettre',['doit_emettre',['../classPartieClient.html#a7e3ab24706fbe76f8c448ac8d71eae97',1,'PartieClient::doit_emettre()'],['../classPartieServeur.html#a60c558d4c86798ee46f255c18a52630b',1,'PartieServeur::doit_emettre()'],['../classTable.html#a147a6a6c82fa213c3f89ef2250ee5d09',1,'Table::doit_emettre()']]],
   ['doit_5femettre_5fa_5ftous',['doit_emettre_a_tous',['../classPartieServeur.html#ad934af02a962fb0d7d7cec0dbdb90177',1,'PartieServeur']]],
   ['doit_5fjouer',['doit_jouer',['../classPartieClient.html#a1e4aa3b1ba12b4748859a2fc600fe016',1,'PartieClient']]],
   ['doit_5fpriser',['doit_priser',['../classPartieClient.html#a2429db229d7bb2719cc0c460e5538af0',1,'PartieClient']]],

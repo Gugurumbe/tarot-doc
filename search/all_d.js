@@ -3,8 +3,6 @@ var searchData=
   ['pe_2046_20_3a_20tarot_20virtuel',['PE 46 : tarot virtuel',['../index.html',1,'']]],
   ['partie',['Partie',['../classPartie.html',1,'Partie'],['../classPartie.html#ae40831aad10fc4a391295e2ea1447b5a',1,'Partie::Partie()']]],
   ['partie_2ehpp',['partie.hpp',['../partie_8hpp.html',1,'']]],
-  ['partie_5fclient_2ehpp',['partie_client.hpp',['../partie__client_8hpp.html',1,'']]],
-  ['partie_5fclient_5fdefinie',['PARTIE_CLIENT_DEFINIE',['../partie__client_8hpp.html#a60cea92acae7199b0977dae893d8630e',1,'partie_client.hpp']]],
   ['partie_5fdefinie',['PARTIE_DEFINIE',['../partie_8hpp.html#a5f306d7a412368c96ccf6fc05be359b0',1,'partie.hpp']]],
   ['partie_5fserveur_2ehpp',['partie_serveur.hpp',['../partie__serveur_8hpp.html',1,'']]],
   ['partie_5fserveur_5fdefinie',['PARTIE_SERVEUR_DEFINIE',['../partie__serveur_8hpp.html#a65baad18990f9875e476665933261707',1,'partie_serveur.hpp']]],
@@ -28,6 +26,6 @@ var searchData=
   ['port',['PORT',['../server_2config_8hpp.html#a614217d263be1fb1a5f76e2ff7be19a2',1,'config.hpp']]],
   ['possede',['possede',['../classMain.html#a866b5e59e385bb3f93fe2c6745c7fe8d',1,'Main']]],
   ['preneur',['preneur',['../structProtocole_1_1Msg__contrat__final.html#ab24ecbf633521ff036eed99af483e083',1,'Protocole::Msg_contrat_final']]],
-  ['prise',['Prise',['../classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3f',1,'Enchere::Prise()'],['../unionProtocole_1_1Msg.html#a369ee791d31cd26b77653a3afcf3f8a5',1,'Protocole::Msg::prise()'],['../classEnchere.html#ad5162e8db4b9cc5b2b06b087f0f6d23c',1,'Enchere::prise() const '],['../classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3fabca98d8857355319cdc478dd7eb2d1f8',1,'Enchere::PRISE()'],['../namespaceProtocole.html#a0aedd8434bf6fd4173e483eb39f72a4ca8cf5255db3e5763d6c0489f7ce71669b',1,'Protocole::PRISE()']]],
+  ['prise',['PRISE',['../classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3fabca98d8857355319cdc478dd7eb2d1f8',1,'Enchere::PRISE()'],['../classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3f',1,'Enchere::Prise()'],['../unionProtocole_1_1Msg.html#a369ee791d31cd26b77653a3afcf3f8a5',1,'Protocole::Msg::prise()'],['../classEnchere.html#ad5162e8db4b9cc5b2b06b087f0f6d23c',1,'Enchere::prise()'],['../namespaceProtocole.html#a0aedd8434bf6fd4173e483eb39f72a4ca8cf5255db3e5763d6c0489f7ce71669b',1,'Protocole::PRISE()']]],
   ['protocole',['Protocole',['../namespaceProtocole.html',1,'']]]
 ];

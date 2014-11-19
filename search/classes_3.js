@@ -40,8 +40,8 @@ var searchData=
   ['msg_5fprise',['Msg_prise',['../structProtocole_1_1Msg__prise.html',1,'Protocole']]],
   ['msg_5frefuse',['Msg_refuse',['../structMsg__refuse.html',1,'']]],
   ['msg_5frefuse',['Msg_refuse',['../structProtocole_1_1Msg__refuse.html',1,'Protocole']]],
-  ['msg_5frequete',['Msg_requete',['../structProtocole_1_1Msg__requete.html',1,'Protocole']]],
   ['msg_5frequete',['Msg_requete',['../structMsg__requete.html',1,'']]],
+  ['msg_5frequete',['Msg_requete',['../structProtocole_1_1Msg__requete.html',1,'Protocole']]],
   ['msg_5fresultat',['Msg_resultat',['../structProtocole_1_1Msg__resultat.html',1,'Protocole']]],
   ['msg_5fresultat',['Msg_resultat',['../structMsg__resultat.html',1,'']]]
 ];
