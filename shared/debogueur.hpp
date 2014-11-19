@@ -13,6 +13,7 @@
 #include <iostream>
 #include <iomanip>
 #include <sstream>
+#include <vector>
 
 /**
    @brief Crée un débogueur de type classe.
@@ -121,34 +122,28 @@ public:
      @param nom Un nom d'élément ou une propriété.
      @param valeur Un élément ou le résultat d'une propriété.
    */
-  static void arg(std::string const & nom, std::string const & valeur);
-  
-  /**
-     @brief Redéfinition de Debogueur::arg(std::string const &, std::string const &)
-   */
-  static void arg(std::string const & nom, long int valeur);
-
-  /**
-     @brief Redéfinition de Debogueur::arg(std::string const &, std::string const &)
-   */
-  static void arg(std::string const & nom, const void * valeur);
+  template<typename T>
+  static void arg(std::string const & nom, const T & valeur)
+  {
+    std::stringstream out;
+    out<<valeur;
+    if(current)
+      current->ajouter_argument(nom, out.str());
+  }
 
   /**
      @brief Spécifie une valeur de retour de la fonction.
      
      @see Debogueur::arg(std::string const &, std::stringstream const &)
    */
-  static void ret(std::string const & valeur);
-
-  /**
-     @brief Redéfinition de Debogueur::ret(std::string const &)
-   */
-  static void ret(long int valeur);
-
-  /**
-     @brief Redéfinition de Debogueur::ret(std::string const &)
-   */
-  static void ret(const void * valeur);
+  template<typename T>
+  static void ret(const T & valeur)
+  {
+    std::stringstream out;
+    out<<valeur;
+    if(current)
+      current->retourner(out.str());
+  }
 
 private:
   void ajouter_argument(std::string const & nom, std::string const & valeur);
@@ -161,5 +156,19 @@ private:
   std::string nom_classe;
   const void * objet;
 };
+
+template<class T>
+std::ostream & operator<<(std::ostream & out, 
+			  const std::vector<T> & tab)
+{
+  out<<"[|";
+  for(unsigned int i = 0 ; i < tab.size() ; i++)
+    {
+      out<<tab[i];
+      if(i + 1 < tab.size())out<<" ; ";
+    }
+  out<<"|]";
+  return out;
+}
 
 #endif

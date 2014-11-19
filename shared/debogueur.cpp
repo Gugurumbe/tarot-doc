@@ -2,7 +2,7 @@
 #include <iostream>
 #include <iomanip>
 
-#ifdef COULEURS
+//#ifdef COULEURS
 #define C_NORMAL    "\x1B[0m"
 #define C_ROUGE     "\x1B[31m"
 #define C_VERT      "\x1B[32m"
@@ -11,7 +11,7 @@
 #define C_MAGENTA   "\x1B[35m"
 #define C_CYAN      "\x1B[36m"
 #define C_BLANC     "\x1B[37m"
-#else
+/*#else
 #define C_NORMAL    ""
 #define C_ROUGE     ""
 #define C_VERT      ""
@@ -19,8 +19,9 @@
 #define C_BLEU      ""
 #define C_MAGENTA   "" 
 #define C_CYAN      ""
-#define C_BLANC     ""
-#endif
+#define C_BLANC     ""*/
+//#endif
+
 #define C_NOMCLASSE C_MAGENTA
 #define C_NOMMETHODE C_BLEU
 #define C_OBJET C_VERT
@@ -114,51 +115,31 @@ std::ostream & Debogueur::error()
   if(current)
     {
       return std::cout<<C_ROUGE
-	<<(std::setw(current->indentation()))
-	<<"!"
-	<<"[ERR] : "
-	<<C_NORMAL;
+		      <<"!"
+		      <<(std::setw(current->indentation() - 1))
+		      <<"!"
+		      <<"[ERR] : "
+		      <<C_NORMAL;
     }
   return std::cout<<C_ROUGE<<"![ERR] : "<<C_NORMAL;
 }
-
+/*
+template<typename T>
 void Debogueur::arg(std::string const & nom, 
-		    std::string const & valeur)
+		    const T & valeur)
 {
+  std::stringstream out;
+  out<<valeur;
   if(current)
-    current->ajouter_argument(nom, valeur);
+    current->ajouter_argument(nom, out.str());
 }
 
-void Debogueur::arg(std::string const & nom, long int valeur)
+template<typename T>
+void Debogueur::ret(const T & valeur)
 {
   std::stringstream out;
   out<<valeur;
-  arg(nom, out.str());
-}
-
-void Debogueur::arg(std::string const & nom, const void * valeur)
-{
-  std::stringstream out;
-  out<<valeur;
-  arg(nom, out.str());
-}
-
-void Debogueur::ret(std::string const & valeur)
-{
   if(current)
-    current->retourner(valeur);
+    current->retourner(out.str());
 }
-
-void Debogueur::ret(long int valeur)
-{
-  std::stringstream out;
-  out<<valeur;
-  ret(out.str());
-}
-
-void Debogueur::ret(const void * valeur)
-{
-  std::stringstream out;
-  out<<valeur;
-  ret(out.str());
-}
+//*/

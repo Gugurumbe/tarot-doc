@@ -1,14 +1,17 @@
 /**
    @file shared/carte.hpp
-   @brief Définit une classe de carte à jouer.
+   @brief définit une classe de carte à jouer.
  */
 
 #ifndef CARTE_DEFINIE
 
 /**
-   Empêche les inclusions récursives.
+   empêche les inclusions récursives.
  */
 #define CARTE_DEFINIE
+
+#include <string>
+#include <iostream>
 
 /**
    Premier atout.
@@ -311,11 +314,26 @@ public:
      @see Carte::numero() const
   */
   Carte const & operator=(unsigned int carte);
+
+  /**
+     @brief Donne le nom de la Carte.
+     
+     Donne son nom sous la forme :
+     « Valeur de Couleur »
+     
+     @return Le nom.
+  */
+  std::string nom() const;
 private:
   /**
      @brief Le numéro interne de la carte.
    */
   unsigned int m_numero;
 };
+
+std::ostream & operator<<(std::ostream & out, const Carte & carte);
+std::ostream & operator<<(std::ostream & out, Carte::Couleur couleur);
+std::ostream & operator<<(std::ostream & out, Carte::Valeur valeur);
+std::ostream & operator<<(std::ostream & out, Carte::ModaliteEcart mod);
 
 #endif

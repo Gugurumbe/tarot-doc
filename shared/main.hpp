@@ -11,6 +11,7 @@
 #define MAIN_DEFINIE
 
 #include <vector>
+#include <iostream>
 #include "carte.hpp"
 #include "protocole.hpp"
 
@@ -189,8 +190,17 @@ public:
      @return Le nombre de cartes de la main du joueur.
    */
   unsigned int nombre_cartes() const;
+
+  /**
+     @brief Ensemble des Cartes.
+     
+     @return L'ensemble des Cartes disponibles.
+   */
+  std::vector<Carte> const & cartes() const;
 private:
   std::vector<Carte> m_cartes;
 };
+
+std::ostream & operator<<(std::ostream & out, const Main & main);
 
 #endif

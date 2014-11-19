@@ -12,7 +12,7 @@ client_jeu.hpp                   \
 client_debogage.hpp              \
 config.hpp                       \
 ../shared/partie.hpp             \
-../shared/partie_client.hpp      \
+partie_client.hpp                \
 ../shared/tapis.hpp              \
 ../shared/enchere.hpp            \
 ../shared/carte.hpp              \

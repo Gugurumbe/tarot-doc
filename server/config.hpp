@@ -53,6 +53,6 @@
    
    Commenter pour la compatibilité Windows.
  */
-#define COULEURS 
+#define COULEURS
 
 #endif

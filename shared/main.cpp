@@ -4,18 +4,29 @@
 
 #include <iostream>
 
+#define NOM_CLASSE "Main"
+
+#include "deboguer.hpp"
+
 Main::Main()
 {
+  ENTER("Main()");
   m_cartes.reserve(18);
   //15 plus 3 pour le chien
 }
 
 Main::Main(const Main & m): m_cartes(m.m_cartes)
-{}
+{
+  ENTER("Main(const Main & m)");
+  ADD_ARG("m.nombre_cartes()", m.nombre_cartes());
+}
 
 Main::Main(const Protocole::Msg_distribution & m)
 {
+  ENTER("Main(const Msg_distribution & m)");
+  ADD_ARG("m.cartes[0]", m.cartes[0]);
   m_cartes.reserve(18);
+  //Charge les 15 Cartes du message
   for(unsigned int i = 0 ; i < 15 ; i++)
     {
       m_cartes.push_back(m.cartes[i]);
@@ -24,43 +35,45 @@ Main::Main(const Protocole::Msg_distribution & m)
 
 void Main::enlever(const Carte & carte)
 {
-  std::cout<<"->Main::enlever(const Carte & carte)"
-	   <<", given carte.numero() = "<<carte.numero()
-	   <<std::endl;
+  ENTER("enlever(const Carte & carte)");
+  ADD_ARG("carte", carte);
   for(unsigned int i = 0;
       i < m_cartes.size() ; i++)
     {
       if(m_cartes[i] == carte)
 	{
+	  DEBUG<<"Carte trouvée en i="<<i<<std::endl;
 	  m_cartes.erase(m_cartes.begin() + i);
 	  i=m_cartes.size();
 	}
     }
-  std::cout<<"<-Main::enlever(const Carte & carte)"
-	   <<", given carte.numero() = "<<carte.numero()
-	   <<std::endl;
 }
 
 bool Main::possede(const Carte & carte) const
 {
+  ENTER("possede(const Carte & carte) const");
+  ADD_ARG("carte", carte);
   std::vector<Carte>::const_iterator i = m_cartes.begin();
   for(i = m_cartes.begin();
       i != m_cartes.end() && *i != carte; i++);
-  return i != m_cartes.end();
+  EXIT(i != m_cartes.end());
 }
 
 void Main::ajouter(const Carte & carte)
 {
+  ENTER("ajouter(const Carte & carte)");
+  ADD_ARG("carte", carte);
   m_cartes.push_back(carte);
 }
 
 bool Main::peut_appeler(const Carte & carte) const
 {
-  std::cout<<"->bool Main::peut_appeler(const Carte & carte) const";
-  std::cout<<", given carte.numero() = "<<carte.numero()<<std::endl;
+  ENTER("peut_appeler(const Carte & carte) const");
+  ADD_ARG("carte", carte);
   //Si le joueur n'a pas tous les rois, il ne peut pas appeler
   //une dame.
-  Carte::Valeur valeur_incomplete = Carte::ROI; //La première valeur pour laquelle
+  Carte::Valeur valeur_incomplete = Carte::ROI; 
+  //La première valeur pour laquelle
   // il manque une carte dans la main du joueur.
   while(valeur_incomplete > carte.valeur() &&
 	(
@@ -69,29 +82,29 @@ bool Main::peut_appeler(const Carte & carte) const
 	 possede(Carte(Carte::CARREAU* 14 + valeur_incomplete))&&
 	 possede(Carte(Carte::COEUR * 14 + valeur_incomplete))))
     {
-      std::cout<<"Le joueur possède toutes les valeurs "<<valeur_incomplete;
-      std::cout<<std::endl;
+      DEBUG<<"Le joueur possède toutes les valeurs "
+	   <<valeur_incomplete
+	   <<std::endl;
       valeur_incomplete = (Carte::Valeur)((int)valeur_incomplete - 1);
     }
   bool b = carte.tete() && valeur_incomplete <= carte.valeur();
   if(!b)
     {
       if(!carte.tete())
-	std::cout<<"Erreur : ce n'est même pas une tête."<<std::endl;
+	DEBUG<<"Erreur : ce n'est même pas une tête."<<std::endl;
       if(valeur_incomplete > carte.valeur())
-	std::cout<<"Erreur : avant d'appeler une Carte de valeur "
-		 <<carte.valeur()
-		 <<", il faut avoir toutes les Cartes de valeur "
-		 <<valeur_incomplete<<std::endl;
+	DEBUG<<"Erreur : avant d'appeler une Carte de valeur "
+	     <<carte.valeur()
+	     <<", il faut avoir toutes les Cartes de valeur "
+	     <<valeur_incomplete<<std::endl;
     }
-  std::cout<<"<-bool Main::peut_appeler(const Cate & carte) const"
-	   <<", given carte.numero() = "<<carte.numero()
-	   <<" : return "<<(std::string)(b?"true":"false")<<std::endl;
-  return b;
+  EXIT(b);
 }
 
 bool Main::peut_declarer(const std::vector<Carte> & poignee) const
 {
+  ENTER("peut_declarer(const vector<Carte> & poignee) const");
+  ADD_ARG("poignee", poignee);
   if(poignee.size() == 8 || poignee.size() == 10 || poignee.size() == 13)
     {
       //On possède toutes ces cartes ?
@@ -132,40 +145,48 @@ bool Main::peut_declarer(const std::vector<Carte> & poignee) const
 		}
 	      if(excuse)
 		{
-		  //Le joueur doit posséder exactement poignee.size() atouts,
+		  //Le joueur doit posséder exactement 
+		  //poignee.size() atouts,
 		  //puisque l'excuse est un atout.
 		  unsigned int nombre_atouts = 0;
 		  for(unsigned int i = 0 ; i < m_cartes.size() ; i++)
 		    {
 		      if(m_cartes[i].atout())nombre_atouts++;
 		    }
-		  return nombre_atouts == poignee.size();
+		  EXIT(nombre_atouts == poignee.size());
 		}
-	      return true;
+	      EXIT(true);
 	    }
-	  return false;
+	  EXIT(false);
 	}
-      return false;
+      EXIT(false);
     }
-  return false;
+  EXIT(false);
 }
 
 const Main & Main::operator=(const Main & m)
 {
+  ENTER("operator=(const Main & m)");
+  ADD_ARG("m", m);
   m_cartes = m.m_cartes;
-  return *this;
+  EXIT(*this);
 }
 
 void Main::distribution(Protocole::Msg_distribution & m)
 {
+  ENTER("distribution(Msg_distribution & m)");
+  //Remplit un Msg_distribution
   for(unsigned int i = 0 ; i < 15 && i < m_cartes.size() ; i++)
     {
       m.cartes[i] = m_cartes[i].numero();
     }
 }
 
-std::vector<Carte::ModaliteEcart> Main::peut_ecarter(const std::vector<Carte> & ecart) const
+std::vector<Carte::ModaliteEcart> 
+Main::peut_ecarter(const std::vector<Carte> & ecart) const
 {
+  ENTER("peut_ecarter(const vector<Carte> & ecart) const");
+  ADD_ARG("ecart", ecart);
   std::vector<Carte::ModaliteEcart> resultat(ecart.size());
   std::vector<Carte> cartes_restantes = m_cartes;
   // On commence par traiter les cartes qui ne sont pas des atouts
@@ -180,10 +201,13 @@ std::vector<Carte::ModaliteEcart> Main::peut_ecarter(const std::vector<Carte> & 
 	}
       else if(ecart[i].ecartable() == Carte::NON_ECARTABLE)
 	{
+	  //On reporte cette information
 	  resultat[i] = Carte::NON_ECARTABLE;
 	}
     }
-  //On regarde s'il reste des cartes écartables dans la main du bonhomme
+  //On regarde s'il reste des cartes écartables 
+  //dans la main du bonhomme. Auquel cas, on refuse un atout
+  //dans le chien.
   bool peut_atout = true;
   for(unsigned int i = 0 ; i < m_cartes.size() && peut_atout ; i++)
     {
@@ -223,11 +247,13 @@ std::vector<Carte::ModaliteEcart> Main::peut_ecarter(const std::vector<Carte> & 
 	  if(ecart[i] == ecart[j]) resultat[j] = Carte::NON_ECARTABLE;
 	}
     }
-  return resultat;
+  EXIT(resultat);
 }
 
 bool Main::peut_couper(Carte::Couleur col) const
 {
+  ENTER("peut_couper(Couleur col)");
+  ADD_ARG("col", col);
   //Si on n'a plus de cette couleur, ou si c'est un atout.
   bool b = true;
   if(col == Carte::ATOUT)
@@ -243,11 +269,13 @@ bool Main::peut_couper(Carte::Couleur col) const
 	    i = m_cartes.size();
 	  }
       }
-  return b;
+  EXIT(b);
 }
 
 bool Main::peut_pisser(Carte::Valeur atout_max) const
 {
+  ENTER("peut_pisser(Valeur atout_max) const");
+  ADD_ARG("atout_max", atout_max);
   bool b = true;
   for(unsigned int i = 0 ; i < m_cartes.size() ; i++)
     {
@@ -257,11 +285,12 @@ bool Main::peut_pisser(Carte::Valeur atout_max) const
 	  i = m_cartes.size();
 	}
     }
-  return b;
+  EXIT(b);
 }
 
 bool Main::peut_defausser() const
 {
+  ENTER("peut_defausser() const");
   bool b = true;
   for(unsigned int i = 0 ; i < m_cartes.size() ; i++)
     {
@@ -271,10 +300,29 @@ bool Main::peut_defausser() const
 	  i = m_cartes.size();
 	}
     }
-  return b;
+  EXIT(b);
 }
 
 unsigned int Main::nombre_cartes() const
 {
-  return m_cartes.size();
+  ENTER("nombre_cartes() const");
+  EXIT(m_cartes.size());
+}
+
+std::vector<Carte> const & Main::cartes() const
+{
+  ENTER("cartes() const");
+  return m_cartes;
+}
+
+std::ostream & operator<<(std::ostream & out, const Main & main)
+{
+  out<<"Main { "<<main.nombre_cartes()<<" cartes : ";
+  const std::vector<Carte> & c = main.cartes();
+  for(unsigned int i = 0 ; i < c.size() ; i++)
+    {
+      out<<c[i].nom()<<" ";
+    }
+  out<<"}";
+  return out;
 }

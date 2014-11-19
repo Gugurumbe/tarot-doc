@@ -324,6 +324,7 @@ int PartieServeur::tester(unsigned int joueur, Protocole::Message const & messag
 	      ecart.push_back(message.m.ecart.ecart[i]);
 	      std::cout<<ecart[i].numero()<<", ";
 	    }
+	  std::cout<<std::endl;
 	  std::vector<Carte::ModaliteEcart> resultat;
 	  resultat = jeu_reel[joueur].peut_ecarter(ecart);
 	  for(unsigned int i = 0 ; i < resultat.size() ; i++)

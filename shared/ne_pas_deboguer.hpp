@@ -18,7 +18,7 @@
 /**
    @brief Stub.
 */
-#define EXIT(val)
+#define EXIT(val) return val
 
 /**
    @brief Stub.

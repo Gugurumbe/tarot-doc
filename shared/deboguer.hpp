@@ -21,8 +21,12 @@
 
 /**
    @brief Alias pour Debogueur::ret.
+
+   @warning L'argument est évalué 2 fois !!!
 */
-#define EXIT(val) Debogueur::ret(val)
+#define EXIT(val)				\
+  Debogueur::ret(val);				\
+  return val
 
 /**
    @brief Flux de débogage.
