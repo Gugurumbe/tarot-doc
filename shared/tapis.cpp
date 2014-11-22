@@ -1,143 +1,179 @@
 #include "tapis.hpp"
 
-Tapis::Tapis():joueur_ouverture(-1)
+#define NOM_CLASSE "Tapis"
+
+#include "deboguer.hpp"
+
+Tapis::Tapis():joueur_ouverture(-1), joueur_maitre(-1), 
+	       maitre_fixe(false)
 {
+  ENTER("Tapis()");
+  m_tapis.reserve(5);
 }
 
-void Tapis::ajouter(const Protocole::Msg_carte & carte)
+Tapis::~Tapis()
 {
+  ENTER("~Tapis()");
+}
+
+void Tapis::ajouter(const Protocole::Msg_carte & carte, 
+		    Carte::ForceExcuse exc)
+{
+  ENTER("ajouter(Msg_carte carte, ForceExcuse exc)");
+  ADD_ARG("carte", carte);
+  ADD_ARG("exc", exc);
+  //On ajoute une ligne 
   Carte c(carte.carte);
-  m_tapis.push_back(c);
-  if(c == EXCUSE) m_tapis.push_back(Carte(DETTE_EXCUSE));
+  std::vector<Carte> ligne;
+  ligne.push_back(c);
+  int ancien_maitre = joueur_maitre;
+  if(c == EXCUSE) ligne.push_back(Carte(DETTE_EXCUSE));
+  if(exc == Carte::EXCUSE_GAGNANTE)
+    {
+      DEBUG<<"Le joueur "<<(joueur_ouverture + m_tapis.size())%5
+	   <<" a été déclaré maître quoi qu'il advienne."<<std::endl;
+      maitre_fixe = true;
+      joueur_maitre = m_tapis.size();
+    }
+  else if(m_tapis.size() == 0) joueur_maitre = 0;
+  else if(m_tapis[joueur_maitre][0] > c || maitre_fixe)
+    {
+      DEBUG<<"Le joueur "<<(joueur_maitre + joueur_ouverture)%5
+	   <<" reste maître."<<std::endl;
+    }
+  else
+    {
+      DEBUG<<"Le joueur "<<(m_tapis.size() + joueur_ouverture)%5
+	   <<" passe maître devant "
+	   <<(joueur_maitre + joueur_ouverture)%5<<std::endl;
+      joueur_maitre=m_tapis.size();
+    }
+  m_tapis.push_back(ligne);
+  if(m_tapis.size() == 1)
+    {
+      nouveau_maitre(joueur_maitre);
+    }
+  else if(ancien_maitre != joueur_maitre)
+    {
+      changement_maitre(ancien_maitre, joueur_maitre);
+    }
+  if(m_tapis.size() == 5)
+    {
+      //Le pli est terminé
+      std::vector<Carte> posees;
+      std::vector<unsigned int> poseurs;
+      std::vector<unsigned int> gagnants;
+      unsigned int maitre_final = joueur_maitre;
+      for(unsigned int i = 0 ; i < m_tapis.size() ; i++)
+	for(unsigned int j = 0 ; j < m_tapis[i].size() ; j++)
+	  {
+	    posees.push_back(m_tapis[i][j]);
+	    poseurs.push_back(i);
+	    gagnants.push_back(i);
+	  }
+      //Assignation des cartes au gagnant :
+      for(unsigned int i = 0 ; i < posees.size() ; i++)
+	{
+	  if(posees[i] != EXCUSE || exc == Carte::EXCUSE_PRENABLE)
+	    gagnants[i] = maitre_final;
+	}
+      joueur_ouverture = maitre_final;
+      joueur_maitre = -1;
+      m_tapis.clear();
+      cartes_gagnees(posees, poseurs, gagnants);
+    }
 }
 
 void Tapis::set_ouverture(unsigned int joueur)
 {
+  ENTER("set_ouverture(unsigned int joueur)");
+  ADD_ARG("joueur", joueur);
   joueur_ouverture = (int)joueur;
-}
-
-bool Tapis::complet() const
-{
-  unsigned int cartes_reelles = 0;
-  for(std::vector<Carte>::const_iterator i = m_tapis.begin();
-      i != m_tapis.end(); i++)
-    {
-      if(*i != DETTE_EXCUSE) cartes_reelles++;
-    }
-  return cartes_reelles >= 5;
-}
-
-std::vector<Carte> concat(const std::vector<Carte> & t1,
-			  const std::vector<Carte> & t2)
-{
-  std::vector<Carte> t;
-  t.reserve(t1.size() + t2.size());
-  for(unsigned int i = 0 ; i < t1.size() ; i++)
-    {
-      t.push_back(t1[i]);
-    }
-  for(unsigned int i = 0 ; i < t2.size() ; i++)
-    {
-      t.push_back(t2[i]);
-    }
-  return t;
-}
-
-std::vector<Carte> Tapis::terminer(
-				   unsigned int attaquant,
-				   unsigned int appele,
-				   bool dernier_pli,
-				   unsigned int & suivant)
-{
-  unsigned int gagnant = joueur_ouverture;
-  unsigned int joueur = joueur_ouverture;
-  std::vector<Carte> gagnees;
-  std::vector<unsigned int> possesseurs;
-  gagnees.reserve(6);
-  possesseurs.reserve(6);
-  //On établit les possesseurs de chaque carte
-  joueur = joueur_ouverture;
-  for(unsigned int i = 0 ; i < m_tapis.size() ; i++)
-    {
-      possesseurs[i] = joueur;
-      if(m_tapis[i] != EXCUSE) //La prochaine carte
-	//est au joueur suivant
-	{
-	  joueur = (joueur + 1) % 5;
-	}
-    }
-  if(!dernier_pli)
-    {
-      //On recherche l'excuse et on l'enlève du tapis...
-      joueur = joueur_ouverture;
-      for(unsigned int i = 0; i < m_tapis.size(); i++)
-	{
-	  if(m_tapis[i] == EXCUSE)
-	    {
-	      if(joueur == attaquant || joueur == appele)
-		{
-		  //Elle revient à l'attaque
-		  gagnees.push_back(m_tapis[i]);
-		}
-	      //Elle n'est pas attribuée au gagnant
-	      m_tapis.erase(m_tapis.begin() + i);
-	      possesseurs.erase(possesseurs.begin() + i);
-	      i = m_tapis.size();
-	    }
-	  if(i < m_tapis.size() && m_tapis[i] != DETTE_EXCUSE)
-	    joueur = (joueur + 1) % 5;
-	}
-    }
-  joueur = joueur_ouverture;
-  //Toutes les cartes restantes reviennent au gagnant.
-  Carte gagnante = m_tapis[0];
-  for(unsigned int i = 1; i < m_tapis.size(); i++)
-    {
-      if(gagnante>m_tapis[i])
-	{
-	  //C'est toujours le même joueur qui est maître
-	}
-      else
-	{
-	  gagnante = m_tapis[i];
-	  gagnant = possesseurs[i];
-	  suivant = gagnant;
-	}
-    }
-  if(gagnant == attaquant || gagnant == appele)
-    return concat(gagnees, m_tapis);
-  return gagnees;
 }
 
 bool Tapis::plus_gros_atout(Carte & c) const
 {
+  ENTER("plus_gros_atout(Carte & c) const");
   bool b = false;
-  int max = 0;
-  int i_max = 0;
+  //Vrai si c a été modifiée
   for(unsigned int i = 0 ; i < m_tapis.size() ; i++)
-    {
-      if(m_tapis[i] != EXCUSE && m_tapis[i].atout())
-	{
-	  b = true;
-	  if(max == 0 || m_tapis[i].valeur() > m_tapis[i_max].valeur())
-	    {
-	      max = m_tapis[i].valeur();
-	      i_max = i;
-	    }
-	}
+    for(unsigned int j = 0 ; j < m_tapis[i].size() ; j++)
+      {
+	if(m_tapis[i][j] != EXCUSE && m_tapis[i][j].atout())
+	  {
+	    if((b && m_tapis[i][j] > c) || !b)
+	      {
+		c = m_tapis[i][j];
+	      }
+	    b = true;
+	  }
     }
-  if(b)
-    {
-      c = m_tapis[i_max];
-    }
-  return b;
+  DEBUG<<"Plus gros atout enregistré : "<<c<<std::endl;
+  EXIT(b);
 }
 
 bool Tapis::entame(Carte & c) const
 {
-  if(m_tapis.size() == 0) return false;
-  if(m_tapis[0] == EXCUSE && m_tapis.size() == 2) return false;
-  if(m_tapis[0] == EXCUSE) c = m_tapis[1];
-  else c = m_tapis[0];
-  return true;
+  ENTER("entame(Carte & c) const");
+  if(m_tapis.size() == 0) EXIT(false);
+  if(m_tapis[0][0] == EXCUSE && m_tapis.size() == 2) EXIT(false);
+  if(m_tapis[0][0] == EXCUSE) c = m_tapis[1][0];
+  else c = m_tapis[0][0];
+  DEBUG<<"Entame : "<<c<<std::endl;
+  EXIT(true);
+}
+
+bool Tapis::maitre(unsigned int & j) const
+{
+  ENTER("entame(unsigned int & j) const");
+  if(joueur_maitre < 0) EXIT(false);
+  j = (joueur_maitre + joueur_ouverture) % 5;
+  DEBUG<<"maître : "<<j<<std::endl;
+  EXIT(true);
+}
+
+void Tapis::changement_maitre(unsigned int ancien,
+			      unsigned int nouveau)
+{
+  ENTER("changement_maitre(unsigned int ancien, unsigned int nouveau)");
+  ADD_ARG("ancien", ancien);
+  ADD_ARG("nouveau", nouveau);
+  DEBUG<<"Spécialisez cette classe."<<std::endl;
+}
+
+void Tapis::nouveau_maitre(unsigned int maitre)
+{
+  ENTER("nouveau_maitre(unsigned int maitre)");
+  ADD_ARG("maitre", maitre);
+  DEBUG<<"Spécialisez cette classe."<<std::endl;
+}
+
+void Tapis::cartes_gagnees(std::vector<Carte> const & cartes,
+			   std::vector<unsigned int> const & poseurs,
+			   std::vector<unsigned int> const & gagnants)
+{
+  ENTER("cartes_gagnees(vector<Carte> cartes, vector<uint> poseurs, vector<uint> gagnants)");
+  ADD_ARG("cartes", cartes);
+  ADD_ARG("poseurs", poseurs);
+  ADD_ARG("gagnants", gagnants);
+  DEBUG<<"Spécialisez cette classe."<<std::endl;
+}
+
+std::ostream & Tapis::presenter(std::ostream & out) const
+{
+  out<<"(Tapis : ";
+  for(unsigned int i = 0 ; i < m_tapis.size() ; i++)
+    {
+      out<<((joueur_ouverture + i) % 5)
+	 <<" a joué "<<m_tapis[i];
+      if((int)i == joueur_maitre) out<<" [maitre]";
+      if(i + 1 < m_tapis.size()) out<<", ";
+    }
+  out<<")";
+  return out;
+}
+
+std::ostream & operator<<(std::ostream & out, const Tapis & tap)
+{
+  return tap.presenter(out);
 }

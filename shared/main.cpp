@@ -305,13 +305,15 @@ bool Main::peut_defausser() const
 
 unsigned int Main::nombre_cartes() const
 {
-  ENTER("nombre_cartes() const");
-  EXIT(m_cartes.size());
+  //ENTER("nombre_cartes() const");
+  //EXIT(m_cartes.size());
+  return m_cartes.size();
 }
 
 std::vector<Carte> const & Main::cartes() const
 {
-  ENTER("cartes() const");
+  //ENTER("cartes() const");
+  //EXIT(m_cartes)
   return m_cartes;
 }
 

@@ -68,7 +68,7 @@ private:
      
      On compte les points à la fin.
   */
-  std::vector<std::vector<Carte> > cartes_gagnees;
+  std::vector<std::vector<Carte> > cartes_attaque;
 
   /**
      @brief Le chien.
@@ -89,6 +89,13 @@ private:
      @brief Le tapis.
   */
   Tapis m_tapis;
+
+protected:
+    
+  virtual void cartes_gagnees
+  (std::vector<Carte> const & cartes,
+   std::vector<unsigned int> const & poseurs,
+   std::vector<unsigned int> const & gagnants);
 			  
 public slots:
 

@@ -17,6 +17,7 @@
 #define PROTOCOLE_DEFINI
 
 #include <QDataStream>
+#include <iostream>
 
 /**
    @brief Regroupe les traitements du protocole.
@@ -685,4 +686,48 @@ namespace Protocole
   */
   void ecrire(struct Message const & m, QDataStream & out);
 }
+
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Msg_erreur_protocole & m);
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Msg_refuse & m);
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Msg_numero & m);
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Msg_distribution & m);
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Msg_prise & m);
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Msg_contrat & m);
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Msg_appel & m);
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Msg_appeler & m);
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Msg_contrat_final & m);
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Msg_chien & m);
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Msg_ecart & m);
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Msg_atout & m);
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Msg_chelem & m);
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Msg_jeu & m);
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Msg_montrer_poignee & m);
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Msg_poignee & m);
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Msg_requete & m);
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Msg_carte & m);
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Msg_pli & m);
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Msg_resultat & m);
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Message & m);
+
 #endif

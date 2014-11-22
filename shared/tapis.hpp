@@ -47,50 +47,23 @@ public:
   Tapis();
 
   /**
+     @brief Destructeur virtuel.
+   */
+  virtual ~Tapis();
+
+  /**
      Ajoute une carte.
      L'ajout d'une carte au tapis se fait directement à partir d'un
      sous-type de Message.
-     @param carte : le message provenant du serveur.
+     @param carte Le message provenant du serveur.
+     @param maitre Indiquez Vrai ssi on en est au dernier tour d'un
+     chelem et que le preneur joue l'excuse.
+     @param exc La force de l'excuse.
      @see Message
      @see Tapis::set_ouverture(unsigned int)
   */
-  void ajouter(const Protocole::Msg_carte & carte);
-
-  /**
-     Lorsqu'on ajoute la première carte du tour, il faut également 
-     spécifier le joueur qui joue cette première carte, afin d'en
-     déduire tous les autres.
-     @param joueur : numéro du joueur
-     @see Tapis::ajouter(const Msg_carte &)
-   */
-  void set_ouverture(unsigned int joueur);
-
-  /**
-     Indique si un tour est terminé.
-     Lorsque 5 cartes réelles ont été jouées, le tour est terminé.
-     @return Vrai ssi le tour est terminé.
-     @see Tapis::terminer(unsigned int, unsigned int, bool)
-   */
-  bool complet() const;
-
-  /**
-     Termine le tour.
-     Lorsque le tour est terminé, il est nécessaire d'attribuer les
-     cartes gagnées par l'attaque. Pour cela, il faut connaître le
-     JOUEUR appelé. Cette méthode n'est à appeler que du côté serveur.
-     @param attaquant Numéro du joueur qui a pris.
-     @param appele Numéro du joueur appelé.
-     @param dernier_pli Indique si la vraie excuse peut être prise.
-     @param[out] suivant Le joueur suivant.
-     @return Les cartes gagnées par le camp attaquant.
-     @see Tapis::complet() const
-   */
-  std::vector<Carte> terminer(
-			      unsigned int attaquant,
-			      unsigned int appele,
-			      bool dernier_pli,
-			      unsigned int & suivant
-			      );
+  void ajouter(const Protocole::Msg_carte & carte, 
+	       Carte::ForceExcuse exc = Carte::EXCUSE_IMPRENABLE);
 
   /**
      @brief Retourne le plus gros atout joué.
@@ -110,6 +83,63 @@ public:
      @return vrai ssi il y a une carte d'entame.
    */
   bool entame(Carte & c) const;
+
+  /**
+     @brief Retourne le joueur maître.
+
+     @param[out] j Le joueur.
+     @return vrai ssi il y a une carte jouée.
+  */
+  bool maitre(unsigned int & j) const;
+
+  /**
+     @brief Force le premier joueur.
+
+     À utiliser au premier tour, car le premier joueur n'est pas
+     forcément le numéro 0 (en cas de Chelem).
+     @param joueur Le premier joueur.
+   */
+  void set_ouverture(unsigned int joueur);
+
+  /**
+     @brief Présente le tapis.
+   */
+  std::ostream & presenter(std::ostream & out) const;
+
+
+protected:
+  
+  /**
+     @brief Appelé lorsque le maître change.
+     
+     Elle est appelée une fois que le joueur maître a effectivement
+     changé. 
+     
+     @param ancien L'ancien joueur maître.
+     @param nouveau Le nouveau joueur maître.
+
+     @see nouveau_maitre(unsigned int)
+   */
+  virtual void changement_maitre(unsigned int ancien,
+				 unsigned int nouveau);
+
+  /**
+     @brief Appelé lorsque l'on définit le maître.
+     
+     @param maitre Le numéro de tour du maître.
+   */
+  virtual void nouveau_maitre(unsigned int maitre);
+
+  /**
+     @brief Appelé lorsqu'un pli est terminé.
+
+     @param cartes Les cartes du pli.
+     @param poseurs Les poseurs de ces cartes respectives.
+     @param gagnants Les gagnants de ces cartes.
+   */
+  virtual void cartes_gagnees(std::vector<Carte> const & cartes,
+			      std::vector<unsigned int> const & poseurs,
+			      std::vector<unsigned int> const & gagnants);
 private:
 
   /**
@@ -120,10 +150,25 @@ private:
   int joueur_ouverture;
 
   /**
-     Cartes sur le tapis.
-     Vidé à chaque tour. Contient au plus 6 cartes.
+     Nombre de joueurs ayant joué avant le joueur maitre.
+     
+     C'est le numéro du joueur maitre - joueur_ouverture (mod 5).
    */
-  std::vector<Carte> m_tapis;
+  int joueur_maitre;
+
+  /**
+     Indique si le joueur maître est fixé.
+     En fin de chelem, le joueur 0 est maître s'il joue l'excuse.
+   */
+  bool maitre_fixe;
+
+  /**
+     Cartes sur le tapis.
+     Vidé à chaque tour. Contient jusqu'à 5 lignes de 0, 1 ou 2 cartes.
+   */
+  std::vector<std::vector<Carte> > m_tapis;
 };
+
+std::ostream & operator<<(std::ostream & out, const Tapis & tap);
 
 #endif

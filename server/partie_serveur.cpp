@@ -117,7 +117,7 @@ void PartieServeur::assimiler(Protocole::Message const & message)
 	    {
 	      DEBUG<<"L'attaque gagne quand même les cartes du chien."
 		   <<std::endl;
-	      cartes_gagnees.push_back(chien);
+	      cartes_attaque.push_back(chien);
 	    }
 	  Protocole::Message jeu;
 	  jeu.type = Protocole::JEU;
@@ -230,36 +230,9 @@ void PartieServeur::assimiler(Protocole::Message const & message)
 	  unsigned int j = (tour() + 4) % 5;
 	  jeu_reel[j].enlever(c);
 	  m_tapis.ajouter(message.m.carte);
-	  if(m_tapis.complet())
-	    {
-	      DEBUG<<"Tapis complet."<<std::endl;
-	      unsigned int gagnant = 5;
-	      cartes_gagnees.push_back
-		(m_tapis.terminer(attaquant(), joueur_appele,
-				  jeu_reel[j].nombre_cartes() == 0,
-				  gagnant)
-		 );
-	      Protocole::Message pli;
-	      pli.type = Protocole::PLI;
-	      pli.m.pli.joueur = gagnant;
-	      EMETTRE_A_TOUS(pli);
-	      if(jeu_reel[j].nombre_cartes() == 0)
-		{
-		  DEBUG<<"Partie terminée."<<std::endl;
-		  //C'est terminé
-		  Protocole::Message fin;
-		  fin.type = Protocole::RESULTAT;
-		  for(unsigned int i = 0 ; i < 5 ; i++)
-		    {
-		      fin.m.resultat.resultats[i] = 0;
-		    }
-		  EMETTRE_A_TOUS(fin);
-		}
-	    }
 	}
     case Protocole::PLI:
       DEBUG<<"Prochain joueur : "<<tour()<<std::endl;
-      m_tapis.set_ouverture(tour()); //La Partie a déjà compris.
       break;
     case Protocole::RESULTAT:
       break;
@@ -511,4 +484,41 @@ void PartieServeur::distribuer()
       set_phase(Partie::ENCHERES);
     }
   else distribuer();
+}
+
+void PartieServeur::cartes_gagnees
+(std::vector<Carte> const & cartes,
+ std::vector<unsigned int> const & poseurs,
+ std::vector<unsigned int> const & gagnants)
+{
+  ENTER("cartes_gagnees(vector<Carte> cartes, vector<uint> poseurs, vector<uint> gagnants)");
+  ADD_ARG("cartes", cartes);
+  ADD_ARG("poseurs", poseurs);
+  ADD_ARG("gagnants", gagnants);
+  std::vector<Carte> gagnees;
+  for(unsigned int i = 0 ; i < cartes.size() ; i++)
+    {
+      if(gagnants[i] == attaquant() || gagnants[i] == joueur_appele)
+	{
+	  gagnees.push_back(cartes[i]);
+	}
+    }
+  cartes_attaque.push_back(gagnees);
+  if(jeu_reel[0].nombre_cartes() == 0)
+    {
+      //La partie est finie
+      Protocole::Message res;
+      res.type = Protocole::RESULTAT;
+      for(unsigned int i = 0 ; i < 5 ; i++)
+	res.m.resultat.resultats[i] = 0;
+      EMETTRE_A_TOUS(res);
+    }
+  else
+    {
+      //La partie n'est pas finie !
+      Protocole::Message pli;
+      pli.type = Protocole::PLI;
+      pli.m.pli.joueur = tour();
+      EMETTRE_A_TOUS(pli);
+    }
 }

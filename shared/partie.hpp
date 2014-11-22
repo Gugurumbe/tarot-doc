@@ -133,6 +133,11 @@ public:
   Partie();
 
   /**
+     @brief Destructeur.
+   */
+  virtual ~Partie();
+
+  /**
      @brief Retourne le contrat final.
 
      @warning Si on en est encore à la phase Enchères, le contrat
@@ -244,31 +249,52 @@ public:
      @see PartieServeur::assimiler(const Message &)
    */
   void assimiler(const Protocole::Message & m);
-protected:
 
   /**
-     @brief Termine le pli.
-     
-     @note Cette fonction est appelée du côté du serveur, à cause du
-     deuxième argument.
-     
-     Termine le pli, en enlevant les 5 cartes (ou 6...) du tapis. 
-     Les points ne sont pas comptés.
-     
-     @param attaquant : le joueur qui a pris.
-     @param appele : le joueur appelé.
-     @param dernier_pli : vrai ssi la vraie excuse peut être
-     remportée.
+     @brief Montre le tapis de jeu.
 
-     @note En cas de chelem, il faudra que l'excuse remporte le pli.
-
-     @return L'ensemble des cartes remportées par le camp attaquant.
-     @see Tapis::terminer(unsigned int, unsigned int, bool)
+     @return Le tapis de jeu.
    */
-  std::vector<Carte> terminer_tapis(
-				    unsigned int attaquant,
-				    unsigned int appele,
-				    bool dernier_pli);
+  const Tapis & tapis() const;
+
+  /**
+     @brief Ne pas regarder.
+   */
+  void throw_changement_maitre(unsigned int, unsigned int);
+
+  /**
+     @brief Ne pas regarder.
+  */
+  void throw_nouveau_maitre(unsigned int);
+
+  /**
+     @brief Ne pas regarder.
+   */
+  void throw_cartes_gagnees(std::vector<Carte> const &,
+			    std::vector<unsigned int> const &,
+			    std::vector<unsigned int> const &);
+
+protected:
+  
+  /**
+     @brief Relaye Tapis::changement_maitre(unsigned int, unsigned int)
+   */
+  virtual void changement_maitre(unsigned int ancien, 
+				 unsigned int nouveau);
+  
+  /**
+     @brief Relaye Tapis::nouveau_maitre(unsigned int)
+   */
+  virtual void nouveau_maitre(unsigned int maitre);
+  
+  /**
+     @brief Relaye Tapis::cartes_gagnees
+   */
+  virtual void cartes_gagnees
+  (std::vector<Carte> const & cartes,
+   std::vector<unsigned int> const & poseurs,
+   std::vector<unsigned int> const & gagnants);
+  
 private:
 
   /**
@@ -285,12 +311,12 @@ private:
      Dans la plupart des cas, vaut -1. En cas de chelem demandé,
      prend la valeur du joueur qui l'a demandé.
   */
-  int m_chelem;
+  bool m_chelem;
 
   /**
      @brief Tapis de jeu.
    */
-  Tapis m_tapis;
+  Tapis * const m_tapis;
 
   /**
      @brief Joueur qui a pris.
@@ -305,6 +331,11 @@ private:
      Au début, vaut 0.
    */
   unsigned int m_tour;
+
+  /**
+     @brief Nombre de plis joués.
+   */
+  unsigned int plis_joues;
 
   /**
      @brief La phase du jeu.

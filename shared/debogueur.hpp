@@ -157,6 +157,10 @@ private:
   const void * objet;
 };
 
+#ifndef PRINT_ARRAY
+
+#define PRINT_ARRAY
+
 template<class T>
 std::ostream & operator<<(std::ostream & out, 
 			  const std::vector<T> & tab)
@@ -170,5 +174,7 @@ std::ostream & operator<<(std::ostream & out,
   out<<"|]";
   return out;
 }
+
+#endif
 
 #endif

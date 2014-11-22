@@ -4,27 +4,27 @@
 //messages. Celle appelée sera déterminée en fonction du premier octet.
 
 bool lire_erreur_protocole(QDataStream & in, 
-			   Protocole::Msg_erreur_protocole & erreur_protocole)
+			   Protocole::Msg_erreur_protocole &)
 {
   //Rien à remplir dans un Msg_erreur_protocole
   return in.status() == QDataStream::Ok;
 }
 
 void ecrire_erreur_protocole(Protocole::Msg_erreur_protocole 
-			     const & erreur_protocole,
-			     QDataStream & out)
+			     const &,
+			     QDataStream &)
 {
 }
 
 bool lire_refuse(QDataStream & in, 
-		 Protocole::Msg_refuse & refuse)
+		 Protocole::Msg_refuse &)
 {
   //Idem
   return in.status() == QDataStream::Ok;
 }
 
-void ecrire_refuse(Protocole::Msg_refuse const &  refuse,
-		   QDataStream & out)
+void ecrire_refuse(Protocole::Msg_refuse const &,
+		   QDataStream &)
 {
 }
 
@@ -55,7 +55,8 @@ bool lire_distribution(QDataStream & in,
   return in.status() == QDataStream::Ok;
 }
 
-void ecrire_distribution(Protocole::Msg_distribution const & distribution,
+void ecrire_distribution(Protocole::Msg_distribution 
+			 const & distribution,
 			 QDataStream & out)
 {
   for(int i = 0 ; i < 15 ; i ++)
@@ -95,13 +96,13 @@ void ecrire_contrat(Protocole::Msg_contrat const & contrat,
 }
 
 bool lire_appel(QDataStream & in,
-		Protocole::Msg_appel & appel)
+		Protocole::Msg_appel &)
 {
   return in.status() == QDataStream::Ok;
 }
 
-void ecrire_appel(Protocole::Msg_appel const & appel,
-		  QDataStream & out)
+void ecrire_appel(Protocole::Msg_appel const &,
+		  QDataStream &)
 {
 }
 
@@ -272,7 +273,8 @@ bool lire_montrer_poignee(QDataStream & in,
   return (in.status() == QDataStream::Ok);
 }
 
-void ecrire_montrer_poignee(Protocole::Msg_montrer_poignee const & montrer_poignee,
+void ecrire_montrer_poignee(Protocole::Msg_montrer_poignee
+			    const & montrer_poignee,
 			    QDataStream & out)
 {
   for(int i = 0 ; i < montrer_poignee.taille && i < 13 ; i++)
@@ -544,4 +546,192 @@ void Protocole::ecrire(Protocole::Message const & m, QDataStream & out)
     default:
       break;
     }
+}
+
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Msg_erreur_protocole &)
+{
+  return out<<"<erreur_protocole>";
+}
+
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Msg_refuse &)
+{
+  return out<<"<resultat>";
+}
+
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Msg_numero & m)
+{
+  return out<<"<numero : n="<<m.n<<">";
+}
+
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Msg_distribution & m)
+{
+  out<<"<distribution : cartes=[|";
+  for(unsigned int i = 0 ; i < 14 ; i++)
+    {
+      out<<m.cartes[i]<<" ; ";
+    }
+  out<<m.cartes[14];
+  out<<"|]>";
+  return out;
+}
+
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Msg_prise & m)
+{
+  return out<<"<prise : niveau="<<m.niveau<<">";
+}
+
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Msg_contrat & m)
+{
+  return out<<"<contrat : niveau="<<m.niveau<<">";
+}
+
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Msg_appel &)
+{
+  return out<<"<appel>";
+}
+
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Msg_appeler & m)
+{
+  return out<<"<appeler : carte="<<m.carte<<">";
+}
+
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Msg_contrat_final & m)
+{
+  return out<<"<contrat_final : preneur="<<m.preneur
+	    <<", niveau="<<m.niveau
+	    <<", appel="<<m.appel
+	    <<">";
+}
+
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Msg_chien & m)
+{
+  return out<<"<chien : chien=[|"
+	    <<m.chien[0]<<" ; "
+	    <<m.chien[1]<<" ; "
+	    <<m.chien[2]<<"|]>";
+}
+
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Msg_ecart & m)
+{
+  return out<<"<ecart : ecart=[|"
+	    <<m.ecart[0]<<" ; "
+	    <<m.ecart[1]<<" ; "
+	    <<m.ecart[2]<<"|]>";
+}
+
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Msg_atout & m)
+{
+  out<<"<atout : cartes=[|";
+  for(int i = 0 ; i + 1 < m.nombre ; i++)
+    {
+      out<<m.cartes[i]<<" ; ";
+    }
+  return out<<m.cartes[m.nombre - 1]<<"|]>";
+}
+
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Msg_chelem &)
+{
+  return out<<"<chelem>";
+}
+
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Msg_jeu &)
+{
+  return out<<"<jeu>";
+}
+
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Msg_montrer_poignee & m)
+{
+  out<<"<montrer_poignee : atouts=[|";
+  for(int i = 0 ; i + 1 < m.taille ; i++)
+    {
+      out<<m.atouts[i]<<" ; ";
+    }
+  return out<<m.atouts[m.taille - 1]<<"|]>";
+}
+
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Msg_poignee & m)
+{
+  out<<"<poignee : atouts=[|";
+  for(int i = 0 ; i + 1 < m.taille ; i++)
+    {
+      out<<m.atouts[i]<<" ; ";
+    }
+  return out<<m.atouts[m.taille - 1]<<"|]>";
+}
+
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Msg_requete & m)
+{
+  return out<<"<requete : carte="<<m.carte<<">";
+}
+
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Msg_carte & m)
+{
+  return out<<"<carte : carte="<<m.carte<<">";
+}
+
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Msg_pli & m)
+{
+  return out<<"<pli : joueur="<<m.joueur<<">";
+}
+
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Msg_resultat & m)
+{
+  out<<"<resultat : resultats=[|";
+  for(unsigned int i = 0 ; i < 4 ; i++)
+    {
+      out<<m.resultats[i]<<" ; ";
+    }
+  return out<<m.resultats[4]<<"|]>";
+}
+
+std::ostream & operator<<(std::ostream & out, 
+			  const Protocole::Message & m)
+{
+  if(m.compris) out<<" compris : ";
+  else out<<"incompris : ";
+  switch(m.type)
+    {
+    case Protocole::ERREUR_PROTOCOLE:out<<m.m.erreur_protocole;break;
+    case Protocole::REFUSE:out<<m.m.refuse;break;
+    case Protocole::NUMERO:out<<m.m.numero;break;
+    case Protocole::DISTRIBUTION:out<<m.m.distribution;break;
+    case Protocole::PRISE:out<<m.m.prise;break;
+    case Protocole::CONTRAT:out<<m.m.contrat;break;
+    case Protocole::APPEL:out<<m.m.appel;break;
+    case Protocole::APPELER:out<<m.m.appeler;break;
+    case Protocole::CONTRAT_FINAL:out<<m.m.contrat_final;break;
+    case Protocole::CHIEN:out<<m.m.chien;break;
+    case Protocole::ECART:out<<m.m.ecart;break;
+    case Protocole::ATOUT:out<<m.m.atout;break;
+    case Protocole::CHELEM:out<<m.m.chelem;break;
+    case Protocole::JEU:out<<m.m.jeu;break;
+    case Protocole::MONTRER_POIGNEE:out<<m.m.montrer_poignee;break;
+    case Protocole::POIGNEE:out<<m.m.poignee;break;
+    case Protocole::REQUETE:out<<m.m.requete;break;
+    case Protocole::CARTE:out<<m.m.carte;break;
+    case Protocole::PLI:out<<m.m.pli;break;
+    case Protocole::RESULTAT:out<<m.m.resultat;break;
+    default:out<<"<type inconnu>";
+    }
+  return out;
 }

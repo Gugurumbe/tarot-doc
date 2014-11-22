@@ -1,11 +1,10 @@
-#define DEBUG
-//Commenter si on veut utiliser le ClientJeu.
-
 #include <QApplication>
 #include <iostream>
 #include <QtNetwork>
 
-#ifdef DEBUG
+#include "config.hpp"
+
+#ifdef DEBUG_MODE
 #include "./client_debogage.hpp"
 #define CLIENT ClientDebogage
 #else

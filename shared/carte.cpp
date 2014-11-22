@@ -271,3 +271,14 @@ std::ostream & operator<<(std::ostream & out, Carte::ModaliteEcart mod)
     }
   return out;
 }
+std::ostream & operator<<(std::ostream & out, Carte::ForceExcuse exc)
+{
+  switch(exc)
+    {
+    case Carte::EXCUSE_GAGNANTE:out<<"excuse gagnante";break;
+    case Carte::EXCUSE_IMPRENABLE:out<<"excuse imprenable";break;
+    case Carte::EXCUSE_PRENABLE:out<<"excuse prenable";break;
+    default:out<<"autre force d'excuse";
+    }
+  return out;
+}

@@ -1,9 +1,15 @@
 #include "client.hpp"
 #include <iostream>
+
+#define NOM_CLASSE "Client"
+
+#include "deboguer.hpp"
 //À des fins de débogage.
 
 Client::Client(QObject * parent): QObject(parent)
 {
+  ENTER("Client(QObject * parent)");
+  ADD_ARG("parent", parent);
   QObject::connect(&sock, SIGNAL(connected()), 
 		   this, SIGNAL(connecte()));
   QObject::connect(&sock, SIGNAL(disconnected()),
@@ -16,6 +22,10 @@ Client::Client(QObject * parent): QObject(parent)
 
 void Client::connecter(QHostAddress addr, unsigned int port)
 {
+  ENTER("connecter(QHostAddress addr, unsigned int port)");
+  ADD_ARG("addr.toString().toStdString()", 
+	  addr.toString().toStdString());
+  ADD_ARG("port", port);
   sock.connectToHost(addr, port);
   //Connexion
   hote = addr;
@@ -25,28 +35,33 @@ void Client::connecter(QHostAddress addr, unsigned int port)
 
 void Client::reconnecter()
 {
+  ENTER("reconnecter()");
   sock.connectToHost(hote, port);
 }
 
 void Client::deconnecter()
 {
+  ENTER("deconnecter()");
   sock.disconnectFromHost();
 }
 
 void Client::envoyer(Protocole::Message m)
 {
-  std::cout<<"Envoyer..."<<std::endl;
+  ENTER("envoyer(Message m)");
+  ADD_ARG("m", m);
   QByteArray paquet;
   QDataStream out(&paquet, QIODevice::WriteOnly);
   Protocole::ecrire(m, out);
   sock.write(paquet.prepend((quint8)(1 + paquet.size())));
   sock.flush();
   //On envoie.
-  std::cout<<"Envoyé."<<std::endl;
+  emit emis(m);
 }
 
 void Client::envoyer(QByteArray p)
 {
+  ENTER("envoyer(QByteArray p)");
+  ADD_ARG("p.toHex().data", p.toHex().data());
   sock.write(p);
   //On envoie le paquet tel quel.
   sock.flush();
@@ -54,6 +69,7 @@ void Client::envoyer(QByteArray p)
 
 void Client::recevoir()
 {
+  ENTER("recevoir()");
   QByteArray paquet = sock.readAll();
   QDataStream in(paquet);
   quint8 taille = 0;

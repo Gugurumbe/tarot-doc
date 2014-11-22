@@ -88,3 +88,19 @@ bool Enchere::operator>(Prise p) const
 {
   return (int)m_prise > (int)p;
 }
+
+std::ostream & Enchere::presenter(std::ostream & out) const
+{
+  out<<"(Enchere : joueur="<<m_joueur<<", prise="<<m_prise;
+  if(m_carte_appelee)
+    {
+      out<<", appelée="<<*m_carte_appelee;
+    }
+  out<<")";
+  return out;
+}
+
+std::ostream & operator<<(std::ostream & out, const Enchere & e)
+{
+  return e.presenter(out);
+}

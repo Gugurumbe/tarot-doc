@@ -91,7 +91,7 @@ public:
      @return Mon jeu, augmenté des Cartes de l'écart si elles sont
      disponibles. 
    */
-  Main mon_jeu() const;
+  const Main & mon_jeu() const;
 private:
 
   /** Retient le numéro de mon tour. */
@@ -102,6 +102,8 @@ private:
   std::vector<Carte> chien_si_devoile;
   /** Retient les numéros des joueurs de mon équipe. */
   std::vector<unsigned int> mon_equipe;
+  /** Retient les cartes dont on veut se séparer. */
+  std::vector<Carte> en_chemin;
 public slots:
 
   /**
@@ -193,6 +195,17 @@ signals:
   void doit_quitter();
 
   /**
+     @brief Le numéro a changé
+     @param num Le numéro du client.
+   */
+  void numero_change(unsigned int num);
+
+  /**
+     @brief Votre jeu a été modifié.
+   */
+  void jeu_change();
+
+  /**
      @brief Action refusée.
 
      Indique que l'action du client a été refusée par le serveur. Ce
@@ -213,6 +226,11 @@ signals:
      enchères.
    */
   void doit_priser();
+  
+  /**
+     @brief Votre enchère a été refusée.
+   */
+  void enchere_refusee();
 
   /**
      @brief Une enchère vient d'être annoncée.
@@ -230,6 +248,11 @@ signals:
      Émis à la réception d'un Msg_appel.
    */
   void doit_appeler();
+
+  /**
+     @brief Vous ne pouvez pas appeler cette Carte.
+   */
+  void appel_refuse();
 
   /**
      @brief Les enchères sont terminées.
@@ -257,6 +280,16 @@ signals:
      PartieClient::chien_devoile()
    */
   void doit_ecarter();
+
+  /**
+     @brief Votre écart a été accepté.
+   */
+  void ecart_accepte();
+
+  /**
+     @brief Votre écart a été refusé.
+   */
+  void ecart_refuse();
 
   /**
      @brief On a écarté cette (ces) carte(s).
@@ -309,6 +342,20 @@ signals:
   void doit_jouer();
 
   /**
+     @brief Votre requête a été refusée.
+     
+     Une requête est la demande de jouer une carte.
+   */
+  void requete_refusee();
+
+  /**
+     @brief Votre requête a été acceptée.
+
+     Une requête est la demande de jouer une carte.
+   */
+  void requete_acceptee();
+
+  /**
      @brief Une Carte a été jouée;
      
      Ce signal est émis lorsqu'un Msg_carte est reçu. Le numéro du
@@ -325,6 +372,45 @@ signals:
      @param scores : les 5 scores des joueurs.
    */
   void score(std::vector<int> scores);
+
+  /**
+     @brief La Carte a été gagnée.
+     
+     Ce signal est émis lorsqu'une Carte a été gagnée par l'un des
+     joueurs.
+
+     @param c La carte en question.
+     @param poseur Le numéro du joueur qui l'avait posée.
+     @param gagnant Le numéro du joueur qui l'a gagnée.
+   */
+  void carte_gagnee(Carte c, unsigned int poseur, unsigned int gagnant);
+
+  /**
+     @brief Le pli a été gagné.
+
+     Ce signal est émis lorsqu'un pli a été remporté.
+     
+     @param tour Le tour du joueur ayant gagné ce pli.
+   */
+  void pli(unsigned int tour);
+
+  /**
+     @brief Le joueur est maître.
+     
+     Ce signal est émis lorsque le maître change.
+
+     @param joueur Le joueur maître.
+   */
+  void maitre(unsigned int joueur);
+
+protected:
+  virtual void changement_maitre(unsigned int ancien,
+				 unsigned int nouveau);
+  virtual void nouveau_maitre(unsigned int maitre);
+  virtual void cartes_gagnees
+  (std::vector<Carte> const & cartes,
+   std::vector<unsigned int> const & poseurs,
+   std::vector<unsigned int> const & gagnants);
 };
 
 #endif

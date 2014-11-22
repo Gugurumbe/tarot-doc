@@ -109,6 +109,36 @@ public:
       MONTRER_CARTE, /**<@brief Il faut montrer la carte.*/
       NON_ECARTABLE  /**<@brief On ne peut pas écarter cette carte.*/
     };
+
+  /**
+     @brief Définit la "force" de l'excuse.
+   */
+  enum ForceExcuse
+    {
+      /**
+	 @brief En cas de Chelem.
+	 
+	 En cas de Chelem, si le preneur pose l'excuse comme dernière
+	 carte, elle remporte le pli.
+       */
+      EXCUSE_GAGNANTE,   
+
+      /**
+	 @brief Dans la plupart des cas.
+	 
+	 L'excuse dont il est question est le bout qui vaut 4.0
+	 points. 
+       */
+      EXCUSE_IMPRENABLE,
+
+      /**
+	 @brief Au dernier tour.
+	 
+	 Au dernier tour, sauf cas de chelem réussi jusqu'à présent,
+	 l'excuse est remportée.
+       */
+      EXCUSE_PRENABLE
+    };
   
   /** 
       @brief Constructeur principal.
@@ -335,5 +365,6 @@ std::ostream & operator<<(std::ostream & out, const Carte & carte);
 std::ostream & operator<<(std::ostream & out, Carte::Couleur couleur);
 std::ostream & operator<<(std::ostream & out, Carte::Valeur valeur);
 std::ostream & operator<<(std::ostream & out, Carte::ModaliteEcart mod);
+std::ostream & operator<<(std::ostream & out, Carte::ForceExcuse exc);
 
 #endif

@@ -20,11 +20,6 @@
 enum {DEBOGAGE, JEU};
 
 /**
-   @brief Définit le mode de lancement.
- */
-#define LANCEMENT DEBOBAGE
-
-/**
    @brief Oui ou non.
  */
 enum {YES, NO};

@@ -143,10 +143,16 @@ signals:
      Il n'y a pas d'équivalent « Client::recu_brut(QByteArray) ». Si
      cela manque vraiment, je le rajouterai.
 
-     @param m : le Message reçu du serveur.
+     @param m Le Message reçu du serveur.
    */
   void recu(Protocole::Message m);
 		      
+  /**
+     @brief Émis lorsqu'un message est envoyé au serveur.
+     
+     @param m Le message en question.
+   */
+  void emis(Protocole::Message m);
 private slots:
 
   /**
@@ -173,5 +179,23 @@ private:
    */
   unsigned int port;
 };
+
+#ifndef PRINT_ARRAY
+
+#define PRINT_ARRAY
+
+template<class T>
+std::ostream & operator<<(std::ostream & out, const std::vector<T> & t)
+{
+  out<<"[|";
+  for(unsigned int i = 0 ; i < t.size() - 1 ; i++)
+    {
+      out<<t[i]<<" ; ";
+    }
+  out<<t[t.size() - 1]<<"|]";
+  return out;
+}
+
+#endif
 
 #endif

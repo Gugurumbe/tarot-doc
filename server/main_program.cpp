@@ -1,7 +1,7 @@
 #include "./config.hpp"
 #include "debogueur.hpp"
 #include <iostream>
-#include <QApplication>
+#include <QCoreApplication>
 
 #include "serveur_debogage.hpp"
 #include "serveur_jeu.hpp"
@@ -20,7 +20,7 @@ int main(int argc, char * argv[])
       Debogueur::arg(str.str(), 
 		     "\"" + std::string(argv[i]) + "\"");
     }
-  QApplication app(argc, argv);
+  QCoreApplication app(argc, argv);
   srand(time(NULL));
   SERVEUR s;
   Debogueur::debug()<<"Ouverture du port "<<s.ouvrir_global()<<std::endl;

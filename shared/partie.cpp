@@ -2,85 +2,70 @@
 #include "debogueur.hpp"
 #include <iostream>
 
-//#define DEBUG_THIS_FILE
+#define NOM_CLASSE "Partie"
 
-#ifdef DEBUG_THIS_FILE
-#define ENTER_(nom_meth) ENTER("Partie", nom_meth)
-#else
-#define ENTER_(truc)
-#define EXIT(truc)
-#define ADD_ARG(machin, chose)
-#define DEBUG std::cout
-#endif
+#include "ne_pas_deboguer.hpp"
 
-Partie::Partie(): m_encheres(5), m_chelem(-1), m_attaquant(5),
-		  m_tour(0), m_phase(CONSTITUTION_TABLE),
+class TapisPartie : public Tapis
+{
+public:
+  TapisPartie(Partie * parent);
+
+protected:
+  virtual void changement_maitre(unsigned int, unsigned int);
+  virtual void nouveau_maitre(unsigned int);
+  virtual void cartes_gagnees(std::vector<Carte> const &,
+			      std::vector<unsigned int> const &,
+			      std::vector<unsigned int> const &);
+private:
+  Partie * const m_parent;
+};
+
+Partie::Partie(): m_encheres(5), m_chelem(false), 
+		  m_tapis(new TapisPartie(this)), 
+		  m_attaquant(5),
+		  m_tour(0), plis_joues(0),
+		  m_phase(CONSTITUTION_TABLE),
 		  m_tailles_poignees(5, 0)
 {
-  ENTER_("Partie()");
+  ENTER("Partie()");
+}
+
+Partie::~Partie()
+{
+  ENTER("~Partie()");
+  delete m_tapis;
 }
 
 const Enchere & Partie::contrat_final() const
 {
-  ENTER_("contrat_final() const");
+  ENTER("contrat_final() const");
   /* assert(m_attaquant < 5); */
-  std::stringstream ret;
-  ret<<"(joueur : "<<m_encheres[m_attaquant].joueur()
-     <<", prise : "<<m_encheres[m_attaquant].prise()
-     <<", carte appelée : ";
-  if(m_encheres[m_attaquant].carte_appelee())
-    {
-      ret<<"numéro ";
-      ret<<m_encheres[m_attaquant].carte_appelee()->numero();
-    }
-  else
-    {
-      ret<<"inconnue";
-    }
-  ret<<")";
-  EXIT(ret.str());
-  return m_encheres[m_attaquant];
+  EXIT(m_encheres[m_attaquant]);
 }
 
 const Enchere & Partie::enchere_de(unsigned int joueur) const
 {
-  ENTER_("enchere_de(unsigned int joueur) const");
+  ENTER("enchere_de(unsigned int joueur) const");
   ADD_ARG("joueur", joueur);
-  std::stringstream ret;
-  ret<<"(joueur : "<<m_encheres[joueur].joueur()
-     <<", prise : "<<m_encheres[joueur].prise()
-     <<", carte appelée : ";
-  if(m_encheres[joueur].carte_appelee())
-    {
-      ret<<"numéro ";
-      ret<<m_encheres[joueur].carte_appelee()->numero();
-    }
-  else
-    {
-      ret<<"inconnue";
-    }
-  ret<<")";
-  EXIT(ret.str());
-  return m_encheres[joueur];
+  EXIT(m_encheres[joueur]);
 }
 
 int Partie::chelem() const
 {
-  ENTER_("chelem() const");
+  ENTER("chelem() const");
   EXIT(m_chelem);
-  return m_chelem;
 }
 
 unsigned int Partie::attaquant() const
 {
-  ENTER_("attaquant() const");
+  ENTER("attaquant() const");
   EXIT(m_attaquant);
-  return m_attaquant;
 }
 
 void Partie::set_attaquant(unsigned int j)
 {
-  ENTER_("set_attaquant(unsigned int j)");
+  ENTER("set_attaquant(unsigned int j)");
   ADD_ARG("j", j);
   if(m_attaquant >= 5)
     {
@@ -90,36 +75,33 @@ void Partie::set_attaquant(unsigned int j)
 
 unsigned int Partie::tour() const
 {
-  ENTER_("tour() const");
+  ENTER("tour() const");
   EXIT(m_tour);
-  return m_tour;
 }
 
 unsigned int Partie::poignee(unsigned int joueur) const
 {
-  ENTER_("poignee(unsigned int joueur const");
+  ENTER("poignee(unsigned int joueur const");
   ADD_ARG("joueur", joueur);
   EXIT(m_tailles_poignees[joueur]);
-  return m_tailles_poignees[joueur];
 }
 
 Partie::PhaseJeu Partie::phase() const
 {
-  ENTER_("phase() const");
+  ENTER("phase() const");
   EXIT(m_phase);
-  return m_phase;
 }
 
 void Partie::set_phase(Partie::PhaseJeu p)
 {
-  ENTER_("set_phase(PhaseJeu p)");
+  ENTER("set_phase(PhaseJeu p)");
   ADD_ARG("p", p);
   m_phase = p;
 }
 
 void Partie::assimiler(const Protocole::Message & m)
 {
-  ENTER_("assimiler(Message m)");
+  ENTER("assimiler(Message m)");
   ADD_ARG("m.type", m.type);
   switch(m.type)
     {
@@ -168,8 +150,7 @@ void Partie::assimiler(const Protocole::Message & m)
       break;
     case Protocole::JEU:
       m_phase = PHASE_JEU;
-      m_chelem = (m.m.jeu.chelem >= 5 ? -1 : m.m.jeu.chelem);
-      if(m_chelem >= 0) m_tour = m_chelem;
+      if(m_chelem) m_tour = attaquant();
       else m_tour = 0;
       //Le joueur ayant demandé un chelem joue.
       break;
@@ -182,11 +163,21 @@ void Partie::assimiler(const Protocole::Message & m)
       break;
     case Protocole::CARTE:
       m_phase = PHASE_JEU;
+      if(m_tour == attaquant() && 
+	 m_chelem &&
+	 m.m.carte.carte == EXCUSE && 
+	 plis_joues == 14)
+	m_tapis->ajouter(m.m.carte, Carte::EXCUSE_GAGNANTE);
+      else if(plis_joues == 14)
+	m_tapis->ajouter(m.m.carte, Carte::EXCUSE_PRENABLE);
+      else
+	m_tapis->ajouter(m.m.carte, Carte::EXCUSE_IMPRENABLE);
       m_tour = (m_tour + 1) % 5 ;
       break;
     case Protocole::PLI:
       m_phase = PHASE_JEU;
       m_tour = m.m.pli.joueur;
+      plis_joues++;
       break;
     case Protocole::RESULTAT:
       m_phase = FIN;
@@ -194,4 +185,65 @@ void Partie::assimiler(const Protocole::Message & m)
       break;
     }
   DEBUG<<"Phase : "<<m_phase<<", tour : "<<m_tour<<std::endl;;
+}
+
+const Tapis & Partie::tapis() const
+{
+  return *m_tapis;
+}
+
+void Partie::throw_changement_maitre(unsigned int ancien,
+			       unsigned int nouveau)
+{
+  changement_maitre(ancien, nouveau);
+}
+
+void Partie::throw_nouveau_maitre(unsigned int maitre)
+{
+  nouveau_maitre(maitre);
+}
+
+void Partie::throw_cartes_gagnees
+(std::vector<Carte> const & cartes,
+ std::vector<unsigned int> const & poseurs,
+ std::vector<unsigned int> const & gagnants)
+{
+  cartes_gagnees(cartes, poseurs, gagnants);
+}
+
+void Partie::changement_maitre(unsigned int, unsigned int)
+{
+}
+
+void Partie::nouveau_maitre(unsigned int)
+{
+}
+
+void Partie::cartes_gagnees(std::vector<Carte> const &,
+			    std::vector<unsigned int> const &,
+			    std::vector<unsigned int> const &)
+{
+}
+
+TapisPartie::TapisPartie(Partie * parent) : m_parent(parent)
+{
+}
+
+void TapisPartie::changement_maitre(unsigned int ancien,
+					    unsigned int nouveau)
+{
+  m_parent->throw_changement_maitre(ancien, nouveau);
+}
+
+void TapisPartie::nouveau_maitre(unsigned int maitre)
+{
+  m_parent->throw_nouveau_maitre(maitre);
+}
+
+void TapisPartie::cartes_gagnees
+(std::vector<Carte> const & cartes,
+ std::vector<unsigned int> const & poseurs,
+ std::vector<unsigned int> const & gagnants)
+{
+  m_parent->throw_cartes_gagnees(cartes, poseurs, gagnants);
 }

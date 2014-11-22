@@ -212,10 +212,21 @@ public:
      @see Enchere::operator>(const Enchere &) const
   */
   bool operator>(Prise p) const;
+
+  /**
+     @brief Présente l'enchère.
+
+     @param[out] out Le flux avant l'écriture.
+     
+     @return Le flux après écriture.
+   */
+  std::ostream & presenter(std::ostream & out) const;
 private:
   unsigned int m_joueur; //vaut 5 par défaut
   Prise m_prise; //vaut PASSE par défaut
   Carte * m_carte_appelee; //Vaut 0 tant qu'on ne le sait pas
 };
+
+std::ostream & operator<<(std::ostream & out, const Enchere & e);
 
 #endif

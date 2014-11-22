@@ -25,7 +25,7 @@ client.cpp                       \
 client_jeu.cpp                   \ 
 client_debogage.cpp              \
 ../shared/partie.cpp             \
-../shared/partie_client.cpp      \
+partie_client.cpp                \
 ../shared/tapis.cpp              \
 ../shared/enchere.cpp            \
 ../shared/carte.cpp              \
