@@ -138,6 +138,12 @@ Types publics</h2></td></tr>
  }</td></tr>
 <tr class="memdesc:ab766c46bfc445d84ad35af4149f76802"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sert à dire si une carte peut être écartée ou non, et les modalités éventuelles (montrer les atouts).  <a href="classCarte.html#ab766c46bfc445d84ad35af4149f76802">Plus de détails...</a><br/></td></tr>
 <tr class="separator:ab766c46bfc445d84ad35af4149f76802"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7241772664e80781b0d9ee484b6b1e3d"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classCarte.html#a7241772664e80781b0d9ee484b6b1e3d">ForceExcuse</a> { <a class="el" href="classCarte.html#a7241772664e80781b0d9ee484b6b1e3dab102387f53ce05a68e8f40f5dbceced9">EXCUSE_GAGNANTE</a>, 
+<a class="el" href="classCarte.html#a7241772664e80781b0d9ee484b6b1e3da4f36a8edeb791eeac0b7e979adb603b5">EXCUSE_IMPRENABLE</a>, 
+<a class="el" href="classCarte.html#a7241772664e80781b0d9ee484b6b1e3da82fde89df63590ffe88690c333fe5e25">EXCUSE_PRENABLE</a>
+ }</td></tr>
+<tr class="memdesc:a7241772664e80781b0d9ee484b6b1e3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Définit la "force" de l'excuse.  <a href="classCarte.html#a7241772664e80781b0d9ee484b6b1e3d">Plus de détails...</a><br/></td></tr>
+<tr class="separator:a7241772664e80781b0d9ee484b6b1e3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Fonctions membres publiques</h2></td></tr>
@@ -218,6 +224,34 @@ Fonctions membres publiques</h2></td></tr>
 
 <p>Énumère les 5 couleurs. </p>
 <p>L'excuse est un atout. C'est la dernière carte d'atout. La fausse excuse est également un atout, elle arrive après la vraie. </p>
+
+</div>
+</div>
+<a class="anchor" id="a7241772664e80781b0d9ee484b6b1e3d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum <a class="el" href="classCarte.html#a7241772664e80781b0d9ee484b6b1e3d">Carte::ForceExcuse</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Définit la "force" de l'excuse. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><em><a class="anchor" id="a7241772664e80781b0d9ee484b6b1e3dab102387f53ce05a68e8f40f5dbceced9"></a>EXCUSE_GAGNANTE</em>&#160;</td><td class="fielddoc">
+<p>En cas de Chelem. </p>
+<p>En cas de Chelem, si le preneur pose l'excuse comme dernière carte, elle remporte le pli. </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a7241772664e80781b0d9ee484b6b1e3da4f36a8edeb791eeac0b7e979adb603b5"></a>EXCUSE_IMPRENABLE</em>&#160;</td><td class="fielddoc">
+<p>Dans la plupart des cas. </p>
+<p>L'excuse dont il est question est le bout qui vaut 4.0 points. </p>
+</td></tr>
+<tr><td class="fieldname"><em><a class="anchor" id="a7241772664e80781b0d9ee484b6b1e3da82fde89df63590ffe88690c333fe5e25"></a>EXCUSE_PRENABLE</em>&#160;</td><td class="fielddoc">
+<p>Au dernier tour. </p>
+<p>Au dernier tour, sauf cas de chelem réussi jusqu'à présent, l'excuse est remportée. </p>
+</td></tr>
+</table>
 
 </div>
 </div>
@@ -775,7 +809,7 @@ priori moi qui remporte le pli". Il ne s'agit pas d'une relation d'ordre, car el
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mercredi 19 Novembre 2014 20:23:09 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 22 Novembre 2014 13:50:58 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

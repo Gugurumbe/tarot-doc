@@ -10,9 +10,12 @@ var searchData=
   ['peut_5fecarter',['peut_ecarter',['../classMain.html#a7df3596743ce76906dc792e71adca8fa',1,'Main']]],
   ['peut_5fpisser',['peut_pisser',['../classMain.html#add661748c8e69831dafaf52fe047822f',1,'Main']]],
   ['phase',['phase',['../classPartie.html#a45201ab9e442170839bf1380e11500c4',1,'Partie']]],
+  ['pli',['pli',['../classPartieClient.html#a8f9544585ddb27ff856218df3ca91d46',1,'PartieClient']]],
   ['plus_5fgros_5fatout',['plus_gros_atout',['../classTapis.html#a15937239ea122355c7d13890bf79fb16',1,'Tapis']]],
   ['poignee',['poignee',['../classPartie.html#a59c52f0345c8acddeb03011295f8b1b1',1,'Partie']]],
   ['poignee_5fmontree',['poignee_montree',['../classPartieClient.html#a7cfe308b121505900fb451140976efda',1,'PartieClient']]],
   ['possede',['possede',['../classMain.html#a866b5e59e385bb3f93fe2c6745c7fe8d',1,'Main']]],
+  ['presenter',['presenter',['../classEnchere.html#a3d06ff5dc1b801c2b391f96d18395152',1,'Enchere::presenter()'],['../classTapis.html#ae6d71629b0b5cf451a0f99f15ba844b8',1,'Tapis::presenter()']]],
+  ['presenter_5fetat',['presenter_etat',['../classClientJeu.html#a9871486907b2f3de70dcfeeb0b501b33',1,'ClientJeu']]],
   ['prise',['prise',['../classEnchere.html#ad5162e8db4b9cc5b2b06b087f0f6d23c',1,'Enchere']]]
 ];

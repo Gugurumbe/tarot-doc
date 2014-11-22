@@ -6,5 +6,7 @@ var searchData=
   ['reagir_5fmessage',['reagir_message',['../classServeurDebogage.html#a9f54d8dbc763b7a9e6ec0e95222930d1',1,'ServeurDebogage']]],
   ['reconnecter',['reconnecter',['../classClient.html#aebb225890121c2dfc8b83f320c686db7',1,'Client']]],
   ['recu',['recu',['../classClient.html#a182ab6bbb5aecc61632f53b6404aa4d6',1,'Client']]],
+  ['requete_5facceptee',['requete_acceptee',['../classPartieClient.html#a95b39fe7d123887ba08f765aaaecbc5b',1,'PartieClient']]],
+  ['requete_5frefusee',['requete_refusee',['../classPartieClient.html#a7915ba35ecf74356073824d37bcf1765',1,'PartieClient']]],
   ['roi',['roi',['../classCarte.html#a54d05aa9711351d7862962486283fbfc',1,'Carte']]]
 ];

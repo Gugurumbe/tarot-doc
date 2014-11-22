@@ -95,15 +95,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <p>Classe de <a class="el" href="classServeur.html" title="Définit une classe communiquant sur le réseau. ">Serveur</a> de jeu.  
  <a href="classServeurJeu.html#details">Plus de détails...</a></p>
 
-<p><code>#include &lt;<a class="el" href="server_2serveur__jeu_8hpp_source.html">serveur_jeu.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="serveur__jeu_8hpp_source.html">serveur_jeu.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Graphe d'héritage de ServeurJeu:</div>
 <div class="dyncontent">
  <div class="center">
   <img src="classServeurJeu.png" usemap="#ServeurJeu_map" alt=""/>
   <map id="ServeurJeu_map" name="ServeurJeu_map">
-<area href="classServeur.html" title="Définit une classe communiquant sur le réseau. " alt="Serveur" shape="rect" coords="44,56,123,80"/>
-<area href="classServeur.html" title="Définit une classe communiquant sur le réseau. " alt="Serveur" shape="rect" coords="222,56,301,80"/>
+<area href="classServeur.html" title="Définit une classe communiquant sur le réseau. " alt="Serveur" shape="rect" coords="0,56,79,80"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -121,18 +120,6 @@ Connecteurs publics</h2></td></tr>
 <tr class="memitem:a747a0655730eb9de9402bce5293f588e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServeurJeu.html#a747a0655730eb9de9402bce5293f588e">oublier_table</a> (QObject *t)</td></tr>
 <tr class="memdesc:a747a0655730eb9de9402bce5293f588e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Oublie une <a class="el" href="classTable.html" title="Classe de Table. ">Table</a> détruite.  <a href="#a747a0655730eb9de9402bce5293f588e">Plus de détails...</a><br/></td></tr>
 <tr class="separator:a747a0655730eb9de9402bce5293f588e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b4761e8e346f0a10eaf88a1b55ecf2a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0b4761e8e346f0a10eaf88a1b55ecf2a"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>reagir_connexion</b> (unsigned int)</td></tr>
-<tr class="separator:a0b4761e8e346f0a10eaf88a1b55ecf2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6c8db0fb02b07d18c4dd9aded380628d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6c8db0fb02b07d18c4dd9aded380628d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>detacher_table</b> (<a class="el" href="classTable.html">Table</a> *)</td></tr>
-<tr class="separator:a6c8db0fb02b07d18c4dd9aded380628d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a27374c3b66f2064ae81de5d4297fdea0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a27374c3b66f2064ae81de5d4297fdea0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>rattacher_table</b> (<a class="el" href="classTable.html">Table</a> *)</td></tr>
-<tr class="separator:a27374c3b66f2064ae81de5d4297fdea0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af83671165e05e9834248aac7a5730575"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af83671165e05e9834248aac7a5730575"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>oublier_table</b> (QObject *)</td></tr>
-<tr class="separator:af83671165e05e9834248aac7a5730575"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_slots_classServeur"><td colspan="2" onclick="javascript:toggleInherit('pub_slots_classServeur')"><img src="closed.png" alt="-"/>&#160;Connecteurs publics hérités de <a class="el" href="classServeur.html">Serveur</a></td></tr>
 <tr class="memitem:a08aab282f6c58714523c1d8943ef61d1 inherit pub_slots_classServeur"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServeur.html#a08aab282f6c58714523c1d8943ef61d1">accepter</a> ()</td></tr>
 <tr class="memdesc:a08aab282f6c58714523c1d8943ef61d1 inherit pub_slots_classServeur"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie les nouvelles connexions.  <a href="#a08aab282f6c58714523c1d8943ef61d1">Plus de détails...</a><br/></td></tr>
@@ -155,35 +142,11 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>oublier_table</b> (QO
 <tr class="memitem:ae2878fd84931020ea01fab6be13be1a0 inherit pub_slots_classServeur"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServeur.html#ae2878fd84931020ea01fab6be13be1a0">envoyer</a> (unsigned int c, <a class="el" href="structProtocole_1_1Message.html">Protocole::Message</a> m)</td></tr>
 <tr class="memdesc:ae2878fd84931020ea01fab6be13be1a0 inherit pub_slots_classServeur"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envoie au client un <a class="el" href="structProtocole_1_1Message.html" title="Structure de Message universel. ">Protocole::Message</a>.  <a href="#ae2878fd84931020ea01fab6be13be1a0">Plus de détails...</a><br/></td></tr>
 <tr class="separator:ae2878fd84931020ea01fab6be13be1a0 inherit pub_slots_classServeur"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08aab282f6c58714523c1d8943ef61d1 inherit pub_slots_classServeur"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a08aab282f6c58714523c1d8943ef61d1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>accepter</b> ()</td></tr>
-<tr class="separator:a08aab282f6c58714523c1d8943ef61d1 inherit pub_slots_classServeur"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab1481eb56cefbb965d3b002e9855abaa inherit pub_slots_classServeur"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab1481eb56cefbb965d3b002e9855abaa"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>enlever</b> (QObject *sock)</td></tr>
-<tr class="separator:ab1481eb56cefbb965d3b002e9855abaa inherit pub_slots_classServeur"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1232f2b9a761537265cdebc9d1294b05 inherit pub_slots_classServeur"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1232f2b9a761537265cdebc9d1294b05"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>enlever</b> ()</td></tr>
-<tr class="separator:a1232f2b9a761537265cdebc9d1294b05 inherit pub_slots_classServeur"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3e1643b4ef30dfca13971f7238286120 inherit pub_slots_classServeur"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3e1643b4ef30dfca13971f7238286120"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>lire</b> ()</td></tr>
-<tr class="separator:a3e1643b4ef30dfca13971f7238286120 inherit pub_slots_classServeur"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5fbd1c5165de141bdef18cdca653b6a3 inherit pub_slots_classServeur"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5fbd1c5165de141bdef18cdca653b6a3"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>deconnecter</b> (unsigned int)</td></tr>
-<tr class="separator:a5fbd1c5165de141bdef18cdca653b6a3 inherit pub_slots_classServeur"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae38a918c40b8fa22dedfc6fc37ffb2aa inherit pub_slots_classServeur"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae38a918c40b8fa22dedfc6fc37ffb2aa"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>envoyer</b> (unsigned int, QByteArray)</td></tr>
-<tr class="separator:ae38a918c40b8fa22dedfc6fc37ffb2aa inherit pub_slots_classServeur"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4886b6c6199b4a03886aaa2b7a50864f inherit pub_slots_classServeur"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4886b6c6199b4a03886aaa2b7a50864f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>envoyer</b> (unsigned int, <a class="el" href="structMessage.html">Message</a>)</td></tr>
-<tr class="separator:a4886b6c6199b4a03886aaa2b7a50864f inherit pub_slots_classServeur"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Fonctions membres publiques</h2></td></tr>
 <tr class="memitem:a42732713b6d1da78b632fdb80df6fb02"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServeurJeu.html#a42732713b6d1da78b632fdb80df6fb02">ServeurJeu</a> (QObject *parent=0)</td></tr>
 <tr class="memdesc:a42732713b6d1da78b632fdb80df6fb02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur par défaut.  <a href="#a42732713b6d1da78b632fdb80df6fb02">Plus de détails...</a><br/></td></tr>
-<tr class="separator:a42732713b6d1da78b632fdb80df6fb02"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a42732713b6d1da78b632fdb80df6fb02"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a42732713b6d1da78b632fdb80df6fb02"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>ServeurJeu</b> (QObject *parent=0)</td></tr>
 <tr class="separator:a42732713b6d1da78b632fdb80df6fb02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classServeur"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classServeur')"><img src="closed.png" alt="-"/>&#160;Fonctions membres publiques hérités de <a class="el" href="classServeur.html">Serveur</a></td></tr>
 <tr class="memitem:af1ed0e9e9cda25c0767dda26dfd0bf43 inherit pub_methods_classServeur"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServeur.html#af1ed0e9e9cda25c0767dda26dfd0bf43">Serveur</a> (QObject *parent=0)</td></tr>
@@ -194,15 +157,6 @@ Fonctions membres publiques</h2></td></tr>
 <tr class="separator:af79375cb09b15add98ef5603dff4c74b inherit pub_methods_classServeur"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4ebda122c157f2f7a6924fd1c9140e8 inherit pub_methods_classServeur"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServeur.html#ae4ebda122c157f2f7a6924fd1c9140e8">ouvrir_global</a> ()</td></tr>
 <tr class="memdesc:ae4ebda122c157f2f7a6924fd1c9140e8 inherit pub_methods_classServeur"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ouvre une partie multijoueur.  <a href="#ae4ebda122c157f2f7a6924fd1c9140e8">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ae4ebda122c157f2f7a6924fd1c9140e8 inherit pub_methods_classServeur"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af1ed0e9e9cda25c0767dda26dfd0bf43 inherit pub_methods_classServeur"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af1ed0e9e9cda25c0767dda26dfd0bf43"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Serveur</b> (QObject *parent=0)</td></tr>
-<tr class="separator:af1ed0e9e9cda25c0767dda26dfd0bf43 inherit pub_methods_classServeur"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af79375cb09b15add98ef5603dff4c74b inherit pub_methods_classServeur"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af79375cb09b15add98ef5603dff4c74b"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>ouvrir_local</b> ()</td></tr>
-<tr class="separator:af79375cb09b15add98ef5603dff4c74b inherit pub_methods_classServeur"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae4ebda122c157f2f7a6924fd1c9140e8 inherit pub_methods_classServeur"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae4ebda122c157f2f7a6924fd1c9140e8"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>ouvrir_global</b> ()</td></tr>
 <tr class="separator:ae4ebda122c157f2f7a6924fd1c9140e8 inherit pub_methods_classServeur"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
@@ -220,18 +174,6 @@ Membres hérités additionnels</h2></td></tr>
 <tr class="memitem:aff70684b2bfe448696cc2cf273f21754 inherit signals_classServeur"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServeur.html#aff70684b2bfe448696cc2cf273f21754">message</a> (unsigned int c, <a class="el" href="structProtocole_1_1Message.html">Protocole::Message</a> m)</td></tr>
 <tr class="memdesc:aff70684b2bfe448696cc2cf273f21754 inherit signals_classServeur"><td class="mdescLeft">&#160;</td><td class="mdescRight">Émis lorsqu'un <a class="el" href="structProtocole_1_1Message.html" title="Structure de Message universel. ">Protocole::Message</a> est reçu.  <a href="#aff70684b2bfe448696cc2cf273f21754">Plus de détails...</a><br/></td></tr>
 <tr class="separator:aff70684b2bfe448696cc2cf273f21754 inherit signals_classServeur"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa1b98d0fb20fd000302991cd6fd4e8f9 inherit signals_classServeur"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa1b98d0fb20fd000302991cd6fd4e8f9"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>connexion</b> (unsigned int)</td></tr>
-<tr class="separator:aa1b98d0fb20fd000302991cd6fd4e8f9 inherit signals_classServeur"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3cf82bfb0d7c8daeec457c33c4ad71fe inherit signals_classServeur"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3cf82bfb0d7c8daeec457c33c4ad71fe"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>message_brut</b> (unsigned int, QByteArray)</td></tr>
-<tr class="separator:a3cf82bfb0d7c8daeec457c33c4ad71fe inherit signals_classServeur"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ece65a5e9b3ff49f2bd83afc7afdb59 inherit signals_classServeur"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0ece65a5e9b3ff49f2bd83afc7afdb59"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>deconnexion</b> (unsigned int)</td></tr>
-<tr class="separator:a0ece65a5e9b3ff49f2bd83afc7afdb59 inherit signals_classServeur"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7de3d21d126def449b6239f444f57f7 inherit signals_classServeur"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae7de3d21d126def449b6239f444f57f7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>message</b> (unsigned int, <a class="el" href="structMessage.html">Message</a>)</td></tr>
-<tr class="separator:ae7de3d21d126def449b6239f444f57f7 inherit signals_classServeur"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Classe de <a class="el" href="classServeur.html" title="Définit une classe communiquant sur le réseau. ">Serveur</a> de jeu. </p>
@@ -391,13 +333,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>message</b> (unsigned
 </div>
 </div>
 <hr/>La documentation de cette classe a été générée à partir des fichiers suivants :<ul>
-<li>server/<a class="el" href="server_2serveur__jeu_8hpp_source.html">serveur_jeu.hpp</a></li>
+<li>server/<a class="el" href="serveur__jeu_8hpp_source.html">serveur_jeu.hpp</a></li>
 <li>server/serveur_jeu.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mercredi 19 Novembre 2014 20:23:09 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 22 Novembre 2014 13:50:59 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -95,34 +95,69 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#define CLIENT_JEU_DEFINI</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;client.hpp&quot;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="classClientJeu.html">   22</a></span>&#160;<span class="keyword">class </span><a class="code" href="classClientJeu.html">ClientJeu</a> : <span class="keyword">public</span> <a class="code" href="classClient.html">Client</a></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;{</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  Q_OBJECT;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  <a class="code" href="classClientJeu.html#a662db519474b83b36fd7353ad6233600">ClientJeu</a>(QObject * parent = 0);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">public</span> slots:</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;  </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classClientJeu.html#a3a3b071a902cacf5a91dd62c60211870">traiter_connexion</a>();</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classClientJeu.html#aa930835bfedcbb4244dbd031cb5a7668">traiter_deconnexion</a>();</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classClientJeu.html#a75013c3e7832a9652b18e8ae3bf9e015">traiter_message</a>(<a class="code" href="structProtocole_1_1Message.html">Protocole::Message</a> m);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;};</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="structProtocole_1_1Message_html"><div class="ttname"><a href="structProtocole_1_1Message.html">Protocole::Message</a></div><div class="ttdoc">Structure de Message universel. </div><div class="ttdef"><b>Definition:</b> protocole.hpp:647</div></div>
-<div class="ttc" id="classClientJeu_html_a662db519474b83b36fd7353ad6233600"><div class="ttname"><a href="classClientJeu.html#a662db519474b83b36fd7353ad6233600">ClientJeu::ClientJeu</a></div><div class="ttdeci">ClientJeu(QObject *parent=0)</div><div class="ttdoc">Constructeur par défaut. </div><div class="ttdef"><b>Definition:</b> client_jeu.cpp:4</div></div>
-<div class="ttc" id="classClientJeu_html"><div class="ttname"><a href="classClientJeu.html">ClientJeu</a></div><div class="ttdoc">Spécialise la classe Client, en permettant de comprendre l&#39;environnement de jeu du tarot...</div><div class="ttdef"><b>Definition:</b> client_jeu.hpp:22</div></div>
-<div class="ttc" id="classClientJeu_html_a75013c3e7832a9652b18e8ae3bf9e015"><div class="ttname"><a href="classClientJeu.html#a75013c3e7832a9652b18e8ae3bf9e015">ClientJeu::traiter_message</a></div><div class="ttdeci">void traiter_message(Protocole::Message m)</div><div class="ttdoc">Réaction personnalisée (message). </div><div class="ttdef"><b>Definition:</b> client_jeu.cpp:28</div></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="partie_8hpp.html">partie.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;partie_client.hpp&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;iomanip&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="classClientJeu.html">   27</a></span>&#160;<span class="keyword">class </span><a class="code" href="classClientJeu.html">ClientJeu</a> : <span class="keyword">public</span> <a class="code" href="classClient.html">Client</a></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;{</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  Q_OBJECT;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <a class="code" href="classClientJeu.html#a662db519474b83b36fd7353ad6233600">ClientJeu</a>(QObject * parent = 0);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classClientJeu.html#a9871486907b2f3de70dcfeeb0b501b33">presenter_etat</a>();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="keyword">public</span> slots:</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classClientJeu.html#a3a3b071a902cacf5a91dd62c60211870">traiter_connexion</a>();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classClientJeu.html#aa930835bfedcbb4244dbd031cb5a7668">traiter_deconnexion</a>();</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classClientJeu.html#a75013c3e7832a9652b18e8ae3bf9e015">traiter_message</a>(<a class="code" href="structProtocole_1_1Message.html">Protocole::Message</a> m);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="keywordtype">void</span> numero_change(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>);</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="keywordtype">void</span> jeu_change();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="keywordtype">void</span> doit_priser();</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="keywordtype">void</span> enchere_refusee();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="keywordtype">void</span> contrat_intermediaire(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>, <a class="code" href="classEnchere.html">Enchere</a>);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keywordtype">void</span> doit_appeler();</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keywordtype">void</span> appel_refuse();</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keywordtype">void</span> contrat_final(<a class="code" href="classEnchere.html">Enchere</a>);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keywordtype">void</span> chien_devoile(<a class="code" href="classCarte.html">Carte</a>, <a class="code" href="classCarte.html">Carte</a>, <a class="code" href="classCarte.html">Carte</a>);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="keywordtype">void</span> doit_ecarter();</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keywordtype">void</span> ecart_accepte();</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keywordtype">void</span> ecart_refuse();</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keywordtype">void</span> atout_au_chien(std::vector&lt;Carte&gt;);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <span class="keywordtype">void</span> doit_jouer();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;  <span class="keywordtype">void</span> requete_refusee();</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="keywordtype">void</span> requete_acceptee();</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  <span class="keywordtype">void</span> carte_jouee(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>, <a class="code" href="classCarte.html">Carte</a>);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keywordtype">void</span> score(std::vector&lt;int&gt;);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="keywordtype">void</span> carte_gagnee(<a class="code" href="classCarte.html">Carte</a>, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keywordtype">void</span> pli(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <span class="keywordtype">void</span> maitre(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <a class="code" href="classPartieClient.html">PartieClient</a> partie;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;};</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="structProtocole_1_1Message_html"><div class="ttname"><a href="structProtocole_1_1Message.html">Protocole::Message</a></div><div class="ttdoc">Structure de Message universel. </div><div class="ttdef"><b>Definition:</b> protocole.hpp:648</div></div>
+<div class="ttc" id="classEnchere_html"><div class="ttname"><a href="classEnchere.html">Enchere</a></div><div class="ttdoc">Définit une classe pour les enchères. </div><div class="ttdef"><b>Definition:</b> enchere.hpp:31</div></div>
+<div class="ttc" id="classClientJeu_html_a662db519474b83b36fd7353ad6233600"><div class="ttname"><a href="classClientJeu.html#a662db519474b83b36fd7353ad6233600">ClientJeu::ClientJeu</a></div><div class="ttdeci">ClientJeu(QObject *parent=0)</div><div class="ttdoc">Constructeur par défaut. </div><div class="ttdef"><b>Definition:</b> client_jeu.cpp:8</div></div>
+<div class="ttc" id="classCarte_html"><div class="ttname"><a href="classCarte.html">Carte</a></div><div class="ttdoc">Définition d&#39;une Carte du jeu. </div><div class="ttdef"><b>Definition:</b> carte.hpp:80</div></div>
+<div class="ttc" id="classClientJeu_html"><div class="ttname"><a href="classClientJeu.html">ClientJeu</a></div><div class="ttdoc">Spécialise la classe Client, en permettant de comprendre l&#39;environnement de jeu du tarot...</div><div class="ttdef"><b>Definition:</b> client_jeu.hpp:27</div></div>
+<div class="ttc" id="classClientJeu_html_a75013c3e7832a9652b18e8ae3bf9e015"><div class="ttname"><a href="classClientJeu.html#a75013c3e7832a9652b18e8ae3bf9e015">ClientJeu::traiter_message</a></div><div class="ttdeci">void traiter_message(Protocole::Message m)</div><div class="ttdoc">Réaction personnalisée (message). </div><div class="ttdef"><b>Definition:</b> client_jeu.cpp:275</div></div>
 <div class="ttc" id="classClient_html"><div class="ttname"><a href="classClient.html">Client</a></div><div class="ttdoc">Définit une classe communiquant avec un serveur sur le réseau. </div><div class="ttdef"><b>Definition:</b> client.hpp:44</div></div>
-<div class="ttc" id="classClientJeu_html_a3a3b071a902cacf5a91dd62c60211870"><div class="ttname"><a href="classClientJeu.html#a3a3b071a902cacf5a91dd62c60211870">ClientJeu::traiter_connexion</a></div><div class="ttdeci">void traiter_connexion()</div><div class="ttdoc">Réaction personnalisée (connexion). </div><div class="ttdef"><b>Definition:</b> client_jeu.cpp:14</div></div>
-<div class="ttc" id="classClientJeu_html_aa930835bfedcbb4244dbd031cb5a7668"><div class="ttname"><a href="classClientJeu.html#aa930835bfedcbb4244dbd031cb5a7668">ClientJeu::traiter_deconnexion</a></div><div class="ttdeci">void traiter_deconnexion()</div><div class="ttdoc">Réaction personnalisée (déconnexion). </div><div class="ttdef"><b>Definition:</b> client_jeu.cpp:19</div></div>
+<div class="ttc" id="partie_8hpp_html"><div class="ttname"><a href="partie_8hpp.html">partie.hpp</a></div><div class="ttdoc">Définit un environnement de partie. </div></div>
+<div class="ttc" id="classClientJeu_html_a3a3b071a902cacf5a91dd62c60211870"><div class="ttname"><a href="classClientJeu.html#a3a3b071a902cacf5a91dd62c60211870">ClientJeu::traiter_connexion</a></div><div class="ttdeci">void traiter_connexion()</div><div class="ttdoc">Réaction personnalisée (connexion). </div><div class="ttdef"><b>Definition:</b> client_jeu.cpp:63</div></div>
+<div class="ttc" id="classClientJeu_html_aa930835bfedcbb4244dbd031cb5a7668"><div class="ttname"><a href="classClientJeu.html#aa930835bfedcbb4244dbd031cb5a7668">ClientJeu::traiter_deconnexion</a></div><div class="ttdeci">void traiter_deconnexion()</div><div class="ttdoc">Réaction personnalisée (déconnexion). </div><div class="ttdef"><b>Definition:</b> client_jeu.cpp:68</div></div>
+<div class="ttc" id="classPartieClient_html"><div class="ttname"><a href="classPartieClient.html">PartieClient</a></div><div class="ttdoc">Précision d&#39;une Partie, côté client. </div><div class="ttdef"><b>Definition:</b> partie_client.hpp:31</div></div>
+<div class="ttc" id="classClientJeu_html_a9871486907b2f3de70dcfeeb0b501b33"><div class="ttname"><a href="classClientJeu.html#a9871486907b2f3de70dcfeeb0b501b33">ClientJeu::presenter_etat</a></div><div class="ttdeci">void presenter_etat()</div><div class="ttdoc">Présente l&#39;état des cartes. </div><div class="ttdef"><b>Definition:</b> client_jeu.cpp:77</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mercredi 19 Novembre 2014 20:23:09 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 22 Novembre 2014 13:48:56 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

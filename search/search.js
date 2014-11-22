@@ -10,12 +10,12 @@ var indexSectionsWithContent =
   0: "abcdefgijlmnoprstuv~",
   1: "cdempst",
   2: "p",
-  3: "cdempt",
+  3: "cdempst",
   4: "abcdefijlmnoprstuv~",
   5: "acdejmnprt",
-  6: "cmpv",
+  6: "cfmpv",
   7: "acdefgjmnpr",
-  8: "acdelmpstv",
+  8: "acdempstv",
   9: "p"
 };
 

@@ -140,10 +140,13 @@ Fonctions membres publiques</h2></td></tr>
 <tr class="separator:a0f7f9ed2ff2bed58991857f041ac6f7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af4c2bf3d43d110dd75315197a61a7c4c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnchere.html#af4c2bf3d43d110dd75315197a61a7c4c">operator&gt;</a> (<a class="el" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3f">Prise</a> p) const </td></tr>
 <tr class="separator:af4c2bf3d43d110dd75315197a61a7c4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d06ff5dc1b801c2b391f96d18395152"><td class="memItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classEnchere.html#a3d06ff5dc1b801c2b391f96d18395152">presenter</a> (std::ostream &amp;out) const </td></tr>
+<tr class="memdesc:a3d06ff5dc1b801c2b391f96d18395152"><td class="mdescLeft">&#160;</td><td class="mdescRight">Présente l'enchère.  <a href="#a3d06ff5dc1b801c2b391f96d18395152">Plus de détails...</a><br/></td></tr>
+<tr class="separator:a3d06ff5dc1b801c2b391f96d18395152"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Définit une classe pour les enchères. </p>
-<p>Une enchère utilise des <a class="el" href="classCarte.html" title="Définition d&#39;une Carte du jeu. ">Carte</a>, et peut se construire à partir d'un <a class="el" href="structMessage.html">Message</a>. Les enchères sont importantes au tarot. Elles interviennent entre le moment de la distribution des cartes et le jeu. Leur particularité est de se construire en 2 temps :</p>
+<p>Une enchère utilise des <a class="el" href="classCarte.html" title="Définition d&#39;une Carte du jeu. ">Carte</a>, et peut se construire à partir d'un Message. Les enchères sont importantes au tarot. Elles interviennent entre le moment de la distribution des cartes et le jeu. Leur particularité est de se construire en 2 temps :</p>
 <ol type="1">
 <li>Chaque joueur énonce une Prise.</li>
 <li>Le joueur ayant annoncé la plus forte Prise complète son contrat en appelant une <a class="el" href="classCarte.html" title="Définition d&#39;une Carte du jeu. ">Carte</a>. Le joueur possédant cette <a class="el" href="classCarte.html" title="Définition d&#39;une Carte du jeu. ">Carte</a> sera dans le même camp que celui-là. </li>
@@ -281,7 +284,7 @@ Msg_prise </dd></dl>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Constructeur à partir d'un <a class="el" href="structMsg__contrat.html">Msg_contrat</a>. Du côté du client, on peut construire une Enchère intermédiaire à partir des informations fournies par le serveur. La <a class="el" href="classCarte.html" title="Définition d&#39;une Carte du jeu. ">Carte</a> appelée n'est pas définie, mais le joueur ayant effectué cette Enchère est celui dont c'était le tour. </p>
+<p>Constructeur à partir d'un Msg_contrat. Du côté du client, on peut construire une Enchère intermédiaire à partir des informations fournies par le serveur. La <a class="el" href="classCarte.html" title="Définition d&#39;une Carte du jeu. ">Carte</a> appelée n'est pas définie, mais le joueur ayant effectué cette Enchère est celui dont c'était le tour. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">tour</td><td>: le numéro du joueur dont c'était le tour. </td></tr>
@@ -293,7 +296,7 @@ Msg_prise </dd></dl>
 <dd>
 Enchere::Enchere(const Msg_contrat_final &amp;) </dd>
 <dd>
-<a class="el" href="structMsg__contrat.html">Msg_contrat</a> </dd></dl>
+Msg_contrat </dd></dl>
 
 </div>
 </div>
@@ -310,7 +313,7 @@ Enchere::Enchere(const Msg_contrat_final &amp;) </dd>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Constructeur à partir d'un <a class="el" href="structMsg__contrat__final.html">Msg_contrat_final</a>. Du côté du client comme du côté serveur, le contrat définitif permet d'obtenir toutes les informations d'un coup ! </p>
+<p>Constructeur à partir d'un Msg_contrat_final. Du côté du client comme du côté serveur, le contrat définitif permet d'obtenir toutes les informations d'un coup ! </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">m</td><td>: le message du serveur. </td></tr>
@@ -321,7 +324,7 @@ Enchere::Enchere(const Msg_contrat_final &amp;) </dd>
 <dd>
 Enchere::Enchere(unsigned int, const Msg_contrat &amp;) </dd>
 <dd>
-<a class="el" href="structMsg__contrat__final.html">Msg_contrat_final</a> </dd></dl>
+Msg_contrat_final </dd></dl>
 
 </div>
 </div>
@@ -449,8 +452,8 @@ Enchere::operator=(const Msg_contrat_final &amp;) </dd></dl>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Modifie en place l'Enchère. Utile pour mettre à jour l'Enchère de l'attaquant lors de la réception (du côté du client) ou de l'émission (du côté du serveur) d'un <a class="el" href="structMessage.html">Message</a> de type contrat_final.</p>
-<dl class="section note"><dt>Note</dt><dd>Il n'existe pas d'équivalent pour construire une Enchère sans <a class="el" href="classCarte.html" title="Définition d&#39;une Carte du jeu. ">Carte</a> appelée (i.e. à partir d'un Msg_prise ou d'un <a class="el" href="structMsg__contrat.html">Msg_contrat</a>). On peut contourner ce problème grâce à e = <a class="el" href="classEnchere.html" title="Définit une classe pour les enchères. ">Enchere(joueur, message)</a>;</dd></dl>
+<p>Modifie en place l'Enchère. Utile pour mettre à jour l'Enchère de l'attaquant lors de la réception (du côté du client) ou de l'émission (du côté du serveur) d'un Message de type contrat_final.</p>
+<dl class="section note"><dt>Note</dt><dd>Il n'existe pas d'équivalent pour construire une Enchère sans <a class="el" href="classCarte.html" title="Définition d&#39;une Carte du jeu. ">Carte</a> appelée (i.e. à partir d'un Msg_prise ou d'un Msg_contrat). On peut contourner ce problème grâce à e = <a class="el" href="classEnchere.html" title="Définit une classe pour les enchères. ">Enchere(joueur, message)</a>;</dd></dl>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">m</td><td>: le message envoyé par le serveur. </td></tr>
@@ -514,6 +517,31 @@ Enchere::operator=(const Msg_contrat_final &amp;) </dd></dl>
 
 </div>
 </div>
+<a class="anchor" id="a3d06ff5dc1b801c2b391f96d18395152"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream &amp; Enchere::presenter </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>out</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Présente l'enchère. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">out</td><td>Le flux avant l'écriture.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Le flux après écriture. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="ad5162e8db4b9cc5b2b06b087f0f6d23c"></a>
 <div class="memitem">
 <div class="memproto">
@@ -540,7 +568,7 @@ Enchere::operator=(const Msg_contrat_final &amp;) </dd></dl>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mercredi 19 Novembre 2014 20:23:09 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 22 Novembre 2014 13:50:58 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

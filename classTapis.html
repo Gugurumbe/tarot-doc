@@ -85,6 +85,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Fonctions membres publiques</a> &#124;
+<a href="#pro-methods">Fonctions membres protégées</a> &#124;
 <a href="classTapis-members.html">Liste de tous les membres</a>  </div>
   <div class="headertitle">
 <div class="title">Référence de la classe Tapis</div>  </div>
@@ -95,37 +96,66 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
  <a href="classTapis.html#details">Plus de détails...</a></p>
 
 <p><code>#include &lt;<a class="el" href="tapis_8hpp_source.html">tapis.hpp</a>&gt;</code></p>
+<div class="dynheader">
+Graphe d'héritage de Tapis:</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classTapis.png" usemap="#Tapis_map" alt=""/>
+  <map id="Tapis_map" name="Tapis_map">
+<area href="classTapisPartie.html" alt="TapisPartie" shape="rect" coords="0,56,75,80"/>
+</map>
+ </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Fonctions membres publiques</h2></td></tr>
 <tr class="memitem:a7323828e91137c08c7a84f279b679ca3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTapis.html#a7323828e91137c08c7a84f279b679ca3">Tapis</a> ()</td></tr>
 <tr class="separator:a7323828e91137c08c7a84f279b679ca3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab805d8355dce81bb288da77c4f0c4b26"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTapis.html#ab805d8355dce81bb288da77c4f0c4b26">ajouter</a> (const <a class="el" href="structProtocole_1_1Msg__carte.html">Protocole::Msg_carte</a> &amp;carte)</td></tr>
-<tr class="separator:ab805d8355dce81bb288da77c4f0c4b26"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad99507e33564528fcbdab023200a6677"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTapis.html#ad99507e33564528fcbdab023200a6677">set_ouverture</a> (unsigned int joueur)</td></tr>
-<tr class="separator:ad99507e33564528fcbdab023200a6677"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5900f861fcb2ab970746db18ea2284f0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTapis.html#a5900f861fcb2ab970746db18ea2284f0">complet</a> () const </td></tr>
-<tr class="separator:a5900f861fcb2ab970746db18ea2284f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a932d33ec70ab170413e9403420edb404"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classCarte.html">Carte</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTapis.html#a932d33ec70ab170413e9403420edb404">terminer</a> (unsigned int attaquant, unsigned int appele, bool dernier_pli, unsigned int &amp;suivant)</td></tr>
-<tr class="separator:a932d33ec70ab170413e9403420edb404"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a326692034acc1849eed8d29cb3f8bcdb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a326692034acc1849eed8d29cb3f8bcdb"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTapis.html#a326692034acc1849eed8d29cb3f8bcdb">~Tapis</a> ()</td></tr>
+<tr class="memdesc:a326692034acc1849eed8d29cb3f8bcdb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructeur virtuel. <br/></td></tr>
+<tr class="separator:a326692034acc1849eed8d29cb3f8bcdb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd6ada4c5d5b7ec57f6b4973ed4a9da0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTapis.html#afd6ada4c5d5b7ec57f6b4973ed4a9da0">ajouter</a> (const <a class="el" href="structProtocole_1_1Msg__carte.html">Protocole::Msg_carte</a> &amp;carte, <a class="el" href="classCarte.html#a7241772664e80781b0d9ee484b6b1e3d">Carte::ForceExcuse</a> exc=<a class="el" href="classCarte.html#a7241772664e80781b0d9ee484b6b1e3da4f36a8edeb791eeac0b7e979adb603b5">Carte::EXCUSE_IMPRENABLE</a>)</td></tr>
+<tr class="separator:afd6ada4c5d5b7ec57f6b4973ed4a9da0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15937239ea122355c7d13890bf79fb16"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTapis.html#a15937239ea122355c7d13890bf79fb16">plus_gros_atout</a> (<a class="el" href="classCarte.html">Carte</a> &amp;c) const </td></tr>
 <tr class="memdesc:a15937239ea122355c7d13890bf79fb16"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le plus gros atout joué.  <a href="#a15937239ea122355c7d13890bf79fb16">Plus de détails...</a><br/></td></tr>
 <tr class="separator:a15937239ea122355c7d13890bf79fb16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3c8a5d72c2606c0c2753db9940aff178"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTapis.html#a3c8a5d72c2606c0c2753db9940aff178">entame</a> (<a class="el" href="classCarte.html">Carte</a> &amp;c) const </td></tr>
 <tr class="memdesc:a3c8a5d72c2606c0c2753db9940aff178"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la carte d'entame.  <a href="#a3c8a5d72c2606c0c2753db9940aff178">Plus de détails...</a><br/></td></tr>
 <tr class="separator:a3c8a5d72c2606c0c2753db9940aff178"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87f9d895a8f649b5b27265bc81625da0"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTapis.html#a87f9d895a8f649b5b27265bc81625da0">maitre</a> (unsigned int &amp;j) const </td></tr>
+<tr class="memdesc:a87f9d895a8f649b5b27265bc81625da0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le joueur maître.  <a href="#a87f9d895a8f649b5b27265bc81625da0">Plus de détails...</a><br/></td></tr>
+<tr class="separator:a87f9d895a8f649b5b27265bc81625da0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad99507e33564528fcbdab023200a6677"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTapis.html#ad99507e33564528fcbdab023200a6677">set_ouverture</a> (unsigned int joueur)</td></tr>
+<tr class="memdesc:ad99507e33564528fcbdab023200a6677"><td class="mdescLeft">&#160;</td><td class="mdescRight">Force le premier joueur.  <a href="#ad99507e33564528fcbdab023200a6677">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ad99507e33564528fcbdab023200a6677"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6d71629b0b5cf451a0f99f15ba844b8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae6d71629b0b5cf451a0f99f15ba844b8"></a>
+std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTapis.html#ae6d71629b0b5cf451a0f99f15ba844b8">presenter</a> (std::ostream &amp;out) const </td></tr>
+<tr class="memdesc:ae6d71629b0b5cf451a0f99f15ba844b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Présente le tapis. <br/></td></tr>
+<tr class="separator:ae6d71629b0b5cf451a0f99f15ba844b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Fonctions membres protégées</h2></td></tr>
+<tr class="memitem:adbfe938091a437a1c36fd577d98f2c32"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTapis.html#adbfe938091a437a1c36fd577d98f2c32">changement_maitre</a> (unsigned int ancien, unsigned int nouveau)</td></tr>
+<tr class="memdesc:adbfe938091a437a1c36fd577d98f2c32"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appelé lorsque le maître change.  <a href="#adbfe938091a437a1c36fd577d98f2c32">Plus de détails...</a><br/></td></tr>
+<tr class="separator:adbfe938091a437a1c36fd577d98f2c32"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a256481012141860c895fcb5eea274448"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTapis.html#a256481012141860c895fcb5eea274448">nouveau_maitre</a> (unsigned int <a class="el" href="classTapis.html#a87f9d895a8f649b5b27265bc81625da0">maitre</a>)</td></tr>
+<tr class="memdesc:a256481012141860c895fcb5eea274448"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appelé lorsque l'on définit le maître.  <a href="#a256481012141860c895fcb5eea274448">Plus de détails...</a><br/></td></tr>
+<tr class="separator:a256481012141860c895fcb5eea274448"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa55b6811d56f4c8547deacdfc1272c0d"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTapis.html#aa55b6811d56f4c8547deacdfc1272c0d">cartes_gagnees</a> (std::vector&lt; <a class="el" href="classCarte.html">Carte</a> &gt; const &amp;cartes, std::vector&lt; unsigned int &gt; const &amp;poseurs, std::vector&lt; unsigned int &gt; const &amp;gagnants)</td></tr>
+<tr class="memdesc:aa55b6811d56f4c8547deacdfc1272c0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Appelé lorsqu'un pli est terminé.  <a href="#aa55b6811d56f4c8547deacdfc1272c0d">Plus de détails...</a><br/></td></tr>
+<tr class="separator:aa55b6811d56f4c8547deacdfc1272c0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Représente les cartes face visible sur la table. </p>
 <p>Il y a une relation de composition entre un <a class="el" href="classTapis.html" title="Représente les cartes face visible sur la table. ">Tapis</a> et des <a class="el" href="classCarte.html" title="Définition d&#39;une Carte du jeu. ">Carte</a>.</p>
-<p>Pour utiliser directement un <a class="el" href="structMessage.html">Message</a>, il est nécessaire de lier le protocole. </p>
+<p>Pour utiliser directement un Message, il est nécessaire de lier le protocole. </p>
 <dl class="section see"><dt>Voir également</dt><dd><a class="el" href="classCarte.html" title="Définition d&#39;une Carte du jeu. ">Carte</a> </dd>
 <dd>
-<a class="el" href="structMessage.html">Message</a> La classe <a class="el" href="classTapis.html" title="Représente les cartes face visible sur la table. ">Tapis</a> permet de connaître l'état du tour de jeu, c'est-à-dire les cartes jouées ce tour-ci et les numéros des joueurs (0 à 4) qui jouent ces cartes.</dd></dl>
-<p>La méthode Tapis::terminer(unsigned int, unsigned int, bool) retourne la liste des cartes gagnées par l' « attaque », c'est-à-dire le joueur qui a pris et le joueur appelé, lorsque le pli est <a class="el" href="classTapis.html#a5900f861fcb2ab970746db18ea2284f0">Tapis::complet() const</a>.</p>
+Message La classe <a class="el" href="classTapis.html" title="Représente les cartes face visible sur la table. ">Tapis</a> permet de connaître l'état du tour de jeu, c'est-à-dire les cartes jouées ce tour-ci et les numéros des joueurs (0 à 4) qui jouent ces cartes.</dd></dl>
+<p>La méthode Tapis::terminer(unsigned int, unsigned int, bool) retourne la liste des cartes gagnées par l' « attaque », c'est-à-dire le joueur qui a pris et le joueur appelé, lorsque le pli est Tapis::complet() const.</p>
 <dl class="section see"><dt>Voir également</dt><dd>Tapis::terminer(unsigned int, unsigned int, bool) </dd>
 <dd>
-<a class="el" href="classTapis.html#a5900f861fcb2ab970746db18ea2284f0">Tapis::complet() const</a> </dd></dl>
+Tapis::complet() const </dd></dl>
 </div><h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
 <a class="anchor" id="a7323828e91137c08c7a84f279b679ca3"></a>
 <div class="memitem">
@@ -144,7 +174,7 @@ Fonctions membres publiques</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Documentation des fonctions membres</h2>
-<a class="anchor" id="ab805d8355dce81bb288da77c4f0c4b26"></a>
+<a class="anchor" id="afd6ada4c5d5b7ec57f6b4973ed4a9da0"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -152,39 +182,132 @@ Fonctions membres publiques</h2></td></tr>
           <td class="memname">void Tapis::ajouter </td>
           <td>(</td>
           <td class="paramtype">const <a class="el" href="structProtocole_1_1Msg__carte.html">Protocole::Msg_carte</a> &amp;&#160;</td>
-          <td class="paramname"><em>carte</em></td><td>)</td>
+          <td class="paramname"><em>carte</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype"><a class="el" href="classCarte.html#a7241772664e80781b0d9ee484b6b1e3d">Carte::ForceExcuse</a>&#160;</td>
+          <td class="paramname"><em>exc</em> = <code><a class="el" href="classCarte.html#a7241772664e80781b0d9ee484b6b1e3da4f36a8edeb791eeac0b7e979adb603b5">Carte::EXCUSE_IMPRENABLE</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Ajoute une carte. L'ajout d'une carte au tapis se fait directement à partir d'un sous-type de <a class="el" href="structMessage.html">Message</a>. </p>
+<p>Ajoute une carte. L'ajout d'une carte au tapis se fait directement à partir d'un sous-type de Message. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">carte</td><td>: le message provenant du serveur. </td></tr>
+    <tr><td class="paramname">carte</td><td>Le message provenant du serveur. </td></tr>
+    <tr><td class="paramname">maitre</td><td>Indiquez Vrai ssi on en est au dernier tour d'un chelem et que le preneur joue l'excuse. </td></tr>
+    <tr><td class="paramname">exc</td><td>La force de l'excuse. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>Voir également</dt><dd><a class="el" href="structMessage.html">Message</a> </dd>
+<dl class="section see"><dt>Voir également</dt><dd>Message </dd>
 <dd>
-<a class="el" href="classTapis.html#ad99507e33564528fcbdab023200a6677">Tapis::set_ouverture(unsigned int)</a> </dd></dl>
+<a class="el" href="classTapis.html#ad99507e33564528fcbdab023200a6677" title="Force le premier joueur. ">Tapis::set_ouverture(unsigned int)</a> </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a5900f861fcb2ab970746db18ea2284f0"></a>
+<a class="anchor" id="aa55b6811d56f4c8547deacdfc1272c0d"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool Tapis::complet </td>
+          <td class="memname">void Tapis::cartes_gagnees </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classCarte.html">Carte</a> &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>cartes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; unsigned int &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>poseurs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; unsigned int &gt; const &amp;&#160;</td>
+          <td class="paramname"><em>gagnants</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
-<p>Indique si un tour est terminé. Lorsque 5 cartes réelles ont été jouées, le tour est terminé. </p>
-<dl class="section return"><dt>Renvoie</dt><dd>Vrai ssi le tour est terminé. </dd></dl>
-<dl class="section see"><dt>Voir également</dt><dd>Tapis::terminer(unsigned int, unsigned int, bool) </dd></dl>
+
+<p>Appelé lorsqu'un pli est terminé. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cartes</td><td>Les cartes du pli. </td></tr>
+    <tr><td class="paramname">poseurs</td><td>Les poseurs de ces cartes respectives. </td></tr>
+    <tr><td class="paramname">gagnants</td><td>Les gagnants de ces cartes. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Réimplémentée dans <a class="el" href="classTapisPartie.html#a0a7b1dffdf0a98d54c4eab2398f113f8">TapisPartie</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="adbfe938091a437a1c36fd577d98f2c32"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Tapis::changement_maitre </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>ancien</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>nouveau</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Appelé lorsque le maître change. </p>
+<p>Elle est appelée une fois que le joueur maître a effectivement changé.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ancien</td><td>L'ancien joueur maître. </td></tr>
+    <tr><td class="paramname">nouveau</td><td>Le nouveau joueur maître.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>Voir également</dt><dd><a class="el" href="classTapis.html#a256481012141860c895fcb5eea274448" title="Appelé lorsque l&#39;on définit le maître. ">nouveau_maitre(unsigned int)</a> </dd></dl>
+
+<p>Réimplémentée dans <a class="el" href="classTapisPartie.html#ac87fe01578d76558abd9c4c3d6e9517f">TapisPartie</a>.</p>
 
 </div>
 </div>
@@ -211,6 +334,65 @@ Fonctions membres publiques</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Renvoie</dt><dd>vrai ssi il y a une carte d'entame. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a87f9d895a8f649b5b27265bc81625da0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Tapis::maitre </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int &amp;&#160;</td>
+          <td class="paramname"><em>j</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retourne le joueur maître. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">j</td><td>Le joueur. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>vrai ssi il y a une carte jouée. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a256481012141860c895fcb5eea274448"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Tapis::nouveau_maitre </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>maitre</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Appelé lorsque l'on définit le maître. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">maitre</td><td>Le numéro de tour du maître. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Réimplémentée dans <a class="el" href="classTapisPartie.html#a15106c82749c90557bde5362b62e7d32">TapisPartie</a>.</p>
 
 </div>
 </div>
@@ -252,64 +434,15 @@ Fonctions membres publiques</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Lorsqu'on ajoute la première carte du tour, il faut également spécifier le joueur qui joue cette première carte, afin d'en déduire tous les autres. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">joueur</td><td>: numéro du joueur </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section see"><dt>Voir également</dt><dd>Tapis::ajouter(const Msg_carte &amp;) </dd></dl>
 
-</div>
-</div>
-<a class="anchor" id="a932d33ec70ab170413e9403420edb404"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt; <a class="el" href="classCarte.html">Carte</a> &gt; Tapis::terminer </td>
-          <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>attaquant</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>appele</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">bool&#160;</td>
-          <td class="paramname"><em>dernier_pli</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned int &amp;&#160;</td>
-          <td class="paramname"><em>suivant</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Termine le tour. Lorsque le tour est terminé, il est nécessaire d'attribuer les cartes gagnées par l'attaque. Pour cela, il faut connaître le JOUEUR appelé. Cette méthode n'est à appeler que du côté serveur. </p>
+<p>Force le premier joueur. </p>
+<p>À utiliser au premier tour, car le premier joueur n'est pas forcément le numéro 0 (en cas de Chelem). </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramdir"></td><td class="paramname">attaquant</td><td>Numéro du joueur qui a pris. </td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">appele</td><td>Numéro du joueur appelé. </td></tr>
-    <tr><td class="paramdir"></td><td class="paramname">dernier_pli</td><td>Indique si la vraie excuse peut être prise. </td></tr>
-    <tr><td class="paramdir">[out]</td><td class="paramname">suivant</td><td>Le joueur suivant. </td></tr>
+    <tr><td class="paramname">joueur</td><td>Le premier joueur. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Renvoie</dt><dd>Les cartes gagnées par le camp attaquant. </dd></dl>
-<dl class="section see"><dt>Voir également</dt><dd><a class="el" href="classTapis.html#a5900f861fcb2ab970746db18ea2284f0">Tapis::complet() const</a> </dd></dl>
 
 </div>
 </div>
@@ -320,7 +453,7 @@ Fonctions membres publiques</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mercredi 19 Novembre 2014 20:23:09 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 22 Novembre 2014 13:50:59 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
