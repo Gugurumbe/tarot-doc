@@ -2,7 +2,7 @@
 #include <iostream>
 #include <iomanip>
 
-//#ifdef COULEURS
+#ifdef COULEURS
 #define C_NORMAL    "\x1B[0m"
 #define C_ROUGE     "\x1B[31m"
 #define C_VERT      "\x1B[32m"
@@ -11,7 +11,7 @@
 #define C_MAGENTA   "\x1B[35m"
 #define C_CYAN      "\x1B[36m"
 #define C_BLANC     "\x1B[37m"
-/*#else
+#else
 #define C_NORMAL    ""
 #define C_ROUGE     ""
 #define C_VERT      ""
@@ -20,7 +20,7 @@
 #define C_MAGENTA   "" 
 #define C_CYAN      ""
 #define C_BLANC     ""*/
-//#endif
+#endif
 
 #define C_NOMCLASSE C_MAGENTA
 #define C_NOMMETHODE C_BLEU

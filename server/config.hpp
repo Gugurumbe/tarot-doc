@@ -48,11 +48,4 @@
  */
 #define DEBUG_WRITESTACK 0
 
-/**
-   @brief Indique que les couleurs UNIX sont disponibles.
-   
-   Commenter pour la compatibilité Windows.
- */
-#define COULEURS
-
 #endif

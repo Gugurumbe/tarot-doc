@@ -9,6 +9,11 @@
  */
 #define DEBOGUEUR_DEFINI
 
+/**
+   @brief Commenter pour compatibilité Windows
+ */
+#define COULEURS
+
 #include <string>
 #include <iostream>
 #include <iomanip>
