@@ -122,7 +122,8 @@ void Partie::assimiler(const Protocole::Message & m)
       // Le joueur dont c'est le tour a formulé le contrat suivant
       m_phase = ENCHERES;
       m_encheres[m_tour] = Enchere(m_tour, m.m.contrat);
-      m_tour = (m_tour + 1) % 5;
+      m_tour = m_tour + 1; // pas modulo 5, car une fois que les 
+      //enchères sont passées ce n'est plus le tour de personne.
       break;
     case Protocole::APPEL:
       m_phase = ENCHERES;

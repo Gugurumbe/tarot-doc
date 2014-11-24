@@ -19,6 +19,8 @@ ClientJeu::ClientJeu(QObject * parent) :
 
   connect(&partie, SIGNAL(numero_change(unsigned int)),
 	  this, SLOT(numero_change(unsigned int)));
+  connect(&partie, SIGNAL(jeu_change()),
+	  this, SLOT(jeu_change()));
   connect(&partie, SIGNAL(doit_priser()),
 	  this, SLOT(doit_priser()));
   connect(&partie, SIGNAL(enchere_refusee()),

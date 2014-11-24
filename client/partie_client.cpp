@@ -88,7 +88,8 @@ void PartieClient::assimiler(const Protocole::Message & m)
     case Protocole::PRISE:
       break;
     case Protocole::CONTRAT:
-      emit contrat_intermediaire((tour() + 4)%5, Enchere(m.m.enchere));
+      emit contrat_intermediaire((tour() + 4)%5, 
+				 Enchere((tour() + 4)%5, m.m.contrat));
       if(mon_tour() && phase() == ENCHERES) emit doit_priser();
       break;
     case Protocole::APPEL:
