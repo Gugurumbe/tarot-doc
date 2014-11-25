@@ -9,7 +9,6 @@ greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 HEADERS += client.hpp            \
 ../shared/protocole.hpp          \
 client_jeu.hpp                   \
-client_debogage.hpp              \
 config.hpp                       \
 ../shared/partie.hpp             \
 partie_client.hpp                \
@@ -22,8 +21,7 @@ partie_client.hpp                \
 SOURCES += main_program.cpp      \
 client.cpp                       \
 ../shared/protocole.cpp          \
-client_jeu.cpp                   \ 
-client_debogage.cpp              \
+client_jeu.cpp                   \
 ../shared/partie.cpp             \
 partie_client.cpp                \
 ../shared/tapis.cpp              \

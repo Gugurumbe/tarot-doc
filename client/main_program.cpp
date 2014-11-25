@@ -4,13 +4,7 @@
 
 #include "config.hpp"
 
-#ifdef DEBUG_MODE
-#include "./client_debogage.hpp"
-#define CLIENT ClientDebogage
-#else
 #include "client_jeu.hpp"
-#define CLIENT ClientJeu
-#endif
 
 int main(int argc, char * argv[])
 {
@@ -26,7 +20,7 @@ int main(int argc, char * argv[])
   std::cout<<"Entrez le port du serveur : ";
   std::cin>>port;
 #endif
-  CLIENT c;
+  ClientJeu c;
   c.connecter(QHostAddress(QString(addr.c_str())), port);
   return app.exec();
 }
