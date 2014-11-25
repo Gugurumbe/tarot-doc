@@ -6,7 +6,6 @@ var searchData=
   ['deconnexion',['deconnexion',['../classServeur.html#a50171a13c9d0659c94ba2099b8c20dc1',1,'Serveur']]],
   ['demander_5fchelem',['demander_chelem',['../classPartieClient.html#af2b4386f91d646e3f4ede4fe17a179d6',1,'PartieClient']]],
   ['demander_5fjeu',['demander_jeu',['../classPartieClient.html#a69d50fe756fb33cf9c1d7a24414a14b1',1,'PartieClient']]],
-  ['demander_5fordres',['demander_ordres',['../classClientDebogage.html#ae8e9e30cd6bea93700f0c904ee24605d',1,'ClientDebogage']]],
   ['demipoints',['demipoints',['../classCarte.html#a84d161365c4a090b9c10e8939e07e5b0',1,'Carte']]],
   ['detacher_5ftable',['detacher_table',['../classServeurJeu.html#a116bae8ae5a4ffa34ea22cc222655a48',1,'ServeurJeu']]],
   ['distribuer',['distribuer',['../classPartieServeur.html#a135a3037f89478ccb40547fca9ceec75',1,'PartieServeur']]],

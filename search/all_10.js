@@ -14,8 +14,8 @@ var searchData=
   ['throw_5fchangement_5fmaitre',['throw_changement_maitre',['../classPartie.html#aaa1b0c990a3b018c2b713334a7ff25c4',1,'Partie']]],
   ['throw_5fnouveau_5fmaitre',['throw_nouveau_maitre',['../classPartie.html#adbd927c9584ded0c8f38d4faf5c943a7',1,'Partie']]],
   ['tour',['tour',['../classPartie.html#a34e5fc20f35fa22c89a3151bc8a56d55',1,'Partie']]],
-  ['traiter_5fconnexion',['traiter_connexion',['../classClientDebogage.html#a9cb844a37a05695079f9ca7462ce1393',1,'ClientDebogage::traiter_connexion()'],['../classClientJeu.html#a3a3b071a902cacf5a91dd62c60211870',1,'ClientJeu::traiter_connexion()']]],
-  ['traiter_5fdeconnexion',['traiter_deconnexion',['../classClientDebogage.html#afb096bce05949007eba1b7b8e6e86969',1,'ClientDebogage::traiter_deconnexion()'],['../classClientJeu.html#aa930835bfedcbb4244dbd031cb5a7668',1,'ClientJeu::traiter_deconnexion()']]],
-  ['traiter_5fmessage',['traiter_message',['../classClientDebogage.html#ad9edd74f3f47aa148ba61d4671b1d780',1,'ClientDebogage::traiter_message()'],['../classClientJeu.html#a75013c3e7832a9652b18e8ae3bf9e015',1,'ClientJeu::traiter_message()']]],
+  ['traiter_5fconnexion',['traiter_connexion',['../classClientJeu.html#a3a3b071a902cacf5a91dd62c60211870',1,'ClientJeu']]],
+  ['traiter_5fdeconnexion',['traiter_deconnexion',['../classClientJeu.html#aa930835bfedcbb4244dbd031cb5a7668',1,'ClientJeu']]],
+  ['traiter_5fmessage',['traiter_message',['../classClientJeu.html#a75013c3e7832a9652b18e8ae3bf9e015',1,'ClientJeu']]],
   ['type',['type',['../structProtocole_1_1Message.html#a370f8009bd840b29e1d1522623555bca',1,'Protocole::Message']]]
 ];

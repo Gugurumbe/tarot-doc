@@ -13,7 +13,7 @@ var searchData=
   ['mon_5fnumero',['mon_numero',['../classPartieClient.html#ab8a66e1a4f5b21a4687923844ff12a49',1,'PartieClient']]],
   ['mon_5ftour',['mon_tour',['../classPartieClient.html#ad0f3ad8eec624ad558c0317d289cfec6',1,'PartieClient']]],
   ['montrer_5fcarte',['MONTRER_CARTE',['../classCarte.html#ab766c46bfc445d84ad35af4149f76802a896a78ffcbe24a7e0b0de467b03f801c',1,'Carte']]],
-  ['montrer_5fpoignee',['montrer_poignee',['../unionProtocole_1_1Msg.html#a9cfd5024b27968f768bf76d4092f0efb',1,'Protocole::Msg::montrer_poignee()'],['../classPartieClient.html#ae863676488572a8aa570231bce23da49',1,'PartieClient::montrer_poignee()'],['../namespaceProtocole.html#a0aedd8434bf6fd4173e483eb39f72a4cab91095a9ce7929af1640e0a1e2025af4',1,'Protocole::MONTRER_POIGNEE()']]],
+  ['montrer_5fpoignee',['montrer_poignee',['../unionProtocole_1_1Msg.html#a9cfd5024b27968f768bf76d4092f0efb',1,'Protocole::Msg::montrer_poignee()'],['../classPartieClient.html#ae863676488572a8aa570231bce23da49',1,'PartieClient::montrer_poignee()'],['../namespaceProtocole.html#a9f03877a7e246d3a013e680623a4b233ab91095a9ce7929af1640e0a1e2025af4',1,'Protocole::MONTRER_POIGNEE()']]],
   ['msg',['Msg',['../unionProtocole_1_1Msg.html',1,'Protocole']]],
   ['msg_5fappel',['Msg_appel',['../structProtocole_1_1Msg__appel.html',1,'Protocole']]],
   ['msg_5fappeler',['Msg_appeler',['../structProtocole_1_1Msg__appeler.html',1,'Protocole']]],

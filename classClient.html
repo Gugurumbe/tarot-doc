@@ -103,8 +103,7 @@ Graphe d'héritage de Client:</div>
  <div class="center">
   <img src="classClient.png" usemap="#Client_map" alt=""/>
   <map id="Client_map" name="Client_map">
-<area href="classClientDebogage.html" title="Spécialise la classe Client, en adoptant le comportement suivant : " alt="ClientDebogage" shape="rect" coords="0,112,102,136"/>
-<area href="classClientJeu.html" title="Spécialise la classe Client, en permettant de comprendre l&#39;environnement de jeu du tarot..." alt="ClientJeu" shape="rect" coords="112,112,214,136"/>
+<area href="classClientJeu.html" title="Spécialise la classe Client, en permettant de comprendre l&#39;environnement de jeu du tarot..." alt="ClientJeu" shape="rect" coords="0,112,65,136"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -153,7 +152,7 @@ Fonctions membres publiques</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Définit une classe communiquant avec un serveur sur le réseau. </p>
 <p>La classe <a class="el" href="classClient.html" title="Définit une classe communiquant avec un serveur sur le réseau. ">Client</a> utilise les outils Qt pour établir une transmission en mode connecté (Tcp), grâce à laquelle il peut envoyer et recevoir des Messages tels que définis dans <a class="el" href="protocole_8hpp.html" title="Définit le protocole de communication. ">shared/protocole.hpp</a>.</p>
-<p>Telle quelle, cette classe ne sait pas quoi faire des Messages reçus et de la déconnexion du serveur, et ne sait pas quand envoyer des Messages au serveur. Il y a pour l'instant 2 comportements : <a class="el" href="classClientDebogage.html" title="Spécialise la classe Client, en adoptant le comportement suivant : ">ClientDebogage</a>, qui demande à l'utilisateur d'entrer un message puis qui attend de recevoir un message, redemande à l'utilisateur d'entrer un message et ainsi de suite jusqu'à la déconnexion, et <a class="el" href="classClientJeu.html" title="Spécialise la classe Client, en permettant de comprendre l&#39;environnement de jeu du tarot...">ClientJeu</a>, en construction, qui va réagir dans un environnement de tarot.</p>
+<p>Telle quelle, cette classe ne sait pas quoi faire des Messages reçus et de la déconnexion du serveur, et ne sait pas quand envoyer des Messages au serveur. Il y a pour l'instant 2 comportements : ClientDebogage, qui demande à l'utilisateur d'entrer un message puis qui attend de recevoir un message, redemande à l'utilisateur d'entrer un message et ainsi de suite jusqu'à la déconnexion, et <a class="el" href="classClientJeu.html" title="Spécialise la classe Client, en permettant de comprendre l&#39;environnement de jeu du tarot...">ClientJeu</a>, en construction, qui va réagir dans un environnement de tarot.</p>
 <p>Cette classe peut être utilisée aussi bien pour un client graphique que pour un client autonome (IA).</p>
 <p>Il existe une symétrie de construction entre le <a class="el" href="classClient.html" title="Définit une classe communiquant avec un serveur sur le réseau. ">Client</a> et le <a class="el" href="classServeur.html" title="Définit une classe communiquant sur le réseau. ">Serveur</a> : une classe générale qui relaye des Message à une classe spécialisée pour le débogage ou à une classe spécialisée pour le jeu, qui utilise une spécialisation de <a class="el" href="classPartie.html" title="Environnement de partie de Tarot. ">Partie</a>. </p>
 </div><h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
@@ -489,7 +488,7 @@ Fonctions membres publiques</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Samedi 22 Novembre 2014 13:50:58 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Mardi 25 Novembre 2014 17:20:38 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

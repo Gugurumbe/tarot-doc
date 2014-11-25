@@ -11,7 +11,6 @@ var searchData=
   ['chelem_5fdemande',['chelem_demande',['../classPartieClient.html#a0b45022ef5206211d519dbca74582752',1,'PartieClient']]],
   ['chien_5fdevoile',['chien_devoile',['../classPartieClient.html#a3ac845b5c37413a57c1478ccf2528c6d',1,'PartieClient']]],
   ['client',['Client',['../classClient.html#a7832757f3fa37f564a21cb2b79b2baad',1,'Client']]],
-  ['clientdebogage',['ClientDebogage',['../classClientDebogage.html#a505112ff732e3a96bb01baf3e580b680',1,'ClientDebogage']]],
   ['clientjeu',['ClientJeu',['../classClientJeu.html#a662db519474b83b36fd7353ad6233600',1,'ClientJeu']]],
   ['complet',['complet',['../classTable.html#afa5f81913df343483231eaed24f332cd',1,'Table']]],
   ['comprendre',['comprendre',['../classTable.html#afb140b691eda8c0704cea1aeda9cd300',1,'Table']]],
