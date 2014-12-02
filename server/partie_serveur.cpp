@@ -428,7 +428,7 @@ void shuffle(std::vector<T> & tab)
 {
   for(unsigned int i = 1 ; i < tab.size() ; i++)
     {
-      swap(i, rand() % i, tab);
+      swap(i, rand() % (i + 1), tab);
     }
 }
 
