@@ -4,7 +4,7 @@ var searchData=
   ['main',['Main',['../classMain.html',1,'Main'],['../classMain.html#a50d4361a1b613205467a441b5c40c199',1,'Main::Main()'],['../classMain.html#ac3e1471309f904958e8a97879dd09988',1,'Main::Main(const Main &amp;m)'],['../classMain.html#ae789ca5f93fe592929759c30b3d26e57',1,'Main::Main(const Protocole::Msg_distribution &amp;m)']]],
   ['main_2ehpp',['main.hpp',['../main_8hpp.html',1,'']]],
   ['main_5fdefinie',['MAIN_DEFINIE',['../main_8hpp.html#a7c7dd73493e631d06b084103ef2ee52f',1,'main.hpp']]],
-  ['maitre',['maitre',['../classPartieClient.html#a388736e730753f45cef11292a67a646d',1,'PartieClient::maitre()'],['../classTapis.html#a87f9d895a8f649b5b27265bc81625da0',1,'Tapis::maitre()']]],
+  ['maitre',['maitre',['../classClientJeu.html#a31694cbe341412cdb1a6238312671677',1,'ClientJeu::maitre()'],['../classPartieClient.html#a388736e730753f45cef11292a67a646d',1,'PartieClient::maitre()'],['../classTapis.html#a87f9d895a8f649b5b27265bc81625da0',1,'Tapis::maitre()']]],
   ['message',['Message',['../structProtocole_1_1Message.html',1,'Protocole']]],
   ['message',['message',['../classServeur.html#aff70684b2bfe448696cc2cf273f21754',1,'Serveur']]],
   ['message_5fbrut',['message_brut',['../classServeur.html#a12ffc8082b8d0419295899bc710f6cf4',1,'Serveur']]],

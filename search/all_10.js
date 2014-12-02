@@ -4,7 +4,7 @@ var searchData=
   ['table_2ehpp',['table.hpp',['../table_8hpp.html',1,'']]],
   ['table_5fdefinie',['TABLE_DEFINIE',['../table_8hpp.html#ab77f4b3614f229e0cd67d00e4a6bdf48',1,'table.hpp']]],
   ['taille',['taille',['../structProtocole_1_1Msg__montrer__poignee.html#a2a4645b1af4de97d49595e6733c20571',1,'Protocole::Msg_montrer_poignee::taille()'],['../structProtocole_1_1Msg__poignee.html#a73100c7c2f94fcdc1952f8e7b47ba18c',1,'Protocole::Msg_poignee::taille()']]],
-  ['tapis',['Tapis',['../classTapis.html',1,'Tapis'],['../classTapis.html#a7323828e91137c08c7a84f279b679ca3',1,'Tapis::Tapis()'],['../classPartie.html#a8e85cd52fcb26ee887b5c5441ffc00b2',1,'Partie::tapis()']]],
+  ['tapis',['Tapis',['../classTapis.html',1,'Tapis'],['../classPartie.html#a8e85cd52fcb26ee887b5c5441ffc00b2',1,'Partie::tapis()'],['../classTapis.html#a7323828e91137c08c7a84f279b679ca3',1,'Tapis::Tapis()']]],
   ['tapis_2ehpp',['tapis.hpp',['../tapis_8hpp.html',1,'']]],
   ['tapis_5fdefini',['TAPIS_DEFINI',['../tapis_8hpp.html#aad60ff1027fa061d39c490dc31896a71',1,'tapis.hpp']]],
   ['tapispartie',['TapisPartie',['../classTapisPartie.html',1,'']]],

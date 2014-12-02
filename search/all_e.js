@@ -8,8 +8,8 @@ var searchData=
   ['recu',['recu',['../classClient.html#a182ab6bbb5aecc61632f53b6404aa4d6',1,'Client']]],
   ['refuse',['refuse',['../unionProtocole_1_1Msg.html#aee723101bf19d05b57405c6647dbbbae',1,'Protocole::Msg::refuse()'],['../namespaceProtocole.html#a9f03877a7e246d3a013e680623a4b233adcd26b4f1d07aca01f1e246042654858',1,'Protocole::REFUSE()']]],
   ['requete',['requete',['../unionProtocole_1_1Msg.html#ade1c333d7dc142f8a4afa7cc86987782',1,'Protocole::Msg::requete()'],['../namespaceProtocole.html#a9f03877a7e246d3a013e680623a4b233a490fa4d4cd75afffcccbfa242eb297d4',1,'Protocole::REQUETE()']]],
-  ['requete_5facceptee',['requete_acceptee',['../classPartieClient.html#a95b39fe7d123887ba08f765aaaecbc5b',1,'PartieClient']]],
-  ['requete_5frefusee',['requete_refusee',['../classPartieClient.html#a7915ba35ecf74356073824d37bcf1765',1,'PartieClient']]],
+  ['requete_5facceptee',['requete_acceptee',['../classClientJeu.html#adb7ad06eb5a91d11df8badf5f936b657',1,'ClientJeu::requete_acceptee()'],['../classPartieClient.html#a95b39fe7d123887ba08f765aaaecbc5b',1,'PartieClient::requete_acceptee()']]],
+  ['requete_5frefusee',['requete_refusee',['../classClientJeu.html#a2f840467a22956067e22be41cec41d2e',1,'ClientJeu::requete_refusee()'],['../classPartieClient.html#a7915ba35ecf74356073824d37bcf1765',1,'PartieClient::requete_refusee()']]],
   ['resultat',['resultat',['../unionProtocole_1_1Msg.html#a64ad00ab34d4ca67c36357fda1de466d',1,'Protocole::Msg::resultat()'],['../namespaceProtocole.html#a9f03877a7e246d3a013e680623a4b233aa06de31e1af8b1595889bc889f87bf94',1,'Protocole::RESULTAT()']]],
   ['resultats',['resultats',['../structProtocole_1_1Msg__resultat.html#aa6e4238bf8a2feec8bcd63b50abac302',1,'Protocole::Msg_resultat']]],
   ['roi',['roi',['../classCarte.html#a54d05aa9711351d7862962486283fbfc',1,'Carte']]]

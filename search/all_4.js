@@ -1,8 +1,8 @@
 var searchData=
 [
   ['ecart',['ecart',['../structProtocole_1_1Msg__ecart.html#a4760447ad54cd83c02ac09a0a0bf9b3d',1,'Protocole::Msg_ecart::ecart()'],['../unionProtocole_1_1Msg.html#a0c0250057ac03dbbdcb4f5d4be22328d',1,'Protocole::Msg::ecart()'],['../namespaceProtocole.html#a9f03877a7e246d3a013e680623a4b233a1a725fe6250f569a4dd5358c6277ced5',1,'Protocole::ECART()']]],
-  ['ecart_5faccepte',['ecart_accepte',['../classPartieClient.html#a1c6eed519e04ff8b9f77ffc6a20bb969',1,'PartieClient']]],
-  ['ecart_5frefuse',['ecart_refuse',['../classPartieClient.html#a6e02c25d323dc29c7756099949f65364',1,'PartieClient']]],
+  ['ecart_5faccepte',['ecart_accepte',['../classClientJeu.html#a870ce899c7064d08e53e5e9191aa7962',1,'ClientJeu::ecart_accepte()'],['../classPartieClient.html#a1c6eed519e04ff8b9f77ffc6a20bb969',1,'PartieClient::ecart_accepte()']]],
+  ['ecart_5frefuse',['ecart_refuse',['../classClientJeu.html#ae0ebe0ef00e82d694747f32c265bf713',1,'ClientJeu::ecart_refuse()'],['../classPartieClient.html#a6e02c25d323dc29c7756099949f65364',1,'PartieClient::ecart_refuse()']]],
   ['ecartable',['ECARTABLE',['../classCarte.html#ab766c46bfc445d84ad35af4149f76802aaa8b46b0630808f543da8a65aa509bd0',1,'Carte::ECARTABLE()'],['../classCarte.html#a865d651021ee1c6a2c731fbe13701c9d',1,'Carte::ecartable() const ']]],
   ['ecarter',['ecarter',['../classPartieClient.html#a303f62176f502d55b7f2995df16453e7',1,'PartieClient']]],
   ['ecrire',['ecrire',['../namespaceProtocole.html#a77a1491149caf0b716f25ddb51faf613',1,'Protocole']]],
@@ -11,7 +11,7 @@ var searchData=
   ['enchere_2ehpp',['enchere.hpp',['../enchere_8hpp.html',1,'']]],
   ['enchere_5fde',['enchere_de',['../classPartie.html#a9516c470a0d368204633894c22ff9585',1,'Partie']]],
   ['enchere_5fdefinie',['ENCHERE_DEFINIE',['../enchere_8hpp.html#a7795e3a7f7d83dc08c9733f25619f15e',1,'enchere.hpp']]],
-  ['enchere_5frefusee',['enchere_refusee',['../classPartieClient.html#ac2c68cad2c62f27343c009955b4ccbc7',1,'PartieClient']]],
+  ['enchere_5frefusee',['enchere_refusee',['../classClientJeu.html#a4537dd9d1a67edeac09f4587e20a4a02',1,'ClientJeu::enchere_refusee()'],['../classPartieClient.html#ac2c68cad2c62f27343c009955b4ccbc7',1,'PartieClient::enchere_refusee()']]],
   ['encheres',['ENCHERES',['../classPartie.html#aa94cf37ae5f9f1f87ac640b8dc0048c9ae1e33d3fe145345f98c835d8a5c3d17c',1,'Partie']]],
   ['enlever',['enlever',['../classServeur.html#ab1481eb56cefbb965d3b002e9855abaa',1,'Serveur::enlever(QObject *sock)'],['../classServeur.html#a1232f2b9a761537265cdebc9d1294b05',1,'Serveur::enlever()'],['../classTable.html#a2508504a656f681899fcb97eb4269cf1',1,'Table::enlever()'],['../classMain.html#a982c55b05c5f74d20be7dd476f10e355',1,'Main::enlever()']]],
   ['entame',['entame',['../classTapis.html#a3c8a5d72c2606c0c2753db9940aff178',1,'Tapis']]],

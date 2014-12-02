@@ -8,5 +8,5 @@ var searchData=
   ['non_5fecartable',['NON_ECARTABLE',['../classCarte.html#ab766c46bfc445d84ad35af4149f76802a4c98bdf65472fc5430057a461e5b7b80',1,'Carte']]],
   ['nouveau_5fmaitre',['nouveau_maitre',['../classPartieClient.html#aa99989d1452401dc0b02091e89843947',1,'PartieClient::nouveau_maitre()'],['../classTapisPartie.html#a15106c82749c90557bde5362b62e7d32',1,'TapisPartie::nouveau_maitre()'],['../classPartie.html#ad51bb9abffde6dca9cee5ac22df69054',1,'Partie::nouveau_maitre()'],['../classTapis.html#a256481012141860c895fcb5eea274448',1,'Tapis::nouveau_maitre()']]],
   ['numero',['numero',['../unionProtocole_1_1Msg.html#acf78c6cadf74117f689310b366796c1e',1,'Protocole::Msg::numero()'],['../classCarte.html#a71b2fa7ab34086aed44b3430b3755df5',1,'Carte::numero()'],['../namespaceProtocole.html#a9f03877a7e246d3a013e680623a4b233a5bc2d8a341081ea7f678f4fce8fcca0d',1,'Protocole::NUMERO()']]],
-  ['numero_5fchange',['numero_change',['../classPartieClient.html#a106ba624eac7b0faafaaf35365564d7d',1,'PartieClient']]]
+  ['numero_5fchange',['numero_change',['../classClientJeu.html#a2d515dffe6d8a2e92c6e6e85df9c7b7b',1,'ClientJeu::numero_change()'],['../classPartieClient.html#a106ba624eac7b0faafaaf35365564d7d',1,'PartieClient::numero_change()']]]
 ];

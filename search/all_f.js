@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['score',['score',['../classPartieClient.html#a27847c55ed5fe875ebf4fdfcd3f2e3e6',1,'PartieClient']]],
+  ['score',['score',['../classClientJeu.html#a72b396bb38387886ca988fdb766b6334',1,'ClientJeu::score()'],['../classPartieClient.html#a27847c55ed5fe875ebf4fdfcd3f2e3e6',1,'PartieClient::score()']]],
   ['serveur',['Serveur',['../classServeur.html',1,'Serveur'],['../classServeur.html#af1ed0e9e9cda25c0767dda26dfd0bf43',1,'Serveur::Serveur()'],['../server_2config_8hpp.html#aeef0e3ba41fec73b731de55058a0e9a6',1,'SERVEUR():&#160;config.hpp']]],
   ['serveur_2ehpp',['serveur.hpp',['../serveur_8hpp.html',1,'']]],
   ['serveur_5fconfigure',['SERVEUR_CONFIGURE',['../server_2config_8hpp.html#ab673e891184ef61c24843ecea0fca8b9',1,'config.hpp']]],

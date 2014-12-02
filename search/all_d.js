@@ -19,7 +19,7 @@ var searchData=
   ['phase',['phase',['../classPartie.html#a45201ab9e442170839bf1380e11500c4',1,'Partie']]],
   ['phase_5fjeu',['PHASE_JEU',['../classPartie.html#aa94cf37ae5f9f1f87ac640b8dc0048c9a49a2f599effbb00535fa6bf61d55a748',1,'Partie']]],
   ['phasejeu',['PhaseJeu',['../classPartie.html#aa94cf37ae5f9f1f87ac640b8dc0048c9',1,'Partie']]],
-  ['pli',['pli',['../unionProtocole_1_1Msg.html#a52702c84a9a93e0ec13c36574bae5d73',1,'Protocole::Msg::pli()'],['../classPartieClient.html#a8f9544585ddb27ff856218df3ca91d46',1,'PartieClient::pli()'],['../namespaceProtocole.html#a9f03877a7e246d3a013e680623a4b233af208f9d344fc6621e976baa61054ffa6',1,'Protocole::PLI()']]],
+  ['pli',['pli',['../unionProtocole_1_1Msg.html#a52702c84a9a93e0ec13c36574bae5d73',1,'Protocole::Msg::pli()'],['../classClientJeu.html#a9a5b01e79abc314a014a46bb4f477750',1,'ClientJeu::pli()'],['../classPartieClient.html#a8f9544585ddb27ff856218df3ca91d46',1,'PartieClient::pli()'],['../namespaceProtocole.html#a9f03877a7e246d3a013e680623a4b233af208f9d344fc6621e976baa61054ffa6',1,'Protocole::PLI()']]],
   ['plus_5fgros_5fatout',['plus_gros_atout',['../classTapis.html#a15937239ea122355c7d13890bf79fb16',1,'Tapis']]],
   ['poignee',['poignee',['../unionProtocole_1_1Msg.html#ad7b679438764f9256d2276465db07412',1,'Protocole::Msg::poignee()'],['../classPartie.html#a59c52f0345c8acddeb03011295f8b1b1',1,'Partie::poignee()'],['../namespaceProtocole.html#a9f03877a7e246d3a013e680623a4b233a9286519f7eeabb58318402943023ecc8',1,'Protocole::POIGNEE()']]],
   ['poignee_5fmontree',['poignee_montree',['../classPartieClient.html#a7cfe308b121505900fb451140976efda',1,'PartieClient']]],
@@ -28,7 +28,7 @@ var searchData=
   ['preneur',['preneur',['../structProtocole_1_1Msg__contrat__final.html#ab24ecbf633521ff036eed99af483e083',1,'Protocole::Msg_contrat_final']]],
   ['presenter',['presenter',['../classEnchere.html#a3d06ff5dc1b801c2b391f96d18395152',1,'Enchere::presenter()'],['../classTapis.html#ae6d71629b0b5cf451a0f99f15ba844b8',1,'Tapis::presenter()']]],
   ['presenter_5fetat',['presenter_etat',['../classClientJeu.html#a9871486907b2f3de70dcfeeb0b501b33',1,'ClientJeu']]],
-  ['prise',['PRISE',['../classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3fabca98d8857355319cdc478dd7eb2d1f8',1,'Enchere::PRISE()'],['../classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3f',1,'Enchere::Prise()'],['../unionProtocole_1_1Msg.html#a369ee791d31cd26b77653a3afcf3f8a5',1,'Protocole::Msg::prise()'],['../classEnchere.html#ad5162e8db4b9cc5b2b06b087f0f6d23c',1,'Enchere::prise()'],['../namespaceProtocole.html#a9f03877a7e246d3a013e680623a4b233a8cf5255db3e5763d6c0489f7ce71669b',1,'Protocole::PRISE()']]],
+  ['prise',['Prise',['../classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3f',1,'Enchere::Prise()'],['../unionProtocole_1_1Msg.html#a369ee791d31cd26b77653a3afcf3f8a5',1,'Protocole::Msg::prise()'],['../classEnchere.html#ad5162e8db4b9cc5b2b06b087f0f6d23c',1,'Enchere::prise() const '],['../classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3fabca98d8857355319cdc478dd7eb2d1f8',1,'Enchere::PRISE()'],['../namespaceProtocole.html#a9f03877a7e246d3a013e680623a4b233a8cf5255db3e5763d6c0489f7ce71669b',1,'Protocole::PRISE()']]],
   ['protocole',['Protocole',['../namespaceProtocole.html',1,'']]],
   ['protocole_2ehpp',['protocole.hpp',['../protocole_8hpp.html',1,'']]],
   ['protocole_5fdefini',['PROTOCOLE_DEFINI',['../protocole_8hpp.html#a7a17dc2fdbbe937c40147701edb4b570',1,'protocole.hpp']]]
