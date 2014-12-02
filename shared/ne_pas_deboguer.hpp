@@ -1,5 +1,5 @@
 /**
-   @file shared/ne_pas_debogueur.hpp
+   @file shared/ne_pas_deboguer.hpp
    @brief À inclure pour ne pas déboguer ce fichier.
 */
 

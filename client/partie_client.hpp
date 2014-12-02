@@ -1,5 +1,5 @@
 /**
-   @file shared/partie_client.hpp
+   @file client/partie_client.hpp
    @brief Particularise une Partie côté client.
  */
 

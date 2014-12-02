@@ -1,4 +1,5 @@
 /**
+   @file client/client_graphique.hpp
    @brief Classe d'interface graphique pour le client de tarot virtuel.
  */
 

@@ -6,17 +6,52 @@
 
 #include "ne_pas_deboguer.hpp"
 
+/**
+   @brief Tapis personnalisé pour usage dans la classe Partie.
+ */
 class TapisPartie : public Tapis
 {
 public:
+  /**
+     @brief Constructeur par défaut
+     @param parent La classe de Partie sur laquelle on va agir.
+   */
   TapisPartie(Partie * parent);
 
 protected:
-  virtual void changement_maitre(unsigned int, unsigned int);
-  virtual void nouveau_maitre(unsigned int);
-  virtual void cartes_gagnees(std::vector<Carte> const &,
-			      std::vector<unsigned int> const &,
-			      std::vector<unsigned int> const &);
+  /**
+     @brief Réaction personnalisée.
+     
+     Transmet l'information via 
+     Partie::changement_maitre(unsigned int, unsigned int)
+
+     @param ancien L'ancien joueur maître.
+     @param nouveau Le nouveau joueur maître.
+   */
+  virtual void changement_maitre(unsigned int ancien, unsigned int nouveau);
+
+  /**
+     @brief Réaction personnalisée.
+     
+     Transmet l'information via
+     Partie::nouveau_maitre(unsigned int)
+     
+     @param j Le nouveau joueur maître.
+   */
+  virtual void nouveau_maitre(unsigned int j);
+
+  /**
+     @brief Réaction personnalisée.
+     
+     Transmet l'information via 
+     Partie::cartes_gagnees(std::vector<Carte> const &, std::vector<unsigned int> const &, std::vector<unsigned int> const &)
+     @param c Les cartes en question.
+     @param poseurs Le poseur de chaque carte.
+     @param gagnants Le gagnant de chaque carte.
+   */
+  virtual void cartes_gagnees(std::vector<Carte> const & c,
+			      std::vector<unsigned int> const & poseurs,
+			      std::vector<unsigned int> const & gagnants);
 private:
   Partie * const m_parent;
 };
