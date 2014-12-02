@@ -1,8 +1,4 @@
 var searchData=
 [
-  ['partie_5fdefinie',['PARTIE_DEFINIE',['../partie_8hpp.html#a5f306d7a412368c96ccf6fc05be359b0',1,'partie.hpp']]],
-  ['partie_5fserveur_5fdefinie',['PARTIE_SERVEUR_DEFINIE',['../partie__serveur_8hpp.html#a65baad18990f9875e476665933261707',1,'partie_serveur.hpp']]],
-  ['petit',['PETIT',['../carte_8hpp.html#a654d176f58a514eb1d420de3594f87a3',1,'carte.hpp']]],
-  ['port',['PORT',['../server_2config_8hpp.html#a614217d263be1fb1a5f76e2ff7be19a2',1,'config.hpp']]],
-  ['protocole_5fdefini',['PROTOCOLE_DEFINI',['../protocole_8hpp.html#a7a17dc2fdbbe937c40147701edb4b570',1,'protocole.hpp']]]
+  ['main_5fdefinie',['MAIN_DEFINIE',['../main_8hpp.html#a7c7dd73493e631d06b084103ef2ee52f',1,'main.hpp']]]
 ];

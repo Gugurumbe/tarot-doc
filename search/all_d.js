@@ -3,6 +3,8 @@ var searchData=
   ['pe_2046_20_3a_20tarot_20virtuel',['PE 46 : tarot virtuel',['../index.html',1,'']]],
   ['partie',['Partie',['../classPartie.html',1,'Partie'],['../classPartie.html#ae40831aad10fc4a391295e2ea1447b5a',1,'Partie::Partie()']]],
   ['partie_2ehpp',['partie.hpp',['../partie_8hpp.html',1,'']]],
+  ['partie_5fclient_2ehpp',['partie_client.hpp',['../partie__client_8hpp.html',1,'']]],
+  ['partie_5fclient_5fdefinie',['PARTIE_CLIENT_DEFINIE',['../partie__client_8hpp.html#a60cea92acae7199b0977dae893d8630e',1,'partie_client.hpp']]],
   ['partie_5fdefinie',['PARTIE_DEFINIE',['../partie_8hpp.html#a5f306d7a412368c96ccf6fc05be359b0',1,'partie.hpp']]],
   ['partie_5fserveur_2ehpp',['partie_serveur.hpp',['../partie__serveur_8hpp.html',1,'']]],
   ['partie_5fserveur_5fdefinie',['PARTIE_SERVEUR_DEFINIE',['../partie__serveur_8hpp.html#a65baad18990f9875e476665933261707',1,'partie_serveur.hpp']]],
