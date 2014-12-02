@@ -1,6 +1,8 @@
 /**
    @file shared/debogueur.hpp
    @brief Classe permettant de savoir où on en est.
+   @see shared/deboguer.hpp
+   @see shared/ne_pas_deboguer.hpp
 */
 
 #ifndef DEBOGUEUR_DEFINI
