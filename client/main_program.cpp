@@ -6,6 +6,8 @@
 
 #include "client_jeu.hpp"
 
+#include "client_graphique.hpp"
+
 int main(int argc, char * argv[])
 {
   QApplication app(argc, argv);
@@ -22,5 +24,7 @@ int main(int argc, char * argv[])
 #endif
   ClientJeu c;
   c.connecter(QHostAddress(QString(addr.c_str())), port);
+  ClientGraphique client;
+  client.show();
   return app.exec();
 }

@@ -16,7 +16,11 @@ partie_client.hpp                \
 ../shared/enchere.hpp            \
 ../shared/carte.hpp              \
 ../shared/main.hpp               \
-../shared/debogueur.hpp
+../shared/debogueur.hpp          \
+../shared/deboguer.hpp           \
+../shared/ne_pas_deboguer.hpp    \
+ui_client.h                      \
+client_graphique.hpp
 
 SOURCES += main_program.cpp      \
 client.cpp                       \
@@ -28,6 +32,9 @@ partie_client.cpp                \
 ../shared/enchere.cpp            \
 ../shared/carte.cpp              \
 ../shared/main.cpp               \
-../shared/debogueur.cpp
+../shared/debogueur.cpp          \
+client_graphique.cpp
+
+FORMS += client.ui
 
 QT += network
