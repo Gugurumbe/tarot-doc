@@ -113,15 +113,15 @@ Classes</h2></td></tr>
 Macros</h2></td></tr>
 <tr class="memitem:a29569a5b50084ab79c32f6fc52f9cf54"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_8hpp.html#a29569a5b50084ab79c32f6fc52f9cf54">CLIENT_DEFINI</a></td></tr>
 <tr class="separator:a29569a5b50084ab79c32f6fc52f9cf54"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a48bbea0360aee7c68a08cd4ed91d6c99"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a48bbea0360aee7c68a08cd4ed91d6c99"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>PRINT_ARRAY</b></td></tr>
+<tr class="memitem:a48bbea0360aee7c68a08cd4ed91d6c99"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_8hpp.html#a48bbea0360aee7c68a08cd4ed91d6c99">PRINT_ARRAY</a></td></tr>
+<tr class="memdesc:a48bbea0360aee7c68a08cd4ed91d6c99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empêche de définir deux fois l'écriture d'un tableau.  <a href="#a48bbea0360aee7c68a08cd4ed91d6c99">Plus de détails...</a><br/></td></tr>
 <tr class="separator:a48bbea0360aee7c68a08cd4ed91d6c99"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:a8d6ff335a320a627fe1906af504c5d68"><td class="memTemplParams" colspan="2"><a class="anchor" id="a8d6ff335a320a627fe1906af504c5d68"></a>
-template&lt;class T &gt; </td></tr>
-<tr class="memitem:a8d6ff335a320a627fe1906af504c5d68"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator&lt;&lt;</b> (std::ostream &amp;out, const std::vector&lt; T &gt; &amp;t)</td></tr>
+<tr class="memitem:a8d6ff335a320a627fe1906af504c5d68"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:a8d6ff335a320a627fe1906af504c5d68"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="client_8hpp.html#a8d6ff335a320a627fe1906af504c5d68">operator&lt;&lt;</a> (std::ostream &amp;out, const std::vector&lt; T &gt; &amp;t)</td></tr>
+<tr class="memdesc:a8d6ff335a320a627fe1906af504c5d68"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet d'écrire un tableau dans un flux.  <a href="#a8d6ff335a320a627fe1906af504c5d68">Plus de détails...</a><br/></td></tr>
 <tr class="separator:a8d6ff335a320a627fe1906af504c5d68"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
@@ -140,10 +140,69 @@ template&lt;class T &gt; </td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a48bbea0360aee7c68a08cd4ed91d6c99"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PRINT_ARRAY</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Empêche de définir deux fois l'écriture d'un tableau. </p>
+<p>Empêche de définir 2 fois &lt;&lt;(ostream, vector)</p>
+<dl class="section see"><dt>Voir également</dt><dd><a class="el" href="debogueur_8hpp.html" title="Classe permettant de savoir où on en est. ">shared/debogueur.hpp</a></dd>
+<dd>
+<a class="el" href="client_8hpp.html" title="Définit le moteur &quot;réseau&quot; du client et de l&#39;IA. ">client/client.hpp</a> </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Documentation des fonctions</h2>
+<a class="anchor" id="a8d6ff335a320a627fe1906af504c5d68"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream&amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>t</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet d'écrire un tableau dans un flux. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">out</td><td>Le flux de sortie où il faut écrire. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">t</td><td>Le tableau d'objets.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>L'écriture se fait sous la forme [|&lt;obj 1&gt; ; &lt;obj 2&gt;|]</p>
+<dl class="section warning"><dt>Avertissement</dt><dd>La méthode std::ostream &amp; operator&lt;&lt;(std::ostream &amp;, const T &amp;) doit être définie.</dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>La suite du flux. </dd></dl>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi 2 Décembre 2014 21:00:21 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Mardi 2 Décembre 2014 21:33:42 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

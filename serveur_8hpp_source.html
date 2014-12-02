@@ -131,6 +131,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classServeur.html#a6b1c81bdc2648c45094f07aa5ad2818c">envoyer</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> c, <a class="code" href="structProtocole_1_1Message.html">Protocole::Message</a> m);</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  <span class="comment">/*</span></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;<span class="comment">     @brief Envoie le message suivant sur la liste de l&#39;objet</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="comment">     appelant. </span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="comment">     Le déclenchement de ce slot est automatique.</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;<span class="comment">     @warning En cas de déclenchement précoce de ce slot, le client</span></div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="comment">     pourrait recevoir un paquet corrompu.</span></div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="comment">     @param t : le nombre d&#39;octets écrits. Attention : il en reste</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="comment">     peut-être encore à écrire.</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="comment">   */</span></div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;  <span class="comment">//void envoyer_suivant(qint64 t);</span></div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;</div>
 <div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160; signals:</div>
@@ -167,7 +179,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="ttc" id="classServeur_html_af1ed0e9e9cda25c0767dda26dfd0bf43"><div class="ttname"><a href="classServeur.html#af1ed0e9e9cda25c0767dda26dfd0bf43">Serveur::Serveur</a></div><div class="ttdeci">Serveur(QObject *parent=0)</div><div class="ttdoc">Constructeur par défaut. </div><div class="ttdef"><b>Definition:</b> serveur.cpp:9</div></div>
 <div class="ttc" id="structProtocole_1_1Message_html"><div class="ttname"><a href="structProtocole_1_1Message.html">Protocole::Message</a></div><div class="ttdoc">Structure de Message universel. </div><div class="ttdef"><b>Definition:</b> protocole.hpp:648</div></div>
 <div class="ttc" id="classServeur_html_a50171a13c9d0659c94ba2099b8c20dc1"><div class="ttname"><a href="classServeur.html#a50171a13c9d0659c94ba2099b8c20dc1">Serveur::deconnexion</a></div><div class="ttdeci">void deconnexion(unsigned int c)</div><div class="ttdoc">Émis lorsqu&#39;un client se déconnecte. </div></div>
-<div class="ttc" id="classServeur_html_a9288c85f3aee40b409e1a58cb117c277"><div class="ttname"><a href="classServeur.html#a9288c85f3aee40b409e1a58cb117c277">Serveur::connexion</a></div><div class="ttdeci">void connexion(unsigned int c)</div><div class="ttdoc">Envoie le message suivant sur la liste de l&#39;objet appelant. </div></div>
+<div class="ttc" id="classServeur_html_a9288c85f3aee40b409e1a58cb117c277"><div class="ttname"><a href="classServeur.html#a9288c85f3aee40b409e1a58cb117c277">Serveur::connexion</a></div><div class="ttdeci">void connexion(unsigned int c)</div><div class="ttdoc">Émis lorsqu&#39;un client se connecte. </div></div>
 <div class="ttc" id="classServeur_html_a12ffc8082b8d0419295899bc710f6cf4"><div class="ttname"><a href="classServeur.html#a12ffc8082b8d0419295899bc710f6cf4">Serveur::message_brut</a></div><div class="ttdeci">void message_brut(unsigned int c, QByteArray p)</div><div class="ttdoc">Émis lorsqu&#39;un client envoie un paquet. </div></div>
 <div class="ttc" id="classServeur_html_ac7297f2d0d3ac8058c663f91b1ecc75d"><div class="ttname"><a href="classServeur.html#ac7297f2d0d3ac8058c663f91b1ecc75d">Serveur::deconnecter</a></div><div class="ttdeci">void deconnecter(unsigned int c)</div><div class="ttdoc">Élimine le client. </div><div class="ttdef"><b>Definition:</b> serveur.cpp:190</div></div>
 <div class="ttc" id="classServeur_html_aff70684b2bfe448696cc2cf273f21754"><div class="ttname"><a href="classServeur.html#aff70684b2bfe448696cc2cf273f21754">Serveur::message</a></div><div class="ttdeci">void message(unsigned int c, Protocole::Message m)</div><div class="ttdoc">Émis lorsqu&#39;un Protocole::Message est reçu. </div></div>
@@ -182,7 +194,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi 2 Décembre 2014 21:00:21 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Mardi 2 Décembre 2014 21:33:42 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

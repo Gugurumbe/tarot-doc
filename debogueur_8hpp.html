@@ -129,9 +129,9 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:a6a1b92e93cffd467dd858cc6b27d6c45"><td class="memTemplParams" colspan="2"><a class="anchor" id="a6a1b92e93cffd467dd858cc6b27d6c45"></a>
-template&lt;class T &gt; </td></tr>
-<tr class="memitem:a6a1b92e93cffd467dd858cc6b27d6c45"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator&lt;&lt;</b> (std::ostream &amp;out, const std::vector&lt; T &gt; &amp;tab)</td></tr>
+<tr class="memitem:a6a1b92e93cffd467dd858cc6b27d6c45"><td class="memTemplParams" colspan="2">template&lt;class T &gt; </td></tr>
+<tr class="memitem:a6a1b92e93cffd467dd858cc6b27d6c45"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="debogueur_8hpp.html#a6a1b92e93cffd467dd858cc6b27d6c45">operator&lt;&lt;</a> (std::ostream &amp;out, const std::vector&lt; T &gt; &amp;tab)</td></tr>
+<tr class="memdesc:a6a1b92e93cffd467dd858cc6b27d6c45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Permet d'écrire un tableau dans un flux.  <a href="#a6a1b92e93cffd467dd858cc6b27d6c45">Plus de détails...</a><br/></td></tr>
 <tr class="separator:a6a1b92e93cffd467dd858cc6b27d6c45"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
@@ -185,10 +185,51 @@ template&lt;class T &gt; </td></tr>
 
 </div>
 </div>
+<h2 class="groupheader">Documentation des fonctions</h2>
+<a class="anchor" id="a6a1b92e93cffd467dd858cc6b27d6c45"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream&amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>tab</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Permet d'écrire un tableau dans un flux. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">out</td><td>Le flux de sortie où il faut écrire. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">tab</td><td>Le tableau d'objets.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>L'écriture se fait sous la forme [|&lt;obj 1&gt; ; &lt;obj 2&gt;|]</p>
+<dl class="section warning"><dt>Avertissement</dt><dd>La méthode std::ostream &amp; operator&lt;&lt;(std::ostream &amp;, const T &amp;) doit être définie.</dd></dl>
+<dl class="section return"><dt>Renvoie</dt><dd>La suite du flux. </dd></dl>
+
+</div>
+</div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi 2 Décembre 2014 21:00:21 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Mardi 2 Décembre 2014 21:33:42 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

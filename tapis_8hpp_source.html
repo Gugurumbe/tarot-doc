@@ -106,45 +106,46 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keyword">virtual</span> <a class="code" href="classTapis.html#a326692034acc1849eed8d29cb3f8bcdb">~Tapis</a>();</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classTapis.html#afd6ada4c5d5b7ec57f6b4973ed4a9da0">ajouter</a>(<span class="keyword">const</span> <a class="code" href="structProtocole_1_1Msg__carte.html">Protocole::Msg_carte</a> &amp; carte, </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;               <a class="code" href="classCarte.html#a7241772664e80781b0d9ee484b6b1e3d">Carte::ForceExcuse</a> exc = <a class="code" href="classCarte.html#a7241772664e80781b0d9ee484b6b1e3da4f36a8edeb791eeac0b7e979adb603b5">Carte::EXCUSE_IMPRENABLE</a>);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classTapis.html#a15937239ea122355c7d13890bf79fb16">plus_gros_atout</a>(<a class="code" href="classCarte.html">Carte</a> &amp; c) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classTapis.html#a3c8a5d72c2606c0c2753db9940aff178">entame</a>(<a class="code" href="classCarte.html">Carte</a> &amp; c) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classTapis.html#a87f9d895a8f649b5b27265bc81625da0">maitre</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> &amp; j) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classTapis.html#ad99507e33564528fcbdab023200a6677">set_ouverture</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> joueur);</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  std::ostream &amp; <a class="code" href="classTapis.html#ae6d71629b0b5cf451a0f99f15ba844b8">presenter</a>(std::ostream &amp; out) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  </div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classTapis.html#adbfe938091a437a1c36fd577d98f2c32">changement_maitre</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> ancien,</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> nouveau);</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classTapis.html#a256481012141860c895fcb5eea274448">nouveau_maitre</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> maitre);</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classTapis.html#aa55b6811d56f4c8547deacdfc1272c0d">cartes_gagnees</a>(std::vector&lt;Carte&gt; <span class="keyword">const</span> &amp; cartes,</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;                              std::vector&lt;unsigned int&gt; <span class="keyword">const</span> &amp; poseurs,</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;                              std::vector&lt;unsigned int&gt; <span class="keyword">const</span> &amp; gagnants);</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  <span class="keywordtype">int</span> joueur_ouverture;</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;  <span class="keywordtype">int</span> joueur_maitre;</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  <span class="keywordtype">bool</span> maitre_fixe;</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;  std::vector&lt;std::vector&lt;Carte&gt; &gt; m_tapis;</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;};</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;std::ostream &amp; operator&lt;&lt;(std::ostream &amp; out, <span class="keyword">const</span> <a class="code" href="classTapis.html">Tapis</a> &amp; tap);</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classTapis.html#afd6ada4c5d5b7ec57f6b4973ed4a9da0">ajouter</a>(<span class="keyword">const</span> <a class="code" href="structProtocole_1_1Msg__carte.html">Protocole::Msg_carte</a> &amp; carte, </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;               <a class="code" href="classCarte.html#a7241772664e80781b0d9ee484b6b1e3d">Carte::ForceExcuse</a> exc = <a class="code" href="classCarte.html#a7241772664e80781b0d9ee484b6b1e3da4f36a8edeb791eeac0b7e979adb603b5">Carte::EXCUSE_IMPRENABLE</a>);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classTapis.html#a15937239ea122355c7d13890bf79fb16">plus_gros_atout</a>(<a class="code" href="classCarte.html">Carte</a> &amp; c) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classTapis.html#a3c8a5d72c2606c0c2753db9940aff178">entame</a>(<a class="code" href="classCarte.html">Carte</a> &amp; c) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classTapis.html#a87f9d895a8f649b5b27265bc81625da0">maitre</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> &amp; j) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classTapis.html#ad99507e33564528fcbdab023200a6677">set_ouverture</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> joueur);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  std::ostream &amp; <a class="code" href="classTapis.html#ae6d71629b0b5cf451a0f99f15ba844b8">presenter</a>(std::ostream &amp; out) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classTapis.html#adbfe938091a437a1c36fd577d98f2c32">changement_maitre</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> ancien,</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;                                 <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> nouveau);</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classTapis.html#a256481012141860c895fcb5eea274448">nouveau_maitre</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> maitre);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classTapis.html#aa55b6811d56f4c8547deacdfc1272c0d">cartes_gagnees</a>(std::vector&lt;Carte&gt; <span class="keyword">const</span> &amp; cartes,</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;                              std::vector&lt;unsigned int&gt; <span class="keyword">const</span> &amp; poseurs,</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                              std::vector&lt;unsigned int&gt; <span class="keyword">const</span> &amp; gagnants);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  <span class="keywordtype">int</span> joueur_ouverture;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  <span class="keywordtype">int</span> joueur_maitre;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  <span class="keywordtype">bool</span> maitre_fixe;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  std::vector&lt;std::vector&lt;Carte&gt; &gt; m_tapis;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;};</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;std::ostream &amp; <a class="code" href="tapis_8hpp.html#af8bf209fc924cc89cc274a5b039d5f41">operator&lt;&lt;</a>(std::ostream &amp; out, <span class="keyword">const</span> <a class="code" href="classTapis.html">Tapis</a> &amp; tap);</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="classTapis_html_a3c8a5d72c2606c0c2753db9940aff178"><div class="ttname"><a href="classTapis.html#a3c8a5d72c2606c0c2753db9940aff178">Tapis::entame</a></div><div class="ttdeci">bool entame(Carte &amp;c) const </div><div class="ttdoc">Retourne la carte d&#39;entame. </div><div class="ttdef"><b>Definition:</b> tapis.cpp:115</div></div>
+<div class="ttc" id="tapis_8hpp_html_af8bf209fc924cc89cc274a5b039d5f41"><div class="ttname"><a href="tapis_8hpp.html#af8bf209fc924cc89cc274a5b039d5f41">operator&lt;&lt;</a></div><div class="ttdeci">std::ostream &amp; operator&lt;&lt;(std::ostream &amp;out, const Tapis &amp;tap)</div><div class="ttdoc">Écrit un Tapis. </div><div class="ttdef"><b>Definition:</b> tapis.cpp:176</div></div>
 <div class="ttc" id="classTapis_html_a7323828e91137c08c7a84f279b679ca3"><div class="ttname"><a href="classTapis.html#a7323828e91137c08c7a84f279b679ca3">Tapis::Tapis</a></div><div class="ttdeci">Tapis()</div><div class="ttdef"><b>Definition:</b> tapis.cpp:7</div></div>
 <div class="ttc" id="classTapis_html_aa55b6811d56f4c8547deacdfc1272c0d"><div class="ttname"><a href="classTapis.html#aa55b6811d56f4c8547deacdfc1272c0d">Tapis::cartes_gagnees</a></div><div class="ttdeci">virtual void cartes_gagnees(std::vector&lt; Carte &gt; const &amp;cartes, std::vector&lt; unsigned int &gt; const &amp;poseurs, std::vector&lt; unsigned int &gt; const &amp;gagnants)</div><div class="ttdoc">Appelé lorsqu&#39;un pli est terminé. </div><div class="ttdef"><b>Definition:</b> tapis.cpp:151</div></div>
 <div class="ttc" id="classCarte_html"><div class="ttname"><a href="classCarte.html">Carte</a></div><div class="ttdoc">Définition d&#39;une Carte du jeu. </div><div class="ttdef"><b>Definition:</b> carte.hpp:80</div></div>
@@ -165,7 +166,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi 2 Décembre 2014 21:00:21 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Mardi 2 Décembre 2014 21:33:42 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

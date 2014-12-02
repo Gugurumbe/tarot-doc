@@ -141,9 +141,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;  std::vector&lt;Carte&gt; m_cartes;</div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;};</div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;std::ostream &amp; operator&lt;&lt;(std::ostream &amp; out, <span class="keyword">const</span> <a class="code" href="classMain.html">Main</a> &amp; main);</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;std::ostream &amp; <a class="code" href="main_8hpp.html#a1f09edb5fd6c09d51d39280c7032a00d">operator&lt;&lt;</a>(std::ostream &amp; out, <span class="keyword">const</span> <a class="code" href="classMain.html">Main</a> &amp; main);</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="classMain_html_a120f0c2a92b0f005935306f287bbe882"><div class="ttname"><a href="classMain.html#a120f0c2a92b0f005935306f287bbe882">Main::peut_couper</a></div><div class="ttdeci">bool peut_couper(Carte::Couleur col) const </div><div class="ttdoc">Indique si le joueur n&#39;a plus d&#39;une couleur. </div><div class="ttdef"><b>Definition:</b> main.cpp:253</div></div>
 <div class="ttc" id="classCarte_html_aa4b4c15fb6d1f697985b8ff04a67c45e"><div class="ttname"><a href="classCarte.html#aa4b4c15fb6d1f697985b8ff04a67c45e">Carte::Couleur</a></div><div class="ttdeci">Couleur</div><div class="ttdoc">Énumère les 5 couleurs. </div><div class="ttdef"><b>Definition:</b> carte.hpp:90</div></div>
 <div class="ttc" id="classMain_html_a42f21420ab772b3853a4fef6865d48c8"><div class="ttname"><a href="classMain.html#a42f21420ab772b3853a4fef6865d48c8">Main::cartes</a></div><div class="ttdeci">std::vector&lt; Carte &gt; const &amp; cartes() const </div><div class="ttdoc">Ensemble des Cartes. </div><div class="ttdef"><b>Definition:</b> main.cpp:313</div></div>
@@ -158,6 +158,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="ttc" id="structProtocole_1_1Msg__distribution_html"><div class="ttname"><a href="structProtocole_1_1Msg__distribution.html">Protocole::Msg_distribution</a></div><div class="ttdoc">Contenu d&#39;un Message de distribution des cartes. </div><div class="ttdef"><b>Definition:</b> protocole.hpp:258</div></div>
 <div class="ttc" id="classMain_html"><div class="ttname"><a href="classMain.html">Main</a></div><div class="ttdoc">Une Main est un ensemble de cartes. </div><div class="ttdef"><b>Definition:</b> main.hpp:28</div></div>
 <div class="ttc" id="classMain_html_ad052677f64d47b36c22758615af2769e"><div class="ttname"><a href="classMain.html#ad052677f64d47b36c22758615af2769e">Main::peut_defausser</a></div><div class="ttdeci">bool peut_defausser() const </div><div class="ttdoc">Indique si le joueur peut &quot;défausser&quot;. </div><div class="ttdef"><b>Definition:</b> main.cpp:291</div></div>
+<div class="ttc" id="main_8hpp_html_a1f09edb5fd6c09d51d39280c7032a00d"><div class="ttname"><a href="main_8hpp.html#a1f09edb5fd6c09d51d39280c7032a00d">operator&lt;&lt;</a></div><div class="ttdeci">std::ostream &amp; operator&lt;&lt;(std::ostream &amp;out, const Main &amp;main)</div><div class="ttdoc">Écrit une Main. </div><div class="ttdef"><b>Definition:</b> main.cpp:320</div></div>
 <div class="ttc" id="classMain_html_ac31fb90cebfa1d62f14995fb3393151e"><div class="ttname"><a href="classMain.html#ac31fb90cebfa1d62f14995fb3393151e">Main::distribution</a></div><div class="ttdeci">void distribution(Protocole::Msg_distribution &amp;m)</div><div class="ttdef"><b>Definition:</b> main.cpp:175</div></div>
 <div class="ttc" id="carte_8hpp_html"><div class="ttname"><a href="carte_8hpp.html">carte.hpp</a></div><div class="ttdoc">définit une classe de carte à jouer. </div></div>
 <div class="ttc" id="classMain_html_a4a584a9244bbe3721c45bf79261d0a82"><div class="ttname"><a href="classMain.html#a4a584a9244bbe3721c45bf79261d0a82">Main::nombre_cartes</a></div><div class="ttdeci">unsigned int nombre_cartes() const </div><div class="ttdoc">Nombre de Cartes. </div><div class="ttdef"><b>Definition:</b> main.cpp:306</div></div>
@@ -168,7 +169,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi 2 Décembre 2014 21:00:21 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Mardi 2 Décembre 2014 21:33:42 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
