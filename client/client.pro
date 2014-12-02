@@ -19,8 +19,8 @@ partie_client.hpp                \
 ../shared/debogueur.hpp          \
 ../shared/deboguer.hpp           \
 ../shared/ne_pas_deboguer.hpp    \
-ui_client.h                      \
-client_graphique.hpp
+client_graphique.hpp             \
+label_nom.hpp
 
 SOURCES += main_program.cpp      \
 client.cpp                       \
@@ -33,7 +33,8 @@ partie_client.cpp                \
 ../shared/carte.cpp              \
 ../shared/main.cpp               \
 ../shared/debogueur.cpp          \
-client_graphique.cpp
+client_graphique.cpp             \
+label_nom.cpp
 
 FORMS += client.ui
 
