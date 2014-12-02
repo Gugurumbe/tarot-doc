@@ -182,8 +182,26 @@ private:
 
 #ifndef PRINT_ARRAY
 
+/**
+   @brief Empêche de définir deux fois l'écriture d'un tableau.
+   
+   @see shared/debogueur.hpp
+ */
 #define PRINT_ARRAY
 
+/**
+   @brief Permet d'écrire un tableau dans un flux.
+   @param[out] out Le flux de sortie où il faut écrire.
+   @param t Le tableau d'objets.
+
+   L'écriture se fait sous la forme [|<obj 1> ; <obj 2>|]
+   
+   @warning La méthode 
+   std::ostream & operator<<(std::ostream &, const T &)
+   doit être définie.
+
+   @return La suite du flux.
+ */
 template<class T>
 std::ostream & operator<<(std::ostream & out, const std::vector<T> & t)
 {

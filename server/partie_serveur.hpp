@@ -116,7 +116,7 @@ signals:
 
      @param j : le joueur à qui adresser le Message.
      @param m : le Message à adresser.
-     @param analyser : dit si le Message doit être assimilé.
+     @param assimiler : dit si le Message doit être assimilé.
    */
   void doit_emettre(unsigned int j, Protocole::Message m, bool assimiler);
 

@@ -56,8 +56,6 @@ public:
      L'ajout d'une carte au tapis se fait directement à partir d'un
      sous-type de Message.
      @param carte Le message provenant du serveur.
-     @param maitre Indiquez Vrai ssi on en est au dernier tour d'un
-     chelem et que le preneur joue l'excuse.
      @param exc La force de l'excuse.
      @see Message
      @see Tapis::set_ouverture(unsigned int)
@@ -169,6 +167,13 @@ private:
   std::vector<std::vector<Carte> > m_tapis;
 };
 
+/**
+   @brief Écrit un Tapis.
+   
+   @param[out] out Le flux à utiliser.
+   @param tap Le tapis à écrire.
+   @return La suite du flux.
+ */
 std::ostream & operator<<(std::ostream & out, const Tapis & tap);
 
 #endif

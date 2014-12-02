@@ -150,11 +150,46 @@ public:
     if(current)
       current->retourner(out.str());
   }
-
+  
 private:
+  
+  /**
+     @brief Ajoute la valeur d'un argument.
+     
+     C'est à l'utilisateur d'ajouter des arguments lorsqu'il utilise
+     un Debogueur.
+     @see shared/deboguer.hpp
+
+     @param nom Le nom de l'argument (ou de la propriété de
+     l'argument).
+     @param valeur La valeur de l'argument (ou de la propriété), ici
+     sous forme de chaîne de caractères.
+   */
   void ajouter_argument(std::string const & nom, std::string const & valeur);
+
+  /**
+     @brief Spécifie la valeur de retour de la fonction.
+
+     L'utilisateur doit -avant la fin du bloc- spécifier la valeur de
+     retour. 
+     @see shared/deboguer.hpp
+     @param chaine La valeur de retour.
+   */
   void retourner(std::string const & chaine);
+  
+  /**
+     @brief Donne l'indentation en cours.
+     
+     Elle est proportionnelle au nombre de débogueurs actifs.
+     @return Le nombre de débogueurs actifs.
+   */
   unsigned int indentation() const;
+
+  /**
+     @brief Dernier débogueur créé.
+     
+     C'est celui du bloc parent.
+   */
   static Debogueur * current;
   Debogueur * parent;
   std::string retour;
@@ -165,8 +200,26 @@ private:
 
 #ifndef PRINT_ARRAY
 
+/**
+   @brief Empêche de définir 2 fois <<(ostream, vector)
+   
+   @see client/client.hpp
+ */
 #define PRINT_ARRAY
 
+/**
+   @brief Permet d'écrire un tableau dans un flux.
+   @param[out] out Le flux de sortie où il faut écrire.
+   @param tab Le tableau d'objets.
+
+   L'écriture se fait sous la forme [|<obj 1> ; <obj 2>|]
+   
+   @warning La méthode 
+   std::ostream & operator<<(std::ostream &, const T &)
+   doit être définie.
+
+   @return La suite du flux.
+ */
 template<class T>
 std::ostream & operator<<(std::ostream & out, 
 			  const std::vector<T> & tab)

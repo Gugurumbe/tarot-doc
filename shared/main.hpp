@@ -201,6 +201,13 @@ private:
   std::vector<Carte> m_cartes;
 };
 
+/**
+   @brief Écrit une Main.
+   
+   @param[out] out Le flux à utiliser.
+   @param main La Main à écrire.
+   @return La suite du flux.
+ */
 std::ostream & operator<<(std::ostream & out, const Main & main);
 
 #endif

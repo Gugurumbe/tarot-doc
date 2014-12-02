@@ -361,10 +361,51 @@ private:
   unsigned int m_numero;
 };
 
+/**
+   @brief Affiche le nom d'une Carte.
+   
+   @see Carte::nom
+   
+   @param[out] out Le flux à utiliser.
+   @param carte La carte à écrire.
+   @return La suite du flux.
+ */
 std::ostream & operator<<(std::ostream & out, const Carte & carte);
+
+/**
+   @brief Affiche le nom d'une Couleur.
+   
+   @param[out] out Le flux à utiliser.
+   @param couleur La couleur à écrire.
+   @return La suite du flux.
+ */
 std::ostream & operator<<(std::ostream & out, Carte::Couleur couleur);
+
+/**
+   @brief Affiche le nom d'une Valeur.
+   
+   @param[out] out Le flux à utiliser.
+   @param valeur La valeur à écrire.
+   @return La suite du flux.
+ */
 std::ostream & operator<<(std::ostream & out, Carte::Valeur valeur);
+
+/**
+   @brief Affiche le nom d'une modalité d'écart.
+   
+   @param[out] out Le flux à utiliser.
+   @param mod La modalité à écrire.
+   @return La suite du flux.
+ */
 std::ostream & operator<<(std::ostream & out, Carte::ModaliteEcart mod);
+
+/**
+   @brief Affiche le nom d'une force d'excuse.
+   
+   @param[out] out Le flux à utiliser.
+   @param exc La force d'excuse à écrire.
+   @return La suite du flux.
+ */
 std::ostream & operator<<(std::ostream & out, Carte::ForceExcuse exc);
 
 #endif

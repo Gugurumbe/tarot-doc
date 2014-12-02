@@ -227,6 +227,13 @@ private:
   Carte * m_carte_appelee; //Vaut 0 tant qu'on ne le sait pas
 };
 
+/**
+   @brief Écrit une Enchère.
+   
+   @param[out] out Le flux à utiliser.
+   @param e L'enchère à écrire.
+   @return La suite du flux.
+ */
 std::ostream & operator<<(std::ostream & out, const Enchere & e);
 
 #endif
