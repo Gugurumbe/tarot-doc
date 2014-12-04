@@ -77,201 +77,202 @@ void ClientJeu::traiter_deconnexion()
 }
 
 void ClientJeu::presenter_etat()
-{
+{/*
   std::cout<<"Vous êtes le numéro "<<partie.mon_numero()
 	   <<", on en est à la phase "<<partie.phase()
 	   <<", vos cartes sont "<<partie.mon_jeu()
-	   <<"."<<std::endl;
+	   <<"."<<std::endl;*/
 }
 
 void ClientJeu::numero_change(unsigned int num)
 {
-  std::cout<<"Vous avez reçu votre numéro : "<<num<<std::endl;
+  //std::cout<<"Vous avez reçu votre numéro : "<<num<<std::endl;
+  emit ClientJeu::num(num);
 }
 
 void ClientJeu::jeu_change()
 {
-  std::cout<<"Votre jeu a changé. Vous avez maintenant "
-	   <<partie.mon_jeu()<<std::endl;
+  // std::cout<<"Votre jeu a changé. Vous avez maintenant "
+  // 	   <<partie.mon_jeu()<<std::endl;
 }
 
 void ClientJeu::doit_priser()
 {
   presenter_etat();
-  std::cout<<"C'est à vous de priser. Entrez une enchère parmi :"
-	   <<std::endl<<"0. Passe"
-	   <<std::endl<<"1. Prise"
-	   <<std::endl<<"2. Garde"
-	   <<std::endl<<"3. Garde sans le Chien."
-	   <<std::endl<<"4. Garde contre le Chien."<<std::endl;
-  Protocole::Message prise;
-  prise.type = Protocole::PRISE;
-  std::cin>>prise.m.prise.niveau;
-  envoyer(prise);
+  // std::cout<<"C'est à vous de priser. Entrez une enchère parmi :"
+  // 	   <<std::endl<<"0. Passe"
+  // 	   <<std::endl<<"1. Prise"
+  // 	   <<std::endl<<"2. Garde"
+  // 	   <<std::endl<<"3. Garde sans le Chien."
+  // 	   <<std::endl<<"4. Garde contre le Chien."<<std::endl;
+  // Protocole::Message prise;
+  // prise.type = Protocole::PRISE;
+  // std::cin>>prise.m.prise.niveau;
+  // envoyer(prise);
 }
 
 void ClientJeu::enchere_refusee()
 {
-  std::cout<<"Votre enchère a été refusée ! Soyez plus avisé..."
-	   <<std::endl;
+  // std::cout<<"Votre enchère a été refusée ! Soyez plus avisé..."
+  // 	   <<std::endl;
 }
 
 void ClientJeu::contrat_intermediaire(unsigned int joueur, Enchere e)
 {
-  std::cout<<"Le joueur"<<joueur<<" a fait l'enchère "<<e<<std::endl;
+  // std::cout<<"Le joueur"<<joueur<<" a fait l'enchère "<<e<<std::endl;
 }
 
 void ClientJeu::doit_appeler()
 {
-  presenter_etat();
-  std::cout<<"Vous devez appeler une Carte. Vous pouvez appeler : "
-	   <<std::endl;
-  for(unsigned int i = 0 ; i < 78 ; i++)
-    {
-      if(partie.mon_jeu().peut_appeler(Carte(i)))
-	{
-	  std::cout<<"("<<i<<") : "<<Carte(i)<<std::endl;
-	}
-    }
-  std::cout<<"Bien entendu, vous tester une autre carte..."
-	   <<std::endl
-	   <<"Entrez un numéro : "<<std::endl;
-  Protocole::Message appeler;
-  appeler.type = Protocole::APPELER;
-  std::cin>>appeler.m.appeler.carte;
-  envoyer(appeler);
+  // presenter_etat();
+  // std::cout<<"Vous devez appeler une Carte. Vous pouvez appeler : "
+  // 	   <<std::endl;
+  // for(unsigned int i = 0 ; i < 78 ; i++)
+  //   {
+  //     if(partie.mon_jeu().peut_appeler(Carte(i)))
+  // 	{
+  // 	  std::cout<<"("<<i<<") : "<<Carte(i)<<std::endl;
+  // 	}
+  //   }
+  // std::cout<<"Bien entendu, vous tester une autre carte..."
+  // 	   <<std::endl
+  // 	   <<"Entrez un numéro : "<<std::endl;
+  // Protocole::Message appeler;
+  // appeler.type = Protocole::APPELER;
+  // std::cin>>appeler.m.appeler.carte;
+  // envoyer(appeler);
 }
 
 void ClientJeu::appel_refuse()
 {
-  std::cout<<"Votre appel a été refusé ! Soyez plus avisé..."
-	   <<std::endl;
+  // std::cout<<"Votre appel a été refusé ! Soyez plus avisé..."
+  // 	   <<std::endl;
 }
 
 void ClientJeu::contrat_final(Enchere e)
 {
-  std::cout<<"Le contrat final est "<<e<<std::endl;
+  // std::cout<<"Le contrat final est "<<e<<std::endl;
 }
 
 void ClientJeu::chien_devoile(Carte c1, Carte c2, Carte c3)
 {
-  std::cout<<"Le chien contient "<<c1<<", "<<c2<<", "<<c3<<"."
-	   <<std::endl;
+  // std::cout<<"Le chien contient "<<c1<<", "<<c2<<", "<<c3<<"."
+  // 	   <<std::endl;
 }
 
 void ClientJeu::doit_ecarter()
 {
-  presenter_etat();
-  std::cout<<"Vous devez faire un écart. Vous pouvez tenter d'écarter :"
-	   <<std::endl;
-  for(unsigned int i = 0 ; i < 78 ; i++)
-    {
-      if(partie.mon_jeu().possede(Carte(i)))
-	{
-	  switch(Carte(i).ecartable())
-	    {
-	    case Carte::ECARTABLE:
-	      std::cout<<"("<<std::setw(2)<<i<<") : "
-		       <<std::setw(25)<<(Carte(i))<<std::endl;
-	      break;
-	    case Carte::MONTRER_CARTE:
-	      std::cout<<"("<<std::setw(2)<<i<<") : "
-		       <<std::setw(25)<<(Carte(i))<<"[sous conditions]"
-		       <<std::endl;
-	    default:
-	      break;
-	    }
-	}
-    }
-  Protocole::Message ecart;
-  ecart.type = Protocole::ECART;
-  for(unsigned int i = 0 ; i < 3 ; i++)
-    {
-      std::cout<<"Carte "<<i<<" : ";
-      std::cin>>ecart.m.ecart.ecart[i];
-      std::cout<<"Merci. ";
-    }
-  std::cout<<std::endl;
-  envoyer(ecart);
+  // presenter_etat();
+  // std::cout<<"Vous devez faire un écart. Vous pouvez tenter d'écarter :"
+  // 	   <<std::endl;
+  // for(unsigned int i = 0 ; i < 78 ; i++)
+  //   {
+  //     if(partie.mon_jeu().possede(Carte(i)))
+  // 	{
+  // 	  switch(Carte(i).ecartable())
+  // 	    {
+  // 	    case Carte::ECARTABLE:
+  // 	      std::cout<<"("<<std::setw(2)<<i<<") : "
+  // 		       <<std::setw(25)<<(Carte(i))<<std::endl;
+  // 	      break;
+  // 	    case Carte::MONTRER_CARTE:
+  // 	      std::cout<<"("<<std::setw(2)<<i<<") : "
+  // 		       <<std::setw(25)<<(Carte(i))<<"[sous conditions]"
+  // 		       <<std::endl;
+  // 	    default:
+  // 	      break;
+  // 	    }
+  // 	}
+  //   }
+  // Protocole::Message ecart;
+  // ecart.type = Protocole::ECART;
+  // for(unsigned int i = 0 ; i < 3 ; i++)
+  //   {
+  //     std::cout<<"Carte "<<i<<" : ";
+  //     std::cin>>ecart.m.ecart.ecart[i];
+  //     std::cout<<"Merci. ";
+  //   }
+  // std::cout<<std::endl;
+  // envoyer(ecart);
 }
 
 void ClientJeu::ecart_accepte()
 {
-  std::cout<<"Bravo ! Votre écart a été accepté."<<std::endl;
+  // std::cout<<"Bravo ! Votre écart a été accepté."<<std::endl;
 }
 
 void ClientJeu::ecart_refuse()
 {
-  std::cout<<"Votre écart a été refusé. Soyez plus vigilant."
-	   <<std::endl;
+  // std::cout<<"Votre écart a été refusé. Soyez plus vigilant."
+  // 	   <<std::endl;
 }
 
 void ClientJeu::atout_au_chien(std::vector<Carte> atouts)
 {
-  std::cout<<"Un ou des atouts ont été mis dans le chien : "<<atouts
-	   <<std::endl;
+  // std::cout<<"Un ou des atouts ont été mis dans le chien : "<<atouts
+  // 	   <<std::endl;
 }
 
 void ClientJeu::doit_jouer()
 {
-  presenter_etat();
-  std::cout<<"Vous devez jouer une carte. "
-	   <<"Voici les numéros de votre jeu : "
-	   <<std::endl;
-  for(unsigned int i = 0 ; i < 78 ; i++)
-    {
-      if(partie.mon_jeu().possede(Carte(i)))
-	{
-	  std::cout<<"("<<std::setw(2)<<i<<") : "
-		   <<(Carte(i))<<std::endl;
-	}
-    }
-  std::cout<<"Que voulez-vous jouer ?"<<std::endl;
-  Protocole::Message requete;
-  requete.type = Protocole::REQUETE;
-  std::cin>>requete.m.carte.carte;
-  envoyer(requete);
+  // presenter_etat();
+  // std::cout<<"Vous devez jouer une carte. "
+  // 	   <<"Voici les numéros de votre jeu : "
+  // 	   <<std::endl;
+  // for(unsigned int i = 0 ; i < 78 ; i++)
+  //   {
+  //     if(partie.mon_jeu().possede(Carte(i)))
+  // 	{
+  // 	  std::cout<<"("<<std::setw(2)<<i<<") : "
+  // 		   <<(Carte(i))<<std::endl;
+  // 	}
+  //   }
+  // std::cout<<"Que voulez-vous jouer ?"<<std::endl;
+  // Protocole::Message requete;
+  // requete.type = Protocole::REQUETE;
+  // std::cin>>requete.m.carte.carte;
+  // envoyer(requete);
 }
 
 void ClientJeu::requete_refusee()
 {
-  std::cout<<"Votre requête a été refusée ! Soyez plus vigilant."
-	   <<std::endl;
+  // std::cout<<"Votre requête a été refusée ! Soyez plus vigilant."
+  // 	   <<std::endl;
 }
 
 void ClientJeu::requete_acceptee()
 {
-  std::cout<<"Votre requête a été acceptée."<<std::endl;
+  // std::cout<<"Votre requête a été acceptée."<<std::endl;
 }
 
 void ClientJeu::carte_jouee(unsigned int joueur, Carte carte)
 {
-  std::cout<<joueur<<" a joué la carte "<<carte
-	   <<", le tapis est donc "<<partie.tapis()
-	   <<std::endl;
+  // std::cout<<joueur<<" a joué la carte "<<carte
+  // 	   <<", le tapis est donc "<<partie.tapis()
+  // 	   <<std::endl;
 }
 
 void ClientJeu::score(std::vector<int> scores)
 {
-  std::cout<<"Voici les scores : "<<scores<<std::endl;
+  // std::cout<<"Voici les scores : "<<scores<<std::endl;
 }
 
 void ClientJeu::carte_gagnee(Carte c, 
 			     unsigned int poseur, 
 			     unsigned int gagnant)
 {
-  std::cout<<gagnant<<" remporte la carte "<<c<<" posée par "
-	   <<poseur<<std::endl;
+  // std::cout<<gagnant<<" remporte la carte "<<c<<" posée par "
+  // 	   <<poseur<<std::endl;
 }
 
 void ClientJeu::pli(unsigned int tour)
 {
-  std::cout<<tour<<" remporte le pli."<<std::endl;
+  // std::cout<<tour<<" remporte le pli."<<std::endl;
 }
 
 void ClientJeu::maitre(unsigned int joueur)
 {
-  std::cout<<"Le joueur "<<joueur<<" passe maître."<<std::endl;
+  // std::cout<<"Le joueur "<<joueur<<" passe maître."<<std::endl;
 }
 
 void ClientJeu::traiter_message(Protocole::Message m)

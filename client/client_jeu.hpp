@@ -63,28 +63,28 @@ public slots:
   void traiter_message(Protocole::Message m);
   
   /**
-     @brief Émis lorsque mon numéro change.
+     @brief Traité lorsque mon numéro change.
      @param n Mon nouveau numéro.
    */
   void numero_change(unsigned int n);
 
   /**
-     @brief Émis lorsque mon jeu change.
+     @brief Traité lorsque mon jeu change.
    */
   void jeu_change();
 
   /**
-     @brief Émis lorsque je dois priser.
+     @brief Traité lorsque je dois priser.
    */
   void doit_priser();
   
   /**
-     @brief Émis lorsque mon enchère a été refusée.
+     @brief Traité lorsque mon enchère a été refusée.
   */
   void enchere_refusee();
 
   /**
-     @brief Émis lorsqu'un joueur effectue une enchère.
+     @brief Traité lorsqu'un joueur effectue une enchère.
      @param j Le numéro de ce joueur;
      @param e L'enchère réalisée.
 
@@ -93,25 +93,25 @@ public slots:
   void contrat_intermediaire(unsigned int j, Enchere e);
 
   /**
-     @brief Émis lorsque je dois appeler une Carte.
+     @brief Traité lorsque je dois appeler une Carte.
    */
   void doit_appeler();
 
   /**
-     @brief Émis lorsque le serveur refuse que j'appelle cette
+     @brief Traité lorsque le serveur refuse que j'appelle cette
      Carte.
    */
   void appel_refuse();
 
   /**
-     @brief Émis lorsque le contrat final est divulgué.
+     @brief Traité lorsque le contrat final est divulgué.
      
      @param e L'enchère correspondante.
    */
   void contrat_final(Enchere e);
 
   /**
-     @brief Émis lorsque le Chien est dévoilé.
+     @brief Traité lorsque le Chien est dévoilé.
      
      @param c1 La première carte.
      @param c2 ...
@@ -120,44 +120,44 @@ public slots:
   void chien_devoile(Carte c1, Carte c2, Carte c3);
 
   /**
-     @brief Émis lorsqu'on doit faire un écart.
+     @brief Traité lorsqu'on doit faire un écart.
    */
   void doit_ecarter();
 
   /**
-     @brief Émis lorsque l'écart a été accepté.
+     @brief Traité lorsque l'écart a été accepté.
    */
   void ecart_accepte();
 
   /**
-     @brief Émis lorsque l'écart a été refusé.
+     @brief Traité lorsque l'écart a été refusé.
    */
   void ecart_refuse();
 
   /**
-     @brief Émis lorsque des atouts ont été mis au chien.
+     @brief Traité lorsque des atouts ont été mis au chien.
 
      @param atouts Les atouts en question.
    */
   void atout_au_chien(std::vector<Carte> atouts);
 
   /**
-     @brief Émis lorsque je dois jouer.
+     @brief Traité lorsque je dois jouer.
    */
   void doit_jouer();
 
   /**
-     @brief Émis lorsque ma carte a été refusée.
+     @brief Traité lorsque ma carte a été refusée.
    */
   void requete_refusee();
   
   /**
-     @brief Émis lorsque le serveur accepte que je joue ma carte.
+     @brief Traité lorsque le serveur accepte que je joue ma carte.
    */
   void requete_acceptee();
   
   /**
-     @brief Émis lorsqu'une carte a été jouée.
+     @brief Traité lorsqu'une carte a été jouée.
      
      @param joueur Le numéro du joueur qui a joué cette Carte.
      @param carte La carte en question.
@@ -165,7 +165,7 @@ public slots:
   void carte_jouee(unsigned int joueur, Carte carte);
 
   /**
-     @brief Émis à la fin de la manche.
+     @brief Traité à la fin de la manche.
 
      @param scores Les scores de chacun.
      @note La somme des scores fait 0.
@@ -173,7 +173,7 @@ public slots:
   void score(std::vector<int> scores);
 
   /**
-     @brief Émis lorsqu'un joueur remporte une carte.
+     @brief Traité lorsqu'un joueur remporte une carte.
      
      @param c La carte en question.
      @param poseur Le joueur qui avait joué cette Carte.
@@ -182,18 +182,28 @@ public slots:
   void carte_gagnee(Carte c, unsigned int poseur, unsigned int gagnant);
 
   /**
-     @brief Émis lorsqu'une levée est terminée.
+     @brief Traité lorsqu'une levée est terminée.
 
      @param j Le numéro du joueur qui a remporté cette levée.
    */
   void pli(unsigned int j);
 
   /**
-     @brief Émis lorsque le joueur maître change.
+     @brief Traité lorsque le joueur maître change.
      
      @param m Le nouveau joueur maître.
    */
   void maitre(unsigned int m);
+
+signals:
+  
+  /**
+     @brief Émis lorsqu'on m'informe de mon numéro.
+     
+     @param n Mon numéro, entre 0 inclus et 5 exclus.
+   */
+  void num(unsigned int n);
+
 private:
   PartieClient partie;
 };

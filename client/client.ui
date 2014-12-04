@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>801</width>
-    <height>575</height>
+    <width>789</width>
+    <height>561</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,6 +16,12 @@
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
     <widget class="QTabWidget" name="onglets">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
      <property name="tabShape">
       <enum>QTabWidget::Rounded</enum>
      </property>
@@ -28,27 +34,26 @@
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_4">
        <item>
-        <widget class="QGroupBox" name="groupBox_4">
+        <widget class="QGroupBox" name="groupe_enchere">
          <property name="title">
           <string>Choisissez votre enchère</string>
          </property>
          <layout class="QGridLayout" name="gridLayout_2">
-          <item row="1" column="2" colspan="2">
-           <widget class="QRadioButton" name="bouton_garde_contre">
-            <property name="text">
-             <string>Garde Contre</string>
-            </property>
-           </widget>
-          </item>
           <item row="2" column="1">
            <widget class="QRadioButton" name="bouton_garde">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="text">
              <string>Garde</string>
             </property>
            </widget>
           </item>
-          <item row="0" column="4">
-           <spacer name="horizontalSpacer">
+          <item row="1" column="0">
+           <spacer name="pousseur_2">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -60,10 +65,32 @@
             </property>
            </spacer>
           </item>
-          <item row="2" column="2">
-           <widget class="QRadioButton" name="bouton_hack_enchere">
+          <item row="1" column="2" colspan="2">
+           <widget class="QRadioButton" name="bouton_garde_contre">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="text">
-             <string>Hack : </string>
+             <string>Garde Contre</string>
+            </property>
+           </widget>
+          </item>
+          <item row="0" column="1">
+           <widget class="QRadioButton" name="bouton_passe">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>Passe</string>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
             </property>
            </widget>
           </item>
@@ -80,32 +107,34 @@
             </property>
            </widget>
           </item>
+          <item row="2" column="2">
+           <widget class="QRadioButton" name="bouton_hack_enchere">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>Hack : </string>
+            </property>
+           </widget>
+          </item>
           <item row="1" column="1">
            <widget class="QRadioButton" name="bouton_prise">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="text">
              <string>Prise</string>
             </property>
            </widget>
           </item>
-          <item row="0" column="2" colspan="2">
-           <widget class="QRadioButton" name="bouton_garde_sans">
-            <property name="text">
-             <string>Garde Sans</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="1">
-           <widget class="QRadioButton" name="bouton_passe">
-            <property name="text">
-             <string>Passe</string>
-            </property>
-            <property name="checked">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item row="1" column="0">
-           <spacer name="horizontalSpacer_2">
+          <item row="0" column="4">
+           <spacer name="pousseur_1">
             <property name="orientation">
              <enum>Qt::Horizontal</enum>
             </property>
@@ -117,11 +146,35 @@
             </property>
            </spacer>
           </item>
+          <item row="0" column="2" colspan="2">
+           <widget class="QRadioButton" name="bouton_garde_sans">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="text">
+             <string>Garde Sans</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="bouton_enchere">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>30</pointsize>
+          </font>
+         </property>
          <property name="text">
           <string>Faire cette enchère</string>
          </property>
@@ -146,7 +199,7 @@
          <item>
           <widget class="QComboBox" name="selecteur_appel">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+            <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
@@ -157,6 +210,17 @@
        </item>
        <item>
         <widget class="QPushButton" name="bouton_appel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>30</pointsize>
+          </font>
+         </property>
          <property name="text">
           <string>Appeler cette carte</string>
          </property>
@@ -224,18 +288,6 @@
          </layout>
         </widget>
        </item>
-       <item row="0" column="2">
-        <widget class="QGroupBox" name="groupBox_7">
-         <property name="title">
-          <string>Journal</string>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout_7">
-          <item>
-           <widget class="QTextEdit" name="journal"/>
-          </item>
-         </layout>
-        </widget>
-       </item>
        <item row="0" column="1">
         <widget class="QGroupBox" name="groupBox_6">
          <property name="sizePolicy">
@@ -290,6 +342,17 @@
           </item>
           <item row="2" column="0" colspan="2">
            <widget class="QPushButton" name="bouton_requete">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="font">
+             <font>
+              <pointsize>30</pointsize>
+             </font>
+            </property>
             <property name="text">
              <string>Jouer</string>
             </property>
@@ -298,7 +361,7 @@
          </layout>
         </widget>
        </item>
-       <item row="1" column="0" colspan="3">
+       <item row="1" column="0" colspan="2">
         <widget class="QGroupBox" name="groupBox_8">
          <property name="title">
           <string>Hack</string>
@@ -324,20 +387,38 @@
          </layout>
         </widget>
        </item>
+       <item row="0" column="2" rowspan="2">
+        <widget class="QGroupBox" name="groupBox_7">
+         <property name="title">
+          <string>Journal</string>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_7">
+          <item>
+           <widget class="Journal" name="journal"/>
+          </item>
+         </layout>
+        </widget>
+       </item>
       </layout>
      </widget>
     </widget>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout">
+    <layout class="QHBoxLayout" name="layout_principal">
      <item>
-      <widget class="QGroupBox" name="groupBox">
+      <widget class="QGroupBox" name="groupe_mes_cartes">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="title">
         <string>Mes cartes</string>
        </property>
        <layout class="QGridLayout" name="gridLayout">
         <item row="0" column="0">
-         <widget class="QListWidget" name="listWidget">
+         <widget class="QListWidget" name="mes_cartes">
           <property name="modelColumn">
            <number>0</number>
           </property>
@@ -347,13 +428,16 @@
       </widget>
      </item>
      <item>
-      <widget class="QGroupBox" name="groupBox_2">
+      <widget class="QGroupBox" name="groupe_tapis">
        <property name="title">
         <string>Tapis</string>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
          <widget class="QTableWidget" name="tapis">
+          <property name="editTriggers">
+           <set>QAbstractItemView::NoEditTriggers</set>
+          </property>
           <property name="rowCount">
            <number>5</number>
           </property>
@@ -375,9 +459,9 @@
          </widget>
         </item>
         <item>
-         <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <layout class="QHBoxLayout" name="layout_maitre">
           <item>
-           <widget class="QLabel" name="label_2">
+           <widget class="QLabel" name="label_maitre">
             <property name="text">
              <string>Joueur maître :</string>
             </property>
@@ -399,7 +483,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QGroupBox" name="groupBox_3">
+      <widget class="QGroupBox" name="groupe_chien">
        <property name="title">
         <string>Chien</string>
        </property>
@@ -444,9 +528,9 @@
     </layout>
    </item>
    <item>
-    <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <layout class="QHBoxLayout" name="layout_moi">
      <item>
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="label_moi">
        <property name="text">
         <string>Vous jouez en tant que : </string>
        </property>
@@ -471,6 +555,11 @@
    <class>LabelNom</class>
    <extends>QLabel</extends>
    <header>label_nom.hpp</header>
+  </customwidget>
+  <customwidget>
+   <class>Journal</class>
+   <extends>QTextBrowser</extends>
+   <header>journal.hpp</header>
   </customwidget>
  </customwidgets>
  <resources/>

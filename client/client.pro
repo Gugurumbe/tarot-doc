@@ -20,7 +20,9 @@ partie_client.hpp                \
 ../shared/deboguer.hpp           \
 ../shared/ne_pas_deboguer.hpp    \
 client_graphique.hpp             \
-label_nom.hpp
+label_nom.hpp                    \
+journal.hpp                      \
+coquille.hpp
 
 SOURCES += main_program.cpp      \
 client.cpp                       \
@@ -34,8 +36,11 @@ partie_client.cpp                \
 ../shared/main.cpp               \
 ../shared/debogueur.cpp          \
 client_graphique.cpp             \
-label_nom.cpp
+label_nom.cpp                    \
+journal.cpp                      \
+coquille.cpp
 
-FORMS += client.ui
+FORMS += client.ui 
+FORMS += coquille.ui
 
 QT += network

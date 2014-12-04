@@ -12,6 +12,8 @@
 
 #include "ui_client.h"
 
+#include "client_jeu.hpp"
+
 #include <QWidget>
 
 /**
@@ -29,8 +31,11 @@ public:
   */
   ClientGraphique(QWidget * parent = 0);
 
+public slots:
+  
 private:
   Ui::ClientGraphique ui;
+  ClientJeu jeu;
 };
 
 #endif
