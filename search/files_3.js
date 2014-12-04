@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['label_5fnom_2ehpp',['label_nom.hpp',['../label__nom_8hpp.html',1,'']]]
+  ['journal_2ehpp',['journal.hpp',['../journal_8hpp.html',1,'']]]
 ];

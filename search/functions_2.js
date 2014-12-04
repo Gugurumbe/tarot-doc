@@ -20,5 +20,6 @@ var searchData=
   ['connexion',['connexion',['../classServeur.html#a9288c85f3aee40b409e1a58cb117c277',1,'Serveur']]],
   ['contrat_5ffinal',['contrat_final',['../classClientJeu.html#adb848b01350135b5f1d36c20fa7d4f4a',1,'ClientJeu::contrat_final()'],['../classPartieClient.html#a46b703ffdbdaae8ac4eeeea494c16304',1,'PartieClient::contrat_final()'],['../classPartie.html#a75eef78c18e161c2698ba3f88e465525',1,'Partie::contrat_final()']]],
   ['contrat_5fintermediaire',['contrat_intermediaire',['../classClientJeu.html#a8f9aec5e542fa463e594f097cb531dfe',1,'ClientJeu::contrat_intermediaire()'],['../classPartieClient.html#afbb417cef49e2055b734599e83b40a34',1,'PartieClient::contrat_intermediaire()']]],
+  ['coquille',['Coquille',['../classCoquille.html#a672c944d56b3b1d0c0549fecb2af45d3',1,'Coquille']]],
   ['couleur',['couleur',['../classCarte.html#adf755285455670fdeb10ad62e3909f0f',1,'Carte']]]
 ];

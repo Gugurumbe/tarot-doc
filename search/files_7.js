@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['serveur_2ehpp',['serveur.hpp',['../serveur_8hpp.html',1,'']]],
-  ['serveur_5fdebogage_2ehpp',['serveur_debogage.hpp',['../serveur__debogage_8hpp.html',1,'']]],
-  ['serveur_5fjeu_2ehpp',['serveur_jeu.hpp',['../serveur__jeu_8hpp.html',1,'']]]
+  ['partie_2ehpp',['partie.hpp',['../partie_8hpp.html',1,'']]],
+  ['partie_5fclient_2ehpp',['partie_client.hpp',['../partie__client_8hpp.html',1,'']]],
+  ['partie_5fserveur_2ehpp',['partie_serveur.hpp',['../partie__serveur_8hpp.html',1,'']]],
+  ['protocole_2ehpp',['protocole.hpp',['../protocole_8hpp.html',1,'']]]
 ];

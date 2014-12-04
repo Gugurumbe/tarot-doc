@@ -14,5 +14,6 @@ var searchData=
   ['set_5fattaquant',['set_attaquant',['../classPartie.html#a6bd294a0e3cdb55bb24ee2b6a2809bc4',1,'Partie']]],
   ['set_5fnum',['set_num',['../classLabelNom.html#aa3bf3f7517cc2403263f81808f89e41b',1,'LabelNom']]],
   ['set_5fouverture',['set_ouverture',['../classTapis.html#ad99507e33564528fcbdab023200a6677',1,'Tapis']]],
-  ['set_5fphase',['set_phase',['../classPartie.html#afdc3a79eba2d966d967225df81873693',1,'Partie']]]
+  ['set_5fphase',['set_phase',['../classPartie.html#afdc3a79eba2d966d967225df81873693',1,'Partie']]],
+  ['style',['STYLE',['../client_2config_8hpp.html#ac4071218adc77318ea9b9de1aaca1d52',1,'config.hpp']]]
 ];

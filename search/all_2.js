@@ -26,8 +26,8 @@ var searchData=
   ['comprendre',['comprendre',['../classTable.html#afb140b691eda8c0704cea1aeda9cd300',1,'Table']]],
   ['compris',['compris',['../structProtocole_1_1Message.html#ac7dd18300272ad00474c1d491b4545db',1,'Protocole::Message']]],
   ['config_2ehpp',['config.hpp',['../client_2config_8hpp.html',1,'']]],
-  ['config_2ehpp',['config.hpp',['../shared_2config_8hpp.html',1,'']]],
   ['config_2ehpp',['config.hpp',['../server_2config_8hpp.html',1,'']]],
+  ['config_2ehpp',['config.hpp',['../shared_2config_8hpp.html',1,'']]],
   ['connecte',['connecte',['../classClient.html#a81ee5a5d5df20d3bae5a7ba511fa1bb7',1,'Client']]],
   ['connecter',['connecter',['../classClient.html#aca6f6439d8500cea98b540450450e8cd',1,'Client']]],
   ['connexion',['connexion',['../classServeur.html#a9288c85f3aee40b409e1a58cb117c277',1,'Serveur']]],
@@ -36,6 +36,9 @@ var searchData=
   ['contrat',['contrat',['../unionProtocole_1_1Msg.html#aacaf17da53e7d8e5d4ba7b76f003dd4a',1,'Protocole::Msg::contrat()'],['../namespaceProtocole.html#a9f03877a7e246d3a013e680623a4b233a2fa2066054dd5a506a045deb007959eb',1,'Protocole::CONTRAT()']]],
   ['contrat_5ffinal',['contrat_final',['../unionProtocole_1_1Msg.html#a53febe42daa3148c77a91f01971621d9',1,'Protocole::Msg::contrat_final()'],['../classClientJeu.html#adb848b01350135b5f1d36c20fa7d4f4a',1,'ClientJeu::contrat_final()'],['../classPartieClient.html#a46b703ffdbdaae8ac4eeeea494c16304',1,'PartieClient::contrat_final()'],['../classPartie.html#a75eef78c18e161c2698ba3f88e465525',1,'Partie::contrat_final()'],['../namespaceProtocole.html#a9f03877a7e246d3a013e680623a4b233a29ef5afd2cf06910f9752605efff5f7e',1,'Protocole::CONTRAT_FINAL()']]],
   ['contrat_5fintermediaire',['contrat_intermediaire',['../classClientJeu.html#a8f9aec5e542fa463e594f097cb531dfe',1,'ClientJeu::contrat_intermediaire()'],['../classPartieClient.html#afbb417cef49e2055b734599e83b40a34',1,'PartieClient::contrat_intermediaire()']]],
+  ['coquille',['Coquille',['../classCoquille.html',1,'Coquille'],['../classCoquille.html#a672c944d56b3b1d0c0549fecb2af45d3',1,'Coquille::Coquille()']]],
+  ['coquille_2ehpp',['coquille.hpp',['../coquille_8hpp.html',1,'']]],
+  ['coquille_5fdefinie',['COQUILLE_DEFINIE',['../coquille_8hpp.html#ab6d559b28edc35ede33fd3b95af1c39d',1,'coquille.hpp']]],
   ['couleur',['Couleur',['../classCarte.html#aa4b4c15fb6d1f697985b8ff04a67c45e',1,'Carte::Couleur()'],['../classCarte.html#adf755285455670fdeb10ad62e3909f0f',1,'Carte::couleur() const ']]],
   ['couleurs',['COULEURS',['../debogueur_8hpp.html#ae10a7af627981fa7ff14419f505e15bb',1,'debogueur.hpp']]]
 ];
