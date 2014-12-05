@@ -11,6 +11,8 @@
 #define JOURNAL_DEFINI
 
 #include <QTextBrowser>
+#include "carte.hpp"
+#include "enchere.hpp"
 
 /**
    @brief Classe permettant d'afficher les événements du jeu.
@@ -39,6 +41,36 @@ public slots :
      @param n Mon numéro.
    */
   void afficher_numero(unsigned int n);
+  /**
+     @brief Indique au joueur qu'il a gagné / perdu des cartes.
+     
+     @param gagnees Les nouvelles cartes du joueur.
+     @param perdues Les cartes perdues.
+   */
+  void afficher_changement_jeu(std::vector<Carte> gagnees, 
+			       std::vector<Carte> perdues);
+  /**
+     @brief Indique au joueur qu'il doit priser.
+   */
+  void afficher_doit_priser();
+  /**
+     @brief Indique au joueur qu'il doit priser.
+     
+     @param meilleure La meilleure enchère jusqu'à présent.
+
+     @warning N'est pas émis pour le premier joueur.
+   */
+  void afficher_doit_priser(Enchere meilleure);
+  /**
+     @brief Indique au joueur un contrat intermédiaire.
+     
+     @param contrat Le dernier contrat en date.
+   */
+  void afficher_contrat_intermediaire(Enchere contrat);
+  /**
+     @brief Indique au joueur que son contrat n'est pas valide.
+   */
+  void afficher_contrat_invalide();
 
 private:
   QString header;

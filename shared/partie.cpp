@@ -157,6 +157,8 @@ void Partie::assimiler(const Protocole::Message & m)
       // Le joueur dont c'est le tour a formulé le contrat suivant
       m_phase = ENCHERES;
       m_encheres[m_tour] = Enchere(m_tour, m.m.contrat);
+      // On suppose que cette enchère est la meilleure.
+      m_attaquant = m_tour;
       m_tour = m_tour + 1; // pas modulo 5, car une fois que les 
       //enchères sont passées ce n'est plus le tour de personne.
       break;
@@ -245,6 +247,19 @@ void Partie::throw_cartes_gagnees
  std::vector<unsigned int> const & gagnants)
 {
   cartes_gagnees(cartes, poseurs, gagnants);
+}
+
+Enchere Partie::meilleure_enchere() const
+{
+  if(m_attaquant >= m_encheres.size())
+    {
+      Protocole::Msg_contrat c;
+      c.niveau = 0;
+      return Enchere(0, c);
+    }
+  // Dans les faits, l'attaquant est le dernier qui a effectué une
+  // enchère validée par le serveur.
+  return contrat_final();
 }
 
 void Partie::changement_maitre(unsigned int, unsigned int)

@@ -32,6 +32,13 @@ public:
   ClientGraphique(QWidget * parent = 0);
 
 public slots:
+
+  /**
+     @brief Envoie un message "prise".
+     
+     Voir l'interface graphique client.ui.
+   */
+  void on_bouton_enchere_clicked();
   
 private:
   Ui::ClientGraphique ui;

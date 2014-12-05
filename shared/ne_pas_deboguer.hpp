@@ -5,6 +5,9 @@
 
 #include <iostream>
 
+//Nécessaire pour afficher un vector.
+#include "debogueur.hpp"
+
 /**
    @brief Stub.
  */

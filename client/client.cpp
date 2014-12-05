@@ -3,7 +3,7 @@
 
 #define NOM_CLASSE "Client"
 
-#include "deboguer.hpp"
+#include "ne_pas_deboguer.hpp"
 //À des fins de débogage.
 
 Client::Client(QObject * parent): QObject(parent)

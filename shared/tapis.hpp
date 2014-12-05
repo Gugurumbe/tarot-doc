@@ -100,6 +100,17 @@ public:
   void set_ouverture(unsigned int joueur);
 
   /**
+     @brief Retourne le contenu du tapis.
+
+     @note La Fausse excuse n'est pas présente !
+
+     @param[out] cartes Le tableau des cartes posées.
+     @param[out] poseurs Le tableau des poseurs.
+   */
+  void contenu(std::vector<Carte> & cartes, 
+	       std::vector<unsigned int> & poseurs) const;
+
+  /**
      @brief Présente le tapis.
    */
   std::ostream & presenter(std::ostream & out) const;

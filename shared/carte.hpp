@@ -354,6 +354,16 @@ public:
      @return Le nom.
   */
   std::string nom() const;
+
+  /**
+     @brief Donne une version simplifiée (sans accent) de la couleur.
+     
+     Utilisable dans une feuille de style css...
+
+     @return Une version simple de la couleur : "pique", "carreau",
+     "trefle", "coeur"
+   */
+  std::string couleur_simple() const;
 private:
   /**
      @brief Le numéro interne de la carte.

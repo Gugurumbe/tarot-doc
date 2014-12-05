@@ -64,7 +64,10 @@ void PartieClient::assimiler(const Protocole::Message & m)
       else if(phase() == Partie::ENCHERES && en_chemin.empty())
 	{
 	  emit enchere_refusee();
-	  emit doit_priser();
+	  if(m_mon_tour != 0)
+	    emit doit_priser(meilleure_enchere());
+	  else
+	    emit doit_priser();
 	}
       else if(phase() == Partie::ENCHERES)
 	{
@@ -82,7 +85,9 @@ void PartieClient::assimiler(const Protocole::Message & m)
     case Protocole::DISTRIBUTION:
       mes_cartes = Main(m.m.distribution);
       set_phase(ENCHERES);
-      emit jeu_change();
+      DEBUG<<"Le jeu change, c'est sûr."<<std::endl;
+      emit jeu_change(std::vector<Carte>(mes_cartes.cartes()), 
+		      std::vector<Carte>());
       if(m_mon_tour == 0) emit doit_priser();
       break;
     case Protocole::PRISE:
@@ -90,7 +95,10 @@ void PartieClient::assimiler(const Protocole::Message & m)
     case Protocole::CONTRAT:
       emit contrat_intermediaire((tour() + 4)%5, 
 				 Enchere((tour() + 4)%5, m.m.contrat));
-      if(mon_tour() && phase() == ENCHERES) emit doit_priser();
+      if(mon_tour() && phase() == ENCHERES) 
+	{
+	  emit doit_priser(meilleure_enchere());
+	}
       break;
     case Protocole::APPEL:
       emit doit_appeler();
@@ -150,6 +158,7 @@ void PartieClient::assimiler(const Protocole::Message & m)
 	{
 	  mes_cartes.ajouter(chien_si_devoile[i]);
 	}
+      emit jeu_change(chien_si_devoile, std::vector<Carte>());
       emit doit_ecarter();
       break;
     case Protocole::ATOUT:
@@ -175,8 +184,9 @@ void PartieClient::assimiler(const Protocole::Message & m)
 	    {
 	      chien_si_devoile.push_back(en_chemin[i]);
 	    }
-	  en_chemin.clear();
 	  emit ecart_accepte();
+	  emit jeu_change(std::vector<Carte>(), en_chemin);
+	  en_chemin.clear();
 	}
       if(mon_tour())
 	{
@@ -204,6 +214,7 @@ void PartieClient::assimiler(const Protocole::Message & m)
 	{
 	  //C'est moi qui ai joué ça
 	  emit requete_acceptee();
+	  emit jeu_change(std::vector<Carte>(), en_chemin);
 	  en_chemin.clear();
 	}
       else if(*(enchere_de(attaquant()).carte_appelee()) 

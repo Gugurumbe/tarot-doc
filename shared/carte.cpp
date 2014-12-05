@@ -78,9 +78,13 @@ unsigned int Carte::numero() const
 
 Carte::Couleur Carte::couleur() const
 {
+  ENTER("couleur() const");
   //Si je ne suis pas un atout, ma couleur est numéro / 14.
-  if(atout()) return ATOUT;
-  return (Carte::Couleur)(m_numero / 14);
+  if(atout()) 
+    {
+      EXIT(ATOUT);
+    }
+  EXIT((Carte::Couleur)(m_numero / 14));
 }
 
 bool Carte::atout() const
@@ -148,6 +152,20 @@ Carte const & Carte::operator=(unsigned int carte)
 {
   m_numero = carte % 79;
   return *this;
+}
+
+std::string Carte::couleur_simple() const
+{
+  std::string res;
+  switch(couleur())
+    {
+    case Carte::PIQUE : res = "pique" ; break ;
+    case Carte::TREFLE : res = "trefle" ; break ;
+    case Carte::CARREAU : res = "carreau" ; break ;
+    case Carte::COEUR : res = "coeur" ; break ;
+    default : res = "atout" ; break ;
+    }
+  return res;
 }
 
 std::string Carte::nom() const

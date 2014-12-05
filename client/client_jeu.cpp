@@ -3,7 +3,7 @@
 
 #define NOM_CLASSE "ClientJeu"
 
-#include "deboguer.hpp"
+#include "ne_pas_deboguer.hpp"
 
 ClientJeu::ClientJeu(QObject * parent) : 
   Client(parent), partie(this)					 
@@ -16,15 +16,19 @@ ClientJeu::ClientJeu(QObject * parent) :
 		   this, SLOT(traiter_deconnexion()));
   QObject::connect(this, SIGNAL(recu(Protocole::Message)),
 		   this, SLOT(traiter_message(Protocole::Message)));
+  QObject::connect(&partie, SIGNAL(doit_emettre(Protocole::Message)),
+		   this, SLOT(envoyer(Protocole::Message)));
 
   connect(&partie, SIGNAL(numero_change(unsigned int)),
-	  this, SLOT(numero_change(unsigned int)));
-  connect(&partie, SIGNAL(jeu_change()),
-	  this, SLOT(jeu_change()));
+	  this, SIGNAL(numero_change(unsigned int)));
+  connect(&partie, SIGNAL(jeu_change(std::vector<Carte>, std::vector<Carte>)),
+	  this, SIGNAL(jeu_change(std::vector<Carte>, std::vector<Carte>)));
+  connect(&partie, SIGNAL(doit_priser(Enchere)),
+	  this, SIGNAL(doit_priser(Enchere)));
   connect(&partie, SIGNAL(doit_priser()),
-	  this, SLOT(doit_priser()));
+	  this, SIGNAL(doit_priser()));
   connect(&partie, SIGNAL(enchere_refusee()),
-	  this, SLOT(enchere_refusee()));
+	  this, SIGNAL(enchere_refusee()));
   connect(&partie, 
 	  SIGNAL(contrat_intermediaire(unsigned int, Enchere)),
 	  this, SLOT(contrat_intermediaire(unsigned int, Enchere)));
@@ -84,42 +88,10 @@ void ClientJeu::presenter_etat()
 	   <<"."<<std::endl;*/
 }
 
-void ClientJeu::numero_change(unsigned int num)
-{
-  //std::cout<<"Vous avez reçu votre numéro : "<<num<<std::endl;
-  emit ClientJeu::num(num);
-}
-
-void ClientJeu::jeu_change()
-{
-  // std::cout<<"Votre jeu a changé. Vous avez maintenant "
-  // 	   <<partie.mon_jeu()<<std::endl;
-}
-
-void ClientJeu::doit_priser()
-{
-  presenter_etat();
-  // std::cout<<"C'est à vous de priser. Entrez une enchère parmi :"
-  // 	   <<std::endl<<"0. Passe"
-  // 	   <<std::endl<<"1. Prise"
-  // 	   <<std::endl<<"2. Garde"
-  // 	   <<std::endl<<"3. Garde sans le Chien."
-  // 	   <<std::endl<<"4. Garde contre le Chien."<<std::endl;
-  // Protocole::Message prise;
-  // prise.type = Protocole::PRISE;
-  // std::cin>>prise.m.prise.niveau;
-  // envoyer(prise);
-}
-
-void ClientJeu::enchere_refusee()
-{
-  // std::cout<<"Votre enchère a été refusée ! Soyez plus avisé..."
-  // 	   <<std::endl;
-}
-
-void ClientJeu::contrat_intermediaire(unsigned int joueur, Enchere e)
+void ClientJeu::contrat_intermediaire(unsigned int, Enchere e)
 {
   // std::cout<<"Le joueur"<<joueur<<" a fait l'enchère "<<e<<std::endl;
+  emit dernier_contrat(e);
 }
 
 void ClientJeu::doit_appeler()
@@ -149,12 +121,12 @@ void ClientJeu::appel_refuse()
   // 	   <<std::endl;
 }
 
-void ClientJeu::contrat_final(Enchere e)
+void ClientJeu::contrat_final(Enchere)
 {
   // std::cout<<"Le contrat final est "<<e<<std::endl;
 }
 
-void ClientJeu::chien_devoile(Carte c1, Carte c2, Carte c3)
+void ClientJeu::chien_devoile(Carte, Carte, Carte)
 {
   // std::cout<<"Le chien contient "<<c1<<", "<<c2<<", "<<c3<<"."
   // 	   <<std::endl;
@@ -207,7 +179,7 @@ void ClientJeu::ecart_refuse()
   // 	   <<std::endl;
 }
 
-void ClientJeu::atout_au_chien(std::vector<Carte> atouts)
+void ClientJeu::atout_au_chien(std::vector<Carte>)
 {
   // std::cout<<"Un ou des atouts ont été mis dans le chien : "<<atouts
   // 	   <<std::endl;
@@ -245,27 +217,28 @@ void ClientJeu::requete_acceptee()
   // std::cout<<"Votre requête a été acceptée."<<std::endl;
 }
 
-void ClientJeu::carte_jouee(unsigned int joueur, Carte carte)
+void ClientJeu::carte_jouee(unsigned int, Carte)
 {
   // std::cout<<joueur<<" a joué la carte "<<carte
   // 	   <<", le tapis est donc "<<partie.tapis()
   // 	   <<std::endl;
+  emit tapis_change(partie.tapis());
 }
 
-void ClientJeu::score(std::vector<int> scores)
+void ClientJeu::score(std::vector<int>)
 {
   // std::cout<<"Voici les scores : "<<scores<<std::endl;
 }
 
-void ClientJeu::carte_gagnee(Carte c, 
-			     unsigned int poseur, 
-			     unsigned int gagnant)
+void ClientJeu::carte_gagnee(Carte, 
+			     unsigned int, 
+			     unsigned int)
 {
   // std::cout<<gagnant<<" remporte la carte "<<c<<" posée par "
   // 	   <<poseur<<std::endl;
 }
 
-void ClientJeu::pli(unsigned int tour)
+void ClientJeu::pli(unsigned int)
 {
   // std::cout<<tour<<" remporte le pli."<<std::endl;
 }
@@ -273,6 +246,7 @@ void ClientJeu::pli(unsigned int tour)
 void ClientJeu::maitre(unsigned int joueur)
 {
   // std::cout<<"Le joueur "<<joueur<<" passe maître."<<std::endl;
+  emit maitre_change(joueur);
 }
 
 void ClientJeu::traiter_message(Protocole::Message m)
@@ -280,4 +254,9 @@ void ClientJeu::traiter_message(Protocole::Message m)
   ENTER("traiter_message(Message m)");
   ADD_ARG("m", m);
   partie.assimiler(m);
+}
+
+void ClientJeu::formuler_prise(Enchere::Prise p)
+{
+  partie.formuler_prise(p);
 }

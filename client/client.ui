@@ -418,11 +418,7 @@
        </property>
        <layout class="QGridLayout" name="gridLayout">
         <item row="0" column="0">
-         <widget class="QListWidget" name="mes_cartes">
-          <property name="modelColumn">
-           <number>0</number>
-          </property>
-         </widget>
+         <widget class="ListeCartes" name="mes_cartes"/>
         </item>
        </layout>
       </widget>
@@ -434,18 +430,10 @@
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_2">
         <item>
-         <widget class="QTableWidget" name="tapis">
+         <widget class="AfficheurTapis" name="tapis">
           <property name="editTriggers">
            <set>QAbstractItemView::NoEditTriggers</set>
           </property>
-          <property name="rowCount">
-           <number>5</number>
-          </property>
-          <row/>
-          <row/>
-          <row/>
-          <row/>
-          <row/>
           <column>
            <property name="text">
             <string>Joueur</string>
@@ -560,6 +548,16 @@
    <class>Journal</class>
    <extends>QTextBrowser</extends>
    <header>journal.hpp</header>
+  </customwidget>
+  <customwidget>
+   <class>AfficheurTapis</class>
+   <extends>QTableWidget</extends>
+   <header>afficheur_tapis.hpp</header>
+  </customwidget>
+  <customwidget>
+   <class>ListeCartes</class>
+   <extends>QTextBrowser</extends>
+   <header>liste_cartes.hpp</header>
   </customwidget>
  </customwidgets>
  <resources/>

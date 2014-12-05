@@ -61,27 +61,15 @@ public slots:
      @see Client::recu(Message)
    */
   void traiter_message(Protocole::Message m);
-  
-  /**
-     @brief Traité lorsque mon numéro change.
-     @param n Mon nouveau numéro.
-   */
-  void numero_change(unsigned int n);
 
   /**
-     @brief Traité lorsque mon jeu change.
-   */
-  void jeu_change();
+     @brief Envoie un message pour formuler une Prise.
+     
+     @param p La prise en question.
 
-  /**
-     @brief Traité lorsque je dois priser.
+     @see PartieClient::formuler_prise(Enchere::Prise);
    */
-  void doit_priser();
-  
-  /**
-     @brief Traité lorsque mon enchère a été refusée.
-  */
-  void enchere_refusee();
+  void formuler_prise(Enchere::Prise p);
 
   /**
      @brief Traité lorsqu'un joueur effectue une enchère.
@@ -202,7 +190,55 @@ signals:
      
      @param n Mon numéro, entre 0 inclus et 5 exclus.
    */
-  void num(unsigned int n);
+  void numero_change(unsigned int n);
+
+  /**
+     @brief Émis lorsque je suis le premier et que je dois priser.
+
+     @see PartieClient::doit_priser()
+   */
+  void doit_priser();
+
+  /**
+     @brief Émis lorsque je dois priser.
+     
+     @param max L'enchère maximale.
+     @see PartieClient::doit_priser(Enchere)
+   */
+  void doit_priser(Enchere max);
+
+  /**
+     @brief Émis lorsque mon enchère a été refusée.
+  */
+  void enchere_refusee();
+
+  /**
+     @brief Émis lorsqu'un contrat intermédiaire est formulé.
+     
+     @param e L'enchère en question.
+   */
+  void dernier_contrat(Enchere e);
+
+  /**
+     @brief Émis lorsque le tapis change.
+     
+     @param tapis Le tapis.
+   */
+  void tapis_change(const Tapis & tapis);
+
+  /**
+     @brief Émis lorsque le maître du tapis change.
+   */
+  void maitre_change(unsigned int joueur);
+
+  /**
+     @brief Émis lorsque mon jeu change.
+     
+     @param gagnees Les cartes reçues.
+     @param perdues Les cartes perdues.
+   */
+  void jeu_change(std::vector<Carte> gagnees,
+		  std::vector<Carte> perdues);
 
 private:
   PartieClient partie;

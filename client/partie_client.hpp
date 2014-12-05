@@ -202,8 +202,12 @@ signals:
 
   /**
      @brief Votre jeu a été modifié.
+     
+     @param gagnees Les cartes gagnées.
+     @param perdues Les cartes perdues.
    */
-  void jeu_change();
+  void jeu_change(std::vector<Carte> gagnees, 
+		  std::vector<Carte> perdues);
 
   /**
      @brief Action refusée.
@@ -220,12 +224,24 @@ signals:
   void action_refusee();
 
   /**
+     @brief C'est à vous, le premier joueur, de priser.
+
+     Émis lorsque le tour du client arrive lors de la phase des
+     enchères. N'est émis que pour le premier joueur.
+   */
+  void doit_priser();
+
+  /**
      @brief C'est à vous de priser.
 
      Émis lorsque le tour du client arrive lors de la phase des
      enchères.
+     
+     @warning N'est pas émis pour le premier joueur !
+     
+     @param max L'enchère max jusqu'à présent.
    */
-  void doit_priser();
+  void doit_priser(Enchere max);
   
   /**
      @brief Votre enchère a été refusée.

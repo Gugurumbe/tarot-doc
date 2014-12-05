@@ -22,7 +22,9 @@ partie_client.hpp                \
 client_graphique.hpp             \
 label_nom.hpp                    \
 journal.hpp                      \
-coquille.hpp
+coquille.hpp                     \
+afficheur_tapis.hpp              \
+liste_cartes.hpp
 
 SOURCES += main_program.cpp      \
 client.cpp                       \
@@ -38,7 +40,9 @@ partie_client.cpp                \
 client_graphique.cpp             \
 label_nom.cpp                    \
 journal.cpp                      \
-coquille.cpp
+coquille.cpp                     \
+afficheur_tapis.cpp              \
+liste_cartes.cpp
 
 FORMS += client.ui 
 FORMS += coquille.ui

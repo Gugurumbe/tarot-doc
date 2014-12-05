@@ -1,6 +1,7 @@
 *
 {
     background-color:black;
+    color:white;
 }
 
 .connexion
@@ -14,10 +15,40 @@
 {
     font-family:Courier, sans-serif;
     font-weight:bold;
-    color:A00000;
+    color:#A00000;
 }
 
 .numero
 {
-    color:white;
+    color:gray;
+}
+
+.changement_jeu
+{
+    color:yellow;
+}
+
+.atout
+{
+    color:#00FFFF;
+}
+
+.pique
+{
+    color:#4040FF;
+}
+
+.trefle
+{
+    color:#80FF00;
+}
+
+.carreau
+{
+    color:#FF0000;
+}
+
+.coeur
+{
+    color:#FF0080;
 }

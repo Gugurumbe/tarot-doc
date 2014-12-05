@@ -68,16 +68,11 @@
       <attribute name="title">
        <string>Client</string>
       </attribute>
-      <widget class="ClientGraphique" name="widget_4" native="true">
-       <property name="geometry">
-        <rect>
-         <x>9</x>
-         <y>9</y>
-         <width>591</width>
-         <height>435</height>
-        </rect>
-       </property>
-      </widget>
+      <layout class="QGridLayout" name="gridLayout_6">
+       <item row="0" column="0">
+        <widget class="ClientGraphique" name="widget_4" native="true"/>
+       </item>
+      </layout>
      </widget>
      <widget class="QWidget" name="tab4">
       <attribute name="title">

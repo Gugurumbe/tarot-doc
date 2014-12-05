@@ -2,7 +2,7 @@
 
 #define NOM_CLASSE "Tapis"
 
-#include "deboguer.hpp"
+#include "ne_pas_deboguer.hpp"
 
 Tapis::Tapis():joueur_ouverture(-1), joueur_maitre(-1), 
 	       maitre_fixe(false)
@@ -171,6 +171,25 @@ std::ostream & Tapis::presenter(std::ostream & out) const
     }
   out<<")";
   return out;
+}
+
+void Tapis::contenu(std::vector<Carte> & cartes, 
+		    std::vector<unsigned int> & poseurs) const
+{
+  cartes.clear();
+  poseurs.clear();
+  for(unsigned int i = 0 ; i < 5 ; i++)
+    {
+      //On ajoute la carte du joueur joueur_ouverture + i
+      for(unsigned int j = 0 ; j < m_tapis[i].size() ; j++)
+	{
+	  if(m_tapis[(i + joueur_ouverture) % 5][j] != DETTE_EXCUSE)
+	    {
+	      cartes.push_back(m_tapis[(i + joueur_ouverture) % 5][j]);
+	      poseurs.push_back((i + joueur_ouverture) % 5);
+	    }
+	}
+    }
 }
 
 std::ostream & operator<<(std::ostream & out, const Tapis & tap)

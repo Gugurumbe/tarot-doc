@@ -273,6 +273,13 @@ public:
   void throw_cartes_gagnees(std::vector<Carte> const &,
 			    std::vector<unsigned int> const &,
 			    std::vector<unsigned int> const &);
+  /**
+     @brief Donne l'enchère maximale.
+     
+     @return L'enchère maximale jusqu'à présent, ou une Passe de la
+     part du joueur 0.
+   */
+  Enchere meilleure_enchere() const;
 
 protected:
   

@@ -251,11 +251,11 @@ int PartieServeur::tester(unsigned int joueur, Protocole::Message const & messag
     {
     case Protocole::PRISE:
       // Ok si on en est aux enchères, que c'est son tour et qu'il
-      // monte
+      // monte (et que c'est une enchère de poids <= GARDE_CONTRE).
       if(phase() == ENCHERES && tour() == joueur)
 	{
 	  Enchere e(joueur, message.m.prise);
-	  if(!(e.prise()) || e > e_max)
+	  if((!(e.prise()) || e > e_max) && e.prise() <= Enchere::GARDE_CONTRE)
 	    {
 	      DEBUG<<"L'enchère "<<e.prise()<<" est validée."<<std::endl;
 	    }

@@ -6,7 +6,7 @@
 
 #define NOM_CLASSE "Main"
 
-#include "deboguer.hpp"
+#include "ne_pas_deboguer.hpp"
 
 Main::Main()
 {
