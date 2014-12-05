@@ -118,6 +118,23 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:a6f4842a0e6c21874a704412d5c9fe370"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJournal.html#a6f4842a0e6c21874a704412d5c9fe370">afficher_numero</a> (unsigned int n)</td></tr>
 <tr class="memdesc:a6f4842a0e6c21874a704412d5c9fe370"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique au joueur qu'il a reçu son numéro.  <a href="#a6f4842a0e6c21874a704412d5c9fe370">Plus de détails...</a><br/></td></tr>
 <tr class="separator:a6f4842a0e6c21874a704412d5c9fe370"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a995807d70a5a10b95ca4ff43125b4cbf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJournal.html#a995807d70a5a10b95ca4ff43125b4cbf">afficher_changement_jeu</a> (std::vector&lt; <a class="el" href="classCarte.html">Carte</a> &gt; gagnees, std::vector&lt; <a class="el" href="classCarte.html">Carte</a> &gt; perdues)</td></tr>
+<tr class="memdesc:a995807d70a5a10b95ca4ff43125b4cbf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique au joueur qu'il a gagné / perdu des cartes.  <a href="#a995807d70a5a10b95ca4ff43125b4cbf">Plus de détails...</a><br/></td></tr>
+<tr class="separator:a995807d70a5a10b95ca4ff43125b4cbf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc8f0a414b35239673cb9ac6c149f825"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afc8f0a414b35239673cb9ac6c149f825"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJournal.html#afc8f0a414b35239673cb9ac6c149f825">afficher_doit_priser</a> ()</td></tr>
+<tr class="memdesc:afc8f0a414b35239673cb9ac6c149f825"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique au joueur qu'il doit priser. <br/></td></tr>
+<tr class="separator:afc8f0a414b35239673cb9ac6c149f825"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38cbf2961564517bdbd5c24626c2b614"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJournal.html#a38cbf2961564517bdbd5c24626c2b614">afficher_doit_priser</a> (<a class="el" href="classEnchere.html">Enchere</a> meilleure)</td></tr>
+<tr class="memdesc:a38cbf2961564517bdbd5c24626c2b614"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique au joueur qu'il doit priser.  <a href="#a38cbf2961564517bdbd5c24626c2b614">Plus de détails...</a><br/></td></tr>
+<tr class="separator:a38cbf2961564517bdbd5c24626c2b614"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58243eac64e70ebcc12f743e295fbef0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJournal.html#a58243eac64e70ebcc12f743e295fbef0">afficher_contrat_intermediaire</a> (<a class="el" href="classEnchere.html">Enchere</a> contrat)</td></tr>
+<tr class="memdesc:a58243eac64e70ebcc12f743e295fbef0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique au joueur un contrat intermédiaire.  <a href="#a58243eac64e70ebcc12f743e295fbef0">Plus de détails...</a><br/></td></tr>
+<tr class="separator:a58243eac64e70ebcc12f743e295fbef0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab5c27aefb117668a4b694236bede70fb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab5c27aefb117668a4b694236bede70fb"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classJournal.html#ab5c27aefb117668a4b694236bede70fb">afficher_contrat_invalide</a> ()</td></tr>
+<tr class="memdesc:ab5c27aefb117668a4b694236bede70fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique au joueur que son contrat n'est pas valide. <br/></td></tr>
+<tr class="separator:ab5c27aefb117668a4b694236bede70fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Fonctions membres publiques</h2></td></tr>
@@ -153,6 +170,114 @@ Fonctions membres publiques</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Documentation des fonctions membres</h2>
+<a class="anchor" id="a995807d70a5a10b95ca4ff43125b4cbf"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Journal::afficher_changement_jeu </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classCarte.html">Carte</a> &gt;&#160;</td>
+          <td class="paramname"><em>gagnees</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classCarte.html">Carte</a> &gt;&#160;</td>
+          <td class="paramname"><em>perdues</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Indique au joueur qu'il a gagné / perdu des cartes. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gagnees</td><td>Les nouvelles cartes du joueur. </td></tr>
+    <tr><td class="paramname">perdues</td><td>Les cartes perdues. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a58243eac64e70ebcc12f743e295fbef0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Journal::afficher_contrat_intermediaire </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classEnchere.html">Enchere</a>&#160;</td>
+          <td class="paramname"><em>contrat</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Indique au joueur un contrat intermédiaire. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">contrat</td><td>Le dernier contrat en date. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a38cbf2961564517bdbd5c24626c2b614"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Journal::afficher_doit_priser </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classEnchere.html">Enchere</a>&#160;</td>
+          <td class="paramname"><em>meilleure</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Indique au joueur qu'il doit priser. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">meilleure</td><td>La meilleure enchère jusqu'à présent.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section warning"><dt>Avertissement</dt><dd>N'est pas émis pour le premier joueur. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a6f4842a0e6c21874a704412d5c9fe370"></a>
 <div class="memitem">
 <div class="memproto">
@@ -192,7 +317,7 @@ Fonctions membres publiques</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi 4 Décembre 2014 15:35:48 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 6 Décembre 2014 00:05:38 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

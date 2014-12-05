@@ -1,12 +1,21 @@
 var searchData=
 [
-  ['rattacher_5ftable',['rattacher_table',['../classServeurJeu.html#a9722393dea35b9265d5e55411b315f84',1,'ServeurJeu']]],
-  ['reagir_5fconnexion',['reagir_connexion',['../classServeurDebogage.html#a8d3baccdda9fe509d6036b6025fe37fc',1,'ServeurDebogage::reagir_connexion()'],['../classServeurJeu.html#aae223d1bdaedb87dc2578c306e733b81',1,'ServeurJeu::reagir_connexion()']]],
-  ['reagir_5fdeconnexion',['reagir_deconnexion',['../classServeurDebogage.html#a2d43cbbf405f4348db87dae3823dc2d2',1,'ServeurDebogage']]],
-  ['reagir_5fmessage',['reagir_message',['../classServeurDebogage.html#a9f54d8dbc763b7a9e6ec0e95222930d1',1,'ServeurDebogage']]],
-  ['reconnecter',['reconnecter',['../classClient.html#aebb225890121c2dfc8b83f320c686db7',1,'Client']]],
-  ['recu',['recu',['../classClient.html#a182ab6bbb5aecc61632f53b6404aa4d6',1,'Client']]],
-  ['requete_5facceptee',['requete_acceptee',['../classClientJeu.html#adb7ad06eb5a91d11df8badf5f936b657',1,'ClientJeu::requete_acceptee()'],['../classPartieClient.html#a95b39fe7d123887ba08f765aaaecbc5b',1,'PartieClient::requete_acceptee()']]],
-  ['requete_5frefusee',['requete_refusee',['../classClientJeu.html#a2f840467a22956067e22be41cec41d2e',1,'ClientJeu::requete_refusee()'],['../classPartieClient.html#a7915ba35ecf74356073824d37bcf1765',1,'PartieClient::requete_refusee()']]],
-  ['roi',['roi',['../classCarte.html#a54d05aa9711351d7862962486283fbfc',1,'Carte']]]
+  ['partie',['Partie',['../classPartie.html#ae40831aad10fc4a391295e2ea1447b5a',1,'Partie']]],
+  ['partieclient',['PartieClient',['../classPartieClient.html#abc55de4a7ba655a98a9c8ca112b3dbcf',1,'PartieClient']]],
+  ['partieserveur',['PartieServeur',['../classPartieServeur.html#abfd2d5ab00fb6f82a8240c40c1dab452',1,'PartieServeur']]],
+  ['peut_5fappeler',['peut_appeler',['../classMain.html#aadc4848554e95ee400d7b4a4fd1c644b',1,'Main']]],
+  ['peut_5fcouper',['peut_couper',['../classMain.html#a120f0c2a92b0f005935306f287bbe882',1,'Main']]],
+  ['peut_5fdeclarer',['peut_declarer',['../classMain.html#ab62d183ee65c7cfd21803dc53782d17a',1,'Main']]],
+  ['peut_5fdefausser',['peut_defausser',['../classMain.html#ad052677f64d47b36c22758615af2769e',1,'Main']]],
+  ['peut_5fecarter',['peut_ecarter',['../classMain.html#a7df3596743ce76906dc792e71adca8fa',1,'Main']]],
+  ['peut_5fpisser',['peut_pisser',['../classMain.html#add661748c8e69831dafaf52fe047822f',1,'Main']]],
+  ['phase',['phase',['../classPartie.html#a45201ab9e442170839bf1380e11500c4',1,'Partie']]],
+  ['pli',['pli',['../classClientJeu.html#a9a5b01e79abc314a014a46bb4f477750',1,'ClientJeu::pli()'],['../classPartieClient.html#a8f9544585ddb27ff856218df3ca91d46',1,'PartieClient::pli()']]],
+  ['plus_5fgros_5fatout',['plus_gros_atout',['../classTapis.html#a15937239ea122355c7d13890bf79fb16',1,'Tapis']]],
+  ['poignee',['poignee',['../classPartie.html#a59c52f0345c8acddeb03011295f8b1b1',1,'Partie']]],
+  ['poignee_5fmontree',['poignee_montree',['../classPartieClient.html#a7cfe308b121505900fb451140976efda',1,'PartieClient']]],
+  ['possede',['possede',['../classMain.html#a866b5e59e385bb3f93fe2c6745c7fe8d',1,'Main']]],
+  ['presenter',['presenter',['../classEnchere.html#a3d06ff5dc1b801c2b391f96d18395152',1,'Enchere::presenter()'],['../classTapis.html#ae6d71629b0b5cf451a0f99f15ba844b8',1,'Tapis::presenter()']]],
+  ['presenter_5fetat',['presenter_etat',['../classClientJeu.html#a9871486907b2f3de70dcfeeb0b501b33',1,'ClientJeu']]],
+  ['prise',['prise',['../classEnchere.html#ad5162e8db4b9cc5b2b06b087f0f6d23c',1,'Enchere']]]
 ];

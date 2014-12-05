@@ -85,6 +85,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </div>
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#define-members">Macros</a>  </div>
   <div class="headertitle">
 <div class="title">Référence du fichier deboguer.hpp</div>  </div>
 </div><!--header-->
@@ -95,13 +97,76 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="textblock"><code>#include &quot;<a class="el" href="debogueur_8hpp_source.html">debogueur.hpp</a>&quot;</code><br/>
 </div>
 <p><a href="deboguer_8hpp_source.html">Aller au code source de ce fichier.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a10e59d6fef6099a21c23c0c6a6b5a031"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="deboguer_8hpp.html#a10e59d6fef6099a21c23c0c6a6b5a031">ENTER</a>(meth)&#160;&#160;&#160;<a class="el" href="debogueur_8hpp.html#a4aeb06fb0425321f37e6501f7675a304">ENTER_CLASS</a>(meth, NOM_CLASSE)</td></tr>
+<tr class="memdesc:a10e59d6fef6099a21c23c0c6a6b5a031"><td class="mdescLeft">&#160;</td><td class="mdescRight">Smart alias for ENTER_CLASS.  <a href="#a10e59d6fef6099a21c23c0c6a6b5a031">Plus de détails...</a><br/></td></tr>
+<tr class="separator:a10e59d6fef6099a21c23c0c6a6b5a031"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e32571f14bad42566e0ce93ec814dcb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0e32571f14bad42566e0ce93ec814dcb"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="deboguer_8hpp.html#a0e32571f14bad42566e0ce93ec814dcb">ADD_ARG</a>(nom, val)&#160;&#160;&#160;Debogueur::arg(nom, val)</td></tr>
+<tr class="memdesc:a0e32571f14bad42566e0ce93ec814dcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias pour Debogueur::arg. <br/></td></tr>
+<tr class="separator:a0e32571f14bad42566e0ce93ec814dcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a431e2523adaaf8623e437f2c53540a09"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="deboguer_8hpp.html#a431e2523adaaf8623e437f2c53540a09">EXIT</a>(val)</td></tr>
+<tr class="memdesc:a431e2523adaaf8623e437f2c53540a09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Alias pour Debogueur::ret.  <a href="#a431e2523adaaf8623e437f2c53540a09">Plus de détails...</a><br/></td></tr>
+<tr class="separator:a431e2523adaaf8623e437f2c53540a09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad72dbcf6d0153db1b8d8a58001feed83"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad72dbcf6d0153db1b8d8a58001feed83"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="deboguer_8hpp.html#ad72dbcf6d0153db1b8d8a58001feed83">DEBUG</a>&#160;&#160;&#160;Debogueur::debug()</td></tr>
+<tr class="memdesc:ad72dbcf6d0153db1b8d8a58001feed83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flux de débogage. <br/></td></tr>
+<tr class="separator:ad72dbcf6d0153db1b8d8a58001feed83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fe83ac76edc595f6b98cd4a4127aed5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a8fe83ac76edc595f6b98cd4a4127aed5"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="deboguer_8hpp.html#a8fe83ac76edc595f6b98cd4a4127aed5">ERROR</a>&#160;&#160;&#160;Debogueur::error()</td></tr>
+<tr class="memdesc:a8fe83ac76edc595f6b98cd4a4127aed5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flux d'erreur. <br/></td></tr>
+<tr class="separator:a8fe83ac76edc595f6b98cd4a4127aed5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>À inclure pour déboguer ce fichier. </p>
 <dl class="section note"><dt>Note</dt><dd>Vous devez définir NOM_CLASSE avec la valeur (sous forme de chaîne) du nom de la classe. </dd></dl>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Documentation des macros</h2>
+<a class="anchor" id="a10e59d6fef6099a21c23c0c6a6b5a031"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ENTER</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">meth</td><td>)</td>
+          <td>&#160;&#160;&#160;<a class="el" href="debogueur_8hpp.html#a4aeb06fb0425321f37e6501f7675a304">ENTER_CLASS</a>(meth, NOM_CLASSE)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Smart alias for ENTER_CLASS. </p>
+<dl class="section note"><dt>Note</dt><dd>Vous devez avoir défini NOM_CLASSE. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a431e2523adaaf8623e437f2c53540a09"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define EXIT</td>
+          <td>(</td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname">val</td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<b>Valeur :</b><div class="fragment"><div class="line">Debogueur::ret(val);                            \</div>
+<div class="line">  return val</div>
+</div><!-- fragment -->
+<p>Alias pour Debogueur::ret. </p>
+<dl class="section warning"><dt>Avertissement</dt><dd>L'argument est évalué 2 fois !!! </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi 4 Décembre 2014 15:35:48 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 6 Décembre 2014 00:05:38 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

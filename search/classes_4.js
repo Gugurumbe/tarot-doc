@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['labelnom',['LabelNom',['../classLabelNom.html',1,'']]]
+  ['journal',['Journal',['../classJournal.html',1,'']]]
 ];

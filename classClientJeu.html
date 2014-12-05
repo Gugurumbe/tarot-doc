@@ -118,21 +118,9 @@ Connecteurs publics</h2></td></tr>
 <tr class="memitem:a75013c3e7832a9652b18e8ae3bf9e015"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientJeu.html#a75013c3e7832a9652b18e8ae3bf9e015">traiter_message</a> (<a class="el" href="structProtocole_1_1Message.html">Protocole::Message</a> m)</td></tr>
 <tr class="memdesc:a75013c3e7832a9652b18e8ae3bf9e015"><td class="mdescLeft">&#160;</td><td class="mdescRight">Réaction personnalisée (message).  <a href="#a75013c3e7832a9652b18e8ae3bf9e015">Plus de détails...</a><br/></td></tr>
 <tr class="separator:a75013c3e7832a9652b18e8ae3bf9e015"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2d515dffe6d8a2e92c6e6e85df9c7b7b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientJeu.html#a2d515dffe6d8a2e92c6e6e85df9c7b7b">numero_change</a> (unsigned int n)</td></tr>
-<tr class="memdesc:a2d515dffe6d8a2e92c6e6e85df9c7b7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Traité lorsque mon numéro change.  <a href="#a2d515dffe6d8a2e92c6e6e85df9c7b7b">Plus de détails...</a><br/></td></tr>
-<tr class="separator:a2d515dffe6d8a2e92c6e6e85df9c7b7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac6a87269af6421a7470f347271891124"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac6a87269af6421a7470f347271891124"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientJeu.html#ac6a87269af6421a7470f347271891124">jeu_change</a> ()</td></tr>
-<tr class="memdesc:ac6a87269af6421a7470f347271891124"><td class="mdescLeft">&#160;</td><td class="mdescRight">Traité lorsque mon jeu change. <br/></td></tr>
-<tr class="separator:ac6a87269af6421a7470f347271891124"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a972e0795fb59b62e67686086f6cd6d13"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a972e0795fb59b62e67686086f6cd6d13"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientJeu.html#a972e0795fb59b62e67686086f6cd6d13">doit_priser</a> ()</td></tr>
-<tr class="memdesc:a972e0795fb59b62e67686086f6cd6d13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Traité lorsque je dois priser. <br/></td></tr>
-<tr class="separator:a972e0795fb59b62e67686086f6cd6d13"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4537dd9d1a67edeac09f4587e20a4a02"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4537dd9d1a67edeac09f4587e20a4a02"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientJeu.html#a4537dd9d1a67edeac09f4587e20a4a02">enchere_refusee</a> ()</td></tr>
-<tr class="memdesc:a4537dd9d1a67edeac09f4587e20a4a02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Traité lorsque mon enchère a été refusée. <br/></td></tr>
-<tr class="separator:a4537dd9d1a67edeac09f4587e20a4a02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98689343a93362c3b583a27e1ef6543f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientJeu.html#a98689343a93362c3b583a27e1ef6543f">formuler_prise</a> (<a class="el" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3f">Enchere::Prise</a> p)</td></tr>
+<tr class="memdesc:a98689343a93362c3b583a27e1ef6543f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envoie un message pour formuler une Prise.  <a href="#a98689343a93362c3b583a27e1ef6543f">Plus de détails...</a><br/></td></tr>
+<tr class="separator:a98689343a93362c3b583a27e1ef6543f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f9aec5e542fa463e594f097cb531dfe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientJeu.html#a8f9aec5e542fa463e594f097cb531dfe">contrat_intermediaire</a> (unsigned int j, <a class="el" href="classEnchere.html">Enchere</a> e)</td></tr>
 <tr class="memdesc:a8f9aec5e542fa463e594f097cb531dfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Traité lorsqu'un joueur effectue une enchère.  <a href="#a8f9aec5e542fa463e594f097cb531dfe">Plus de détails...</a><br/></td></tr>
 <tr class="separator:a8f9aec5e542fa463e594f097cb531dfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -211,9 +199,32 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="signals"></a>
 Signaux</h2></td></tr>
-<tr class="memitem:adb8e166a02eeae6bdeeb400a05ba19f8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientJeu.html#adb8e166a02eeae6bdeeb400a05ba19f8">num</a> (unsigned int n)</td></tr>
-<tr class="memdesc:adb8e166a02eeae6bdeeb400a05ba19f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Émis lorsqu'on m'informe de mon numéro.  <a href="#adb8e166a02eeae6bdeeb400a05ba19f8">Plus de détails...</a><br/></td></tr>
-<tr class="separator:adb8e166a02eeae6bdeeb400a05ba19f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d515dffe6d8a2e92c6e6e85df9c7b7b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientJeu.html#a2d515dffe6d8a2e92c6e6e85df9c7b7b">numero_change</a> (unsigned int n)</td></tr>
+<tr class="memdesc:a2d515dffe6d8a2e92c6e6e85df9c7b7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Émis lorsqu'on m'informe de mon numéro.  <a href="#a2d515dffe6d8a2e92c6e6e85df9c7b7b">Plus de détails...</a><br/></td></tr>
+<tr class="separator:a2d515dffe6d8a2e92c6e6e85df9c7b7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a972e0795fb59b62e67686086f6cd6d13"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientJeu.html#a972e0795fb59b62e67686086f6cd6d13">doit_priser</a> ()</td></tr>
+<tr class="memdesc:a972e0795fb59b62e67686086f6cd6d13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Émis lorsque je suis le premier et que je dois priser.  <a href="#a972e0795fb59b62e67686086f6cd6d13">Plus de détails...</a><br/></td></tr>
+<tr class="separator:a972e0795fb59b62e67686086f6cd6d13"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a204d20d4941e94d247695b0fdbb519e3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientJeu.html#a204d20d4941e94d247695b0fdbb519e3">doit_priser</a> (<a class="el" href="classEnchere.html">Enchere</a> max)</td></tr>
+<tr class="memdesc:a204d20d4941e94d247695b0fdbb519e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Émis lorsque je dois priser.  <a href="#a204d20d4941e94d247695b0fdbb519e3">Plus de détails...</a><br/></td></tr>
+<tr class="separator:a204d20d4941e94d247695b0fdbb519e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4537dd9d1a67edeac09f4587e20a4a02"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4537dd9d1a67edeac09f4587e20a4a02"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientJeu.html#a4537dd9d1a67edeac09f4587e20a4a02">enchere_refusee</a> ()</td></tr>
+<tr class="memdesc:a4537dd9d1a67edeac09f4587e20a4a02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Émis lorsque mon enchère a été refusée. <br/></td></tr>
+<tr class="separator:a4537dd9d1a67edeac09f4587e20a4a02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1aadc5dd0a9fbce606205c98ed18c4f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientJeu.html#ae1aadc5dd0a9fbce606205c98ed18c4f">dernier_contrat</a> (<a class="el" href="classEnchere.html">Enchere</a> e)</td></tr>
+<tr class="memdesc:ae1aadc5dd0a9fbce606205c98ed18c4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Émis lorsqu'un contrat intermédiaire est formulé.  <a href="#ae1aadc5dd0a9fbce606205c98ed18c4f">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ae1aadc5dd0a9fbce606205c98ed18c4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b5d75250453bc07f7d482460b497a20"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientJeu.html#a7b5d75250453bc07f7d482460b497a20">tapis_change</a> (const <a class="el" href="classTapis.html">Tapis</a> &amp;tapis)</td></tr>
+<tr class="memdesc:a7b5d75250453bc07f7d482460b497a20"><td class="mdescLeft">&#160;</td><td class="mdescRight">Émis lorsque le tapis change.  <a href="#a7b5d75250453bc07f7d482460b497a20">Plus de détails...</a><br/></td></tr>
+<tr class="separator:a7b5d75250453bc07f7d482460b497a20"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af704aa698ff09b2363fcab8718e951b7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af704aa698ff09b2363fcab8718e951b7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientJeu.html#af704aa698ff09b2363fcab8718e951b7">maitre_change</a> (unsigned int joueur)</td></tr>
+<tr class="memdesc:af704aa698ff09b2363fcab8718e951b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Émis lorsque le maître du tapis change. <br/></td></tr>
+<tr class="separator:af704aa698ff09b2363fcab8718e951b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf847e36c3bd801db27ddbd59692a75c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientJeu.html#aaf847e36c3bd801db27ddbd59692a75c">jeu_change</a> (std::vector&lt; <a class="el" href="classCarte.html">Carte</a> &gt; gagnees, std::vector&lt; <a class="el" href="classCarte.html">Carte</a> &gt; perdues)</td></tr>
+<tr class="memdesc:aaf847e36c3bd801db27ddbd59692a75c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Émis lorsque mon jeu change.  <a href="#aaf847e36c3bd801db27ddbd59692a75c">Plus de détails...</a><br/></td></tr>
+<tr class="separator:aaf847e36c3bd801db27ddbd59692a75c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header signals_classClient"><td colspan="2" onclick="javascript:toggleInherit('signals_classClient')"><img src="closed.png" alt="-"/>&#160;Signaux hérités de <a class="el" href="classClient.html">Client</a></td></tr>
 <tr class="memitem:a81ee5a5d5df20d3bae5a7ba511fa1bb7 inherit signals_classClient"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient.html#a81ee5a5d5df20d3bae5a7ba511fa1bb7">connecte</a> ()</td></tr>
 <tr class="memdesc:a81ee5a5d5df20d3bae5a7ba511fa1bb7 inherit signals_classClient"><td class="mdescLeft">&#160;</td><td class="mdescRight">Émis lorsque le client est connecté.  <a href="#a81ee5a5d5df20d3bae5a7ba511fa1bb7">Plus de détails...</a><br/></td></tr>
@@ -501,6 +512,173 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 </div>
 </div>
+<a class="anchor" id="ae1aadc5dd0a9fbce606205c98ed18c4f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ClientJeu::dernier_contrat </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classEnchere.html">Enchere</a>&#160;</td>
+          <td class="paramname"><em>e</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Émis lorsqu'un contrat intermédiaire est formulé. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">e</td><td>L'enchère en question. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a972e0795fb59b62e67686086f6cd6d13"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ClientJeu::doit_priser </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Émis lorsque je suis le premier et que je dois priser. </p>
+<dl class="section see"><dt>Voir également</dt><dd><a class="el" href="classPartieClient.html#a2429db229d7bb2719cc0c460e5538af0" title="C&#39;est à vous, le premier joueur, de priser. ">PartieClient::doit_priser()</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a204d20d4941e94d247695b0fdbb519e3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ClientJeu::doit_priser </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classEnchere.html">Enchere</a>&#160;</td>
+          <td class="paramname"><em>max</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Émis lorsque je dois priser. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">max</td><td>L'enchère maximale. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>Voir également</dt><dd><a class="el" href="classPartieClient.html#abc477ece17558f2acd6184c63dcc8fac" title="C&#39;est à vous de priser. ">PartieClient::doit_priser(Enchere)</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a98689343a93362c3b583a27e1ef6543f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ClientJeu::formuler_prise </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3f">Enchere::Prise</a>&#160;</td>
+          <td class="paramname"><em>p</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Envoie un message pour formuler une Prise. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">p</td><td>La prise en question.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>Voir également</dt><dd><a class="el" href="classPartieClient.html#a1591988be7b721fae20d45a1c8b869a0" title="Construit un Message. ">PartieClient::formuler_prise(Enchere::Prise)</a>; </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aaf847e36c3bd801db27ddbd59692a75c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ClientJeu::jeu_change </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classCarte.html">Carte</a> &gt;&#160;</td>
+          <td class="paramname"><em>gagnees</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classCarte.html">Carte</a> &gt;&#160;</td>
+          <td class="paramname"><em>perdues</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Émis lorsque mon jeu change. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gagnees</td><td>Les cartes reçues. </td></tr>
+    <tr><td class="paramname">perdues</td><td>Les cartes perdues. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="a31694cbe341412cdb1a6238312671677"></a>
 <div class="memitem">
 <div class="memproto">
@@ -533,38 +711,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 </div>
 </div>
-<a class="anchor" id="adb8e166a02eeae6bdeeb400a05ba19f8"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void ClientJeu::num </td>
-          <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>n</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Émis lorsqu'on m'informe de mon numéro. </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">n</td><td>Mon numéro, entre 0 inclus et 5 exclus. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a class="anchor" id="a2d515dffe6d8a2e92c6e6e85df9c7b7b"></a>
 <div class="memitem">
 <div class="memproto">
@@ -582,15 +728,15 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Traité lorsque mon numéro change. </p>
+<p>Émis lorsqu'on m'informe de mon numéro. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">n</td><td>Mon nouveau numéro. </td></tr>
+    <tr><td class="paramname">n</td><td>Mon numéro, entre 0 inclus et 5 exclus. </td></tr>
   </table>
   </dd>
 </dl>
@@ -659,6 +805,38 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
   </dd>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>La somme des scores fait 0. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a7b5d75250453bc07f7d482460b497a20"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ClientJeu::tapis_change </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classTapis.html">Tapis</a> &amp;&#160;</td>
+          <td class="paramname"><em>tapis</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Émis lorsque le tapis change. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tapis</td><td>Le tapis. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -754,7 +932,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi 4 Décembre 2014 15:35:48 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 6 Décembre 2014 00:05:38 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

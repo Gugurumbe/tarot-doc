@@ -143,16 +143,18 @@ Signaux</h2></td></tr>
 <tr class="memitem:a106ba624eac7b0faafaaf35365564d7d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartieClient.html#a106ba624eac7b0faafaaf35365564d7d">numero_change</a> (unsigned int num)</td></tr>
 <tr class="memdesc:a106ba624eac7b0faafaaf35365564d7d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Le numéro a changé  <a href="#a106ba624eac7b0faafaaf35365564d7d">Plus de détails...</a><br/></td></tr>
 <tr class="separator:a106ba624eac7b0faafaaf35365564d7d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abbc91d1a24e202e41d3d974fe1335440"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abbc91d1a24e202e41d3d974fe1335440"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartieClient.html#abbc91d1a24e202e41d3d974fe1335440">jeu_change</a> ()</td></tr>
-<tr class="memdesc:abbc91d1a24e202e41d3d974fe1335440"><td class="mdescLeft">&#160;</td><td class="mdescRight">Votre jeu a été modifié. <br/></td></tr>
-<tr class="separator:abbc91d1a24e202e41d3d974fe1335440"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c9805f898622621b8ca07ffcb3d0242"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartieClient.html#a0c9805f898622621b8ca07ffcb3d0242">jeu_change</a> (std::vector&lt; <a class="el" href="classCarte.html">Carte</a> &gt; gagnees, std::vector&lt; <a class="el" href="classCarte.html">Carte</a> &gt; perdues)</td></tr>
+<tr class="memdesc:a0c9805f898622621b8ca07ffcb3d0242"><td class="mdescLeft">&#160;</td><td class="mdescRight">Votre jeu a été modifié.  <a href="#a0c9805f898622621b8ca07ffcb3d0242">Plus de détails...</a><br/></td></tr>
+<tr class="separator:a0c9805f898622621b8ca07ffcb3d0242"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af026ee1b7dd327da63570c1ea2739175"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartieClient.html#af026ee1b7dd327da63570c1ea2739175">action_refusee</a> ()</td></tr>
 <tr class="memdesc:af026ee1b7dd327da63570c1ea2739175"><td class="mdescLeft">&#160;</td><td class="mdescRight">Action refusée.  <a href="#af026ee1b7dd327da63570c1ea2739175">Plus de détails...</a><br/></td></tr>
 <tr class="separator:af026ee1b7dd327da63570c1ea2739175"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2429db229d7bb2719cc0c460e5538af0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartieClient.html#a2429db229d7bb2719cc0c460e5538af0">doit_priser</a> ()</td></tr>
-<tr class="memdesc:a2429db229d7bb2719cc0c460e5538af0"><td class="mdescLeft">&#160;</td><td class="mdescRight">C'est à vous de priser.  <a href="#a2429db229d7bb2719cc0c460e5538af0">Plus de détails...</a><br/></td></tr>
+<tr class="memdesc:a2429db229d7bb2719cc0c460e5538af0"><td class="mdescLeft">&#160;</td><td class="mdescRight">C'est à vous, le premier joueur, de priser.  <a href="#a2429db229d7bb2719cc0c460e5538af0">Plus de détails...</a><br/></td></tr>
 <tr class="separator:a2429db229d7bb2719cc0c460e5538af0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc477ece17558f2acd6184c63dcc8fac"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartieClient.html#abc477ece17558f2acd6184c63dcc8fac">doit_priser</a> (<a class="el" href="classEnchere.html">Enchere</a> max)</td></tr>
+<tr class="memdesc:abc477ece17558f2acd6184c63dcc8fac"><td class="mdescLeft">&#160;</td><td class="mdescRight">C'est à vous de priser.  <a href="#abc477ece17558f2acd6184c63dcc8fac">Plus de détails...</a><br/></td></tr>
+<tr class="separator:abc477ece17558f2acd6184c63dcc8fac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac2c68cad2c62f27343c009955b4ccbc7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac2c68cad2c62f27343c009955b4ccbc7"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartieClient.html#ac2c68cad2c62f27343c009955b4ccbc7">enchere_refusee</a> ()</td></tr>
 <tr class="memdesc:ac2c68cad2c62f27343c009955b4ccbc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Votre enchère a été refusée. <br/></td></tr>
@@ -294,6 +296,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartie.html#a2181ef5b08a0e98b41596ce7ac02215e">throw_cartes_gagnees</a> (std::vector&lt; <a class="el" href="classCarte.html">Carte</a> &gt; const &amp;, std::vector&lt; unsigned int &gt; const &amp;, std::vector&lt; unsigned int &gt; const &amp;)</td></tr>
 <tr class="memdesc:a2181ef5b08a0e98b41596ce7ac02215e inherit pub_methods_classPartie"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ne pas regarder. <br/></td></tr>
 <tr class="separator:a2181ef5b08a0e98b41596ce7ac02215e inherit pub_methods_classPartie"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad07d7f1ee9028f500c0b4a2c3fd5c8d0 inherit pub_methods_classPartie"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classEnchere.html">Enchere</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartie.html#ad07d7f1ee9028f500c0b4a2c3fd5c8d0">meilleure_enchere</a> () const </td></tr>
+<tr class="memdesc:ad07d7f1ee9028f500c0b4a2c3fd5c8d0 inherit pub_methods_classPartie"><td class="mdescLeft">&#160;</td><td class="mdescRight">Donne l'enchère maximale.  <a href="#ad07d7f1ee9028f500c0b4a2c3fd5c8d0">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ad07d7f1ee9028f500c0b4a2c3fd5c8d0 inherit pub_methods_classPartie"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Fonctions membres protégées</h2></td></tr>
@@ -742,7 +747,7 @@ Membres hérités additionnels</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>Voir également</dt><dd><a class="el" href="classPartieClient.html#a2429db229d7bb2719cc0c460e5538af0" title="C&#39;est à vous de priser. ">PartieClient::doit_priser()</a> </dd></dl>
+<dl class="section see"><dt>Voir également</dt><dd><a class="el" href="classPartieClient.html#a2429db229d7bb2719cc0c460e5538af0" title="C&#39;est à vous, le premier joueur, de priser. ">PartieClient::doit_priser()</a> </dd></dl>
 
 </div>
 </div>
@@ -967,8 +972,42 @@ PartieClient::doit_emettre(Message) </dd></dl>
 </table>
 </div><div class="memdoc">
 
+<p>C'est à vous, le premier joueur, de priser. </p>
+<p>Émis lorsque le tour du client arrive lors de la phase des enchères. N'est émis que pour le premier joueur. </p>
+
+</div>
+</div>
+<a class="anchor" id="abc477ece17558f2acd6184c63dcc8fac"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PartieClient::doit_priser </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classEnchere.html">Enchere</a>&#160;</td>
+          <td class="paramname"><em>max</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
 <p>C'est à vous de priser. </p>
-<p>Émis lorsque le tour du client arrive lors de la phase des enchères. </p>
+<p>Émis lorsque le tour du client arrive lors de la phase des enchères.</p>
+<dl class="section warning"><dt>Avertissement</dt><dd>N'est pas émis pour le premier joueur !</dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">max</td><td>L'enchère max jusqu'à présent. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -1090,6 +1129,49 @@ PartieClient::doit_emettre(Message) </dd></dl>
   </dd>
 </dl>
 <dl class="section see"><dt>Voir également</dt><dd>PartieClient::doit_emettre(Message) </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a0c9805f898622621b8ca07ffcb3d0242"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PartieClient::jeu_change </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classCarte.html">Carte</a> &gt;&#160;</td>
+          <td class="paramname"><em>gagnees</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classCarte.html">Carte</a> &gt;&#160;</td>
+          <td class="paramname"><em>perdues</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Votre jeu a été modifié. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">gagnees</td><td>Les cartes gagnées. </td></tr>
+    <tr><td class="paramname">perdues</td><td>Les cartes perdues. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -1440,7 +1522,7 @@ PartieClient::doit_emettre(Message) </dd></dl>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi 4 Décembre 2014 15:35:48 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 6 Décembre 2014 00:05:38 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

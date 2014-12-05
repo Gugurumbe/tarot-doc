@@ -4,7 +4,7 @@ var searchData=
   ['debogueur',['Debogueur',['../classDebogueur.html',1,'Debogueur'],['../classDebogueur.html#a70abc28ed9ccc4e939b1b60178907905',1,'Debogueur::Debogueur(std::string const &amp;nom_methode, std::string const &amp;nom_classe, const void *objet)'],['../classDebogueur.html#a8b677cd38577bba5631340a4cff54d52',1,'Debogueur::Debogueur(std::string const &amp;nom_fonction)']]],
   ['debogueur_2ehpp',['debogueur.hpp',['../debogueur_8hpp.html',1,'']]],
   ['debogueur_5fdefini',['DEBOGUEUR_DEFINI',['../debogueur_8hpp.html#a32a7fb07a2e8dcabc8be846cd95e9627',1,'debogueur.hpp']]],
-  ['debug',['DEBUG',['../ne__pas__deboguer_8hpp.html#ad72dbcf6d0153db1b8d8a58001feed83',1,'ne_pas_deboguer.hpp']]],
+  ['debug',['DEBUG',['../deboguer_8hpp.html#ad72dbcf6d0153db1b8d8a58001feed83',1,'DEBUG():&#160;deboguer.hpp'],['../ne__pas__deboguer_8hpp.html#ad72dbcf6d0153db1b8d8a58001feed83',1,'DEBUG():&#160;ne_pas_deboguer.hpp']]],
   ['debug_5fwritestack',['DEBUG_WRITESTACK',['../server_2config_8hpp.html#a1118d8368951e4d110cacbbaa35c62d8',1,'config.hpp']]],
   ['debut_5fatout',['DEBUT_ATOUT',['../carte_8hpp.html#a5f2ccaf19a8873a2086ea3eb5d2a63c4',1,'carte.hpp']]],
   ['debut_5fcarreau',['DEBUT_CARREAU',['../carte_8hpp.html#ac490877a96d2e9614aba06cd848ece9e',1,'carte.hpp']]],
@@ -18,6 +18,7 @@ var searchData=
   ['demander_5fchelem',['demander_chelem',['../classPartieClient.html#af2b4386f91d646e3f4ede4fe17a179d6',1,'PartieClient']]],
   ['demander_5fjeu',['demander_jeu',['../classPartieClient.html#a69d50fe756fb33cf9c1d7a24414a14b1',1,'PartieClient']]],
   ['demipoints',['demipoints',['../classCarte.html#a84d161365c4a090b9c10e8939e07e5b0',1,'Carte']]],
+  ['dernier_5fcontrat',['dernier_contrat',['../classClientJeu.html#ae1aadc5dd0a9fbce606205c98ed18c4f',1,'ClientJeu']]],
   ['detacher_5ftable',['detacher_table',['../classServeurJeu.html#a116bae8ae5a4ffa34ea22cc222655a48',1,'ServeurJeu']]],
   ['detruire_5fincomplete',['DETRUIRE_INCOMPLETE',['../server_2config_8hpp.html#afe887e4b360e68864eade49835d75722',1,'config.hpp']]],
   ['dette_5fexcuse',['DETTE_EXCUSE',['../carte_8hpp.html#a73ae32b908395c6e86179cabb6fd6328',1,'carte.hpp']]],
@@ -30,7 +31,7 @@ var searchData=
   ['doit_5femettre',['doit_emettre',['../classPartieClient.html#a7e3ab24706fbe76f8c448ac8d71eae97',1,'PartieClient::doit_emettre()'],['../classPartieServeur.html#a60c558d4c86798ee46f255c18a52630b',1,'PartieServeur::doit_emettre()'],['../classTable.html#a147a6a6c82fa213c3f89ef2250ee5d09',1,'Table::doit_emettre()']]],
   ['doit_5femettre_5fa_5ftous',['doit_emettre_a_tous',['../classPartieServeur.html#ad934af02a962fb0d7d7cec0dbdb90177',1,'PartieServeur']]],
   ['doit_5fjouer',['doit_jouer',['../classClientJeu.html#ad01d2320d60f816ec2c6d08b8a5477c4',1,'ClientJeu::doit_jouer()'],['../classPartieClient.html#a1e4aa3b1ba12b4748859a2fc600fe016',1,'PartieClient::doit_jouer()']]],
-  ['doit_5fpriser',['doit_priser',['../classClientJeu.html#a972e0795fb59b62e67686086f6cd6d13',1,'ClientJeu::doit_priser()'],['../classPartieClient.html#a2429db229d7bb2719cc0c460e5538af0',1,'PartieClient::doit_priser()']]],
+  ['doit_5fpriser',['doit_priser',['../classClientJeu.html#a972e0795fb59b62e67686086f6cd6d13',1,'ClientJeu::doit_priser()'],['../classClientJeu.html#a204d20d4941e94d247695b0fdbb519e3',1,'ClientJeu::doit_priser()'],['../classPartieClient.html#a2429db229d7bb2719cc0c460e5538af0',1,'PartieClient::doit_priser()'],['../classPartieClient.html#abc477ece17558f2acd6184c63dcc8fac',1,'PartieClient::doit_priser()']]],
   ['doit_5fquitter',['doit_quitter',['../classPartieClient.html#ac110cd921caa3341a15571a461de0313',1,'PartieClient']]],
   ['doit_5ftransmettre',['doit_transmettre',['../classTable.html#ab59f7e6f1b2d9603bbcce881182c4b9c',1,'Table']]]
 ];

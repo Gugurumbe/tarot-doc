@@ -6,6 +6,7 @@ var searchData=
   ['taille',['taille',['../structProtocole_1_1Msg__montrer__poignee.html#a2a4645b1af4de97d49595e6733c20571',1,'Protocole::Msg_montrer_poignee::taille()'],['../structProtocole_1_1Msg__poignee.html#a73100c7c2f94fcdc1952f8e7b47ba18c',1,'Protocole::Msg_poignee::taille()']]],
   ['tapis',['Tapis',['../classTapis.html',1,'Tapis'],['../classTapis.html#a7323828e91137c08c7a84f279b679ca3',1,'Tapis::Tapis()'],['../classPartie.html#a8e85cd52fcb26ee887b5c5441ffc00b2',1,'Partie::tapis()']]],
   ['tapis_2ehpp',['tapis.hpp',['../tapis_8hpp.html',1,'']]],
+  ['tapis_5fchange',['tapis_change',['../classClientJeu.html#a7b5d75250453bc07f7d482460b497a20',1,'ClientJeu']]],
   ['tapis_5fdefini',['TAPIS_DEFINI',['../tapis_8hpp.html#aad60ff1027fa061d39c490dc31896a71',1,'tapis.hpp']]],
   ['tapispartie',['TapisPartie',['../classTapisPartie.html',1,'TapisPartie'],['../classTapisPartie.html#a0d11655ef4dd347c14c245f7804c4dbe',1,'TapisPartie::TapisPartie()']]],
   ['tester',['tester',['../classPartieServeur.html#a53ae35e1da76a5602f3223019df36e83',1,'PartieServeur']]],

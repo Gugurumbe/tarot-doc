@@ -5,6 +5,8 @@ var searchData=
   ['main_2ehpp',['main.hpp',['../main_8hpp.html',1,'']]],
   ['main_5fdefinie',['MAIN_DEFINIE',['../main_8hpp.html#a7c7dd73493e631d06b084103ef2ee52f',1,'main.hpp']]],
   ['maitre',['maitre',['../classClientJeu.html#a31694cbe341412cdb1a6238312671677',1,'ClientJeu::maitre()'],['../classPartieClient.html#a388736e730753f45cef11292a67a646d',1,'PartieClient::maitre()'],['../classTapis.html#a87f9d895a8f649b5b27265bc81625da0',1,'Tapis::maitre()']]],
+  ['maitre_5fchange',['maitre_change',['../classClientJeu.html#af704aa698ff09b2363fcab8718e951b7',1,'ClientJeu']]],
+  ['meilleure_5fenchere',['meilleure_enchere',['../classPartie.html#ad07d7f1ee9028f500c0b4a2c3fd5c8d0',1,'Partie']]],
   ['message',['Message',['../structProtocole_1_1Message.html',1,'Protocole']]],
   ['message',['message',['../classServeur.html#aff70684b2bfe448696cc2cf273f21754',1,'Serveur']]],
   ['message_5fbrut',['message_brut',['../classServeur.html#a12ffc8082b8d0419295899bc710f6cf4',1,'Serveur']]],
