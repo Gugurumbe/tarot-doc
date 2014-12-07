@@ -109,12 +109,27 @@ void Journal::afficher_contrat_invalide()
 
 void Journal::afficher_contrat_intermediaire(Enchere contrat)
 {
-  std::cout<<"AFFICHER !"<<std::endl;
   std::stringstream str;
   str<<"<p class=\"enchere\"><span class=\"joueur\">"
      <<LabelNom::nom_de(contrat.joueur()).toUtf8().data()
      <<"</span> fait l'enchere : <span class=\"prise\">"
      <<contrat.prise()<<"</span>";
+  header+=S(str.str().c_str());
+  setHtml(header + footer);
+}
+
+void Journal::afficher_doit_appeler(std::vector<Carte> possibles)
+{
+  std::stringstream str;
+  str<<"<p class=\"appeler\">Vous devez <strong>appeler</strong>"
+     <<" une carte. Les cartes acceptées sont : <ul class=\"valide\">";
+  for(unsigned int i = 0 ; i < possibles.size() ; i++)
+    {
+      str<<"<li class=\""
+	 <<possibles[i].couleur_simple()
+	 <<"\">"<<possibles[i]<<"</li>";
+    }
+  str<<"</ul></p>";
   header+=S(str.str().c_str());
   setHtml(header + footer);
 }

@@ -71,6 +71,12 @@ public slots :
      @brief Indique au joueur que son contrat n'est pas valide.
    */
   void afficher_contrat_invalide();
+  /**
+     @brief Indique au joueur qu'il doit appeler une Carte.
+     
+     @param possibles L'ensemble des cartes qui seront acceptées.
+   */
+  void afficher_doit_appeler(std::vector<Carte> possibles);
 
 private:
   QString header;

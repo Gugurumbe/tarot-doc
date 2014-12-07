@@ -63,7 +63,7 @@ void PartieServeur::assimiler(Protocole::Message const & message)
 	    }
 	  DEBUG<<"e_max a la valeur "<<e_max.prise()<<std::endl;
 	}
-      if(tour() == 0)
+      if(tour() >= 5)
 	{
 	  //Les enchères sont terminées.
 	  //Détermination de l'enchère maximale.

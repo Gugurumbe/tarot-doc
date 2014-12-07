@@ -17,11 +17,15 @@ ClientGraphique::ClientGraphique(QWidget * parent):
 	  ui.journal, SLOT(afficher_numero(unsigned int)));
   connect(&jeu, SIGNAL(numero_change(unsigned int)),
 	  ui.nom_joueur, SLOT(set_num(unsigned int)));
-  connect(&jeu, SIGNAL(jeu_change(std::vector<Carte>, std::vector<Carte>)),
-	  ui.journal, SLOT(afficher_changement_jeu(std::vector<Carte>,
-						   std::vector<Carte>)));
-  connect(&jeu, SIGNAL(jeu_change(std::vector<Carte>, std::vector<Carte>)),
-	  ui.mes_cartes, SLOT(gagner(std::vector<Carte>, std::vector<Carte>)));
+  connect(&jeu, SIGNAL(jeu_change
+		       (std::vector<Carte>, std::vector<Carte>)),
+	  ui.journal, SLOT(afficher_changement_jeu
+			   (std::vector<Carte>, std::vector<Carte>)));
+  connect(&jeu, SIGNAL(jeu_change
+		       (std::vector<Carte>, std::vector<Carte>)),
+	  ui.mes_cartes, SLOT(gagner
+			      (std::vector<Carte>, 
+			       std::vector<Carte>)));
   connect(&jeu, SIGNAL(doit_priser(Enchere)),
 	  ui.journal, SLOT(afficher_doit_priser(Enchere)));
   connect(&jeu, SIGNAL(doit_priser()),
@@ -30,6 +34,8 @@ ClientGraphique::ClientGraphique(QWidget * parent):
 	  ui.journal, SLOT(afficher_contrat_invalide()));
   connect(&jeu, SIGNAL(dernier_contrat(Enchere)),
 	  ui.journal, SLOT(afficher_contrat_intermediaire(Enchere)));
+  connect(&jeu, SIGNAL(doit_appeler(std::vector<Carte>)),
+	  ui.journal, SLOT(afficher_doit_appeler(std::vector<Carte>)));
   connect(&jeu, SIGNAL(tapis_change(const Tapis &)),
 	  ui.tapis, SLOT(recalculer(const Tapis &)));
 }

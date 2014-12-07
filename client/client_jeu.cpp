@@ -32,8 +32,8 @@ ClientJeu::ClientJeu(QObject * parent) :
   connect(&partie, 
 	  SIGNAL(contrat_intermediaire(unsigned int, Enchere)),
 	  this, SLOT(contrat_intermediaire(unsigned int, Enchere)));
-  connect(&partie, SIGNAL(doit_appeler()),
-	  this, SLOT(doit_appeler()));
+  connect(&partie, SIGNAL(doit_appeler(std::vector<Carte>)),
+	  this, SIGNAL(doit_appeler(std::vector<Carte>)));
   connect(&partie, SIGNAL(appel_refuse()),
 	  this, SLOT(appel_refuse()));
   connect(&partie, SIGNAL(contrat_final(Enchere)),
@@ -92,27 +92,6 @@ void ClientJeu::contrat_intermediaire(unsigned int, Enchere e)
 {
   // std::cout<<"Le joueur"<<joueur<<" a fait l'enchère "<<e<<std::endl;
   emit dernier_contrat(e);
-}
-
-void ClientJeu::doit_appeler()
-{
-  // presenter_etat();
-  // std::cout<<"Vous devez appeler une Carte. Vous pouvez appeler : "
-  // 	   <<std::endl;
-  // for(unsigned int i = 0 ; i < 78 ; i++)
-  //   {
-  //     if(partie.mon_jeu().peut_appeler(Carte(i)))
-  // 	{
-  // 	  std::cout<<"("<<i<<") : "<<Carte(i)<<std::endl;
-  // 	}
-  //   }
-  // std::cout<<"Bien entendu, vous tester une autre carte..."
-  // 	   <<std::endl
-  // 	   <<"Entrez un numéro : "<<std::endl;
-  // Protocole::Message appeler;
-  // appeler.type = Protocole::APPELER;
-  // std::cin>>appeler.m.appeler.carte;
-  // envoyer(appeler);
 }
 
 void ClientJeu::appel_refuse()

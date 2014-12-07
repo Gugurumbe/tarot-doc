@@ -81,11 +81,6 @@ public slots:
   void contrat_intermediaire(unsigned int j, Enchere e);
 
   /**
-     @brief Traité lorsque je dois appeler une Carte.
-   */
-  void doit_appeler();
-
-  /**
      @brief Traité lorsque le serveur refuse que j'appelle cette
      Carte.
    */
@@ -218,6 +213,15 @@ signals:
      @param e L'enchère en question.
    */
   void dernier_contrat(Enchere e);
+
+  /**
+     @brief Émis lorsque je dois appeler une carte.
+     
+     @param acceptees Les cartes que je peux appeler.
+     
+     @see Main::peut_appeler(const Carte &)
+   */
+  void doit_appeler(std::vector<Carte> acceptees);
 
   /**
      @brief Émis lorsque le tapis change.

@@ -262,8 +262,12 @@ signals:
      @brief Vous devez appeler une Carte.
      
      Émis à la réception d'un Msg_appel.
+     
+     @param acceptees Les cartes que je peux appeler.
+     
+     @see ClientJeu::doit_appeler(std::vector<Carte>)
    */
-  void doit_appeler();
+  void doit_appeler(std::vector<Carte> acceptees);
 
   /**
      @brief Vous ne pouvez pas appeler cette Carte.

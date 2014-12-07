@@ -51,6 +51,7 @@ void PartieClient::assimiler(const Protocole::Message & m)
 	}
       en_chemin.clear();
       emit action_refusee();
+      //On détermine la nature du refus
       if(phase() == Partie::CONSTITUTION_ECART) 
 	{
 	  emit ecart_refuse();
@@ -74,7 +75,14 @@ void PartieClient::assimiler(const Protocole::Message & m)
 	  //C'est l'appel qui a été refusé
 	  en_chemin.clear();
 	  emit appel_refuse();
-	  emit doit_appeler();
+	  std::vector<Carte> possibles;
+	  //Monstre de complexité
+	  for(unsigned int i = 0 ; i < 78 ; i++)
+	    {
+	      if(mes_cartes.peut_appeler(Carte(i)))
+		possibles.push_back(Carte(i));
+	    }
+	  emit doit_appeler(possibles);
 	}
       break;
     case Protocole::NUMERO:
@@ -101,7 +109,17 @@ void PartieClient::assimiler(const Protocole::Message & m)
 	}
       break;
     case Protocole::APPEL:
-      emit doit_appeler();
+      if(true)
+	{
+	  //Cf Protocole::REFUSE
+	  std::vector<Carte> possibles;
+	  for(unsigned int i = 0 ; i < 78 ; i++)
+	    {
+	      if(mes_cartes.peut_appeler(Carte(i)))
+		possibles.push_back(Carte(i));
+	    }
+	  emit doit_appeler(possibles);
+	}
       break;
     case Protocole::APPELER:
       //On dit que le roi est en chemin...
