@@ -87,6 +87,12 @@ public slots :
      @param contrat Le contrat final.
    */
   void afficher_contrat_final(Enchere contrat);
+  /**
+     @brief Indique que le chien est dévoilé.
+     
+     @param chien Les 3 cartes du chien.
+   */
+  void afficher_chien_devoile(std::vector<Carte> chien);
 
 private:
   QString header;

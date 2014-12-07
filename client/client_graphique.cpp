@@ -50,6 +50,8 @@ ClientGraphique::ClientGraphique(QWidget * parent):
 	  ui.journal, SLOT(afficher_appel_invalide()));
   connect(&jeu, SIGNAL(contrat_final(Enchere)),
 	  ui.journal, SLOT(afficher_contrat_final(Enchere)));
+  connect(&jeu, SIGNAL(chien(Carte, Carte, Carte)), 
+	  this, SLOT(chien(Carte, Carte, Carte)));
 }
 
 void ClientGraphique::on_bouton_enchere_clicked()
@@ -84,4 +86,16 @@ void ClientGraphique::on_bouton_appel_clicked()
 {
   Carte c = ui.selecteur_appel->carte_selectionnee();
   jeu.formuler_appel(c);
+}
+
+void ClientGraphique::chien(Carte c1, Carte c2, Carte c3)
+{
+  std::vector<Carte> cartes;
+  cartes.push_back(c1);
+  cartes.push_back(c2);
+  cartes.push_back(c3);
+  ui.journal->afficher_chien_devoile(cartes);
+  ui.chien_1->setText(QString::fromUtf8(c1.nom().c_str()));
+  ui.chien_2->setText(QString::fromUtf8(c2.nom().c_str()));
+  ui.chien_3->setText(QString::fromUtf8(c3.nom().c_str()));
 }

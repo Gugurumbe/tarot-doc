@@ -43,6 +43,15 @@ public slots:
      @brief Envoie un message "appeler"
    */
   void on_bouton_appel_clicked();
+
+  /**
+     @brief Traité lorsque le chien est dévoilé;
+     
+     @param c1 La première carte du chien.
+     @param c2 La deuxième carte du chien.
+     @param c3 La troisième carte du chien.
+   */
+  void chien(Carte c1, Carte c2, Carte c3);
   
 private:
   Ui::ClientGraphique ui;

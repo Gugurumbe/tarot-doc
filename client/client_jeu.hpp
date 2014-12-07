@@ -90,15 +90,6 @@ public slots:
   void formuler_appel(const Carte & c);
 
   /**
-     @brief Traité lorsque le Chien est dévoilé.
-     
-     @param c1 La première carte.
-     @param c2 ...
-     @param c3 ...
-   */
-  void chien_devoile(Carte c1, Carte c2, Carte c3);
-
-  /**
      @brief Traité lorsqu'on doit faire un écart.
    */
   void doit_ecarter();
@@ -230,6 +221,15 @@ signals:
      @param e L'enchère correspondante.
    */
   void contrat_final(Enchere e);
+
+  /**
+     @brief émis lorsque le Chien est dévoilé.
+     
+     @param c1 La première carte.
+     @param c2 ...
+     @param c3 ...
+   */
+  void chien(Carte c1, Carte c2, Carte c3);
 
   /**
      @brief Émis lorsque le tapis change.

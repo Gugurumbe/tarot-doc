@@ -152,3 +152,16 @@ void Journal::afficher_contrat_final(Enchere contrat)
   header+=S(str.str().c_str());
   setHtml(header + footer);  
 }
+
+void Journal::afficher_chien_devoile(std::vector<Carte> chien)
+{
+  std::stringstream str;
+  str<<"<p class=\"chien\">Le chien est dévoilé : <ul class=\"valide\">";
+  for(unsigned int i = 0 ; i < chien.size() ; i++)
+    {
+      str<<"<li class=\""<<chien[i].couleur_simple()<<"\">"<<chien[i]
+	 <<"</li>";
+    }
+  header+=S(str.str().c_str());
+  setHtml(header + footer);
+}

@@ -39,7 +39,7 @@ ClientJeu::ClientJeu(QObject * parent) :
   connect(&partie, SIGNAL(contrat_final(Enchere)),
 	  this, SIGNAL(contrat_final(Enchere)));
   connect(&partie, SIGNAL(chien_devoile(Carte, Carte, Carte)),
-	  this, SLOT(chien_devoile(Carte, Carte, Carte)));
+	  this, SIGNAL(chien(Carte, Carte, Carte)));
   connect(&partie, SIGNAL(doit_ecarter()),
 	  this, SLOT(doit_ecarter()));
   connect(&partie, SIGNAL(ecart_accepte()),
@@ -92,12 +92,6 @@ void ClientJeu::contrat_intermediaire(unsigned int, Enchere e)
 {
   // std::cout<<"Le joueur"<<joueur<<" a fait l'enchère "<<e<<std::endl;
   emit dernier_contrat(e);
-}
-
-void ClientJeu::chien_devoile(Carte, Carte, Carte)
-{
-  // std::cout<<"Le chien contient "<<c1<<", "<<c2<<", "<<c3<<"."
-  // 	   <<std::endl;
 }
 
 void ClientJeu::doit_ecarter()
