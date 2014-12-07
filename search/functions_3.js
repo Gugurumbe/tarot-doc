@@ -11,7 +11,7 @@ var searchData=
   ['detacher_5ftable',['detacher_table',['../classServeurJeu.html#a116bae8ae5a4ffa34ea22cc222655a48',1,'ServeurJeu']]],
   ['distribuer',['distribuer',['../classPartieServeur.html#a135a3037f89478ccb40547fca9ceec75',1,'PartieServeur']]],
   ['distribution',['distribution',['../classMain.html#ac31fb90cebfa1d62f14995fb3393151e',1,'Main']]],
-  ['doit_5fappeler',['doit_appeler',['../classClientJeu.html#aef003adc96d6c6ebcdee5cf26b2047ab',1,'ClientJeu::doit_appeler()'],['../classPartieClient.html#ab343eaec323f4d92771b2e46193b96b6',1,'PartieClient::doit_appeler()']]],
+  ['doit_5fappeler',['doit_appeler',['../classClientJeu.html#a96011061e8d2d34362138d3d9537e2e8',1,'ClientJeu::doit_appeler()'],['../classPartieClient.html#aeab34362cce497ae651b95d2ac0b9611',1,'PartieClient::doit_appeler()']]],
   ['doit_5fdeconnecter',['doit_deconnecter',['../classTable.html#abba1c52883cb52f2aaa33f6ffa9493a5',1,'Table']]],
   ['doit_5fdemander_5fchelem',['doit_demander_chelem',['../classPartieClient.html#a401255df5a76b7307a7c8f29cbda78fb',1,'PartieClient']]],
   ['doit_5fecarter',['doit_ecarter',['../classClientJeu.html#a83cc46af5a90cbe352c0f8edb8539b3b',1,'ClientJeu::doit_ecarter()'],['../classPartieClient.html#af7a71f0a2aefa407519be0787f8d1936',1,'PartieClient::doit_ecarter()']]],

@@ -162,9 +162,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:afbb417cef49e2055b734599e83b40a34"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartieClient.html#afbb417cef49e2055b734599e83b40a34">contrat_intermediaire</a> (unsigned int joueur, <a class="el" href="classEnchere.html">Enchere</a> e)</td></tr>
 <tr class="memdesc:afbb417cef49e2055b734599e83b40a34"><td class="mdescLeft">&#160;</td><td class="mdescRight">Une enchère vient d'être annoncée.  <a href="#afbb417cef49e2055b734599e83b40a34">Plus de détails...</a><br/></td></tr>
 <tr class="separator:afbb417cef49e2055b734599e83b40a34"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab343eaec323f4d92771b2e46193b96b6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartieClient.html#ab343eaec323f4d92771b2e46193b96b6">doit_appeler</a> ()</td></tr>
-<tr class="memdesc:ab343eaec323f4d92771b2e46193b96b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vous devez appeler une <a class="el" href="classCarte.html" title="Définition d&#39;une Carte du jeu. ">Carte</a>.  <a href="#ab343eaec323f4d92771b2e46193b96b6">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ab343eaec323f4d92771b2e46193b96b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeab34362cce497ae651b95d2ac0b9611"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartieClient.html#aeab34362cce497ae651b95d2ac0b9611">doit_appeler</a> (std::vector&lt; <a class="el" href="classCarte.html">Carte</a> &gt; acceptees)</td></tr>
+<tr class="memdesc:aeab34362cce497ae651b95d2ac0b9611"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vous devez appeler une <a class="el" href="classCarte.html" title="Définition d&#39;une Carte du jeu. ">Carte</a>.  <a href="#aeab34362cce497ae651b95d2ac0b9611">Plus de détails...</a><br/></td></tr>
+<tr class="separator:aeab34362cce497ae651b95d2ac0b9611"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae00180d71e175de723e948e62bb577c3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae00180d71e175de723e948e62bb577c3"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartieClient.html#ae00180d71e175de723e948e62bb577c3">appel_refuse</a> ()</td></tr>
 <tr class="memdesc:ae00180d71e175de723e948e62bb577c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vous ne pouvez pas appeler cette <a class="el" href="classCarte.html" title="Définition d&#39;une Carte du jeu. ">Carte</a>. <br/></td></tr>
@@ -809,7 +809,7 @@ PartieClient::doit_emettre(Message) </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="ab343eaec323f4d92771b2e46193b96b6"></a>
+<a class="anchor" id="aeab34362cce497ae651b95d2ac0b9611"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -819,7 +819,8 @@ PartieClient::doit_emettre(Message) </dd></dl>
         <tr>
           <td class="memname">void PartieClient::doit_appeler </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classCarte.html">Carte</a> &gt;&#160;</td>
+          <td class="paramname"><em>acceptees</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -831,7 +832,14 @@ PartieClient::doit_emettre(Message) </dd></dl>
 </div><div class="memdoc">
 
 <p>Vous devez appeler une <a class="el" href="classCarte.html" title="Définition d&#39;une Carte du jeu. ">Carte</a>. </p>
-<p>Émis à la réception d'un Msg_appel. </p>
+<p>Émis à la réception d'un Msg_appel.</p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">acceptees</td><td>Les cartes que je peux appeler.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>Voir également</dt><dd><a class="el" href="classClientJeu.html#a96011061e8d2d34362138d3d9537e2e8" title="Émis lorsque je dois appeler une carte. ">ClientJeu::doit_appeler(std::vector&lt;Carte&gt;)</a> </dd></dl>
 
 </div>
 </div>
@@ -1517,12 +1525,13 @@ PartieClient::doit_emettre(Message) </dd></dl>
 </div>
 <hr/>La documentation de cette classe a été générée à partir des fichiers suivants :<ul>
 <li>client/<a class="el" href="partie__client_8hpp_source.html">partie_client.hpp</a></li>
+<li>client/moc_partie_client.cpp</li>
 <li>client/partie_client.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Samedi 6 Décembre 2014 00:05:38 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche 7 Décembre 2014 17:00:20 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

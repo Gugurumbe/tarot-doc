@@ -10,6 +10,7 @@ var searchData=
   ['enchere_5fde',['enchere_de',['../classPartie.html#a9516c470a0d368204633894c22ff9585',1,'Partie']]],
   ['enchere_5frefusee',['enchere_refusee',['../classClientJeu.html#a4537dd9d1a67edeac09f4587e20a4a02',1,'ClientJeu::enchere_refusee()'],['../classPartieClient.html#ac2c68cad2c62f27343c009955b4ccbc7',1,'PartieClient::enchere_refusee()']]],
   ['enlever',['enlever',['../classServeur.html#ab1481eb56cefbb965d3b002e9855abaa',1,'Serveur::enlever(QObject *sock)'],['../classServeur.html#a1232f2b9a761537265cdebc9d1294b05',1,'Serveur::enlever()'],['../classTable.html#a2508504a656f681899fcb97eb4269cf1',1,'Table::enlever()'],['../classMain.html#a982c55b05c5f74d20be7dd476f10e355',1,'Main::enlever()']]],
+  ['enlever_5fcarte',['enlever_carte',['../classSelecteurCarte.html#a45c1bceb530fa81c23724cb58a76902b',1,'SelecteurCarte']]],
   ['entame',['entame',['../classTapis.html#a3c8a5d72c2606c0c2753db9940aff178',1,'Tapis']]],
   ['envoyer',['envoyer',['../classClient.html#abbc77b36d7605d1eb6811167742a31cb',1,'Client::envoyer(Protocole::Message m)'],['../classClient.html#ac58b996759b9e999db796d92660406ca',1,'Client::envoyer(QByteArray p)'],['../classServeur.html#a6b1c81bdc2648c45094f07aa5ad2818c',1,'Serveur::envoyer(unsigned int c, QByteArray p)'],['../classServeur.html#ae2878fd84931020ea01fab6be13be1a0',1,'Serveur::envoyer(unsigned int c, Protocole::Message m)']]],
   ['est_5fami',['est_ami',['../classPartieClient.html#ad3d0d1a55fc1b8467a58635e898c62a4',1,'PartieClient']]]

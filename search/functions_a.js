@@ -6,6 +6,7 @@ var searchData=
   ['meilleure_5fenchere',['meilleure_enchere',['../classPartie.html#ad07d7f1ee9028f500c0b4a2c3fd5c8d0',1,'Partie']]],
   ['message',['message',['../classServeur.html#aff70684b2bfe448696cc2cf273f21754',1,'Serveur']]],
   ['message_5fbrut',['message_brut',['../classServeur.html#a12ffc8082b8d0419295899bc710f6cf4',1,'Serveur']]],
+  ['modifier_5fcartes',['modifier_cartes',['../classSelecteurCarte.html#ac0b54a3d796c247b096b9cde6e8c5bbb',1,'SelecteurCarte']]],
   ['mon_5fjeu',['mon_jeu',['../classPartieClient.html#a304bbc3b5068d36ed72bbccbb54c7fc2',1,'PartieClient']]],
   ['mon_5fnumero',['mon_numero',['../classPartieClient.html#ab8a66e1a4f5b21a4687923844ff12a49',1,'PartieClient']]],
   ['mon_5ftour',['mon_tour',['../classPartieClient.html#ad0f3ad8eec624ad558c0317d289cfec6',1,'PartieClient']]],
