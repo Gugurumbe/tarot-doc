@@ -21,8 +21,10 @@ ClientJeu::ClientJeu(QObject * parent) :
 
   connect(&partie, SIGNAL(numero_change(unsigned int)),
 	  this, SIGNAL(numero_change(unsigned int)));
-  connect(&partie, SIGNAL(jeu_change(std::vector<Carte>, std::vector<Carte>)),
-	  this, SIGNAL(jeu_change(std::vector<Carte>, std::vector<Carte>)));
+  connect(&partie, SIGNAL(jeu_change(std::vector<Carte>, 
+				     std::vector<Carte>)),
+	  this, SIGNAL(jeu_change(std::vector<Carte>, 
+				  std::vector<Carte>)));
   connect(&partie, SIGNAL(doit_priser(Enchere)),
 	  this, SIGNAL(doit_priser(Enchere)));
   connect(&partie, SIGNAL(doit_priser()),
@@ -40,30 +42,35 @@ ClientJeu::ClientJeu(QObject * parent) :
 	  this, SIGNAL(contrat_final(Enchere)));
   connect(&partie, SIGNAL(chien_devoile(Carte, Carte, Carte)),
 	  this, SIGNAL(chien(Carte, Carte, Carte)));
-  connect(&partie, SIGNAL(doit_ecarter()),
-	  this, SLOT(doit_ecarter()));
+  connect(&partie, SIGNAL(doit_ecarter(std::vector<Carte>,
+				       std::vector<Carte>)),
+	  this, SIGNAL(doit_ecarter(std::vector<Carte>,
+				    std::vector<Carte>)));
   connect(&partie, SIGNAL(ecart_accepte()),
 	  this, SLOT(ecart_accepte()));
   connect(&partie, SIGNAL(ecart_refuse()),
 	  this, SLOT(ecart_refuse()));
   connect(&partie, SIGNAL(atout_au_chien(std::vector<Carte>)),
-	  this, SLOT(atout_au_chien(std::vector<Carte>)));
+	  this, SIGNAL(atout_au_chien(std::vector<Carte>)));
   connect(&partie, SIGNAL(doit_jouer()),
-	  this, SLOT(doit_jouer()));
+	  this, SIGNAL(doit_jouer()));
   connect(&partie, SIGNAL(requete_refusee()),
 	  this, SLOT(requete_refusee()));
   connect(&partie, SIGNAL(carte_jouee(unsigned int, Carte)),
-	  this, SLOT(carte_jouee(unsigned int, Carte)));
+	  this, SIGNAL(carte_jouee(unsigned int, Carte)));
   connect(&partie, SIGNAL(score(std::vector<int>)),
-	  this, SLOT(score(std::vector<int>)));
+	  this, SIGNAL(partie_terminee(std::vector<int>)));
   connect(&partie, SIGNAL(carte_gagnee(Carte, 
 				      unsigned int, 
 				      unsigned int)),
-	  this, SLOT(carte_gagnee(Carte, unsigned int, unsigned int)));
+	  this, SIGNAL(carte_gagnee(Carte, 
+				    unsigned int, unsigned int)));
   connect(&partie, SIGNAL(pli(unsigned int)),
-	  this, SLOT(pli(unsigned int)));
+	  this, SIGNAL(pli_termine(unsigned int)));
   connect(&partie, SIGNAL(maitre(unsigned int)),
-	  this, SLOT(maitre(unsigned int)));
+	  this, SIGNAL(maitre_change(unsigned int)));
+  connect(&partie, SIGNAL(tapis_change(const Tapis &)),
+	  this, SIGNAL(tapis_change(const Tapis &)));
 }
 
 void ClientJeu::traiter_connexion()
@@ -90,44 +97,9 @@ void ClientJeu::presenter_etat()
 
 void ClientJeu::contrat_intermediaire(unsigned int, Enchere e)
 {
+  //On se débarasse du premier paramètre.
   // std::cout<<"Le joueur"<<joueur<<" a fait l'enchère "<<e<<std::endl;
   emit dernier_contrat(e);
-}
-
-void ClientJeu::doit_ecarter()
-{
-  // presenter_etat();
-  // std::cout<<"Vous devez faire un écart. Vous pouvez tenter d'écarter :"
-  // 	   <<std::endl;
-  // for(unsigned int i = 0 ; i < 78 ; i++)
-  //   {
-  //     if(partie.mon_jeu().possede(Carte(i)))
-  // 	{
-  // 	  switch(Carte(i).ecartable())
-  // 	    {
-  // 	    case Carte::ECARTABLE:
-  // 	      std::cout<<"("<<std::setw(2)<<i<<") : "
-  // 		       <<std::setw(25)<<(Carte(i))<<std::endl;
-  // 	      break;
-  // 	    case Carte::MONTRER_CARTE:
-  // 	      std::cout<<"("<<std::setw(2)<<i<<") : "
-  // 		       <<std::setw(25)<<(Carte(i))<<"[sous conditions]"
-  // 		       <<std::endl;
-  // 	    default:
-  // 	      break;
-  // 	    }
-  // 	}
-  //   }
-  // Protocole::Message ecart;
-  // ecart.type = Protocole::ECART;
-  // for(unsigned int i = 0 ; i < 3 ; i++)
-  //   {
-  //     std::cout<<"Carte "<<i<<" : ";
-  //     std::cin>>ecart.m.ecart.ecart[i];
-  //     std::cout<<"Merci. ";
-  //   }
-  // std::cout<<std::endl;
-  // envoyer(ecart);
 }
 
 void ClientJeu::ecart_accepte()
@@ -141,33 +113,6 @@ void ClientJeu::ecart_refuse()
   // 	   <<std::endl;
 }
 
-void ClientJeu::atout_au_chien(std::vector<Carte>)
-{
-  // std::cout<<"Un ou des atouts ont été mis dans le chien : "<<atouts
-  // 	   <<std::endl;
-}
-
-void ClientJeu::doit_jouer()
-{
-  // presenter_etat();
-  // std::cout<<"Vous devez jouer une carte. "
-  // 	   <<"Voici les numéros de votre jeu : "
-  // 	   <<std::endl;
-  // for(unsigned int i = 0 ; i < 78 ; i++)
-  //   {
-  //     if(partie.mon_jeu().possede(Carte(i)))
-  // 	{
-  // 	  std::cout<<"("<<std::setw(2)<<i<<") : "
-  // 		   <<(Carte(i))<<std::endl;
-  // 	}
-  //   }
-  // std::cout<<"Que voulez-vous jouer ?"<<std::endl;
-  // Protocole::Message requete;
-  // requete.type = Protocole::REQUETE;
-  // std::cin>>requete.m.carte.carte;
-  // envoyer(requete);
-}
-
 void ClientJeu::requete_refusee()
 {
   // std::cout<<"Votre requête a été refusée ! Soyez plus vigilant."
@@ -177,38 +122,6 @@ void ClientJeu::requete_refusee()
 void ClientJeu::requete_acceptee()
 {
   // std::cout<<"Votre requête a été acceptée."<<std::endl;
-}
-
-void ClientJeu::carte_jouee(unsigned int, Carte)
-{
-  // std::cout<<joueur<<" a joué la carte "<<carte
-  // 	   <<", le tapis est donc "<<partie.tapis()
-  // 	   <<std::endl;
-  emit tapis_change(partie.tapis());
-}
-
-void ClientJeu::score(std::vector<int>)
-{
-  // std::cout<<"Voici les scores : "<<scores<<std::endl;
-}
-
-void ClientJeu::carte_gagnee(Carte, 
-			     unsigned int, 
-			     unsigned int)
-{
-  // std::cout<<gagnant<<" remporte la carte "<<c<<" posée par "
-  // 	   <<poseur<<std::endl;
-}
-
-void ClientJeu::pli(unsigned int)
-{
-  // std::cout<<tour<<" remporte le pli."<<std::endl;
-}
-
-void ClientJeu::maitre(unsigned int joueur)
-{
-  // std::cout<<"Le joueur "<<joueur<<" passe maître."<<std::endl;
-  emit maitre_change(joueur);
 }
 
 void ClientJeu::traiter_message(Protocole::Message m)
@@ -226,4 +139,14 @@ void ClientJeu::formuler_prise(Enchere::Prise p)
 void ClientJeu::formuler_appel(const Carte & c)
 {
   partie.appeler(c);
+}
+
+void ClientJeu::formuler_ecart(std::vector<Carte> ecart)
+{
+  partie.ecarter(ecart);
+}
+
+void ClientJeu::formuler_requete(Carte requete)
+{
+  partie.jouer(requete);
 }

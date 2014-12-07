@@ -210,6 +210,12 @@ signals:
 		  std::vector<Carte> perdues);
 
   /**
+     @brief Le tapis a changé.
+     @param tapis Le tapis de la partie.
+   */
+  void tapis_change(const Tapis & tapis);
+
+  /**
      @brief Action refusée.
 
      Indique que l'action du client a été refusée par le serveur. Ce
@@ -298,8 +304,13 @@ signals:
 
      Émis juste après le signal
      PartieClient::chien_devoile()
+
+     @param possibles L'ensemble des cartes écartables.
+     @param atouts L'ensemble des atouts écartables en dernier
+     recours.
    */
-  void doit_ecarter();
+  void doit_ecarter(std::vector<Carte> possibles,
+		    std::vector<Carte> atouts);
 
   /**
      @brief Votre écart a été accepté.

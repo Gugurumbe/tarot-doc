@@ -49,13 +49,36 @@ void PartieClient::assimiler(const Protocole::Message & m)
 	{
 	  mes_cartes.ajouter(en_chemin[i]);
 	}
+      emit jeu_change(std::vector<Carte>(en_chemin), 
+		      std::vector<Carte>());
       en_chemin.clear();
       emit action_refusee();
       //On détermine la nature du refus
       if(phase() == Partie::CONSTITUTION_ECART) 
 	{
 	  emit ecart_refuse();
-	  emit doit_ecarter();
+	  //Dupliqué dans CHIEN
+	  std::vector<Carte> ecartables;
+	  std::vector<Carte> atouts;
+	  for(unsigned int i = 0 ; i < 78 ; i++)
+	    {
+	      Carte c(i);
+	      if(mes_cartes.possede(c))
+		{
+		  switch(c.ecartable())
+		    {
+		    case Carte::ECARTABLE:
+		      ecartables.push_back(c);
+		      break;
+		    case Carte::MONTRER_CARTE:
+		      atouts.push_back(c);
+		      break;
+		    default:
+		      break;
+		    }
+		}
+	    }
+	  emit doit_ecarter(ecartables, atouts);
 	}
       else if(phase() == Partie::PHASE_JEU)
 	{
@@ -171,15 +194,41 @@ void PartieClient::assimiler(const Protocole::Message & m)
 		}
 	    }
 	}
+      else
+	{
+	  //Je dois écarter !
+	  for(unsigned int i = 0 ; i < 3 ; i++)
+	    {
+	      mes_cartes.ajouter(chien_si_devoile[i]);
+	    }
+	  //Attention : monstre de complexité en vue !
+	  //Dupliqué pour REFUSE
+	  std::vector<Carte> ecartables;
+	  std::vector<Carte> atouts;
+	  for(unsigned int i = 0 ; i < 78 ; i++)
+	    {
+	      Carte c(i);
+	      if(mes_cartes.possede(c))
+		{
+		  switch(c.ecartable())
+		    {
+		    case Carte::ECARTABLE:
+		      ecartables.push_back(c);
+		      break;
+		    case Carte::MONTRER_CARTE:
+		      atouts.push_back(c);
+		      break;
+		    default:
+		      break;
+		    }
+		}
+	    }
+	  emit jeu_change(std::vector<Carte>(chien_si_devoile),
+			  std::vector<Carte>());
+	  emit doit_ecarter(ecartables, atouts);
+	}
       break;
     case Protocole::ECART:
-      //Je dois écarter !
-      for(unsigned int i = 0 ; i < 3 ; i++)
-	{
-	  mes_cartes.ajouter(chien_si_devoile[i]);
-	}
-      emit jeu_change(chien_si_devoile, std::vector<Carte>());
-      emit doit_ecarter();
       break;
     case Protocole::ATOUT:
       if(true)
@@ -198,14 +247,9 @@ void PartieClient::assimiler(const Protocole::Message & m)
       if(mon_numero() == attaquant())
 	{
 	  //L'écart a été accepté.
-	  //On remplace le chien par l'écart en chemin.
-	  chien_si_devoile.clear();
-	  for(unsigned int i = 0 ; i < en_chemin.size() ; i++)
-	    {
-	      chien_si_devoile.push_back(en_chemin[i]);
-	    }
 	  emit ecart_accepte();
-	  emit jeu_change(std::vector<Carte>(), en_chemin);
+	  emit jeu_change(std::vector<Carte>(), 
+			  std::vector<Carte>(en_chemin));
 	  en_chemin.clear();
 	}
       if(mon_tour())
@@ -222,19 +266,21 @@ void PartieClient::assimiler(const Protocole::Message & m)
       if(true)
 	{
 	  Carte c(m.m.requete.carte);
+	  en_chemin.clear();
 	  if(mes_cartes.possede(c))
 	    {
 	      mes_cartes.enlever(c);
 	      en_chemin.push_back(c);
+	      emit jeu_change(std::vector<Carte>(),
+			      std::vector<Carte>(en_chemin));
 	    }
 	}
       break;
     case Protocole::CARTE:
-      if(mon_tour())
+      if(m_mon_tour == (tour() + 4) % 5)
 	{
 	  //C'est moi qui ai joué ça
 	  emit requete_acceptee();
-	  emit jeu_change(std::vector<Carte>(), en_chemin);
 	  en_chemin.clear();
 	}
       else if(*(enchere_de(attaquant()).carte_appelee()) 
@@ -250,9 +296,15 @@ void PartieClient::assimiler(const Protocole::Message & m)
 		}
 	    }
 	}
-      break;
-    case Protocole::PLI:
+      emit carte_jouee((tour() + 4) % 5, Carte(m.m.carte.carte));
       if(mon_tour()) emit doit_jouer();
+      emit tapis_change(tapis());
+      break;
+    case Protocole::PLI: 
+      emit tapis_change(tapis());
+      if(mon_tour()) emit doit_jouer();
+      //Le mouvement des cartes est traité dans la méthode virtuelle
+      //dédiée.
       break;
     case Protocole::RESULTAT:
       break;
@@ -272,6 +324,7 @@ void PartieClient::montrer_poignee(std::vector<Carte> const & p)
     {
       m.m.montrer_poignee.atouts[i] = p[i].numero();
     }
+  assimiler(m);
   emit doit_emettre(m);
 }
 
@@ -282,6 +335,7 @@ void PartieClient::jouer(const Carte & c)
   Protocole::Message m;
   m.type = Protocole::REQUETE;
   m.m.requete.carte = c.numero();
+  assimiler(m);
   emit doit_emettre(m);
 }
 
@@ -302,6 +356,7 @@ void PartieClient::appeler(const Carte & c)
   Protocole::Message m;
   m.type = Protocole::APPELER;
   m.m.appeler.carte = c.numero();
+  assimiler(m);
   emit doit_emettre(m);
 }
 
@@ -321,6 +376,7 @@ void PartieClient::ecarter(std::vector<Carte> const & c)
 	  en_chemin.push_back(c[i]);
 	}
     }
+  assimiler(m);
   emit doit_emettre(m);
 }
 

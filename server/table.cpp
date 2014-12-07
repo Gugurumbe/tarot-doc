@@ -140,7 +140,7 @@ void Table::doit_transmettre(unsigned int j, Protocole::Message m,
 {
   ENTER("doit_transmettre(unsigned int j, Protocole::Message m, bool analyser)");
   ADD_ARG("j", j);
-  ADD_ARG("m.type", m.type);
+  ADD_ARG("m", m);
   ADD_ARG("analyser", analyser);
   DEBUG<<"Transmission à "<<j<<std::endl;
   for(unsigned int i = 0 ; i < joueurs.size() ; i++)

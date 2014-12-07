@@ -194,6 +194,7 @@ void Partie::assimiler(const Protocole::Message & m)
       if(m_chelem) m_tour = attaquant();
       else m_tour = 0;
       //Le joueur ayant demandé un chelem joue.
+      m_tapis->set_ouverture(m_tour);
       break;
     case Protocole::POIGNEE:
       m_phase = PHASE_JEU;

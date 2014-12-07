@@ -107,8 +107,10 @@ void PartieServeur::assimiler(Protocole::Message const & message)
       Protocole::Message mess_contrat_final;
       mess_contrat_final.type = Protocole::CONTRAT_FINAL;
       mess_contrat_final.m.contrat_final.preneur = attaquant();
-      mess_contrat_final.m.contrat_final.niveau = (int)contrat_final().prise();
-      mess_contrat_final.m.contrat_final.appel = message.m.appeler.carte;
+      mess_contrat_final.m.contrat_final.niveau = 
+	(int)contrat_final().prise();
+      mess_contrat_final.m.contrat_final.appel = 
+	message.m.appeler.carte;
       EMETTRE_A_TOUS(mess_contrat_final);
       if(contrat_final().prise() >= Enchere::GARDE_SANS)
 	{
@@ -176,7 +178,8 @@ void PartieServeur::assimiler(Protocole::Message const & message)
 	  //On enlève les cartes de la main de l'attaquant.
 	  for(unsigned int i = 0 ; i < 3 ; i++)
 	    {
-	      jeu_reel[attaquant()].enlever(Carte(message.m.ecart.ecart[i]));
+	      jeu_reel[attaquant()].enlever
+		(Carte(message.m.ecart.ecart[i]));
 	    }
 	  DEBUG<<"Cartes enlevées."<<std::endl;
 	  //Gestion des atouts :
@@ -227,9 +230,8 @@ void PartieServeur::assimiler(Protocole::Message const & message)
 	  DEBUG<<"Jeu de la carte "<<message.m.carte.carte
 	       <<std::endl;
 	  Carte c(message.m.carte.carte);
-	  unsigned int j = (tour() + 4) % 5;
-	  jeu_reel[j].enlever(c);
-	  m_tapis.ajouter(message.m.carte);
+	  //Le tour n'a PAS ENCORE ÉTÉ INCRÉMENTÉ !
+	  jeu_reel[tour()].enlever(c);
 	}
     case Protocole::PLI:
       DEBUG<<"Prochain joueur : "<<tour()<<std::endl;
@@ -255,16 +257,19 @@ int PartieServeur::tester(unsigned int joueur, Protocole::Message const & messag
       if(phase() == ENCHERES && tour() == joueur)
 	{
 	  Enchere e(joueur, message.m.prise);
-	  if((!(e.prise()) || e > e_max) && e.prise() <= Enchere::GARDE_CONTRE)
+	  if((!(e.prise()) || e > e_max) && e.prise() 
+	     <= Enchere::GARDE_CONTRE)
 	    {
-	      DEBUG<<"L'enchère "<<e.prise()<<" est validée."<<std::endl;
+	      DEBUG<<"L'enchère "<<e.prise()
+		   <<" est validée."<<std::endl;
 	    }
 	  else ok = 2;
 	}
       else
 	{
 	  ok = 1;
-	  ERROR<<"Erreur de protocole sur Protocole::PRISE. "<<std::endl;
+	  ERROR<<"Erreur de protocole sur Protocole::PRISE. "
+	       <<std::endl;
 	  if(phase() != ENCHERES)
 	    ERROR<<"On n'en est pas aux enchères."<<std::endl;
 	  else ERROR<<"Ce n'est pas le tour du joueur "<<joueur
@@ -329,7 +334,8 @@ int PartieServeur::tester(unsigned int joueur, Protocole::Message const & messag
       //2. Si c'est bien au tour de ce joueur.
       // (si 1. ou 2. n'est pas vérifié, c'est une erreur de protocole)
       //3. Si le joueur possède cette carte.
-      //4.a. Si c'est le premier tour (15 cartes) : si c'est la Carte appelée
+      //4.a. Si c'est le premier tour (15 cartes) : 
+      //     si c'est la Carte appelée
       //     ou si ce n'est pas la couleur de la Carte appelée.
       //4.b. Si c'est un atout : si le joueur peut couper à la couleur
       //     de l'entame, et s'il monte ou s'il peut pisser.
@@ -344,7 +350,7 @@ int PartieServeur::tester(unsigned int joueur, Protocole::Message const & messag
 	  if(jeu_reel[joueur].possede(c))
 	    {
 	      DEBUG<<"Le joueur possède cette Carte."<<std::endl;
-	      if(jeu_reel[joueur].nombre_cartes() == 15)
+	      if(jeu_reel[(joueur + 1) % 5].nombre_cartes() == 15)
 		{
 		  DEBUG<<"On en est au premier tour."<<std::endl;
 		  //Premier tour
@@ -358,16 +364,19 @@ int PartieServeur::tester(unsigned int joueur, Protocole::Message const & messag
 		{
 		  DEBUG<<"C'est un atout."<<std::endl;
 		  Carte entame(0);
-		  if(m_tapis.entame(entame))
+		  if(tapis().entame(entame))
 		    {
-		      if(jeu_reel[joueur].peut_couper(entame.couleur()))
+		      if(jeu_reel[joueur].peut_couper
+			 (entame.couleur()))
 			{
-			  DEBUG<<"Vous pouvez couper, a priori."<<std::endl;
+			  DEBUG<<"Vous pouvez couper, a priori."
+			       <<std::endl;
 			  Carte pgo(56);
-			  if(m_tapis.plus_gros_atout(pgo))
+			  if(tapis().plus_gros_atout(pgo))
 			    {
 			      if(c > pgo ||
-				 jeu_reel[joueur].peut_pisser(pgo.valeur()))
+				 jeu_reel[joueur].peut_pisser
+				 (pgo.valeur()))
 				DEBUG<<"Vous pouvez couper.";
 				ok = 0;
 			    }
@@ -378,11 +387,11 @@ int PartieServeur::tester(unsigned int joueur, Protocole::Message const & messag
 		    }
 		  else ok = 0; //Première carte
 		}
-	      else
+	      else if(ok == 0)
 		{
 		  DEBUG<<"Ce n'est pas un atout."<<std::endl;
 		  Carte entame(0);
-		  if(m_tapis.entame(entame))
+		  if(tapis().entame(entame))
 		    {
 		      if(c.couleur() == entame.couleur())
 			{
@@ -518,7 +527,9 @@ void PartieServeur::cartes_gagnees
       //La partie n'est pas finie !
       Protocole::Message pli;
       pli.type = Protocole::PLI;
-      pli.m.pli.joueur = tour();
+      unsigned int maitre = 0;
+      tapis().maitre(maitre);
+      pli.m.pli.joueur = maitre;
       EMETTRE_A_TOUS(pli);
     }
 }

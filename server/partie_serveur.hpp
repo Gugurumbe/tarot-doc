@@ -85,11 +85,6 @@ private:
   */
   unsigned int joueur_appele;
 
-  /**
-     @brief Le tapis.
-  */
-  Tapis m_tapis;
-
 protected:
     
   virtual void cartes_gagnees

@@ -3,6 +3,8 @@
 
 #define NOM_CLASSE "ListeCartes"
 
+#define DEBOGUER_
+
 #ifdef DEBOGUER_
 #include "deboguer.hpp"
 #else

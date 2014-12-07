@@ -43,6 +43,14 @@ public slots:
      @brief Envoie un message "appeler"
    */
   void on_bouton_appel_clicked();
+  /**
+     @brief Envoie un message "ecarter"
+   */
+  void on_bouton_ecart_clicked();
+  /**
+     @brief Envoie un message "requete"
+   */
+  void on_bouton_requete_clicked();
 
   /**
      @brief Traité lorsque le chien est dévoilé;

@@ -11,6 +11,7 @@ void AfficheurTapis::recalculer(const Tapis & tapis)
   std::vector<Carte> cartes;
   std::vector<unsigned int> numeros;
   tapis.contenu(cartes, numeros);
+  clear();
   setRowCount(cartes.size());
   setColumnCount(2);
   QTableWidgetItem * carte = 0;

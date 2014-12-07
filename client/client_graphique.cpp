@@ -10,6 +10,9 @@ ClientGraphique::ClientGraphique(QWidget * parent):
   ui.setupUi(this);
   //Remplissage des SelecteurCarte :
   ui.selecteur_appel->afficher_toutes();
+  ui.ecart_1->afficher_toutes();
+  ui.ecart_2->afficher_toutes();
+  ui.ecart_3->afficher_toutes();
   //L'autre est cartes_jouables
   jeu.connecter(QHostAddress(addr), port);
   connect(&jeu, SIGNAL(connecte()),
@@ -52,6 +55,31 @@ ClientGraphique::ClientGraphique(QWidget * parent):
 	  ui.journal, SLOT(afficher_contrat_final(Enchere)));
   connect(&jeu, SIGNAL(chien(Carte, Carte, Carte)), 
 	  this, SLOT(chien(Carte, Carte, Carte)));
+  connect(&jeu, SIGNAL(doit_ecarter(std::vector<Carte>, 
+				    std::vector<Carte>)),
+	  ui.journal, SLOT(afficher_doit_ecarter(std::vector<Carte>,
+						 std::vector<Carte>)));
+  connect(&jeu, SIGNAL(atout_au_chien(std::vector<Carte>)),
+	  ui.journal, SLOT(afficher_atout_au_chien
+			   (std::vector<Carte>)));
+  connect(&jeu, SIGNAL(doit_jouer()), 
+	  ui.journal, SLOT(afficher_doit_jouer()));
+  connect(&jeu, SIGNAL(maitre_change(unsigned int)),
+	  ui.journal, SLOT(afficher_nouveau_maitre(unsigned int)));
+  connect(&jeu, SIGNAL(maitre_change(unsigned int)),
+	  ui.nom_maitre, SLOT(set_num(unsigned int)));
+  connect(&jeu, SIGNAL(carte_gagnee(Carte, unsigned int,
+				    unsigned int)),
+	  ui.journal, SLOT(afficher_carte_gagnee(Carte,
+						 unsigned int,
+						 unsigned int)));
+  connect(&jeu, SIGNAL(pli_termine(unsigned int)),
+	  ui.journal, SLOT(afficher_pli_termine(unsigned int)));
+  connect(&jeu, SIGNAL(tapis_change(const Tapis &)),
+	  ui.tapis, SLOT(recalculer(const Tapis &)));
+  connect(&jeu, SIGNAL(partie_terminee(std::vector<int>)),
+	  ui.journal, SLOT(afficher_partie_terminee
+			   (std::vector<int>)));
 }
 
 void ClientGraphique::on_bouton_enchere_clicked()
@@ -88,6 +116,15 @@ void ClientGraphique::on_bouton_appel_clicked()
   jeu.formuler_appel(c);
 }
 
+void ClientGraphique::on_bouton_ecart_clicked()
+{
+  std::vector<Carte> ecart;
+  ecart.push_back(ui.ecart_1->carte_selectionnee());
+  ecart.push_back(ui.ecart_2->carte_selectionnee());
+  ecart.push_back(ui.ecart_3->carte_selectionnee());
+  jeu.formuler_ecart(ecart);
+}
+
 void ClientGraphique::chien(Carte c1, Carte c2, Carte c3)
 {
   std::vector<Carte> cartes;
@@ -98,4 +135,15 @@ void ClientGraphique::chien(Carte c1, Carte c2, Carte c3)
   ui.chien_1->setText(QString::fromUtf8(c1.nom().c_str()));
   ui.chien_2->setText(QString::fromUtf8(c2.nom().c_str()));
   ui.chien_3->setText(QString::fromUtf8(c3.nom().c_str()));
+}
+
+void ClientGraphique::on_bouton_requete_clicked()
+{
+  Carte c(ui.carte_hack->value());
+  if(ui.bouton_possede->isChecked())
+    {
+      //On demande une Carte possédée.
+      c = ui.cartes_jouables->carte_selectionnee();
+    }
+  jeu.formuler_requete(c);
 }

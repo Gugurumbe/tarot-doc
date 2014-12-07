@@ -146,9 +146,10 @@ protected:
      @param poseurs Les poseurs de ces cartes respectives.
      @param gagnants Les gagnants de ces cartes.
    */
-  virtual void cartes_gagnees(std::vector<Carte> const & cartes,
-			      std::vector<unsigned int> const & poseurs,
-			      std::vector<unsigned int> const & gagnants);
+  virtual void cartes_gagnees
+  (std::vector<Carte> const & cartes,
+   std::vector<unsigned int> const & poseurs,
+   std::vector<unsigned int> const & gagnants);
 private:
 
   /**

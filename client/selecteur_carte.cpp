@@ -34,10 +34,18 @@ void SelecteurCarte::ajouter_carte(const Carte & c)
 void SelecteurCarte::enlever_carte(const Carte & c)
 {
   //cf ajouter_carte
-  std::vector<Carte>::iterator i = affichees.begin();
-  while(i != affichees.end() && *i != c) i++;
-  if(i != affichees.end()) affichees.erase(i);
-  mise_a_jour();
+  unsigned int i = 0;
+  while(i < affichees.size() && affichees[i] != c) i++;
+  if(i < affichees.size()) 
+    {
+      affichees.erase(affichees.begin() + i);
+      mise_a_jour();
+    }
+  //Le code suivant marche peut-être :
+  // std::vector<Carte>::iterator i = affichees.begin();
+  // while(i != affichees.end() && *i != c) i++;
+  // if(i != affichees.end()) affichees.erase(i);
+  // mise_a_jour();
 }
 
 void SelecteurCarte::modifier_cartes(std::vector<Carte> gagnees,
@@ -53,9 +61,9 @@ void SelecteurCarte::modifier_cartes(std::vector<Carte> gagnees,
     }
   for(unsigned int i = 0 ; i < perdues.size() ; i++)
     {
-      std::vector<Carte>::iterator j = affichees.begin();
-      while(j != affichees.end() && *j != perdues[i]) j++;
-      if(j != affichees.end()) affichees.erase(j);
+      unsigned int j = 0 ;
+      while(j < affichees.size() && affichees[j] != perdues[i]) j++;
+      if(j < affichees.size()) affichees.erase(affichees.begin() + j);
     }
   mise_a_jour();
 }

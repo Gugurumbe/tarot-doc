@@ -2,7 +2,7 @@
 
 #define NOM_CLASSE "Tapis"
 
-#include "ne_pas_deboguer.hpp"
+#include "deboguer.hpp"
 
 Tapis::Tapis():joueur_ouverture(-1), joueur_maitre(-1), 
 	       maitre_fixe(false)
@@ -78,9 +78,13 @@ void Tapis::ajouter(const Protocole::Msg_carte & carte,
 	    gagnants[i] = maitre_final;
 	}
       joueur_ouverture = maitre_final;
-      joueur_maitre = -1;
       m_tapis.clear();
+      //La variable joueur_maitre doit avoir un sens dans la chaîne
+      //d'appels de cartes_gagnees (serveur)
+      //Le tapis doit être vide pour que l'afficheur affiche la bonne
+      //chose (client)
       cartes_gagnees(posees, poseurs, gagnants);
+      joueur_maitre = -1;
     }
 }
 
@@ -89,6 +93,7 @@ void Tapis::set_ouverture(unsigned int joueur)
   ENTER("set_ouverture(unsigned int joueur)");
   ADD_ARG("joueur", joueur);
   joueur_ouverture = (int)joueur;
+  m_tapis.clear();
 }
 
 bool Tapis::plus_gros_atout(Carte & c) const
@@ -176,6 +181,9 @@ std::ostream & Tapis::presenter(std::ostream & out) const
 void Tapis::contenu(std::vector<Carte> & cartes, 
 		    std::vector<unsigned int> & poseurs) const
 {
+  ENTER("contenu(std::vector<Carte> & cartes, std::vector<unsigned int> & poseurs) const");
+  ADD_ARG("cartes", cartes);
+  ADD_ARG("poseurs", poseurs);
   cartes.clear();
   poseurs.clear();
   for(unsigned int i = 0 ; i < 5 ; i++)
@@ -183,13 +191,16 @@ void Tapis::contenu(std::vector<Carte> & cartes,
       //On ajoute la carte du joueur joueur_ouverture + i
       for(unsigned int j = 0 ; j < m_tapis[i].size() ; j++)
 	{
-	  if(m_tapis[(i + joueur_ouverture) % 5][j] != DETTE_EXCUSE)
+	  if(m_tapis[i][j] != DETTE_EXCUSE)
 	    {
-	      cartes.push_back(m_tapis[(i + joueur_ouverture) % 5][j]);
+	      DEBUG<<"Dans le tapis, "<<(i + joueur_ouverture) % 5
+		   <<" a joué la carte "<<m_tapis[i][j]<<std::endl;;
+	      cartes.push_back(m_tapis[i][j]);
 	      poseurs.push_back((i + joueur_ouverture) % 5);
 	    }
 	}
     }
+  DEBUG<<"cartes : "<<cartes<<", poseurs : "<<poseurs<<std::endl;
 }
 
 std::ostream & operator<<(std::ostream & out, const Tapis & tap)

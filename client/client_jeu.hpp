@@ -90,9 +90,13 @@ public slots:
   void formuler_appel(const Carte & c);
 
   /**
-     @brief Traité lorsqu'on doit faire un écart.
+     @brief Envoie un message pour formuler un écart.
+     
+     @param ecart Les cartes à écarter.
+     
+     @see PartieClient::ecarter(const std::vector<Carte> &)
    */
-  void doit_ecarter();
+  void formuler_ecart(std::vector<Carte> ecart);
 
   /**
      @brief Traité lorsque l'écart a été accepté.
@@ -103,18 +107,13 @@ public slots:
      @brief Traité lorsque l'écart a été refusé.
    */
   void ecart_refuse();
-
+  
   /**
-     @brief Traité lorsque des atouts ont été mis au chien.
-
-     @param atouts Les atouts en question.
+     @brief Traité lorsqu'on demande à jouer une Carte.
+     
+     @param requete La Carte qu'on demande à jouer.
    */
-  void atout_au_chien(std::vector<Carte> atouts);
-
-  /**
-     @brief Traité lorsque je dois jouer.
-   */
-  void doit_jouer();
+  void formuler_requete(Carte requete);
 
   /**
      @brief Traité lorsque ma carte a été refusée.
@@ -125,45 +124,6 @@ public slots:
      @brief Traité lorsque le serveur accepte que je joue ma carte.
    */
   void requete_acceptee();
-  
-  /**
-     @brief Traité lorsqu'une carte a été jouée.
-     
-     @param joueur Le numéro du joueur qui a joué cette Carte.
-     @param carte La carte en question.
-   */
-  void carte_jouee(unsigned int joueur, Carte carte);
-
-  /**
-     @brief Traité à la fin de la manche.
-
-     @param scores Les scores de chacun.
-     @note La somme des scores fait 0.
-   */
-  void score(std::vector<int> scores);
-
-  /**
-     @brief Traité lorsqu'un joueur remporte une carte.
-     
-     @param c La carte en question.
-     @param poseur Le joueur qui avait joué cette Carte.
-     @param gagnant Le joueur qui a finalement remporté cette carte.
-   */
-  void carte_gagnee(Carte c, unsigned int poseur, unsigned int gagnant);
-
-  /**
-     @brief Traité lorsqu'une levée est terminée.
-
-     @param j Le numéro du joueur qui a remporté cette levée.
-   */
-  void pli(unsigned int j);
-
-  /**
-     @brief Traité lorsque le joueur maître change.
-     
-     @param m Le nouveau joueur maître.
-   */
-  void maitre(unsigned int m);
 
 signals:
   
@@ -223,20 +183,28 @@ signals:
   void contrat_final(Enchere e);
 
   /**
-     @brief émis lorsque le Chien est dévoilé.
+     @brief Émis lorsque le Chien est dévoilé.
      
      @param c1 La première carte.
      @param c2 ...
      @param c3 ...
    */
   void chien(Carte c1, Carte c2, Carte c3);
+  
+  /**
+     @brief Émis lorsque je dois faire un écart.
+
+     @param possibles Toutes les cartes que je peux écarter.
+     @param atouts Les atouts que je peux écarter en dernier recours.
+   */
+  void doit_ecarter(std::vector<Carte> possibles,
+		    std::vector<Carte> atouts);
 
   /**
-     @brief Émis lorsque le tapis change.
-     
-     @param tapis Le tapis.
+     @brief Émis lorsqu'un ou plusieurs atouts est/sont écarté(s).
+     @param atouts Les atouts en question.
    */
-  void tapis_change(const Tapis & tapis);
+  void atout_au_chien(std::vector<Carte> atouts);
 
   /**
      @brief Émis lorsque le maître du tapis change.
@@ -252,6 +220,49 @@ signals:
   void jeu_change(std::vector<Carte> gagnees,
 		  std::vector<Carte> perdues);
 
+  /**
+     @brief Émis lorsque je dois jouer.
+   */
+  void doit_jouer();  
+
+  /**
+     @brief Émis lorsqu'une carte a été jouée.
+     
+     @param joueur Le numéro du joueur qui a joué cette Carte.
+     @param carte La carte en question.
+   */
+  void carte_jouee(unsigned int joueur, Carte carte);
+
+  /**
+     @brief Émis lors du mouvement d'une carte.
+     
+     @param c La carte en question.
+     @param poseur Le joueur qui l'avait posée.
+     @param gagnant Le joueur qui l'a remportée.
+   */
+  void carte_gagnee(Carte c, unsigned int poseur, 
+		    unsigned int gagnant);
+  
+  /**
+     @brief Émis lorsqu'un pli est terminé.
+     
+     @param joueur Le joueur qui a remporté le pli.
+   */
+  void pli_termine(unsigned int joueur);
+  
+  /**
+     @brief Émis lorsque le tapis est modifié.
+
+     @param tapis Le tapis.
+   */
+  void tapis_change(const Tapis & tapis);
+
+  /**
+     @brief Émis lorsque la partie est terminée.
+     
+     @param scores Les scores à la fin de la partie.
+   */
+  void partie_terminee(std::vector<int> scores);
 private:
   PartieClient partie;
 };
