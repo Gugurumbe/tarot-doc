@@ -90,13 +90,6 @@ public slots:
   void formuler_appel(const Carte & c);
 
   /**
-     @brief Traité lorsque le contrat final est divulgué.
-     
-     @param e L'enchère correspondante.
-   */
-  void contrat_final(Enchere e);
-
-  /**
      @brief Traité lorsque le Chien est dévoilé.
      
      @param c1 La première carte.
@@ -230,6 +223,13 @@ signals:
      @brief Émis lorsque mon appel a été refusé.
    */
   void appel_refuse();
+
+  /**
+     @brief Émis lorsque le contrat final est divulgué.
+     
+     @param e L'enchère correspondante.
+   */
+  void contrat_final(Enchere e);
 
   /**
      @brief Émis lorsque le tapis change.

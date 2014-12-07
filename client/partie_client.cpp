@@ -143,6 +143,7 @@ void PartieClient::assimiler(const Protocole::Message & m)
 	  // On ne parle pas du chien, donc c'est à nous !
 	  emit doit_demander_chelem();
 	}
+      emit contrat_final(Enchere(m.m.contrat_final));
       break;
     case Protocole::CHIEN:
       /* Si la carte appelée est dans le chien et que je n'ai pas */

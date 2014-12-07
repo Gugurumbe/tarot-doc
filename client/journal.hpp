@@ -81,6 +81,12 @@ public slots :
      @brief Indique au joueur que son appel est invalide.
    */
   void afficher_appel_invalide();
+  /**
+     @brief Indique au joueur le contrat final.
+     
+     @param contrat Le contrat final.
+   */
+  void afficher_contrat_final(Enchere contrat);
 
 private:
   QString header;

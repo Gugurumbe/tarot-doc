@@ -138,3 +138,17 @@ void Journal::afficher_appel_invalide()
 {
   header+=S("<p class=\"erreur\">Votre appel a été refusé.</p>");
 }
+
+void Journal::afficher_contrat_final(Enchere contrat)
+{
+  std::stringstream str;
+  str<<"<p class=\"contrat_final\">Voici le contrat <strong>final"
+     <<"</strong> : <span class=\"joueur\">"
+     <<LabelNom::nom_de(contrat.joueur()).toUtf8().data()
+     <<"</span> fait un contrat de niveau <span class=\"prise\">"
+     <<contrat.prise()<<"</span> en appelant la carte "
+     <<"<span class=\""<<contrat.carte_appelee()->couleur_simple()
+     <<"\">"<<*(contrat.carte_appelee())<<"</span></p>";
+  header+=S(str.str().c_str());
+  setHtml(header + footer);  
+}

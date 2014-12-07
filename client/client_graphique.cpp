@@ -48,6 +48,8 @@ ClientGraphique::ClientGraphique(QWidget * parent):
 	  ui.tapis, SLOT(recalculer(const Tapis &)));
   connect(&jeu, SIGNAL(appel_refuse()),
 	  ui.journal, SLOT(afficher_appel_invalide()));
+  connect(&jeu, SIGNAL(contrat_final(Enchere)),
+	  ui.journal, SLOT(afficher_contrat_final(Enchere)));
 }
 
 void ClientGraphique::on_bouton_enchere_clicked()
