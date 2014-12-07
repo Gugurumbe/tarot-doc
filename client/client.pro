@@ -24,7 +24,8 @@ label_nom.hpp                    \
 journal.hpp                      \
 coquille.hpp                     \
 afficheur_tapis.hpp              \
-liste_cartes.hpp
+liste_cartes.hpp                 \
+selecteur_carte.hpp
 
 SOURCES += main_program.cpp      \
 client.cpp                       \
@@ -42,7 +43,8 @@ label_nom.cpp                    \
 journal.cpp                      \
 coquille.cpp                     \
 afficheur_tapis.cpp              \
-liste_cartes.cpp
+liste_cartes.cpp                 \
+selecteur_carte.cpp
 
 FORMS += client.ui 
 FORMS += coquille.ui

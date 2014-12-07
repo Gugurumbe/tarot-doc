@@ -79,12 +79,15 @@ public slots:
      @note Il y a une redondance : j correspond à e.joueur()
    */
   void contrat_intermediaire(unsigned int j, Enchere e);
-
+  
   /**
-     @brief Traité lorsque le serveur refuse que j'appelle cette
-     Carte.
+     @brief Envoie un message pour formuler un appel.
+     
+     @param c La carte à appeler.
+
+     @see PartieClient::appeler(const Carte & c)
    */
-  void appel_refuse();
+  void formuler_appel(const Carte & c);
 
   /**
      @brief Traité lorsque le contrat final est divulgué.
@@ -222,6 +225,11 @@ signals:
      @see Main::peut_appeler(const Carte &)
    */
   void doit_appeler(std::vector<Carte> acceptees);
+
+  /**
+     @brief Émis lorsque mon appel a été refusé.
+   */
+  void appel_refuse();
 
   /**
      @brief Émis lorsque le tapis change.

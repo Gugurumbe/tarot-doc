@@ -133,3 +133,8 @@ void Journal::afficher_doit_appeler(std::vector<Carte> possibles)
   header+=S(str.str().c_str());
   setHtml(header + footer);
 }
+
+void Journal::afficher_appel_invalide()
+{
+  header+=S("<p class=\"erreur\">Votre appel a été refusé.</p>");
+}

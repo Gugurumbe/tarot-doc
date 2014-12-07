@@ -197,7 +197,7 @@
           </widget>
          </item>
          <item>
-          <widget class="QComboBox" name="selecteur_appel">
+          <widget class="SelecteurCarte" name="selecteur_appel">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
              <horstretch>0</horstretch>
@@ -331,7 +331,7 @@
            </widget>
           </item>
           <item row="0" column="1">
-           <widget class="QComboBox" name="comboBox">
+           <widget class="SelecteurCarte" name="cartes_jouables">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -559,6 +559,11 @@
    <extends>QTextBrowser</extends>
    <header>liste_cartes.hpp</header>
   </customwidget>
+  <customwidget>
+   <class>SelecteurCarte</class>
+   <extends>QComboBox</extends>
+   <header>selecteur_carte.hpp</header>
+  </customwidget>
  </customwidgets>
  <resources/>
  <connections>
@@ -645,7 +650,7 @@
   <connection>
    <sender>bouton_possede</sender>
    <signal>toggled(bool)</signal>
-   <receiver>comboBox</receiver>
+   <receiver>cartes_jouables</receiver>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">

@@ -39,6 +39,10 @@ public slots:
      Voir l'interface graphique client.ui.
    */
   void on_bouton_enchere_clicked();
+  /**
+     @brief Envoie un message "appeler"
+   */
+  void on_bouton_appel_clicked();
   
 private:
   Ui::ClientGraphique ui;

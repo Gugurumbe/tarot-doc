@@ -8,6 +8,9 @@ ClientGraphique::ClientGraphique(QWidget * parent):
   QString addr = "127.0.0.1";
   quint16 port = 45678;
   ui.setupUi(this);
+  //Remplissage des SelecteurCarte :
+  ui.selecteur_appel->afficher_toutes();
+  //L'autre est cartes_jouables
   jeu.connecter(QHostAddress(addr), port);
   connect(&jeu, SIGNAL(connecte()),
 	  ui.journal, SLOT(afficher_connexion()));
@@ -26,6 +29,11 @@ ClientGraphique::ClientGraphique(QWidget * parent):
 	  ui.mes_cartes, SLOT(gagner
 			      (std::vector<Carte>, 
 			       std::vector<Carte>)));
+  connect(&jeu, SIGNAL(jeu_change
+		       (std::vector<Carte>, std::vector<Carte>)),
+	  ui.cartes_jouables, SLOT(modifier_cartes
+				   (std::vector<Carte>,
+				    std::vector<Carte>)));
   connect(&jeu, SIGNAL(doit_priser(Enchere)),
 	  ui.journal, SLOT(afficher_doit_priser(Enchere)));
   connect(&jeu, SIGNAL(doit_priser()),
@@ -38,6 +46,8 @@ ClientGraphique::ClientGraphique(QWidget * parent):
 	  ui.journal, SLOT(afficher_doit_appeler(std::vector<Carte>)));
   connect(&jeu, SIGNAL(tapis_change(const Tapis &)),
 	  ui.tapis, SLOT(recalculer(const Tapis &)));
+  connect(&jeu, SIGNAL(appel_refuse()),
+	  ui.journal, SLOT(afficher_appel_invalide()));
 }
 
 void ClientGraphique::on_bouton_enchere_clicked()
@@ -66,4 +76,10 @@ void ClientGraphique::on_bouton_enchere_clicked()
     }
   else p = static_cast<Enchere::Prise>(ui.selection_enchere->value());
   jeu.formuler_prise(p);
+}
+
+void ClientGraphique::on_bouton_appel_clicked()
+{
+  Carte c = ui.selecteur_appel->carte_selectionnee();
+  jeu.formuler_appel(c);
 }

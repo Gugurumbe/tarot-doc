@@ -35,7 +35,7 @@ ClientJeu::ClientJeu(QObject * parent) :
   connect(&partie, SIGNAL(doit_appeler(std::vector<Carte>)),
 	  this, SIGNAL(doit_appeler(std::vector<Carte>)));
   connect(&partie, SIGNAL(appel_refuse()),
-	  this, SLOT(appel_refuse()));
+	  this, SIGNAL(appel_refuse()));
   connect(&partie, SIGNAL(contrat_final(Enchere)),
 	  this, SLOT(contrat_final(Enchere)));
   connect(&partie, SIGNAL(chien_devoile(Carte, Carte, Carte)),
@@ -92,12 +92,6 @@ void ClientJeu::contrat_intermediaire(unsigned int, Enchere e)
 {
   // std::cout<<"Le joueur"<<joueur<<" a fait l'enchère "<<e<<std::endl;
   emit dernier_contrat(e);
-}
-
-void ClientJeu::appel_refuse()
-{
-  // std::cout<<"Votre appel a été refusé ! Soyez plus avisé..."
-  // 	   <<std::endl;
 }
 
 void ClientJeu::contrat_final(Enchere)
@@ -238,4 +232,9 @@ void ClientJeu::traiter_message(Protocole::Message m)
 void ClientJeu::formuler_prise(Enchere::Prise p)
 {
   partie.formuler_prise(p);
+}
+
+void ClientJeu::formuler_appel(const Carte & c)
+{
+  partie.appeler(c);
 }

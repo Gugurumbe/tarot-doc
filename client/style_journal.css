@@ -52,3 +52,9 @@
 {
     color:#FF0080;
 }
+
+.erreur
+{
+    color:#FF0000;
+    font_weight:bold;
+}

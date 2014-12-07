@@ -77,6 +77,10 @@ public slots :
      @param possibles L'ensemble des cartes qui seront acceptées.
    */
   void afficher_doit_appeler(std::vector<Carte> possibles);
+  /**
+     @brief Indique au joueur que son appel est invalide.
+   */
+  void afficher_appel_invalide();
 
 private:
   QString header;

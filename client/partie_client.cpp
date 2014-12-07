@@ -62,8 +62,9 @@ void PartieClient::assimiler(const Protocole::Message & m)
 	  emit requete_refusee();
 	  emit doit_jouer();
 	}
-      else if(phase() == Partie::ENCHERES && en_chemin.empty())
+      else if(phase() == Partie::ENCHERES && tour() < 5)
 	{
+	  //On en est encore aux enchères
 	  emit enchere_refusee();
 	  if(m_mon_tour != 0)
 	    emit doit_priser(meilleure_enchere());
