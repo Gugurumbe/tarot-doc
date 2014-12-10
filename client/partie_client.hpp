@@ -12,8 +12,10 @@
 
 #include "partie.hpp"
 #include "main.hpp"
+#include "transaction.hpp"
 
 #include <QObject>
+#include <queue>
 
 /**
    @brief Précision d'une Partie, côté client.
@@ -49,15 +51,6 @@ public:
   bool mon_tour() const;
 
   /**
-     @brief Indique si le joueur concerné est ami.
-
-     À priori, en début de partie, seul moi-même suis un ami.
-     @param joueur : le numéro du joueur à tester.
-     @return vrai ssi le joueur est un ami.
-   */
-  bool est_ami(unsigned int joueur) const;
-
-  /**
      @brief Retourne le numéro du joueur.
 
      mon_numero() == tour() est équivalent à mon_tour().
@@ -66,7 +59,61 @@ public:
      @see PartieClient::mon_tour() const
   */
   unsigned int mon_numero() const;
+
+  /**
+     @brief Regarder mon jeu.
+
+     @return Mon jeu, augmenté des Cartes de l'écart si elles sont
+     disponibles. 
+   */
+  const Main & mon_jeu() const;
   
+  /**
+     @brief Indique quelles cartes je peux appeler.
+     
+     @return Les cartes que je peux appeler.
+   */
+  std::vector<Carte> cartes_appelables() const;
+  
+  /**
+     @brief Indique quelles cartes je peux écarter.
+     
+     @return Un tableau à 2 lignes, dont la première est les cartes
+     écartables en toute circonstance, et la seconde les atouts
+     écartables en dernier recours.
+  */
+  std::vector<std::vector<Carte> > cartes_ecartables() const;
+private:
+
+  /** Retient le numéro de mon tour. */
+  unsigned int m_mon_tour;
+  /** Retient mes Cartes. */
+  Main mes_cartes;
+  /** Retient les 3 cartes du chien.*/
+  std::vector<Carte> chien_si_devoile;
+  std::queue<Transaction> en_cours;
+  void annuler_transaction();
+  //Une fois acceptée, la transaction doit mettre à jour les 4
+  //booléens plus bas, ainsi que le jeu (retirer les cartes jouées). 
+  void transaction_acceptee();
+  //Ajouter une transaction, ça ajoute la bonne transaction à la
+  //pile.
+  void ajouter_transaction_prise(unsigned int prise);
+  void ajouter_transaction_appel(unsigned int carte);
+  void ajouter_transaction_ecart(const int ecart[3]);
+  void ajouter_transaction_jeu(unsigned int carte);
+  bool m_doit_priser; //Vaut vrai jusqu'à ce que notre prise soit
+		      //acceptée. 
+  bool m_doit_appeler;//Vaut vrai jusqu'à ce que notre appel soit
+		      //accepté. 
+  bool m_doit_ecarter;//Vaut vrai jusqu'à ce que notre écart soit
+		      //accepté.
+  bool m_doit_jouer;  //Vaut vrai jusqu'à ce que notre carte soit
+		      //acceptée. 
+  //Pour le débogage :
+  void presenter() const; 
+public slots:  
+
   /**
      @brief Comprend un Protocole::Message.
     
@@ -84,27 +131,6 @@ public:
      @see Partie::assimiler(unsigned int)
    */
   void assimiler(const Protocole::Message & message);
-
-  /**
-     @brief Regarder mon jeu.
-
-     @return Mon jeu, augmenté des Cartes de l'écart si elles sont
-     disponibles. 
-   */
-  const Main & mon_jeu() const;
-private:
-
-  /** Retient le numéro de mon tour. */
-  unsigned int m_mon_tour;
-  /** Retient mes Cartes. */
-  Main mes_cartes;
-  /** Retient les 3 cartes que j'écarte a priori.*/
-  std::vector<Carte> chien_si_devoile;
-  /** Retient les numéros des joueurs de mon équipe. */
-  std::vector<unsigned int> mon_equipe;
-  /** Retient les cartes dont on veut se séparer. */
-  std::vector<Carte> en_chemin;
-public slots:
 
   /**
      @brief Construit un Message.
@@ -230,29 +256,29 @@ signals:
   void action_refusee();
 
   /**
-     @brief C'est à vous, le premier joueur, de priser.
-
-     Émis lorsque le tour du client arrive lors de la phase des
-     enchères. N'est émis que pour le premier joueur.
-   */
-  void doit_priser();
-
-  /**
      @brief C'est à vous de priser.
 
      Émis lorsque le tour du client arrive lors de la phase des
      enchères.
      
-     @warning N'est pas émis pour le premier joueur !
-     
      @param max L'enchère max jusqu'à présent.
+     @warning max n'est pas défini au premier tour !
    */
-  void doit_priser(Enchere max);
+  void doit_priser(Option<Enchere> max);
+
+  /**
+     @brief Votre enchère a été acceptée.
+     
+     @param e Votre enchère.
+   */
+  void enchere_acceptee(Enchere e);
   
   /**
      @brief Votre enchère a été refusée.
+     
+     @param e L'enchère que vous aviez faite.
    */
-  void enchere_refusee();
+  void enchere_refusee(Enchere e);
 
   /**
      @brief Une enchère vient d'être annoncée.
@@ -276,9 +302,18 @@ signals:
   void doit_appeler(std::vector<Carte> acceptees);
 
   /**
-     @brief Vous ne pouvez pas appeler cette Carte.
+     @brief Votre appel a été accepté.
+     
+     @param c La carte appelée.
    */
-  void appel_refuse();
+  void appel_accepte(Carte c);
+
+  /**
+     @brief Vous ne pouvez pas appeler cette Carte.
+     
+     @param c La carte que vous aviez appelé.
+   */
+  void appel_refuse(Carte c);
 
   /**
      @brief Les enchères sont terminées.
@@ -314,13 +349,17 @@ signals:
 
   /**
      @brief Votre écart a été accepté.
+     
+     @param ecart Votre écart.
    */
-  void ecart_accepte();
+  void ecart_accepte(std::vector<Carte> ecart);
 
   /**
      @brief Votre écart a été refusé.
+     
+     @param ecart L'écart que vous aviez formulé.
    */
-  void ecart_refuse();
+  void ecart_refuse(std::vector<Carte> ecart);
 
   /**
      @brief On a écarté cette (ces) carte(s).
@@ -373,18 +412,21 @@ signals:
   void doit_jouer();
 
   /**
+     @brief Votre requête a été acceptée.
+
+     Une requête est une demande de jouer une carte.
+     
+     @param posee La carte que vous avez réussi à poser.
+   */
+  void requete_acceptee(Carte posee);
+
+  /**
      @brief Votre requête a été refusée.
      
      Une requête est la demande de jouer une carte.
+     @param posee La carte que vous aviez essayé de poser.
    */
-  void requete_refusee();
-
-  /**
-     @brief Votre requête a été acceptée.
-
-     Une requête est la demande de jouer une carte.
-   */
-  void requete_acceptee();
+  void requete_refusee(Carte posee);
 
   /**
      @brief Une Carte a été jouée;

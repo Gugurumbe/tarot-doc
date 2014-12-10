@@ -1,3 +1,7 @@
+#define TEST "testeur_client.hpp"
+
+#ifndef TEST
+
 #include <QApplication>
 #include <iostream>
 #include <QtNetwork>
@@ -17,3 +21,9 @@ int main(int argc, char * argv[])
   client.show();
   return app.exec();
 }
+
+#else
+
+#include TEST
+
+#endif

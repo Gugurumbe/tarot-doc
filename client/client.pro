@@ -25,7 +25,10 @@ journal.hpp                      \
 coquille.hpp                     \
 afficheur_tapis.hpp              \
 liste_cartes.hpp                 \
-selecteur_carte.hpp
+selecteur_carte.hpp              \
+option.hpp                       \
+transaction.hpp                  \
+testeur_client.hpp
 
 SOURCES += main_program.cpp      \
 client.cpp                       \
@@ -44,7 +47,10 @@ journal.cpp                      \
 coquille.cpp                     \
 afficheur_tapis.cpp              \
 liste_cartes.cpp                 \
-selecteur_carte.cpp
+selecteur_carte.cpp              \
+option.cpp                       \
+transaction.cpp                  \
+testeur_client.cpp               
 
 FORMS += client.ui 
 FORMS += coquille.ui

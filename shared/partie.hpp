@@ -145,7 +145,7 @@ public:
      à l'adresse '5' d'un tableau à 5 cases.
      @return L'enchère retenue.
    */
-  const Enchere & contrat_final() const;
+  const Enchere & donner_contrat_final() const;
 
   /**
      @brief Retourne l'enchère d'un joueur donné.
@@ -196,6 +196,13 @@ public:
      @return Le numéro du joueur dont c'est le tour.
    */
   unsigned int tour() const;
+
+  /**
+     @brief Qui a joué ?
+     
+     @return Le numéro du joueur qui vient de jouer.
+   */
+  unsigned int tour_precedent() const;
 
   /**
      @brief Taille des poignées déclarées.
@@ -338,6 +345,13 @@ private:
      Au début, vaut 0.
    */
   unsigned int m_tour;
+  
+  /**
+     @brief Numéro du tour précédent.
+     
+     Au début, vaut 5.
+   */
+  unsigned int m_tour_precedent;
 
   /**
      @brief Nombre de plis joués.

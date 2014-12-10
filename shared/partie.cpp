@@ -59,7 +59,7 @@ private:
 Partie::Partie(): m_encheres(5), m_chelem(false), 
 		  m_tapis(new TapisPartie(this)), 
 		  m_attaquant(5),
-		  m_tour(0), plis_joues(0),
+		  m_tour(0), m_tour_precedent(5), plis_joues(0),
 		  m_phase(CONSTITUTION_TABLE),
 		  m_tailles_poignees(5, 0)
 {
@@ -72,9 +72,9 @@ Partie::~Partie()
   delete m_tapis;
 }
 
-const Enchere & Partie::contrat_final() const
+const Enchere & Partie::donner_contrat_final() const
 {
-  ENTER("contrat_final() const");
+  ENTER("donner_contrat_final() const");
   /* assert(m_attaquant < 5); */
   EXIT(m_encheres[m_attaquant]);
 }
@@ -112,6 +112,12 @@ unsigned int Partie::tour() const
 {
   ENTER("tour() const");
   EXIT(m_tour);
+}
+
+unsigned int Partie::tour_precedent() const
+{
+  ENTER("tour_precedent() const");
+  EXIT(m_tour_precedent);
 }
 
 unsigned int Partie::poignee(unsigned int joueur) const
@@ -162,6 +168,7 @@ void Partie::assimiler(const Protocole::Message & m)
 	  // On suppose que cette enchère est la meilleure.
 	  m_attaquant = m_tour;
 	}
+      m_tour_precedent = m_tour;
       m_tour = m_tour + 1; // pas modulo 5, car une fois que les 
       //enchères sont passées ce n'est plus le tour de personne.
       break;
@@ -192,7 +199,13 @@ void Partie::assimiler(const Protocole::Message & m)
     case Protocole::JEU:
       m_phase = PHASE_JEU;
       if(m_chelem) m_tour = attaquant();
-      else m_tour = 0;
+      else 
+	{
+	  //Ça n'a pas bcp de sens, mais je le rajoute :
+	  m_tour_precedent = m_tour;
+	  //là, par contre, c'est importnt :
+	  m_tour = 0;
+	}
       //Le joueur ayant demandé un chelem joue.
       m_tapis->set_ouverture(m_tour);
       break;
@@ -214,10 +227,13 @@ void Partie::assimiler(const Protocole::Message & m)
 	m_tapis->ajouter(m.m.carte, Carte::EXCUSE_PRENABLE);
       else
 	m_tapis->ajouter(m.m.carte, Carte::EXCUSE_IMPRENABLE);
+      m_tour_precedent = m_tour;
       m_tour = (m_tour + 1) % 5 ;
       break;
     case Protocole::PLI:
       m_phase = PHASE_JEU;
+      //C'est là qu'on voit la réelle utilité du tour précédent :
+      m_tour_precedent = m_tour;
       m_tour = m.m.pli.joueur;
       plis_joues++;
       break;
@@ -226,7 +242,9 @@ void Partie::assimiler(const Protocole::Message & m)
     default:
       break;
     }
-  DEBUG<<"Phase : "<<m_phase<<", tour : "<<m_tour<<std::endl;;
+  DEBUG<<"Phase : "<<m_phase<<", tour : "<<m_tour
+       <<" (après "<<m_tour_precedent<<")."
+       <<std::endl;;
 }
 
 const Tapis & Partie::tapis() const
@@ -263,7 +281,7 @@ Enchere Partie::meilleure_enchere() const
     }
   // Dans les faits, l'attaquant est le dernier qui a effectué une
   // enchère validée par le serveur.
-  return contrat_final();
+  return donner_contrat_final();
 }
 
 void Partie::changement_maitre(unsigned int, unsigned int)

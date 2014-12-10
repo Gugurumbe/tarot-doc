@@ -5,6 +5,9 @@
 
 #include "ne_pas_deboguer.hpp"
 
+//Commenter si c'est trop moche.
+#define INDIQUER_NUMERO_CARTE
+
 Carte::Carte(unsigned int numero): m_numero(numero % 79)
 {
   ENTER("Carte(unsigned int numero)");
@@ -36,6 +39,8 @@ bool Carte::operator>(const Carte & carte) const
   //On compare this (qui contient m_numero) et carte.
   //Si la carte est l'excuse, alors elle ne remporte pas le pli
   if(m_numero == EXCUSE || m_numero == DETTE_EXCUSE) EXIT(false);
+  if(carte.m_numero == EXCUSE || 
+     carte.m_numero == DETTE_EXCUSE) EXIT(true);
   //Si on est de la même couleur, c'est la valeur qui décide
   if(couleur() == carte.couleur()) 
     {
@@ -171,6 +176,9 @@ std::string Carte::couleur_simple() const
 std::string Carte::nom() const
 {
   std::stringstream resultat;
+  #ifdef INDIQUER_NUMERO_CARTE
+  resultat<<"["<<m_numero<<"] ";
+  #endif
   if(*this == EXCUSE)
     resultat<<"Excuse";
   else if(*this == DETTE_EXCUSE)
@@ -226,7 +234,7 @@ std::string Carte::nom() const
 	{
 	case PIQUE:resultat<<"Pique";break;
 	case CARREAU:resultat<<"Carreau";break;
-	case TREFLE:resultat<<"Trefle";break;
+	case TREFLE:resultat<<"Trèfle";break;
 	case COEUR:resultat<<"Cœur";break;
 	default:resultat<<"?(couleur="<<(int)couleur()<<")";break;
 	}

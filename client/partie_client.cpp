@@ -2,20 +2,22 @@
 
 #define NOM_CLASSE "PartieClient"
 
-#include "deboguer.hpp"
+#include "ne_pas_deboguer.hpp"
+
+#include "option.cpp"
 
 PartieClient::PartieClient(QObject * parent):
-  QObject(parent), Partie(), m_mon_tour(5)
+  QObject(parent), Partie(), m_mon_tour(5),
+  m_doit_priser(false), m_doit_appeler(false),
+  m_doit_ecarter(false), m_doit_jouer(false)
 {
   ENTER("PartieClient(QObject * parent)");
   ADD_ARG("parent", parent);
-  mon_equipe.reserve(4);
 }
 
 bool PartieClient::mon_tour() const
 {
-  ENTER("mon_tour() const");
-  EXIT(tour() == m_mon_tour);
+  return tour() == m_mon_tour;
 }
 
 unsigned int PartieClient::mon_numero() const
@@ -24,211 +26,96 @@ unsigned int PartieClient::mon_numero() const
   EXIT(m_mon_tour);
 }
 
-bool PartieClient::est_ami(unsigned int joueur) const
-{
-  ENTER("est_ami(unsigned int joueur) const");
-  ADD_ARG("joueur", joueur);
-  std::vector<unsigned int>::const_iterator i = mon_equipe.begin();
-  for(i = mon_equipe.begin();
-      i != mon_equipe.end() && *i != joueur ; i++);
-  EXIT(i != mon_equipe.end());
-}
-
 void PartieClient::assimiler(const Protocole::Message & m)
 {
   ENTER("assimiler(Message m)");
   ADD_ARG("m", m);
+  //DEBUG<<"Présentation avant traitement : "<<std::endl;
+  //presenter();
   Partie::assimiler(m);
   switch(m.type)
     {
     case Protocole::ERREUR_PROTOCOLE:
+      annuler_transaction();
       break;
     case Protocole::REFUSE:
-      //On récupère les cartes en chemin
-      for(unsigned int i = 0 ; i < en_chemin.size() ; i++)
-	{
-	  mes_cartes.ajouter(en_chemin[i]);
-	}
-      emit jeu_change(std::vector<Carte>(en_chemin), 
-		      std::vector<Carte>());
-      en_chemin.clear();
-      emit action_refusee();
-      //On détermine la nature du refus
-      if(phase() == Partie::CONSTITUTION_ECART) 
-	{
-	  emit ecart_refuse();
-	  //Dupliqué dans CHIEN
-	  std::vector<Carte> ecartables;
-	  std::vector<Carte> atouts;
-	  for(unsigned int i = 0 ; i < 78 ; i++)
-	    {
-	      Carte c(i);
-	      if(mes_cartes.possede(c))
-		{
-		  switch(c.ecartable())
-		    {
-		    case Carte::ECARTABLE:
-		      ecartables.push_back(c);
-		      break;
-		    case Carte::MONTRER_CARTE:
-		      atouts.push_back(c);
-		      break;
-		    default:
-		      break;
-		    }
-		}
-	    }
-	  emit doit_ecarter(ecartables, atouts);
-	}
-      else if(phase() == Partie::PHASE_JEU)
-	{
-	  emit requete_refusee();
-	  emit doit_jouer();
-	}
-      else if(phase() == Partie::ENCHERES && tour() < 5)
-	{
-	  //On en est encore aux enchères
-	  emit enchere_refusee();
-	  if(m_mon_tour != 0)
-	    emit doit_priser(meilleure_enchere());
-	  else
-	    emit doit_priser();
-	}
-      else if(phase() == Partie::ENCHERES)
-	{
-	  //C'est l'appel qui a été refusé
-	  en_chemin.clear();
-	  emit appel_refuse();
-	  std::vector<Carte> possibles;
-	  //Monstre de complexité
-	  for(unsigned int i = 0 ; i < 78 ; i++)
-	    {
-	      if(mes_cartes.peut_appeler(Carte(i)))
-		possibles.push_back(Carte(i));
-	    }
-	  emit doit_appeler(possibles);
-	}
+      annuler_transaction();
       break;
     case Protocole::NUMERO:
       m_mon_tour = m.m.numero.n;
-      mon_equipe.push_back(m.m.numero.n);
       emit numero_change(m_mon_tour);
       break;
     case Protocole::DISTRIBUTION:
       mes_cartes = Main(m.m.distribution);
       set_phase(ENCHERES);
-      DEBUG<<"Le jeu change, c'est sûr."<<std::endl;
       emit jeu_change(std::vector<Carte>(mes_cartes.cartes()), 
 		      std::vector<Carte>());
-      if(m_mon_tour == 0) emit doit_priser();
+      if(m_mon_tour == 0) 
+	{
+	  m_doit_priser = true;
+	  emit doit_priser(Option<Enchere>());
+	}
       break;
     case Protocole::PRISE:
+      ajouter_transaction_prise(m.m.prise.niveau);
       break;
     case Protocole::CONTRAT:
-      emit contrat_intermediaire((tour() + 4)%5, 
-				 Enchere((tour() + 4)%5, m.m.contrat));
+      emit contrat_intermediaire
+	(tour_precedent(), Enchere(tour_precedent(), m.m.contrat));
       if(mon_tour() && phase() == ENCHERES) 
 	{
-	  emit doit_priser(meilleure_enchere());
+	  m_doit_priser = true;
+	  emit doit_priser(Option<Enchere>(meilleure_enchere()));
+	}
+      else if(m_mon_tour == tour_precedent() && phase() == ENCHERES)
+	{ 
+	  transaction_acceptee();
 	}
       break;
     case Protocole::APPEL:
       if(true)
 	{
-	  //Cf Protocole::REFUSE
-	  std::vector<Carte> possibles;
-	  for(unsigned int i = 0 ; i < 78 ; i++)
-	    {
-	      if(mes_cartes.peut_appeler(Carte(i)))
-		possibles.push_back(Carte(i));
-	    }
-	  emit doit_appeler(possibles);
+	  m_doit_appeler = true;
+	  emit doit_appeler(cartes_appelables());
 	}
       break;
     case Protocole::APPELER:
-      //On dit que le roi est en chemin...
-      en_chemin.push_back(Carte(m.m.appeler.carte));
+      ajouter_transaction_appel(m.m.appeler.carte);
       break;
     case Protocole::CONTRAT_FINAL:
-      en_chemin.clear();
-      /* A-t-on la carte appelée ? */
-      if(m_mon_tour == (unsigned int)m.m.contrat_final.preneur)
-	{
-	  /* Ah, ben c'est moi qui prends. */
-	  /* Que j'aie la carte appelée ou pas, je ne connais */
-	  /* pas d'autre allié. */
-	}
-      else if(mes_cartes.possede(m.m.contrat_final.appel))
-	    /* Je suis appelé ! */
-	mon_equipe.push_back(m.m.contrat_final.preneur);
+      // L'appel a été acepté.
+      transaction_acceptee();
+      emit contrat_final(Enchere(m.m.contrat_final));
       if(m.m.contrat_final.niveau >= Enchere::GARDE_SANS)
 	{
 	  // On ne parle pas du chien, donc c'est à nous !
 	  emit doit_demander_chelem();
 	}
-      emit contrat_final(Enchere(m.m.contrat_final));
       break;
     case Protocole::CHIEN:
-      /* Si la carte appelée est dans le chien et que je n'ai pas */
-      /* pris, alors je suis avec tous les autres défenseurs */
       chien_si_devoile.clear();
       for(unsigned int i = 0 ; i < 3 ; i++)
 	chien_si_devoile.push_back(Carte(m.m.chien.chien[i]));
       emit chien_devoile(chien_si_devoile[0],
 			 chien_si_devoile[1],
 			 chien_si_devoile[2]);
-      if(attaquant() != m_mon_tour)
-	{
-	  Carte appelee = *(enchere_de(attaquant()).carte_appelee());
-	  if(appelee == m.m.chien.chien[0]
-	     ||appelee == m.m.chien.chien[1]
-	     ||appelee == m.m.chien.chien[2])
-	    {
-	      mon_equipe.clear();
-	      for(unsigned int i = 0 ; i < 5 ; i++)
-		{
-		  if(i != attaquant())
-		    {
-		      mon_equipe.push_back(i);
-		    }
-		}
-	    }
-	}
-      else
+      if(attaquant() == m_mon_tour)
 	{
 	  //Je dois écarter !
 	  for(unsigned int i = 0 ; i < 3 ; i++)
 	    {
 	      mes_cartes.ajouter(chien_si_devoile[i]);
 	    }
-	  //Attention : monstre de complexité en vue !
-	  //Dupliqué pour REFUSE
-	  std::vector<Carte> ecartables;
-	  std::vector<Carte> atouts;
-	  for(unsigned int i = 0 ; i < 78 ; i++)
-	    {
-	      Carte c(i);
-	      if(mes_cartes.possede(c))
-		{
-		  switch(c.ecartable())
-		    {
-		    case Carte::ECARTABLE:
-		      ecartables.push_back(c);
-		      break;
-		    case Carte::MONTRER_CARTE:
-		      atouts.push_back(c);
-		      break;
-		    default:
-		      break;
-		    }
-		}
-	    }
 	  emit jeu_change(std::vector<Carte>(chien_si_devoile),
 			  std::vector<Carte>());
-	  emit doit_ecarter(ecartables, atouts);
+	  std::vector<std::vector<Carte> > ecartables =
+	    cartes_ecartables();
+	  m_doit_ecarter = true;
+	  emit doit_ecarter(ecartables[0], ecartables[1]);
 	}
       break;
     case Protocole::ECART:
+      ajouter_transaction_ecart(m.m.ecart.ecart);
       break;
     case Protocole::ATOUT:
       if(true)
@@ -247,66 +134,54 @@ void PartieClient::assimiler(const Protocole::Message & m)
       if(mon_numero() == attaquant())
 	{
 	  //L'écart a été accepté.
-	  emit ecart_accepte();
-	  emit jeu_change(std::vector<Carte>(), 
-			  std::vector<Carte>(en_chemin));
-	  en_chemin.clear();
+	  transaction_acceptee();
 	}
       if(mon_tour())
 	{
+	  m_doit_jouer = true;
 	  emit doit_jouer();
 	}
+      DEBUG<<"Commencement de la partie."<<std::endl;
+      presenter();
       break;
     case Protocole::MONTRER_POIGNEE:
       break;
     case Protocole::POIGNEE:
       break;
     case Protocole::REQUETE:
-      // Je mets cette carte en chemin.
-      if(true)
-	{
-	  Carte c(m.m.requete.carte);
-	  en_chemin.clear();
-	  if(mes_cartes.possede(c))
-	    {
-	      mes_cartes.enlever(c);
-	      en_chemin.push_back(c);
-	      emit jeu_change(std::vector<Carte>(),
-			      std::vector<Carte>(en_chemin));
-	    }
-	}
+      ajouter_transaction_jeu(m.m.requete.carte);
       break;
     case Protocole::CARTE:
-      if(m_mon_tour == (tour() + 4) % 5)
+      if(m_mon_tour == tour_precedent())
 	{
-	  //C'est moi qui ai joué ça
-	  emit requete_acceptee();
-	  en_chemin.clear();
+	  transaction_acceptee();
 	}
-      else if(*(enchere_de(attaquant()).carte_appelee()) 
-	      == m.m.carte.carte)
+      emit carte_jouee(tour_precedent(), Carte(m.m.carte.carte));
+      if(mon_tour()) 
 	{
-	  /* Je suis un défenseur */
-	  mon_equipe.clear();
-	  for(unsigned int i = 0 ; i < 5 ; i++)
-	    {
-	      if(i != attaquant() && i != tour())
-		{
-		  mon_equipe.push_back(i);
-		}
-	    }
+	  m_doit_jouer = true;
+	  emit doit_jouer();
 	}
-      emit carte_jouee((tour() + 4) % 5, Carte(m.m.carte.carte));
-      if(mon_tour()) emit doit_jouer();
       emit tapis_change(tapis());
       break;
     case Protocole::PLI: 
       emit tapis_change(tapis());
-      if(mon_tour()) emit doit_jouer();
+      //Normalement, Protocole::Carte vient d'être analysé, et le
+      //prochain joueur sait déjà qu'il doit jouer.
+      //if(mon_tour()) emit doit_jouer();
       //Le mouvement des cartes est traité dans la méthode virtuelle
       //dédiée.
       break;
     case Protocole::RESULTAT:
+      if(true)
+	{
+	  std::vector<int> scores;
+	  for(unsigned int i = 0 ; i < 5 ; i++)
+	    {
+	      scores.push_back(m.m.resultat.resultats[i]);
+	    }
+	  emit score(scores);
+	}
       break;
     default:
       break;
@@ -369,12 +244,6 @@ void PartieClient::ecarter(std::vector<Carte> const & c)
   for(unsigned int i = 0 ; i < 3 && i < c.size() ; i++)
     {
       m.m.ecart.ecart[i] = c[i].numero();
-      //On indique que la carte est en chemin
-      if(mes_cartes.possede(c[i]))
-	{
-	  mes_cartes.enlever(c[i]);
-	  en_chemin.push_back(c[i]);
-	}
     }
   assimiler(m);
   emit doit_emettre(m);
@@ -424,4 +293,219 @@ void PartieClient::cartes_gagnees
     {
       emit carte_gagnee(cartes[i], poseurs[i], gagnants[i]);
     }
+}
+
+void PartieClient::annuler_transaction()
+{
+  if(en_cours.empty())
+    {
+      //Euh...
+    }
+  else
+    {
+      Transaction t = en_cours.front();
+      en_cours.pop();
+      if(!(t.enchere().aucun()))
+	{
+	  //C'est une enchère !
+	  Enchere enchere = t.enchere().get().obtenir().get();
+	  emit enchere_refusee(enchere);
+	  if(m_doit_priser)
+	    {
+	      //Je dois reformuler mon enchère.
+	      Enchere indice = t.enchere().get().indice().get();
+	      emit doit_priser(indice);
+	    }
+	}
+      if(!(t.appel().aucun()))
+	{
+	  //C'est un appel !
+	  Carte appelee = t.appel().get().obtenir().get();
+	  emit appel_refuse(appelee);
+	  if(m_doit_appeler)
+	    {
+	      //Je dois reformuler mon appel.
+	      std::vector<Carte> indice = 
+		t.appel().get().indice().get();
+	      emit doit_appeler(indice);
+	    }
+	}
+      if(!(t.ecart().aucun()))
+	{
+	  //C'est un écart refusé.
+	  std::vector<Carte> ecart = t.ecart().get().obtenir().get();
+	  emit ecart_refuse(ecart);
+	  if(m_doit_ecarter)
+	    {
+	      std::vector<Carte> possibles = 
+		t.ecart().get().indice1().get();
+	      std::vector<Carte> atouts = 
+		t.ecart().get().indice2().get();
+	      emit doit_ecarter(possibles, atouts);
+	    }
+	}
+      if(!(t.jeu().aucun()))
+	{
+	  //Je dois jouer une autre carte.
+	  Carte carte = t.jeu().get().obtenir().get();
+	  emit requete_refusee(carte);
+	  if(m_doit_jouer)
+	    {
+	      emit doit_jouer();
+	    }
+	}
+    }
+}
+void PartieClient::transaction_acceptee()
+{
+  if(en_cours.empty())
+    {
+      //Euh...
+    }
+  else
+    {
+      Transaction t = en_cours.front();
+      en_cours.pop();
+      if(!(t.enchere().aucun()))
+	{
+	  //C'est une enchère !
+	  Enchere enchere = t.enchere().get().obtenir().get();
+	  emit enchere_acceptee(enchere);
+	  m_doit_priser = false;
+	}
+      if(!(t.appel().aucun()))
+	{
+	  //C'est un appel !
+	  Carte appelee = t.appel().get().obtenir().get();
+	  emit appel_accepte(appelee);
+	  m_doit_appeler = false;
+	}
+      if(!(t.ecart().aucun()))
+	{
+	  std::vector<Carte> ecart = t.ecart().get().obtenir().get();
+	  emit ecart_accepte(ecart);
+	  m_doit_ecarter = false;
+	}
+      if(!(t.jeu().aucun()))
+	{
+	  Carte carte = t.jeu().get().obtenir().get();
+	  emit requete_acceptee(carte);
+	  m_doit_jouer = false;
+	}
+    }
+}
+std::vector<Carte> PartieClient::cartes_appelables() const
+{
+  std::vector<Carte> acceptables;
+  for(unsigned int i = 0 ; i < 78 ; i++)
+    {
+      if(mes_cartes.peut_appeler(Carte(i)))
+	acceptables.push_back(Carte(i));
+    }
+  return acceptables;
+}
+std::vector<std::vector<Carte> > 
+PartieClient::cartes_ecartables() const
+{
+  std::vector<Carte> ecartables;
+  std::vector<Carte> atouts;
+  for(unsigned int i = 0 ; i < 78 ; i++)
+    {
+      Carte c(i);
+      if(mes_cartes.possede(c))
+	{
+	  switch(c.ecartable())
+	    {
+	    case Carte::ECARTABLE:
+	      ecartables.push_back(c);
+	      break;
+	    case Carte::MONTRER_CARTE:
+	      atouts.push_back(c);
+	      break;
+	    default:
+	      break;
+	    }
+	}
+    }
+  std::vector<std::vector<Carte> > resultat;
+  resultat.push_back(ecartables);
+  resultat.push_back(atouts);
+  return resultat;
+}
+void PartieClient::ajouter_transaction_prise(unsigned int prise)
+{
+  Protocole::Msg_prise m;
+  m.niveau = prise;
+  Enchere e(tour(), m);
+  Transaction::Enchere ench(e, meilleure_enchere());
+  Transaction t(ench);
+  en_cours.push(t);
+}
+void PartieClient::ajouter_transaction_appel(unsigned int carte)
+{
+  Carte c(carte);
+  Transaction::Appel a(c, cartes_appelables());
+  Transaction t(a);
+  en_cours.push(t);
+}
+void PartieClient::ajouter_transaction_ecart
+(const int ecart[3])
+{
+  std::vector<Carte> ec;
+  for(unsigned int i = 0 ; i < 3 ; i++)
+    {
+      ec.push_back(Carte(static_cast<int>(ecart[i])));
+    }
+  std::vector<std::vector<Carte> > possibles = cartes_ecartables();
+  Transaction::Ecart e(ec, possibles[0], possibles[1]);
+  Transaction t(e);
+  en_cours.push(t);
+}
+void PartieClient::ajouter_transaction_jeu(unsigned int carte)
+{
+  Carte c(carte);
+  Transaction::Jeu j(c);
+  Transaction t(j);
+  en_cours.push(t);
+}
+void PartieClient::presenter() const
+{
+  ENTER("presenter() const");
+  for(unsigned int i = 0 ; i < 5 ; i++)
+    {
+      try
+	{
+	  DEBUG<<"Enchère de "<<i<<" : "
+	       <<enchere_de(i)<<std::endl;
+	}
+      catch(...)
+	{
+	}
+    }
+  DEBUG<<"chelem : "<<chelem()<<std::endl;
+  DEBUG<<"attaquant : "<<attaquant()<<std::endl;
+  DEBUG<<"tour : "<<tour()<<std::endl;
+  DEBUG<<"tour précédent : "<<tour_precedent()<<std::endl;
+  for(unsigned int i = 0 ; i < 5 ; i++)
+    {
+      DEBUG<<"taille de la poignée de "<<i<<" : "
+	   <<poignee(i)<<std::endl;
+    }
+  DEBUG<<"phase : "<<phase()<<std::endl;
+  DEBUG<<"tapis : "<<tapis()<<std::endl;
+  DEBUG<<"meilleure enchère : "<<meilleure_enchere()<<std::endl;
+  DEBUG<<"mon numéro de tour : "<<m_mon_tour<<std::endl;
+  DEBUG<<"mes cartes : "<<mes_cartes<<std::endl;
+  DEBUG<<"le chien (si dévoilé) : "<<chien_si_devoile<<std::endl;
+  if(en_cours.empty())
+    DEBUG<<"pas de transaction en cours."<<std::endl;
+  else
+    DEBUG<<"transaction en cours. "<<std::endl;
+  DEBUG<<"si je dois priser : "<<m_doit_priser<<std::endl;
+  DEBUG<<"si je dois appeler une carte : "<<m_doit_appeler<<std::endl;
+  DEBUG<<"si je dois écarter : "<<m_doit_ecarter<<std::endl;
+  DEBUG<<"si je dois jouer : "<<m_doit_jouer<<std::endl;
+  DEBUG<<"si c'est mon tour : "<<mon_tour()<<std::endl;
+  DEBUG<<"les cartes appelables : "<<cartes_appelables()<<std::endl;
+  DEBUG<<"les cartes écartables : "<<cartes_ecartables()<<std::endl;
 }

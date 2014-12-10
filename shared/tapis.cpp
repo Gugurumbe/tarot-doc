@@ -51,11 +51,12 @@ void Tapis::ajouter(const Protocole::Msg_carte & carte,
   m_tapis.push_back(ligne);
   if(m_tapis.size() == 1)
     {
-      nouveau_maitre(joueur_maitre);
+      nouveau_maitre((joueur_maitre + joueur_ouverture) % 5);
     }
   else if(ancien_maitre != joueur_maitre)
     {
-      changement_maitre(ancien_maitre, joueur_maitre);
+      changement_maitre((ancien_maitre + joueur_ouverture) % 5, 
+			(joueur_maitre + joueur_ouverture) % 5);
     }
   if(m_tapis.size() == 5)
     {
@@ -75,9 +76,9 @@ void Tapis::ajouter(const Protocole::Msg_carte & carte,
       for(unsigned int i = 0 ; i < posees.size() ; i++)
 	{
 	  if(posees[i] != EXCUSE || exc == Carte::EXCUSE_PRENABLE)
-	    gagnants[i] = maitre_final;
+	    gagnants[i] = (maitre_final + joueur_ouverture) % 5;
 	}
-      joueur_ouverture = maitre_final;
+      joueur_ouverture = (maitre_final + joueur_ouverture) % 5;
       m_tapis.clear();
       //La variable joueur_maitre doit avoir un sens dans la chaîne
       //d'appels de cartes_gagnees (serveur)

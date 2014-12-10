@@ -557,7 +557,7 @@ std::ostream & operator<<(std::ostream & out,
 std::ostream & operator<<(std::ostream & out, 
 			  const Protocole::Msg_refuse &)
 {
-  return out<<"<resultat>";
+  return out<<"<refuse>";
 }
 
 std::ostream & operator<<(std::ostream & out, 
