@@ -13,6 +13,7 @@
 #include "client.hpp"
 #include "partie.hpp"
 #include "partie_client.hpp"
+#include "option.hpp"
 
 #include <iostream>
 #include <iomanip>
@@ -70,15 +71,6 @@ public slots:
      @see PartieClient::formuler_prise(Enchere::Prise);
    */
   void formuler_prise(Enchere::Prise p);
-
-  /**
-     @brief Traité lorsqu'un joueur effectue une enchère.
-     @param j Le numéro de ce joueur;
-     @param e L'enchère réalisée.
-
-     @note Il y a une redondance : j correspond à e.joueur()
-   */
-  void contrat_intermediaire(unsigned int j, Enchere e);
   
   /**
      @brief Envoie un message pour formuler un appel.
@@ -97,16 +89,6 @@ public slots:
      @see PartieClient::ecarter(const std::vector<Carte> &)
    */
   void formuler_ecart(std::vector<Carte> ecart);
-
-  /**
-     @brief Traité lorsque l'écart a été accepté.
-   */
-  void ecart_accepte();
-
-  /**
-     @brief Traité lorsque l'écart a été refusé.
-   */
-  void ecart_refuse();
   
   /**
      @brief Traité lorsqu'on demande à jouer une Carte.
@@ -114,16 +96,6 @@ public slots:
      @param requete La Carte qu'on demande à jouer.
    */
   void formuler_requete(Carte requete);
-
-  /**
-     @brief Traité lorsque ma carte a été refusée.
-   */
-  void requete_refusee();
-  
-  /**
-     @brief Traité lorsque le serveur accepte que je joue ma carte.
-   */
-  void requete_acceptee();
 
 signals:
   
@@ -135,31 +107,34 @@ signals:
   void numero_change(unsigned int n);
 
   /**
-     @brief Émis lorsque je suis le premier et que je dois priser.
-
-     @see PartieClient::doit_priser()
-   */
-  void doit_priser();
-
-  /**
      @brief Émis lorsque je dois priser.
      
-     @param max L'enchère maximale.
+     @param max L'enchère maximale. Si je suis le premier, elle
+     n'existe pas.
      @see PartieClient::doit_priser(Enchere)
    */
-  void doit_priser(Enchere max);
+  void doit_priser(Option<Enchere> max);
+
+  /**
+     @brief Émis lorsque l'enchère a été acceptée.
+     
+     @param e L'enchère formulée.
+   */
+  void enchere_acceptee(Enchere e);
 
   /**
      @brief Émis lorsque mon enchère a été refusée.
+     
+     @param e L'enchère que j'avais essayé de formuler.
   */
-  void enchere_refusee();
+  void enchere_refusee(Enchere e);
 
   /**
      @brief Émis lorsqu'un contrat intermédiaire est formulé.
      
      @param e L'enchère en question.
    */
-  void dernier_contrat(Enchere e);
+  void contrat_intermediaire(Enchere e);
 
   /**
      @brief Émis lorsque je dois appeler une carte.
@@ -171,9 +146,18 @@ signals:
   void doit_appeler(std::vector<Carte> acceptees);
 
   /**
-     @brief Émis lorsque mon appel a été refusé.
+     @brief Émis lorsque mon appel a été accepté.
+     
+     @param c La carte que vous avez appelée.
    */
-  void appel_refuse();
+  void appel_accepte(Carte c);
+
+  /**
+     @brief Émis lorsque mon appel a été refusé.
+     
+     @param c La carte refusée.
+   */
+  void appel_refuse(Carte c);
 
   /**
      @brief Émis lorsque le contrat final est divulgué.
@@ -201,6 +185,20 @@ signals:
 		    std::vector<Carte> atouts);
 
   /**
+     @brief Émis lorsque l'écart a été accepté.
+     
+     @param ecart Votre écart.
+   */
+  void ecart_accepte(std::vector<Carte> ecart);
+  
+  /**
+     @brief Émis lorsque l'écart est refusé.
+     
+     @param ecart L'écart que vous aviez essayé de formuler. 
+   */
+  void ecart_refuse(std::vector<Carte> ecart);
+
+  /**
      @brief Émis lorsqu'un ou plusieurs atouts est/sont écarté(s).
      @param atouts Les atouts en question.
    */
@@ -224,6 +222,21 @@ signals:
      @brief Émis lorsque je dois jouer.
    */
   void doit_jouer();  
+
+  /**
+     @brief Émis lorsque la carte que je voulais jouer a été
+     acceptée. 
+     
+     @param posee La carte posée.
+   */
+  void requete_acceptee(Carte posee);
+  
+  /**
+     @brief Émis lorsque la carte que je voulais jouer a été refusée.
+     
+     @param refusee La carte que vous aviez essayé de poser.
+   */
+  void requete_refusee(Carte refusee);
 
   /**
      @brief Émis lorsqu'une carte a été jouée.

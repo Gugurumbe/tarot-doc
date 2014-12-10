@@ -19,58 +19,34 @@ ClientJeu::ClientJeu(QObject * parent) :
   QObject::connect(&partie, SIGNAL(doit_emettre(Protocole::Message)),
 		   this, SLOT(envoyer(Protocole::Message)));
 
-  connect(&partie, SIGNAL(numero_change(unsigned int)),
-	  this, SIGNAL(numero_change(unsigned int)));
-  connect(&partie, SIGNAL(jeu_change(std::vector<Carte>, 
-				     std::vector<Carte>)),
-	  this, SIGNAL(jeu_change(std::vector<Carte>, 
-				  std::vector<Carte>)));
-  connect(&partie, SIGNAL(doit_priser(Enchere)),
-	  this, SIGNAL(doit_priser(Enchere)));
-  connect(&partie, SIGNAL(doit_priser()),
-	  this, SIGNAL(doit_priser()));
-  connect(&partie, SIGNAL(enchere_refusee()),
-	  this, SIGNAL(enchere_refusee()));
-  connect(&partie, 
-	  SIGNAL(contrat_intermediaire(unsigned int, Enchere)),
-	  this, SLOT(contrat_intermediaire(unsigned int, Enchere)));
-  connect(&partie, SIGNAL(doit_appeler(std::vector<Carte>)),
-	  this, SIGNAL(doit_appeler(std::vector<Carte>)));
-  connect(&partie, SIGNAL(appel_refuse()),
-	  this, SIGNAL(appel_refuse()));
-  connect(&partie, SIGNAL(contrat_final(Enchere)),
-	  this, SIGNAL(contrat_final(Enchere)));
-  connect(&partie, SIGNAL(chien_devoile(Carte, Carte, Carte)),
-	  this, SIGNAL(chien(Carte, Carte, Carte)));
-  connect(&partie, SIGNAL(doit_ecarter(std::vector<Carte>,
-				       std::vector<Carte>)),
-	  this, SIGNAL(doit_ecarter(std::vector<Carte>,
-				    std::vector<Carte>)));
-  connect(&partie, SIGNAL(ecart_accepte()),
-	  this, SLOT(ecart_accepte()));
-  connect(&partie, SIGNAL(ecart_refuse()),
-	  this, SLOT(ecart_refuse()));
-  connect(&partie, SIGNAL(atout_au_chien(std::vector<Carte>)),
-	  this, SIGNAL(atout_au_chien(std::vector<Carte>)));
-  connect(&partie, SIGNAL(doit_jouer()),
-	  this, SIGNAL(doit_jouer()));
-  connect(&partie, SIGNAL(requete_refusee()),
-	  this, SLOT(requete_refusee()));
-  connect(&partie, SIGNAL(carte_jouee(unsigned int, Carte)),
-	  this, SIGNAL(carte_jouee(unsigned int, Carte)));
-  connect(&partie, SIGNAL(score(std::vector<int>)),
-	  this, SIGNAL(partie_terminee(std::vector<int>)));
-  connect(&partie, SIGNAL(carte_gagnee(Carte, 
-				      unsigned int, 
-				      unsigned int)),
-	  this, SIGNAL(carte_gagnee(Carte, 
-				    unsigned int, unsigned int)));
-  connect(&partie, SIGNAL(pli(unsigned int)),
-	  this, SIGNAL(pli_termine(unsigned int)));
-  connect(&partie, SIGNAL(maitre(unsigned int)),
-	  this, SIGNAL(maitre_change(unsigned int)));
-  connect(&partie, SIGNAL(tapis_change(const Tapis &)),
-	  this, SIGNAL(tapis_change(const Tapis &)));
+#define C(signal_entree, signal_sortie) \
+  connect(&partie, SIGNAL(signal_entree), this, \
+	  SIGNAL(signal_sortie));
+#define S(signal) C(signal, signal)
+  S(numero_change(unsigned int));
+  S(doit_priser(Option<Enchere>));
+  S(enchere_acceptee(Enchere));
+  S(enchere_refusee(Enchere));
+  S(contrat_intermediaire(Enchere));
+  S(doit_appeler(std::vector<Carte>));
+  S(appel_accepte(Carte));
+  S(appel_refuse(Carte));
+  S(contrat_final(Enchere));
+  S(chien(Carte, Carte, Carte));
+  S(doit_ecarter(std::vector<Carte>, std::vector<Carte>));
+  S(ecart_accepte(std::vector<Carte>));
+  S(ecart_refuse(std::vector<Carte>));
+  S(atout_au_chien(std::vector<Carte>));
+  S(maitre_change(unsigned int));
+  S(jeu_change(std::vector<Carte>, std::vector<Carte>));
+  S(doit_jouer());
+  S(requete_acceptee(Carte));
+  S(requete_refusee(Carte));
+  S(carte_jouee(unsigned int, Carte));
+  S(carte_gagnee(Carte, unsigned int, unsigned int));
+  S(pli_termine(unsigned int));
+  S(tapis_change(const Tapis &));
+  S(partie_terminee(std::vector<int>));
 }
 
 void ClientJeu::traiter_connexion()
@@ -93,35 +69,6 @@ void ClientJeu::presenter_etat()
 	   <<", on en est à la phase "<<partie.phase()
 	   <<", vos cartes sont "<<partie.mon_jeu()
 	   <<"."<<std::endl;*/
-}
-
-void ClientJeu::contrat_intermediaire(unsigned int, Enchere e)
-{
-  //On se débarasse du premier paramètre.
-  // std::cout<<"Le joueur"<<joueur<<" a fait l'enchère "<<e<<std::endl;
-  emit dernier_contrat(e);
-}
-
-void ClientJeu::ecart_accepte()
-{
-  // std::cout<<"Bravo ! Votre écart a été accepté."<<std::endl;
-}
-
-void ClientJeu::ecart_refuse()
-{
-  // std::cout<<"Votre écart a été refusé. Soyez plus vigilant."
-  // 	   <<std::endl;
-}
-
-void ClientJeu::requete_refusee()
-{
-  // std::cout<<"Votre requête a été refusée ! Soyez plus vigilant."
-  // 	   <<std::endl;
-}
-
-void ClientJeu::requete_acceptee()
-{
-  // std::cout<<"Votre requête a été acceptée."<<std::endl;
 }
 
 void ClientJeu::traiter_message(Protocole::Message m)

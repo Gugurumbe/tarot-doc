@@ -61,7 +61,7 @@ void PartieClient::assimiler(const Protocole::Message & m)
       break;
     case Protocole::CONTRAT:
       emit contrat_intermediaire
-	(tour_precedent(), Enchere(tour_precedent(), m.m.contrat));
+	(Enchere(tour_precedent(), m.m.contrat));
       if(mon_tour() && phase() == ENCHERES) 
 	{
 	  m_doit_priser = true;

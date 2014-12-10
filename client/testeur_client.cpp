@@ -252,14 +252,3 @@ void Testeur::run()
   m.m.pli.joueur = 2;
   EMIT faire_assimiler(m);
 }
-
-int main(int argc, char * argv[])
-{
-  QApplication app(argc, argv);
-  PartieClient partie;
-  Testeur testeur(&partie);
-  testeur.run();
-  //Coquille client;
-  //client.show();
-  return 0;//app.exec();
-}

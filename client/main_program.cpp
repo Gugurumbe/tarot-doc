@@ -1,6 +1,4 @@
-#define TEST "testeur_client.hpp"
-
-#ifndef TEST
+//#define TEST
 
 #include <QApplication>
 #include <iostream>
@@ -14,6 +12,8 @@
 
 #include "coquille.hpp"
 
+#ifndef TEST
+
 int main(int argc, char * argv[])
 {
   QApplication app(argc, argv);
@@ -24,6 +24,15 @@ int main(int argc, char * argv[])
 
 #else
 
-#include TEST
+#include "testeur_client.hpp"
+
+int main(int argc, char * argv[])
+{
+  QApplication app(argc, argv);
+  PartieClient partie;
+  Testeur testeur(&partie);
+  testeur.run();
+  return 0;
+}
 
 #endif

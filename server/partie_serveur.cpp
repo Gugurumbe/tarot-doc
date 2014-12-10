@@ -108,14 +108,14 @@ void PartieServeur::assimiler(Protocole::Message const & message)
       mess_contrat_final.type = Protocole::CONTRAT_FINAL;
       mess_contrat_final.m.contrat_final.preneur = attaquant();
       mess_contrat_final.m.contrat_final.niveau = 
-	(int)contrat_final().prise();
+	(int)donner_contrat_final().prise();
       mess_contrat_final.m.contrat_final.appel = 
 	message.m.appeler.carte;
       EMETTRE_A_TOUS(mess_contrat_final);
-      if(contrat_final().prise() >= Enchere::GARDE_SANS)
+      if(donner_contrat_final().prise() >= Enchere::GARDE_SANS)
 	{
 	  DEBUG<<"On ne montre pas le chien."<<std::endl;
-	  if(contrat_final().prise() == Enchere::GARDE_SANS)
+	  if(donner_contrat_final().prise() == Enchere::GARDE_SANS)
 	    {
 	      DEBUG<<"L'attaque gagne quand même les cartes du chien."
 		   <<std::endl;
@@ -346,7 +346,7 @@ int PartieServeur::tester(unsigned int joueur, Protocole::Message const & messag
 	  DEBUG<<"Déjà, c'est le tour du joueur."<<std::endl;
 	  ok = 0;
 	  Carte c(message.m.requete.carte);
-	  Carte appelee(*(contrat_final().carte_appelee()));
+	  Carte appelee(*(donner_contrat_final().carte_appelee()));
 	  if(jeu_reel[joueur].possede(c))
 	    {
 	      DEBUG<<"Le joueur possède cette Carte."<<std::endl;

@@ -284,11 +284,10 @@ signals:
      @brief Une enchère vient d'être annoncée.
 
      Émis à la réception d'un Msg_contrat.
-     @param joueur : le numéro du joueur dont c'était le tour.
      @param e : l'enchère effectuée.
      @see PartieClient::doit_priser()
    */
-  void contrat_intermediaire(unsigned int joueur, Enchere e);
+  void contrat_intermediaire(Enchere e);
 
   /**
      @brief Vous devez appeler une Carte.
@@ -372,10 +371,7 @@ signals:
   /**
      @brief Vous devez dire si vous souhaitez un chelem.
 
-     Ce signal risque de bientôt disparaître, car on pourra facilement
-     demander un chelem en même temps que la Prise.  Je pensais le
-     faire émettre lorsque le Chien est dévoilé, ou lorsque le contrat
-     final est une garde [sans + contre] le Chien.
+     Ce signal n'est pas utilisé, mais il pourra l'être bientôt.
    */
   void doit_demander_chelem();
 
@@ -424,9 +420,9 @@ signals:
      @brief Votre requête a été refusée.
      
      Une requête est la demande de jouer une carte.
-     @param posee La carte que vous aviez essayé de poser.
+     @param refusee La carte que vous aviez essayé de poser.
    */
-  void requete_refusee(Carte posee);
+  void requete_refusee(Carte refusee);
 
   /**
      @brief Une Carte a été jouée;
@@ -456,7 +452,8 @@ signals:
      @param poseur Le numéro du joueur qui l'avait posée.
      @param gagnant Le numéro du joueur qui l'a gagnée.
    */
-  void carte_gagnee(Carte c, unsigned int poseur, unsigned int gagnant);
+  void carte_gagnee(Carte c, unsigned int poseur, 
+		    unsigned int gagnant);
 
   /**
      @brief Le pli a été gagné.
