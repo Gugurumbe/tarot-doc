@@ -6,7 +6,7 @@ AfficheurTapis::AfficheurTapis(QWidget * parent):
 {
 }
 
-void AfficheurTapis::recalculer(const Tapis & tapis)
+void AfficheurTapis::recalculer(Tapis tapis)
 {
   std::vector<Carte> cartes;
   std::vector<unsigned int> numeros;

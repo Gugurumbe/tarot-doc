@@ -14,19 +14,37 @@ ClientGraphique::ClientGraphique(QWidget * parent):
   ui.ecart_2->afficher_toutes();
   ui.ecart_3->afficher_toutes();
   //L'autre est cartes_jouables
+#define C(signal) connect(&jeu, SIGNAL(signal), \
+			  ui.journal, SLOT(signal));
   jeu.connecter(QHostAddress(addr), port);
-  connect(&jeu, SIGNAL(connecte()),
-	  ui.journal, SLOT(afficher_connexion()));
-  connect(&jeu, SIGNAL(deconnecte()),
-	  ui.journal, SLOT(afficher_deconnexion()));
-  connect(&jeu, SIGNAL(numero_change(unsigned int)), 
-	  ui.journal, SLOT(afficher_numero(unsigned int)));
+  C(connecte());
+  C(deconnecte());
+  C(numero_change(unsigned int));
+  C(doit_priser(Option<Enchere>));
+  C(enchere_acceptee(Enchere));
+  C(enchere_refusee(Enchere));
+  C(contrat_intermediaire(Enchere));
+  C(doit_appeler(std::vector<Carte>));
+  C(appel_accepte(Carte));
+  C(appel_refuse(Carte));
+  C(contrat_final(Enchere));
+  C(chien(Carte, Carte, Carte));
+  C(doit_ecarter(std::vector<Carte>, std::vector<Carte>));
+  C(ecart_accepte(std::vector<Carte>));
+  C(ecart_refuse(std::vector<Carte>));
+  C(atout_au_chien(std::vector<Carte>));
+  C(maitre_change(unsigned int));
+  C(jeu_change(std::vector<Carte>, std::vector<Carte>));
+  C(doit_jouer());
+  C(requete_acceptee(Carte));
+  C(requete_refusee(Carte));
+  C(carte_jouee(unsigned int, Carte));
+  C(carte_gagnee(Carte, unsigned int, unsigned int));
+  C(pli_termine(unsigned int));
+  C(tapis_change(Tapis));
+  C(partie_terminee(std::vector<int>));
   connect(&jeu, SIGNAL(numero_change(unsigned int)),
 	  ui.nom_joueur, SLOT(set_num(unsigned int)));
-  connect(&jeu, SIGNAL(jeu_change
-		       (std::vector<Carte>, std::vector<Carte>)),
-	  ui.journal, SLOT(afficher_changement_jeu
-			   (std::vector<Carte>, std::vector<Carte>)));
   connect(&jeu, SIGNAL(jeu_change
 		       (std::vector<Carte>, std::vector<Carte>)),
 	  ui.mes_cartes, SLOT(gagner
@@ -37,49 +55,14 @@ ClientGraphique::ClientGraphique(QWidget * parent):
 	  ui.cartes_jouables, SLOT(modifier_cartes
 				   (std::vector<Carte>,
 				    std::vector<Carte>)));
-  connect(&jeu, SIGNAL(doit_priser(Enchere)),
-	  ui.journal, SLOT(afficher_doit_priser(Enchere)));
-  connect(&jeu, SIGNAL(doit_priser()),
-	  ui.journal, SLOT(afficher_doit_priser()));
-  connect(&jeu, SIGNAL(enchere_refusee()),
-	  ui.journal, SLOT(afficher_contrat_invalide()));
-  connect(&jeu, SIGNAL(dernier_contrat(Enchere)),
-	  ui.journal, SLOT(afficher_contrat_intermediaire(Enchere)));
-  connect(&jeu, SIGNAL(doit_appeler(std::vector<Carte>)),
-	  ui.journal, SLOT(afficher_doit_appeler(std::vector<Carte>)));
-  connect(&jeu, SIGNAL(tapis_change(const Tapis &)),
-	  ui.tapis, SLOT(recalculer(const Tapis &)));
-  connect(&jeu, SIGNAL(appel_refuse()),
-	  ui.journal, SLOT(afficher_appel_invalide()));
-  connect(&jeu, SIGNAL(contrat_final(Enchere)),
-	  ui.journal, SLOT(afficher_contrat_final(Enchere)));
+  connect(&jeu, SIGNAL(tapis_change(Tapis)),
+	  ui.tapis, SLOT(recalculer(Tapis)));
   connect(&jeu, SIGNAL(chien(Carte, Carte, Carte)), 
 	  this, SLOT(chien(Carte, Carte, Carte)));
-  connect(&jeu, SIGNAL(doit_ecarter(std::vector<Carte>, 
-				    std::vector<Carte>)),
-	  ui.journal, SLOT(afficher_doit_ecarter(std::vector<Carte>,
-						 std::vector<Carte>)));
-  connect(&jeu, SIGNAL(atout_au_chien(std::vector<Carte>)),
-	  ui.journal, SLOT(afficher_atout_au_chien
-			   (std::vector<Carte>)));
-  connect(&jeu, SIGNAL(doit_jouer()), 
-	  ui.journal, SLOT(afficher_doit_jouer()));
-  connect(&jeu, SIGNAL(maitre_change(unsigned int)),
-	  ui.journal, SLOT(afficher_nouveau_maitre(unsigned int)));
   connect(&jeu, SIGNAL(maitre_change(unsigned int)),
 	  ui.nom_maitre, SLOT(set_num(unsigned int)));
-  connect(&jeu, SIGNAL(carte_gagnee(Carte, unsigned int,
-				    unsigned int)),
-	  ui.journal, SLOT(afficher_carte_gagnee(Carte,
-						 unsigned int,
-						 unsigned int)));
-  connect(&jeu, SIGNAL(pli_termine(unsigned int)),
-	  ui.journal, SLOT(afficher_pli_termine(unsigned int)));
   connect(&jeu, SIGNAL(tapis_change(const Tapis &)),
 	  ui.tapis, SLOT(recalculer(const Tapis &)));
-  connect(&jeu, SIGNAL(partie_terminee(std::vector<int>)),
-	  ui.journal, SLOT(afficher_partie_terminee
-			   (std::vector<int>)));
 }
 
 void ClientGraphique::on_bouton_enchere_clicked()
@@ -131,7 +114,6 @@ void ClientGraphique::chien(Carte c1, Carte c2, Carte c3)
   cartes.push_back(c1);
   cartes.push_back(c2);
   cartes.push_back(c3);
-  ui.journal->afficher_chien_devoile(cartes);
   ui.chien_1->setText(QString::fromUtf8(c1.nom().c_str()));
   ui.chien_2->setText(QString::fromUtf8(c2.nom().c_str()));
   ui.chien_3->setText(QString::fromUtf8(c3.nom().c_str()));

@@ -2,7 +2,7 @@
 
 #define NOM_CLASSE "PartieClient"
 
-#include "ne_pas_deboguer.hpp"
+#include "deboguer.hpp"
 
 #include "option.cpp"
 
@@ -13,6 +13,8 @@ PartieClient::PartieClient(QObject * parent):
 {
   ENTER("PartieClient(QObject * parent)");
   ADD_ARG("parent", parent);
+  connect(this, SIGNAL(doit_emettre(Protocole::Message)),
+	  this, SLOT(assimiler(Protocole::Message)));
 }
 
 bool PartieClient::mon_tour() const
@@ -142,7 +144,7 @@ void PartieClient::assimiler(const Protocole::Message & m)
 	  emit doit_jouer();
 	}
       DEBUG<<"Commencement de la partie."<<std::endl;
-      presenter();
+      //presenter();
       break;
     case Protocole::MONTRER_POIGNEE:
       break;
@@ -165,7 +167,11 @@ void PartieClient::assimiler(const Protocole::Message & m)
       emit tapis_change(tapis());
       break;
     case Protocole::PLI: 
-      emit tapis_change(tapis());
+      if(mon_tour()) 
+	{
+	  m_doit_jouer = true;
+	  emit doit_jouer();
+	}
       //Normalement, Protocole::Carte vient d'être analysé, et le
       //prochain joueur sait déjà qu'il doit jouer.
       //if(mon_tour()) emit doit_jouer();
@@ -199,7 +205,6 @@ void PartieClient::montrer_poignee(std::vector<Carte> const & p)
     {
       m.m.montrer_poignee.atouts[i] = p[i].numero();
     }
-  assimiler(m);
   emit doit_emettre(m);
 }
 
@@ -210,7 +215,6 @@ void PartieClient::jouer(const Carte & c)
   Protocole::Message m;
   m.type = Protocole::REQUETE;
   m.m.requete.carte = c.numero();
-  assimiler(m);
   emit doit_emettre(m);
 }
 
@@ -231,7 +235,6 @@ void PartieClient::appeler(const Carte & c)
   Protocole::Message m;
   m.type = Protocole::APPELER;
   m.m.appeler.carte = c.numero();
-  assimiler(m);
   emit doit_emettre(m);
 }
 
@@ -245,7 +248,6 @@ void PartieClient::ecarter(std::vector<Carte> const & c)
     {
       m.m.ecart.ecart[i] = c[i].numero();
     }
-  assimiler(m);
   emit doit_emettre(m);
 }
 
@@ -297,21 +299,26 @@ void PartieClient::cartes_gagnees
 
 void PartieClient::annuler_transaction()
 {
+  ENTER("annuler_transaction()");
   if(en_cours.empty())
     {
-      //Euh...
+      //Euh... Problème de protocole.
+      DEBUG<<"Aucune transaction n'a été annulée..."<<std::endl;
     }
   else
     {
       Transaction t = en_cours.front();
       en_cours.pop();
+      DEBUG<<"Annulation d'une transaction..."<<std::endl;
       if(!(t.enchere().aucun()))
 	{
+	  DEBUG<<"Annulation d'une enchère."<<std::endl;
 	  //C'est une enchère !
 	  Enchere enchere = t.enchere().get().obtenir().get();
 	  emit enchere_refusee(enchere);
 	  if(m_doit_priser)
 	    {
+	      DEBUG<<"Je relance le joueur..."<<std::endl;
 	      //Je dois reformuler mon enchère.
 	      Enchere indice = t.enchere().get().indice().get();
 	      emit doit_priser(indice);
@@ -319,11 +326,13 @@ void PartieClient::annuler_transaction()
 	}
       if(!(t.appel().aucun()))
 	{
+	  DEBUG<<"Annulation d'un appel."<<std::endl;
 	  //C'est un appel !
 	  Carte appelee = t.appel().get().obtenir().get();
 	  emit appel_refuse(appelee);
 	  if(m_doit_appeler)
 	    {
+	      DEBUG<<"Je relance le joueur..."<<std::endl;
 	      //Je dois reformuler mon appel.
 	      std::vector<Carte> indice = 
 		t.appel().get().indice().get();
@@ -332,11 +341,13 @@ void PartieClient::annuler_transaction()
 	}
       if(!(t.ecart().aucun()))
 	{
+	  DEBUG<<"Annulation d'un écart."<<std::endl;
 	  //C'est un écart refusé.
 	  std::vector<Carte> ecart = t.ecart().get().obtenir().get();
 	  emit ecart_refuse(ecart);
 	  if(m_doit_ecarter)
 	    {
+	      DEBUG<<"Je relance le joueur..."<<std::endl;
 	      std::vector<Carte> possibles = 
 		t.ecart().get().indice1().get();
 	      std::vector<Carte> atouts = 
@@ -346,11 +357,13 @@ void PartieClient::annuler_transaction()
 	}
       if(!(t.jeu().aucun()))
 	{
+	  DEBUG<<"Annulation du jeu d'une carte."<<std::endl;
 	  //Je dois jouer une autre carte.
 	  Carte carte = t.jeu().get().obtenir().get();
 	  emit requete_refusee(carte);
 	  if(m_doit_jouer)
 	    {
+	      DEBUG<<"Je relance le joueur..."<<std::endl;
 	      emit doit_jouer();
 	    }
 	}
@@ -358,6 +371,7 @@ void PartieClient::annuler_transaction()
 }
 void PartieClient::transaction_acceptee()
 {
+  ENTER("transaction_acceptee()");
   if(en_cours.empty())
     {
       //Euh...
@@ -384,12 +398,19 @@ void PartieClient::transaction_acceptee()
 	{
 	  std::vector<Carte> ecart = t.ecart().get().obtenir().get();
 	  emit ecart_accepte(ecart);
+	  for(unsigned int i = 0 ; i < ecart.size() ; i++)
+	    mes_cartes.enlever(ecart[i]);
+	  emit jeu_change(std::vector<Carte>(), ecart);
 	  m_doit_ecarter = false;
 	}
       if(!(t.jeu().aucun()))
 	{
 	  Carte carte = t.jeu().get().obtenir().get();
 	  emit requete_acceptee(carte);
+	  std::vector<Carte> temp;
+	  temp.push_back(carte);
+	  mes_cartes.enlever(carte);
+	  emit jeu_change(std::vector<Carte>(), temp);
 	  m_doit_jouer = false;
 	}
     }
@@ -434,6 +455,8 @@ PartieClient::cartes_ecartables() const
 }
 void PartieClient::ajouter_transaction_prise(unsigned int prise)
 {
+  ENTER("ajouter_transaction_prise(unsigned int prise)");
+  ADD_ARG("prise", prise);
   Protocole::Msg_prise m;
   m.niveau = prise;
   Enchere e(tour(), m);

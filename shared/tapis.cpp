@@ -85,6 +85,7 @@ void Tapis::ajouter(const Protocole::Msg_carte & carte,
       //Le tapis doit être vide pour que l'afficheur affiche la bonne
       //chose (client)
       cartes_gagnees(posees, poseurs, gagnants);
+      DEBUG<<"Écrasement du joueur maître."<<std::endl;
       joueur_maitre = -1;
     }
 }
@@ -131,7 +132,7 @@ bool Tapis::entame(Carte & c) const
 
 bool Tapis::maitre(unsigned int & j) const
 {
-  ENTER("entame(unsigned int & j) const");
+  ENTER("maitre(unsigned int & j) const");
   if(joueur_maitre < 0) EXIT(false);
   j = (joueur_maitre + joueur_ouverture) % 5;
   DEBUG<<"maître : "<<j<<std::endl;
@@ -187,7 +188,7 @@ void Tapis::contenu(std::vector<Carte> & cartes,
   ADD_ARG("poseurs", poseurs);
   cartes.clear();
   poseurs.clear();
-  for(unsigned int i = 0 ; i < 5 ; i++)
+  for(unsigned int i = 0 ; i < m_tapis.size() ; i++)
     {
       //On ajoute la carte du joueur joueur_ouverture + i
       for(unsigned int j = 0 ; j < m_tapis[i].size() ; j++)
@@ -195,7 +196,7 @@ void Tapis::contenu(std::vector<Carte> & cartes,
 	  if(m_tapis[i][j] != DETTE_EXCUSE)
 	    {
 	      DEBUG<<"Dans le tapis, "<<(i + joueur_ouverture) % 5
-		   <<" a joué la carte "<<m_tapis[i][j]<<std::endl;;
+		   <<" a joué la carte "<<m_tapis[i][j]<<std::endl;
 	      cartes.push_back(m_tapis[i][j]);
 	      poseurs.push_back((i + joueur_ouverture) % 5);
 	    }

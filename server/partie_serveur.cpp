@@ -21,7 +21,7 @@ PartieServeur::PartieServeur(QObject * parent):
 void PartieServeur::assimiler(Protocole::Message const & message)
 {
   ENTER("assimiler(Message message)");
-  ADD_ARG("message.type", message.type);
+  ADD_ARG("message", message);
   Partie::assimiler(message);
   /* Le serveur met à jour les mains des joueurs et le tapis. */
   switch(message.type)
@@ -228,10 +228,9 @@ void PartieServeur::assimiler(Protocole::Message const & message)
       if(true)
 	{
 	  DEBUG<<"Jeu de la carte "<<message.m.carte.carte
-	       <<std::endl;
+	       <<" par "<<tour_precedent()<<std::endl;
 	  Carte c(message.m.carte.carte);
-	  //Le tour n'a PAS ENCORE ÉTÉ INCRÉMENTÉ !
-	  jeu_reel[tour()].enlever(c);
+	  jeu_reel[tour_precedent()].enlever(c);
 	}
     case Protocole::PLI:
       DEBUG<<"Prochain joueur : "<<tour()<<std::endl;
@@ -241,6 +240,7 @@ void PartieServeur::assimiler(Protocole::Message const & message)
     default :
       DEBUG<<"Penser à assimiler côté serveur.\n";
     }
+  DEBUG<<"Tapis : "<<tapis()<<std::endl;
 }
 
 int PartieServeur::tester(unsigned int joueur, Protocole::Message const & message) const
@@ -335,7 +335,8 @@ int PartieServeur::tester(unsigned int joueur, Protocole::Message const & messag
       // (si 1. ou 2. n'est pas vérifié, c'est une erreur de protocole)
       //3. Si le joueur possède cette carte.
       //4.a. Si c'est le premier tour (15 cartes) : 
-      //     si c'est la Carte appelée
+      //     si c'est la Carte appelée ou si c'est la couleur appelée
+      //     mais que ce n'est pas le premier joueur,
       //     ou si ce n'est pas la couleur de la Carte appelée.
       //4.b. Si c'est un atout : si le joueur peut couper à la couleur
       //     de l'entame, et s'il monte ou s'il peut pisser.
@@ -354,7 +355,8 @@ int PartieServeur::tester(unsigned int joueur, Protocole::Message const & messag
 		{
 		  DEBUG<<"On en est au premier tour."<<std::endl;
 		  //Premier tour
-		  if(c != appelee && c.couleur() == appelee.couleur())
+		  if(c != appelee && joueur == 0 
+		     && c.couleur() == appelee.couleur())
 		    {
 		      DEBUG<<"Cette couleur est interdite."<<std::endl;
 		      ok = 2;
@@ -513,6 +515,13 @@ void PartieServeur::cartes_gagnees
 	}
     }
   cartes_attaque.push_back(gagnees);
+  Protocole::Message pli;
+  pli.type = Protocole::PLI;
+  unsigned int maitre = 0;
+  if(!(tapis().maitre(maitre))) DEBUG<<"ERREUR ! ERREUR !"<<std::endl;
+  DEBUG<<"Constitution d'un message pli : "<<maitre<<" gagne."<<std::endl;
+  pli.m.pli.joueur = maitre;
+  EMETTRE_A_TOUS(pli);
   if(jeu_reel[0].nombre_cartes() == 0)
     {
       //La partie est finie
@@ -521,15 +530,5 @@ void PartieServeur::cartes_gagnees
       for(unsigned int i = 0 ; i < 5 ; i++)
 	res.m.resultat.resultats[i] = 0;
       EMETTRE_A_TOUS(res);
-    }
-  else
-    {
-      //La partie n'est pas finie !
-      Protocole::Message pli;
-      pli.type = Protocole::PLI;
-      unsigned int maitre = 0;
-      tapis().maitre(maitre);
-      pli.m.pli.joueur = maitre;
-      EMETTRE_A_TOUS(pli);
     }
 }

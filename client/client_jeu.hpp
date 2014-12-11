@@ -268,7 +268,7 @@ signals:
 
      @param tapis Le tapis.
    */
-  void tapis_change(const Tapis & tapis);
+  void tapis_change(Tapis tapis);
 
   /**
      @brief Émis lorsque la partie est terminée.

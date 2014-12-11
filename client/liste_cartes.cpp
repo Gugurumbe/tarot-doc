@@ -6,7 +6,7 @@
 #define DEBOGUER_
 
 #ifdef DEBOGUER_
-#include "deboguer.hpp"
+#include "ne_pas_deboguer.hpp"
 #else
 #include "ne_pas_deboguer.hpp"
 #endif

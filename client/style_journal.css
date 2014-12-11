@@ -4,6 +4,11 @@
     color:white;
 }
 
+p
+{
+    border: 1px solid white;
+}
+
 .connexion
 {
     font-family:Courier, sans-serif;
@@ -18,14 +23,34 @@
     color:#A00000;
 }
 
-.numero
+.information
 {
     color:gray;
 }
 
-.changement_jeu
+.sollicitation
 {
-    color:yellow;
+    color:orange;
+}
+
+.accepte
+{
+    color:#00A000;
+}
+
+.refuse
+{
+    color:#A00000;
+}
+
+.joueur
+{
+    text-decoration:underline;
+}
+
+.prise
+{
+    font-style:italic;
 }
 
 .atout
@@ -51,10 +76,4 @@
 .coeur
 {
     color:#FF0080;
-}
-
-.erreur
-{
-    color:#FF0000;
-    font_weight:bold;
 }

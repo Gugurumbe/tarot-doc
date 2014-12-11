@@ -239,7 +239,7 @@ signals:
      @brief Le tapis a changé.
      @param tapis Le tapis de la partie.
    */
-  void tapis_change(const Tapis & tapis);
+  void tapis_change(Tapis tapis);
 
   /**
      @brief Action refusée.

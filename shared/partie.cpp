@@ -4,7 +4,7 @@
 
 #define NOM_CLASSE "Partie"
 
-#include "ne_pas_deboguer.hpp"
+#include "deboguer.hpp"
 
 /**
    @brief Tapis personnalisé pour usage dans la classe Partie.
@@ -229,6 +229,7 @@ void Partie::assimiler(const Protocole::Message & m)
 	m_tapis->ajouter(m.m.carte, Carte::EXCUSE_IMPRENABLE);
       m_tour_precedent = m_tour;
       m_tour = (m_tour + 1) % 5 ;
+      DEBUG<<"Le tour a été incrémenté, car il y a eu "<<m<<std::endl;
       break;
     case Protocole::PLI:
       m_phase = PHASE_JEU;

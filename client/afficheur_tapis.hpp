@@ -34,7 +34,7 @@ public slots:
      
      @param tapis Le tapis à dessiner.
    */
-  void recalculer(const Tapis & tapis);
+  void recalculer(Tapis tapis);
 };
 
 #endif

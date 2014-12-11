@@ -32,21 +32,21 @@ ClientJeu::ClientJeu(QObject * parent) :
   S(appel_accepte(Carte));
   S(appel_refuse(Carte));
   S(contrat_final(Enchere));
-  S(chien(Carte, Carte, Carte));
+  C(chien_devoile(Carte, Carte, Carte), chien(Carte, Carte, Carte));
   S(doit_ecarter(std::vector<Carte>, std::vector<Carte>));
   S(ecart_accepte(std::vector<Carte>));
   S(ecart_refuse(std::vector<Carte>));
   S(atout_au_chien(std::vector<Carte>));
-  S(maitre_change(unsigned int));
+  C(maitre(unsigned int), maitre_change(unsigned int));
   S(jeu_change(std::vector<Carte>, std::vector<Carte>));
   S(doit_jouer());
   S(requete_acceptee(Carte));
   S(requete_refusee(Carte));
   S(carte_jouee(unsigned int, Carte));
   S(carte_gagnee(Carte, unsigned int, unsigned int));
-  S(pli_termine(unsigned int));
-  S(tapis_change(const Tapis &));
-  S(partie_terminee(std::vector<int>));
+  C(pli(unsigned int), pli_termine(unsigned int));
+  S(tapis_change(Tapis));
+  C(score(std::vector<int>), partie_terminee(std::vector<int>));
 }
 
 void ClientJeu::traiter_connexion()
