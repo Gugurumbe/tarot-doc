@@ -166,12 +166,15 @@ void PartieClient::assimiler(const Protocole::Message & m)
 	}
       emit tapis_change(tapis());
       break;
-    case Protocole::PLI: 
+    case Protocole::PLI:
+      /* 
       if(mon_tour()) 
 	{
 	  m_doit_jouer = true;
 	  emit doit_jouer();
-	}
+	  }
+      //*/ //Le test est fait dans le cas CARTE.
+
       //Normalement, Protocole::Carte vient d'être analysé, et le
       //prochain joueur sait déjà qu'il doit jouer.
       //if(mon_tour()) emit doit_jouer();

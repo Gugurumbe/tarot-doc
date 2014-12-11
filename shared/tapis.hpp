@@ -47,6 +47,12 @@ public:
   Tapis();
 
   /**
+     @brief constructeur de copie.
+     @param tap Le tapis à copier.
+   */
+  Tapis(const Tapis & tap);
+
+  /**
      @brief Destructeur virtuel.
    */
   virtual ~Tapis();
@@ -145,11 +151,20 @@ protected:
      @param cartes Les cartes du pli.
      @param poseurs Les poseurs de ces cartes respectives.
      @param gagnants Les gagnants de ces cartes.
+
+     @warning Au moment de l'appel, le tour a déjà été
+     changé. 
    */
   virtual void cartes_gagnees
   (std::vector<Carte> const & cartes,
    std::vector<unsigned int> const & poseurs,
    std::vector<unsigned int> const & gagnants);
+  
+  /**
+     @brief Appelé lorsque le tour change.
+     @param tour Le nouveau tour.
+   */
+  virtual void tour_change(unsigned int tour);
 private:
 
   /**

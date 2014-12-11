@@ -2,13 +2,23 @@
 
 #define NOM_CLASSE "Tapis"
 
-#include "deboguer.hpp"
+#include "ne_pas_deboguer.hpp"
 
 Tapis::Tapis():joueur_ouverture(-1), joueur_maitre(-1), 
 	       maitre_fixe(false)
 {
   ENTER("Tapis()");
   m_tapis.reserve(5);
+}
+
+Tapis::Tapis(const Tapis & tap):
+  joueur_ouverture(tap.joueur_ouverture),
+  joueur_maitre(tap.joueur_maitre),
+  maitre_fixe(tap.maitre_fixe),
+  m_tapis(tap.m_tapis)
+{
+  ENTER("Tapis(const Tapis & tap)");
+  DEBUG<<"Joueur maître : "<<joueur_maitre<<std::endl;
 }
 
 Tapis::~Tapis()
@@ -78,15 +88,18 @@ void Tapis::ajouter(const Protocole::Msg_carte & carte,
 	  if(posees[i] != EXCUSE || exc == Carte::EXCUSE_PRENABLE)
 	    gagnants[i] = (maitre_final + joueur_ouverture) % 5;
 	}
+      joueur_maitre = maitre_final;
       joueur_ouverture = (maitre_final + joueur_ouverture) % 5;
       m_tapis.clear();
-      //La variable joueur_maitre doit avoir un sens dans la chaîne
-      //d'appels de cartes_gagnees (serveur)
-      //Le tapis doit être vide pour que l'afficheur affiche la bonne
-      //chose (client)
+      maitre_fixe = false;
+      tour_change(joueur_ouverture);
       cartes_gagnees(posees, poseurs, gagnants);
-      DEBUG<<"Écrasement du joueur maître."<<std::endl;
       joueur_maitre = -1;
+    }
+  else
+    {
+      //Le tour a quand même changé.
+      tour_change((joueur_ouverture + m_tapis.size()) % 5);
     }
 }
 
@@ -122,8 +135,14 @@ bool Tapis::plus_gros_atout(Carte & c) const
 bool Tapis::entame(Carte & c) const
 {
   ENTER("entame(Carte & c) const");
-  if(m_tapis.size() == 0) EXIT(false);
-  if(m_tapis[0][0] == EXCUSE && m_tapis.size() == 2) EXIT(false);
+  if(m_tapis.size() == 0) 
+    {
+      EXIT(false);
+    }
+  if(m_tapis[0][0] == EXCUSE && m_tapis.size() == 2) 
+    {
+      EXIT(false);
+    }
   if(m_tapis[0][0] == EXCUSE) c = m_tapis[1][0];
   else c = m_tapis[0][0];
   DEBUG<<"Entame : "<<c<<std::endl;
@@ -133,7 +152,12 @@ bool Tapis::entame(Carte & c) const
 bool Tapis::maitre(unsigned int & j) const
 {
   ENTER("maitre(unsigned int & j) const");
-  if(joueur_maitre < 0) EXIT(false);
+  DEBUG<<"maître : "<<(joueur_maitre + joueur_ouverture) % 5
+       <<std::endl;
+  if(joueur_maitre < 0) 
+    {
+      EXIT(false);
+    }
   j = (joueur_maitre + joueur_ouverture) % 5;
   DEBUG<<"maître : "<<j<<std::endl;
   EXIT(true);
@@ -164,6 +188,10 @@ void Tapis::cartes_gagnees(std::vector<Carte> const & cartes,
   ADD_ARG("poseurs", poseurs);
   ADD_ARG("gagnants", gagnants);
   DEBUG<<"Spécialisez cette classe."<<std::endl;
+}
+
+void Tapis::tour_change(unsigned int)
+{
 }
 
 std::ostream & Tapis::presenter(std::ostream & out) const

@@ -281,6 +281,10 @@ public:
 			    std::vector<unsigned int> const &,
 			    std::vector<unsigned int> const &);
   /**
+     @brief Ne pas regarder.
+   */
+  void throw_tour_change(unsigned int);
+  /**
      @brief Donne l'enchère maximale.
      
      @return L'enchère maximale jusqu'à présent, ou une Passe de la

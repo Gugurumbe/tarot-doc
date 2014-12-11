@@ -52,6 +52,10 @@ protected:
   virtual void cartes_gagnees(std::vector<Carte> const & c,
 			      std::vector<unsigned int> const & poseurs,
 			      std::vector<unsigned int> const & gagnants);
+  /**
+     @brief Le tour de jeu change.
+   */
+  virtual void tour_change(unsigned int tour);
 private:
   Partie * const m_parent;
 };
@@ -143,7 +147,7 @@ void Partie::set_phase(Partie::PhaseJeu p)
 void Partie::assimiler(const Protocole::Message & m)
 {
   ENTER("assimiler(Message m)");
-  ADD_ARG("m.type", m.type);
+  ADD_ARG("m", m);
   switch(m.type)
     {
     case Protocole::ERREUR_PROTOCOLE:
@@ -227,15 +231,16 @@ void Partie::assimiler(const Protocole::Message & m)
 	m_tapis->ajouter(m.m.carte, Carte::EXCUSE_PRENABLE);
       else
 	m_tapis->ajouter(m.m.carte, Carte::EXCUSE_IMPRENABLE);
-      m_tour_precedent = m_tour;
-      m_tour = (m_tour + 1) % 5 ;
-      DEBUG<<"Le tour a été incrémenté, car il y a eu "<<m<<std::endl;
       break;
     case Protocole::PLI:
       m_phase = PHASE_JEU;
-      //C'est là qu'on voit la réelle utilité du tour précédent :
-      m_tour_precedent = m_tour;
-      m_tour = m.m.pli.joueur;
+      if(m_tour != static_cast<unsigned int>(m.m.pli.joueur))
+	{
+	  std::cerr<<"Erreur : le tour selon moi ("
+		   <<m_tour<<") est différent du tour selon le sereur ("
+		   <<m.m.pli.joueur<<") !"<<std::endl;
+	  exit(-1);
+	}
       plis_joues++;
       break;
     case Protocole::RESULTAT:
@@ -262,6 +267,12 @@ void Partie::throw_changement_maitre(unsigned int ancien,
 void Partie::throw_nouveau_maitre(unsigned int maitre)
 {
   nouveau_maitre(maitre);
+}
+
+void Partie::throw_tour_change(unsigned int tour)
+{
+  m_tour_precedent = m_tour;
+  m_tour = tour;
 }
 
 void Partie::throw_cartes_gagnees
@@ -299,7 +310,8 @@ void Partie::cartes_gagnees(std::vector<Carte> const &,
 {
 }
 
-TapisPartie::TapisPartie(Partie * parent) : m_parent(parent)
+TapisPartie::TapisPartie(Partie * parent) :
+  Tapis(), m_parent(parent)
 {
 }
 
@@ -320,4 +332,9 @@ void TapisPartie::cartes_gagnees
  std::vector<unsigned int> const & gagnants)
 {
   m_parent->throw_cartes_gagnees(cartes, poseurs, gagnants);
+}
+
+void TapisPartie::tour_change(unsigned int tour)
+{
+  m_parent->throw_tour_change(tour);
 }

@@ -137,7 +137,7 @@ void PartieServeur::assimiler(Protocole::Message const & message)
 	      DEBUG<<chien[i].numero()<<std::endl;
 	      mess_chien.m.chien.chien[i] = chien[i].numero();
 	    }
-	  DEBUG<<"]";
+	  DEBUG<<"]"<<std::endl;
 	  EMETTRE_A_TOUS(mess_chien);
 	}
       // Cherche le joueur appelé
@@ -243,12 +243,13 @@ void PartieServeur::assimiler(Protocole::Message const & message)
   DEBUG<<"Tapis : "<<tapis()<<std::endl;
 }
 
-int PartieServeur::tester(unsigned int joueur, Protocole::Message const & message) const
+int PartieServeur::tester(unsigned int joueur, 
+			  Protocole::Message const & message) const
 {
   ENTER("tester(unsigned int joueur, Message message) const");
   ADD_ARG("joueur", joueur);
-  ADD_ARG("message.type", message.type);
-  int ok = 0;
+  ADD_ARG("message", message);
+  int ok = 0; //1 : erreur de protocole, 2 : refusé
   switch(message.type)
     {
     case Protocole::PRISE:
@@ -289,7 +290,7 @@ int PartieServeur::tester(unsigned int joueur, Protocole::Message const & messag
       else ok = 1;
       break;
     case Protocole::ECART:
-      DEBUG<<"Test d'un écart : ";
+      DEBUG<<"Test d'un écart : "<<std::endl;
       if(phase() == CONSTITUTION_ECART &&
 	 joueur == attaquant() &&
 	 Enchere::GARDE_SANS > enchere_de(joueur).prise())
@@ -333,88 +334,176 @@ int PartieServeur::tester(unsigned int joueur, Protocole::Message const & messag
       //1. Si on en est à la phase de jeu.
       //2. Si c'est bien au tour de ce joueur.
       // (si 1. ou 2. n'est pas vérifié, c'est une erreur de protocole)
-      //3. Si le joueur possède cette carte.
-      //4.a. Si c'est le premier tour (15 cartes) : 
-      //     si c'est la Carte appelée ou si c'est la couleur appelée
-      //     mais que ce n'est pas le premier joueur,
-      //     ou si ce n'est pas la couleur de la Carte appelée.
-      //4.b. Si c'est un atout : si le joueur peut couper à la couleur
-      //     de l'entame, et s'il monte ou s'il peut pisser.
-      //4.c. Sinon, si ce n'est pas la couleur de l'entame : si le joueur
-      //     peut couper et s'il peut défausser.
+      //3. Si la main du joueur accepte cette carte.
+      //4. Si le tapis accepte cette carte.
       if(phase() == Partie::PHASE_JEU && tour() == joueur)
 	{
+	  //1, 2 : ok
 	  DEBUG<<"Déjà, c'est le tour du joueur."<<std::endl;
 	  ok = 0;
 	  Carte c(message.m.requete.carte);
 	  Carte appelee(*(donner_contrat_final().carte_appelee()));
-	  if(jeu_reel[joueur].possede(c))
+	  Carte demandee(78);
+	  bool entame = tapis().entame(demandee);
+	  Carte plus_gros_atout = Carte(56);
+	  bool contient_atout = tapis().plus_gros_atout
+	    (plus_gros_atout);
+	  bool carte_possedee = jeu_reel[joueur].possede(c);
+	  if(carte_possedee)
 	    {
-	      DEBUG<<"Le joueur possède cette Carte."<<std::endl;
-	      if(jeu_reel[(joueur + 1) % 5].nombre_cartes() == 15)
+	      DEBUG<<"Je possède la carte "<<c<<std::endl;
+	      if(c == EXCUSE)
 		{
-		  DEBUG<<"On en est au premier tour."<<std::endl;
-		  //Premier tour
-		  if(c != appelee && joueur == 0 
-		     && c.couleur() == appelee.couleur())
-		    {
-		      DEBUG<<"Cette couleur est interdite."<<std::endl;
-		      ok = 2;
-		    }
+		  DEBUG<<"J'ai toujours le droit de jouer l'excuse."
+		       <<std::endl;
+		  ok = 0;
 		}
-	      if(c.atout())
+	      else if(entame && c.couleur() == demandee.couleur())
 		{
-		  DEBUG<<"C'est un atout."<<std::endl;
-		  Carte entame(0);
-		  if(tapis().entame(entame))
+		  DEBUG<<"Je fournis."<<std::endl;
+		  if(c.couleur() == Carte::ATOUT)
 		    {
-		      if(jeu_reel[joueur].peut_couper
-			 (entame.couleur()))
+		      DEBUG<<"Comme c'est de l'atout, je dois monter."
+			   <<std::endl;
+		      if((contient_atout && c > plus_gros_atout))
 			{
-			  DEBUG<<"Vous pouvez couper, a priori."
+			  DEBUG<<"Je monte sur un atout existant."
 			       <<std::endl;
-			  Carte pgo(56);
-			  if(tapis().plus_gros_atout(pgo))
-			    {
-			      if(c > pgo ||
-				 jeu_reel[joueur].peut_pisser
-				 (pgo.valeur()))
-				DEBUG<<"Vous pouvez couper.";
-				ok = 0;
-			    }
-			  //Aucun atout n'a encore été joué
-			  else ok = 0;
-			}
-		      //Vous ne pouvez pas couper.
-		    }
-		  else ok = 0; //Première carte
-		}
-	      else if(ok == 0)
-		{
-		  DEBUG<<"Ce n'est pas un atout."<<std::endl;
-		  Carte entame(0);
-		  if(tapis().entame(entame))
-		    {
-		      if(c.couleur() == entame.couleur())
-			{
 			  ok = 0;
-			  //Rien d'interdit : on fournit
+			}
+		      else if(contient_atout)
+			{
+			  DEBUG<<"Je ne monte pas sur "
+			       <<plus_gros_atout<<"."<<std::endl;
+			  if(jeu_reel[joueur].peut_pisser
+			     (plus_gros_atout.valeur()))
+			    {
+			      DEBUG<<"Je peux pisser."
+				   <<std::endl;
+			      ok = 0;
+			    }
+			  else
+			    {
+			      DEBUG<<"Je ne peux pas pisser."
+				   <<std::endl;
+			      ok = 2;
+			    }
 			}
 		      else
 			{
-			  //On n'a plus d'atout
-			  if(jeu_reel[joueur].peut_couper(c.couleur())
-			     &&jeu_reel[joueur].peut_defausser())
-			    {
-			      ok = 0;
-			    }
-			  //Sinon, vous ne pouvez pas défausser.
+			  ERROR<<"Il n'y a pas encore d'atout "
+			       <<"alors qu'il y a une entame à "
+			       <<"la couleur atout..."<<std::endl;
+			  ok = 2;
 			}
 		    }
-		  else ok = 0;//Première carte.
+		  else
+		    {
+		      DEBUG<<"Je fournis à une couleur non atout."
+			   <<std::endl;
+		      ok = 0;
+		    }
+		}
+	      else if(entame && c.couleur() == Carte::ATOUT)
+		{
+		  DEBUG<<"Je ne suis pas le premier à jouer, "
+		       <<"et je coupe."<<std::endl;
+		  if(jeu_reel[joueur].peut_couper(demandee.couleur()))
+		    {
+		      DEBUG<<"J'ai le droit de couper."
+			   <<std::endl;
+		      if(contient_atout && c > plus_gros_atout)
+			{
+			  DEBUG<<"D'autres ont coupé, mais je surcoupe."
+			       <<std::endl;
+			  ok = 0;
+			}
+		      else if(contient_atout)
+			{
+			  DEBUG<<"Je ne monte pas sur "
+			       <<plus_gros_atout<<"."<<std::endl;
+			  if(jeu_reel[joueur].peut_pisser
+			     (plus_gros_atout.valeur()))
+			    {
+			      DEBUG<<"Je peux pisser."
+				   <<std::endl;
+			      ok = 0;
+			    }
+			  else
+			    {
+			      DEBUG<<"Je ne peux pas pisser."
+				   <<std::endl;
+			      ok = 2;
+			    }
+			}
+		      else
+			{
+			  DEBUG<<"Aucun problème, je suis le premier à couper."
+			       <<std::endl;
+			  ok = 0;
+			}
+		    }
+		  else
+		    {
+		      DEBUG<<"Je ne peux pas couper."
+			   <<std::endl;
+		      ok = 2;
+		    }
+		}
+	      else if(entame)
+		{
+		  DEBUG<<"Je ne fournis ni ne coupe."
+		       <<std::endl;
+		  if(jeu_reel[joueur].peut_couper(demandee.couleur()) 
+		     && jeu_reel[joueur].peut_defausser())
+		    {
+		      DEBUG<<"J'ai le droit de défausser une carte."
+			   <<std::endl;
+		      ok = 0;
+		    }
+		  else
+		    {
+		      DEBUG<<"Je n'ai pas le droit de défausser."
+			   <<std::endl;
+		      ok = 2;
+		    }
+		}
+	      else
+		{
+		  DEBUG<<"Vous êtes le premier à jouer."
+		       <<std::endl;
+		  if(jeu_reel[(joueur + 1) % 5].nombre_cartes() == 15)
+		    {
+		      DEBUG<<"On en est au premier tour."<<std::endl;
+		      if(c == appelee || 
+			 c.couleur() != appelee.couleur())
+			{
+			  DEBUG<<"Ce n'est pas la couleur appelée ("
+			       <<"ou alors c'est la carte appelée)."
+			       <<std::endl;
+			  ok = 0;
+			}
+		      else
+			{
+			  DEBUG<<"Cette carte ne peut pas être "
+			       <<"jouée au premier tour."
+			       <<std::endl;
+			  ok = 2;
+			}
+		    }
+		  else
+		    {
+		      DEBUG<<"On n'en est pas au premier tour."
+			   <<std::endl;
+		      ok = 0;
+		    }
 		}
 	    }
-	  else ok = 2;
+	  else
+	    {
+	      DEBUG<<"Vous n'avez pas cette carte."<<std::endl;
+	      ok = 2;
+	    }
 	}
       else ok = 1;
       break;
@@ -517,8 +606,7 @@ void PartieServeur::cartes_gagnees
   cartes_attaque.push_back(gagnees);
   Protocole::Message pli;
   pli.type = Protocole::PLI;
-  unsigned int maitre = 0;
-  if(!(tapis().maitre(maitre))) DEBUG<<"ERREUR ! ERREUR !"<<std::endl;
+  unsigned int maitre = tour();
   DEBUG<<"Constitution d'un message pli : "<<maitre<<" gagne."<<std::endl;
   pli.m.pli.joueur = maitre;
   EMETTRE_A_TOUS(pli);
