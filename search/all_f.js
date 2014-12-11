@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['score',['score',['../classClientJeu.html#a72b396bb38387886ca988fdb766b6334',1,'ClientJeu::score()'],['../classPartieClient.html#a27847c55ed5fe875ebf4fdfcd3f2e3e6',1,'PartieClient::score()']]],
+  ['score',['score',['../classPartieClient.html#a27847c55ed5fe875ebf4fdfcd3f2e3e6',1,'PartieClient']]],
   ['selecteur_5fcarte_2ehpp',['selecteur_carte.hpp',['../selecteur__carte_8hpp.html',1,'']]],
   ['selecteur_5fcarte_5fdefini',['SELECTEUR_CARTE_DEFINI',['../selecteur__carte_8hpp.html#add1030e2f78c56668b874c3c156fa57d',1,'selecteur_carte.hpp']]],
   ['selecteurcarte',['SelecteurCarte',['../classSelecteurCarte.html',1,'SelecteurCarte'],['../classSelecteurCarte.html#a4d460713ac85d66271a9f5245429dfdb',1,'SelecteurCarte::SelecteurCarte()']]],
@@ -14,6 +14,7 @@ var searchData=
   ['serveur_5fjeu_5fdefini',['SERVEUR_JEU_DEFINI',['../serveur__jeu_8hpp.html#a5dce8862f0dac44154ba4373489ee0f7',1,'serveur_jeu.hpp']]],
   ['serveurdebogage',['ServeurDebogage',['../classServeurDebogage.html',1,'ServeurDebogage'],['../classServeurDebogage.html#a574a34defe7200caa599b5ffa4b51008',1,'ServeurDebogage::ServeurDebogage()']]],
   ['serveurjeu',['ServeurJeu',['../classServeurJeu.html',1,'ServeurJeu'],['../classServeurJeu.html#a42732713b6d1da78b632fdb80df6fb02',1,'ServeurJeu::ServeurJeu()']]],
+  ['set',['set',['../classOption.html#a4c0b6655a78791a9bd2343d9a08c558e',1,'Option::set(const T &amp;obj)'],['../classOption.html#a41d13a4a902bfb182f3d039d393de63b',1,'Option::set()']]],
   ['set_5fattaquant',['set_attaquant',['../classPartie.html#a6bd294a0e3cdb55bb24ee2b6a2809bc4',1,'Partie']]],
   ['set_5fcartes',['set_cartes',['../classSelecteurCarte.html#ae7098faf41ca92db18895987e1732387',1,'SelecteurCarte']]],
   ['set_5fnum',['set_num',['../classLabelNom.html#aa3bf3f7517cc2403263f81808f89e41b',1,'LabelNom']]],
