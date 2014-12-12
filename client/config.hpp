@@ -9,9 +9,9 @@
 enum {YES, NO};
 
 /**
-   @brief Se connecte automatiquement sur l'adresse 127.0.0.1:45678.
+   @brief Se connecte automatiquement sur l'adresse.
  */
-#define AUTO YES
+#define AUTO QHostAddress("92.144.7.179"), 45678
 
 /**
    @brief Définit la localisation de la feuille de style pour le journal.

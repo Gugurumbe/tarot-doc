@@ -57,7 +57,7 @@ void Serveur::remove(unsigned int i)
 unsigned int Serveur::ouvrir_local()
 {
   ENTER("ouvrir_local()");
-  listener.listen(QHostAddress("127.0.0.1"), PORT);
+  listener.listen(QHostAddress(QHostAddress::Any), PORT);
   //On liste sur l'adresse loopback, pour n'accepter que les sockets de la
   //même machine. On peut spécifier le port explicitement, mais rien ne dit
   //qu'il soit déjà pris.
@@ -69,7 +69,11 @@ unsigned int Serveur::ouvrir_local()
 unsigned int Serveur::ouvrir_global()
 {
   ENTER("ouvrir_global()");
-  listener.listen(QHostAddress::Any, PORT);
+  if(!(listener.listen(QHostAddress::Any, PORT)))
+    {
+      std::cerr<<"Impossible de lister"<<std::endl;
+      exit(-1);
+    }
   // On accepte les connexions venant de n'importe où.
   quint16 port = listener.serverPort();
   EXIT(port);

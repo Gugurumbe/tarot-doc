@@ -4,9 +4,6 @@
 ClientGraphique::ClientGraphique(QWidget * parent): 
   QWidget(parent), jeu(this)
 {
-  // Pour l'instant, la connexion est automatique.
-  QString addr = "127.0.0.1";
-  quint16 port = 45678;
   ui.setupUi(this);
   //Remplissage des SelecteurCarte :
   ui.selecteur_appel->afficher_toutes();
@@ -16,7 +13,7 @@ ClientGraphique::ClientGraphique(QWidget * parent):
   //L'autre est cartes_jouables
 #define C(signal) connect(&jeu, SIGNAL(signal), \
 			  ui.journal, SLOT(signal));
-  jeu.connecter(QHostAddress(addr), port);
+  jeu.connecter(AUTO);
   C(connecte());
   C(deconnecte());
   C(numero_change(unsigned int));

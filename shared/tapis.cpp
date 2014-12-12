@@ -79,8 +79,8 @@ void Tapis::ajouter(const Protocole::Msg_carte & carte,
 	for(unsigned int j = 0 ; j < m_tapis[i].size() ; j++)
 	  {
 	    posees.push_back(m_tapis[i][j]);
-	    poseurs.push_back(i);
-	    gagnants.push_back(i);
+	    poseurs.push_back((i + joueur_ouverture) % 5);
+	    gagnants.push_back((i + joueur_ouverture) % 5);
 	  }
       //Assignation des cartes au gagnant :
       for(unsigned int i = 0 ; i < posees.size() ; i++)
