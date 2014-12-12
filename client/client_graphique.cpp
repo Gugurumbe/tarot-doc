@@ -1,6 +1,24 @@
 #include "client_graphique.hpp"
 #include "config.hpp"
 
+QHostAddress adresse()
+{
+#ifdef AUTO_ADDR
+  return AUTO_ADDR;
+#else
+  return QHostAddress("127.0.0.1");
+#endif
+}
+
+quint16 port()
+{
+#ifdef AUTO_PORT
+  return AUTO_PORT;
+#else
+  return 45678;
+#endif
+}
+
 ClientGraphique::ClientGraphique(QWidget * parent): 
   QWidget(parent), jeu(this)
 {
@@ -13,7 +31,7 @@ ClientGraphique::ClientGraphique(QWidget * parent):
   //L'autre est cartes_jouables
 #define C(signal) connect(&jeu, SIGNAL(signal), \
 			  ui.journal, SLOT(signal));
-  jeu.connecter(AUTO);
+  jeu.connecter(adresse(), port());
   C(connecte());
   C(deconnecte());
   C(numero_change(unsigned int));
