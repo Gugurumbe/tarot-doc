@@ -4,7 +4,7 @@
 
 #define NOM_CLASSE "Serveur"
 
-#include "ne_pas_deboguer.hpp"
+#include "deboguer.hpp"
 
 Serveur::Serveur(QObject * parent) : QObject(parent), ppl(0)
 {
@@ -209,6 +209,14 @@ void Serveur::envoyer(unsigned int i, QByteArray paquet)
     {
       clients[i]->write(paquet);  
       clients[i]->flush();
+      DEBUG<<"Écrit à "<<i<<" ("
+	   <<clients[i]->peerAddress()
+	.toString().toUtf8().data()<<")"
+	   <<std::endl;
+    }
+  else
+    {
+      DEBUG<<"Impossible d'envoyer le message."<<std::endl;
     }
 }
 
@@ -216,7 +224,7 @@ void Serveur::envoyer(unsigned int i, Protocole::Message m)
 {
   ENTER("envoyer(unsigned int i, Protocole::Message m)");
   ADD_ARG("i", i);
-  ADD_ARG("m.type", m.type);
+  ADD_ARG("m", m);
   QByteArray paquet;
   QDataStream out(&paquet, QIODevice::WriteOnly);
   ecrire(m, out);

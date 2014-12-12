@@ -25,7 +25,7 @@ Table::Table(QObject * parent) : QObject(parent)
   int tmp;
   for(unsigned int i = 1 ; i < ordre.size() ; i++)
     {
-      r = rand() % i ;
+      r = rand() % (i + 1) ;
       //échange des cases i et r
       tmp = ordre[r];
       ordre[r] = ordre[i];
