@@ -208,8 +208,6 @@ void Serveur::envoyer(unsigned int i, QByteArray paquet)
   if(i < clients.size()) 
     {
       clients[i]->write(paquet);  
-      DEBUG<<"En attente d'écriture..."<<std::endl;
-      DEBUG<<clients[i]->waitForBytesWritten();
       DEBUG<<"Écrit à "<<i<<" ("
 	   <<clients[i]->peerAddress()
 	.toString().toUtf8().data()<<")"
