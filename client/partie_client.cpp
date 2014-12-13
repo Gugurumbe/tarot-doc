@@ -160,7 +160,7 @@ void PartieClient::assimiler(const Protocole::Message & m)
 	  transaction_acceptee();
 	}
       emit carte_jouee(tour_precedent(), Carte(m.m.carte.carte));
-      if(mon_tour()) 
+      if(mon_tour() && mes_cartes.nombre_cartes() > 0) 
 	{
 	  m_doit_jouer = true;
 	  emit doit_jouer();
