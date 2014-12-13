@@ -22,6 +22,7 @@ serveur_debogage.hpp               \
 partie_serveur.hpp                 \
 ../shared/enchere.hpp              \
 ../shared/debogueur.hpp            \
+score.hpp                          \
 config.hpp
 
 SOURCES += main_program.cpp        \
@@ -36,6 +37,7 @@ serveur_debogage.cpp               \
 ../shared/tapis.cpp                \
 partie_serveur.cpp                 \
 ../shared/debogueur.cpp            \
-../shared/enchere.cpp
+../shared/enchere.cpp              \
+score.cpp
 
 QT += network

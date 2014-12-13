@@ -9,6 +9,8 @@
 #include <cstdlib>
 #include <ctime>
 
+#ifndef TESTER_POINTS
+
 int main(int argc, char * argv[])
 {
   ENTER_FUNCTION("main(int argc, char * argv[])");
@@ -28,3 +30,14 @@ int main(int argc, char * argv[])
   Debogueur::ret(ret);
   return ret;
 }
+
+#else
+
+#include "score.hpp"
+
+int main(int argc, char * argv[])
+{
+  return 0;
+}
+
+#endif

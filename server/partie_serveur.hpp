@@ -12,6 +12,7 @@
 
 #include "partie.hpp"
 #include "main.hpp"
+#include "score.hpp"
 #include <QObject>
 
 /**
@@ -66,6 +67,8 @@ private:
   /**
      @brief Les cartes gagnées par l'attaque.
      
+     Chaque ligne correspond à un tour. Contient exactement 15 lignes
+     à la fin, éventuellement vides.
      On compte les points à la fin.
   */
   std::vector<std::vector<Carte> > cartes_attaque;

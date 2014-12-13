@@ -615,6 +615,14 @@ void PartieServeur::cartes_gagnees
       //La partie est finie
       Protocole::Message res;
       res.type = Protocole::RESULTAT;
+      //Problème du petit au bout (défense)
+      /*
+      std::vector<int> r = compter(contrat_final(),
+				   joueur_appele,
+				   cartes_attaque,
+				   ???,
+				   ...)
+      */
       for(unsigned int i = 0 ; i < 5 ; i++)
 	res.m.resultat.resultats[i] = 0;
       EMETTRE_A_TOUS(res);
