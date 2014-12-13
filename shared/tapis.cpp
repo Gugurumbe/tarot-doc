@@ -139,7 +139,7 @@ bool Tapis::entame(Carte & c) const
     {
       EXIT(false);
     }
-  if(m_tapis[0][0] == EXCUSE && m_tapis.size() == 2) 
+  if(m_tapis[0][0] == EXCUSE && m_tapis.size() == 1) 
     {
       EXIT(false);
     }

@@ -625,7 +625,7 @@ void PartieServeur::cartes_gagnees
        <<maitre<<" gagne."<<std::endl;
   pli.m.pli.joueur = maitre;
   EMETTRE_A_TOUS(pli);
-  if(jeu_reel[tour()].nombre_cartes() == 0)
+  if(jeu_reel[tour()].nombre_cartes() <= 1)
     {
       DEBUG<<"La partie est finie."<<std::endl;
       Protocole::Message res;
@@ -648,7 +648,7 @@ void PartieServeur::cartes_gagnees
     }
   else
     {
-      DEBUG<<"Il reste encore "<<jeu_reel[tour()].nombre_cartes()
+      DEBUG<<"Il reste encore "<<jeu_reel[tour()].nombre_cartes() - 1
 	   <<" cartes dans la main de "<<tour()<<std::endl;
     }
 }
