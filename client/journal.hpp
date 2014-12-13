@@ -174,6 +174,7 @@ public slots :
 private:
   void p(std::string const & utf8);
   QString header;
+  QString body;
   QString footer;
 };
 

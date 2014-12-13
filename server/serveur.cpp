@@ -24,8 +24,8 @@ unsigned int Serveur::push(QTcpSocket * sock)
   while(ppl >= clients.size())
     {
       clients.push_back(0);
-      //en_attente.push_back(std::queue<QByteArray>());
-      //taille_restante.push_back(0);
+      en_attente.push_back(std::queue<QByteArray>());
+      taille_restante.push_back(0);
     }
   //Rajoute un endroit vide à la fin si tout est plein.
   i = ppl;
@@ -34,8 +34,8 @@ unsigned int Serveur::push(QTcpSocket * sock)
   while(ppl >= clients.size())
     {
       clients.push_back(0);
-      //en_attente.push_back(std::queue<QByteArray>());
-      //taille_restante.push_back(0);
+      en_attente.push_back(std::queue<QByteArray>());
+      taille_restante.push_back(0);
     }
   EXIT(i);
   return i; //retourne la position occupée.
@@ -50,8 +50,8 @@ void Serveur::remove(unsigned int i)
   if(i < ppl) ppl = i ;         // avance la première place libre
   // On ne détruit pas le client.
   //On vide la file d'attente
-  //en_attente[i] = std::queue<QByteArray>();
-  //taille_restante[i] = 0;
+  en_attente[i] = std::queue<QByteArray>();
+  taille_restante[i] = 0;
 }
 
 unsigned int Serveur::ouvrir_local()
@@ -108,8 +108,8 @@ void Serveur::accepter()
       QObject::connect(sock, SIGNAL(disconnected()),
 		       sock, SLOT(deleteLater()));
       //Pas besoin de garder une socket si elle est déconnectée.
-      //      QObject::connect(sock, SIGNAL(bytesWritten(qint64)),
-      //	       this, SLOT(envoyer_suivant(qint64)));
+      QObject::connect(sock, SIGNAL(bytesWritten(qint64)),
+		       this, SLOT(envoyer_suivant(qint64)));
       emit connexion(push(sock));
     }
 }
@@ -207,7 +207,15 @@ void Serveur::envoyer(unsigned int i, QByteArray paquet)
   ADD_ARG("paquet.toHex()", paquet.toHex().data());
   if(i < clients.size()) 
     {
-      clients[i]->write(paquet);  
+      if(taille_restante[i] <= 0)
+	{
+	  taille_restante[i] = paquet.size();
+	  clients[i]->write(paquet);  
+	}
+      else
+	{
+	  en_attente[i].push(paquet);
+	}
       DEBUG<<"Écrit à "<<i<<" ("
 	   <<clients[i]->peerAddress()
 	.toString().toUtf8().data()<<")"
@@ -216,6 +224,26 @@ void Serveur::envoyer(unsigned int i, QByteArray paquet)
   else
     {
       DEBUG<<"Impossible d'envoyer le message."<<std::endl;
+    }
+}
+
+void Serveur::envoyer_suivant(qint64 taille_ecrite)
+{
+  ENTER("envoyer_suivant(qint64 taille_ecrite)");
+  ADD_ARG("taille_ecrite", taille_ecrite);
+  unsigned int i = find(sender());
+  if(i < taille_restante.size())
+    {
+      DEBUG<<"Envoie le prochain message de "<<i<<std::endl;
+      taille_restante[i] -= taille_ecrite;
+      if(taille_restante[i] <= 0 && !(en_attente[i].empty()))
+	{
+	  DEBUG<<"Envoi du paquet suivant."<<std::endl;
+	  QByteArray paquet = en_attente[i].front();
+	  taille_restante[i] = paquet.size();
+	  en_attente[i].pop();
+	  clients[i]->write(paquet);
+	}
     }
 }
 

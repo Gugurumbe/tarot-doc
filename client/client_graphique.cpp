@@ -65,11 +65,15 @@ ClientGraphique::ClientGraphique(QWidget * parent):
 	  ui.mes_cartes, SLOT(gagner
 			      (std::vector<Carte>, 
 			       std::vector<Carte>)));
+  connect(&jeu, SIGNAL(jeu_est(std::vector<Carte>)),
+	  ui.mes_cartes, SLOT(set(std::vector<Carte>)));
   connect(&jeu, SIGNAL(jeu_change
 		       (std::vector<Carte>, std::vector<Carte>)),
 	  ui.cartes_jouables, SLOT(modifier_cartes
 				   (std::vector<Carte>,
 				    std::vector<Carte>)));
+  connect(&jeu, SIGNAL(jeu_est(std::vector<Carte>)),
+	  ui.cartes_jouables, SLOT(set_cartes(std::vector<Carte>)));
   connect(&jeu, SIGNAL(tapis_change(Tapis)),
 	  ui.tapis, SLOT(recalculer(Tapis)));
   connect(&jeu, SIGNAL(chien(Carte, Carte, Carte)), 

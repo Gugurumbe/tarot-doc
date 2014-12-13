@@ -83,3 +83,9 @@ void ListeCartes::gagner(std::vector<Carte> gagnees, std::vector<Carte> perdues)
     }
   setHtml(header + rendre(cartes) + footer);
 }
+
+void ListeCartes::set(std::vector<Carte> cartes)
+{
+  this->cartes = cartes;
+  setHtml(header + rendre(cartes) + footer);
+}

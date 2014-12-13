@@ -178,6 +178,8 @@ private:
      @brief Utilisé pour la reconnexion.
    */
   unsigned int port;
+  
+  int taille_paquet;
 };
 
 #ifndef PRINT_ARRAY

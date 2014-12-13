@@ -15,41 +15,35 @@ Journal::Journal(QWidget * parent):
 {
   ENTER("Journal(QWidget * parent)");
   ADD_ARG("parent", parent);
-  p("<!DOCTYPE html>");
-  p("<html>");
-  p("<head>");
-  p("<title>Journal</title>");
-  p("<meta charset=\"utf8\"/>");
-  p("<link rel=\"stylesheet\" type=\"text/css\" href=");
-  p(STYLE);
-  p("/>");
-  p("</head>");
-  p("<body>");
-  p("<p>");
-  footer+=S("</p></body></html>");
+  header = S("<!DOCTYPE html><html><head><title>Journal</title>"
+	     "<meta charset=\"utf8\"/><link rel=\"stylesheet\" "
+	     "type=\"text/css\" href=") + S(STYLE) + 
+    S("/></head><body>");
+  footer+=S("</body></html>");
 }
 
 void Journal::connecte()
 {
   ENTER("connecte()");
+  body = "";
   p("<p class=\"connexion\">Connecté.</p>");
-  setHtml(header + footer);
+  setHtml(header + body + footer);
 }
 
 void Journal::deconnecte()
 {
   ENTER("deconnecte()");
   p("<p class=\"deconnexion\">Déconnecté.</p>");
-  setHtml(header + footer);
+  setHtml(header + body + footer);
 }
 
 void Journal::numero_change(unsigned int n)
 {
   p("<p class=\"information\">Vous jouez en tant que"
     " <span class=\"joueur\">");
-  header += LabelNom::nom_de(n);
+  body += LabelNom::nom_de(n);
   p("</span>.</p>");
-  setHtml(header + footer);
+  setHtml(header + body + footer);
 }
 
 void Journal::doit_priser(Option<Enchere> max)
@@ -63,7 +57,7 @@ void Journal::doit_priser(Option<Enchere> max)
   else
     {
       p("Vous devez faire mieux que <span class=\"joueur\">");
-      header+=LabelNom::nom_de(max.get().joueur());
+      body+=LabelNom::nom_de(max.get().joueur());
       p("</span>. ");
       switch(max.get().prise())
 	{
@@ -89,7 +83,7 @@ void Journal::doit_priser(Option<Enchere> max)
 	}
       p("</p>");
     }
-  setHtml(header + footer);
+  setHtml(header + body + footer);
 }
 
 void Journal::enchere_acceptee(Enchere e)
@@ -118,7 +112,7 @@ void Journal::enchere_acceptee(Enchere e)
       p("Je n'ai pas réussi à déterminer votre prise.");
     }
   p("</p>");
-  setHtml(header + footer);
+  setHtml(header + body + footer);
 }
 
 void Journal::enchere_refusee(Enchere e)
@@ -148,13 +142,13 @@ void Journal::enchere_refusee(Enchere e)
 	"vous aviez demandée.");
     }
   p("</p>");
-  setHtml(header + footer);
+  setHtml(header + body + footer);
 }
 
 void Journal::contrat_intermediaire(Enchere e)
 {
   p("<p class=\"information\"><span class=\"joueur\">");
-  header+=LabelNom::nom_de(e.joueur());
+  body+=LabelNom::nom_de(e.joueur());
   p("</span> ");
   switch(e.prise())
     {
@@ -179,7 +173,7 @@ void Journal::contrat_intermediaire(Enchere e)
       p("Fait une enchère (indéterminée ?!?!).");
     }
   p("</p>");
-  setHtml(header + footer);
+  setHtml(header + body + footer);
 }
 
 void Journal::doit_appeler(std::vector<Carte> possibles)
@@ -195,7 +189,7 @@ void Journal::doit_appeler(std::vector<Carte> possibles)
       p("</li>");
     }
   p("</ul></p>");
-  setHtml(header + footer);
+  setHtml(header + body + footer);
 }
 
 void Journal::appel_accepte(Carte c)
@@ -203,7 +197,7 @@ void Journal::appel_accepte(Carte c)
   p("<p class=\"accepte\">L'appel de la carte <span class=\"");
   p(c.couleur_simple());p("\">");p(c.nom());
   p("</span> a réussi.</p>");
-  setHtml(header + footer);
+  setHtml(header + body + footer);
 }
 
 void Journal::appel_refuse(Carte c)
@@ -211,14 +205,14 @@ void Journal::appel_refuse(Carte c)
   p("<p class=\"refuse\">L'appel de la carte <span class=\"");
   p(c.couleur_simple());p("\">");p(c.nom());
   p("</span> a échoué.</p>");
-  setHtml(header + footer);
+  setHtml(header + body + footer);
 }
 
 void Journal::contrat_final(Enchere e)
 {
   p("<p class=\"information\">Finalement, "
     "<span class=\"joueur\">");
-  header+=LabelNom::nom_de(e.joueur());
+  body+=LabelNom::nom_de(e.joueur());
   p("</span> <span class=\"prise\">");
   switch(e.prise())
     {
@@ -245,7 +239,7 @@ void Journal::contrat_final(Enchere e)
   p(a.couleur_simple());
   p("\">");p(a.nom());p("</span>.");
   p("</p>");
-  setHtml(header + footer);
+  setHtml(header + body + footer);
 }
 
 void Journal::chien(Carte c1, Carte c2, Carte c3)
@@ -258,7 +252,7 @@ p(c2.nom());p("</li>");
   p("<li class=\"");p(c3.couleur_simple());p("\">");
 p(c3.nom());p("</li>");
   p("</ul></p>");
-  setHtml(header + footer);
+  setHtml(header + body + footer);
 }
 
 void Journal::doit_ecarter(std::vector<Carte> possibles,
@@ -278,7 +272,7 @@ void Journal::doit_ecarter(std::vector<Carte> possibles,
       p("\">");p(atouts[i].nom());p("</li>");
     }
   p("</ul></p>");
-  setHtml(header + footer);
+  setHtml(header + body + footer);
 }
 
 void Journal::ecart_accepte(std::vector<Carte> ecart)
@@ -290,7 +284,7 @@ void Journal::ecart_accepte(std::vector<Carte> ecart)
       p("\">");p(ecart[i].nom());p("</li>");
     }
   p("</ul></p>");
-  setHtml(header + footer);
+  setHtml(header + body + footer);
 }
 
 void Journal::ecart_refuse(std::vector<Carte> ecart)
@@ -302,7 +296,7 @@ void Journal::ecart_refuse(std::vector<Carte> ecart)
       p("\">");p(ecart[i].nom());p("</li>");
     }
   p("</ul></p>");
-  setHtml(header + footer);
+  setHtml(header + body + footer);
 }
 
 void Journal::atout_au_chien(std::vector<Carte> atouts)
@@ -315,14 +309,14 @@ void Journal::atout_au_chien(std::vector<Carte> atouts)
       p("\">");p(atouts[i].nom());p("</li>");
     }
   p("</ul></p>");
-  setHtml(header + footer);
+  setHtml(header + body + footer);
 }
 
 void Journal::maitre_change(unsigned int maitre)
 {
   p("<p class=\"information\">Le joueur maître change : "
     "c'est maintenant <span class=\"joueur\">");
-  header+=LabelNom::nom_de(maitre);
+  body+=LabelNom::nom_de(maitre);
   p("</span>.</p>");
 }
 
@@ -343,13 +337,13 @@ void Journal::jeu_change(std::vector<Carte> gagnees,
       p("\">");p(perdues[i].nom());p("</li>");
     }
   p("</ul></p>");
-  setHtml(header + footer);
+  setHtml(header + body + footer);
 }
 
 void Journal::doit_jouer()
 {
   p("<p class=\"sollicitation\">Vous devez jouer.</p>");
-  setHtml(header + footer);
+  setHtml(header + body + footer);
 }
 
 void Journal::requete_acceptee(Carte jouee)
@@ -358,7 +352,7 @@ void Journal::requete_acceptee(Carte jouee)
     "<span class=\"");
   p(jouee.couleur_simple());
   p("\">");p(jouee.nom());p("</span></p>");
-  setHtml(header + footer);
+  setHtml(header + body + footer);
 }
 
 void Journal::requete_refusee(Carte jouee)
@@ -367,18 +361,18 @@ void Journal::requete_refusee(Carte jouee)
     "<span class=\"");
   p(jouee.couleur_simple());
   p("\">");p(jouee.nom());p("</span></p>");
-  setHtml(header + footer);
+  setHtml(header + body + footer);
 }
 
 void Journal::carte_jouee(unsigned int joueur,
 				   Carte jouee)
 {
   p("<p class=\"information\"><span class=\"joueur\">");
-  header+=LabelNom::nom_de(joueur);
+  body+=LabelNom::nom_de(joueur);
   p("</span> a joué <span class=\"");
   p(jouee.couleur_simple());p("\">");p(jouee.nom());
   p("</span></p>");
-  setHtml(header + footer);
+  setHtml(header + body + footer);
 }
 
 void Journal::carte_gagnee(Carte carte, 
@@ -386,21 +380,21 @@ void Journal::carte_gagnee(Carte carte,
 				    unsigned int gagnant)
 {
   p("<p class=\"information\"><span class=\"joueur\">");
-  header+=LabelNom::nom_de(gagnant);
+  body+=LabelNom::nom_de(gagnant);
   p("</span> remporte la carte <span class=\"");
   p(carte.couleur_simple());p("\">");p(carte.nom());
   p("</span> de <span class=\"joueur\">");
-  header+=LabelNom::nom_de(poseur);
+  body+=LabelNom::nom_de(poseur);
   p("</span></p>");
-  setHtml(header + footer);
+  setHtml(header + body + footer);
 }
 
 void Journal::pli_termine(unsigned int gagnant)
 {
   p("<p class=\"information\"><span class=\"joueur\">");
-  header+=LabelNom::nom_de(gagnant);
+  body+=LabelNom::nom_de(gagnant);
   p("</span> remporte le pli.</p>");
-  setHtml(header + footer);
+  setHtml(header + body + footer);
 }
 
 void Journal::tapis_change(Tapis tapis)
@@ -413,7 +407,7 @@ void Journal::tapis_change(Tapis tapis)
   if(tapis.maitre(maitre))
     {
       p("le joueur maître est <span class=\"joueur\">");
-      header+=LabelNom::nom_de(maitre);
+      body+=LabelNom::nom_de(maitre);
       p("</span>.");
     }
   else p("le tapis est vide.");
@@ -421,12 +415,12 @@ void Journal::tapis_change(Tapis tapis)
   for(unsigned int i = 0 ; i < cartes.size() ; i++)
     {
       p("<tr><td class=\"joueur\">");
-      header+=LabelNom::nom_de(poseurs[i]);
+      body+=LabelNom::nom_de(poseurs[i]);
       p("</td><td class=\"");p(cartes[i].couleur_simple());
       p("\">");p(cartes[i].nom());p("</td></tr>");
     }
   p("</table></p>");
-  setHtml(header + footer);
+  setHtml(header + body + footer);
 }
 
 void Journal::partie_terminee(std::vector<int> scores)
@@ -436,14 +430,14 @@ void Journal::partie_terminee(std::vector<int> scores)
   for(unsigned int i = 0 ; i < scores.size() ; i++)
     {
       p("<tr><td class=\"joueur\">");
-      header+=LabelNom::nom_de(i);
-      p("</td><td>");header+=scores[i];p("</td></tr>");
+      body+=LabelNom::nom_de(i);
+      p("</td><td>");body+=scores[i];p("</td></tr>");
     }
   p("</table></p>");
-  setHtml(header + footer);
+  setHtml(header + body + footer);
 }
 
 void Journal::p(std::string const & utf8)
 {
-  header += (QString::fromUtf8(utf8.c_str()));
+  body += (QString::fromUtf8(utf8.c_str()));
 }

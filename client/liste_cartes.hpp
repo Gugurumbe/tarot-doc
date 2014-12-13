@@ -35,6 +35,12 @@ public slots:
    */
   void gagner(std::vector<Carte> gagnees, std::vector<Carte> perdues);
 
+  /**
+     @brief Définit les cartes dont on dispose.
+     @param cartes Les cartes dont on dispose.
+   */
+  void set(std::vector<Carte> cartes);
+
 private:
   std::vector<Carte> cartes;
   QString header;

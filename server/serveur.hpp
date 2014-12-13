@@ -176,7 +176,7 @@ public slots:
      @param t : le nombre d'octets écrits. Attention : il en reste
      peut-être encore à écrire.
    */
-  //void envoyer_suivant(qint64 t);
+  void envoyer_suivant(qint64 t);
 
  signals:
 
@@ -285,14 +285,14 @@ public slots:
      premier. Il faut donc attendre qu'un paquet soit envoyé avant
      d'en envoyer un autre.
   */
-  //std::vector<std::queue<QByteArray> > en_attente;
+  std::vector<std::queue<QByteArray> > en_attente;
 
   /**
      @brief Tailles des paquets en cours d'envoi
      
      Tailles restantes à envoyer avant que la socket soit libre.
   */
-  //std::vector<qint64> taille_restante;
+  std::vector<qint64> taille_restante;
 };
 
 #endif

@@ -236,6 +236,13 @@ signals:
 		  std::vector<Carte> perdues);
 
   /**
+     @brief Votre jeu vous est donné.
+     
+     @param cartes Mon jeu.
+  */
+  void jeu_est(std::vector<Carte> cartes);
+
+  /**
      @brief Le tapis a changé.
      @param tapis Le tapis de la partie.
    */

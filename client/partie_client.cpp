@@ -52,6 +52,7 @@ void PartieClient::assimiler(const Protocole::Message & m)
       set_phase(ENCHERES);
       emit jeu_change(std::vector<Carte>(mes_cartes.cartes()), 
 		      std::vector<Carte>());
+      emit jeu_est(std::vector<Carte>(mes_cartes.cartes()));
       if(m_mon_tour == 0) 
 	{
 	  m_doit_priser = true;

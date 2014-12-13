@@ -17,7 +17,7 @@
 int main(int argc, char * argv[])
 {
   QApplication app(argc, argv);
-  ClientGraphique client;
+  Coquille client;
   client.show();
   return app.exec();
 }

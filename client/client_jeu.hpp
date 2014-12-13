@@ -217,6 +217,13 @@ signals:
    */
   void jeu_change(std::vector<Carte> gagnees,
 		  std::vector<Carte> perdues);
+  /**
+     @brief Émis lorsque mon jeu change.
+     @see jeu_change(std::vector<Carte>, std::vector<Carte>)
+     
+     Émis à chaque fois qu'on distribue des cartes uniquement.
+   */
+  void jeu_est(std::vector<Carte> cartes);
 
   /**
      @brief Émis lorsque je dois jouer.

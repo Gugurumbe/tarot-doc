@@ -39,6 +39,7 @@ ClientJeu::ClientJeu(QObject * parent) :
   S(atout_au_chien(std::vector<Carte>));
   C(maitre(unsigned int), maitre_change(unsigned int));
   S(jeu_change(std::vector<Carte>, std::vector<Carte>));
+  S(jeu_est(std::vector<Carte>));
   S(doit_jouer());
   S(requete_acceptee(Carte));
   S(requete_refusee(Carte));
