@@ -6,42 +6,70 @@
 
 std::vector<int> compter(const Enchere & contrat_final,
 			 unsigned int joueur_appele,
-			 std::vector<std::vector<Carte> > tours,
-			 bool defense_petit_au_bout,
-			 std::vector<unsigned int> poignees)
+			 const std::vector<std::vector<Carte> >
+			 & gagnees,
+			 const std::vector<std::vector<Carte> >
+			 & perdues,
+			 const std::vector<unsigned int> 
+			 & poignees)
 {
   ENTER_FUNCTION
-    ("compter(Enchere cf, uint appele, vector<vector<Carte>> tours");
-  Debogueur::arg("cf", contrat_final);
-  Debogueur::arg("appele", joueur_appele);
-  Debogueur::arg("tours", tours);
+    ("compter(const Enchere & contrat_final, "
+     "unsigend int joueur_appele, "
+     "const std::vector<std::vector<Carte> > & gagnees, "
+     "const std::vector<std::vector<Carte> > & perdues, "
+     "const std::vector<unsigned int> & poignees)");
+  Debogueur::arg("contrat_final", contrat_final);
+  Debogueur::arg("joueur_appele", joueur_appele);
+  Debogueur::arg("gagnees", gagnees);
+  Debogueur::arg("perdues", perdues);
+  Debogueur::arg("poignees", poignees);
   //Décompte des points de cartes :
   int demipoints_attaque = 0;
   int nombre_bouts = 0;
   unsigned int preneur = contrat_final.joueur();
-  bool petit_au_bout = false;
+  bool pab_attaque = false, pab_defense = false;
   dbg<<"Comptage des cartes : "<<std::endl;
-  for(unsigned int i = 0 ; i < tours.size() ; i++)
+  for(unsigned int i = 0 ; i < gagnees.size() ; i++)
     {
       dbg<<"Tour "<<i<<"..."<<std::endl;
-      for(unsigned int j = 0 ; j < tours[i].size() ; j++)
+      for(unsigned int j = 0 ; j < gagnees[i].size() ; j++)
 	{
-	  dbg<<"La carte "<<tours[i][j]<<" rapporte "
-	     <<tours[i][j].demipoints()<<" demi-points."
+	  dbg<<"La carte "<<gagnees[i][j]<<" rapporte "
+	     <<gagnees[i][j].demipoints()<<" demi-points."
 	     <<std::endl;
-	  demipoints_attaque+=tours[i][j].demipoints();
-	  if(tours[i][j].bout())
+	  demipoints_attaque+=gagnees[i][j].demipoints();
+	  if(gagnees[i][j].bout())
 	    {
 	      dbg<<"C'est un bout."<<std::endl;
 	      nombre_bouts++;
 	    }
-	  if(i == -1 + tours.size() && tours[i][j] == PETIT)
-	    {
-	      dbg<<"Petit au bout !"<<std::endl;
-	      petit_au_bout = true;
-	    }
 	}
     }
+  //Recherche du petit dans un dernier tour :
+  //attaque :
+  for(unsigned int i = 0 ; 
+      i < gagnees[-1 + gagnees.size()].size() ; i++)
+    {
+      if(gagnees[-1 + gagnees.size()][i] == PETIT)
+	{
+	  dbg<<"L'attaque mène le petit au bout."
+	     <<std::endl;
+	  pab_attaque = true;
+	}
+    }
+  //Défense :
+  if(!pab_attaque)
+    for(unsigned int i = 0 ;
+	i < perdues[-1 + gagnees.size()].size() ; i++)
+      {
+	if(perdues[-1 + perdues.size()][i] == PETIT)
+	  {
+	    dbg<<"La défense mène le petit au bout."
+	       <<std::endl;
+	    pab_defense = true;
+	  }
+      }
   unsigned int points = demipoints_attaque / 2;
   unsigned int doit_faire = 0;
   switch(nombre_bouts)
@@ -83,13 +111,13 @@ std::vector<int> compter(const Enchere & contrat_final,
   dbg<<"On ajoute le nombre de points de l'attaque."
      <<std::endl;
   total += points - doit_faire;
-  if(petit_au_bout)
+  if(pab_attaque)
     {
       dbg<<"Petit au bout pour l'attaque : +10."
 	 <<std::endl;
       total += 10;
     }
-  if(defense_petit_au_bout)
+  else if(pab_defense)
     {
       dbg<<"Petit au bout pour la défense : -10."
 	 <<std::endl;
@@ -109,7 +137,7 @@ std::vector<int> compter(const Enchere & contrat_final,
       break;
     case Enchere::GARDE_CONTRE :
       total *= 6 ;
-      dbg<<"Garde : multiplication par 6 !"
+      dbg<<"Garde contre : multiplication par 6 !"
 	 <<std::endl;
       break;
     case Enchere::PASSE : //absurde

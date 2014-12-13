@@ -121,6 +121,12 @@ void PartieServeur::assimiler(Protocole::Message const & message)
 		   <<std::endl;
 	      cartes_attaque.push_back(chien);
 	    }
+	  else
+	    {
+	      DEBUG<<"La défense gagne les cartes du chien."
+		   <<std::endl;
+	      cartes_defense.push_back(chien);
+	    }
 	  Protocole::Message jeu;
 	  jeu.type = Protocole::JEU;
 	  jeu.m.jeu.chelem = (chelem() >= 0 ? chelem() : 5);
@@ -175,6 +181,8 @@ void PartieServeur::assimiler(Protocole::Message const & message)
 	      ecart.push_back(message.m.ecart.ecart[i]);
 	    }
 	  DEBUG<<"Écart compris."<<std::endl;
+	  //On sauve ces cartes.
+	  cartes_attaque.push_back(ecart);
 	  //On enlève les cartes de la main de l'attaquant.
 	  for(unsigned int i = 0 ; i < 3 ; i++)
 	    {
@@ -596,18 +604,25 @@ void PartieServeur::cartes_gagnees
   ADD_ARG("poseurs", poseurs);
   ADD_ARG("gagnants", gagnants);
   std::vector<Carte> gagnees;
+  std::vector<Carte> perdues;
   for(unsigned int i = 0 ; i < cartes.size() ; i++)
     {
       if(gagnants[i] == attaquant() || gagnants[i] == joueur_appele)
 	{
 	  gagnees.push_back(cartes[i]);
 	}
+      else
+	{
+	  perdues.push_back(cartes[i]);
+	}
     }
   cartes_attaque.push_back(gagnees);
+  cartes_defense.push_back(perdues);
   Protocole::Message pli;
   pli.type = Protocole::PLI;
   unsigned int maitre = tour();
-  DEBUG<<"Constitution d'un message pli : "<<maitre<<" gagne."<<std::endl;
+  DEBUG<<"Constitution d'un message pli : "
+       <<maitre<<" gagne."<<std::endl;
   pli.m.pli.joueur = maitre;
   EMETTRE_A_TOUS(pli);
   if(jeu_reel[0].nombre_cartes() == 0)
@@ -615,16 +630,20 @@ void PartieServeur::cartes_gagnees
       //La partie est finie
       Protocole::Message res;
       res.type = Protocole::RESULTAT;
-      //Problème du petit au bout (défense)
-      /*
-      std::vector<int> r = compter(contrat_final(),
+      std::vector<unsigned int> poignees;
+      for(unsigned int i = 0 ; i < 5 ; i++)
+	{
+	  poignees.push_back(poignee(i));
+	}
+      std::vector<int> r = compter(donner_contrat_final(),
 				   joueur_appele,
 				   cartes_attaque,
-				   ???,
-				   ...)
-      */
-      for(unsigned int i = 0 ; i < 5 ; i++)
-	res.m.resultat.resultats[i] = 0;
+				   cartes_defense,
+				   poignees);
+      for(unsigned int i = 0 ; i < r.size() ; i++)
+	{
+	  res.m.resultat.resultats[i] = r[i];
+	}
       EMETTRE_A_TOUS(res);
     }
 }

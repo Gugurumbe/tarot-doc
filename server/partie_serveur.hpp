@@ -73,6 +73,8 @@ private:
   */
   std::vector<std::vector<Carte> > cartes_attaque;
 
+  std::vector<std::vector<Carte> > cartes_defense;
+
   /**
      @brief Le chien.
    */
