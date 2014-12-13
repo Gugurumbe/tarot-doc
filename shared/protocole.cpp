@@ -375,7 +375,7 @@ void ecrire_pli(Protocole::Msg_pli const & pli,
 bool lire_resultat(QDataStream & in,
 		   Protocole::Msg_resultat & resultat)
 {
-  quint16 points;
+  qint16 points;
   for(int i = 0 ; i < 5 ; i ++)
     {
       in>>points;
@@ -389,7 +389,7 @@ void ecrire_resultat(Protocole::Msg_resultat const & resultat,
 {
   for(int i = 0 ; i < 5 ; i ++)
     {
-      out<<(quint16)resultat.resultats[i];
+      out<<(qint16)resultat.resultats[i];
     }
 }
 
