@@ -14,7 +14,7 @@ enum {YES, NO};
    92.144.7.179
    192.168.1.17
  */
-#define AUTO_ADDR QHostAddress("92.144.7.179")
+#define AUTO_ADDR QHostAddress("192.168.1.17")
 
 /**
    @brief Se connecte automatiquement sur le port
@@ -32,4 +32,4 @@ enum {YES, NO};
    Prend les valeurs Coquille (5 clients à la fois)
    ou ClientGraphique (1 client)
  */
-#define INTERFACE ClientGraphique
+#define INTERFACE Coquille

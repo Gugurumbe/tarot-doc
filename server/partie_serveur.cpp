@@ -625,9 +625,9 @@ void PartieServeur::cartes_gagnees
        <<maitre<<" gagne."<<std::endl;
   pli.m.pli.joueur = maitre;
   EMETTRE_A_TOUS(pli);
-  if(jeu_reel[0].nombre_cartes() == 0)
+  if(jeu_reel[tour()].nombre_cartes() == 0)
     {
-      //La partie est finie
+      DEBUG<<"La partie est finie."<<std::endl;
       Protocole::Message res;
       res.type = Protocole::RESULTAT;
       std::vector<unsigned int> poignees;
@@ -645,5 +645,10 @@ void PartieServeur::cartes_gagnees
 	  res.m.resultat.resultats[i] = r[i];
 	}
       EMETTRE_A_TOUS(res);
+    }
+  else
+    {
+      DEBUG<<"Il reste encore "<<jeu_reel[tour()].nombre_cartes()
+	   <<" cartes dans la main de "<<tour()<<std::endl;
     }
 }

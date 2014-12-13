@@ -70,7 +70,14 @@ void SelecteurCarte::modifier_cartes(std::vector<Carte> gagnees,
 
 void SelecteurCarte::set_cartes(const std::vector<Carte> & cartes)
 {
-  affichees = cartes;
+  affichees.clear();
+  for(unsigned int i = 0 ; i < cartes.size() ; i++)
+    {
+      std::vector<Carte>::iterator j = affichees.begin();
+      while(j != affichees.end() && j->numero() < cartes[i].numero())j++;
+      //Il faut insérer avant j
+      affichees.insert(j, cartes[i]);
+    }
   mise_a_jour();
 }
 
