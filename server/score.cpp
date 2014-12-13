@@ -61,7 +61,7 @@ std::vector<int> compter(const Enchere & contrat_final,
   //Défense :
   if(!pab_attaque)
     for(unsigned int i = 0 ;
-	i < perdues[-1 + gagnees.size()].size() ; i++)
+	i < perdues[-1 + perdues.size()].size() ; i++)
       {
 	if(perdues[-1 + perdues.size()][i] == PETIT)
 	  {
