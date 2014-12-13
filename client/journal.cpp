@@ -4,6 +4,7 @@
 #include "option.cpp"
 #include <sstream>
 #include <QScrollBar>
+#include <QTextStream>
 
 #define NOM_CLASSE "Journal"
 
@@ -435,7 +436,9 @@ void Journal::partie_terminee(std::vector<int> scores)
     {
       p("<tr><td class=\"joueur\">");
       body+=LabelNom::nom_de(i);
-      p("</td><td>");body+=QString::fromInt(scores[i]);
+      p("</td><td>");
+      QTextStream out(&body, QIODevice::WriteOnly);
+      out<<scores[i];
       p("</td></tr>");
     }
   p("</table></p>");
