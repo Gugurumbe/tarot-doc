@@ -328,20 +328,28 @@ void Journal::maitre_change(unsigned int maitre)
 void Journal::jeu_change(std::vector<Carte> gagnees,
 				  std::vector<Carte> perdues)
 {
-  p("<p class=\"information\">Votre jeu change : vous "
-    "avez gagné <ul>");
-  for(unsigned int i = 0 ; i < gagnees.size() ; i++)
+  p("<p class=\"information\">Votre jeu change. ");
+  if(!gagnees.empty())
     {
-      p("<li class=\"");p(gagnees[i].couleur_simple());
-      p("\">");p(gagnees[i].nom());p("</li>");
+      p("Vous avez gagné : <ul>");
+      for(unsigned int i = 0 ; i < gagnees.size() ; i++)
+	{
+	  p("<li class=\"");p(gagnees[i].couleur_simple());
+	  p("\">");p(gagnees[i].nom());p("</li>");
+	}
+      p("</ul>");
     }
-  p("</ul> et vous avez perdu <ul>");
-  for(unsigned int i = 0 ; i < perdues.size() ; i++)
+  if(!perdues.empty())
     {
-      p("<li class=\"");p(perdues[i].couleur_simple());
-      p("\">");p(perdues[i].nom());p("</li>");
+      p("Vous avez perdu : <ul>");
+      for(unsigned int i = 0 ; i < perdues.size() ; i++)
+	{
+	  p("<li class=\"");p(perdues[i].couleur_simple());
+	  p("\">");p(perdues[i].nom());p("</li>");
+	}
+      p("</ul>");
     }
-  p("</ul></p>");
+  p("</p>");
   SET_HTML(header + body + footer);
 }
 
