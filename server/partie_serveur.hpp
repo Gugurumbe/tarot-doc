@@ -89,6 +89,13 @@ private:
      @brief Le joueur appelé.
   */
   unsigned int joueur_appele;
+  
+  /**
+     @brief Plis restants à jouer.
+     
+     La valeur est décrémentée APRÈS l'assimilation du message pli.
+   */
+  unsigned int plis_restants;
 
 protected:
     

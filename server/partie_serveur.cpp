@@ -12,7 +12,7 @@
 
 PartieServeur::PartieServeur(QObject * parent):
   QObject(parent), Partie(), jeu_reel(5),
-  joueur_appele(5)
+  joueur_appele(5), plis_restants(15)
 {
   ENTER("PartieServeur(QObject * parent)");
   ADD_ARG("parent", (void *)parent);
@@ -625,7 +625,8 @@ void PartieServeur::cartes_gagnees
        <<maitre<<" gagne."<<std::endl;
   pli.m.pli.joueur = maitre;
   EMETTRE_A_TOUS(pli);
-  if(jeu_reel[tour()].nombre_cartes() <= 1)
+  plis_restants--;
+  if(plis_restants == 0)
     {
       DEBUG<<"La partie est finie."<<std::endl;
       Protocole::Message res;
@@ -645,10 +646,5 @@ void PartieServeur::cartes_gagnees
 	  res.m.resultat.resultats[i] = r[i];
 	}
       EMETTRE_A_TOUS(res);
-    }
-  else
-    {
-      DEBUG<<"Il reste encore "<<jeu_reel[tour()].nombre_cartes() - 1
-	   <<" cartes dans la main de "<<tour()<<std::endl;
     }
 }
