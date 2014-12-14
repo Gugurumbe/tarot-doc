@@ -21,5 +21,6 @@ var searchData=
   ['attaquant',['attaquant',['../classPartie.html#abb22c4e65f62fdcab2600376ed9ea5a6',1,'Partie']]],
   ['attente_5fchelem',['ATTENTE_CHELEM',['../classPartie.html#aa94cf37ae5f9f1f87ac640b8dc0048c9a6dfab9b1e5dfce7870baa58003599be8',1,'Partie']]],
   ['aucun',['aucun',['../classOption.html#a5893eee085f375d1581d340f1197c081',1,'Option']]],
-  ['auto',['AUTO',['../client_2config_8hpp.html#a0cc6f7717df9fbdc0f33efb88720a639',1,'config.hpp']]]
+  ['auto_5faddr',['AUTO_ADDR',['../client_2config_8hpp.html#aeb53e4cb507414654f1baef355d7b13b',1,'config.hpp']]],
+  ['auto_5fport',['AUTO_PORT',['../client_2config_8hpp.html#ad1b13dd82aa38bb19b6be39178b99f31',1,'config.hpp']]]
 ];

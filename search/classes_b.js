@@ -1,8 +1,7 @@
 var searchData=
 [
-  ['table',['Table',['../classTable.html',1,'']]],
-  ['tapis',['Tapis',['../classTapis.html',1,'']]],
-  ['tapispartie',['TapisPartie',['../classTapisPartie.html',1,'']]],
-  ['testeur',['Testeur',['../classTesteur.html',1,'']]],
-  ['transaction',['Transaction',['../classTransaction.html',1,'']]]
+  ['selecteurcarte',['SelecteurCarte',['../classSelecteurCarte.html',1,'']]],
+  ['serveur',['Serveur',['../classServeur.html',1,'']]],
+  ['serveurdebogage',['ServeurDebogage',['../classServeurDebogage.html',1,'']]],
+  ['serveurjeu',['ServeurJeu',['../classServeurJeu.html',1,'']]]
 ];

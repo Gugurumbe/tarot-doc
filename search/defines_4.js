@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['journal_5fdefini',['JOURNAL_DEFINI',['../journal_8hpp.html#a74f6160bd565ab6983234db928630d7e',1,'journal.hpp']]]
+  ['interface',['INTERFACE',['../client_2config_8hpp.html#aefb2aa75be4323fe06eb3ec8394bdfc7',1,'config.hpp']]]
 ];

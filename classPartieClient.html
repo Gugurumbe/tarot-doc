@@ -149,6 +149,9 @@ Signaux</h2></td></tr>
 <tr class="memitem:a0c9805f898622621b8ca07ffcb3d0242"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartieClient.html#a0c9805f898622621b8ca07ffcb3d0242">jeu_change</a> (std::vector&lt; <a class="el" href="classCarte.html">Carte</a> &gt; gagnees, std::vector&lt; <a class="el" href="classCarte.html">Carte</a> &gt; perdues)</td></tr>
 <tr class="memdesc:a0c9805f898622621b8ca07ffcb3d0242"><td class="mdescLeft">&#160;</td><td class="mdescRight">Votre jeu a été modifié.  <a href="#a0c9805f898622621b8ca07ffcb3d0242">Plus de détails...</a><br/></td></tr>
 <tr class="separator:a0c9805f898622621b8ca07ffcb3d0242"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a713642e2d184162c7c1cc9a23dc9da6e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartieClient.html#a713642e2d184162c7c1cc9a23dc9da6e">jeu_est</a> (std::vector&lt; <a class="el" href="classCarte.html">Carte</a> &gt; cartes)</td></tr>
+<tr class="memdesc:a713642e2d184162c7c1cc9a23dc9da6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Votre jeu vous est donné.  <a href="#a713642e2d184162c7c1cc9a23dc9da6e">Plus de détails...</a><br/></td></tr>
+<tr class="separator:a713642e2d184162c7c1cc9a23dc9da6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9ad741fd18e2b7581344e1ef94175620"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartieClient.html#a9ad741fd18e2b7581344e1ef94175620">tapis_change</a> (<a class="el" href="classTapis.html">Tapis</a> <a class="el" href="classPartie.html#a8e85cd52fcb26ee887b5c5441ffc00b2">tapis</a>)</td></tr>
 <tr class="memdesc:a9ad741fd18e2b7581344e1ef94175620"><td class="mdescLeft">&#160;</td><td class="mdescRight">Le tapis a changé.  <a href="#a9ad741fd18e2b7581344e1ef94175620">Plus de détails...</a><br/></td></tr>
 <tr class="separator:a9ad741fd18e2b7581344e1ef94175620"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -1386,6 +1389,38 @@ PartieClient::doit_emettre(Message) </dd></dl>
 
 </div>
 </div>
+<a class="anchor" id="a713642e2d184162c7c1cc9a23dc9da6e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PartieClient::jeu_est </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classCarte.html">Carte</a> &gt;&#160;</td>
+          <td class="paramname"><em>cartes</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Votre jeu vous est donné. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">cartes</td><td>Mon jeu. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="a830bc935819cc4fdaa1640ce0e8b5e6d"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1774,12 +1809,13 @@ PartieClient::doit_emettre(Message) </dd></dl>
 </div>
 <hr/>La documentation de cette classe a été générée à partir des fichiers suivants :<ul>
 <li>client/<a class="el" href="partie__client_8hpp_source.html">partie_client.hpp</a></li>
+<li>build-client-Desktop_Qt_5_4_0_MinGW_32bit-Debug/debug/moc_partie_client.cpp</li>
 <li>client/partie_client.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi 11 Décembre 2014 16:51:41 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche 14 Décembre 2014 14:02:11 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

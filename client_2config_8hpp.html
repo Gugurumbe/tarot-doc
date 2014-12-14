@@ -100,14 +100,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:a0cc6f7717df9fbdc0f33efb88720a639"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0cc6f7717df9fbdc0f33efb88720a639"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2config_8hpp.html#a0cc6f7717df9fbdc0f33efb88720a639">AUTO</a>&#160;&#160;&#160;YES</td></tr>
-<tr class="memdesc:a0cc6f7717df9fbdc0f33efb88720a639"><td class="mdescLeft">&#160;</td><td class="mdescRight">Se connecte automatiquement sur l'adresse 127.0.0.1:45678. <br/></td></tr>
-<tr class="separator:a0cc6f7717df9fbdc0f33efb88720a639"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb53e4cb507414654f1baef355d7b13b"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2config_8hpp.html#aeb53e4cb507414654f1baef355d7b13b">AUTO_ADDR</a>&#160;&#160;&#160;QHostAddress(&quot;192.168.1.17&quot;)</td></tr>
+<tr class="memdesc:aeb53e4cb507414654f1baef355d7b13b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Se connecte automatiquement sur l'adresse.  <a href="#aeb53e4cb507414654f1baef355d7b13b">Plus de détails...</a><br/></td></tr>
+<tr class="separator:aeb53e4cb507414654f1baef355d7b13b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1b13dd82aa38bb19b6be39178b99f31"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad1b13dd82aa38bb19b6be39178b99f31"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2config_8hpp.html#ad1b13dd82aa38bb19b6be39178b99f31">AUTO_PORT</a>&#160;&#160;&#160;45678</td></tr>
+<tr class="memdesc:ad1b13dd82aa38bb19b6be39178b99f31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Se connecte automatiquement sur le port. <br/></td></tr>
+<tr class="separator:ad1b13dd82aa38bb19b6be39178b99f31"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac4071218adc77318ea9b9de1aaca1d52"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac4071218adc77318ea9b9de1aaca1d52"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2config_8hpp.html#ac4071218adc77318ea9b9de1aaca1d52">STYLE</a>&#160;&#160;&#160;&quot;style_journal.css&quot;</td></tr>
 <tr class="memdesc:ac4071218adc77318ea9b9de1aaca1d52"><td class="mdescLeft">&#160;</td><td class="mdescRight">Définit la localisation de la feuille de style pour le journal. <br/></td></tr>
 <tr class="separator:ac4071218adc77318ea9b9de1aaca1d52"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefb2aa75be4323fe06eb3ec8394bdfc7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_2config_8hpp.html#aefb2aa75be4323fe06eb3ec8394bdfc7">INTERFACE</a>&#160;&#160;&#160;<a class="el" href="classCoquille.html">Coquille</a></td></tr>
+<tr class="memdesc:aefb2aa75be4323fe06eb3ec8394bdfc7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Définit le type d'interface.  <a href="#aefb2aa75be4323fe06eb3ec8394bdfc7">Plus de détails...</a><br/></td></tr>
+<tr class="separator:aefb2aa75be4323fe06eb3ec8394bdfc7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Énumérations</h2></td></tr>
@@ -119,10 +125,41 @@ Macros</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Définit les options de compilation du client. </p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Documentation des macros</h2>
+<a class="anchor" id="aeb53e4cb507414654f1baef355d7b13b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define AUTO_ADDR&#160;&#160;&#160;QHostAddress(&quot;192.168.1.17&quot;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Se connecte automatiquement sur l'adresse. </p>
+<p>92.144.7.179 192.168.1.17 </p>
+
+</div>
+</div>
+<a class="anchor" id="aefb2aa75be4323fe06eb3ec8394bdfc7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define INTERFACE&#160;&#160;&#160;<a class="el" href="classCoquille.html">Coquille</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Définit le type d'interface. </p>
+<p>Prend les valeurs <a class="el" href="classCoquille.html" title="Définition de l&#39;interface utilisateur de la coquille. ">Coquille</a> (5 clients à la fois) ou <a class="el" href="classClientGraphique.html" title="Définition de la classe d&#39;interface graphique principale. ">ClientGraphique</a> (1 client) </p>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Jeudi 11 Décembre 2014 16:51:41 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Dimanche 14 Décembre 2014 14:02:11 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
