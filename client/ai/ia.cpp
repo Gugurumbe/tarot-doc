@@ -1,7 +1,11 @@
 #include "ia.hpp"
+#define NOM_CLASSE "IA"
+#include "deboguer.hpp"
 IA::IA(QObject * parent): QObject(parent),
 			  jeu(this)
 {
+  ENTER("IA(QObject * parent)");
+  ADD_ARG("parent", parent);
 #define C(signal) \
   QObject::connect(&jeu, SIGNAL(signal), this, SLOT(signal));
   C(connecte());
@@ -107,6 +111,7 @@ void IA::jeu_change(std::vector<Carte>,
 }
 void IA::doit_jouer()
 {
+  ENTER("doit_jouer()");
   //La première fois, on tente de jouer npq. Après, on essaye la carte
   //suivante lorsqu'elle est refusée.
   jeu.formuler_requete(Carte(rand() % 78));
@@ -116,10 +121,14 @@ void IA::requete_acceptee(Carte)
 }
 void IA::requete_refusee(Carte refusee)
 {
+  ENTER("requete_refusee(Carte refusee)");
+  ADD_ARG("refusee", refusee);
   if(jeu.partie().mon_tour() && 
      jeu.partie().phase() == Partie::PHASE_JEU)
     {
+      DEBUG<<"Je reformule avec la carte suivante..."<<std::endl;
       jeu.formuler_requete(Carte((refusee.numero() + 1) % 78));
+      DEBUG<<"Reformulé."<<std::endl;
     }
 }
 void IA::carte_jouee(unsigned int, Carte)
