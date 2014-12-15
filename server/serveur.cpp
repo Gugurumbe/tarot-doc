@@ -4,7 +4,7 @@
 
 #define NOM_CLASSE "Serveur"
 
-#include "deboguer.hpp"
+#include "ne_pas_deboguer.hpp"
 
 Serveur::Serveur(QObject * parent) : QObject(parent), ppl(0)
 {

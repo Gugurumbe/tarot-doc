@@ -48,4 +48,6 @@
  */
 #define DEBUG_WRITESTACK 0
 
+#define MELANGER //Mélange les cartes
+
 #endif

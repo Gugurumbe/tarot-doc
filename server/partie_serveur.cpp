@@ -183,13 +183,6 @@ void PartieServeur::assimiler(Protocole::Message const & message)
 	  DEBUG<<"Écart compris."<<std::endl;
 	  //On sauve ces cartes.
 	  cartes_attaque.push_back(ecart);
-	  //On enlève les cartes de la main de l'attaquant.
-	  for(unsigned int i = 0 ; i < 3 ; i++)
-	    {
-	      jeu_reel[attaquant()].enlever
-		(Carte(message.m.ecart.ecart[i]));
-	    }
-	  DEBUG<<"Cartes enlevées."<<std::endl;
 	  //Gestion des atouts :
 	  std::vector<Carte::ModaliteEcart> resultat =
 	    jeu_reel[attaquant()].peut_ecarter(ecart);
@@ -202,6 +195,13 @@ void PartieServeur::assimiler(Protocole::Message const & message)
 		}
 	    }
 	  DEBUG<<"Cartes à montrer déterminées."<<std::endl;
+	  //On enlève les cartes de la main de l'attaquant.
+	  for(unsigned int i = 0 ; i < 3 ; i++)
+	    {
+	      jeu_reel[attaquant()].enlever
+		(Carte(message.m.ecart.ecart[i]));
+	    }
+	  DEBUG<<"Cartes enlevées."<<std::endl;
 	  if(montrees.size() != 0)
 	    {
 	      Protocole::Message atout;
@@ -548,13 +548,15 @@ void PartieServeur::distribuer()
     {
       nums[i] = i;
     }
+#ifdef MELANGER
   shuffle(nums);
-  // Les 3 premières cartes sont pour le chien, les autres pour les
+#endif
+  // Les 3 dernières cartes sont pour le chien, les autres pour les
   // joueurs.
   chien.clear();
-  for(unsigned int i = 0 ; i < 3 ; i++)
+  for(unsigned int i = 1 ; i <= 3 ; i++)
     {
-      chien.push_back(Carte(nums[i]));
+      chien.push_back(Carte(nums[nums.size() - i]));
     }
   jeu_reel.clear();
   //On prévoit le cas "petit sec"
@@ -569,7 +571,7 @@ void PartieServeur::distribuer()
       a_petit = false;
       for(unsigned int j = 0 ; j < 15 ; j++)
 	{
-	  c = nums[3 + i*15 + j];
+	  c = nums[i*15 + j];
 	  if(c == PETIT) a_petit = true;
 	  if(c.atout()) nbr_atouts++;
 	  m.ajouter(c);
