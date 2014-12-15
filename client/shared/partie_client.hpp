@@ -112,6 +112,10 @@ private:
 		      //acceptée. 
   //Pour le débogage :
   void presenter() const; 
+  std::vector<Carte> m_cartes_gagnees;
+  std::vector<unsigned int> m_poseurs;
+  std::vector<unsigned int> m_gagnants;
+  std::queue<unsigned int> m_changements_maitres;
 public slots:  
 
   /**

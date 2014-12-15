@@ -160,12 +160,25 @@ void PartieClient::assimiler(const Protocole::Message & m)
 	  transaction_acceptee();
 	}
       emit carte_jouee(tour_precedent(), Carte(m.m.carte.carte));
+      while(!m_changements_maitres.empty())
+	{
+	  emit maitre(m_changements_maitres.front());
+	  m_changements_maitres.pop();
+	}
+      for(unsigned int i = 0 ; i < m_cartes_gagnees.size() ; i++)
+	{
+	  emit carte_gagnee(m_cartes_gagnees[i], m_poseurs[i],
+			    m_gagnants[i]);
+	}
+      m_cartes_gagnees.clear();
+      m_poseurs.clear();
+      m_gagnants.clear();
+      emit tapis_change(tapis());
       if(mon_tour() && mes_cartes.nombre_cartes() > 0) 
 	{
 	  m_doit_jouer = true;
 	  emit doit_jouer();
 	}
-      emit tapis_change(tapis());
       break;
     case Protocole::PLI:
       /* 
@@ -283,7 +296,7 @@ void PartieClient::nouveau_maitre(unsigned int maitre)
 {
   ENTER("nouveau_maitre(unsigned int maitre)");
   ADD_ARG("maitre", maitre);
-  emit PartieClient::maitre(maitre);
+  m_changements_maitres.push(maitre);
 }
 
 void PartieClient::cartes_gagnees
@@ -295,10 +308,9 @@ void PartieClient::cartes_gagnees
   ADD_ARG("cartes", cartes);
   ADD_ARG("poseurs", poseurs);
   ADD_ARG("gagnants", gagnants);
-  for(unsigned int i = 0 ; i < cartes.size() ; i++)
-    {
-      emit carte_gagnee(cartes[i], poseurs[i], gagnants[i]);
-    }
+  m_cartes_gagnees = cartes;
+  m_poseurs = poseurs;
+  m_gagnants = gagnants;
 }
 
 void PartieClient::annuler_transaction()
