@@ -86,7 +86,7 @@ void Table::comprendre(unsigned int sock, Protocole::Message m)
 {
   ENTER("comprendre(unsigned int sock, Message m)");
   ADD_ARG("sock", sock);
-  ADD_ARG("m.type", m.type);
+  ADD_ARG("m", m);
   //Attention : je ne suis pas sûr que sock fasse partie de la table !
   for(unsigned int i = 0 ; i < joueurs.size() ; i++)
     {
