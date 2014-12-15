@@ -6,7 +6,7 @@
 #include "ne_pas_deboguer.hpp"
 
 ClientJeu::ClientJeu(QObject * parent) : 
-  Client(parent), partie(this)					 
+  Client(parent), m_partie(this)					 
 {
   ENTER("ClientJeu(QObject * parent)");
   ADD_ARG("parent", parent);
@@ -16,11 +16,11 @@ ClientJeu::ClientJeu(QObject * parent) :
 		   this, SLOT(traiter_deconnexion()));
   QObject::connect(this, SIGNAL(recu(Protocole::Message)),
 		   this, SLOT(traiter_message(Protocole::Message)));
-  QObject::connect(&partie, SIGNAL(doit_emettre(Protocole::Message)),
+  QObject::connect(&m_partie, SIGNAL(doit_emettre(Protocole::Message)),
 		   this, SLOT(envoyer(Protocole::Message)));
 
 #define C(signal_entree, signal_sortie) \
-  connect(&partie, SIGNAL(signal_entree), this, \
+  connect(&m_partie, SIGNAL(signal_entree), this, \
 	  SIGNAL(signal_sortie));
 #define S(signal) C(signal, signal)
   S(numero_change(unsigned int));
@@ -66,35 +66,40 @@ void ClientJeu::traiter_deconnexion()
 
 void ClientJeu::presenter_etat()
 {/*
-  std::cout<<"Vous êtes le numéro "<<partie.mon_numero()
-	   <<", on en est à la phase "<<partie.phase()
-	   <<", vos cartes sont "<<partie.mon_jeu()
+  std::cout<<"Vous êtes le numéro "<<m_partie.mon_numero()
+	   <<", on en est à la phase "<<m_partie.phase()
+	   <<", vos cartes sont "<<m_partie.mon_jeu()
 	   <<"."<<std::endl;*/
+}
+
+const PartieClient & ClientJeu::partie() const
+{
+  return m_partie;
 }
 
 void ClientJeu::traiter_message(Protocole::Message m)
 {
   ENTER("traiter_message(Message m)");
   ADD_ARG("m", m);
-  partie.assimiler(m);
+  m_partie.assimiler(m);
 }
 
 void ClientJeu::formuler_prise(Enchere::Prise p)
 {
-  partie.formuler_prise(p);
+  m_partie.formuler_prise(p);
 }
 
 void ClientJeu::formuler_appel(const Carte & c)
 {
-  partie.appeler(c);
+  m_partie.appeler(c);
 }
 
 void ClientJeu::formuler_ecart(std::vector<Carte> ecart)
 {
-  partie.ecarter(ecart);
+  m_partie.ecarter(ecart);
 }
 
 void ClientJeu::formuler_requete(Carte requete)
 {
-  partie.jouer(requete);
+  m_partie.jouer(requete);
 }

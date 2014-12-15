@@ -38,6 +38,11 @@ public:
      @brief Présente l'état des cartes.
    */
   void presenter_etat();
+  /**
+     @brief Retourne la partie en cours.
+     @return La partie en cours.
+   */
+  const PartieClient & partie() const;
 public slots:
   
   /**
@@ -284,7 +289,7 @@ signals:
    */
   void partie_terminee(std::vector<int> scores);
 private:
-  PartieClient partie;
+  PartieClient m_partie;
 };
 
 #endif
