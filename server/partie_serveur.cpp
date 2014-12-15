@@ -1,5 +1,6 @@
 #include "partie_serveur.hpp"
 #include "debogueur.hpp"
+#include "config.hpp"
 
 #define NOM_CLASSE "PartieServeur"
 
