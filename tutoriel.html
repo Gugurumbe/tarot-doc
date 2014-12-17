@@ -233,7 +233,7 @@ main_program.cpp                                    \</div>
 <div class="line"><span class="keywordtype">void</span> IA::doit_jouer()</div>
 <div class="line">{</div>
 <div class="line">  <span class="comment">//Je dois jouer. Je commence par changer de carte :</span></div>
-<div class="line">  <a class="code" href="classCarte.html">Carte</a> suivante(testee.<a class="code" href="classCarte.html#a71b2fa7ab34086aed44b3430b3755df5">numero</a>() + 1);</div>
+<div class="line">  <a class="code" href="classCarte.html">Carte</a> suivante((testee.<a class="code" href="classCarte.html#a71b2fa7ab34086aed44b3430b3755df5">numero</a>() + 1) % 78);</div>
 <div class="line">  </div>
 <div class="line">  <span class="comment">//Je fais dire au serveur que je veux jouer cette carte :</span></div>
 <div class="line">  jeu.<a class="code" href="classClientJeu.html#ad47142bad1f216ac3b93d0b75cf0b559">formuler_requete</a>(suivante);</div>
@@ -254,7 +254,7 @@ Conclusion</h1>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mercredi 17 Décembre 2014 20:27:51 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Mercredi 17 Décembre 2014 20:33:36 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
