@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tarot: Tutoriel : utilisation, contribution</title>
+<title>Tarot: /client/ai/ia.pro</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -38,10 +38,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Page&#160;principale</span></a></li>
-      <li class="current"><a href="pages.html"><span>Pages&#160;associées</span></a></li>
+      <li><a href="pages.html"><span>Pages&#160;associées</span></a></li>
       <li><a href="namespaces.html"><span>Espaces&#160;de&#160;nommage</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Fichiers</span></a></li>
+      <li><a href="examples.html"><span>Exemples</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -60,6 +61,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
       </li>
     </ul>
   </div>
+</div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -74,90 +76,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </iframe>
 </div>
 
-</div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">Tutoriel : utilisation, contribution </div>  </div>
+<div class="title">/client/ai/ia.pro</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1><a class="anchor" id="zero"></a>
-À partir de zéro</h1>
-<p>Vous voulez développer votre propre client (ou votre propre serveur). Vous devez vous connecter en tcp sur le serveur (45678, port par défaut). Des messages seront échangés avec lui. Un message contient :</p>
-<ol type="1">
-<li>Sa taille, sur 1 octet non signé.</li>
-<li>Son type, sur 1 octet non signé.</li>
-<li>Sa partie variable.</li>
-</ol>
-<p>Voici les types :</p>
-<ul>
-<li>0 : erreur_protocole. Pas de partie variable. Signification : vous avez dit quelque chose à un moment inopportun, ou ça n'entre pas dans le protocole.</li>
-<li>1 : refuse. Pas de partie variable. Signification : vous avez fait une requête du bon type au bon moment, mais elle ne respecte pas les règles.</li>
-<li>2 : numero. Morceau variable : mon numéro sur 1 octet non signé. Votre numéro est un nombre entre 0 et 4 inclus. Si c'est 0, vous devez être le premier à priser. Si c'est x, il faut attendre de recevoir x messages de type contrat avant de priser.</li>
-<li>3 : distribution. Morceau variable : mes 15 cartes, chacune sur 1 octet non signé.</li>
-<li>4 : prise. Morceau variable : ma prise (1 octet, non signé). 0 : passe, 4 : garde contre. Le client doit émettre ce message.</li>
-<li>5 : contrat. Morceau variable : la prise du joueur (1 octet, non signé). Un contrat intermédiaire a été formulé.</li>
-<li>6 : appel. Pas de partie variable. Vous avez remporté les enchères, et vous devez maintenant appeler une carte.</li>
-<li>7 : appeler. Morceau variable : la carte que vous voulez appeler (1 octet, non signé).</li>
-<li>8 : contrat_final. Morceau variable : 1 octet non signé (preneur), 1 octet non signé (prise), 1 octet non signé (carte appelée).</li>
-<li>9 : chien. Morceau variable : 3 octets (les 3 cartes dévoilées du chien). Si vous êtes le preneur, vous devez écarter.</li>
-<li>10 : ecart. Morceau variable : 3 octets (les 3 cartes que vous voudriez écarter).</li>
-<li>11 : atout. Morceau variable : au plus 3 octets (les atouts écartés).</li>
-<li>12 : inutilisé</li>
-<li>13 : jeu. Morceau variable : 1 octet (5), le joueur ayant demandé un chelem ou 5. Donc 5.</li>
-<li>14 : inutilisé</li>
-<li>15 : inutilisé</li>
-<li>16 : requete. Morceau variable : 1 octet (la carte que vous voudriez jouer). C'est à vous s'il y a eu (votre tour - tour du joueur d'ouverture) modulo 5 cartes jouées depuis le dernier pli.</li>
-<li>17 : carte. Morceau variable : 1 octet (la carte jouée). À vous de déterminer qui l'a jouée, à partir du numéro du joueur d'ouverture et le nombre de cartes jouées depuis la fin du dernier pli.</li>
-<li>18 : pli. Morceau variable : 1 octet (numéro du joueur d'ouverture).</li>
-<li>19 : resultat. La partie est finie. Morceau variable : 5 mots de 2 octets, signés (les résultats de chacun).</li>
-</ul>
-<p>Vous devez donc émettre : prise, appeler, ecarter, requete, requete, ... dans le cas où vous prenez (prise autre que garde contre ou garde sans) en tant que client.</p>
-<h1><a class="anchor" id="un"></a>
-En utilisant ce qu'on a déjà</h1>
-<p>L'objectif est d'utiliser la classe <a class="el" href="classClientJeu.html" title="Spécialise la classe Client, en permettant de comprendre l&#39;environnement de jeu du tarot...">ClientJeu</a>, qui fournit de l'information sous forme de signaux Qt, et qui permet d'enregistrer des ordres facilement. Vous avez droit à tous les signaux de <a class="el" href="classClientJeu.html" title="Spécialise la classe Client, en permettant de comprendre l&#39;environnement de jeu du tarot...">ClientJeu</a>, plus <a class="el" href="classClientJeu.html#aa58c80a80128188baff0400b10e81501" title="Retourne la partie en cours. ">ClientJeu::partie</a> qui vous fournit une <a class="el" href="classPartieClient.html" title="Précision d&#39;une Partie, côté client. ">PartieClient</a>, d'où vous pourrez savoir le <a class="el" href="classPartie.html#a34e5fc20f35fa22c89a3151bc8a56d55" title="À qui de jouer ? ">Partie::tour()</a>, <a class="el" href="classPartie.html#abb22c4e65f62fdcab2600376ed9ea5a6" title="Accès au joueur qui prise. ">Partie::attaquant()</a>, <a class="el" href="classPartieClient.html#a304bbc3b5068d36ed72bbccbb54c7fc2" title="Regarder mon jeu. ">PartieClient::mon_jeu()</a>, <a class="el" href="classPartie.html#a8e85cd52fcb26ee887b5c5441ffc00b2" title="Montre le tapis de jeu. ">Partie::tapis()</a>, ...</p>
-<p>En ce qui concerne les ordres à envoyer, vous pouvez utiliser <a class="el" href="classClientJeu.html#a98689343a93362c3b583a27e1ef6543f" title="Envoie un message pour formuler une Prise. ">ClientJeu::formuler_prise</a>, <a class="el" href="classClientJeu.html#abf4c77f0ddfc3210a7f9ac074d862122" title="Envoie un message pour formuler un appel. ">ClientJeu::formuler_appel</a>, <a class="el" href="classClientJeu.html#af4bb9e29c5a64d7383680f6b36edccbb" title="Envoie un message pour formuler un écart. ">ClientJeu::formuler_ecart</a>, <a class="el" href="classClientJeu.html#ad47142bad1f216ac3b93d0b75cf0b559" title="Traité lorsqu&#39;on demande à jouer une Carte. ">ClientJeu::formuler_requete</a>.</p>
-<p>Étape par étape :</p>
-<p>Commencez par récupérer les sources, puis déplacez-vous dans client/. Faites un dossier, par exemple ai, puis déplacez-vous dedans et faites un nouveau projet Qt. Le fichier de projet doit ressembler au fichier ci-dessous : on ajoute la dépendance network, et on inclue et compile tous les fichiers de ../shared et ../../shared.</p>
-<div class="fragment"><div class="line">TEMPLATE = app</div>
-<div class="line">TARGET = ia</div>
-<div class="line">DEPENDPATH += .</div>
-<div class="line">INCLUDEPATH += . ../shared ../../shared</div>
-<div class="line"></div>
-<div class="line"><span class="preprocessor"># Input</span></div>
-<div class="line"><span class="preprocessor"></span>HEADERS += ia.hpp</div>
-<div class="line">HEADERS += ../shared/client.hpp</div>
-<div class="line">HEADERS += ../shared/client_jeu.hpp</div>
-<div class="line">HEADERS += ../shared/option.hpp</div>
-<div class="line">HEADERS += ../shared/partie_client.hpp</div>
-<div class="line">HEADERS += ../shared/transaction.hpp</div>
-<div class="line">HEADERS += ../../shared/carte.hpp</div>
-<div class="line">HEADERS += ../../shared/deboguer.hpp</div>
-<div class="line">HEADERS += ../../shared/debogueur.hpp</div>
-<div class="line">HEADERS += ../../shared/enchere.hpp</div>
-<div class="line">HEADERS += ../../shared/main.hpp</div>
-<div class="line">HEADERS += ../../shared/ne_pas_deboguer.hpp</div>
-<div class="line">HEADERS += ../../shared/partie.hpp</div>
-<div class="line">HEADERS += ../../shared/protocole.hpp</div>
-<div class="line">HEADERS += ../../shared/tapis.hpp</div>
-<div class="line"></div>
-<div class="line"><span class="preprocessor"># Sources</span></div>
-<div class="line"><span class="preprocessor"></span>SOURCES += ia.cpp</div>
-<div class="line">SOURCES += main_program.cpp</div>
-<div class="line">SOURCES += ../shared/client.cpp</div>
-<div class="line">SOURCES += ../shared/client_jeu.cpp</div>
-<div class="line">SOURCES += ../shared/option.cpp</div>
-<div class="line">SOURCES += ../shared/partie_client.cpp</div>
-<div class="line">SOURCES += ../shared/transaction.cpp</div>
-<div class="line">SOURCES += ../../shared/carte.cpp</div>
-<div class="line">SOURCES += ../../shared/debogueur.cpp</div>
-<div class="line">SOURCES += ../../shared/enchere.cpp</div>
-<div class="line">SOURCES += ../../shared/main.cpp</div>
-<div class="line">SOURCES += ../../shared/partie.cpp</div>
-<div class="line">SOURCES += ../../shared/protocole.cpp</div>
-<div class="line">SOURCES += ../../shared/tapis.cpp      </div>
-<div class="line"></div>
-<div class="line">QT += network </div>
-</div><!-- fragment --><p>Maintenant, on peut travailler. Faites un fichier principal (ici, main_program.cpp), ici :</p>
+<p>Maintenant, on peut travailler. Faites un fichier principal (ici, main_program.cpp), ici :</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;QCoreApplication&gt;</span></div>
 <div class="line"></div>
 <div class="line"><span class="comment">//Sert uniquement à définir AUTO_ADDR et AUTO_PORT</span></div>
@@ -171,9 +95,9 @@ En utilisant ce qu'on a déjà</h1>
 <div class="line">{</div>
 <div class="line">  QCoreApplication app(argc, argv);</div>
 <div class="line">  <span class="comment">//Création d&#39;une IA</span></div>
-<div class="line">  <a class="code" href="classIA.html">IA</a> * ia = <span class="keyword">new</span> <a class="code" href="classIA.html">IA</a>;</div>
+<div class="line">  <a name="_a0"></a><a class="code" href="classIA.html">IA</a> * ia = <span class="keyword">new</span> <a class="code" href="classIA.html">IA</a>;</div>
 <div class="line">  <span class="comment">//Dit au CLientJeu sous-jacent de se connecter</span></div>
-<div class="line">  ia-&gt;<a class="code" href="classIA.html#abaa7525c357e47e53dd3a1d416dc6cec">connecter</a>(<a class="code" href="client_2ai_2config_8hpp.html#aeb53e4cb507414654f1baef355d7b13b">AUTO_ADDR</a>, <a class="code" href="client_2ai_2config_8hpp.html#ad1b13dd82aa38bb19b6be39178b99f31">AUTO_PORT</a>);</div>
+<div class="line">  ia-&gt;<a name="a1"></a><a class="code" href="classIA.html#abaa7525c357e47e53dd3a1d416dc6cec">connecter</a>(<a name="a2"></a><a class="code" href="client_2ai_2config_8hpp.html#aeb53e4cb507414654f1baef355d7b13b">AUTO_ADDR</a>, <a name="a3"></a><a class="code" href="client_2ai_2config_8hpp.html#ad1b13dd82aa38bb19b6be39178b99f31">AUTO_PORT</a>);</div>
 <div class="line">  <span class="comment">//On tue l&#39;IA dès qu&#39;elle se déconnecte.</span></div>
 <div class="line">  QObject::connect(ia, SIGNAL(destroyed()),</div>
 <div class="line">                   &amp;app, SLOT(quit()));</div>
@@ -189,15 +113,15 @@ En utilisant ce qu'on a déjà</h1>
 <div class="line">{</div>
 <div class="line">  Q_OBJECT;</div>
 <div class="line"><span class="keyword">public</span>:</div>
-<div class="line">  <a class="code" href="classIA.html#a90c9d35eaef3b4ca6163003776e0eb09">IA</a>(QObject * parent = 0);</div>
+<div class="line">  <a name="a4"></a><a class="code" href="classIA.html#a90c9d35eaef3b4ca6163003776e0eb09">IA</a>(QObject * parent = 0);</div>
 <div class="line"><span class="keyword">public</span> slots:</div>
 <div class="line">  <span class="keywordtype">void</span> <a class="code" href="classIA.html#abaa7525c357e47e53dd3a1d416dc6cec">connecter</a>(QHostAddress hote, quint16 port);</div>
-<div class="line">  <span class="keywordtype">void</span> doit_priser(<a class="code" href="classOption.html">Option&lt;Enchere&gt;</a> plus_forte);</div>
+<div class="line">  <span class="keywordtype">void</span> doit_priser(<a name="_a5"></a><a class="code" href="classOption.html">Option&lt;Enchere&gt;</a> plus_forte);</div>
 <div class="line">  <span class="keywordtype">void</span> doit_jouer();</div>
 <div class="line">  <span class="keywordtype">void</span> partie_terminee(std::vector&lt;int&gt; scores);</div>
 <div class="line"><span class="keyword">private</span>:</div>
-<div class="line">  <a class="code" href="classClientJeu.html">ClientJeu</a> jeu; <span class="comment">//TRÈS IMPORTANT : le ClientJeu sous-jacent !</span></div>
-<div class="line">  <a class="code" href="classCarte.html">Carte</a> testee; <span class="comment">//La carte que j&#39;essaie de jouer.</span></div>
+<div class="line">  <a name="_a6"></a><a class="code" href="classClientJeu.html">ClientJeu</a> jeu; <span class="comment">//TRÈS IMPORTANT : le ClientJeu sous-jacent !</span></div>
+<div class="line">  <a name="_a7"></a><a class="code" href="classCarte.html">Carte</a> testee; <span class="comment">//La carte que j&#39;essaie de jouer.</span></div>
 <div class="line">};</div>
 <div class="line"><span class="preprocessor">#endif</span></div>
 </div><!-- fragment --><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="ia_8hpp.html">ia.hpp</a>&quot;</span></div>
@@ -221,20 +145,20 @@ En utilisant ce qu'on a déjà</h1>
 <div class="line"><span class="keywordtype">void</span> <a class="code" href="classIA.html#abaa7525c357e47e53dd3a1d416dc6cec">IA::connecter</a>(QHostAddress hote, quint16 port)</div>
 <div class="line">{</div>
 <div class="line">  <span class="comment">//Simple comme bonjour :</span></div>
-<div class="line">  jeu.<a class="code" href="classClient.html#aca6f6439d8500cea98b540450450e8cd">connecter</a>(hote, port);</div>
+<div class="line">  jeu.<a name="a8"></a><a class="code" href="classClient.html#aca6f6439d8500cea98b540450450e8cd">connecter</a>(hote, port);</div>
 <div class="line">}</div>
 <div class="line"><span class="keywordtype">void</span> IA::doit_priser(<a class="code" href="classOption.html">Option&lt;Enchere&gt;</a>)</div>
 <div class="line">{</div>
 <div class="line">  <span class="comment">//Je dois priser. Comme je suis une IA basique, je passe.</span></div>
-<div class="line">  jeu.<a class="code" href="classClientJeu.html#a98689343a93362c3b583a27e1ef6543f">formuler_prise</a>(<a class="code" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3faa40cabb8cd6ac3bed25b69561ebb834f">Enchere::PASSE</a>);</div>
+<div class="line">  jeu.<a name="a9"></a><a class="code" href="classClientJeu.html#a98689343a93362c3b583a27e1ef6543f">formuler_prise</a>(<a name="a10"></a><a class="code" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3faa40cabb8cd6ac3bed25b69561ebb834f">Enchere::PASSE</a>);</div>
 <div class="line">}</div>
 <div class="line"><span class="keywordtype">void</span> IA::doit_jouer()</div>
 <div class="line">{</div>
 <div class="line">  <span class="comment">//Je dois jouer. Je commence par changer de carte :</span></div>
-<div class="line">  <a class="code" href="classCarte.html">Carte</a> suivante((testee.<a class="code" href="classCarte.html#a71b2fa7ab34086aed44b3430b3755df5">numero</a>() + 1) % 78);</div>
+<div class="line">  <a class="code" href="classCarte.html">Carte</a> suivante((testee.<a name="a11"></a><a class="code" href="classCarte.html#a71b2fa7ab34086aed44b3430b3755df5">numero</a>() + 1) % 78);</div>
 <div class="line">  </div>
 <div class="line">  <span class="comment">//Je fais dire au serveur que je veux jouer cette carte :</span></div>
-<div class="line">  jeu.<a class="code" href="classClientJeu.html#ad47142bad1f216ac3b93d0b75cf0b559">formuler_requete</a>(suivante);</div>
+<div class="line">  jeu.<a name="a12"></a><a class="code" href="classClientJeu.html#ad47142bad1f216ac3b93d0b75cf0b559">formuler_requete</a>(suivante);</div>
 <div class="line">  </div>
 <div class="line">  <span class="comment">//Je m&#39;en souviens pour le prochain refus (et donc, le prochain</span></div>
 <div class="line">  <span class="comment">//doit_jouer) </span></div>
@@ -248,11 +172,52 @@ En utilisant ce qu'on a déjà</h1>
 <div class="line">}</div>
 </div><!-- fragment --><h1><a class="anchor" id="conclusion"></a>
 Conclusion</h1>
-<p>Il y a un protocole à respecter pour communiquer avec le serveur, et pour utiliser les classes existantes, il faut se mettre au bon endroit, compiler les bons fichiers, utilier la dépendance netork, de déclarer une variable de type <a class="el" href="classClientJeu.html" title="Spécialise la classe Client, en permettant de comprendre l&#39;environnement de jeu du tarot...">ClientJeu</a>. </p>
-</div></div><!-- contents -->
+<p>Il y a un protocole à respecter pour communiquer avec le serveur, et pour utiliser les classes existantes, il faut se mettre au bon endroit, compiler les bons fichiers, utilier la dépendance netork, de déclarer une variable de type <a class="el" href="classClientJeu.html" title="Spécialise la classe Client, en permettant de comprendre l&#39;environnement de jeu du tarot...">ClientJeu</a>.</p>
+<div class="fragment"><div class="line">TEMPLATE = app</div>
+<div class="line">TARGET = ia</div>
+<div class="line">DEPENDPATH += .</div>
+<div class="line">INCLUDEPATH += . ../shared ../../shared</div>
+<div class="line"></div>
+<div class="line"><span class="preprocessor"># Input</span></div>
+<div class="line"><span class="preprocessor"></span>HEADERS +=                                          \</div>
+<div class="line">ia.hpp                                              \</div>
+<div class="line">../shared/client.hpp                                \</div>
+<div class="line">../shared/client_jeu.hpp                            \</div>
+<div class="line">../shared/option.hpp                                \</div>
+<div class="line">../shared/partie_client.hpp                         \</div>
+<div class="line">../shared/transaction.hpp                           \</div>
+<div class="line">../../shared/carte.hpp                              \</div>
+<div class="line">../../shared/deboguer.hpp                           \</div>
+<div class="line">../../shared/debogueur.hpp                          \</div>
+<div class="line">../../shared/enchere.hpp                            \</div>
+<div class="line">../../shared/main.hpp                               \</div>
+<div class="line">../../shared/ne_pas_deboguer.hpp                    \</div>
+<div class="line">../../shared/partie.hpp                             \</div>
+<div class="line">../../shared/protocole.hpp                          \</div>
+<div class="line">../../shared/tapis.hpp       </div>
+<div class="line"></div>
+<div class="line"><span class="preprocessor"># Sources</span></div>
+<div class="line"><span class="preprocessor"></span>SOURCES +=                                          \</div>
+<div class="line">ia.cpp                                              \
+main_program.cpp                                    \</div>
+<div class="line">../shared/client.cpp                                \</div>
+<div class="line">../shared/client_jeu.cpp                            \</div>
+<div class="line">../shared/option.cpp                                \</div>
+<div class="line">../shared/partie_client.cpp                         \</div>
+<div class="line">../shared/transaction.cpp                           \</div>
+<div class="line">../../shared/carte.cpp                              \</div>
+<div class="line">../../shared/debogueur.cpp                          \</div>
+<div class="line">../../shared/enchere.cpp                            \</div>
+<div class="line">../../shared/main.cpp                               \</div>
+<div class="line">../../shared/partie.cpp                             \</div>
+<div class="line">../../shared/protocole.cpp                          \</div>
+<div class="line">../../shared/tapis.cpp       </div>
+<div class="line"></div>
+<div class="line">QT += network</div>
+<div class="line"></div><!-- fragment --> </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mercredi 17 Décembre 2014 21:31:30 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Mercredi 17 Décembre 2014 21:09:44 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
