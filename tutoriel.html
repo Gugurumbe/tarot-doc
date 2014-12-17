@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tarot: Pages associées</title>
+<title>Tarot: Tutoriel : utilisation, contribution</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -60,7 +60,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
       </li>
     </ul>
   </div>
-</div><!-- top -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
@@ -75,20 +74,46 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </iframe>
 </div>
 
+</div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">Pages associées</div>  </div>
+<div class="title">Tutoriel : utilisation, contribution </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock">Liste de toutes les pages de documentation associées :</div><div class="directory">
-<table class="directory">
-<tr id="row_0_" class="even"><td class="entry"><img src="ftv2lastnode.png" alt="\" width="16" height="22" /><a class="el" href="tutoriel.html" target="_self">Tutoriel : utilisation, contribution</a></td><td class="desc"></td></tr>
-</table>
-</div><!-- directory -->
-</div><!-- contents -->
+<div class="textblock"><h1><a class="anchor" id="À"></a>
+partir de zéro</h1>
+<p>Vous voulez développer votre propre client (ou votre propre serveur). Vous devez vous connecter en tcp sur le serveur (45678, port par défaut). Des messages seront échangés avec lui. Un message contient :</p>
+<ol type="1">
+<li>Sa taille, sur 1 octet non signé.</li>
+<li>Son type, sur 1 octet non signé.</li>
+<li>Sa partie variable.</li>
+</ol>
+<p>Voici les types :</p>
+<p>0 : erreur_protocole. Pas de partie variable. Signification : vous avez dit quelque chose à un moment inopportun, ou ça n'entre pas dans le protocole.</p>
+<p>1 : refuse. Pas de partie variable. Signification : vous avez fait une requête du bon type au bon moment, mais elle ne respecte pas les règles.</p>
+<p>2 : numero. <a class="el" href="classPartie.html" title="Environnement de partie de Tarot. ">Partie</a> variable : mon numéro sur 1 octet non signé. Votre numéro est un nombre entre 0 et 4 inclus. Si c'est 0, vous devez être le premier à priser. Si c'est x, il faut attendre de recevoir x messages de type contrat avant de priser.</p>
+<p>3 : distribution. <a class="el" href="classPartie.html" title="Environnement de partie de Tarot. ">Partie</a> variable : mes 15 cartes, chacune sur 1 octet non signé.</p>
+<p>4 : prise. <a class="el" href="classPartie.html" title="Environnement de partie de Tarot. ">Partie</a> variable : ma prise (1 octet, non signé). 0 : passe, 4 : garde contre. Le client doit émettre ce message.</p>
+<p>5 : contrat. <a class="el" href="classPartie.html" title="Environnement de partie de Tarot. ">Partie</a> variable : la prise du joueur (1 octet, non signé). Un contrat intermédiaire a été formulé.</p>
+<p>6 : appel. Pas de partie variable. Vous avez remporté les enchères, et vous devez maintenant appeler une carte.</p>
+<p>7 : appeler. <a class="el" href="classPartie.html" title="Environnement de partie de Tarot. ">Partie</a> variable : la carte que vous voulez appeler (1 octet, non signé).</p>
+<p>8 : contrat_final. <a class="el" href="classPartie.html" title="Environnement de partie de Tarot. ">Partie</a> variable : 1 octet non signé (preneur), 1 octet non signé (prise), 1 octet non signé (carte appelée).</p>
+<p>9 : chien. <a class="el" href="classPartie.html" title="Environnement de partie de Tarot. ">Partie</a> variable : 3 octets (les 3 cartes dévoilées du chien). Si vous êtes le preneur, vous devez écarter.</p>
+<p>10 : ecart. <a class="el" href="classPartie.html" title="Environnement de partie de Tarot. ">Partie</a> variable : 3 octets (les 3 cartes que vous voudriez écarter).</p>
+<p>11 : atout. <a class="el" href="classPartie.html" title="Environnement de partie de Tarot. ">Partie</a> variable : au plus 3 octets (les atouts écartés).</p>
+<p>12 : inutilisé</p>
+<p>13 : jeu. <a class="el" href="classPartie.html" title="Environnement de partie de Tarot. ">Partie</a> variable : 1 octet (5), le joueur ayant demandé un chelem ou 5. Donc 5.</p>
+<p>14 : inutilisé</p>
+<p>15 : inutilisé</p>
+<p>16 : requete. <a class="el" href="classPartie.html" title="Environnement de partie de Tarot. ">Partie</a> variable : 1 octet (la carte que vous voudriez jouer). C'est à vous s'il y a eu (votre tour - tour du joueur d'ouverture) modulo 5 cartes jouées depuis le dernier pli.</p>
+<p>17 : carte. <a class="el" href="classPartie.html" title="Environnement de partie de Tarot. ">Partie</a> variable : 1 octet (la carte jouée). À vous de déterminer qui l'a jouée, à partir du numéro du joueur d'ouverture et le nombre de cartes jouées depuis la fin du dernier pli.</p>
+<p>18 : pli. <a class="el" href="classPartie.html" title="Environnement de partie de Tarot. ">Partie</a> variable : 1 octet (numéro du joueur d'ouverture).</p>
+<p>19 : resultat. La partie est finie. <a class="el" href="classPartie.html" title="Environnement de partie de Tarot. ">Partie</a> variable : 5 mots de 2 octets, signés (les résultats de chacun).</p>
+<p>Vous devez donc émettre : prise, appeler, ecarter, requete, requete, ... dans le cas où vous prenez (prise autre que garde contre ou garde sans) en tant que client. </p>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mercredi 17 Décembre 2014 19:25:31 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Mercredi 17 Décembre 2014 19:25:30 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

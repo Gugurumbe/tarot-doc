@@ -14,7 +14,7 @@ var indexSectionsWithContent =
   4: "acdejmnprt",
   5: "cfmpv",
   6: "acdefgjmnpr",
-  7: "p"
+  7: "pt"
 };
 
 var indexSectionNames =
