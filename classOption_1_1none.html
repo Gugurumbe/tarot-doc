@@ -73,7 +73,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Espaces de nommage</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Espaces de nommage</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -99,7 +99,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <p>Exception levée lorsqu'on essaye de récupérer un objet s'il n'y en a pas.  
  <a href="classOption_1_1none.html#details">Plus de détails...</a></p>
 
-<p><code>#include &lt;<a class="el" href="client_2shared_2option_8hpp_source.html">option.hpp</a>&gt;</code></p>
+<p><code>#include &lt;<a class="el" href="option_8hpp_source.html">option.hpp</a>&gt;</code></p>
 <div class="dynheader">
 Graphe d'héritage de Option&lt; T &gt;::none:</div>
 <div class="dyncontent">
@@ -111,9 +111,6 @@ Graphe d'héritage de Option&lt; T &gt;::none:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Fonctions membres publiques</h2></td></tr>
-<tr class="memitem:a7954444feb9903f8e5fb3fa724cbbbcb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOption_1_1none.html#a7954444feb9903f8e5fb3fa724cbbbcb">none</a> ()</td></tr>
-<tr class="memdesc:a7954444feb9903f8e5fb3fa724cbbbcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur par défaut.  <a href="#a7954444feb9903f8e5fb3fa724cbbbcb">Plus de détails...</a><br/></td></tr>
-<tr class="separator:a7954444feb9903f8e5fb3fa724cbbbcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7954444feb9903f8e5fb3fa724cbbbcb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOption_1_1none.html#a7954444feb9903f8e5fb3fa724cbbbcb">none</a> ()</td></tr>
 <tr class="memdesc:a7954444feb9903f8e5fb3fa724cbbbcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur par défaut.  <a href="#a7954444feb9903f8e5fb3fa724cbbbcb">Plus de détails...</a><br/></td></tr>
 <tr class="separator:a7954444feb9903f8e5fb3fa724cbbbcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -152,42 +149,14 @@ template&lt;typename T&gt; </div>
 
 </div>
 </div>
-<a class="anchor" id="a7954444feb9903f8e5fb3fa724cbbbcb"></a>
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;typename T&gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classOption.html">Option</a>&lt; T &gt;::none::none </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">explicit</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Constructeur par défaut. </p>
-<p>C'est une exception logique affichant : "Option vide." </p>
-
-</div>
-</div>
 <hr/>La documentation de cette classe a été générée à partir des fichiers suivants :<ul>
-<li>client/shared/<a class="el" href="client_2shared_2option_8hpp_source.html">option.hpp</a></li>
+<li>client/shared/<a class="el" href="option_8hpp_source.html">option.hpp</a></li>
 <li>client/shared/option.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mercredi 17 Décembre 2014 19:33:05 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Mercredi 17 Décembre 2014 20:27:51 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

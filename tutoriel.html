@@ -65,7 +65,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Espaces de nommage</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Espaces de nommage</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -111,11 +111,150 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <li>18 : pli. Morceau variable : 1 octet (numéro du joueur d'ouverture).</li>
 <li>19 : resultat. La partie est finie. Morceau variable : 5 mots de 2 octets, signés (les résultats de chacun).</li>
 </ul>
-<p>Vous devez donc émettre : prise, appeler, ecarter, requete, requete, ... dans le cas où vous prenez (prise autre que garde contre ou garde sans) en tant que client. </p>
+<p>Vous devez donc émettre : prise, appeler, ecarter, requete, requete, ... dans le cas où vous prenez (prise autre que garde contre ou garde sans) en tant que client.</p>
+<h1><a class="anchor" id="un"></a>
+En utilisant ce qu'on a déjà</h1>
+<p>L'objectif est d'utiliser la classe <a class="el" href="classClientJeu.html" title="Spécialise la classe Client, en permettant de comprendre l&#39;environnement de jeu du tarot...">ClientJeu</a>, qui fournit de l'information sous forme de signaux Qt, et qui permet d'enregistrer des ordres facilement. Vous avez droit à tous les signaux de <a class="el" href="classClientJeu.html" title="Spécialise la classe Client, en permettant de comprendre l&#39;environnement de jeu du tarot...">ClientJeu</a>, plus <a class="el" href="classClientJeu.html#aa58c80a80128188baff0400b10e81501" title="Retourne la partie en cours. ">ClientJeu::partie</a> qui vous fournit une <a class="el" href="classPartieClient.html" title="Précision d&#39;une Partie, côté client. ">PartieClient</a>, d'où vous pourrez savoir le <a class="el" href="classPartie.html#a34e5fc20f35fa22c89a3151bc8a56d55" title="À qui de jouer ? ">Partie::tour()</a>, <a class="el" href="classPartie.html#abb22c4e65f62fdcab2600376ed9ea5a6" title="Accès au joueur qui prise. ">Partie::attaquant()</a>, <a class="el" href="classPartieClient.html#a304bbc3b5068d36ed72bbccbb54c7fc2" title="Regarder mon jeu. ">PartieClient::mon_jeu()</a>, <a class="el" href="classPartie.html#a8e85cd52fcb26ee887b5c5441ffc00b2" title="Montre le tapis de jeu. ">Partie::tapis()</a>, ...</p>
+<p>En ce qui concerne les ordres à envoyer, vous pouvez utiliser <a class="el" href="classClientJeu.html#a98689343a93362c3b583a27e1ef6543f" title="Envoie un message pour formuler une Prise. ">ClientJeu::formuler_prise</a>, <a class="el" href="classClientJeu.html#abf4c77f0ddfc3210a7f9ac074d862122" title="Envoie un message pour formuler un appel. ">ClientJeu::formuler_appel</a>, <a class="el" href="classClientJeu.html#af4bb9e29c5a64d7383680f6b36edccbb" title="Envoie un message pour formuler un écart. ">ClientJeu::formuler_ecart</a>, <a class="el" href="classClientJeu.html#ad47142bad1f216ac3b93d0b75cf0b559" title="Traité lorsqu&#39;on demande à jouer une Carte. ">ClientJeu::formuler_requete</a>.</p>
+<p>Étape par étape :</p>
+<p>Commencez par récupérer les sources, puis déplacez-vous dans client/. Faites un dossier, par exemple ai, puis déplacez-vous dedans et faites un nouveau projet Qt. Le fichier de projet doit ressembler à ça : ajoute la dépendance network, et inclue et compile tous les fichiers de ../shared et ../../shared.</p>
+<div class="fragment"><div class="line">TEMPLATE = app</div>
+<div class="line">TARGET = ia</div>
+<div class="line">DEPENDPATH += .</div>
+<div class="line">INCLUDEPATH += . ../shared ../../shared</div>
+<div class="line"></div>
+<div class="line"><span class="preprocessor"># Input</span></div>
+<div class="line"><span class="preprocessor"></span>HEADERS +=                                          \</div>
+<div class="line">ia.hpp                                              \</div>
+<div class="line">../shared/client.hpp                                \</div>
+<div class="line">../shared/client_jeu.hpp                            \</div>
+<div class="line">../shared/option.hpp                                \</div>
+<div class="line">../shared/partie_client.hpp                         \</div>
+<div class="line">../shared/transaction.hpp                           \</div>
+<div class="line">../../shared/carte.hpp                              \</div>
+<div class="line">../../shared/deboguer.hpp                           \</div>
+<div class="line">../../shared/debogueur.hpp                          \</div>
+<div class="line">../../shared/enchere.hpp                            \</div>
+<div class="line">../../shared/main.hpp                               \</div>
+<div class="line">../../shared/ne_pas_deboguer.hpp                    \</div>
+<div class="line">../../shared/partie.hpp                             \</div>
+<div class="line">../../shared/protocole.hpp                          \</div>
+<div class="line">../../shared/tapis.hpp       </div>
+<div class="line"></div>
+<div class="line"><span class="preprocessor"># Sources</span></div>
+<div class="line"><span class="preprocessor"></span>SOURCES +=                                          \</div>
+<div class="line">ia.cpp                                              \
+main_program.cpp                                    \</div>
+<div class="line">../shared/client.cpp                                \</div>
+<div class="line">../shared/client_jeu.cpp                            \</div>
+<div class="line">../shared/option.cpp                                \</div>
+<div class="line">../shared/partie_client.cpp                         \</div>
+<div class="line">../shared/transaction.cpp                           \</div>
+<div class="line">../../shared/carte.cpp                              \</div>
+<div class="line">../../shared/debogueur.cpp                          \</div>
+<div class="line">../../shared/enchere.cpp                            \</div>
+<div class="line">../../shared/main.cpp                               \</div>
+<div class="line">../../shared/partie.cpp                             \</div>
+<div class="line">../../shared/protocole.cpp                          \</div>
+<div class="line">../../shared/tapis.cpp       </div>
+<div class="line"></div>
+<div class="line">QT += network</div>
+<div class="line"></div><!-- fragment --><p>Maintenant, on peut travailler. Faites un fichier principal (ici, main_program.cpp), ici :</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;QCoreApplication&gt;</span></div>
+<div class="line"></div>
+<div class="line"><span class="comment">//Sert uniquement à définir AUTO_ADDR et AUTO_PORT</span></div>
+<div class="line"><span class="preprocessor">#include &quot;./config.hpp&quot;</span></div>
+<div class="line"></div>
+<div class="line"><span class="comment">//Classe D&#39;IA</span></div>
+<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="ia_8hpp.html">ia.hpp</a>&quot;</span></div>
+<div class="line"></div>
+<div class="line"><span class="comment">//Fonction principale</span></div>
+<div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> * argv[])</div>
+<div class="line">{</div>
+<div class="line">  QCoreApplication app(argc, argv);</div>
+<div class="line">  <span class="comment">//Création d&#39;une IA</span></div>
+<div class="line">  <a class="code" href="classIA.html">IA</a> * ia = <span class="keyword">new</span> <a class="code" href="classIA.html">IA</a>;</div>
+<div class="line">  <span class="comment">//Dit au CLientJeu sous-jacent de se connecter</span></div>
+<div class="line">  ia-&gt;<a class="code" href="classIA.html#abaa7525c357e47e53dd3a1d416dc6cec">connecter</a>(<a class="code" href="client_2ai_2config_8hpp.html#aeb53e4cb507414654f1baef355d7b13b">AUTO_ADDR</a>, <a class="code" href="client_2ai_2config_8hpp.html#ad1b13dd82aa38bb19b6be39178b99f31">AUTO_PORT</a>);</div>
+<div class="line">  <span class="comment">//On tue l&#39;IA dès qu&#39;elle se déconnecte.</span></div>
+<div class="line">  QObject::connect(ia, SIGNAL(destroyed()),</div>
+<div class="line">                   &amp;app, SLOT(quit()));</div>
+<div class="line">  <span class="keywordflow">return</span> app.exec();</div>
+<div class="line">}</div>
+</div><!-- fragment --><p>On voit que l'on a fait une classe externe, <a class="el" href="classIA.html" title="Classe d&#39;intelligence artificielle. ">IA</a>. Il suffit après de connecter les signaux d'information de <a class="el" href="classClientJeu.html" title="Spécialise la classe Client, en permettant de comprendre l&#39;environnement de jeu du tarot...">ClientJeu</a> aux slots de notre nouvelle classe. Ensuite, il faut appeler les slots ClientJeu::formuler_* pour interagir avec le serveur. Dans l'exemple, j'ai fait une <a class="el" href="classIA.html" title="Classe d&#39;intelligence artificielle. ">IA</a> dite "basique" :</p>
+<div class="fragment"><div class="line"></div>
+<div class="line"><span class="preprocessor">#ifndef IA_DEFINIE</span></div>
+<div class="line"><span class="preprocessor"></span></div>
+<div class="line"><span class="preprocessor">#define IA_DEFINIE</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#include &quot;<a class="code" href="client__jeu_8hpp.html">client_jeu.hpp</a>&quot;</span></div>
+<div class="line"><span class="keyword">class </span><a class="code" href="classIA.html">IA</a> : <span class="keyword">public</span> QObject</div>
+<div class="line">{</div>
+<div class="line">  Q_OBJECT;</div>
+<div class="line"><span class="keyword">public</span>:</div>
+<div class="line">  <a class="code" href="classIA.html#a90c9d35eaef3b4ca6163003776e0eb09">IA</a>(QObject * parent = 0);</div>
+<div class="line"><span class="keyword">public</span> slots:</div>
+<div class="line">  <span class="keywordtype">void</span> <a class="code" href="classIA.html#abaa7525c357e47e53dd3a1d416dc6cec">connecter</a>(QHostAddress hote, quint16 port);</div>
+<div class="line">  <span class="keywordtype">void</span> doit_priser(<a class="code" href="classOption.html">Option&lt;Enchere&gt;</a> plus_forte);</div>
+<div class="line">  <span class="keywordtype">void</span> doit_jouer();</div>
+<div class="line">  <span class="keywordtype">void</span> partie_terminee(std::vector&lt;int&gt; scores);</div>
+<div class="line"><span class="keyword">private</span>:</div>
+<div class="line">  <a class="code" href="classClientJeu.html">ClientJeu</a> jeu; <span class="comment">//TRÈS IMPORTANT : le ClientJeu sous-jacent !</span></div>
+<div class="line">  <a class="code" href="classCarte.html">Carte</a> testee; <span class="comment">//La carte que j&#39;essaie de jouer.</span></div>
+<div class="line">};</div>
+<div class="line"><span class="preprocessor">#endif</span></div>
+</div><!-- fragment --><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="ia_8hpp.html">ia.hpp</a>&quot;</span></div>
+<div class="line"></div>
+<div class="line"><a class="code" href="classIA.html#a90c9d35eaef3b4ca6163003776e0eb09">IA::IA</a>(QObject * parent): QObject(parent),</div>
+<div class="line">                          jeu(this), </div>
+<div class="line">                          testee(0) <span class="comment">//On commence par essayer de jouer</span></div>
+<div class="line">                                    <span class="comment">//le deux de pique (cf doit_jouer)</span></div>
+<div class="line">{</div>
+<div class="line">  <span class="comment">//Pour plus de commodité :</span></div>
+<div class="line"><span class="preprocessor">#define C(signal) \</span></div>
+<div class="line"><span class="preprocessor">  QObject::connect(&amp;jeu, SIGNAL(signal), this, SLOT(signal));</span></div>
+<div class="line"><span class="preprocessor"></span></div>
+<div class="line">  <span class="comment">//C&#39;est plus facile de connecter les signaux du ClientJeu aux slots</span></div>
+<div class="line">  <span class="comment">//du même nom.</span></div>
+<div class="line">  C(doit_priser(<a class="code" href="classOption.html">Option&lt;Enchere&gt;</a>));</div>
+<div class="line">  C(doit_jouer());</div>
+<div class="line">  C(partie_terminee(std::vector&lt;int&gt;));</div>
+<div class="line">}</div>
+<div class="line"><span class="comment">// Fonction appelée dans main_program.cpp</span></div>
+<div class="line"><span class="keywordtype">void</span> <a class="code" href="classIA.html#abaa7525c357e47e53dd3a1d416dc6cec">IA::connecter</a>(QHostAddress hote, quint16 port)</div>
+<div class="line">{</div>
+<div class="line">  <span class="comment">//Simple comme bonjour :</span></div>
+<div class="line">  jeu.<a class="code" href="classClient.html#aca6f6439d8500cea98b540450450e8cd">connecter</a>(hote, port);</div>
+<div class="line">}</div>
+<div class="line"><span class="keywordtype">void</span> IA::doit_priser(<a class="code" href="classOption.html">Option&lt;Enchere&gt;</a>)</div>
+<div class="line">{</div>
+<div class="line">  <span class="comment">//Je dois priser. Comme je suis une IA basique, je passe.</span></div>
+<div class="line">  jeu.<a class="code" href="classClientJeu.html#a98689343a93362c3b583a27e1ef6543f">formuler_prise</a>(<a class="code" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3faa40cabb8cd6ac3bed25b69561ebb834f">Enchere::PASSE</a>);</div>
+<div class="line">}</div>
+<div class="line"><span class="keywordtype">void</span> IA::doit_jouer()</div>
+<div class="line">{</div>
+<div class="line">  <span class="comment">//Je dois jouer. Je commence par changer de carte :</span></div>
+<div class="line">  <a class="code" href="classCarte.html">Carte</a> suivante(testee.<a class="code" href="classCarte.html#a71b2fa7ab34086aed44b3430b3755df5">numero</a>() + 1);</div>
+<div class="line">  </div>
+<div class="line">  <span class="comment">//Je fais dire au serveur que je veux jouer cette carte :</span></div>
+<div class="line">  jeu.<a class="code" href="classClientJeu.html#ad47142bad1f216ac3b93d0b75cf0b559">formuler_requete</a>(suivante);</div>
+<div class="line">  </div>
+<div class="line">  <span class="comment">//Je m&#39;en souviens pour le prochain refus (et donc, le prochain</span></div>
+<div class="line">  <span class="comment">//doit_jouer) </span></div>
+<div class="line">  testee = suivante;</div>
+<div class="line">}</div>
+<div class="line"><span class="keywordtype">void</span> IA::partie_terminee(std::vector&lt;int&gt;)</div>
+<div class="line">{</div>
+<div class="line">  <span class="comment">//La partie est terminée, j&#39;arrête le programme. Le moyen le plus</span></div>
+<div class="line">  <span class="comment">//simple est de détruire le QObject (voir main_program.cpp)</span></div>
+<div class="line">  deleteLater();</div>
+<div class="line">}</div>
+</div><!-- fragment --><h1><a class="anchor" id="conclusion"></a>
+Conclusion</h1>
+<p>Il y a un protocole à respecter pour communiquer avec le serveur, et pour utiliser les classes existantes, il faut se mettre au bon endroit, compiler les bons fichiers, utilier la dépendance netork, de déclarer une variable de type <a class="el" href="classClientJeu.html" title="Spécialise la classe Client, en permettant de comprendre l&#39;environnement de jeu du tarot...">ClientJeu</a>. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mercredi 17 Décembre 2014 19:33:04 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Mercredi 17 Décembre 2014 20:27:51 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -65,7 +65,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Espaces de nommage</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Espaces de nommage</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -87,31 +87,35 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="files"></a>
 Fichiers</h2></td></tr>
-<tr class="memitem:client_2shared_2client_8cpp"><td class="memItemLeft" align="right" valign="top">fichier &#160;</td><td class="memItemRight" valign="bottom"><b>client.cpp</b></td></tr>
+<tr class="memitem:client_8cpp"><td class="memItemLeft" align="right" valign="top">fichier &#160;</td><td class="memItemRight" valign="bottom"><b>client.cpp</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:client_2shared_2client_8hpp"><td class="memItemLeft" align="right" valign="top">fichier &#160;</td><td class="memItemRight" valign="bottom"><b>client.hpp</b> <a href="client_2shared_2client_8hpp_source.html">[code]</a></td></tr>
+<tr class="memitem:client_8hpp"><td class="memItemLeft" align="right" valign="top">fichier &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client_8hpp.html">client.hpp</a> <a href="client_8hpp_source.html">[code]</a></td></tr>
+<tr class="memdesc:client_8hpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Définit le moteur "réseau" du client et de l'<a class="el" href="classIA.html" title="Classe d&#39;intelligence artificielle. ">IA</a>. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:client_2shared_2client__jeu_8cpp"><td class="memItemLeft" align="right" valign="top">fichier &#160;</td><td class="memItemRight" valign="bottom"><b>client_jeu.cpp</b></td></tr>
+<tr class="memitem:client__jeu_8cpp"><td class="memItemLeft" align="right" valign="top">fichier &#160;</td><td class="memItemRight" valign="bottom"><b>client_jeu.cpp</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:client_2shared_2client__jeu_8hpp"><td class="memItemLeft" align="right" valign="top">fichier &#160;</td><td class="memItemRight" valign="bottom"><b>client_jeu.hpp</b> <a href="client_2shared_2client__jeu_8hpp_source.html">[code]</a></td></tr>
+<tr class="memitem:client__jeu_8hpp"><td class="memItemLeft" align="right" valign="top">fichier &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="client__jeu_8hpp.html">client_jeu.hpp</a> <a href="client__jeu_8hpp_source.html">[code]</a></td></tr>
+<tr class="memdesc:client__jeu_8hpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Spécialise le moteur "réseau" pour jouer avec un serveur. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:client_2shared_2option_8cpp"><td class="memItemLeft" align="right" valign="top">fichier &#160;</td><td class="memItemRight" valign="bottom"><b>option.cpp</b></td></tr>
+<tr class="memitem:option_8cpp"><td class="memItemLeft" align="right" valign="top">fichier &#160;</td><td class="memItemRight" valign="bottom"><b>option.cpp</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:client_2shared_2option_8hpp"><td class="memItemLeft" align="right" valign="top">fichier &#160;</td><td class="memItemRight" valign="bottom"><b>option.hpp</b> <a href="client_2shared_2option_8hpp_source.html">[code]</a></td></tr>
+<tr class="memitem:option_8hpp"><td class="memItemLeft" align="right" valign="top">fichier &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="option_8hpp.html">option.hpp</a> <a href="option_8hpp_source.html">[code]</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:client_2shared_2partie__client_8cpp"><td class="memItemLeft" align="right" valign="top">fichier &#160;</td><td class="memItemRight" valign="bottom"><b>partie_client.cpp</b></td></tr>
+<tr class="memitem:partie__client_8cpp"><td class="memItemLeft" align="right" valign="top">fichier &#160;</td><td class="memItemRight" valign="bottom"><b>partie_client.cpp</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:client_2shared_2partie__client_8hpp"><td class="memItemLeft" align="right" valign="top">fichier &#160;</td><td class="memItemRight" valign="bottom"><b>partie_client.hpp</b> <a href="client_2shared_2partie__client_8hpp_source.html">[code]</a></td></tr>
+<tr class="memitem:partie__client_8hpp"><td class="memItemLeft" align="right" valign="top">fichier &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="partie__client_8hpp.html">partie_client.hpp</a> <a href="partie__client_8hpp_source.html">[code]</a></td></tr>
+<tr class="memdesc:partie__client_8hpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Particularise une <a class="el" href="classPartie.html" title="Environnement de partie de Tarot. ">Partie</a> côté client. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:client_2shared_2transaction_8cpp"><td class="memItemLeft" align="right" valign="top">fichier &#160;</td><td class="memItemRight" valign="bottom"><b>transaction.cpp</b></td></tr>
+<tr class="memitem:transaction_8cpp"><td class="memItemLeft" align="right" valign="top">fichier &#160;</td><td class="memItemRight" valign="bottom"><b>transaction.cpp</b></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:client_2shared_2transaction_8hpp"><td class="memItemLeft" align="right" valign="top">fichier &#160;</td><td class="memItemRight" valign="bottom"><b>transaction.hpp</b> <a href="client_2shared_2transaction_8hpp_source.html">[code]</a></td></tr>
+<tr class="memitem:transaction_8hpp"><td class="memItemLeft" align="right" valign="top">fichier &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="transaction_8hpp.html">transaction.hpp</a> <a href="transaction_8hpp_source.html">[code]</a></td></tr>
+<tr class="memdesc:transaction_8hpp"><td class="mdescLeft">&#160;</td><td class="mdescRight">Traite un échange de cartes. <br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mercredi 17 Décembre 2014 19:33:05 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Mercredi 17 Décembre 2014 20:27:51 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
