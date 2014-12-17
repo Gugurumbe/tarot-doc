@@ -157,6 +157,8 @@ En utilisant ce qu'on a déjà</h1>
 <div class="line">SOURCES += ../../shared/tapis.cpp      </div>
 <div class="line"></div>
 <div class="line">QT += network </div>
+<div class="line"></div>
+<div class="line">QT -= gui</div>
 </div><!-- fragment --><p>Maintenant, on peut travailler. Faites un fichier principal (ici, main_program.cpp), ici :</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;QCoreApplication&gt;</span></div>
 <div class="line"></div>
@@ -246,13 +248,58 @@ En utilisant ce qu'on a déjà</h1>
 <div class="line">  <span class="comment">//simple est de détruire le QObject (voir main_program.cpp)</span></div>
 <div class="line">  deleteLater();</div>
 <div class="line">}</div>
-</div><!-- fragment --><h1><a class="anchor" id="conclusion"></a>
+</div><!-- fragment --><h2><a class="anchor" id="emission"></a>
+Ordre d'émission des signaux</h2>
+<p>Les signaux sont émis dans un ordre "logique" dans les différentes situations.</p>
+<p>Phase d'enchères :</p>
+<ol type="1">
+<li><a class="el" href="classClientJeu.html#af1303531d8616622f007beefa6cdea12" title="Émis lorsqu&#39;un contrat intermédiaire est formulé. ">ClientJeu::contrat_intermediaire()</a> (du joueur précédent)</li>
+<li><a class="el" href="classClientJeu.html#a7e01d0a68705b2b2950347e5f2c9d23b" title="Émis lorsque je dois priser. ">ClientJeu::doit_priser()</a> (Vous devez priser à partir de ce moment)</li>
+<li><a class="el" href="classClientJeu.html#a0a65871e3b0fc8d0ef6540f1104547da" title="Émis lorsque l&#39;enchère a été acceptée. ">ClientJeu::enchere_acceptee()</a> (ou <a class="el" href="classClientJeu.html#a4306c2924d8bce6ae8c99e4fe8742f48" title="Émis lorsque mon enchère a été refusée. ">ClientJeu::enchere_refusee()</a> et retour à 2.)</li>
+<li><a class="el" href="classClientJeu.html#af1303531d8616622f007beefa6cdea12" title="Émis lorsqu&#39;un contrat intermédiaire est formulé. ">ClientJeu::contrat_intermediaire()</a> (le vôtre)</li>
+<li><a class="el" href="classClientJeu.html#af1303531d8616622f007beefa6cdea12" title="Émis lorsqu&#39;un contrat intermédiaire est formulé. ">ClientJeu::contrat_intermediaire()</a> celui du joueur suivant.</li>
+</ol>
+<p>Appels :</p>
+<ol type="1">
+<li><a class="el" href="classClientJeu.html#af1303531d8616622f007beefa6cdea12" title="Émis lorsqu&#39;un contrat intermédiaire est formulé. ">ClientJeu::contrat_intermediaire()</a> (du joueur précédent)</li>
+<li><a class="el" href="classClientJeu.html#a96011061e8d2d34362138d3d9537e2e8" title="Émis lorsque je dois appeler une carte. ">ClientJeu::doit_appeler()</a> (vous devez appeler à partir de ce moment)</li>
+<li><a class="el" href="classClientJeu.html#aad8408883e77fc1a5e4d77904122f0bd" title="Émis lorsque mon appel a été accepté. ">ClientJeu::appel_accepte()</a> (ou <a class="el" href="classClientJeu.html#af83a524290e2627464c50119941cb825" title="Émis lorsque mon appel a été refusé. ">ClientJeu::appel_refuse()</a> et retour à 2.)</li>
+<li><a class="el" href="classClientJeu.html#adb848b01350135b5f1d36c20fa7d4f4a" title="Émis lorsque le contrat final est divulgué. ">ClientJeu::contrat_final()</a></li>
+<li><a class="el" href="classClientJeu.html#aeb16bbe6dddccfbd5aca86f51f11bfba" title="Émis lorsque le Chien est dévoilé. ">ClientJeu::chien()</a> (ou saut à la phase de jeu en cas de contrat supérieur)</li>
+<li><a class="el" href="classClientJeu.html#aaf847e36c3bd801db27ddbd59692a75c" title="Émis lorsque mon jeu change. ">ClientJeu::jeu_change()</a></li>
+<li><a class="el" href="classClientJeu.html#afc8c6cacec6f1f2cae6926d3f34ce411" title="Émis lorsque je dois faire un écart. ">ClientJeu::doit_ecarter()</a> (vous devez écarter à partir de ce moment)</li>
+<li><a class="el" href="classClientJeu.html#a0b917133ea9e27a529b5310a869eaeb4" title="Émis lorsqu&#39;un ou plusieurs atouts est/sont écarté(s). ">ClientJeu::atout_au_chien()</a> (éventuellement)</li>
+<li><a class="el" href="classClientJeu.html#a88e19ff93d59a5ee0206fc00551469a8" title="Émis lorsque l&#39;écart a été accepté. ">ClientJeu::ecart_accepte()</a> (ou <a class="el" href="classClientJeu.html#a2dcbdea6b8f53718c780fcdf23a5c837" title="Émis lorsque l&#39;écart est refusé. ">ClientJeu::ecart_refuse()</a> et retour à 7.)</li>
+<li><a class="el" href="classClientJeu.html#aaf847e36c3bd801db27ddbd59692a75c" title="Émis lorsque mon jeu change. ">ClientJeu::jeu_change()</a></li>
+</ol>
+<p>Jeu :</p>
+<ol type="1">
+<li><a class="el" href="classClientJeu.html#a775bb7e768a00904c42757d50f8d50dc" title="Émis lorsqu&#39;une carte a été jouée. ">ClientJeu::carte_jouee()</a> (par le joueur précédent)</li>
+<li><a class="el" href="classClientJeu.html#af704aa698ff09b2363fcab8718e951b7" title="Émis lorsque le maître du tapis change. ">ClientJeu::maitre_change()</a> (éventuellement)</li>
+<li><a class="el" href="classClientJeu.html#a23522808d5cec1559d2837c39025fb7f" title="Émis lorsque le tapis est modifié. ">ClientJeu::tapis_change()</a></li>
+<li><a class="el" href="classClientJeu.html#ad01d2320d60f816ec2c6d08b8a5477c4" title="Émis lorsque je dois jouer. ">ClientJeu::doit_jouer()</a> (vous devez jouer à partir de ce moment)</li>
+<li><a class="el" href="classClientJeu.html#acf7d41addc91f869189be60de982540c" title="Émis lorsque la carte que je voulais jouer a été acceptée. ">ClientJeu::requete_acceptee()</a> (ou <a class="el" href="classClientJeu.html#ae3511addc7dcc78157d1e85a4ef851ea" title="Émis lorsque la carte que je voulais jouer a été refusée. ">ClientJeu::requete_refusee()</a> et retour à 4.)</li>
+<li><a class="el" href="classClientJeu.html#aaf847e36c3bd801db27ddbd59692a75c" title="Émis lorsque mon jeu change. ">ClientJeu::jeu_change()</a> (vous perdez la carte jouée)</li>
+<li><a class="el" href="classClientJeu.html#a775bb7e768a00904c42757d50f8d50dc" title="Émis lorsqu&#39;une carte a été jouée. ">ClientJeu::carte_jouee()</a> (par vous)</li>
+<li><a class="el" href="classClientJeu.html#af704aa698ff09b2363fcab8718e951b7" title="Émis lorsque le maître du tapis change. ">ClientJeu::maitre_change()</a> (éventuellement, dans ce cas c'est vous)</li>
+<li><a class="el" href="classClientJeu.html#a23522808d5cec1559d2837c39025fb7f" title="Émis lorsque le tapis est modifié. ">ClientJeu::tapis_change()</a></li>
+</ol>
+<p>Fin de levée :</p>
+<ol type="1">
+<li><a class="el" href="classClientJeu.html#a775bb7e768a00904c42757d50f8d50dc" title="Émis lorsqu&#39;une carte a été jouée. ">ClientJeu::carte_jouee()</a> (par le dernier joueur)</li>
+<li><a class="el" href="classClientJeu.html#af704aa698ff09b2363fcab8718e951b7" title="Émis lorsque le maître du tapis change. ">ClientJeu::maitre_change()</a> (éventuellement)</li>
+<li>5 fois (dans l'ordre des cartes jouées) <a class="el" href="classClientJeu.html#a6cdaf97470a2661b02945d74545cfe25" title="Émis lors du mouvement d&#39;une carte. ">ClientJeu::carte_gagnee()</a></li>
+<li><a class="el" href="classClientJeu.html#a23522808d5cec1559d2837c39025fb7f" title="Émis lorsque le tapis est modifié. ">ClientJeu::tapis_change()</a></li>
+<li><a class="el" href="classClientJeu.html#ad01d2320d60f816ec2c6d08b8a5477c4" title="Émis lorsque je dois jouer. ">ClientJeu::doit_jouer()</a> (si vous avez remporté le pli)</li>
+</ol>
+<p>Fin de partie : comme à la fin de la dernière levée, sans le dernier point. À la place, on a <a class="el" href="classClientJeu.html#a59b17e5a650764d292ea4abeed67a15f" title="Émis lorsque la partie est terminée. ">ClientJeu::partie_terminee()</a></p>
+<h1><a class="anchor" id="conclusion"></a>
 Conclusion</h1>
 <p>Il y a un protocole à respecter pour communiquer avec le serveur, et pour utiliser les classes existantes, il faut se mettre au bon endroit, compiler les bons fichiers, utilier la dépendance netork, de déclarer une variable de type <a class="el" href="classClientJeu.html" title="Spécialise la classe Client, en permettant de comprendre l&#39;environnement de jeu du tarot...">ClientJeu</a>. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mercredi 17 Décembre 2014 21:31:30 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Mercredi 17 Décembre 2014 23:37:38 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
