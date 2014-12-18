@@ -213,7 +213,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;</div>
 <div class="line"><a name="l00427"></a><span class="lineno"><a class="line" href="structProtocole_1_1Msg__jeu.html">  427</a></span>&#160;  <span class="keyword">struct </span><a class="code" href="structProtocole_1_1Msg__jeu.html">Msg_jeu</a></div>
 <div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;  {</div>
-<div class="line"><a name="l00435"></a><span class="lineno"><a class="line" href="structProtocole_1_1Msg__jeu.html#a1e77b5f1b0b4cf68649955991f0d605a">  435</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structProtocole_1_1Msg__jeu.html#a1e77b5f1b0b4cf68649955991f0d605a">chelem</a>;</div>
+<div class="line"><a name="l00435"></a><span class="lineno"><a class="line" href="structProtocole_1_1Msg__jeu.html#a68fbf548c5adaf44ce414ead157509f2">  435</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="structProtocole_1_1Msg__jeu.html#a68fbf548c5adaf44ce414ead157509f2">ouvreur</a>;</div>
 <div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;  };</div>
 <div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;</div>
 <div class="line"><a name="l00445"></a><span class="lineno"><a class="line" href="structProtocole_1_1Msg__montrer__poignee.html">  445</a></span>&#160;  <span class="keyword">struct </span><a class="code" href="structProtocole_1_1Msg__montrer__poignee.html">Msg_montrer_poignee</a></div>
@@ -331,7 +331,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00732"></a><span class="lineno">  732</span>&#160;</div>
 <div class="line"><a name="l00733"></a><span class="lineno">  733</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="unionProtocole_1_1Msg_html_a201835afaebd7d23e9d1de3366ecbb25"><div class="ttname"><a href="unionProtocole_1_1Msg.html#a201835afaebd7d23e9d1de3366ecbb25">Protocole::Msg::jeu</a></div><div class="ttdeci">struct Msg_jeu jeu</div><div class="ttdoc">Champ de JEU. </div><div class="ttdef"><b>Definition:</b> protocole.hpp:602</div></div>
-<div class="ttc" id="structProtocole_1_1Msg__jeu_html_a1e77b5f1b0b4cf68649955991f0d605a"><div class="ttname"><a href="structProtocole_1_1Msg__jeu.html#a1e77b5f1b0b4cf68649955991f0d605a">Protocole::Msg_jeu::chelem</a></div><div class="ttdeci">int chelem</div><div class="ttdoc">Un chelem a-t-il été annoncé ? </div><div class="ttdef"><b>Definition:</b> protocole.hpp:435</div></div>
 <div class="ttc" id="structProtocole_1_1Msg__requete_html_ad3f8bf97a3ce0954960461464dde9e65"><div class="ttname"><a href="structProtocole_1_1Msg__requete.html#ad3f8bf97a3ce0954960461464dde9e65">Protocole::Msg_requete::carte</a></div><div class="ttdeci">int carte</div><div class="ttdoc">La carte à jouer. </div><div class="ttdef"><b>Definition:</b> protocole.hpp:493</div></div>
 <div class="ttc" id="structProtocole_1_1Message_html_a9d5dd049cf6b9561a374798091c4fa8c"><div class="ttname"><a href="structProtocole_1_1Message.html#a9d5dd049cf6b9561a374798091c4fa8c">Protocole::Message::m</a></div><div class="ttdeci">union Msg m</div><div class="ttdoc">Contenu du Message. </div><div class="ttdef"><b>Definition:</b> protocole.hpp:663</div></div>
 <div class="ttc" id="namespaceProtocole_html_a9f03877a7e246d3a013e680623a4b233a7bd285c6f188b6b6518dd60767d4fbff"><div class="ttname"><a href="namespaceProtocole.html#a9f03877a7e246d3a013e680623a4b233a7bd285c6f188b6b6518dd60767d4fbff">Protocole::ATOUT</a></div><div class="ttdef"><b>Definition:</b> protocole.hpp:131</div></div>
@@ -419,11 +418,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="ttc" id="namespaceProtocole_html_a9f03877a7e246d3a013e680623a4b233adcd26b4f1d07aca01f1e246042654858"><div class="ttname"><a href="namespaceProtocole.html#a9f03877a7e246d3a013e680623a4b233adcd26b4f1d07aca01f1e246042654858">Protocole::REFUSE</a></div><div class="ttdef"><b>Definition:</b> protocole.hpp:58</div></div>
 <div class="ttc" id="namespaceProtocole_html_a9f03877a7e246d3a013e680623a4b233a2fa2066054dd5a506a045deb007959eb"><div class="ttname"><a href="namespaceProtocole.html#a9f03877a7e246d3a013e680623a4b233a2fa2066054dd5a506a045deb007959eb">Protocole::CONTRAT</a></div><div class="ttdef"><b>Definition:</b> protocole.hpp:85</div></div>
 <div class="ttc" id="structProtocole_1_1Msg__resultat_html_aa6e4238bf8a2feec8bcd63b50abac302"><div class="ttname"><a href="structProtocole_1_1Msg__resultat.html#aa6e4238bf8a2feec8bcd63b50abac302">Protocole::Msg_resultat::resultats</a></div><div class="ttdeci">int resultats[5]</div><div class="ttdoc">Les résultats. </div><div class="ttdef"><b>Definition:</b> protocole.hpp:537</div></div>
+<div class="ttc" id="structProtocole_1_1Msg__jeu_html_a68fbf548c5adaf44ce414ead157509f2"><div class="ttname"><a href="structProtocole_1_1Msg__jeu.html#a68fbf548c5adaf44ce414ead157509f2">Protocole::Msg_jeu::ouvreur</a></div><div class="ttdeci">int ouvreur</div><div class="ttdoc">Numéro du premier joueur. </div><div class="ttdef"><b>Definition:</b> protocole.hpp:435</div></div>
 <div class="ttc" id="unionProtocole_1_1Msg_html_a042459b2896c97b2f65947c3e9dda4e2"><div class="ttname"><a href="unionProtocole_1_1Msg.html#a042459b2896c97b2f65947c3e9dda4e2">Protocole::Msg::chelem</a></div><div class="ttdeci">struct Msg_chelem chelem</div><div class="ttdoc">Champ de CHELEM. </div><div class="ttdef"><b>Definition:</b> protocole.hpp:598</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mercredi 17 Décembre 2014 23:37:38 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Jeudi 18 Décembre 2014 14:51:44 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

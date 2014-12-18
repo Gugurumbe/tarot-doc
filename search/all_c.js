@@ -23,6 +23,7 @@ var searchData=
   ['option_3c_20transaction_3a_3atransaction_3a_3ajeu_20_3e',['Option&lt; Transaction::Transaction::Jeu &gt;',['../classOption.html',1,'']]],
   ['option_5fdefinie',['OPTION_DEFINIE',['../option_8hpp.html#a46865461646070840960b77a1711d02a',1,'option.hpp']]],
   ['oublier_5ftable',['oublier_table',['../classServeurJeu.html#a747a0655730eb9de9402bce5293f588e',1,'ServeurJeu']]],
+  ['ouvreur',['ouvreur',['../structProtocole_1_1Msg__jeu.html#a68fbf548c5adaf44ce414ead157509f2',1,'Protocole::Msg_jeu']]],
   ['ouvrir_5fglobal',['ouvrir_global',['../classServeur.html#ae4ebda122c157f2f7a6924fd1c9140e8',1,'Serveur']]],
   ['ouvrir_5flocal',['ouvrir_local',['../classServeur.html#af79375cb09b15add98ef5603dff4c74b',1,'Serveur']]]
 ];
