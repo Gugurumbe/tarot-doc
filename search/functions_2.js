@@ -21,7 +21,7 @@ var searchData=
   ['complet',['complet',['../classTable.html#afa5f81913df343483231eaed24f332cd',1,'Table']]],
   ['comprendre',['comprendre',['../classTable.html#afb140b691eda8c0704cea1aeda9cd300',1,'Table']]],
   ['connecte',['connecte',['../classClient.html#a81ee5a5d5df20d3bae5a7ba511fa1bb7',1,'Client::connecte()'],['../classJournal.html#a8147eb436c28f197cf7cebfc43f14045',1,'Journal::connecte()']]],
-  ['connecter',['connecter',['../classIA.html#abaa7525c357e47e53dd3a1d416dc6cec',1,'IA::connecter()'],['../classClient.html#aca6f6439d8500cea98b540450450e8cd',1,'Client::connecter()']]],
+  ['connecter',['connecter',['../classIA.html#abaa7525c357e47e53dd3a1d416dc6cec',1,'IA::connecter()'],['../classClient.html#aca6f6439d8500cea98b540450450e8cd',1,'Client::connecter()'],['../classClientGraphique.html#a652239e56073e41cdaaf2326a605ac7a',1,'ClientGraphique::connecter()']]],
   ['connexion',['connexion',['../classServeur.html#a9288c85f3aee40b409e1a58cb117c277',1,'Serveur']]],
   ['contenu',['contenu',['../classTapis.html#afd69857840374e0d1a5a97d93b920b2b',1,'Tapis']]],
   ['contrat_5ffinal',['contrat_final',['../classClientJeu.html#adb848b01350135b5f1d36c20fa7d4f4a',1,'ClientJeu::contrat_final()'],['../classPartieClient.html#a46b703ffdbdaae8ac4eeeea494c16304',1,'PartieClient::contrat_final()'],['../classJournal.html#a364bc5c1aa7804fb4b3303e89bb92250',1,'Journal::contrat_final()']]],

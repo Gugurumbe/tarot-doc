@@ -21,6 +21,7 @@ var searchData=
   ['detacher_5ftable',['detacher_table',['../classServeurJeu.html#a116bae8ae5a4ffa34ea22cc222655a48',1,'ServeurJeu']]],
   ['detruire_5fincomplete',['DETRUIRE_INCOMPLETE',['../server_2config_8hpp.html#afe887e4b360e68864eade49835d75722',1,'config.hpp']]],
   ['dette_5fexcuse',['DETTE_EXCUSE',['../carte_8hpp.html#a73ae32b908395c6e86179cabb6fd6328',1,'carte.hpp']]],
+  ['disable',['disable',['../classClientGraphique.html#a3ffad60a9c97841beb903717a6e4162b',1,'ClientGraphique']]],
   ['distribuer',['distribuer',['../classPartieServeur.html#a135a3037f89478ccb40547fca9ceec75',1,'PartieServeur']]],
   ['distribution',['distribution',['../unionProtocole_1_1Msg.html#ab3f5582c45cf4b1b8a7bc22a8a2f0d67',1,'Protocole::Msg::distribution()'],['../classMain.html#ac31fb90cebfa1d62f14995fb3393151e',1,'Main::distribution()'],['../namespaceProtocole.html#a9f03877a7e246d3a013e680623a4b233a3b2b41996b636ebffe2b267ae7e25d57',1,'Protocole::DISTRIBUTION()']]],
   ['doit_5fappeler',['doit_appeler',['../classClientJeu.html#a96011061e8d2d34362138d3d9537e2e8',1,'ClientJeu::doit_appeler()'],['../classPartieClient.html#aeab34362cce497ae651b95d2ac0b9611',1,'PartieClient::doit_appeler()'],['../classJournal.html#af0ac0dc397d3a1a9becbd28250b8458a',1,'Journal::doit_appeler()']]],

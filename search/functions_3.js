@@ -8,6 +8,7 @@ var searchData=
   ['demander_5fjeu',['demander_jeu',['../classPartieClient.html#a69d50fe756fb33cf9c1d7a24414a14b1',1,'PartieClient']]],
   ['demipoints',['demipoints',['../classCarte.html#a84d161365c4a090b9c10e8939e07e5b0',1,'Carte']]],
   ['detacher_5ftable',['detacher_table',['../classServeurJeu.html#a116bae8ae5a4ffa34ea22cc222655a48',1,'ServeurJeu']]],
+  ['disable',['disable',['../classClientGraphique.html#a3ffad60a9c97841beb903717a6e4162b',1,'ClientGraphique']]],
   ['distribuer',['distribuer',['../classPartieServeur.html#a135a3037f89478ccb40547fca9ceec75',1,'PartieServeur']]],
   ['distribution',['distribution',['../classMain.html#ac31fb90cebfa1d62f14995fb3393151e',1,'Main']]],
   ['doit_5fappeler',['doit_appeler',['../classClientJeu.html#a96011061e8d2d34362138d3d9537e2e8',1,'ClientJeu::doit_appeler()'],['../classPartieClient.html#aeab34362cce497ae651b95d2ac0b9611',1,'PartieClient::doit_appeler()'],['../classJournal.html#af0ac0dc397d3a1a9becbd28250b8458a',1,'Journal::doit_appeler()']]],

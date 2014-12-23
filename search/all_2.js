@@ -34,7 +34,7 @@ var searchData=
   ['config_2ehpp',['config.hpp',['../client_2ai_2config_8hpp.html',1,'']]],
   ['config_2ehpp',['config.hpp',['../client_2ui_2config_8hpp.html',1,'']]],
   ['connecte',['connecte',['../classClient.html#a81ee5a5d5df20d3bae5a7ba511fa1bb7',1,'Client::connecte()'],['../classJournal.html#a8147eb436c28f197cf7cebfc43f14045',1,'Journal::connecte()']]],
-  ['connecter',['connecter',['../classIA.html#abaa7525c357e47e53dd3a1d416dc6cec',1,'IA::connecter()'],['../classClient.html#aca6f6439d8500cea98b540450450e8cd',1,'Client::connecter()']]],
+  ['connecter',['connecter',['../classIA.html#abaa7525c357e47e53dd3a1d416dc6cec',1,'IA::connecter()'],['../classClient.html#aca6f6439d8500cea98b540450450e8cd',1,'Client::connecter()'],['../classClientGraphique.html#a652239e56073e41cdaaf2326a605ac7a',1,'ClientGraphique::connecter()']]],
   ['connexion',['connexion',['../classServeur.html#a9288c85f3aee40b409e1a58cb117c277',1,'Serveur']]],
   ['constitution_5fecart',['CONSTITUTION_ECART',['../classPartie.html#aa94cf37ae5f9f1f87ac640b8dc0048c9a98e42411329afc17f6074049667b8535',1,'Partie']]],
   ['constitution_5ftable',['CONSTITUTION_TABLE',['../classPartie.html#aa94cf37ae5f9f1f87ac640b8dc0048c9a01c3e5c27dd23b303b45697e4b8eb11d',1,'Partie']]],
