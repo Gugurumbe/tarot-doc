@@ -91,7 +91,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <p>Voici les types :</p>
 <ul>
 <li>0 : erreur_protocole. Pas de partie variable. Signification : vous avez dit quelque chose à un moment inopportun, ou ça n'entre pas dans le protocole.</li>
-<li>1 : refuse. Pas de partie variable. Signification : vous avez fait une requête du bon type au bon moment, mais elle ne respecte pas les règles.</li>
+<li>1 : refuse. Pas de partie variable. Signification : vous avez fait une requête du bon type au bon moment, mais elle ne respecte pas les règles. Valable aussi si le nom que vous souhaitez utiliser est déjà pris.</li>
 <li>2 : numero. Morceau variable : mon numéro sur 1 octet non signé. Votre numéro est un nombre entre 0 et 4 inclus. Si c'est 0, vous devez être le premier à priser. Si c'est x, il faut attendre de recevoir x messages de type contrat avant de priser.</li>
 <li>3 : distribution. Morceau variable : mes 15 cartes, chacune sur 1 octet non signé.</li>
 <li>4 : prise. Morceau variable : ma prise (1 octet, non signé). 0 : passe, 4 : garde contre. Le client doit émettre ce message.</li>
@@ -109,9 +109,14 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <li>16 : requete. Morceau variable : 1 octet (la carte que vous voudriez jouer). C'est à vous s'il y a eu (votre tour - tour du joueur d'ouverture) modulo 5 cartes jouées depuis le dernier pli.</li>
 <li>17 : carte. Morceau variable : 1 octet (la carte jouée). À vous de déterminer qui l'a jouée, à partir du numéro du joueur d'ouverture et le nombre de cartes jouées depuis la fin du dernier pli.</li>
 <li>18 : pli. Morceau variable : 1 octet (numéro du joueur d'ouverture).</li>
-<li>19 : resultat. La partie est finie. Morceau variable : 5 mots de 2 octets, signés (les résultats de chacun).</li>
+<li>19 : resultat. La donne est finie. Morceau variable : 5 mots de 2 octets, signés (les résultats de chacun depuis le dernier changement de siège).</li>
+<li>20 : identifier. À la connexion, vous devez prendre l'initiative de vous identifier. Morceau variable : 16 octets pour le nom de joueur (en UTF-8 unicode). Peut être refusé (refuse), ou accepté (entree).</li>
+<li>21 : entree. Un joueur est entré dans le vestibule, alors que vous y êtes déjà. Lors de votre première connexion, tout le monde déjà présent vous est présenté via ce message. Morceau variable : 16 octets pour le nom.</li>
+<li>22 : sortie. Un joueur est sorti du vestibule, alors que vous y êtes encore vous-même. 16 octets pour le nom.</li>
+<li>23 : noms. Vous jouez maintenant une (autre ?) partie avec 4 autres types. Si vous ne voulez pas, déconnectez-vous. Sinon, espérez qu'aucun de ces 4 types ne se déconnecte. Si quelqu'un se déconnecte avant vous, vous êtes déconnecté et devez refaire toute la procédure, comme en cas de refus. On vous donne votre numéro. La distribution commence. Morceau variable : 5 * 16 octets, pour les 5 noms, dans l'ordre du numéro. On vous reprécise votre numéro juste après.</li>
+<li>24 : inviter. Vous demandez de faire un groupe avec 4 autres personnes. Si toutes sont dans le vestibule, une partie commence. Sinon, refusé. Morceau variable : 4 * 16 octets, les noms des gens que vous voulez inviter.</li>
 </ul>
-<p>Vous devez donc émettre : prise, appeler, ecarter, requete, requete, ... dans le cas où vous prenez (prise autre que garde contre ou garde sans) en tant que client.</p>
+<p>Vous devez donc émettre : identifier, (inviter), prise, appeler, ecarter, requete, requete, ... dans le cas où vous prenez (prise autre que garde contre ou garde sans) en tant que client. Hors jeu, vous devez émettre rejoindre ou accueillir, et dans ce cas gérer votre table.</p>
 <h1><a class="anchor" id="un"></a>
 En utilisant ce qu'on a déjà</h1>
 <p>L'objectif est d'utiliser la classe <a class="el" href="classClientJeu.html" title="Spécialise la classe Client, en permettant de comprendre l&#39;environnement de jeu du tarot...">ClientJeu</a>, qui fournit de l'information sous forme de signaux Qt, et qui permet d'enregistrer des ordres facilement. Vous avez droit à tous les signaux de <a class="el" href="classClientJeu.html" title="Spécialise la classe Client, en permettant de comprendre l&#39;environnement de jeu du tarot...">ClientJeu</a>, plus <a class="el" href="classClientJeu.html#aa58c80a80128188baff0400b10e81501" title="Retourne la partie en cours. ">ClientJeu::partie</a> qui vous fournit une <a class="el" href="classPartieClient.html" title="Précision d&#39;une Partie, côté client. ">PartieClient</a>, d'où vous pourrez savoir le <a class="el" href="classPartie.html#a34e5fc20f35fa22c89a3151bc8a56d55" title="À qui de jouer ? ">Partie::tour()</a>, <a class="el" href="classPartie.html#abb22c4e65f62fdcab2600376ed9ea5a6" title="Accès au joueur qui prise. ">Partie::attaquant()</a>, <a class="el" href="classPartieClient.html#a304bbc3b5068d36ed72bbccbb54c7fc2" title="Regarder mon jeu. ">PartieClient::mon_jeu()</a>, <a class="el" href="classPartie.html#a8e85cd52fcb26ee887b5c5441ffc00b2" title="Montre le tapis de jeu. ">Partie::tapis()</a>, ...</p>
@@ -124,7 +129,8 @@ En utilisant ce qu'on a déjà</h1>
 <div class="line">INCLUDEPATH += . ../shared ../../shared</div>
 <div class="line"></div>
 <div class="line"><span class="preprocessor"># Input</span></div>
-<div class="line"><span class="preprocessor"></span>HEADERS += ia.hpp</div>
+<div class="line"><span class="preprocessor"></span>HEADERS += config.hpp</div>
+<div class="line">HEADERS += ia.hpp</div>
 <div class="line">HEADERS += ../shared/client.hpp</div>
 <div class="line">HEADERS += ../shared/client_jeu.hpp</div>
 <div class="line">HEADERS += ../shared/option.hpp</div>
@@ -299,7 +305,7 @@ Conclusion</h1>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi 23 Décembre 2014 13:22:11 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Vendredi 16 Janvier 2015 14:35:40 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

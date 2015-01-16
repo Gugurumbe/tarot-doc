@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['_7eclientjeu',['~ClientJeu',['../classClientJeu.html#a4678dc5295959f6a9b6088b87e92093f',1,'ClientJeu']]],
   ['_7edebogueur',['~Debogueur',['../classDebogueur.html#addbd682df2a05687eacda1c83e5176cc',1,'Debogueur']]],
   ['_7eenchere',['~Enchere',['../classEnchere.html#aa503bb1c8bf255e106950b9d5917b744',1,'Enchere']]],
   ['_7eoption',['~Option',['../classOption.html#a3ce283f0db6ec7d43d8eaf0862b9efef',1,'Option']]],

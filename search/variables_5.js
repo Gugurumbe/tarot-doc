@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['m',['m',['../structProtocole_1_1Message.html#a9d5dd049cf6b9561a374798091c4fa8c',1,'Protocole::Message']]],
-  ['montrer_5fpoignee',['montrer_poignee',['../unionProtocole_1_1Msg.html#a9cfd5024b27968f768bf76d4092f0efb',1,'Protocole::Msg']]]
+  ['jeu',['jeu',['../unionProtocole_1_1Msg.html#a201835afaebd7d23e9d1de3366ecbb25',1,'Protocole::Msg']]],
+  ['joueur',['joueur',['../structProtocole_1_1Msg__pli.html#ae2f4e64115f036083cd507fa11dd0a1a',1,'Protocole::Msg_pli']]]
 ];

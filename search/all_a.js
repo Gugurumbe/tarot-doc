@@ -13,6 +13,7 @@ var searchData=
   ['modaliteecart',['ModaliteEcart',['../classCarte.html#ab766c46bfc445d84ad35af4149f76802',1,'Carte']]],
   ['modifier_5fcartes',['modifier_cartes',['../classSelecteurCarte.html#ac0b54a3d796c247b096b9cde6e8c5bbb',1,'SelecteurCarte']]],
   ['mon_5fjeu',['mon_jeu',['../classPartieClient.html#a304bbc3b5068d36ed72bbccbb54c7fc2',1,'PartieClient']]],
+  ['mon_5fnom',['mon_nom',['../classPartieClient.html#a2d79ef4b51e8b8d8892b2fda536ed787',1,'PartieClient']]],
   ['mon_5fnumero',['mon_numero',['../classPartieClient.html#ab8a66e1a4f5b21a4687923844ff12a49',1,'PartieClient']]],
   ['mon_5ftour',['mon_tour',['../classPartieClient.html#ad0f3ad8eec624ad558c0317d289cfec6',1,'PartieClient']]],
   ['montrer_5fcarte',['MONTRER_CARTE',['../classCarte.html#ab766c46bfc445d84ad35af4149f76802a896a78ffcbe24a7e0b0de467b03f801c',1,'Carte']]],
@@ -28,14 +29,19 @@ var searchData=
   ['msg_5fcontrat_5ffinal',['Msg_contrat_final',['../structProtocole_1_1Msg__contrat__final.html',1,'Protocole']]],
   ['msg_5fdistribution',['Msg_distribution',['../structProtocole_1_1Msg__distribution.html',1,'Protocole']]],
   ['msg_5fecart',['Msg_ecart',['../structProtocole_1_1Msg__ecart.html',1,'Protocole']]],
+  ['msg_5fentree',['Msg_entree',['../structProtocole_1_1Msg__entree.html',1,'Protocole']]],
   ['msg_5ferreur_5fprotocole',['Msg_erreur_protocole',['../structProtocole_1_1Msg__erreur__protocole.html',1,'Protocole']]],
+  ['msg_5fidentifier',['Msg_identifier',['../structProtocole_1_1Msg__identifier.html',1,'Protocole']]],
+  ['msg_5finviter',['Msg_inviter',['../structProtocole_1_1Msg__inviter.html',1,'Protocole']]],
   ['msg_5fjeu',['Msg_jeu',['../structProtocole_1_1Msg__jeu.html',1,'Protocole']]],
   ['msg_5fmontrer_5fpoignee',['Msg_montrer_poignee',['../structProtocole_1_1Msg__montrer__poignee.html',1,'Protocole']]],
+  ['msg_5fnoms',['Msg_noms',['../structProtocole_1_1Msg__noms.html',1,'Protocole']]],
   ['msg_5fnumero',['Msg_numero',['../structProtocole_1_1Msg__numero.html',1,'Protocole']]],
   ['msg_5fpli',['Msg_pli',['../structProtocole_1_1Msg__pli.html',1,'Protocole']]],
   ['msg_5fpoignee',['Msg_poignee',['../structProtocole_1_1Msg__poignee.html',1,'Protocole']]],
   ['msg_5fprise',['Msg_prise',['../structProtocole_1_1Msg__prise.html',1,'Protocole']]],
   ['msg_5frefuse',['Msg_refuse',['../structProtocole_1_1Msg__refuse.html',1,'Protocole']]],
   ['msg_5frequete',['Msg_requete',['../structProtocole_1_1Msg__requete.html',1,'Protocole']]],
-  ['msg_5fresultat',['Msg_resultat',['../structProtocole_1_1Msg__resultat.html',1,'Protocole']]]
+  ['msg_5fresultat',['Msg_resultat',['../structProtocole_1_1Msg__resultat.html',1,'Protocole']]],
+  ['msg_5fsortie',['Msg_sortie',['../structProtocole_1_1Msg__sortie.html',1,'Protocole']]]
 ];

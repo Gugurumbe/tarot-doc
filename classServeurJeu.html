@@ -121,6 +121,12 @@ Connecteurs publics</h2></td></tr>
 <tr class="memitem:a747a0655730eb9de9402bce5293f588e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServeurJeu.html#a747a0655730eb9de9402bce5293f588e">oublier_table</a> (QObject *t)</td></tr>
 <tr class="memdesc:a747a0655730eb9de9402bce5293f588e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Oublie une <a class="el" href="classTable.html" title="Classe de Table. ">Table</a> détruite.  <a href="#a747a0655730eb9de9402bce5293f588e">Plus de détails...</a><br/></td></tr>
 <tr class="separator:a747a0655730eb9de9402bce5293f588e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c2a67eca6f0bdde806f85dcf8075233"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServeurJeu.html#a1c2a67eca6f0bdde806f85dcf8075233">oublier_socket</a> (unsigned int client)</td></tr>
+<tr class="memdesc:a1c2a67eca6f0bdde806f85dcf8075233"><td class="mdescLeft">&#160;</td><td class="mdescRight">Une socket s'est déconnectée.  <a href="#a1c2a67eca6f0bdde806f85dcf8075233">Plus de détails...</a><br/></td></tr>
+<tr class="separator:a1c2a67eca6f0bdde806f85dcf8075233"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa0d707aece1efefef91ff31ebf9f74d9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServeurJeu.html#aa0d707aece1efefef91ff31ebf9f74d9">lire</a> (unsigned int client, <a class="el" href="structProtocole_1_1Message.html">Protocole::Message</a> m)</td></tr>
+<tr class="memdesc:aa0d707aece1efefef91ff31ebf9f74d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Identifie.  <a href="#aa0d707aece1efefef91ff31ebf9f74d9">Plus de détails...</a><br/></td></tr>
+<tr class="separator:aa0d707aece1efefef91ff31ebf9f74d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_slots_classServeur"><td colspan="2" onclick="javascript:toggleInherit('pub_slots_classServeur')"><img src="closed.png" alt="-"/>&#160;Connecteurs publics hérités de <a class="el" href="classServeur.html">Serveur</a></td></tr>
 <tr class="memitem:a08aab282f6c58714523c1d8943ef61d1 inherit pub_slots_classServeur"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServeur.html#a08aab282f6c58714523c1d8943ef61d1">accepter</a> ()</td></tr>
 <tr class="memdesc:a08aab282f6c58714523c1d8943ef61d1 inherit pub_slots_classServeur"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vérifie les nouvelles connexions.  <a href="#a08aab282f6c58714523c1d8943ef61d1">Plus de détails...</a><br/></td></tr>
@@ -230,10 +236,88 @@ Membres hérités additionnels</h2></td></tr>
 <p>Utilisé quand une <a class="el" href="classTable.html" title="Classe de Table. ">Table</a> contient 5 joueurs.</p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">t</td><td>: la <a class="el" href="classTable.html" title="Classe de Table. ">Table</a> pleine. </td></tr>
+    <tr><td class="paramname">t</td><td>: la <a class="el" href="classTable.html" title="Classe de Table. ">Table</a> pleine.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Note</dt><dd>Inutilisé depuis qu'on fait des tables authentifiées. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aa0d707aece1efefef91ff31ebf9f74d9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ServeurJeu::lire </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>client</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structProtocole_1_1Message.html">Protocole::Message</a>&#160;</td>
+          <td class="paramname"><em>m</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Identifie. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">client</td><td>Le client sur le paillasson qui veut s'identifier. </td></tr>
+    <tr><td class="paramname">m</td><td>Un message, probablement d'identification.</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>émet "refuse", "erreur_protocole" ou fait les présentations avec le reste du vestibule. </p>
+
+</div>
+</div>
+<a class="anchor" id="a1c2a67eca6f0bdde806f85dcf8075233"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ServeurJeu::oublier_socket </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>client</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Une socket s'est déconnectée. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">client</td><td>Le client qui s'est déconnecté.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Il n'est pas forcément dans le vestibule, ni sur le paillasson. </dd></dl>
 
 </div>
 </div>
@@ -262,10 +346,11 @@ Membres hérités additionnels</h2></td></tr>
 <p>Oublie une <a class="el" href="classTable.html" title="Classe de Table. ">Table</a> détruite. </p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">t</td><td>: la <a class="el" href="classTable.html" title="Classe de Table. ">Table</a> sur le point d'être détruite. </td></tr>
+    <tr><td class="paramname">t</td><td>: la <a class="el" href="classTable.html" title="Classe de Table. ">Table</a> sur le point d'être détruite.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Note</dt><dd>Inutilisé depuis qu'on fait des tables authentifiées. </dd></dl>
 
 </div>
 </div>
@@ -296,10 +381,11 @@ Membres hérités additionnels</h2></td></tr>
 <dl class="section note"><dt>Note</dt><dd>Dans un premier temps, dans l'implémentation, la <a class="el" href="classTable.html" title="Classe de Table. ">Table</a> s'autodétruira si un client se déconnecte.</dd></dl>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">t</td><td>: la <a class="el" href="classTable.html" title="Classe de Table. ">Table</a> incomplète. </td></tr>
+    <tr><td class="paramname">t</td><td>: la <a class="el" href="classTable.html" title="Classe de Table. ">Table</a> incomplète.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Note</dt><dd>Inutilisé depuis qu'on fait des tables authentifiées. </dd></dl>
 
 </div>
 </div>
@@ -326,10 +412,10 @@ Membres hérités additionnels</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Réaction personnalisée (connexion). </p>
-<p>Tente de compléter une <a class="el" href="classTable.html" title="Classe de Table. ">Table</a>.</p>
+<p>Ajoute un type sur le paillasson.</p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">c</td><td>: l'identification du client. </td></tr>
+    <tr><td class="paramname">c</td><td>: le numéro d'identification du client. </td></tr>
   </table>
   </dd>
 </dl>
@@ -343,7 +429,7 @@ Membres hérités additionnels</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi 23 Décembre 2014 13:22:11 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Vendredi 16 Janvier 2015 14:35:41 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

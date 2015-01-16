@@ -131,6 +131,12 @@ Connecteurs publics</h2></td></tr>
 <tr class="memitem:ad47142bad1f216ac3b93d0b75cf0b559"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientJeu.html#ad47142bad1f216ac3b93d0b75cf0b559">formuler_requete</a> (<a class="el" href="classCarte.html">Carte</a> requete)</td></tr>
 <tr class="memdesc:ad47142bad1f216ac3b93d0b75cf0b559"><td class="mdescLeft">&#160;</td><td class="mdescRight">Traité lorsqu'on demande à jouer une <a class="el" href="classCarte.html" title="Définition d&#39;une Carte du jeu. ">Carte</a>.  <a href="#ad47142bad1f216ac3b93d0b75cf0b559">Plus de détails...</a><br/></td></tr>
 <tr class="separator:ad47142bad1f216ac3b93d0b75cf0b559"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a85b95370548223b0d586c2b1e0c83845"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientJeu.html#a85b95370548223b0d586c2b1e0c83845">formuler_identification</a> (const std::string &amp;nom)</td></tr>
+<tr class="memdesc:a85b95370548223b0d586c2b1e0c83845"><td class="mdescLeft">&#160;</td><td class="mdescRight">Traité lorsqu'on demande une identification.  <a href="#a85b95370548223b0d586c2b1e0c83845">Plus de détails...</a><br/></td></tr>
+<tr class="separator:a85b95370548223b0d586c2b1e0c83845"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71ecb36aa3e77fffd3121d1b7b6bb6cf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientJeu.html#a71ecb36aa3e77fffd3121d1b7b6bb6cf">formuler_invitation</a> (const std::vector&lt; std::string &gt; &amp;<a class="el" href="classClientJeu.html#aa25243098664858785100bbbd716b811">adversaires</a>)</td></tr>
+<tr class="memdesc:a71ecb36aa3e77fffd3121d1b7b6bb6cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Traité lorsqu'on demande d'inviter des adversaires.  <a href="#a71ecb36aa3e77fffd3121d1b7b6bb6cf">Plus de détails...</a><br/></td></tr>
+<tr class="separator:a71ecb36aa3e77fffd3121d1b7b6bb6cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_slots_classClient"><td colspan="2" onclick="javascript:toggleInherit('pub_slots_classClient')"><img src="closed.png" alt="-"/>&#160;Connecteurs publics hérités de <a class="el" href="classClient.html">Client</a></td></tr>
 <tr class="memitem:aebb225890121c2dfc8b83f320c686db7 inherit pub_slots_classClient"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient.html#aebb225890121c2dfc8b83f320c686db7">reconnecter</a> ()</td></tr>
 <tr class="memdesc:aebb225890121c2dfc8b83f320c686db7 inherit pub_slots_classClient"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tente de se reconnecter.  <a href="#aebb225890121c2dfc8b83f320c686db7">Plus de détails...</a><br/></td></tr>
@@ -227,6 +233,31 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:a59b17e5a650764d292ea4abeed67a15f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientJeu.html#a59b17e5a650764d292ea4abeed67a15f">partie_terminee</a> (std::vector&lt; int &gt; scores)</td></tr>
 <tr class="memdesc:a59b17e5a650764d292ea4abeed67a15f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Émis lorsque la partie est terminée.  <a href="#a59b17e5a650764d292ea4abeed67a15f">Plus de détails...</a><br/></td></tr>
 <tr class="separator:a59b17e5a650764d292ea4abeed67a15f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad09962244d0289977119163f34c2fd08"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad09962244d0289977119163f34c2fd08"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientJeu.html#ad09962244d0289977119163f34c2fd08">doit_identifier</a> ()</td></tr>
+<tr class="memdesc:ad09962244d0289977119163f34c2fd08"><td class="mdescLeft">&#160;</td><td class="mdescRight">Émis lorsque je dois m'identifier. <br/></td></tr>
+<tr class="separator:ad09962244d0289977119163f34c2fd08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5c7cd0122519f2304ae2744d4f5f7816"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientJeu.html#a5c7cd0122519f2304ae2744d4f5f7816">identification_acceptee</a> (std::string nom)</td></tr>
+<tr class="memdesc:a5c7cd0122519f2304ae2744d4f5f7816"><td class="mdescLeft">&#160;</td><td class="mdescRight">Émis lorsque mon identification a été acceptée.  <a href="#a5c7cd0122519f2304ae2744d4f5f7816">Plus de détails...</a><br/></td></tr>
+<tr class="separator:a5c7cd0122519f2304ae2744d4f5f7816"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37028031134208f450e9b94371cb381a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientJeu.html#a37028031134208f450e9b94371cb381a">identification_refusee</a> (std::string nom)</td></tr>
+<tr class="memdesc:a37028031134208f450e9b94371cb381a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Émis lorsque mon identification a été refusée.  <a href="#a37028031134208f450e9b94371cb381a">Plus de détails...</a><br/></td></tr>
+<tr class="separator:a37028031134208f450e9b94371cb381a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab94d9ac5546573cff03e727e03d2451f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientJeu.html#ab94d9ac5546573cff03e727e03d2451f">entree</a> (std::string nom)</td></tr>
+<tr class="memdesc:ab94d9ac5546573cff03e727e03d2451f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Émis lorsqu'un nouveau joueur est disponible.  <a href="#ab94d9ac5546573cff03e727e03d2451f">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ab94d9ac5546573cff03e727e03d2451f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af09af2459d52e1f06ab9fac781b253f5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientJeu.html#af09af2459d52e1f06ab9fac781b253f5">sortie</a> (std::string nom)</td></tr>
+<tr class="memdesc:af09af2459d52e1f06ab9fac781b253f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Émis lorsqu'un joueur n'est plus disponible.  <a href="#af09af2459d52e1f06ab9fac781b253f5">Plus de détails...</a><br/></td></tr>
+<tr class="separator:af09af2459d52e1f06ab9fac781b253f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa25243098664858785100bbbd716b811"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientJeu.html#aa25243098664858785100bbbd716b811">adversaires</a> (std::vector&lt; std::string &gt; noms)</td></tr>
+<tr class="memdesc:aa25243098664858785100bbbd716b811"><td class="mdescLeft">&#160;</td><td class="mdescRight">Émis lorsqu'on prépare une manche.  <a href="#aa25243098664858785100bbbd716b811">Plus de détails...</a><br/></td></tr>
+<tr class="separator:aa25243098664858785100bbbd716b811"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2dbd6d529e11d25017059e471f6337c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientJeu.html#aa2dbd6d529e11d25017059e471f6337c">invitation_acceptee</a> (std::vector&lt; std::string &gt; <a class="el" href="classClientJeu.html#aa25243098664858785100bbbd716b811">adversaires</a>)</td></tr>
+<tr class="memdesc:aa2dbd6d529e11d25017059e471f6337c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Émis lorsque mon invitation a été acceptée.  <a href="#aa2dbd6d529e11d25017059e471f6337c">Plus de détails...</a><br/></td></tr>
+<tr class="separator:aa2dbd6d529e11d25017059e471f6337c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99ed843cfd02366eeee6e23878a3a31f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientJeu.html#a99ed843cfd02366eeee6e23878a3a31f">invitation_refusee</a> (std::vector&lt; std::string &gt; <a class="el" href="classClientJeu.html#aa25243098664858785100bbbd716b811">adversaires</a>)</td></tr>
+<tr class="memdesc:a99ed843cfd02366eeee6e23878a3a31f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Émis lorsque mon invitation a été refusée.  <a href="#a99ed843cfd02366eeee6e23878a3a31f">Plus de détails...</a><br/></td></tr>
+<tr class="separator:a99ed843cfd02366eeee6e23878a3a31f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header signals_classClient"><td colspan="2" onclick="javascript:toggleInherit('signals_classClient')"><img src="closed.png" alt="-"/>&#160;Signaux hérités de <a class="el" href="classClient.html">Client</a></td></tr>
 <tr class="memitem:a81ee5a5d5df20d3bae5a7ba511fa1bb7 inherit signals_classClient"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClient.html#a81ee5a5d5df20d3bae5a7ba511fa1bb7">connecte</a> ()</td></tr>
 <tr class="memdesc:a81ee5a5d5df20d3bae5a7ba511fa1bb7 inherit signals_classClient"><td class="mdescLeft">&#160;</td><td class="mdescRight">Émis lorsque le client est connecté.  <a href="#a81ee5a5d5df20d3bae5a7ba511fa1bb7">Plus de détails...</a><br/></td></tr>
@@ -247,6 +278,10 @@ Fonctions membres publiques</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientJeu.html#a662db519474b83b36fd7353ad6233600">ClientJeu</a> (QObject *parent=0)</td></tr>
 <tr class="memdesc:a662db519474b83b36fd7353ad6233600"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur par défaut. <br/></td></tr>
 <tr class="separator:a662db519474b83b36fd7353ad6233600"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4678dc5295959f6a9b6088b87e92093f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4678dc5295959f6a9b6088b87e92093f"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientJeu.html#a4678dc5295959f6a9b6088b87e92093f">~ClientJeu</a> ()</td></tr>
+<tr class="memdesc:a4678dc5295959f6a9b6088b87e92093f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructeur. <br/></td></tr>
+<tr class="separator:a4678dc5295959f6a9b6088b87e92093f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9871486907b2f3de70dcfeeb0b501b33"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9871486907b2f3de70dcfeeb0b501b33"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classClientJeu.html#a9871486907b2f3de70dcfeeb0b501b33">presenter_etat</a> ()</td></tr>
 <tr class="memdesc:a9871486907b2f3de70dcfeeb0b501b33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Présente l'état des cartes. <br/></td></tr>
@@ -266,6 +301,38 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <div class="textblock"><p>Spécialise la classe <a class="el" href="classClient.html" title="Définit une classe communiquant avec un serveur sur le réseau. ">Client</a>, en permettant de comprendre l'environnement de jeu du tarot. </p>
 <p>Utilisera la classe <a class="el" href="classPartieClient.html" title="Précision d&#39;une Partie, côté client. ">PartieClient</a>. </p>
 </div><h2 class="groupheader">Documentation des fonctions membres</h2>
+<a class="anchor" id="aa25243098664858785100bbbd716b811"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ClientJeu::adversaires </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; std::string &gt;&#160;</td>
+          <td class="paramname"><em>noms</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Émis lorsqu'on prépare une manche. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">noms</td><td>Les noms des joueurs, dans l'ordre de jeu. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="aad8408883e77fc1a5e4d77904122f0bd"></a>
 <div class="memitem">
 <div class="memproto">
@@ -806,6 +873,38 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 </div>
 </div>
+<a class="anchor" id="ab94d9ac5546573cff03e727e03d2451f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ClientJeu::entree </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>nom</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Émis lorsqu'un nouveau joueur est disponible. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nom</td><td>Le nom du nouveau venu. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="abf4c77f0ddfc3210a7f9ac074d862122"></a>
 <div class="memitem">
 <div class="memproto">
@@ -872,6 +971,72 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 </div>
 </div>
+<a class="anchor" id="a85b95370548223b0d586c2b1e0c83845"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ClientJeu::formuler_identification </td>
+          <td>(</td>
+          <td class="paramtype">const std::string &amp;&#160;</td>
+          <td class="paramname"><em>nom</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Traité lorsqu'on demande une identification. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nom</td><td>Le nom que j'aimerais porter. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>Voir également</dt><dd><a class="el" href="classPartieClient.html#a591a9d532e4c5534820376115327c550" title="Construit un Message. ">PartieClient::identifier(const std::string &amp;)</a> </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a71ecb36aa3e77fffd3121d1b7b6bb6cf"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ClientJeu::formuler_invitation </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>adversaires</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Traité lorsqu'on demande d'inviter des adversaires. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">adversaires</td><td>Les noms des adversaires. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>Voir également</dt><dd><a class="el" href="classPartieClient.html#ab0438ef7649abf42531131cca05657b9" title="Construit un Message. ">PartieClient::inviter(const std::vector&lt;std::string&gt; &amp;)</a> </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a98689343a93362c3b583a27e1ef6543f"></a>
 <div class="memitem">
 <div class="memproto">
@@ -931,6 +1096,134 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
     <tr><td class="paramname">requete</td><td>La <a class="el" href="classCarte.html" title="Définition d&#39;une Carte du jeu. ">Carte</a> qu'on demande à jouer. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a5c7cd0122519f2304ae2744d4f5f7816"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ClientJeu::identification_acceptee </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>nom</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Émis lorsque mon identification a été acceptée. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nom</td><td>Le nom que j'ai reçu. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a37028031134208f450e9b94371cb381a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ClientJeu::identification_refusee </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>nom</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Émis lorsque mon identification a été refusée. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nom</td><td>Le nom que j'avais tenté. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="aa2dbd6d529e11d25017059e471f6337c"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ClientJeu::invitation_acceptee </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; std::string &gt;&#160;</td>
+          <td class="paramname"><em>adversaires</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Émis lorsque mon invitation a été acceptée. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">adversaires</td><td>Mes adversaires. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a99ed843cfd02366eeee6e23878a3a31f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ClientJeu::invitation_refusee </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; std::string &gt;&#160;</td>
+          <td class="paramname"><em>adversaires</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Émis lorsque mon invitation a été refusée. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">adversaires</td><td>Les adversaires que j'avais demandés. </td></tr>
   </table>
   </dd>
 </dl>
@@ -1186,6 +1479,38 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 
 </div>
 </div>
+<a class="anchor" id="af09af2459d52e1f06ab9fac781b253f5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void ClientJeu::sortie </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>nom</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">signal</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Émis lorsqu'un joueur n'est plus disponible. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nom</td><td>Le nom du joueur qui se casse. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="a23522808d5cec1559d2837c39025fb7f"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1311,7 +1636,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi 23 Décembre 2014 13:22:11 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Vendredi 16 Janvier 2015 14:35:40 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

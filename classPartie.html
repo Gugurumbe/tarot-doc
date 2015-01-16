@@ -129,6 +129,10 @@ Fonctions membres publiques</h2></td></tr>
 <tr class="memitem:ae40831aad10fc4a391295e2ea1447b5a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartie.html#ae40831aad10fc4a391295e2ea1447b5a">Partie</a> ()</td></tr>
 <tr class="memdesc:ae40831aad10fc4a391295e2ea1447b5a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur par défaut.  <a href="#ae40831aad10fc4a391295e2ea1447b5a">Plus de détails...</a><br/></td></tr>
 <tr class="separator:ae40831aad10fc4a391295e2ea1447b5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a628475fb6e8c88b686f12f5694899226"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a628475fb6e8c88b686f12f5694899226"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartie.html#a628475fb6e8c88b686f12f5694899226">reinitialiser</a> ()</td></tr>
+<tr class="memdesc:a628475fb6e8c88b686f12f5694899226"><td class="mdescLeft">&#160;</td><td class="mdescRight">Réinitialise la partie. <br/></td></tr>
+<tr class="separator:a628475fb6e8c88b686f12f5694899226"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4afeb7336bb84427272cfb7018b5e3d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae4afeb7336bb84427272cfb7018b5e3d"></a>
 virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartie.html#ae4afeb7336bb84427272cfb7018b5e3d">~Partie</a> ()</td></tr>
 <tr class="memdesc:ae4afeb7336bb84427272cfb7018b5e3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructeur. <br/></td></tr>
@@ -188,6 +192,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:ad07d7f1ee9028f500c0b4a2c3fd5c8d0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classEnchere.html">Enchere</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartie.html#ad07d7f1ee9028f500c0b4a2c3fd5c8d0">meilleure_enchere</a> () const </td></tr>
 <tr class="memdesc:ad07d7f1ee9028f500c0b4a2c3fd5c8d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Donne l'enchère maximale.  <a href="#ad07d7f1ee9028f500c0b4a2c3fd5c8d0">Plus de détails...</a><br/></td></tr>
 <tr class="separator:ad07d7f1ee9028f500c0b4a2c3fd5c8d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa54bc8aceea083403a2c935017676256"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartie.html#aa54bc8aceea083403a2c935017676256">nom_de</a> (unsigned int i) const </td></tr>
+<tr class="memdesc:aa54bc8aceea083403a2c935017676256"><td class="mdescLeft">&#160;</td><td class="mdescRight">Donne le nom de tel joueur.  <a href="#aa54bc8aceea083403a2c935017676256">Plus de détails...</a><br/></td></tr>
+<tr class="separator:aa54bc8aceea083403a2c935017676256"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Fonctions membres protégées</h2></td></tr>
@@ -226,6 +233,9 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 <tr><th colspan="2">Valeurs énumérées</th></tr><tr><td class="fieldname"><em><a class="anchor" id="aa94cf37ae5f9f1f87ac640b8dc0048c9a01c3e5c27dd23b303b45697e4b8eb11d"></a>CONSTITUTION_TABLE</em>&#160;</td><td class="fielddoc">
 <p>Phase initiale où on peut trouver les Messages :</p>
 <ol type="1">
+<li>Msg_entree</li>
+<li>Msg_sortie</li>
+<li>Msg_noms</li>
 <li>Msg_numero</li>
 <li>Msg_distribution </li>
 </ol>
@@ -437,6 +447,31 @@ Le numéro du joueur sinon. </dd></dl>
 
 </div>
 </div>
+<a class="anchor" id="aa54bc8aceea083403a2c935017676256"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::string Partie::nom_de </td>
+          <td>(</td>
+          <td class="paramtype">unsigned int&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Donne le nom de tel joueur. </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>Le numéro du joueur à trouver. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Le nom du joueur i. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a45201ab9e442170839bf1380e11500c4"></a>
 <div class="memitem">
 <div class="memproto">
@@ -600,7 +635,7 @@ Partie::assimiler(const Message &amp;) </dd></dl>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi 23 Décembre 2014 13:22:11 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Vendredi 16 Janvier 2015 14:35:40 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

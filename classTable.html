@@ -109,9 +109,9 @@ Graphe d'héritage de Table:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-slots"></a>
 Connecteurs publics</h2></td></tr>
-<tr class="memitem:a571c73f739c9faed830e8c07b6554852"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTable.html#a571c73f739c9faed830e8c07b6554852">ajouter</a> (unsigned int c)</td></tr>
-<tr class="memdesc:a571c73f739c9faed830e8c07b6554852"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute un joueur à la <a class="el" href="classTable.html" title="Classe de Table. ">Table</a>.  <a href="#a571c73f739c9faed830e8c07b6554852">Plus de détails...</a><br/></td></tr>
-<tr class="separator:a571c73f739c9faed830e8c07b6554852"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd0e80a56cf7b0b2df55d7368b8d79a8"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTable.html#acd0e80a56cf7b0b2df55d7368b8d79a8">ajouter</a> (unsigned int c, std::string nom=&quot;&quot;)</td></tr>
+<tr class="memdesc:acd0e80a56cf7b0b2df55d7368b8d79a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ajoute un joueur à la <a class="el" href="classTable.html" title="Classe de Table. ">Table</a>.  <a href="#acd0e80a56cf7b0b2df55d7368b8d79a8">Plus de détails...</a><br/></td></tr>
+<tr class="separator:acd0e80a56cf7b0b2df55d7368b8d79a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb140b691eda8c0704cea1aeda9cd300"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTable.html#afb140b691eda8c0704cea1aeda9cd300">comprendre</a> (unsigned int c, <a class="el" href="structProtocole_1_1Message.html">Protocole::Message</a> m)</td></tr>
 <tr class="memdesc:afb140b691eda8c0704cea1aeda9cd300"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transmet un Message à la <a class="el" href="classPartie.html" title="Environnement de partie de Tarot. ">Partie</a>.  <a href="#afb140b691eda8c0704cea1aeda9cd300">Plus de détails...</a><br/></td></tr>
 <tr class="separator:afb140b691eda8c0704cea1aeda9cd300"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -121,6 +121,9 @@ Connecteurs publics</h2></td></tr>
 <tr class="memitem:ab59f7e6f1b2d9603bbcce881182c4b9c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTable.html#ab59f7e6f1b2d9603bbcce881182c4b9c">doit_transmettre</a> (unsigned int j, <a class="el" href="structProtocole_1_1Message.html">Protocole::Message</a> m, bool analyser)</td></tr>
 <tr class="memdesc:ab59f7e6f1b2d9603bbcce881182c4b9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transmet un message.  <a href="#ab59f7e6f1b2d9603bbcce881182c4b9c">Plus de détails...</a><br/></td></tr>
 <tr class="separator:ab59f7e6f1b2d9603bbcce881182c4b9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90915b16dd714c8cfa548d69f7de1edb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTable.html#a90915b16dd714c8cfa548d69f7de1edb">doit_recommencer</a> ()</td></tr>
+<tr class="memdesc:a90915b16dd714c8cfa548d69f7de1edb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Commence une nouvelle partie.  <a href="#a90915b16dd714c8cfa548d69f7de1edb">Plus de détails...</a><br/></td></tr>
+<tr class="separator:a90915b16dd714c8cfa548d69f7de1edb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="signals"></a>
 Signaux</h2></td></tr>
@@ -154,7 +157,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <p>La <a class="el" href="classTable.html" title="Classe de Table. ">Table</a> a la fonction suivante : à partir du numéro d'identification d'un client, elle en déduit le numéro de joueur utilisable par la classe <a class="el" href="classPartie.html" title="Environnement de partie de Tarot. ">Partie</a> et vice versa.</p>
 <p>L'autre fonction est de relayer les Message entre la <a class="el" href="classPartie.html" title="Environnement de partie de Tarot. ">Partie</a> et le <a class="el" href="classServeur.html" title="Définit une classe communiquant sur le réseau. ">Serveur</a>. </p>
 </div><h2 class="groupheader">Documentation des fonctions membres</h2>
-<a class="anchor" id="a571c73f739c9faed830e8c07b6554852"></a>
+<a class="anchor" id="acd0e80a56cf7b0b2df55d7368b8d79a8"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -165,8 +168,18 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
           <td class="memname">void Table::ajouter </td>
           <td>(</td>
           <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>c</em></td><td>)</td>
+          <td class="paramname"><em>c</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>nom</em> = <code>&quot;&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
   </td>
@@ -181,7 +194,8 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <p>Peut émettre <a class="el" href="classTable.html#afa5f81913df343483231eaed24f332cd" title="Signale au ServeurJeu que la Table est pleine. ">complet(Table *)</a> avec 'this' en argument.</p>
 <dl class="params"><dt>Paramètres</dt><dd>
   <table class="params">
-    <tr><td class="paramname">c</td><td>: l'identification du nouveau client.</td></tr>
+    <tr><td class="paramname">c</td><td>: l'identification du nouveau client. </td></tr>
+    <tr><td class="paramname">nom</td><td>Le nom du joueur.</td></tr>
   </table>
   </dd>
 </dl>
@@ -345,6 +359,32 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 
 </div>
 </div>
+<a class="anchor" id="a90915b16dd714c8cfa548d69f7de1edb"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Table::doit_recommencer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Commence une nouvelle partie. </p>
+<p>Permute les joueurs, réemet noms, numero, et recommence la partie. </p>
+
+</div>
+</div>
 <a class="anchor" id="ab59f7e6f1b2d9603bbcce881182c4b9c"></a>
 <div class="memitem">
 <div class="memproto">
@@ -474,7 +514,7 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi 23 Décembre 2014 13:22:11 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Vendredi 16 Janvier 2015 14:35:41 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

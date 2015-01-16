@@ -10,5 +10,6 @@ var searchData=
   ['set_5fcartes',['set_cartes',['../classSelecteurCarte.html#ae7098faf41ca92db18895987e1732387',1,'SelecteurCarte']]],
   ['set_5fnum',['set_num',['../classLabelNom.html#aa3bf3f7517cc2403263f81808f89e41b',1,'LabelNom']]],
   ['set_5fouverture',['set_ouverture',['../classTapis.html#ad99507e33564528fcbdab023200a6677',1,'Tapis']]],
-  ['set_5fphase',['set_phase',['../classPartie.html#afdc3a79eba2d966d967225df81873693',1,'Partie']]]
+  ['set_5fphase',['set_phase',['../classPartie.html#afdc3a79eba2d966d967225df81873693',1,'Partie']]],
+  ['sortie',['sortie',['../classClientJeu.html#af09af2459d52e1f06ab9fac781b253f5',1,'ClientJeu::sortie()'],['../classPartieClient.html#aa7508fe59512bb592c61e0f7282b3302',1,'PartieClient::sortie()']]]
 ];

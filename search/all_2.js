@@ -45,7 +45,7 @@ var searchData=
   ['coquille',['Coquille',['../classCoquille.html',1,'Coquille'],['../classCoquille.html#a672c944d56b3b1d0c0549fecb2af45d3',1,'Coquille::Coquille()']]],
   ['coquille_2ehpp',['coquille.hpp',['../coquille_8hpp.html',1,'']]],
   ['coquille_5fdefinie',['COQUILLE_DEFINIE',['../coquille_8hpp.html#ab6d559b28edc35ede33fd3b95af1c39d',1,'coquille.hpp']]],
-  ['couleur',['Couleur',['../classCarte.html#aa4b4c15fb6d1f697985b8ff04a67c45e',1,'Carte::Couleur()'],['../classCarte.html#adf755285455670fdeb10ad62e3909f0f',1,'Carte::couleur() const ']]],
+  ['couleur',['couleur',['../classCarte.html#adf755285455670fdeb10ad62e3909f0f',1,'Carte::couleur() const '],['../classCarte.html#aa4b4c15fb6d1f697985b8ff04a67c45e',1,'Carte::Couleur()']]],
   ['couleur_5fsimple',['couleur_simple',['../classCarte.html#afc3ca0ddad32c014d72ecdd86ccfb82e',1,'Carte']]],
   ['couleurs',['COULEURS',['../debogueur_8hpp.html#ae10a7af627981fa7ff14419f505e15bb',1,'debogueur.hpp']]]
 ];

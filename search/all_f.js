@@ -20,5 +20,6 @@ var searchData=
   ['set_5fnum',['set_num',['../classLabelNom.html#aa3bf3f7517cc2403263f81808f89e41b',1,'LabelNom']]],
   ['set_5fouverture',['set_ouverture',['../classTapis.html#ad99507e33564528fcbdab023200a6677',1,'Tapis']]],
   ['set_5fphase',['set_phase',['../classPartie.html#afdc3a79eba2d966d967225df81873693',1,'Partie']]],
+  ['sortie',['sortie',['../unionProtocole_1_1Msg.html#a3b5bd3f3ae19a81fb336fa29e404bf37',1,'Protocole::Msg::sortie()'],['../classClientJeu.html#af09af2459d52e1f06ab9fac781b253f5',1,'ClientJeu::sortie()'],['../classPartieClient.html#aa7508fe59512bb592c61e0f7282b3302',1,'PartieClient::sortie()'],['../namespaceProtocole.html#a9f03877a7e246d3a013e680623a4b233ac5c593e5fca65fca15eaf99697ddb761',1,'Protocole::SORTIE()']]],
   ['style',['STYLE',['../client_2ui_2config_8hpp.html#ac4071218adc77318ea9b9de1aaca1d52',1,'config.hpp']]]
 ];

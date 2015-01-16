@@ -30,9 +30,11 @@ var searchData=
   ['doit_5fecarter',['doit_ecarter',['../classClientJeu.html#afc8c6cacec6f1f2cae6926d3f34ce411',1,'ClientJeu::doit_ecarter()'],['../classPartieClient.html#a5b0524dedf01c940fa8282c1a592f6d3',1,'PartieClient::doit_ecarter()'],['../classJournal.html#a6fac23c01f67327585635245808a6bf1',1,'Journal::doit_ecarter()']]],
   ['doit_5femettre',['doit_emettre',['../classPartieClient.html#a7e3ab24706fbe76f8c448ac8d71eae97',1,'PartieClient::doit_emettre()'],['../classPartieServeur.html#a60c558d4c86798ee46f255c18a52630b',1,'PartieServeur::doit_emettre()'],['../classTable.html#a147a6a6c82fa213c3f89ef2250ee5d09',1,'Table::doit_emettre()']]],
   ['doit_5femettre_5fa_5ftous',['doit_emettre_a_tous',['../classPartieServeur.html#ad934af02a962fb0d7d7cec0dbdb90177',1,'PartieServeur']]],
+  ['doit_5fidentifier',['doit_identifier',['../classClientJeu.html#ad09962244d0289977119163f34c2fd08',1,'ClientJeu']]],
   ['doit_5fjouer',['doit_jouer',['../classClientJeu.html#ad01d2320d60f816ec2c6d08b8a5477c4',1,'ClientJeu::doit_jouer()'],['../classPartieClient.html#a1e4aa3b1ba12b4748859a2fc600fe016',1,'PartieClient::doit_jouer()'],['../classJournal.html#a095d516f8574700795a4057da3849d11',1,'Journal::doit_jouer()']]],
   ['doit_5fpriser',['doit_priser',['../classClientJeu.html#a7e01d0a68705b2b2950347e5f2c9d23b',1,'ClientJeu::doit_priser()'],['../classPartieClient.html#af8e71bd5fa992ee679975bd0473e82dc',1,'PartieClient::doit_priser()'],['../classJournal.html#a266c00073595680789499bd85e9aa62e',1,'Journal::doit_priser()']]],
   ['doit_5fquitter',['doit_quitter',['../classPartieClient.html#ac110cd921caa3341a15571a461de0313',1,'PartieClient']]],
+  ['doit_5frecommencer',['doit_recommencer',['../classTable.html#a90915b16dd714c8cfa548d69f7de1edb',1,'Table']]],
   ['doit_5ftransmettre',['doit_transmettre',['../classTable.html#ab59f7e6f1b2d9603bbcce881182c4b9c',1,'Table']]],
   ['donner_5fcontrat_5ffinal',['donner_contrat_final',['../classPartie.html#a1a3e19b0ad92b69cc974a9f46dde3066',1,'Partie']]]
 ];

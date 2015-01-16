@@ -12,9 +12,9 @@ var indexSectionsWithContent =
   2: "p",
   3: "acdeijlmnopst",
   4: "abcdefgijlmnoprstuv~",
-  5: "acdejmnoprt",
+  5: "acdeijmnoprst",
   6: "cfmpv",
-  7: "acdefgjmnpr",
+  7: "acdefgijmnprs",
   8: "acdeijlmopstv",
   9: "pt"
 };

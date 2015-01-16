@@ -101,6 +101,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <a href="#details">Plus de détails...</a></p>
 <div class="textblock"><code>#include &lt;QDataStream&gt;</code><br/>
 <code>#include &lt;iostream&gt;</code><br/>
+<code>#include &lt;string&gt;</code><br/>
+<code>#include &lt;vector&gt;</code><br/>
 </div>
 <p><a href="protocole_8hpp_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
@@ -166,6 +168,21 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structProtocole_1_1Msg__resultat.html">Protocole::Msg_resultat</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contenu d'un <a class="el" href="structProtocole_1_1Message.html" title="Structure de Message universel. ">Message</a> d'information de fin de partie.  <a href="structProtocole_1_1Msg__resultat.html#details">Plus de détails...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structProtocole_1_1Msg__identifier.html">Protocole::Msg_identifier</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contenu d'un <a class="el" href="structProtocole_1_1Message.html" title="Structure de Message universel. ">Message</a> de requête d'identification.  <a href="structProtocole_1_1Msg__identifier.html#details">Plus de détails...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structProtocole_1_1Msg__entree.html">Protocole::Msg_entree</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contenu d'un message d'information de connexion.  <a href="structProtocole_1_1Msg__entree.html#details">Plus de détails...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structProtocole_1_1Msg__sortie.html">Protocole::Msg_sortie</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contenu d'un message d'information de cessation de disponibilité.  <a href="structProtocole_1_1Msg__sortie.html#details">Plus de détails...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structProtocole_1_1Msg__noms.html">Protocole::Msg_noms</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contenu d'un message de dénomination de vos adversaires.  <a href="structProtocole_1_1Msg__noms.html#details">Plus de détails...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structProtocole_1_1Msg__inviter.html">Protocole::Msg_inviter</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contenu d'un message de demande d'invitation.  <a href="structProtocole_1_1Msg__inviter.html#details">Plus de détails...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">union &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="unionProtocole_1_1Msg.html">Protocole::Msg</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Somme de tous les messages possibles.  <a href="unionProtocole_1_1Msg.html#details">Plus de détails...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -183,6 +200,10 @@ Espaces de nommage</h2></td></tr>
 Macros</h2></td></tr>
 <tr class="memitem:a7a17dc2fdbbe937c40147701edb4b570"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocole_8hpp.html#a7a17dc2fdbbe937c40147701edb4b570">PROTOCOLE_DEFINI</a></td></tr>
 <tr class="separator:a7a17dc2fdbbe937c40147701edb4b570"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a967232a261ff7f17c1010e6fc27270a0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a967232a261ff7f17c1010e6fc27270a0"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="protocole_8hpp.html#a967232a261ff7f17c1010e6fc27270a0">TAILLE_NOM</a>&#160;&#160;&#160;16</td></tr>
+<tr class="memdesc:a967232a261ff7f17c1010e6fc27270a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre maximal d'octet utilisés par un nom. Comme ils seront encodés en UTF-8 (unicode), il y aura AU PLUS ce nombre de caractères, parfois strictement moins. <br/></td></tr>
+<tr class="separator:a967232a261ff7f17c1010e6fc27270a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
 Énumérations</h2></td></tr>
@@ -210,7 +231,14 @@ Macros</h2></td></tr>
 &#160;&#160;<a class="el" href="namespaceProtocole.html#a9f03877a7e246d3a013e680623a4b233a490fa4d4cd75afffcccbfa242eb297d4">Protocole::REQUETE</a>, 
 <a class="el" href="namespaceProtocole.html#a9f03877a7e246d3a013e680623a4b233ad2da5e2c50a122c4c83f41d6d944ffca">Protocole::CARTE</a>, 
 <a class="el" href="namespaceProtocole.html#a9f03877a7e246d3a013e680623a4b233af208f9d344fc6621e976baa61054ffa6">Protocole::PLI</a>, 
-<a class="el" href="namespaceProtocole.html#a9f03877a7e246d3a013e680623a4b233aa06de31e1af8b1595889bc889f87bf94">Protocole::RESULTAT</a>
+<a class="el" href="namespaceProtocole.html#a9f03877a7e246d3a013e680623a4b233aa06de31e1af8b1595889bc889f87bf94">Protocole::RESULTAT</a>, 
+<br/>
+&#160;&#160;<a class="el" href="namespaceProtocole.html#a9f03877a7e246d3a013e680623a4b233a68339bac3479d974c852e454038adf7f">Protocole::IDENTIFIER</a>, 
+<a class="el" href="namespaceProtocole.html#a9f03877a7e246d3a013e680623a4b233aa9c644e6321b261c30c394a2e0dfdd06">Protocole::ENTREE</a>, 
+<a class="el" href="namespaceProtocole.html#a9f03877a7e246d3a013e680623a4b233ac5c593e5fca65fca15eaf99697ddb761">Protocole::SORTIE</a>, 
+<a class="el" href="namespaceProtocole.html#a9f03877a7e246d3a013e680623a4b233a751828b331344eca5f288c8fdca6af32">Protocole::NOMS</a>, 
+<br/>
+&#160;&#160;<a class="el" href="namespaceProtocole.html#a9f03877a7e246d3a013e680623a4b233a4091fdc741c97f9bf15007e6771b0cdb">Protocole::INVITER</a>
 <br/>
  }</td></tr>
 <tr class="memdesc:a9f03877a7e246d3a013e680623a4b233"><td class="mdescLeft">&#160;</td><td class="mdescRight">Les différentes natures de message.  <a href="namespaceProtocole.html#a9f03877a7e246d3a013e680623a4b233">Plus de détails...</a><br/></td></tr>
@@ -284,6 +312,21 @@ std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operato
 <tr class="memitem:abf031c3242cc8cf9edbfda3cd491b921"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abf031c3242cc8cf9edbfda3cd491b921"></a>
 std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;&lt;</b> (std::ostream &amp;out, const <a class="el" href="structProtocole_1_1Msg__resultat.html">Protocole::Msg_resultat</a> &amp;m)</td></tr>
 <tr class="separator:abf031c3242cc8cf9edbfda3cd491b921"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a78f6f4c47e37e13779329f27a96fbef6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a78f6f4c47e37e13779329f27a96fbef6"></a>
+std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;&lt;</b> (std::ostream &amp;out, const <a class="el" href="structProtocole_1_1Msg__identifier.html">Protocole::Msg_identifier</a> &amp;m)</td></tr>
+<tr class="separator:a78f6f4c47e37e13779329f27a96fbef6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9a98b5b86efe21f634a4049f7b0f62cb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9a98b5b86efe21f634a4049f7b0f62cb"></a>
+std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;&lt;</b> (std::ostream &amp;out, const <a class="el" href="structProtocole_1_1Msg__entree.html">Protocole::Msg_entree</a> &amp;m)</td></tr>
+<tr class="separator:a9a98b5b86efe21f634a4049f7b0f62cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5f2683cf1394b97fa45ce41eb71c2587"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5f2683cf1394b97fa45ce41eb71c2587"></a>
+std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;&lt;</b> (std::ostream &amp;out, const <a class="el" href="structProtocole_1_1Msg__sortie.html">Protocole::Msg_sortie</a> &amp;m)</td></tr>
+<tr class="separator:a5f2683cf1394b97fa45ce41eb71c2587"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39c6fa0da79a29d7c5086442a5adaef4"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a39c6fa0da79a29d7c5086442a5adaef4"></a>
+std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;&lt;</b> (std::ostream &amp;out, const <a class="el" href="structProtocole_1_1Msg__noms.html">Protocole::Msg_noms</a> &amp;m)</td></tr>
+<tr class="separator:a39c6fa0da79a29d7c5086442a5adaef4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeba5187aa47fe27940b9d7ccd6f0f9e1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aeba5187aa47fe27940b9d7ccd6f0f9e1"></a>
+std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;&lt;</b> (std::ostream &amp;out, const <a class="el" href="structProtocole_1_1Msg__inviter.html">Protocole::Msg_inviter</a> &amp;m)</td></tr>
+<tr class="separator:aeba5187aa47fe27940b9d7ccd6f0f9e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6a393e39ff9e57d0b0d6548421249f2a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6a393e39ff9e57d0b0d6548421249f2a"></a>
 std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;&lt;</b> (std::ostream &amp;out, const <a class="el" href="structProtocole_1_1Message.html">Protocole::Message</a> &amp;m)</td></tr>
 <tr class="separator:a6a393e39ff9e57d0b0d6548421249f2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -309,7 +352,7 @@ std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operato
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi 23 Décembre 2014 13:22:11 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Vendredi 16 Janvier 2015 14:35:40 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

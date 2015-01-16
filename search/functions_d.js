@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['partie',['partie',['../classClientJeu.html#aa58c80a80128188baff0400b10e81501',1,'ClientJeu::partie()'],['../classPartie.html#ae40831aad10fc4a391295e2ea1447b5a',1,'Partie::Partie()']]],
+  ['partie',['Partie',['../classPartie.html#ae40831aad10fc4a391295e2ea1447b5a',1,'Partie::Partie()'],['../classClientJeu.html#aa58c80a80128188baff0400b10e81501',1,'ClientJeu::partie()']]],
   ['partie_5fterminee',['partie_terminee',['../classClientJeu.html#a59b17e5a650764d292ea4abeed67a15f',1,'ClientJeu::partie_terminee()'],['../classJournal.html#a90f143f818f60247ebc9a7552b636882',1,'Journal::partie_terminee()']]],
   ['partieclient',['PartieClient',['../classPartieClient.html#abc55de4a7ba655a98a9c8ca112b3dbcf',1,'PartieClient']]],
   ['partieserveur',['PartieServeur',['../classPartieServeur.html#abfd2d5ab00fb6f82a8240c40c1dab452',1,'PartieServeur']]],
