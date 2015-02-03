@@ -90,87 +90,105 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">main.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="main_8hpp.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#ifndef MAIN_DEFINIE</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="main_8hpp.html#a7c7dd73493e631d06b084103ef2ee52f">   11</a></span>&#160;<span class="preprocessor">#define MAIN_DEFINIE</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="carte_8hpp.html">carte.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="protocole_8hpp.html">protocole.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classMain.html">   28</a></span>&#160;<span class="keyword">class </span><a class="code" href="classMain.html">Main</a></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;{</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;  <a class="code" href="classMain.html#a50d4361a1b613205467a441b5c40c199">Main</a>();</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;  </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  <a class="code" href="classMain.html#a50d4361a1b613205467a441b5c40c199">Main</a>(<span class="keyword">const</span> <a class="code" href="classMain.html">Main</a> &amp; m);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <a class="code" href="classMain.html#a50d4361a1b613205467a441b5c40c199">Main</a>(<span class="keyword">const</span> <a class="code" href="structProtocole_1_1Msg__distribution.html">Protocole::Msg_distribution</a> &amp; m);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classMain.html#a982c55b05c5f74d20be7dd476f10e355">enlever</a>(<span class="keyword">const</span> <a class="code" href="classCarte.html">Carte</a> &amp; carte);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classMain.html#a866b5e59e385bb3f93fe2c6745c7fe8d">possede</a>(<span class="keyword">const</span> <a class="code" href="classCarte.html">Carte</a> &amp; carte) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classMain.html#a399bda9b7ca5c04e37c62944d3d4010e">ajouter</a>(<span class="keyword">const</span> <a class="code" href="classCarte.html">Carte</a> &amp; carte);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classMain.html#aadc4848554e95ee400d7b4a4fd1c644b">peut_appeler</a>(<span class="keyword">const</span> <a class="code" href="classCarte.html">Carte</a> &amp; carte) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  std::vector&lt;Carte::ModaliteEcart&gt;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  <a class="code" href="classMain.html#a7df3596743ce76906dc792e71adca8fa">peut_ecarter</a>(<span class="keyword">const</span> std::vector&lt;Carte&gt; &amp; ecart) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classMain.html#ab62d183ee65c7cfd21803dc53782d17a">peut_declarer</a>(<span class="keyword">const</span> std::vector&lt;Carte&gt; &amp; poignee) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  <span class="keyword">const</span> <a class="code" href="classMain.html">Main</a> &amp; <a class="code" href="classMain.html#a6df2b8fedb77ea13507fc4621e6b2ed1">operator=</a>(<span class="keyword">const</span> <a class="code" href="classMain.html">Main</a> &amp; m);</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;  <span class="keyword">const</span> <a class="code" href="classMain.html">Main</a> &amp; <a class="code" href="classMain.html#a6df2b8fedb77ea13507fc4621e6b2ed1">operator=</a>(<span class="keyword">const</span> <a class="code" href="structProtocole_1_1Msg__distribution.html">Protocole::Msg_distribution</a> &amp; m);</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classMain.html#ac31fb90cebfa1d62f14995fb3393151e">distribution</a>(<a class="code" href="structProtocole_1_1Msg__distribution.html">Protocole::Msg_distribution</a> &amp; m);</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classMain.html#a120f0c2a92b0f005935306f287bbe882">peut_couper</a>(<a class="code" href="classCarte.html#aa4b4c15fb6d1f697985b8ff04a67c45e">Carte::Couleur</a> col) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classMain.html#add661748c8e69831dafaf52fe047822f">peut_pisser</a>(<a class="code" href="classCarte.html#ad549901ec17f99028b361164be137b7b">Carte::Valeur</a> atout_max) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classMain.html#ad052677f64d47b36c22758615af2769e">peut_defausser</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classMain.html#a4a584a9244bbe3721c45bf79261d0a82">nombre_cartes</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  std::vector&lt;Carte&gt; <span class="keyword">const</span> &amp; <a class="code" href="classMain.html#a42f21420ab772b3853a4fef6865d48c8">cartes</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;  std::vector&lt;Carte&gt; m_cartes;</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;};</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;std::ostream &amp; <a class="code" href="main_8hpp.html#a1f09edb5fd6c09d51d39280c7032a00d">operator&lt;&lt;</a>(std::ostream &amp; out, <span class="keyword">const</span> <a class="code" href="classMain.html">Main</a> &amp; main);</div>
+<a href="main_8hpp.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">  Project tarot virtuel is a card game.</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">  Copyright (C) 2015  Vivien Kraus</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">  </span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">  This program is free software: you can redistribute it and/or modify</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">  it under the terms of the GNU General Public License as published by</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">  the Free Software Foundation, either version 3 of the License, or</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">  (at your option) any later version.</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">  </span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">  This program is distributed in the hope that it will be useful,</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">  but WITHOUT ANY WARRANTY; without even the implied warranty of</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">  GNU General Public License for more details.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">  </span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">  You should have received a copy of the GNU General Public License</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">  along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#ifndef MAIN_DEFINIE</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="main_8hpp.html#a7c7dd73493e631d06b084103ef2ee52f">   30</a></span>&#160;<span class="preprocessor">#define MAIN_DEFINIE</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="carte_8hpp.html">carte.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="protocole_8hpp.html">protocole.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classMain.html">   47</a></span>&#160;<span class="keyword">class </span><a class="code" href="classMain.html">Main</a></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;{</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  <a class="code" href="classMain.html#a50d4361a1b613205467a441b5c40c199">Main</a>();</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  <a class="code" href="classMain.html#a50d4361a1b613205467a441b5c40c199">Main</a>(<span class="keyword">const</span> <a class="code" href="classMain.html">Main</a> &amp; m);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <a class="code" href="classMain.html#a50d4361a1b613205467a441b5c40c199">Main</a>(<span class="keyword">const</span> <a class="code" href="structProtocole_1_1Msg__distribution.html">Protocole::Msg_distribution</a> &amp; m);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classMain.html#a982c55b05c5f74d20be7dd476f10e355">enlever</a>(<span class="keyword">const</span> <a class="code" href="classCarte.html">Carte</a> &amp; carte);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classMain.html#a866b5e59e385bb3f93fe2c6745c7fe8d">possede</a>(<span class="keyword">const</span> <a class="code" href="classCarte.html">Carte</a> &amp; carte) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classMain.html#a399bda9b7ca5c04e37c62944d3d4010e">ajouter</a>(<span class="keyword">const</span> <a class="code" href="classCarte.html">Carte</a> &amp; carte);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classMain.html#aadc4848554e95ee400d7b4a4fd1c644b">peut_appeler</a>(<span class="keyword">const</span> <a class="code" href="classCarte.html">Carte</a> &amp; carte) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  std::vector&lt;Carte::ModaliteEcart&gt;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  <a class="code" href="classMain.html#aa17deaa8416165c4a9afc9a487d96f06">peut_ecarter</a>(<span class="keyword">const</span> std::vector&lt;Carte&gt; &amp; ecart) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classMain.html#ab62d183ee65c7cfd21803dc53782d17a">peut_declarer</a>(<span class="keyword">const</span> std::vector&lt;Carte&gt; &amp; poignee) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;  <span class="keyword">const</span> <a class="code" href="classMain.html">Main</a> &amp; <a class="code" href="classMain.html#a093acec25e54e1104e283bb267a1025c">operator=</a>(<span class="keyword">const</span> <a class="code" href="classMain.html">Main</a> &amp; m);</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  <span class="keyword">const</span> <a class="code" href="classMain.html">Main</a> &amp; <a class="code" href="classMain.html#a093acec25e54e1104e283bb267a1025c">operator=</a>(<span class="keyword">const</span> <a class="code" href="structProtocole_1_1Msg__distribution.html">Protocole::Msg_distribution</a> &amp; m);</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classMain.html#ac31fb90cebfa1d62f14995fb3393151e">distribution</a>(<a class="code" href="structProtocole_1_1Msg__distribution.html">Protocole::Msg_distribution</a> &amp; m);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classMain.html#a120f0c2a92b0f005935306f287bbe882">peut_couper</a>(<a class="code" href="classCarte.html#aa4b4c15fb6d1f697985b8ff04a67c45e">Carte::Couleur</a> col) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classMain.html#add661748c8e69831dafaf52fe047822f">peut_pisser</a>(<a class="code" href="classCarte.html#ad549901ec17f99028b361164be137b7b">Carte::Valeur</a> atout_max) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classMain.html#ad052677f64d47b36c22758615af2769e">peut_defausser</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classMain.html#a4a584a9244bbe3721c45bf79261d0a82">nombre_cartes</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="classMain_html_a120f0c2a92b0f005935306f287bbe882"><div class="ttname"><a href="classMain.html#a120f0c2a92b0f005935306f287bbe882">Main::peut_couper</a></div><div class="ttdeci">bool peut_couper(Carte::Couleur col) const </div><div class="ttdoc">Indique si le joueur n&#39;a plus d&#39;une couleur. </div><div class="ttdef"><b>Definition:</b> main.cpp:253</div></div>
-<div class="ttc" id="classCarte_html_aa4b4c15fb6d1f697985b8ff04a67c45e"><div class="ttname"><a href="classCarte.html#aa4b4c15fb6d1f697985b8ff04a67c45e">Carte::Couleur</a></div><div class="ttdeci">Couleur</div><div class="ttdoc">Énumère les 5 couleurs. </div><div class="ttdef"><b>Definition:</b> carte.hpp:90</div></div>
-<div class="ttc" id="classMain_html_a42f21420ab772b3853a4fef6865d48c8"><div class="ttname"><a href="classMain.html#a42f21420ab772b3853a4fef6865d48c8">Main::cartes</a></div><div class="ttdeci">std::vector&lt; Carte &gt; const &amp; cartes() const </div><div class="ttdoc">Ensemble des Cartes. </div><div class="ttdef"><b>Definition:</b> main.cpp:314</div></div>
-<div class="ttc" id="classMain_html_a399bda9b7ca5c04e37c62944d3d4010e"><div class="ttname"><a href="classMain.html#a399bda9b7ca5c04e37c62944d3d4010e">Main::ajouter</a></div><div class="ttdeci">void ajouter(const Carte &amp;carte)</div><div class="ttdef"><b>Definition:</b> main.cpp:62</div></div>
-<div class="ttc" id="classCarte_html"><div class="ttname"><a href="classCarte.html">Carte</a></div><div class="ttdoc">Définition d&#39;une Carte du jeu. </div><div class="ttdef"><b>Definition:</b> carte.hpp:80</div></div>
-<div class="ttc" id="classMain_html_a7df3596743ce76906dc792e71adca8fa"><div class="ttname"><a href="classMain.html#a7df3596743ce76906dc792e71adca8fa">Main::peut_ecarter</a></div><div class="ttdeci">std::vector&lt; Carte::ModaliteEcart &gt; peut_ecarter(const std::vector&lt; Carte &gt; &amp;ecart) const </div><div class="ttdef"><b>Definition:</b> main.cpp:186</div></div>
-<div class="ttc" id="classMain_html_aadc4848554e95ee400d7b4a4fd1c644b"><div class="ttname"><a href="classMain.html#aadc4848554e95ee400d7b4a4fd1c644b">Main::peut_appeler</a></div><div class="ttdeci">bool peut_appeler(const Carte &amp;carte) const </div><div class="ttdef"><b>Definition:</b> main.cpp:69</div></div>
-<div class="ttc" id="classMain_html_a6df2b8fedb77ea13507fc4621e6b2ed1"><div class="ttname"><a href="classMain.html#a6df2b8fedb77ea13507fc4621e6b2ed1">Main::operator=</a></div><div class="ttdeci">const Main &amp; operator=(const Main &amp;m)</div><div class="ttdef"><b>Definition:</b> main.cpp:167</div></div>
-<div class="ttc" id="classMain_html_a982c55b05c5f74d20be7dd476f10e355"><div class="ttname"><a href="classMain.html#a982c55b05c5f74d20be7dd476f10e355">Main::enlever</a></div><div class="ttdeci">void enlever(const Carte &amp;carte)</div><div class="ttdef"><b>Definition:</b> main.cpp:36</div></div>
-<div class="ttc" id="classMain_html_add661748c8e69831dafaf52fe047822f"><div class="ttname"><a href="classMain.html#add661748c8e69831dafaf52fe047822f">Main::peut_pisser</a></div><div class="ttdeci">bool peut_pisser(Carte::Valeur atout_max) const </div><div class="ttdoc">Indique si le joueur peut &quot;pisser&quot;. </div><div class="ttdef"><b>Definition:</b> main.cpp:275</div></div>
-<div class="ttc" id="classMain_html_a866b5e59e385bb3f93fe2c6745c7fe8d"><div class="ttname"><a href="classMain.html#a866b5e59e385bb3f93fe2c6745c7fe8d">Main::possede</a></div><div class="ttdeci">bool possede(const Carte &amp;carte) const </div><div class="ttdef"><b>Definition:</b> main.cpp:52</div></div>
-<div class="ttc" id="structProtocole_1_1Msg__distribution_html"><div class="ttname"><a href="structProtocole_1_1Msg__distribution.html">Protocole::Msg_distribution</a></div><div class="ttdoc">Contenu d&#39;un Message de distribution des cartes. </div><div class="ttdef"><b>Definition:</b> protocole.hpp:302</div></div>
-<div class="ttc" id="classMain_html"><div class="ttname"><a href="classMain.html">Main</a></div><div class="ttdoc">Une Main est un ensemble de cartes. </div><div class="ttdef"><b>Definition:</b> main.hpp:28</div></div>
-<div class="ttc" id="classMain_html_ad052677f64d47b36c22758615af2769e"><div class="ttname"><a href="classMain.html#ad052677f64d47b36c22758615af2769e">Main::peut_defausser</a></div><div class="ttdeci">bool peut_defausser() const </div><div class="ttdoc">Indique si le joueur peut &quot;défausser&quot;. </div><div class="ttdef"><b>Definition:</b> main.cpp:291</div></div>
-<div class="ttc" id="main_8hpp_html_a1f09edb5fd6c09d51d39280c7032a00d"><div class="ttname"><a href="main_8hpp.html#a1f09edb5fd6c09d51d39280c7032a00d">operator&lt;&lt;</a></div><div class="ttdeci">std::ostream &amp; operator&lt;&lt;(std::ostream &amp;out, const Main &amp;main)</div><div class="ttdoc">Écrit une Main. </div><div class="ttdef"><b>Definition:</b> main.cpp:321</div></div>
-<div class="ttc" id="classMain_html_ac31fb90cebfa1d62f14995fb3393151e"><div class="ttname"><a href="classMain.html#ac31fb90cebfa1d62f14995fb3393151e">Main::distribution</a></div><div class="ttdeci">void distribution(Protocole::Msg_distribution &amp;m)</div><div class="ttdef"><b>Definition:</b> main.cpp:175</div></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;  std::vector&lt;Carte&gt; <span class="keyword">const</span> &amp; <a class="code" href="classMain.html#a2441ccb08711c6bd6be52e7b73164608">cartes</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;  std::vector&lt;Carte&gt; m_cartes;</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;};</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;std::ostream &amp; <a class="code" href="main_8hpp.html#a1f09edb5fd6c09d51d39280c7032a00d">operator&lt;&lt;</a>(std::ostream &amp; out, <span class="keyword">const</span> <a class="code" href="classMain.html">Main</a> &amp; main);</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="classMain_html_a2441ccb08711c6bd6be52e7b73164608"><div class="ttname"><a href="classMain.html#a2441ccb08711c6bd6be52e7b73164608">Main::cartes</a></div><div class="ttdeci">std::vector&lt; Carte &gt; const &amp; cartes() const </div><div class="ttdoc">Ensemble des Cartes. </div></div>
+<div class="ttc" id="classMain_html_a120f0c2a92b0f005935306f287bbe882"><div class="ttname"><a href="classMain.html#a120f0c2a92b0f005935306f287bbe882">Main::peut_couper</a></div><div class="ttdeci">bool peut_couper(Carte::Couleur col) const </div><div class="ttdoc">Indique si le joueur n&#39;a plus d&#39;une couleur. </div></div>
+<div class="ttc" id="classCarte_html_aa4b4c15fb6d1f697985b8ff04a67c45e"><div class="ttname"><a href="classCarte.html#aa4b4c15fb6d1f697985b8ff04a67c45e">Carte::Couleur</a></div><div class="ttdeci">Couleur</div><div class="ttdoc">Énumère les 5 couleurs. </div><div class="ttdef"><b>Definition:</b> carte.hpp:109</div></div>
+<div class="ttc" id="classMain_html_a399bda9b7ca5c04e37c62944d3d4010e"><div class="ttname"><a href="classMain.html#a399bda9b7ca5c04e37c62944d3d4010e">Main::ajouter</a></div><div class="ttdeci">void ajouter(const Carte &amp;carte)</div></div>
+<div class="ttc" id="classCarte_html"><div class="ttname"><a href="classCarte.html">Carte</a></div><div class="ttdoc">Définition d&#39;une Carte du jeu. </div><div class="ttdef"><b>Definition:</b> carte.hpp:99</div></div>
+<div class="ttc" id="classMain_html_aa17deaa8416165c4a9afc9a487d96f06"><div class="ttname"><a href="classMain.html#aa17deaa8416165c4a9afc9a487d96f06">Main::peut_ecarter</a></div><div class="ttdeci">std::vector&lt; Carte::ModaliteEcart &gt; peut_ecarter(const std::vector&lt; Carte &gt; &amp;ecart) const </div></div>
+<div class="ttc" id="classMain_html_aadc4848554e95ee400d7b4a4fd1c644b"><div class="ttname"><a href="classMain.html#aadc4848554e95ee400d7b4a4fd1c644b">Main::peut_appeler</a></div><div class="ttdeci">bool peut_appeler(const Carte &amp;carte) const </div></div>
+<div class="ttc" id="classMain_html_a982c55b05c5f74d20be7dd476f10e355"><div class="ttname"><a href="classMain.html#a982c55b05c5f74d20be7dd476f10e355">Main::enlever</a></div><div class="ttdeci">void enlever(const Carte &amp;carte)</div></div>
+<div class="ttc" id="classMain_html_add661748c8e69831dafaf52fe047822f"><div class="ttname"><a href="classMain.html#add661748c8e69831dafaf52fe047822f">Main::peut_pisser</a></div><div class="ttdeci">bool peut_pisser(Carte::Valeur atout_max) const </div><div class="ttdoc">Indique si le joueur peut &quot;pisser&quot;. </div></div>
+<div class="ttc" id="classMain_html_a866b5e59e385bb3f93fe2c6745c7fe8d"><div class="ttname"><a href="classMain.html#a866b5e59e385bb3f93fe2c6745c7fe8d">Main::possede</a></div><div class="ttdeci">bool possede(const Carte &amp;carte) const </div></div>
+<div class="ttc" id="structProtocole_1_1Msg__distribution_html"><div class="ttname"><a href="structProtocole_1_1Msg__distribution.html">Protocole::Msg_distribution</a></div><div class="ttdoc">Contenu d&#39;un Message de distribution des cartes. </div><div class="ttdef"><b>Definition:</b> protocole.hpp:321</div></div>
+<div class="ttc" id="classMain_html"><div class="ttname"><a href="classMain.html">Main</a></div><div class="ttdoc">Une Main est un ensemble de cartes. </div><div class="ttdef"><b>Definition:</b> main.hpp:47</div></div>
+<div class="ttc" id="classMain_html_ad052677f64d47b36c22758615af2769e"><div class="ttname"><a href="classMain.html#ad052677f64d47b36c22758615af2769e">Main::peut_defausser</a></div><div class="ttdeci">bool peut_defausser() const </div><div class="ttdoc">Indique si le joueur peut &quot;défausser&quot;. </div></div>
+<div class="ttc" id="main_8hpp_html_a1f09edb5fd6c09d51d39280c7032a00d"><div class="ttname"><a href="main_8hpp.html#a1f09edb5fd6c09d51d39280c7032a00d">operator&lt;&lt;</a></div><div class="ttdeci">std::ostream &amp; operator&lt;&lt;(std::ostream &amp;out, const Main &amp;main)</div><div class="ttdoc">Écrit une Main. </div></div>
+<div class="ttc" id="classMain_html_ac31fb90cebfa1d62f14995fb3393151e"><div class="ttname"><a href="classMain.html#ac31fb90cebfa1d62f14995fb3393151e">Main::distribution</a></div><div class="ttdeci">void distribution(Protocole::Msg_distribution &amp;m)</div></div>
 <div class="ttc" id="carte_8hpp_html"><div class="ttname"><a href="carte_8hpp.html">carte.hpp</a></div><div class="ttdoc">définit une classe de carte à jouer. </div></div>
-<div class="ttc" id="classMain_html_a4a584a9244bbe3721c45bf79261d0a82"><div class="ttname"><a href="classMain.html#a4a584a9244bbe3721c45bf79261d0a82">Main::nombre_cartes</a></div><div class="ttdeci">unsigned int nombre_cartes() const </div><div class="ttdoc">Nombre de Cartes. </div><div class="ttdef"><b>Definition:</b> main.cpp:307</div></div>
-<div class="ttc" id="classCarte_html_ad549901ec17f99028b361164be137b7b"><div class="ttname"><a href="classCarte.html#ad549901ec17f99028b361164be137b7b">Carte::Valeur</a></div><div class="ttdeci">Valeur</div><div class="ttdoc">Représente la valeur des cartes de couleur non atout. </div><div class="ttdef"><b>Definition:</b> carte.hpp:97</div></div>
-<div class="ttc" id="classMain_html_ab62d183ee65c7cfd21803dc53782d17a"><div class="ttname"><a href="classMain.html#ab62d183ee65c7cfd21803dc53782d17a">Main::peut_declarer</a></div><div class="ttdeci">bool peut_declarer(const std::vector&lt; Carte &gt; &amp;poignee) const </div><div class="ttdef"><b>Definition:</b> main.cpp:104</div></div>
+<div class="ttc" id="classMain_html_a4a584a9244bbe3721c45bf79261d0a82"><div class="ttname"><a href="classMain.html#a4a584a9244bbe3721c45bf79261d0a82">Main::nombre_cartes</a></div><div class="ttdeci">unsigned int nombre_cartes() const </div><div class="ttdoc">Nombre de Cartes. </div></div>
+<div class="ttc" id="classCarte_html_ad549901ec17f99028b361164be137b7b"><div class="ttname"><a href="classCarte.html#ad549901ec17f99028b361164be137b7b">Carte::Valeur</a></div><div class="ttdeci">Valeur</div><div class="ttdoc">Représente la valeur des cartes de couleur non atout. </div><div class="ttdef"><b>Definition:</b> carte.hpp:116</div></div>
+<div class="ttc" id="classMain_html_a093acec25e54e1104e283bb267a1025c"><div class="ttname"><a href="classMain.html#a093acec25e54e1104e283bb267a1025c">Main::operator=</a></div><div class="ttdeci">const Main &amp; operator=(const Main &amp;m)</div></div>
+<div class="ttc" id="classMain_html_ab62d183ee65c7cfd21803dc53782d17a"><div class="ttname"><a href="classMain.html#ab62d183ee65c7cfd21803dc53782d17a">Main::peut_declarer</a></div><div class="ttdeci">bool peut_declarer(const std::vector&lt; Carte &gt; &amp;poignee) const </div></div>
 <div class="ttc" id="protocole_8hpp_html"><div class="ttname"><a href="protocole_8hpp.html">protocole.hpp</a></div><div class="ttdoc">Définit le protocole de communication. </div></div>
-<div class="ttc" id="classMain_html_a50d4361a1b613205467a441b5c40c199"><div class="ttname"><a href="classMain.html#a50d4361a1b613205467a441b5c40c199">Main::Main</a></div><div class="ttdeci">Main()</div><div class="ttdef"><b>Definition:</b> main.cpp:11</div></div>
+<div class="ttc" id="classMain_html_a50d4361a1b613205467a441b5c40c199"><div class="ttname"><a href="classMain.html#a50d4361a1b613205467a441b5c40c199">Main::Main</a></div><div class="ttdeci">Main()</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Vendredi 16 Janvier 2015 14:35:40 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Mardi 3 Février 2015 21:33:18 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -90,84 +90,102 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">partie_serveur.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="partie__serveur_8hpp.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#ifndef PARTIE_SERVEUR_DEFINIE</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="partie__serveur_8hpp.html#a65baad18990f9875e476665933261707">   11</a></span>&#160;<span class="preprocessor">#define PARTIE_SERVEUR_DEFINIE</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="partie_8hpp.html">partie.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="main_8hpp.html">main.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;score.hpp&quot;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;QObject&gt;</span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classPartieServeur.html">   28</a></span>&#160;<span class="keyword">class </span><a class="code" href="classPartieServeur.html">PartieServeur</a>: <span class="keyword">public</span> QObject, <span class="keyword">public</span> <a class="code" href="classPartie.html">Partie</a></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;{</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  Q_OBJECT;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <a class="code" href="classPartieServeur.html#abfd2d5ab00fb6f82a8240c40c1dab452">PartieServeur</a>(QObject * parent = 0);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieServeur.html#a4b5f9bf1bc24db303a31e8a77bf683ed">assimiler</a>(<span class="keyword">const</span> <a class="code" href="structProtocole_1_1Message.html">Protocole::Message</a> &amp; message);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classPartieServeur.html#a53ae35e1da76a5602f3223019df36e83">tester</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> joueur, <span class="keyword">const</span> <a class="code" href="structProtocole_1_1Message.html">Protocole::Message</a> &amp; m) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieServeur.html#a0c1bd2498e0ee3808d6c7c5921dc302a">reinitialiser</a>();</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  std::vector&lt;Main&gt; jeu_reel;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  std::vector&lt;std::vector&lt;Carte&gt; &gt; cartes_attaque;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  std::vector&lt;std::vector&lt;Carte&gt; &gt; cartes_defense;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  std::vector&lt;Carte&gt; chien;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <a class="code" href="classEnchere.html">Enchere</a> e_max;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> joueur_appele;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  </div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> plis_restants;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classPartieServeur.html#afac35b8657ed6c217a46b556c2ea53eb">cartes_gagnees</a></div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  (std::vector&lt;Carte&gt; <span class="keyword">const</span> &amp; cartes,</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;   std::vector&lt;unsigned int&gt; <span class="keyword">const</span> &amp; poseurs,</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;   std::vector&lt;unsigned int&gt; <span class="keyword">const</span> &amp; gagnants);</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;                          </div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="keyword">public</span> slots:</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieServeur.html#a135a3037f89478ccb40547fca9ceec75">distribuer</a>();</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  </div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;signals:</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  </div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieServeur.html#a60c558d4c86798ee46f255c18a52630b">doit_emettre</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j, <a class="code" href="structProtocole_1_1Message.html">Protocole::Message</a> m, <span class="keywordtype">bool</span> assimiler);</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieServeur.html#ad934af02a962fb0d7d7cec0dbdb90177">doit_emettre_a_tous</a>(<a class="code" href="structProtocole_1_1Message.html">Protocole::Message</a> m);</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieServeur.html#ae6bcbc691f8fb04b70e25e610405b02a">termine</a>();</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;};</div>
+<a href="partie__serveur_8hpp.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">  serveur of project tarot virtuel is a server for a card game.</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">  Copyright (C) 2015  Vivien Kraus</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">  </span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">  This program is free software: you can redistribute it and/or modify</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment">  it under the terms of the GNU General Public License as published by</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">  the Free Software Foundation, either version 3 of the License, or</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">  (at your option) any later version.</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">  </span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">  This program is distributed in the hope that it will be useful,</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">  but WITHOUT ANY WARRANTY; without even the implied warranty of</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">  GNU General Public License for more details.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">  </span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">  You should have received a copy of the GNU General Public License</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">  along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#ifndef PARTIE_SERVEUR_DEFINIE</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="partie__serveur_8hpp.html#a65baad18990f9875e476665933261707">   30</a></span>&#160;<span class="preprocessor">#define PARTIE_SERVEUR_DEFINIE</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="partie_8hpp.html">partie.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="main_8hpp.html">main.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &quot;score.hpp&quot;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &lt;QObject&gt;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classPartieServeur.html">   47</a></span>&#160;<span class="keyword">class </span><a class="code" href="classPartieServeur.html">PartieServeur</a>: <span class="keyword">public</span> QObject, <span class="keyword">public</span> <a class="code" href="classPartie.html">Partie</a></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;{</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  Q_OBJECT;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <a class="code" href="classPartieServeur.html#abfd2d5ab00fb6f82a8240c40c1dab452">PartieServeur</a>(QObject * parent = 0);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieServeur.html#a4b5f9bf1bc24db303a31e8a77bf683ed">assimiler</a>(<span class="keyword">const</span> <a class="code" href="structProtocole_1_1Message.html">Protocole::Message</a> &amp; message);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classPartieServeur.html#a53ae35e1da76a5602f3223019df36e83">tester</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> joueur, <span class="keyword">const</span> <a class="code" href="structProtocole_1_1Message.html">Protocole::Message</a> &amp; m) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieServeur.html#a0c1bd2498e0ee3808d6c7c5921dc302a">reinitialiser</a>();</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  std::vector&lt;Main&gt; jeu_reel;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  std::vector&lt;std::vector&lt;Carte&gt; &gt; cartes_attaque;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  std::vector&lt;std::vector&lt;Carte&gt; &gt; cartes_defense;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  std::vector&lt;Carte&gt; chien;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  <a class="code" href="classEnchere.html">Enchere</a> e_max;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> joueur_appele;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  </div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> plis_restants;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    </div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="classPartieServeur.html#a6e88cd32ece15d78ca9ac5cd2fd2b3b1">cartes_gagnees</a></div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  (std::vector&lt;Carte&gt; <span class="keyword">const</span> &amp; cartes,</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;   std::vector&lt;unsigned int&gt; <span class="keyword">const</span> &amp; poseurs,</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;   std::vector&lt;unsigned int&gt; <span class="keyword">const</span> &amp; gagnants);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;                          </div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="keyword">public</span> slots:</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieServeur.html#a135a3037f89478ccb40547fca9ceec75">distribuer</a>();</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  </div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;signals:</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  </div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieServeur.html#a60c558d4c86798ee46f255c18a52630b">doit_emettre</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j, <a class="code" href="structProtocole_1_1Message.html">Protocole::Message</a> m, <span class="keywordtype">bool</span> assimiler);</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="structProtocole_1_1Message_html"><div class="ttname"><a href="structProtocole_1_1Message.html">Protocole::Message</a></div><div class="ttdoc">Structure de Message universel. </div><div class="ttdef"><b>Definition:</b> protocole.hpp:787</div></div>
-<div class="ttc" id="classPartieServeur_html_a4b5f9bf1bc24db303a31e8a77bf683ed"><div class="ttname"><a href="classPartieServeur.html#a4b5f9bf1bc24db303a31e8a77bf683ed">PartieServeur::assimiler</a></div><div class="ttdeci">void assimiler(const Protocole::Message &amp;message)</div><div class="ttdoc">Réimplémente Partie::assimiler(const Message &amp;). </div><div class="ttdef"><b>Definition:</b> partie_serveur.cpp:22</div></div>
-<div class="ttc" id="classEnchere_html"><div class="ttname"><a href="classEnchere.html">Enchere</a></div><div class="ttdoc">Définit une classe pour les enchères. </div><div class="ttdef"><b>Definition:</b> enchere.hpp:31</div></div>
-<div class="ttc" id="classPartie_html"><div class="ttname"><a href="classPartie.html">Partie</a></div><div class="ttdoc">Environnement de partie de Tarot. </div><div class="ttdef"><b>Definition:</b> partie.hpp:31</div></div>
-<div class="ttc" id="classPartieServeur_html_abfd2d5ab00fb6f82a8240c40c1dab452"><div class="ttname"><a href="classPartieServeur.html#abfd2d5ab00fb6f82a8240c40c1dab452">PartieServeur::PartieServeur</a></div><div class="ttdeci">PartieServeur(QObject *parent=0)</div><div class="ttdoc">Constructeur par défaut. </div><div class="ttdef"><b>Definition:</b> partie_serveur.cpp:14</div></div>
-<div class="ttc" id="classPartieServeur_html_ae6bcbc691f8fb04b70e25e610405b02a"><div class="ttname"><a href="classPartieServeur.html#ae6bcbc691f8fb04b70e25e610405b02a">PartieServeur::termine</a></div><div class="ttdeci">void termine()</div><div class="ttdoc">La partie est finie. </div><div class="ttdef"><b>Definition:</b> moc_partie_serveur.cpp:121</div></div>
-<div class="ttc" id="classPartieServeur_html_ad934af02a962fb0d7d7cec0dbdb90177"><div class="ttname"><a href="classPartieServeur.html#ad934af02a962fb0d7d7cec0dbdb90177">PartieServeur::doit_emettre_a_tous</a></div><div class="ttdeci">void doit_emettre_a_tous(Protocole::Message m)</div><div class="ttdoc">Signal à connecter à Table::doit_transmettre_a_tous(Message) </div><div class="ttdef"><b>Definition:</b> moc_partie_serveur.cpp:114</div></div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieServeur.html#ad934af02a962fb0d7d7cec0dbdb90177">doit_emettre_a_tous</a>(<a class="code" href="structProtocole_1_1Message.html">Protocole::Message</a> m);</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classPartieServeur.html#ae6bcbc691f8fb04b70e25e610405b02a">termine</a>();</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;};</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="ttc" id="structProtocole_1_1Message_html"><div class="ttname"><a href="structProtocole_1_1Message.html">Protocole::Message</a></div><div class="ttdoc">Structure de Message universel. </div><div class="ttdef"><b>Definition:</b> protocole.hpp:806</div></div>
+<div class="ttc" id="classPartieServeur_html_a4b5f9bf1bc24db303a31e8a77bf683ed"><div class="ttname"><a href="classPartieServeur.html#a4b5f9bf1bc24db303a31e8a77bf683ed">PartieServeur::assimiler</a></div><div class="ttdeci">void assimiler(const Protocole::Message &amp;message)</div><div class="ttdoc">Réimplémente Partie::assimiler(const Message &amp;). </div></div>
+<div class="ttc" id="classEnchere_html"><div class="ttname"><a href="classEnchere.html">Enchere</a></div><div class="ttdoc">Définit une classe pour les enchères. </div><div class="ttdef"><b>Definition:</b> enchere.hpp:50</div></div>
+<div class="ttc" id="classPartie_html"><div class="ttname"><a href="classPartie.html">Partie</a></div><div class="ttdoc">Environnement de partie de Tarot. </div><div class="ttdef"><b>Definition:</b> partie.hpp:50</div></div>
+<div class="ttc" id="classPartieServeur_html_abfd2d5ab00fb6f82a8240c40c1dab452"><div class="ttname"><a href="classPartieServeur.html#abfd2d5ab00fb6f82a8240c40c1dab452">PartieServeur::PartieServeur</a></div><div class="ttdeci">PartieServeur(QObject *parent=0)</div><div class="ttdoc">Constructeur par défaut. </div></div>
+<div class="ttc" id="classPartieServeur_html_ae6bcbc691f8fb04b70e25e610405b02a"><div class="ttname"><a href="classPartieServeur.html#ae6bcbc691f8fb04b70e25e610405b02a">PartieServeur::termine</a></div><div class="ttdeci">void termine()</div><div class="ttdoc">La partie est finie. </div></div>
+<div class="ttc" id="classPartieServeur_html_ad934af02a962fb0d7d7cec0dbdb90177"><div class="ttname"><a href="classPartieServeur.html#ad934af02a962fb0d7d7cec0dbdb90177">PartieServeur::doit_emettre_a_tous</a></div><div class="ttdeci">void doit_emettre_a_tous(Protocole::Message m)</div><div class="ttdoc">Signal à connecter à Table::doit_transmettre_a_tous(Message) </div></div>
 <div class="ttc" id="partie_8hpp_html"><div class="ttname"><a href="partie_8hpp.html">partie.hpp</a></div><div class="ttdoc">Définit un environnement de partie. </div></div>
-<div class="ttc" id="classPartieServeur_html_a53ae35e1da76a5602f3223019df36e83"><div class="ttname"><a href="classPartieServeur.html#a53ae35e1da76a5602f3223019df36e83">PartieServeur::tester</a></div><div class="ttdeci">int tester(unsigned int joueur, const Protocole::Message &amp;m) const </div><div class="ttdoc">Teste une requête. </div><div class="ttdef"><b>Definition:</b> partie_serveur.cpp:263</div></div>
-<div class="ttc" id="classPartieServeur_html_a135a3037f89478ccb40547fca9ceec75"><div class="ttname"><a href="classPartieServeur.html#a135a3037f89478ccb40547fca9ceec75">PartieServeur::distribuer</a></div><div class="ttdeci">void distribuer()</div><div class="ttdoc">Distribution des cartes. </div><div class="ttdef"><b>Definition:</b> partie_serveur.cpp:564</div></div>
-<div class="ttc" id="classPartieServeur_html_a0c1bd2498e0ee3808d6c7c5921dc302a"><div class="ttname"><a href="classPartieServeur.html#a0c1bd2498e0ee3808d6c7c5921dc302a">PartieServeur::reinitialiser</a></div><div class="ttdeci">void reinitialiser()</div><div class="ttdoc">Réinitialise la partie. </div><div class="ttdef"><b>Definition:</b> partie_serveur.cpp:676</div></div>
-<div class="ttc" id="classPartieServeur_html_a60c558d4c86798ee46f255c18a52630b"><div class="ttname"><a href="classPartieServeur.html#a60c558d4c86798ee46f255c18a52630b">PartieServeur::doit_emettre</a></div><div class="ttdeci">void doit_emettre(unsigned int j, Protocole::Message m, bool assimiler)</div><div class="ttdoc">Signal à connecter à Table::doit_transmettre(unsigned int,Message,bool) </div><div class="ttdef"><b>Definition:</b> moc_partie_serveur.cpp:107</div></div>
-<div class="ttc" id="classPartieServeur_html_afac35b8657ed6c217a46b556c2ea53eb"><div class="ttname"><a href="classPartieServeur.html#afac35b8657ed6c217a46b556c2ea53eb">PartieServeur::cartes_gagnees</a></div><div class="ttdeci">virtual void cartes_gagnees(std::vector&lt; Carte &gt; const &amp;cartes, std::vector&lt; unsigned int &gt; const &amp;poseurs, std::vector&lt; unsigned int &gt; const &amp;gagnants)</div><div class="ttdoc">Relaye Tapis::cartes_gagnees. </div><div class="ttdef"><b>Definition:</b> partie_serveur.cpp:621</div></div>
+<div class="ttc" id="classPartieServeur_html_a53ae35e1da76a5602f3223019df36e83"><div class="ttname"><a href="classPartieServeur.html#a53ae35e1da76a5602f3223019df36e83">PartieServeur::tester</a></div><div class="ttdeci">int tester(unsigned int joueur, const Protocole::Message &amp;m) const </div><div class="ttdoc">Teste une requête. </div></div>
+<div class="ttc" id="classPartieServeur_html_a135a3037f89478ccb40547fca9ceec75"><div class="ttname"><a href="classPartieServeur.html#a135a3037f89478ccb40547fca9ceec75">PartieServeur::distribuer</a></div><div class="ttdeci">void distribuer()</div><div class="ttdoc">Distribution des cartes. </div></div>
+<div class="ttc" id="classPartieServeur_html_a6e88cd32ece15d78ca9ac5cd2fd2b3b1"><div class="ttname"><a href="classPartieServeur.html#a6e88cd32ece15d78ca9ac5cd2fd2b3b1">PartieServeur::cartes_gagnees</a></div><div class="ttdeci">virtual void cartes_gagnees(std::vector&lt; Carte &gt; const &amp;cartes, std::vector&lt; unsigned int &gt; const &amp;poseurs, std::vector&lt; unsigned int &gt; const &amp;gagnants)</div><div class="ttdoc">Relaye Tapis::cartes_gagnees. </div></div>
+<div class="ttc" id="classPartieServeur_html_a0c1bd2498e0ee3808d6c7c5921dc302a"><div class="ttname"><a href="classPartieServeur.html#a0c1bd2498e0ee3808d6c7c5921dc302a">PartieServeur::reinitialiser</a></div><div class="ttdeci">void reinitialiser()</div><div class="ttdoc">Réinitialise la partie. </div></div>
+<div class="ttc" id="classPartieServeur_html_a60c558d4c86798ee46f255c18a52630b"><div class="ttname"><a href="classPartieServeur.html#a60c558d4c86798ee46f255c18a52630b">PartieServeur::doit_emettre</a></div><div class="ttdeci">void doit_emettre(unsigned int j, Protocole::Message m, bool assimiler)</div><div class="ttdoc">Signal à connecter à Table::doit_transmettre(unsigned int,Message,bool) </div></div>
 <div class="ttc" id="main_8hpp_html"><div class="ttname"><a href="main_8hpp.html">main.hpp</a></div><div class="ttdoc">Définit une classe de main. </div></div>
-<div class="ttc" id="classPartieServeur_html"><div class="ttname"><a href="classPartieServeur.html">PartieServeur</a></div><div class="ttdoc">Précision d&#39;une Partie, côté serveur. </div><div class="ttdef"><b>Definition:</b> partie_serveur.hpp:28</div></div>
+<div class="ttc" id="classPartieServeur_html"><div class="ttname"><a href="classPartieServeur.html">PartieServeur</a></div><div class="ttdoc">Précision d&#39;une Partie, côté serveur. </div><div class="ttdef"><b>Definition:</b> partie_serveur.hpp:47</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Vendredi 16 Janvier 2015 14:35:40 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Mardi 3 Février 2015 21:33:18 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

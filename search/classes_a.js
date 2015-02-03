@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['partie',['Partie',['../classPartie.html',1,'']]],
-  ['partieclient',['PartieClient',['../classPartieClient.html',1,'']]],
-  ['partieserveur',['PartieServeur',['../classPartieServeur.html',1,'']]]
+  ['serveur',['Serveur',['../classServeur.html',1,'']]],
+  ['serveurjeu',['ServeurJeu',['../classServeurJeu.html',1,'']]]
 ];

@@ -138,9 +138,9 @@ Connecteurs publics</h2></td></tr>
 <tr class="memitem:a591a9d532e4c5534820376115327c550"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartieClient.html#a591a9d532e4c5534820376115327c550">identifier</a> (const std::string &amp;nom)</td></tr>
 <tr class="memdesc:a591a9d532e4c5534820376115327c550"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construit un Message.  <a href="#a591a9d532e4c5534820376115327c550">Plus de détails...</a><br/></td></tr>
 <tr class="separator:a591a9d532e4c5534820376115327c550"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab0438ef7649abf42531131cca05657b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartieClient.html#ab0438ef7649abf42531131cca05657b9">inviter</a> (const std::vector&lt; std::string &gt; &amp;<a class="el" href="classPartieClient.html#ab4e0f4bc6a9217c11f3af46a749e1e99">adversaires</a>)</td></tr>
-<tr class="memdesc:ab0438ef7649abf42531131cca05657b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construit un Message.  <a href="#ab0438ef7649abf42531131cca05657b9">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ab0438ef7649abf42531131cca05657b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7b89427a8161674cf3ac8ceefac376d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartieClient.html#af7b89427a8161674cf3ac8ceefac376d">formuler_invitation</a> (const std::vector&lt; std::string &gt; &amp;<a class="el" href="classPartieClient.html#ab4e0f4bc6a9217c11f3af46a749e1e99">adversaires</a>)</td></tr>
+<tr class="memdesc:af7b89427a8161674cf3ac8ceefac376d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construit un Message.  <a href="#af7b89427a8161674cf3ac8ceefac376d">Plus de détails...</a><br/></td></tr>
+<tr class="separator:af7b89427a8161674cf3ac8ceefac376d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="signals"></a>
 Signaux</h2></td></tr>
@@ -159,7 +159,7 @@ Signaux</h2></td></tr>
 <tr class="memitem:a713642e2d184162c7c1cc9a23dc9da6e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartieClient.html#a713642e2d184162c7c1cc9a23dc9da6e">jeu_est</a> (std::vector&lt; <a class="el" href="classCarte.html">Carte</a> &gt; cartes)</td></tr>
 <tr class="memdesc:a713642e2d184162c7c1cc9a23dc9da6e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Votre jeu vous est donné.  <a href="#a713642e2d184162c7c1cc9a23dc9da6e">Plus de détails...</a><br/></td></tr>
 <tr class="separator:a713642e2d184162c7c1cc9a23dc9da6e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9ad741fd18e2b7581344e1ef94175620"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartieClient.html#a9ad741fd18e2b7581344e1ef94175620">tapis_change</a> (<a class="el" href="classTapis.html">Tapis</a> <a class="el" href="classPartie.html#a8e85cd52fcb26ee887b5c5441ffc00b2">tapis</a>)</td></tr>
+<tr class="memitem:a9ad741fd18e2b7581344e1ef94175620"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartieClient.html#a9ad741fd18e2b7581344e1ef94175620">tapis_change</a> (<a class="el" href="classTapis.html">Tapis</a> <a class="el" href="classPartie.html#acacf31d258dfeff531d6d4d541076cad">tapis</a>)</td></tr>
 <tr class="memdesc:a9ad741fd18e2b7581344e1ef94175620"><td class="mdescLeft">&#160;</td><td class="mdescRight">Le tapis a changé.  <a href="#a9ad741fd18e2b7581344e1ef94175620">Plus de détails...</a><br/></td></tr>
 <tr class="separator:a9ad741fd18e2b7581344e1ef94175620"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af026ee1b7dd327da63570c1ea2739175"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartieClient.html#af026ee1b7dd327da63570c1ea2739175">action_refusee</a> ()</td></tr>
@@ -274,21 +274,21 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <tr class="memitem:ab8a66e1a4f5b21a4687923844ff12a49"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartieClient.html#ab8a66e1a4f5b21a4687923844ff12a49">mon_numero</a> () const </td></tr>
 <tr class="memdesc:ab8a66e1a4f5b21a4687923844ff12a49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le numéro du joueur.  <a href="#ab8a66e1a4f5b21a4687923844ff12a49">Plus de détails...</a><br/></td></tr>
 <tr class="separator:ab8a66e1a4f5b21a4687923844ff12a49"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a304bbc3b5068d36ed72bbccbb54c7fc2"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classMain.html">Main</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartieClient.html#a304bbc3b5068d36ed72bbccbb54c7fc2">mon_jeu</a> () const </td></tr>
-<tr class="memdesc:a304bbc3b5068d36ed72bbccbb54c7fc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Regarder mon jeu.  <a href="#a304bbc3b5068d36ed72bbccbb54c7fc2">Plus de détails...</a><br/></td></tr>
-<tr class="separator:a304bbc3b5068d36ed72bbccbb54c7fc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab0c2c09c69d10bc069e9e5e0a74d2e45"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classCarte.html">Carte</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartieClient.html#ab0c2c09c69d10bc069e9e5e0a74d2e45">cartes_appelables</a> () const </td></tr>
-<tr class="memdesc:ab0c2c09c69d10bc069e9e5e0a74d2e45"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique quelles cartes je peux appeler.  <a href="#ab0c2c09c69d10bc069e9e5e0a74d2e45">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ab0c2c09c69d10bc069e9e5e0a74d2e45"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae9581f44a3149281b2d1d62db962ed99"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; <a class="el" href="classCarte.html">Carte</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartieClient.html#ae9581f44a3149281b2d1d62db962ed99">cartes_ecartables</a> () const </td></tr>
-<tr class="memdesc:ae9581f44a3149281b2d1d62db962ed99"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique quelles cartes je peux écarter.  <a href="#ae9581f44a3149281b2d1d62db962ed99">Plus de détails...</a><br/></td></tr>
-<tr class="separator:ae9581f44a3149281b2d1d62db962ed99"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5c597c21be297a56b8fb0bb45de2acc"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classMain.html">Main</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartieClient.html#ad5c597c21be297a56b8fb0bb45de2acc">mon_jeu</a> () const </td></tr>
+<tr class="memdesc:ad5c597c21be297a56b8fb0bb45de2acc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Regarder mon jeu.  <a href="#ad5c597c21be297a56b8fb0bb45de2acc">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ad5c597c21be297a56b8fb0bb45de2acc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab15459b0fae2c5f1dba8834cbd37b893"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classCarte.html">Carte</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartieClient.html#ab15459b0fae2c5f1dba8834cbd37b893">cartes_appelables</a> () const </td></tr>
+<tr class="memdesc:ab15459b0fae2c5f1dba8834cbd37b893"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique quelles cartes je peux appeler.  <a href="#ab15459b0fae2c5f1dba8834cbd37b893">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ab15459b0fae2c5f1dba8834cbd37b893"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1093632b60b1d8b21f3c8897aa94d995"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::vector&lt; <a class="el" href="classCarte.html">Carte</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartieClient.html#a1093632b60b1d8b21f3c8897aa94d995">cartes_ecartables</a> () const </td></tr>
+<tr class="memdesc:a1093632b60b1d8b21f3c8897aa94d995"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique quelles cartes je peux écarter.  <a href="#a1093632b60b1d8b21f3c8897aa94d995">Plus de détails...</a><br/></td></tr>
+<tr class="separator:a1093632b60b1d8b21f3c8897aa94d995"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d79ef4b51e8b8d8892b2fda536ed787"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartieClient.html#a2d79ef4b51e8b8d8892b2fda536ed787">mon_nom</a> () const </td></tr>
 <tr class="memdesc:a2d79ef4b51e8b8d8892b2fda536ed787"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique quel est mon nom.  <a href="#a2d79ef4b51e8b8d8892b2fda536ed787">Plus de détails...</a><br/></td></tr>
 <tr class="separator:a2d79ef4b51e8b8d8892b2fda536ed787"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a16f0bc18816fb2bbb8834f7d3004c1ab"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartieClient.html#a16f0bc18816fb2bbb8834f7d3004c1ab">vestibule</a> () const </td></tr>
-<tr class="memdesc:a16f0bc18816fb2bbb8834f7d3004c1ab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la liste des gens disponibles.  <a href="#a16f0bc18816fb2bbb8834f7d3004c1ab">Plus de détails...</a><br/></td></tr>
-<tr class="separator:a16f0bc18816fb2bbb8834f7d3004c1ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abd0a31ef37f77827937592479dac185b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartieClient.html#abd0a31ef37f77827937592479dac185b">vestibule</a> () const </td></tr>
+<tr class="memdesc:abd0a31ef37f77827937592479dac185b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne la liste des gens disponibles.  <a href="#abd0a31ef37f77827937592479dac185b">Plus de détails...</a><br/></td></tr>
+<tr class="separator:abd0a31ef37f77827937592479dac185b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classPartie"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classPartie')"><img src="closed.png" alt="-"/>&#160;Fonctions membres publiques hérités de <a class="el" href="classPartie.html">Partie</a></td></tr>
 <tr class="memitem:ae40831aad10fc4a391295e2ea1447b5a inherit pub_methods_classPartie"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartie.html#ae40831aad10fc4a391295e2ea1447b5a">Partie</a> ()</td></tr>
 <tr class="memdesc:ae40831aad10fc4a391295e2ea1447b5a inherit pub_methods_classPartie"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur par défaut.  <a href="#ae40831aad10fc4a391295e2ea1447b5a">Plus de détails...</a><br/></td></tr>
@@ -297,16 +297,16 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartie.html#a628475fb6e8c88b686f12f5694899226">reinitialiser</a> ()</td></tr>
 <tr class="memdesc:a628475fb6e8c88b686f12f5694899226 inherit pub_methods_classPartie"><td class="mdescLeft">&#160;</td><td class="mdescRight">Réinitialise la partie. <br/></td></tr>
 <tr class="separator:a628475fb6e8c88b686f12f5694899226 inherit pub_methods_classPartie"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae4afeb7336bb84427272cfb7018b5e3d inherit pub_methods_classPartie"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae4afeb7336bb84427272cfb7018b5e3d"></a>
-virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartie.html#ae4afeb7336bb84427272cfb7018b5e3d">~Partie</a> ()</td></tr>
-<tr class="memdesc:ae4afeb7336bb84427272cfb7018b5e3d inherit pub_methods_classPartie"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructeur. <br/></td></tr>
-<tr class="separator:ae4afeb7336bb84427272cfb7018b5e3d inherit pub_methods_classPartie"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1a3e19b0ad92b69cc974a9f46dde3066 inherit pub_methods_classPartie"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classEnchere.html">Enchere</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartie.html#a1a3e19b0ad92b69cc974a9f46dde3066">donner_contrat_final</a> () const </td></tr>
-<tr class="memdesc:a1a3e19b0ad92b69cc974a9f46dde3066 inherit pub_methods_classPartie"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le contrat final.  <a href="#a1a3e19b0ad92b69cc974a9f46dde3066">Plus de détails...</a><br/></td></tr>
-<tr class="separator:a1a3e19b0ad92b69cc974a9f46dde3066 inherit pub_methods_classPartie"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9516c470a0d368204633894c22ff9585 inherit pub_methods_classPartie"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classEnchere.html">Enchere</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartie.html#a9516c470a0d368204633894c22ff9585">enchere_de</a> (unsigned int joueur) const </td></tr>
-<tr class="memdesc:a9516c470a0d368204633894c22ff9585 inherit pub_methods_classPartie"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne l'enchère d'un joueur donné.  <a href="#a9516c470a0d368204633894c22ff9585">Plus de détails...</a><br/></td></tr>
-<tr class="separator:a9516c470a0d368204633894c22ff9585 inherit pub_methods_classPartie"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc55b9331d4864dc2c254d6de4769021 inherit pub_methods_classPartie"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afc55b9331d4864dc2c254d6de4769021"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartie.html#afc55b9331d4864dc2c254d6de4769021">~Partie</a> ()</td></tr>
+<tr class="memdesc:afc55b9331d4864dc2c254d6de4769021 inherit pub_methods_classPartie"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructeur. <br/></td></tr>
+<tr class="separator:afc55b9331d4864dc2c254d6de4769021 inherit pub_methods_classPartie"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1a3cc4053ec9315a1898231e7141bb8f inherit pub_methods_classPartie"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classEnchere.html">Enchere</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartie.html#a1a3cc4053ec9315a1898231e7141bb8f">donner_contrat_final</a> () const </td></tr>
+<tr class="memdesc:a1a3cc4053ec9315a1898231e7141bb8f inherit pub_methods_classPartie"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne le contrat final.  <a href="#a1a3cc4053ec9315a1898231e7141bb8f">Plus de détails...</a><br/></td></tr>
+<tr class="separator:a1a3cc4053ec9315a1898231e7141bb8f inherit pub_methods_classPartie"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac286b890913a2f4cb0b36ddf509bbaf0 inherit pub_methods_classPartie"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classEnchere.html">Enchere</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartie.html#ac286b890913a2f4cb0b36ddf509bbaf0">enchere_de</a> (unsigned int joueur) const </td></tr>
+<tr class="memdesc:ac286b890913a2f4cb0b36ddf509bbaf0 inherit pub_methods_classPartie"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retourne l'enchère d'un joueur donné.  <a href="#ac286b890913a2f4cb0b36ddf509bbaf0">Plus de détails...</a><br/></td></tr>
+<tr class="separator:ac286b890913a2f4cb0b36ddf509bbaf0 inherit pub_methods_classPartie"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad16a77a20a5699a3910766c6bda50033 inherit pub_methods_classPartie"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartie.html#ad16a77a20a5699a3910766c6bda50033">chelem</a> () const </td></tr>
 <tr class="memdesc:ad16a77a20a5699a3910766c6bda50033 inherit pub_methods_classPartie"><td class="mdescLeft">&#160;</td><td class="mdescRight">Teste si un chelem a été déclaré.  <a href="#ad16a77a20a5699a3910766c6bda50033">Plus de détails...</a><br/></td></tr>
 <tr class="separator:ad16a77a20a5699a3910766c6bda50033 inherit pub_methods_classPartie"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -325,18 +325,18 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <tr class="memitem:a59c52f0345c8acddeb03011295f8b1b1 inherit pub_methods_classPartie"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartie.html#a59c52f0345c8acddeb03011295f8b1b1">poignee</a> (unsigned int joueur) const </td></tr>
 <tr class="memdesc:a59c52f0345c8acddeb03011295f8b1b1 inherit pub_methods_classPartie"><td class="mdescLeft">&#160;</td><td class="mdescRight">Taille des poignées déclarées.  <a href="#a59c52f0345c8acddeb03011295f8b1b1">Plus de détails...</a><br/></td></tr>
 <tr class="separator:a59c52f0345c8acddeb03011295f8b1b1 inherit pub_methods_classPartie"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a45201ab9e442170839bf1380e11500c4 inherit pub_methods_classPartie"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPartie.html#aa94cf37ae5f9f1f87ac640b8dc0048c9">PhaseJeu</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartie.html#a45201ab9e442170839bf1380e11500c4">phase</a> () const </td></tr>
-<tr class="memdesc:a45201ab9e442170839bf1380e11500c4 inherit pub_methods_classPartie"><td class="mdescLeft">&#160;</td><td class="mdescRight">Où en est-on ?  <a href="#a45201ab9e442170839bf1380e11500c4">Plus de détails...</a><br/></td></tr>
-<tr class="separator:a45201ab9e442170839bf1380e11500c4 inherit pub_methods_classPartie"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fe5ff6010e2c2c33dd8d3f958b3cd73 inherit pub_methods_classPartie"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classPartie.html#aa94cf37ae5f9f1f87ac640b8dc0048c9">PhaseJeu</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartie.html#a7fe5ff6010e2c2c33dd8d3f958b3cd73">phase</a> () const </td></tr>
+<tr class="memdesc:a7fe5ff6010e2c2c33dd8d3f958b3cd73 inherit pub_methods_classPartie"><td class="mdescLeft">&#160;</td><td class="mdescRight">Où en est-on ?  <a href="#a7fe5ff6010e2c2c33dd8d3f958b3cd73">Plus de détails...</a><br/></td></tr>
+<tr class="separator:a7fe5ff6010e2c2c33dd8d3f958b3cd73 inherit pub_methods_classPartie"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afdc3a79eba2d966d967225df81873693 inherit pub_methods_classPartie"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartie.html#afdc3a79eba2d966d967225df81873693">set_phase</a> (<a class="el" href="classPartie.html#aa94cf37ae5f9f1f87ac640b8dc0048c9">PhaseJeu</a> p)</td></tr>
 <tr class="memdesc:afdc3a79eba2d966d967225df81873693 inherit pub_methods_classPartie"><td class="mdescLeft">&#160;</td><td class="mdescRight">On en est là !  <a href="#afdc3a79eba2d966d967225df81873693">Plus de détails...</a><br/></td></tr>
 <tr class="separator:afdc3a79eba2d966d967225df81873693 inherit pub_methods_classPartie"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4420e42e81aa5b5697dc69e55ca4ab8 inherit pub_methods_classPartie"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartie.html#ae4420e42e81aa5b5697dc69e55ca4ab8">assimiler</a> (const <a class="el" href="structProtocole_1_1Message.html">Protocole::Message</a> &amp;m)</td></tr>
 <tr class="memdesc:ae4420e42e81aa5b5697dc69e55ca4ab8 inherit pub_methods_classPartie"><td class="mdescLeft">&#160;</td><td class="mdescRight">Analyse un Message.  <a href="#ae4420e42e81aa5b5697dc69e55ca4ab8">Plus de détails...</a><br/></td></tr>
 <tr class="separator:ae4420e42e81aa5b5697dc69e55ca4ab8 inherit pub_methods_classPartie"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e85cd52fcb26ee887b5c5441ffc00b2 inherit pub_methods_classPartie"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classTapis.html">Tapis</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartie.html#a8e85cd52fcb26ee887b5c5441ffc00b2">tapis</a> () const </td></tr>
-<tr class="memdesc:a8e85cd52fcb26ee887b5c5441ffc00b2 inherit pub_methods_classPartie"><td class="mdescLeft">&#160;</td><td class="mdescRight">Montre le tapis de jeu.  <a href="#a8e85cd52fcb26ee887b5c5441ffc00b2">Plus de détails...</a><br/></td></tr>
-<tr class="separator:a8e85cd52fcb26ee887b5c5441ffc00b2 inherit pub_methods_classPartie"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acacf31d258dfeff531d6d4d541076cad inherit pub_methods_classPartie"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="classTapis.html">Tapis</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartie.html#acacf31d258dfeff531d6d4d541076cad">tapis</a> () const </td></tr>
+<tr class="memdesc:acacf31d258dfeff531d6d4d541076cad inherit pub_methods_classPartie"><td class="mdescLeft">&#160;</td><td class="mdescRight">Montre le tapis de jeu.  <a href="#acacf31d258dfeff531d6d4d541076cad">Plus de détails...</a><br/></td></tr>
+<tr class="separator:acacf31d258dfeff531d6d4d541076cad inherit pub_methods_classPartie"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa1b0c990a3b018c2b713334a7ff25c4 inherit pub_methods_classPartie"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aaa1b0c990a3b018c2b713334a7ff25c4"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartie.html#aaa1b0c990a3b018c2b713334a7ff25c4">throw_changement_maitre</a> (unsigned int, unsigned int)</td></tr>
 <tr class="memdesc:aaa1b0c990a3b018c2b713334a7ff25c4 inherit pub_methods_classPartie"><td class="mdescLeft">&#160;</td><td class="mdescRight">Ne pas regarder. <br/></td></tr>
@@ -362,18 +362,18 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Fonctions membres protégées</h2></td></tr>
-<tr class="memitem:a95ced09fbef0e46c609da3d2c2713dcb"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a95ced09fbef0e46c609da3d2c2713dcb"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartieClient.html#a95ced09fbef0e46c609da3d2c2713dcb">changement_maitre</a> (unsigned int ancien, unsigned int nouveau)</td></tr>
-<tr class="memdesc:a95ced09fbef0e46c609da3d2c2713dcb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Relaye <a class="el" href="classTapis.html#adbfe938091a437a1c36fd577d98f2c32" title="Appelé lorsque le maître change. ">Tapis::changement_maitre(unsigned int, unsigned int)</a> <br/></td></tr>
-<tr class="separator:a95ced09fbef0e46c609da3d2c2713dcb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa99989d1452401dc0b02091e89843947"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa99989d1452401dc0b02091e89843947"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartieClient.html#aa99989d1452401dc0b02091e89843947">nouveau_maitre</a> (unsigned int <a class="el" href="classPartieClient.html#a388736e730753f45cef11292a67a646d">maitre</a>)</td></tr>
-<tr class="memdesc:aa99989d1452401dc0b02091e89843947"><td class="mdescLeft">&#160;</td><td class="mdescRight">Relaye <a class="el" href="classTapis.html#a256481012141860c895fcb5eea274448" title="Appelé lorsque l&#39;on définit le maître. ">Tapis::nouveau_maitre(unsigned int)</a> <br/></td></tr>
-<tr class="separator:aa99989d1452401dc0b02091e89843947"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1248e6c901511588a0b3bc2ad5ec7ac2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1248e6c901511588a0b3bc2ad5ec7ac2"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartieClient.html#a1248e6c901511588a0b3bc2ad5ec7ac2">cartes_gagnees</a> (std::vector&lt; <a class="el" href="classCarte.html">Carte</a> &gt; const &amp;cartes, std::vector&lt; unsigned int &gt; const &amp;poseurs, std::vector&lt; unsigned int &gt; const &amp;gagnants)</td></tr>
-<tr class="memdesc:a1248e6c901511588a0b3bc2ad5ec7ac2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Relaye <a class="el" href="classTapis.html#aa55b6811d56f4c8547deacdfc1272c0d" title="Appelé lorsqu&#39;un pli est terminé. ">Tapis::cartes_gagnees</a>. <br/></td></tr>
-<tr class="separator:a1248e6c901511588a0b3bc2ad5ec7ac2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6d245f114ff059dca081b303e404c6c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae6d245f114ff059dca081b303e404c6c"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartieClient.html#ae6d245f114ff059dca081b303e404c6c">changement_maitre</a> (unsigned int ancien, unsigned int nouveau)</td></tr>
+<tr class="memdesc:ae6d245f114ff059dca081b303e404c6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Relaye <a class="el" href="classTapis.html#af44181cd0028c0c6bd391fef425be6b7" title="Appelé lorsque le maître change. ">Tapis::changement_maitre(unsigned int, unsigned int)</a> <br/></td></tr>
+<tr class="separator:ae6d245f114ff059dca081b303e404c6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4cd3bd4e3c7235e31c2ca05ddb435d91"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4cd3bd4e3c7235e31c2ca05ddb435d91"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartieClient.html#a4cd3bd4e3c7235e31c2ca05ddb435d91">nouveau_maitre</a> (unsigned int <a class="el" href="classPartieClient.html#a388736e730753f45cef11292a67a646d">maitre</a>)</td></tr>
+<tr class="memdesc:a4cd3bd4e3c7235e31c2ca05ddb435d91"><td class="mdescLeft">&#160;</td><td class="mdescRight">Relaye <a class="el" href="classTapis.html#ab244dd7888f623c24c4cc50fe1bdf5d1" title="Appelé lorsque l&#39;on définit le maître. ">Tapis::nouveau_maitre(unsigned int)</a> <br/></td></tr>
+<tr class="separator:a4cd3bd4e3c7235e31c2ca05ddb435d91"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5ac1dff76d08df42dec8424b731e885d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5ac1dff76d08df42dec8424b731e885d"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartieClient.html#a5ac1dff76d08df42dec8424b731e885d">cartes_gagnees</a> (std::vector&lt; <a class="el" href="classCarte.html">Carte</a> &gt; const &amp;cartes, std::vector&lt; unsigned int &gt; const &amp;poseurs, std::vector&lt; unsigned int &gt; const &amp;gagnants)</td></tr>
+<tr class="memdesc:a5ac1dff76d08df42dec8424b731e885d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Relaye <a class="el" href="classTapis.html#a798eb8c58a00412feeba0082b0c9e017" title="Appelé lorsqu&#39;un pli est terminé. ">Tapis::cartes_gagnees</a>. <br/></td></tr>
+<tr class="separator:a5ac1dff76d08df42dec8424b731e885d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Membres hérités additionnels</h2></td></tr>
@@ -752,12 +752,12 @@ Membres hérités additionnels</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ab0c2c09c69d10bc069e9e5e0a74d2e45"></a>
+<a class="anchor" id="ab15459b0fae2c5f1dba8834cbd37b893"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; <a class="el" href="classCarte.html">Carte</a> &gt; PartieClient::cartes_appelables </td>
+          <td class="memname">std::vector&lt;<a class="el" href="classCarte.html">Carte</a>&gt; PartieClient::cartes_appelables </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -770,12 +770,12 @@ Membres hérités additionnels</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ae9581f44a3149281b2d1d62db962ed99"></a>
+<a class="anchor" id="a1093632b60b1d8b21f3c8897aa94d995"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; std::vector&lt; <a class="el" href="classCarte.html">Carte</a> &gt; &gt; PartieClient::cartes_ecartables </td>
+          <td class="memname">std::vector&lt;std::vector&lt;<a class="el" href="classCarte.html">Carte</a>&gt; &gt; PartieClient::cartes_ecartables </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -1422,6 +1422,40 @@ PartieClient::doit_emettre(Message) </dd></dl>
 
 </div>
 </div>
+<a class="anchor" id="af7b89427a8161674cf3ac8ceefac376d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PartieClient::formuler_invitation </td>
+          <td>(</td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>adversaires</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Construit un Message. </p>
+<p>Construit un message de type "inviter". </p>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">adversaires</td><td>Les adversaires que je demande. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>Voir également</dt><dd>PartieClient::doit_emettre(Message) </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a1591988be7b721fae20d45a1c8b869a0"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1620,40 +1654,6 @@ PartieClient::doit_emettre(Message) </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="ab0438ef7649abf42531131cca05657b9"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void PartieClient::inviter </td>
-          <td>(</td>
-          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;&#160;</td>
-          <td class="paramname"><em>adversaires</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Construit un Message. </p>
-<p>Construit un message de type "inviter". </p>
-<dl class="params"><dt>Paramètres</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">adversaires</td><td>Les adversaires que je demande. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section see"><dt>Voir également</dt><dd>PartieClient::doit_emettre(Message) </dd></dl>
-
-</div>
-</div>
 <a class="anchor" id="a0c9805f898622621b8ca07ffcb3d0242"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1796,12 +1796,12 @@ PartieClient::doit_emettre(Message) </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a304bbc3b5068d36ed72bbccbb54c7fc2"></a>
+<a class="anchor" id="ad5c597c21be297a56b8fb0bb45de2acc"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">const <a class="el" href="classMain.html">Main</a> &amp; PartieClient::mon_jeu </td>
+          <td class="memname">const <a class="el" href="classMain.html">Main</a>&amp; PartieClient::mon_jeu </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -2166,12 +2166,12 @@ PartieClient::doit_emettre(Message) </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a16f0bc18816fb2bbb8834f7d3004c1ab"></a>
+<a class="anchor" id="abd0a31ef37f77827937592479dac185b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">std::vector&lt; std::string &gt; PartieClient::vestibule </td>
+          <td class="memname">std::vector&lt;std::string&gt; PartieClient::vestibule </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
@@ -2184,15 +2184,13 @@ PartieClient::doit_emettre(Message) </dd></dl>
 
 </div>
 </div>
-<hr/>La documentation de cette classe a été générée à partir des fichiers suivants :<ul>
+<hr/>La documentation de cette classe a été générée à partir du fichier suivant :<ul>
 <li>client/shared/<a class="el" href="partie__client_8hpp_source.html">partie_client.hpp</a></li>
-<li>client/ai/moc_partie_client.cpp</li>
-<li>client/shared/partie_client.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Vendredi 16 Janvier 2015 14:35:40 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Mardi 3 Février 2015 21:33:18 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

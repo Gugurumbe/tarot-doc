@@ -104,8 +104,7 @@ Graphe d'héritage de Serveur:</div>
  <div class="center">
   <img src="classServeur.png" usemap="#Serveur_map" alt=""/>
   <map id="Serveur_map" name="Serveur_map">
-<area href="classServeurDebogage.html" title="Classe de Serveur de débogage. " alt="ServeurDebogage" shape="rect" coords="0,112,116,136"/>
-<area href="classServeurJeu.html" title="Classe de Serveur de jeu. " alt="ServeurJeu" shape="rect" coords="126,112,242,136"/>
+<area href="classServeurJeu.html" title="Classe de Serveur de jeu. " alt="ServeurJeu" shape="rect" coords="0,112,79,136"/>
 </map>
  </div></div>
 <table class="memberdecls">
@@ -132,8 +131,8 @@ Connecteurs publics</h2></td></tr>
 <tr class="memitem:ae2878fd84931020ea01fab6be13be1a0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServeur.html#ae2878fd84931020ea01fab6be13be1a0">envoyer</a> (unsigned int c, <a class="el" href="structProtocole_1_1Message.html">Protocole::Message</a> m)</td></tr>
 <tr class="memdesc:ae2878fd84931020ea01fab6be13be1a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envoie au client un <a class="el" href="structProtocole_1_1Message.html" title="Structure de Message universel. ">Protocole::Message</a>.  <a href="#ae2878fd84931020ea01fab6be13be1a0">Plus de détails...</a><br/></td></tr>
 <tr class="separator:ae2878fd84931020ea01fab6be13be1a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf3dcfadd36d5067ecd5b6fa05625377"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="abf3dcfadd36d5067ecd5b6fa05625377"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>envoyer_suivant</b> (qint64 t)</td></tr>
+<tr class="memitem:abf3dcfadd36d5067ecd5b6fa05625377"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classServeur.html#abf3dcfadd36d5067ecd5b6fa05625377">envoyer_suivant</a> (qint64 t)</td></tr>
+<tr class="memdesc:abf3dcfadd36d5067ecd5b6fa05625377"><td class="mdescLeft">&#160;</td><td class="mdescRight">Envoie le message suivant sur la liste de l'objet appelant.  <a href="#abf3dcfadd36d5067ecd5b6fa05625377">Plus de détails...</a><br/></td></tr>
 <tr class="separator:abf3dcfadd36d5067ecd5b6fa05625377"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="signals"></a>
@@ -166,8 +165,8 @@ Fonctions membres publiques</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Définit une classe communiquant sur le réseau. </p>
 <p>La classe <a class="el" href="classServeur.html" title="Définit une classe communiquant sur le réseau. ">Serveur</a> utilise les outils Qt pour établir des transmissions en mode connecté (Tcp), grâce auxquelles il peut envoyer et recevoir des Protocole::Messages tels que définis dans <a class="el" href="protocole_8hpp.html" title="Définit le protocole de communication. ">shared/protocole.hpp</a>.</p>
-<p>Telle quelle, cette classe ne sait pas quoi faire des Protocole::Messages reçus et des déconnexions des clients, et ne sait pas quand envoyer des Protocole::Messages aux clients. Il y a pour l'instant 2 comportements : <a class="el" href="classServeurDebogage.html" title="Classe de Serveur de débogage. ">ServeurDebogage</a>, qui répète inlassablement tous les Protocole::Messages reçus, en envoyant ERREUR_PROTOCOLE en cas de besoin, et <a class="el" href="classServeurJeu.html" title="Classe de Serveur de jeu. ">ServeurJeu</a>, en construction, qui va réagir selon les règles du tarot.</p>
-<p>L'interaction entre les classes <a class="el" href="classServeurJeu.html" title="Classe de Serveur de jeu. ">ServeurJeu</a> / <a class="el" href="classServeurDebogage.html" title="Classe de Serveur de débogage. ">ServeurDebogage</a>, <a class="el" href="classTable.html" title="Classe de Table. ">Table</a> et les joueurs ne se fait pas avec des QTcpSocket, mais avec un numéro d'identification unique des clients, utilisé pour envoyer un message, pour forcer une déconnexion, pour savoir d'où vient un message et pour savoir qui s'est déconnecté.</p>
+<p>Telle quelle, cette classe ne sait pas quoi faire des Protocole::Messages reçus et des déconnexions des clients, et ne sait pas quand envoyer des Protocole::Messages aux clients. Il y a pour l'instant 2 comportements : ServeurDebogage, qui répète inlassablement tous les Protocole::Messages reçus, en envoyant ERREUR_PROTOCOLE en cas de besoin, et <a class="el" href="classServeurJeu.html" title="Classe de Serveur de jeu. ">ServeurJeu</a>, en construction, qui va réagir selon les règles du tarot.</p>
+<p>L'interaction entre les classes <a class="el" href="classServeurJeu.html" title="Classe de Serveur de jeu. ">ServeurJeu</a> / ServeurDebogage, <a class="el" href="classTable.html" title="Classe de Table. ">Table</a> et les joueurs ne se fait pas avec des QTcpSocket, mais avec un numéro d'identification unique des clients, utilisé pour envoyer un message, pour forcer une déconnexion, pour savoir d'où vient un message et pour savoir qui s'est déconnecté.</p>
 <p>Les identifiants des clients déconnectés sont réutilisés.</p>
 <p>Il existe une symétrie de construction entre le <a class="el" href="classClient.html" title="Définit une classe communiquant avec un serveur sur le réseau. ">Client</a> et le <a class="el" href="classServeur.html" title="Définit une classe communiquant sur le réseau. ">Serveur</a> : une classe générale qui relaye des <a class="el" href="structProtocole_1_1Message.html" title="Structure de Message universel. ">Protocole::Message</a> à une classe spécialisée pour le débogage ou à une classe spécialisée pour le jeu, qui utilise une spécialisation de <a class="el" href="classPartie.html" title="Environnement de partie de Tarot. ">Partie</a>. </p>
 </div><h2 class="groupheader">Documentation des constructeurs et destructeur</h2>
@@ -466,6 +465,40 @@ Fonctions membres publiques</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="abf3dcfadd36d5067ecd5b6fa05625377"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Serveur::envoyer_suivant </td>
+          <td>(</td>
+          <td class="paramtype">qint64&#160;</td>
+          <td class="paramname"><em>t</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Envoie le message suivant sur la liste de l'objet appelant. </p>
+<p>Le déclenchement de ce slot est automatique.</p>
+<dl class="section warning"><dt>Avertissement</dt><dd>En cas de déclenchement précoce de ce slot, le client pourrait recevoir un paquet corrompu.</dd></dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">t</td><td>: le nombre d'octets écrits. Attention : il en reste peut-être encore à écrire. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="a3e1643b4ef30dfca13971f7238286120"></a>
 <div class="memitem">
 <div class="memproto">
@@ -621,15 +654,13 @@ Fonctions membres publiques</h2></td></tr>
 
 </div>
 </div>
-<hr/>La documentation de cette classe a été générée à partir des fichiers suivants :<ul>
+<hr/>La documentation de cette classe a été générée à partir du fichier suivant :<ul>
 <li>server/<a class="el" href="serveur_8hpp_source.html">serveur.hpp</a></li>
-<li>server/moc_serveur.cpp</li>
-<li>server/serveur.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Vendredi 16 Janvier 2015 14:35:41 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Mardi 3 Février 2015 21:33:18 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

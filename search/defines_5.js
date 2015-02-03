@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['journal_5fdefini',['JOURNAL_DEFINI',['../journal_8hpp.html#a74f6160bd565ab6983234db928630d7e',1,'journal.hpp']]]
+  ['main_5fdefinie',['MAIN_DEFINIE',['../main_8hpp.html#a7c7dd73493e631d06b084103ef2ee52f',1,'main.hpp']]],
+  ['melanger',['MELANGER',['../server_2config_8hpp.html#a49b5806a01cb30a82fc5cc1f3437830d',1,'config.hpp']]]
 ];

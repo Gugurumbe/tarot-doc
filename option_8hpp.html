@@ -117,17 +117,63 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Fonctions</h2></td></tr>
-<tr class="memitem:aacd77844da4bdac40de1912e93258883"><td class="memTemplParams" colspan="2"><a class="anchor" id="aacd77844da4bdac40de1912e93258883"></a>
-template&lt;typename T &gt; </td></tr>
-<tr class="memitem:aacd77844da4bdac40de1912e93258883"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator&lt;&lt;</b> (std::ostream &amp;out, const <a class="el" href="classOption.html">Option</a>&lt; T &gt; &amp;t)</td></tr>
+<tr class="memitem:aacd77844da4bdac40de1912e93258883"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:aacd77844da4bdac40de1912e93258883"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="option_8hpp.html#aacd77844da4bdac40de1912e93258883">operator&lt;&lt;</a> (std::ostream &amp;out, const <a class="el" href="classOption.html">Option</a>&lt; T &gt; &amp;t)</td></tr>
+<tr class="memdesc:aacd77844da4bdac40de1912e93258883"><td class="mdescLeft">&#160;</td><td class="mdescRight">Écrit le contenu d'une option.  <a href="#aacd77844da4bdac40de1912e93258883">Plus de détails...</a><br/></td></tr>
 <tr class="separator:aacd77844da4bdac40de1912e93258883"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
 <div class="textblock"><p>Définit un type "option", qui permet de contenir un objet d'un certain type (COPIABLE) ou rien. </p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Documentation des fonctions</h2>
+<a class="anchor" id="aacd77844da4bdac40de1912e93258883"></a>
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">std::ostream&amp; operator&lt;&lt; </td>
+          <td>(</td>
+          <td class="paramtype">std::ostream &amp;&#160;</td>
+          <td class="paramname"><em>out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="classOption.html">Option</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>t</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Écrit le contenu d'une option. </p>
+<p>Le résultat a la forme <code>&lt;none&gt;</code> ou <code>&lt;some texte&gt;</code>, où texte est la représentation sous forme de chaîne de T.</p>
+<dl class="tparams"><dt>Paramètres du template</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>Un type quelconque, pourvu que <code>std::ostream &amp; operator&lt;&lt;(std::ostream &amp;, const T &amp;)</code> soit définie. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="params"><dt>Paramètres</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">out</td><td>Le flux où il faut écrire. </td></tr>
+    <tr><td class="paramdir"></td><td class="paramname">t</td><td>L'option qu'il faut décrire. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Renvoie</dt><dd>Un flux d'écriture valide. </dd></dl>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Vendredi 16 Janvier 2015 14:35:40 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Mardi 3 Février 2015 21:33:18 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

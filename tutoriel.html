@@ -119,144 +119,339 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <p>Vous devez donc émettre : identifier, (inviter), prise, appeler, ecarter, requete, requete, ... dans le cas où vous prenez (prise autre que garde contre ou garde sans) en tant que client. Hors jeu, vous devez émettre rejoindre ou accueillir, et dans ce cas gérer votre table.</p>
 <h1><a class="anchor" id="un"></a>
 En utilisant ce qu'on a déjà</h1>
-<p>L'objectif est d'utiliser la classe <a class="el" href="classClientJeu.html" title="Spécialise la classe Client, en permettant de comprendre l&#39;environnement de jeu du tarot...">ClientJeu</a>, qui fournit de l'information sous forme de signaux Qt, et qui permet d'enregistrer des ordres facilement. Vous avez droit à tous les signaux de <a class="el" href="classClientJeu.html" title="Spécialise la classe Client, en permettant de comprendre l&#39;environnement de jeu du tarot...">ClientJeu</a>, plus <a class="el" href="classClientJeu.html#aa58c80a80128188baff0400b10e81501" title="Retourne la partie en cours. ">ClientJeu::partie</a> qui vous fournit une <a class="el" href="classPartieClient.html" title="Précision d&#39;une Partie, côté client. ">PartieClient</a>, d'où vous pourrez savoir le <a class="el" href="classPartie.html#a34e5fc20f35fa22c89a3151bc8a56d55" title="À qui de jouer ? ">Partie::tour()</a>, <a class="el" href="classPartie.html#abb22c4e65f62fdcab2600376ed9ea5a6" title="Accès au joueur qui prise. ">Partie::attaquant()</a>, <a class="el" href="classPartieClient.html#a304bbc3b5068d36ed72bbccbb54c7fc2" title="Regarder mon jeu. ">PartieClient::mon_jeu()</a>, <a class="el" href="classPartie.html#a8e85cd52fcb26ee887b5c5441ffc00b2" title="Montre le tapis de jeu. ">Partie::tapis()</a>, ...</p>
-<p>En ce qui concerne les ordres à envoyer, vous pouvez utiliser <a class="el" href="classClientJeu.html#a98689343a93362c3b583a27e1ef6543f" title="Envoie un message pour formuler une Prise. ">ClientJeu::formuler_prise</a>, <a class="el" href="classClientJeu.html#abf4c77f0ddfc3210a7f9ac074d862122" title="Envoie un message pour formuler un appel. ">ClientJeu::formuler_appel</a>, <a class="el" href="classClientJeu.html#af4bb9e29c5a64d7383680f6b36edccbb" title="Envoie un message pour formuler un écart. ">ClientJeu::formuler_ecart</a>, <a class="el" href="classClientJeu.html#ad47142bad1f216ac3b93d0b75cf0b559" title="Traité lorsqu&#39;on demande à jouer une Carte. ">ClientJeu::formuler_requete</a>.</p>
+<p>L'objectif est d'utiliser la classe <a class="el" href="classClientJeu.html" title="Spécialise la classe Client, en permettant de comprendre l&#39;environnement de jeu du tarot...">ClientJeu</a>, qui fournit de l'information sous forme de signaux Qt, et qui permet d'enregistrer des ordres facilement. Vous avez droit à tous les signaux de <a class="el" href="classClientJeu.html" title="Spécialise la classe Client, en permettant de comprendre l&#39;environnement de jeu du tarot...">ClientJeu</a>, plus <a class="el" href="classClientJeu.html#a8cb9f39ebce736a517e59a16800ec79f" title="Retourne la partie en cours. ">ClientJeu::partie</a> qui vous fournit une <a class="el" href="classPartieClient.html" title="Précision d&#39;une Partie, côté client. ">PartieClient</a>, d'où vous pourrez savoir le <a class="el" href="classPartie.html#a34e5fc20f35fa22c89a3151bc8a56d55" title="À qui de jouer ? ">Partie::tour()</a>, <a class="el" href="classPartie.html#abb22c4e65f62fdcab2600376ed9ea5a6" title="Accès au joueur qui prise. ">Partie::attaquant()</a>, <a class="el" href="classPartieClient.html#ad5c597c21be297a56b8fb0bb45de2acc" title="Regarder mon jeu. ">PartieClient::mon_jeu()</a>, <a class="el" href="classPartie.html#acacf31d258dfeff531d6d4d541076cad" title="Montre le tapis de jeu. ">Partie::tapis()</a>, ...</p>
+<p>En ce qui concerne les ordres à envoyer, vous pouvez utiliser <a class="el" href="classClientJeu.html#a98689343a93362c3b583a27e1ef6543f" title="Envoie un message pour formuler une Prise. ">ClientJeu::formuler_prise</a>, <a class="el" href="classClientJeu.html#a2dd409d3eee42269ebd0d62b9b1bcdfa" title="Envoie un message pour formuler un appel. ">ClientJeu::formuler_appel</a>, <a class="el" href="classClientJeu.html#af4bb9e29c5a64d7383680f6b36edccbb" title="Envoie un message pour formuler un écart. ">ClientJeu::formuler_ecart</a>, <a class="el" href="classClientJeu.html#ad47142bad1f216ac3b93d0b75cf0b559" title="Traité lorsqu&#39;on demande à jouer une Carte. ">ClientJeu::formuler_requete</a>.</p>
 <p>Étape par étape :</p>
-<p>Commencez par récupérer les sources, puis déplacez-vous dans client/. Faites un dossier, par exemple ai, puis déplacez-vous dedans et faites un nouveau projet Qt. Le fichier de projet doit ressembler au fichier ci-dessous : on ajoute la dépendance network, et on inclue et compile tous les fichiers de ../shared et ../../shared.</p>
-<div class="fragment"><div class="line">TEMPLATE = app</div>
-<div class="line">TARGET = ia</div>
+<p>Commencez par récupérer les sources, puis déplacez-vous dans client/. Faites un dossier, par exemple bete, puis déplacez-vous dedans et faites un nouveau projet Qt. Le fichier de projet doit ressembler au fichier ci-dessous : on ajoute la dépendance network, et on inclue et compile tous les fichiers de ../shared et ../../shared.</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#########################################################################</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># Project tarot virtuel is a card game.                                 # </span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># Copyright (C) 2015  Vivien Kraus                                      #</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#                                                                       #</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># This program is free software: you can redistribute it and/or modify  #</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># it under the terms of the GNU General Public License as published by  #</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># the Free Software Foundation, either version 3 of the License, or     #</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># (at your option) any later version.                                   #</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#                                                                       #</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># This program is distributed in the hope that it will be useful,       #</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># but WITHOUT ANY WARRANTY; without even the implied warranty of        #</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the         #</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># GNU General Public License for more details.                          #</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#                                                                       #</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># You should have received a copy of the GNU General Public License     #</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;. #</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#########################################################################</span></div>
+<div class="line"><span class="preprocessor"></span></div>
+<div class="line">TEMPLATE = app</div>
+<div class="line">TARGET = client</div>
+<div class="line">CONFIG += console</div>
 <div class="line">DEPENDPATH += .</div>
 <div class="line">INCLUDEPATH += . ../shared ../../shared</div>
 <div class="line"></div>
+<div class="line">QT -= gui widgets</div>
+<div class="line">QT += core</div>
+<div class="line"></div>
 <div class="line"><span class="preprocessor"># Input</span></div>
-<div class="line"><span class="preprocessor"></span>HEADERS += config.hpp</div>
-<div class="line">HEADERS += ia.hpp</div>
-<div class="line">HEADERS += ../shared/client.hpp</div>
-<div class="line">HEADERS += ../shared/client_jeu.hpp</div>
-<div class="line">HEADERS += ../shared/option.hpp</div>
-<div class="line">HEADERS += ../shared/partie_client.hpp</div>
-<div class="line">HEADERS += ../shared/transaction.hpp</div>
-<div class="line">HEADERS += ../../shared/carte.hpp</div>
-<div class="line">HEADERS += ../../shared/deboguer.hpp</div>
-<div class="line">HEADERS += ../../shared/debogueur.hpp</div>
-<div class="line">HEADERS += ../../shared/enchere.hpp</div>
-<div class="line">HEADERS += ../../shared/main.hpp</div>
-<div class="line">HEADERS += ../../shared/ne_pas_deboguer.hpp</div>
-<div class="line">HEADERS += ../../shared/partie.hpp</div>
-<div class="line">HEADERS += ../../shared/protocole.hpp</div>
-<div class="line">HEADERS += ../../shared/tapis.hpp</div>
+<div class="line"><span class="preprocessor"></span>HEADERS +=                                          \#</div>
+<div class="line">ia.hpp                                              \#</div>
+<div class="line">../shared/client.hpp                                \#</div>
+<div class="line">../shared/client_jeu.hpp                            \#</div>
+<div class="line">../shared/option.hpp                                \#</div>
+<div class="line">../shared/partie_client.hpp                         \#</div>
+<div class="line">../shared/transaction.hpp                           \#</div>
+<div class="line">../../shared/carte.hpp                              \#</div>
+<div class="line">../../shared/deboguer.hpp                           \#</div>
+<div class="line">../../shared/debogueur.hpp                          \#</div>
+<div class="line">../../shared/enchere.hpp                            \#</div>
+<div class="line">../../shared/main.hpp                               \#</div>
+<div class="line">../../shared/ne_pas_deboguer.hpp                    \#</div>
+<div class="line">../../shared/partie.hpp                             \#</div>
+<div class="line">../../shared/protocole.hpp                          \#</div>
+<div class="line">../../shared/tapis.hpp                               #</div>
 <div class="line"></div>
 <div class="line"><span class="preprocessor"># Sources</span></div>
-<div class="line"><span class="preprocessor"></span>SOURCES += ia.cpp</div>
-<div class="line">SOURCES += main_program.cpp</div>
-<div class="line">SOURCES += ../shared/client.cpp</div>
-<div class="line">SOURCES += ../shared/client_jeu.cpp</div>
-<div class="line">SOURCES += ../shared/option.cpp</div>
-<div class="line">SOURCES += ../shared/partie_client.cpp</div>
-<div class="line">SOURCES += ../shared/transaction.cpp</div>
-<div class="line">SOURCES += ../../shared/carte.cpp</div>
-<div class="line">SOURCES += ../../shared/debogueur.cpp</div>
-<div class="line">SOURCES += ../../shared/enchere.cpp</div>
-<div class="line">SOURCES += ../../shared/main.cpp</div>
-<div class="line">SOURCES += ../../shared/partie.cpp</div>
-<div class="line">SOURCES += ../../shared/protocole.cpp</div>
-<div class="line">SOURCES += ../../shared/tapis.cpp      </div>
+<div class="line"><span class="preprocessor"></span>SOURCES +=                                          \#</div>
+<div class="line">main_program.cpp                                    \#</div>
+<div class="line">ia.cpp                                              \#</div>
+<div class="line">../shared/client.cpp                                \#</div>
+<div class="line">../shared/client_jeu.cpp                            \#</div>
+<div class="line">../shared/option.cpp                                \#</div>
+<div class="line">../shared/partie_client.cpp                         \#</div>
+<div class="line">../shared/transaction.cpp                           \#</div>
+<div class="line">../../shared/carte.cpp                              \#</div>
+<div class="line">../../shared/debogueur.cpp                          \#</div>
+<div class="line">../../shared/enchere.cpp                            \#</div>
+<div class="line">../../shared/main.cpp                               \#</div>
+<div class="line">../../shared/partie.cpp                             \#</div>
+<div class="line">../../shared/protocole.cpp                          \#</div>
+<div class="line">../../shared/tapis.cpp                           </div>
 <div class="line"></div>
-<div class="line">QT += network </div>
+<div class="line">QT += network</div>
+</div><!-- fragment --><p>Maintenant, on peut travailler. Faites un fichier principal (ici, main_program.cpp), à cet endroit :</p>
+<div class="fragment"><div class="line"><span class="comment">/*</span></div>
+<div class="line"><span class="comment">  Project tarot virtuel is a card game.</span></div>
+<div class="line"><span class="comment">  Copyright (C) 2015  Vivien Kraus</span></div>
+<div class="line"><span class="comment">  </span></div>
+<div class="line"><span class="comment">  This program is free software: you can redistribute it and/or modify</span></div>
+<div class="line"><span class="comment">  it under the terms of the GNU General Public License as published by</span></div>
+<div class="line"><span class="comment">  the Free Software Foundation, either version 3 of the License, or</span></div>
+<div class="line"><span class="comment">  (at your option) any later version.</span></div>
+<div class="line"><span class="comment">  </span></div>
+<div class="line"><span class="comment">  This program is distributed in the hope that it will be useful,</span></div>
+<div class="line"><span class="comment">  but WITHOUT ANY WARRANTY; without even the implied warranty of</span></div>
+<div class="line"><span class="comment">  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span></div>
+<div class="line"><span class="comment">  GNU General Public License for more details.</span></div>
+<div class="line"><span class="comment">  </span></div>
+<div class="line"><span class="comment">  You should have received a copy of the GNU General Public License</span></div>
+<div class="line"><span class="comment">  along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span></div>
+<div class="line"><span class="comment">*/</span></div>
 <div class="line"></div>
-<div class="line">QT -= gui</div>
-</div><!-- fragment --><p>Maintenant, on peut travailler. Faites un fichier principal (ici, main_program.cpp), ici :</p>
-<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;QCoreApplication&gt;</span></div>
 <div class="line"></div>
-<div class="line"><span class="comment">//Sert uniquement à définir AUTO_ADDR et AUTO_PORT</span></div>
-<div class="line"><span class="preprocessor">#include &quot;./config.hpp&quot;</span></div>
-<div class="line"></div>
-<div class="line"><span class="comment">//Classe D&#39;IA</span></div>
+<div class="line"><span class="preprocessor">#include &lt;QCoreApplication&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;QStringList&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;QHostAddress&gt;</span></div>
 <div class="line"><span class="preprocessor">#include &quot;<a class="code" href="ia_8hpp.html">ia.hpp</a>&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="client__jeu_8hpp.html">client_jeu.hpp</a>&quot;</span></div>
 <div class="line"></div>
-<div class="line"><span class="comment">//Fonction principale</span></div>
+<div class="line"><span class="comment">// Il y a 8 arguments :</span></div>
+<div class="line"><span class="comment">//(-&gt; le nom de l&#39;exécutable)</span></div>
+<div class="line"><span class="comment">// -&gt; l&#39;adresse de l&#39;hôte</span></div>
+<div class="line"><span class="comment">// -&gt; le port de l&#39;hôte</span></div>
+<div class="line"><span class="comment">// -&gt; le nom à utiliser</span></div>
+<div class="line"><span class="comment">// -&gt; les 4 autres noms avec qui jouer</span></div>
+<div class="line"></div>
+<div class="line"><span class="comment">//En cas d&#39;échec d&#39;identification, retourne -1.</span></div>
+<div class="line"><span class="comment">//Ne demande jamais d&#39;inviter qui que ce soit, ne prend pas.</span></div>
 <div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> * argv[])</div>
-<div class="line">{</div>
+<div class="line">{  </div>
 <div class="line">  QCoreApplication app(argc, argv);</div>
-<div class="line">  <span class="comment">//Création d&#39;une IA</span></div>
-<div class="line">  <a class="code" href="classIA.html">IA</a> * ia = <span class="keyword">new</span> <a class="code" href="classIA.html">IA</a>;</div>
-<div class="line">  <span class="comment">//Dit au CLientJeu sous-jacent de se connecter</span></div>
-<div class="line">  ia-&gt;<a class="code" href="classIA.html#abaa7525c357e47e53dd3a1d416dc6cec">connecter</a>(<a class="code" href="client_2ai_2config_8hpp.html#aeb53e4cb507414654f1baef355d7b13b">AUTO_ADDR</a>, <a class="code" href="client_2ai_2config_8hpp.html#ad1b13dd82aa38bb19b6be39178b99f31">AUTO_PORT</a>);</div>
-<div class="line">  <span class="comment">//On tue l&#39;IA dès qu&#39;elle se déconnecte.</span></div>
-<div class="line">  QObject::connect(ia, SIGNAL(destroyed()),</div>
-<div class="line">                   &amp;app, SLOT(quit()));</div>
-<div class="line">  <span class="keywordflow">return</span> app.exec();</div>
+<div class="line">  QStringList arguments = app.arguments();</div>
+<div class="line">  <span class="keywordtype">int</span> resultat;</div>
+<div class="line">  <span class="keywordflow">if</span>(arguments.size() != 8)</div>
+<div class="line">    {</div>
+<div class="line">      <span class="keywordflow">if</span>(arguments.size() &gt;= 1)</div>
+<div class="line">        {</div>
+<div class="line">          std::cout&lt;&lt;<span class="stringliteral">&quot;Usage : &quot;</span></div>
+<div class="line">                   &lt;&lt;std::string(arguments[0].toUtf8().data())</div>
+<div class="line">                   &lt;&lt;<span class="stringliteral">&quot; &lt;adresse_hote&gt; &lt;port_hote&gt; &lt;nom&gt; &quot;</span></div>
+<div class="line">                   &lt;&lt;<span class="stringliteral">&quot;&lt;adversaire1&gt; &lt;adversaire2&gt; &quot;</span></div>
+<div class="line">                   &lt;&lt;<span class="stringliteral">&quot;&lt;adversaire3&gt; &lt;adversaire4&gt;.&quot;</span></div>
+<div class="line">                   &lt;&lt;std::endl;</div>
+<div class="line">          std::cout&lt;&lt;<span class="stringliteral">&quot;En general, le port est 45678.&quot;</span></div>
+<div class="line">                   &lt;&lt;std::endl;</div>
+<div class="line">        }</div>
+<div class="line">      <span class="keywordflow">else</span></div>
+<div class="line">        {</div>
+<div class="line">          std::cout&lt;&lt;</div>
+<div class="line">            <span class="stringliteral">&quot;Usage : &lt;programme&gt; &lt;adresse_hote&gt; &lt;port_hote&gt; &lt;nom&gt; &quot;</span></div>
+<div class="line">                   &lt;&lt;<span class="stringliteral">&quot;&lt;adversaire1&gt; &lt;adversaire2&gt; &quot;</span></div>
+<div class="line">                   &lt;&lt;<span class="stringliteral">&quot;&lt;adversaire3&gt; &lt;adversaire4&gt;.&quot;</span></div>
+<div class="line">                   &lt;&lt;std::endl;</div>
+<div class="line">          std::cout&lt;&lt;<span class="stringliteral">&quot;En general, le port est 45678.&quot;</span>&lt;&lt;std::endl;</div>
+<div class="line">        }</div>
+<div class="line">      resultat = 0;</div>
+<div class="line">    }</div>
+<div class="line">  <span class="keywordflow">else</span></div>
+<div class="line">    {</div>
+<div class="line">      QHostAddress hote(arguments[1]);</div>
+<div class="line">      quint16 port(arguments[2].toInt());</div>
+<div class="line">      QString nom(arguments[3]);</div>
+<div class="line">      QVector&lt;QString&gt; equipe = </div>
+<div class="line">        QVector&lt;QString&gt;()&lt;&lt;arguments[3]&lt;&lt;arguments[4]</div>
+<div class="line">                          &lt;&lt;arguments[5]&lt;&lt;arguments[6]</div>
+<div class="line">                          &lt;&lt;arguments[7];</div>
+<div class="line">      <a class="code" href="classIa.html">Ia</a> ia(nom, equipe) ;</div>
+<div class="line">      <a class="code" href="classClientJeu.html">ClientJeu</a> jeu;</div>
+<div class="line"><span class="preprocessor">#define c(signal) QObject::connect(&amp;jeu, SIGNAL(signal),        \</span></div>
+<div class="line"><span class="preprocessor">                                   &amp;ia, SLOT(signal))</span></div>
+<div class="line"><span class="preprocessor"></span>      c(deconnecte()); <span class="comment">//Quitte le programme.</span></div>
+<div class="line">      c(doit_identifier()); <span class="comment">//Donne son nom.</span></div>
+<div class="line">      c(identification_refusee(std::string)); <span class="comment">//Quitte</span></div>
+<div class="line">      c(adversaires(std::vector&lt;std::string&gt;)); <span class="comment">//Vérifie si ce sont bien</span></div>
+<div class="line">      <span class="comment">//ceux qu&#39;on veut, se reconnecte dans le cas contraire</span></div>
+<div class="line">      c(doit_priser(<a class="code" href="classOption.html">Option&lt;Enchere&gt;</a>)); <span class="comment">//Passe.</span></div>
+<div class="line">      c(jeu_est(std::vector&lt;Carte&gt;)); <span class="comment">//Tient mon jeu à jour.</span></div>
+<div class="line">      c(doit_jouer()); <span class="comment">//Joue la carte </span></div>
+<div class="line">      c(requete_refusee(<a class="code" href="classCarte.html">Carte</a>)); <span class="comment">//Passe à la suivante.</span></div>
+<div class="line"><span class="preprocessor">#define r(signal) QObject::connect(&amp;ia, SIGNAL(signal), \</span></div>
+<div class="line"><span class="preprocessor">                                   &amp;jeu, SLOT(signal));</span></div>
+<div class="line"><span class="preprocessor"></span>      r(formuler_identification(std::string));</div>
+<div class="line">      r(formuler_prise(<a class="code" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3f">Enchere::Prise</a>)); <span class="comment">//Nécessaire</span></div>
+<div class="line">      r(formuler_requete(<a class="code" href="classCarte.html">Carte</a>));</div>
+<div class="line">      r(deconnecter()); <span class="comment">//Nécessaire pour refuser une invitation.</span></div>
+<div class="line">      r(reconnecter());</div>
+<div class="line">      QObject::connect(&amp;ia, SIGNAL(doit_quitter()),</div>
+<div class="line">                       &amp;app, SLOT(quit()));</div>
+<div class="line">      jeu.<a class="code" href="classClient.html#aca6f6439d8500cea98b540450450e8cd">connecter</a>(hote, port);</div>
+<div class="line">      resultat = app.exec();</div>
+<div class="line">    }</div>
+<div class="line">  <span class="keywordflow">return</span> resultat;</div>
 <div class="line">}</div>
-</div><!-- fragment --><p>On voit que l'on a fait une classe externe, <a class="el" href="classIA.html" title="Classe d&#39;intelligence artificielle. ">IA</a>. Il suffit après de connecter les signaux d'information de <a class="el" href="classClientJeu.html" title="Spécialise la classe Client, en permettant de comprendre l&#39;environnement de jeu du tarot...">ClientJeu</a> aux slots de notre nouvelle classe. Ensuite, il faut appeler les slots ClientJeu::formuler_* pour interagir avec le serveur. Dans l'exemple, j'ai fait une <a class="el" href="classIA.html" title="Classe d&#39;intelligence artificielle. ">IA</a> dite "basique" :</p>
-<div class="fragment"><div class="line"></div>
+</div><!-- fragment --><p>On voit que l'on a fait une classe externe, <a class="el" href="classIa.html" title="La classe IA de base. ">Ia</a>. Il suffit après de connecter les signaux d'information de <a class="el" href="classClientJeu.html" title="Spécialise la classe Client, en permettant de comprendre l&#39;environnement de jeu du tarot...">ClientJeu</a> aux slots de notre nouvelle classe. Ensuite, il faut appeler les slots ClientJeu::formuler_* pour interagir avec le serveur. Dans l'exemple, j'ai fait une <a class="el" href="classIa.html" title="La classe IA de base. ">Ia</a> dite "basique", plutôt étroite d'esprit : elle ne prend jamais, n'invite jamais personne, et n'accepte les invitations que de certaines personnes. Lorsque la partie est terminée, le programme termine.</p>
+<div class="fragment"><div class="line"><span class="comment">/*</span></div>
+<div class="line"><span class="comment">  Project tarot virtuel is a card game.</span></div>
+<div class="line"><span class="comment">  Copyright (C) 2015  Vivien Kraus</span></div>
+<div class="line"><span class="comment">  </span></div>
+<div class="line"><span class="comment">  This program is free software: you can redistribute it and/or modify</span></div>
+<div class="line"><span class="comment">  it under the terms of the GNU General Public License as published by</span></div>
+<div class="line"><span class="comment">  the Free Software Foundation, either version 3 of the License, or</span></div>
+<div class="line"><span class="comment">  (at your option) any later version.</span></div>
+<div class="line"><span class="comment">  </span></div>
+<div class="line"><span class="comment">  This program is distributed in the hope that it will be useful,</span></div>
+<div class="line"><span class="comment">  but WITHOUT ANY WARRANTY; without even the implied warranty of</span></div>
+<div class="line"><span class="comment">  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span></div>
+<div class="line"><span class="comment">  GNU General Public License for more details.</span></div>
+<div class="line"><span class="comment">  </span></div>
+<div class="line"><span class="comment">  You should have received a copy of the GNU General Public License</span></div>
+<div class="line"><span class="comment">  along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span></div>
+<div class="line"><span class="comment">*/</span></div>
+<div class="line"></div>
 <div class="line"><span class="preprocessor">#ifndef IA_DEFINIE</span></div>
 <div class="line"><span class="preprocessor"></span></div>
 <div class="line"><span class="preprocessor">#define IA_DEFINIE</span></div>
-<div class="line"><span class="preprocessor"></span><span class="preprocessor">#include &quot;<a class="code" href="client__jeu_8hpp.html">client_jeu.hpp</a>&quot;</span></div>
-<div class="line"><span class="keyword">class </span><a class="code" href="classIA.html">IA</a> : <span class="keyword">public</span> QObject</div>
+<div class="line"><span class="preprocessor"></span></div>
+<div class="line"><span class="preprocessor">#include &lt;QObject&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="enchere_8hpp.html">enchere.hpp</a>&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="carte_8hpp.html">carte.hpp</a>&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &quot;<a class="code" href="option_8hpp.html">option.hpp</a>&quot;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;QVector&gt;</span></div>
+<div class="line"><span class="preprocessor">#include &lt;QString&gt;</span></div>
+<div class="line"></div>
+<div class="line"><span class="keyword">class </span><a class="code" href="classIa.html">Ia</a>: <span class="keyword">public</span> QObject</div>
 <div class="line">{</div>
-<div class="line">  Q_OBJECT;</div>
+<div class="line">  Q_OBJECT</div>
 <div class="line"><span class="keyword">public</span>:</div>
-<div class="line">  <a class="code" href="classIA.html#a90c9d35eaef3b4ca6163003776e0eb09">IA</a>(QObject * parent = 0);</div>
-<div class="line"><span class="keyword">public</span> slots:</div>
-<div class="line">  <span class="keywordtype">void</span> <a class="code" href="classIA.html#abaa7525c357e47e53dd3a1d416dc6cec">connecter</a>(QHostAddress hote, quint16 port);</div>
-<div class="line">  <span class="keywordtype">void</span> doit_priser(<a class="code" href="classOption.html">Option&lt;Enchere&gt;</a> plus_forte);</div>
-<div class="line">  <span class="keywordtype">void</span> doit_jouer();</div>
-<div class="line">  <span class="keywordtype">void</span> partie_terminee(std::vector&lt;int&gt; scores);</div>
+<div class="line">  <a class="code" href="classIa.html#a8d647cd78f1defff7ce5f56f416417b7">Ia</a>(<span class="keyword">const</span> QString &amp; nom, <span class="keyword">const</span> QVector&lt;QString&gt; &amp; equipe, </div>
+<div class="line">     QObject * parent = 0);</div>
 <div class="line"><span class="keyword">private</span>:</div>
-<div class="line">  <a class="code" href="classClientJeu.html">ClientJeu</a> jeu; <span class="comment">//TRÈS IMPORTANT : le ClientJeu sous-jacent !</span></div>
-<div class="line">  <a class="code" href="classCarte.html">Carte</a> testee; <span class="comment">//La carte que j&#39;essaie de jouer.</span></div>
+<div class="line">  <span class="keywordtype">bool</span> m_deconnexion_voulue;</div>
+<div class="line">  <span class="keyword">const</span> QString nom_souhaite;</div>
+<div class="line">  <span class="keyword">const</span> QVector&lt;QString&gt; equipe_souhaitee;</div>
+<div class="line">  std::vector&lt;Carte&gt; mon_jeu;</div>
+<div class="line">  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> test_suivant;</div>
+<div class="line"><span class="keyword">public</span> slots:</div>
+<div class="line">  <span class="keywordtype">void</span> <a class="code" href="classIa.html#a57bdb2282d73f41d4d519707e8aa43cf">deconnecte</a>();</div>
+<div class="line">  <span class="keywordtype">void</span> <a class="code" href="classIa.html#a353bf1c34eb9ed6e3608f734ae7b2c38">doit_identifier</a>();</div>
+<div class="line">  <span class="keywordtype">void</span> <a class="code" href="classIa.html#ac19c9ac0f8dd06d38eeeadc3d937579a">identification_refusee</a>(std::string nom);</div>
+<div class="line">  <span class="keywordtype">void</span> <a class="code" href="classIa.html#a73583fe1e77eeccc280e896474ae2a6d">adversaires</a>(std::vector&lt;std::string&gt; adv);</div>
+<div class="line">  <span class="keywordtype">void</span> <a class="code" href="classIa.html#a4547b23df3f406bfc7f70a0d137ebe9d">doit_priser</a>(<a class="code" href="classOption.html">Option&lt;Enchere&gt;</a> opt);</div>
+<div class="line">  <span class="keywordtype">void</span> <a class="code" href="classIa.html#a935128f34e391d914b4b0669d226482f">jeu_est</a>(std::vector&lt;Carte&gt; cartes);</div>
+<div class="line">  <span class="keywordtype">void</span> <a class="code" href="classIa.html#a6d535af94f266482a6c75ce845e4bc22">doit_jouer</a>();</div>
+<div class="line">  <span class="keywordtype">void</span> <a class="code" href="classIa.html#aa9ada6b19f2ada712dffda238d808c7e">requete_refusee</a>(<a class="code" href="classCarte.html">Carte</a> c);</div>
+<div class="line">signals:</div>
+<div class="line">  <span class="keywordtype">void</span> <a class="code" href="classIa.html#a6bf02c2ebbc1a6833e492b986bb61561">formuler_identification</a>(std::string nom);</div>
+<div class="line">  <span class="keywordtype">void</span> <a class="code" href="classIa.html#aac2222c7c083a3449c1021b58c6641f1">formuler_prise</a>(<a class="code" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3f">Enchere::Prise</a> p);</div>
+<div class="line">  <span class="keywordtype">void</span> <a class="code" href="classIa.html#a93828150121be65eff471393f636d2aa">formuler_requete</a>(<a class="code" href="classCarte.html">Carte</a> c);</div>
+<div class="line">  <span class="keywordtype">void</span> <a class="code" href="classIa.html#a890d80b9ae2da9be226017675e1489bf">deconnecter</a>();</div>
+<div class="line">  <span class="keywordtype">void</span> <a class="code" href="classIa.html#a700b36d77aaf738ddc4c9b1a6ac954c2">reconnecter</a>();</div>
+<div class="line">  <span class="keywordtype">void</span> <a class="code" href="classIa.html#ae4d9fcc453ee6787baabc587fa362d8c">doit_quitter</a>();</div>
 <div class="line">};</div>
+<div class="line"></div>
 <div class="line"><span class="preprocessor">#endif</span></div>
 </div><!-- fragment --><div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="ia_8hpp.html">ia.hpp</a>&quot;</span></div>
 <div class="line"></div>
-<div class="line"><a class="code" href="classIA.html#a90c9d35eaef3b4ca6163003776e0eb09">IA::IA</a>(QObject * parent): QObject(parent),</div>
-<div class="line">                          jeu(this), </div>
-<div class="line">                          testee(0) <span class="comment">//On commence par essayer de jouer</span></div>
-<div class="line">                                    <span class="comment">//le deux de pique (cf doit_jouer)</span></div>
+<div class="line"><a class="code" href="classIa.html#a8d647cd78f1defff7ce5f56f416417b7">Ia::Ia</a>(<span class="keyword">const</span> QString &amp; nom, <span class="keyword">const</span> QVector&lt;QString&gt; &amp; equipe, QObject * parent):</div>
+<div class="line">  QObject(parent),</div>
+<div class="line">  m_deconnexion_voulue(false),</div>
+<div class="line">  nom_souhaite(nom),</div>
+<div class="line">  equipe_souhaitee(equipe),</div>
+<div class="line">  test_suivant(0)</div>
 <div class="line">{</div>
-<div class="line">  <span class="comment">//Pour plus de commodité :</span></div>
-<div class="line"><span class="preprocessor">#define C(signal) \</span></div>
-<div class="line"><span class="preprocessor">  QObject::connect(&amp;jeu, SIGNAL(signal), this, SLOT(signal));</span></div>
-<div class="line"><span class="preprocessor"></span></div>
-<div class="line">  <span class="comment">//C&#39;est plus facile de connecter les signaux du ClientJeu aux slots</span></div>
-<div class="line">  <span class="comment">//du même nom.</span></div>
-<div class="line">  C(doit_priser(<a class="code" href="classOption.html">Option&lt;Enchere&gt;</a>));</div>
-<div class="line">  C(doit_jouer());</div>
-<div class="line">  C(partie_terminee(std::vector&lt;int&gt;));</div>
 <div class="line">}</div>
-<div class="line"><span class="comment">// Fonction appelée dans main_program.cpp</span></div>
-<div class="line"><span class="keywordtype">void</span> <a class="code" href="classIA.html#abaa7525c357e47e53dd3a1d416dc6cec">IA::connecter</a>(QHostAddress hote, quint16 port)</div>
+<div class="line"></div>
+<div class="line"><span class="keywordtype">void</span> <a class="code" href="classIa.html#a57bdb2282d73f41d4d519707e8aa43cf">Ia::deconnecte</a>()</div>
 <div class="line">{</div>
-<div class="line">  <span class="comment">//Simple comme bonjour :</span></div>
-<div class="line">  jeu.<a class="code" href="classClient.html#aca6f6439d8500cea98b540450450e8cd">connecter</a>(hote, port);</div>
+<div class="line">  <span class="comment">//Si j&#39;ai souhaité me déconnecter, je me reconnecte :</span></div>
+<div class="line">  <span class="keywordflow">if</span>(m_deconnexion_voulue)</div>
+<div class="line">    {</div>
+<div class="line">      m_deconnexion_voulue = <span class="keyword">false</span>;</div>
+<div class="line">      emit <a class="code" href="classIa.html#a700b36d77aaf738ddc4c9b1a6ac954c2">reconnecter</a>();</div>
+<div class="line">    }</div>
+<div class="line">  <span class="comment">//Sinon, j&#39;ai fini mon job (la partie a été fermée)</span></div>
+<div class="line">  <span class="keywordflow">else</span></div>
+<div class="line">    {</div>
+<div class="line">      emit <a class="code" href="classIa.html#ae4d9fcc453ee6787baabc587fa362d8c">doit_quitter</a>();</div>
+<div class="line">    }</div>
 <div class="line">}</div>
-<div class="line"><span class="keywordtype">void</span> IA::doit_priser(<a class="code" href="classOption.html">Option&lt;Enchere&gt;</a>)</div>
+<div class="line"></div>
+<div class="line"><span class="keywordtype">void</span> <a class="code" href="classIa.html#a353bf1c34eb9ed6e3608f734ae7b2c38">Ia::doit_identifier</a>()</div>
 <div class="line">{</div>
-<div class="line">  <span class="comment">//Je dois priser. Comme je suis une IA basique, je passe.</span></div>
-<div class="line">  jeu.<a class="code" href="classClientJeu.html#a98689343a93362c3b583a27e1ef6543f">formuler_prise</a>(<a class="code" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3faa40cabb8cd6ac3bed25b69561ebb834f">Enchere::PASSE</a>);</div>
+<div class="line">  <span class="comment">//Conversion en std::string</span></div>
+<div class="line">  std::string nom(nom_souhaite.toUtf8().data());</div>
+<div class="line">  emit <a class="code" href="classIa.html#a6bf02c2ebbc1a6833e492b986bb61561">formuler_identification</a>(nom);</div>
 <div class="line">}</div>
-<div class="line"><span class="keywordtype">void</span> IA::doit_jouer()</div>
+<div class="line"></div>
+<div class="line"><span class="keywordtype">void</span> <a class="code" href="classIa.html#ac19c9ac0f8dd06d38eeeadc3d937579a">Ia::identification_refusee</a>(std::string)</div>
 <div class="line">{</div>
-<div class="line">  <span class="comment">//Je dois jouer. Je commence par changer de carte :</span></div>
-<div class="line">  <a class="code" href="classCarte.html">Carte</a> suivante((testee.<a class="code" href="classCarte.html#a71b2fa7ab34086aed44b3430b3755df5">numero</a>() + 1) % 78);</div>
-<div class="line">  </div>
-<div class="line">  <span class="comment">//Je fais dire au serveur que je veux jouer cette carte :</span></div>
-<div class="line">  jeu.<a class="code" href="classClientJeu.html#ad47142bad1f216ac3b93d0b75cf0b559">formuler_requete</a>(suivante);</div>
-<div class="line">  </div>
-<div class="line">  <span class="comment">//Je m&#39;en souviens pour le prochain refus (et donc, le prochain</span></div>
-<div class="line">  <span class="comment">//doit_jouer) </span></div>
-<div class="line">  testee = suivante;</div>
+<div class="line">  <span class="comment">//ERREUR : je n&#39;ai pas réussi à prendre ce nom !</span></div>
+<div class="line">  emit <a class="code" href="classIa.html#ae4d9fcc453ee6787baabc587fa362d8c">doit_quitter</a>();</div>
 <div class="line">}</div>
-<div class="line"><span class="keywordtype">void</span> IA::partie_terminee(std::vector&lt;int&gt;)</div>
+<div class="line"></div>
+<div class="line"><span class="keywordtype">void</span> <a class="code" href="classIa.html#a73583fe1e77eeccc280e896474ae2a6d">Ia::adversaires</a>(std::vector&lt;std::string&gt; adversaires)</div>
 <div class="line">{</div>
-<div class="line">  <span class="comment">//La partie est terminée, j&#39;arrête le programme. Le moyen le plus</span></div>
-<div class="line">  <span class="comment">//simple est de détruire le QObject (voir main_program.cpp)</span></div>
-<div class="line">  deleteLater();</div>
+<div class="line">  <span class="keywordtype">bool</span> trouve = <span class="keyword">false</span>; <span class="comment">//A-t-on trouvé cet adversaire dans l&#39;équipe</span></div>
+<div class="line">                       <span class="comment">//souhaitée ?  </span></div>
+<div class="line">  <span class="keywordtype">bool</span> ok = <span class="keyword">true</span>; <span class="comment">//A-t-on trouvé tous ceux qu&#39;on voulait ?</span></div>
+<div class="line">  <span class="comment">//Parcourons la liste d&#39;adversaires...</span></div>
+<div class="line">  <span class="keywordflow">for</span>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> i = 0 ; i &lt; adversaires.size() &amp;&amp; ok ; i++)</div>
+<div class="line">    {</div>
+<div class="line">      trouve = <span class="keyword">false</span>;</div>
+<div class="line">      <span class="comment">//Parcourons l&#39;équipe souhaitée...</span></div>
+<div class="line">      <span class="keywordflow">for</span>(<span class="keywordtype">int</span> j = 0 ; j &lt; equipe_souhaitee.size() &amp;&amp; (!trouve) ; j++)</div>
+<div class="line">        {</div>
+<div class="line">          <span class="keywordflow">if</span>(equipe_souhaitee[j] == QString::fromUtf8(adversaires[i].c_str()))</div>
+<div class="line">            {</div>
+<div class="line">              <span class="comment">//Trouvé !</span></div>
+<div class="line">              trouve = <span class="keyword">true</span>;</div>
+<div class="line">            }</div>
+<div class="line">        }</div>
+<div class="line">      ok = (ok &amp;&amp; trouve) ;</div>
+<div class="line">    }</div>
+<div class="line">  <span class="keywordflow">if</span>(!ok)</div>
+<div class="line">    {</div>
+<div class="line">      <span class="comment">//Je me reconnecte</span></div>
+<div class="line">      emit <a class="code" href="classIa.html#a890d80b9ae2da9be226017675e1489bf">deconnecter</a>();</div>
+<div class="line">    }</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="keywordtype">void</span> <a class="code" href="classIa.html#a4547b23df3f406bfc7f70a0d137ebe9d">Ia::doit_priser</a>(<a class="code" href="classOption.html">Option&lt;Enchere&gt;</a>)</div>
+<div class="line">{</div>
+<div class="line">  <span class="comment">//Je passse :)</span></div>
+<div class="line">  emit <a class="code" href="classIa.html#aac2222c7c083a3449c1021b58c6641f1">formuler_prise</a>(<a class="code" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3faa40cabb8cd6ac3bed25b69561ebb834f">Enchere::PASSE</a>);</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="keywordtype">void</span> <a class="code" href="classIa.html#a935128f34e391d914b4b0669d226482f">Ia::jeu_est</a>(std::vector&lt;Carte&gt; cartes)</div>
+<div class="line">{</div>
+<div class="line">  <span class="comment">//Normalement, l&#39;ordre ne change pas.</span></div>
+<div class="line">  mon_jeu = cartes;</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="keywordtype">void</span> <a class="code" href="classIa.html#a6d535af94f266482a6c75ce845e4bc22">Ia::doit_jouer</a>()</div>
+<div class="line">{</div>
+<div class="line">  <span class="comment">//Je joue la carte suivante...</span></div>
+<div class="line">  emit <a class="code" href="classIa.html#a93828150121be65eff471393f636d2aa">formuler_requete</a>(mon_jeu[test_suivant % mon_jeu.size()]);</div>
+<div class="line">}</div>
+<div class="line"></div>
+<div class="line"><span class="keywordtype">void</span> <a class="code" href="classIa.html#aa9ada6b19f2ada712dffda238d808c7e">Ia::requete_refusee</a>(<a class="code" href="classCarte.html">Carte</a>)</div>
+<div class="line">{</div>
+<div class="line">  <span class="comment">//Je teste la carte suivante</span></div>
+<div class="line">  test_suivant++;</div>
 <div class="line">}</div>
 </div><!-- fragment --><h2><a class="anchor" id="emission"></a>
 Ordre d'émission des signaux</h2>
 <p>Les signaux sont émis dans un ordre "logique" dans les différentes situations.</p>
+<p>Identification :</p>
+<ol type="1">
+<li><a class="el" href="classClientJeu.html#ad09962244d0289977119163f34c2fd08" title="Émis lorsque je dois m&#39;identifier. ">ClientJeu::doit_identifier()</a></li>
+<li><a class="el" href="classClientJeu.html#ab94d9ac5546573cff03e727e03d2451f" title="Émis lorsqu&#39;un nouveau joueur est disponible. ">ClientJeu::entree()</a> éventuellement (avec multiplicité, en finissant par moi) ou <a class="el" href="classClientJeu.html#a37028031134208f450e9b94371cb381a" title="Émis lorsque mon identification a été refusée. ">ClientJeu::identification_refusee()</a> et retour à 1.</li>
+<li><a class="el" href="classClientJeu.html#a5c7cd0122519f2304ae2744d4f5f7816" title="Émis lorsque mon identification a été acceptée. ">ClientJeu::identification_acceptee()</a></li>
+<li><a class="el" href="classClientJeu.html#ab94d9ac5546573cff03e727e03d2451f" title="Émis lorsqu&#39;un nouveau joueur est disponible. ">ClientJeu::entree()</a>, <a class="el" href="classClientJeu.html#af09af2459d52e1f06ab9fac781b253f5" title="Émis lorsqu&#39;un joueur n&#39;est plus disponible. ">ClientJeu::sortie()</a> : d'autres gens arrivent et partent. NB : un client qui trouve une partie SORT.</li>
+</ol>
+<p>Constitution de la table :</p>
+<ol type="1">
+<li><a class="el" href="classClientJeu.html#aa2dbd6d529e11d25017059e471f6337c" title="Émis lorsque mon invitation a été acceptée. ">ClientJeu::invitation_acceptee()</a> ou <a class="el" href="classClientJeu.html#a99ed843cfd02366eeee6e23878a3a31f" title="Émis lorsque mon invitation a été refusée. ">ClientJeu::invitation_refusee()</a> si j'ai demandé une invitation. NB : le fait que l'invitation soit refusée signifie que l'une des personnes que je demande n'est pas présente, ou que je ne m'inclus pas, ou qu'il y a un doublon. La partie commence dès que l'invitation est acceptée par le SERVEUR. Si le client n'est pas d'accord, il est prié de se déconnecter et reconnecter.</li>
+<li><a class="el" href="classClientJeu.html#aa25243098664858785100bbbd716b811" title="Émis lorsqu&#39;on prépare une manche. ">ClientJeu::adversaires()</a>, qui me donne les noms de mes adversaires dans l'ordre de jeu. Premier signal répété à chaque manche !</li>
+<li><a class="el" href="classClientJeu.html#a2d515dffe6d8a2e92c6e6e85df9c7b7b" title="Émis lorsqu&#39;on m&#39;informe de mon numéro. ">ClientJeu::numero_change()</a></li>
+</ol>
 <p>Phase d'enchères :</p>
 <ol type="1">
 <li><a class="el" href="classClientJeu.html#af1303531d8616622f007beefa6cdea12" title="Émis lorsqu&#39;un contrat intermédiaire est formulé. ">ClientJeu::contrat_intermediaire()</a> (du joueur précédent)</li>
@@ -273,6 +468,7 @@ Ordre d'émission des signaux</h2>
 <li><a class="el" href="classClientJeu.html#adb848b01350135b5f1d36c20fa7d4f4a" title="Émis lorsque le contrat final est divulgué. ">ClientJeu::contrat_final()</a></li>
 <li><a class="el" href="classClientJeu.html#aeb16bbe6dddccfbd5aca86f51f11bfba" title="Émis lorsque le Chien est dévoilé. ">ClientJeu::chien()</a> (ou saut à la phase de jeu en cas de contrat supérieur)</li>
 <li><a class="el" href="classClientJeu.html#aaf847e36c3bd801db27ddbd59692a75c" title="Émis lorsque mon jeu change. ">ClientJeu::jeu_change()</a></li>
+<li><a class="el" href="classClientJeu.html#a6ac25cb205325fde18830a9d9d26c1a8" title="Émis lorsque mon jeu change. ">ClientJeu::jeu_est()</a></li>
 <li><a class="el" href="classClientJeu.html#afc8c6cacec6f1f2cae6926d3f34ce411" title="Émis lorsque je dois faire un écart. ">ClientJeu::doit_ecarter()</a> (vous devez écarter à partir de ce moment)</li>
 <li><a class="el" href="classClientJeu.html#a0b917133ea9e27a529b5310a869eaeb4" title="Émis lorsqu&#39;un ou plusieurs atouts est/sont écarté(s). ">ClientJeu::atout_au_chien()</a> (éventuellement)</li>
 <li><a class="el" href="classClientJeu.html#a88e19ff93d59a5ee0206fc00551469a8" title="Émis lorsque l&#39;écart a été accepté. ">ClientJeu::ecart_accepte()</a> (ou <a class="el" href="classClientJeu.html#a2dcbdea6b8f53718c780fcdf23a5c837" title="Émis lorsque l&#39;écart est refusé. ">ClientJeu::ecart_refuse()</a> et retour à 7.)</li>
@@ -286,6 +482,7 @@ Ordre d'émission des signaux</h2>
 <li><a class="el" href="classClientJeu.html#ad01d2320d60f816ec2c6d08b8a5477c4" title="Émis lorsque je dois jouer. ">ClientJeu::doit_jouer()</a> (vous devez jouer à partir de ce moment)</li>
 <li><a class="el" href="classClientJeu.html#acf7d41addc91f869189be60de982540c" title="Émis lorsque la carte que je voulais jouer a été acceptée. ">ClientJeu::requete_acceptee()</a> (ou <a class="el" href="classClientJeu.html#ae3511addc7dcc78157d1e85a4ef851ea" title="Émis lorsque la carte que je voulais jouer a été refusée. ">ClientJeu::requete_refusee()</a> et retour à 4.)</li>
 <li><a class="el" href="classClientJeu.html#aaf847e36c3bd801db27ddbd59692a75c" title="Émis lorsque mon jeu change. ">ClientJeu::jeu_change()</a> (vous perdez la carte jouée)</li>
+<li><a class="el" href="classClientJeu.html#a6ac25cb205325fde18830a9d9d26c1a8" title="Émis lorsque mon jeu change. ">ClientJeu::jeu_est()</a></li>
 <li><a class="el" href="classClientJeu.html#a775bb7e768a00904c42757d50f8d50dc" title="Émis lorsqu&#39;une carte a été jouée. ">ClientJeu::carte_jouee()</a> (par vous)</li>
 <li><a class="el" href="classClientJeu.html#af704aa698ff09b2363fcab8718e951b7" title="Émis lorsque le maître du tapis change. ">ClientJeu::maitre_change()</a> (éventuellement, dans ce cas c'est vous)</li>
 <li><a class="el" href="classClientJeu.html#a23522808d5cec1559d2837c39025fb7f" title="Émis lorsque le tapis est modifié. ">ClientJeu::tapis_change()</a></li>
@@ -298,14 +495,14 @@ Ordre d'émission des signaux</h2>
 <li><a class="el" href="classClientJeu.html#a23522808d5cec1559d2837c39025fb7f" title="Émis lorsque le tapis est modifié. ">ClientJeu::tapis_change()</a></li>
 <li><a class="el" href="classClientJeu.html#ad01d2320d60f816ec2c6d08b8a5477c4" title="Émis lorsque je dois jouer. ">ClientJeu::doit_jouer()</a> (si vous avez remporté le pli)</li>
 </ol>
-<p>Fin de partie : comme à la fin de la dernière levée, sans le dernier point. À la place, on a <a class="el" href="classClientJeu.html#a59b17e5a650764d292ea4abeed67a15f" title="Émis lorsque la partie est terminée. ">ClientJeu::partie_terminee()</a></p>
+<p>Fin de partie : comme à la fin de la dernière levée, sans le dernier point. À la place, on a <a class="el" href="classClientJeu.html#a59b17e5a650764d292ea4abeed67a15f" title="Émis lorsque la partie est terminée. ">ClientJeu::partie_terminee()</a>. On recommence une nouvelle partie immédiatement.</p>
 <h1><a class="anchor" id="conclusion"></a>
 Conclusion</h1>
 <p>Il y a un protocole à respecter pour communiquer avec le serveur, et pour utiliser les classes existantes, il faut se mettre au bon endroit, compiler les bons fichiers, utilier la dépendance netork, de déclarer une variable de type <a class="el" href="classClientJeu.html" title="Spécialise la classe Client, en permettant de comprendre l&#39;environnement de jeu du tarot...">ClientJeu</a>. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Vendredi 16 Janvier 2015 14:35:40 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Mardi 3 Février 2015 21:33:18 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
