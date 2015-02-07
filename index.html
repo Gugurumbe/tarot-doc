@@ -101,20 +101,25 @@ Installation</h1>
 <div class="line">cd server                     #Répertoire du serveur</div>
 <div class="line">qmake                         #Prépare le Makefile</div>
 <div class="line">make                          #Compile le serveur</div>
-<div class="line">cd ../client                  #Répertoire du client</div>
+<div class="line">cd ../client/moche            #Répertoire du client moche</div>
 <div class="line">qmake                         #Prépare le Makefile</div>
 <div class="line">make                          #Compile le client</div>
-</div><!-- fragment --><h2><a class="anchor" id="etape4"></a>
+<div class="line">cd ../bete                    #Répertoire de l<span class="stringliteral">&#39;IA bête</span></div>
+<div class="line"><span class="stringliteral">qmake                         </span></div>
+<div class="line"><span class="stringliteral">make                          #Compilation de l&#39;</span>IA bête</div>
+</div><!-- fragment --><p>Pour lancer les différents programmes : le client moche doit recevoir 2 paramètres supplémentaires, l'adresse et le port du serveur. L'IA bête, elle, doit en plus recevoir le nom qu'elle doit emprunter et les noms des 4 autres personnes dont elle acceptera l'invitation.</p>
+<h2><a class="anchor" id="etape4"></a>
 Étape 4 : Compilez la documentation</h2>
 <p>Après avoir installé doxygen, lancez-le sur le fichier doc.conf. La documentation est disponible dans le dossier doc.</p>
 <h2><a class="anchor" id="etape5"></a>
 Étape 5 : Utilisez</h2>
 <p>Pour l'instant, ce n'est pas jouable. Il faut lancer un serveur et lancer des clients.</p>
-<p>Quand ce sera jouable, il n'y aura pas besoin de lancer le serveur. </p>
+<p>Quand ce sera jouable, il n'y aura pas besoin de lancer le serveur.</p>
+<p>En revanche, quelques tests seraient très précieux, notamment en ce qui concerne les cas inattendus voire pathologiques : l'IA est invitée par de mauvaises personnes -vérifier qu'elle se déconnecte, se reconnecte et attend les bonnes invitations-, tester plusieurs tables à la fois -penser à désactiver certaines options de débogage pour éviter de faire exploser la machine-, et surtout, tester le comportement après la fin de la première manche. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Mardi 3 Février 2015 21:33:19 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 7 Février 2015 14:01:27 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

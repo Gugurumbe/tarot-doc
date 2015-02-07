@@ -1,7 +1,7 @@
 var searchData=
 [
   ['table',['Table',['../classTable.html#a8c20b32ca7349af63e31717016103e66',1,'Table']]],
-  ['tapis',['Tapis',['../classTapis.html#a7323828e91137c08c7a84f279b679ca3',1,'Tapis::Tapis()'],['../classTapis.html#a2799f69c6c7361319d402bd3b7cec995',1,'Tapis::Tapis(const Tapis &amp;tap)'],['../classPartie.html#acacf31d258dfeff531d6d4d541076cad',1,'Partie::tapis()']]],
+  ['tapis',['tapis',['../classPartie.html#acacf31d258dfeff531d6d4d541076cad',1,'Partie::tapis()'],['../classTapis.html#a7323828e91137c08c7a84f279b679ca3',1,'Tapis::Tapis()'],['../classTapis.html#a2799f69c6c7361319d402bd3b7cec995',1,'Tapis::Tapis(const Tapis &amp;tap)']]],
   ['tapis_5fchange',['tapis_change',['../classClientJeu.html#a23522808d5cec1559d2837c39025fb7f',1,'ClientJeu::tapis_change()'],['../classPartieClient.html#a9ad741fd18e2b7581344e1ef94175620',1,'PartieClient::tapis_change()']]],
   ['termine',['termine',['../classPartieServeur.html#ae6bcbc691f8fb04b70e25e610405b02a',1,'PartieServeur']]],
   ['tester',['tester',['../classPartieServeur.html#a53ae35e1da76a5602f3223019df36e83',1,'PartieServeur']]],

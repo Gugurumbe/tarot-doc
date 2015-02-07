@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tarot: Référence de la structure Protocole::Msg_ecart</title>
+<title>Tarot: Référence du fichier client/bete/ia.hpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -40,8 +40,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
       <li><a href="index.html"><span>Page&#160;principale</span></a></li>
       <li><a href="pages.html"><span>Pages&#160;associées</span></a></li>
       <li><a href="namespaces.html"><span>Espaces&#160;de&#160;nommage</span></a></li>
-      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
-      <li><a href="files.html"><span>Fichiers</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="files.html"><span>Fichiers</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -62,10 +62,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li><a href="annotated.html"><span>Liste&#160;des&#160;classes</span></a></li>
-      <li><a href="classes.html"><span>Index&#160;des&#160;classes</span></a></li>
-      <li><a href="hierarchy.html"><span>Hiérarchie&#160;des&#160;classes</span></a></li>
-      <li><a href="functions.html"><span>Membres&#160;de&#160;classe</span></a></li>
+      <li><a href="files.html"><span>Liste&#160;des&#160;fichiers</span></a></li>
+      <li><a href="globals.html"><span>Membres&#160;de&#160;fichier</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -84,40 +82,48 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="namespaceProtocole.html">Protocole</a></li><li class="navelem"><a class="el" href="structProtocole_1_1Msg__ecart.html">Msg_ecart</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_db3a54907829b36871118d03417739cd.html">client</a></li><li class="navelem"><a class="el" href="dir_e02fce6b28d69fd5f316ed7870e86ac5.html">bete</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#pub-attribs">Attributs publics</a> &#124;
-<a href="structProtocole_1_1Msg__ecart-members.html">Liste de tous les membres</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#define-members">Macros</a>  </div>
   <div class="headertitle">
-<div class="title">Référence de la structure Protocole::Msg_ecart</div>  </div>
+<div class="title">Référence du fichier ia.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Contenu d'un <a class="el" href="structProtocole_1_1Message.html" title="Structure de Message universel. ">Message</a> de requête d'écart.  
- <a href="structProtocole_1_1Msg__ecart.html#details">Plus de détails...</a></p>
-
-<p><code>#include &lt;<a class="el" href="protocole_8hpp_source.html">protocole.hpp</a>&gt;</code></p>
+<p>Interface de la classe D'IA dite "de base".  
+<a href="#details">Plus de détails...</a></p>
+<div class="textblock"><code>#include &lt;QObject&gt;</code><br/>
+<code>#include &quot;<a class="el" href="enchere_8hpp_source.html">enchere.hpp</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="carte_8hpp_source.html">carte.hpp</a>&quot;</code><br/>
+<code>#include &quot;<a class="el" href="option_8hpp_source.html">option.hpp</a>&quot;</code><br/>
+<code>#include &lt;QVector&gt;</code><br/>
+<code>#include &lt;QString&gt;</code><br/>
+</div>
+<p><a href="bete_2ia_8hpp_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Attributs publics</h2></td></tr>
-<tr class="memitem:a4760447ad54cd83c02ac09a0a0bf9b3d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4760447ad54cd83c02ac09a0a0bf9b3d"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structProtocole_1_1Msg__ecart.html#a4760447ad54cd83c02ac09a0a0bf9b3d">ecart</a> [3]</td></tr>
-<tr class="memdesc:a4760447ad54cd83c02ac09a0a0bf9b3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Les trois cartes du chien. <br/></td></tr>
-<tr class="separator:a4760447ad54cd83c02ac09a0a0bf9b3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classIa.html">Ia</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">La classe IA de base.  <a href="classIa.html#details">Plus de détails...</a><br/></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a3d92fca42ea3607219e424e3d2101e03"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3d92fca42ea3607219e424e3d2101e03"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bete_2ia_8hpp.html#a3d92fca42ea3607219e424e3d2101e03">IA_DEFINIE</a></td></tr>
+<tr class="memdesc:a3d92fca42ea3607219e424e3d2101e03"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empêche les inclusions multiples. <br/></td></tr>
+<tr class="separator:a3d92fca42ea3607219e424e3d2101e03"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
-<div class="textblock"><p>Contenu d'un <a class="el" href="structProtocole_1_1Message.html" title="Structure de Message universel. ">Message</a> de requête d'écart. </p>
-<p>Circonstances dans lesquelles il apparaît : si la Prise le permet, le client demande d'écarter 3 cartes parmi les 18 qui sont à sa disposition. </p>
-</div><hr/>La documentation de cette structure a été générée à partir du fichier suivant :<ul>
-<li>shared/<a class="el" href="protocole_8hpp_source.html">protocole.hpp</a></li>
-</ul>
-</div><!-- contents -->
+<div class="textblock"><p>Interface de la classe D'IA dite "de base". </p>
+</div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Samedi 7 Février 2015 14:01:27 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Samedi 7 Février 2015 14:01:26 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
