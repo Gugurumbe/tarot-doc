@@ -3,7 +3,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.6"/>
 <title>Tarot:  Fichier source de client/bete/ia.hpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -31,7 +30,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.6 -->
+<!-- Généré par Doxygen 1.8.1.2 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -110,20 +109,20 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#ifndef IA_DEFINIE</span></div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="bete_2ia_8hpp.html#a3d92fca42ea3607219e424e3d2101e03">   28</a></span>&#160;<span class="preprocessor">#define IA_DEFINIE</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="code" href="bete_2ia_8hpp.html#a3d92fca42ea3607219e424e3d2101e03">   28</a></span>&#160;<span class="preprocessor">#define IA_DEFINIE</span></div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &lt;QObject&gt;</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="enchere_8hpp.html">enchere.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="carte_8hpp.html">carte.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="option_8hpp.html">option.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="enchere_8hpp.html" title="Définit une classe d&#39;enchère.">enchere.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="carte_8hpp.html" title="définit une classe de carte à jouer.">carte.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="option_8hpp.html" title="Définit un type &quot;option&quot;, qui permet de contenir un objet d&#39;un certain type (COPIABLE) ou rien...">option.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;QVector&gt;</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &lt;QString&gt;</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="classIa.html">   46</a></span>&#160;<span class="keyword">class </span><a class="code" href="classIa.html">Ia</a>: <span class="keyword">public</span> QObject</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="code" href="classIa.html">   46</a></span>&#160;<span class="keyword">class </span><a class="code" href="classIa.html" title="La classe IA de base.">Ia</a>: <span class="keyword">public</span> QObject</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;{</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  Q_OBJECT</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <a class="code" href="classIa.html#a8d647cd78f1defff7ce5f56f416417b7">Ia</a>(<span class="keyword">const</span> QString &amp; nom, <span class="keyword">const</span> QVector&lt;QString&gt; &amp; equipe, </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <a class="code" href="classIa.html#a8d647cd78f1defff7ce5f56f416417b7" title="Constructeur de l&#39;IA.">Ia</a>(<span class="keyword">const</span> QString &amp; nom, <span class="keyword">const</span> QVector&lt;QString&gt; &amp; equipe, </div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;     QObject * parent = 0);</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="keywordtype">bool</span> m_deconnexion_voulue;</div>
@@ -132,52 +131,30 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  std::vector&lt;Carte&gt; mon_jeu;</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> test_suivant;</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keyword">public</span> slots:</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classIa.html#a57bdb2282d73f41d4d519707e8aa43cf">deconnecte</a>();</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classIa.html#a353bf1c34eb9ed6e3608f734ae7b2c38">doit_identifier</a>();</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classIa.html#ac19c9ac0f8dd06d38eeeadc3d937579a">identification_refusee</a>(std::string nom);</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classIa.html#a73583fe1e77eeccc280e896474ae2a6d">adversaires</a>(std::vector&lt;std::string&gt; adv);</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classIa.html#a4547b23df3f406bfc7f70a0d137ebe9d">doit_priser</a>(<a class="code" href="classOption.html">Option&lt;Enchere&gt;</a> opt);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classIa.html#a935128f34e391d914b4b0669d226482f">jeu_est</a>(std::vector&lt;Carte&gt; cartes);</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classIa.html#a6d535af94f266482a6c75ce845e4bc22">doit_jouer</a>();</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classIa.html#aa9ada6b19f2ada712dffda238d808c7e">requete_refusee</a>(<a class="code" href="classCarte.html">Carte</a> c);</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classIa.html#a57bdb2282d73f41d4d519707e8aa43cf" title="Lance la connexion.">deconnecte</a>();</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classIa.html#a353bf1c34eb9ed6e3608f734ae7b2c38" title="Lance la procédure d&#39;identification.">doit_identifier</a>();</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classIa.html#ac19c9ac0f8dd06d38eeeadc3d937579a" title="Quitte.">identification_refusee</a>(std::string nom);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classIa.html#a73583fe1e77eeccc280e896474ae2a6d" title="Vérifie que je suis dans la bonne partie, ou me déconnecte.">adversaires</a>(std::vector&lt;std::string&gt; adv);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classIa.html#a4547b23df3f406bfc7f70a0d137ebe9d" title="Demande à passer.">doit_priser</a>(<a class="code" href="classOption.html" title="Classe gérant une copie d&#39;un objet ou rien.">Option&lt;Enchere&gt;</a> opt);</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classIa.html#a935128f34e391d914b4b0669d226482f" title="Tient mon jeu à jour.">jeu_est</a>(std::vector&lt;Carte&gt; cartes);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classIa.html#a6d535af94f266482a6c75ce845e4bc22" title="Tente de jouer la carte suivante.">doit_jouer</a>();</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classIa.html#aa9ada6b19f2ada712dffda238d808c7e" title="Change le numéro de la prochaine carte à tenter.">requete_refusee</a>(<a class="code" href="classCarte.html" title="Définition d&#39;une Carte du jeu.">Carte</a> c);</div>
 <div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;signals:</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classIa.html#a6bf02c2ebbc1a6833e492b986bb61561">formuler_identification</a>(std::string nom);</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classIa.html#aac2222c7c083a3449c1021b58c6641f1">formuler_prise</a>(<a class="code" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3f">Enchere::Prise</a> p);</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classIa.html#a93828150121be65eff471393f636d2aa">formuler_requete</a>(<a class="code" href="classCarte.html">Carte</a> c);</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classIa.html#a890d80b9ae2da9be226017675e1489bf">deconnecter</a>();</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classIa.html#a700b36d77aaf738ddc4c9b1a6ac954c2">reconnecter</a>();</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classIa.html#ae4d9fcc453ee6787baabc587fa362d8c">doit_quitter</a>();</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classIa.html#a6bf02c2ebbc1a6833e492b986bb61561" title="Émis lorsque je dois m&#39;identifier.">formuler_identification</a>(std::string nom);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classIa.html#aac2222c7c083a3449c1021b58c6641f1" title="Émis pour dire que je passe.">formuler_prise</a>(<a class="code" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3f">Enchere::Prise</a> p);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classIa.html#a93828150121be65eff471393f636d2aa" title="Émis pour dire que je veux jouer une carte.">formuler_requete</a>(<a class="code" href="classCarte.html" title="Définition d&#39;une Carte du jeu.">Carte</a> c);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classIa.html#a890d80b9ae2da9be226017675e1489bf" title="Émis pour dire que je souhaite me déconnecter (quitter une partie où je ne souhaite pas être)...">deconnecter</a>();</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classIa.html#a700b36d77aaf738ddc4c9b1a6ac954c2" title="Émis pour dire que je souhaite me reconnecter.">reconnecter</a>();</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classIa.html#ae4d9fcc453ee6787baabc587fa362d8c" title="Émis pour dire que j&#39;ai fini mon travail.">doit_quitter</a>();</div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;};</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="classEnchere_html_a1dfe2ab8eb7d4b82786201f95c453a3f"><div class="ttname"><a href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3f">Enchere::Prise</a></div><div class="ttdeci">Prise</div><div class="ttdef"><b>Definition:</b> enchere.hpp:59</div></div>
-<div class="ttc" id="classOption_html"><div class="ttname"><a href="classOption.html">Option</a></div><div class="ttdoc">Classe gérant une copie d&#39;un objet ou rien. </div><div class="ttdef"><b>Definition:</b> option.hpp:43</div></div>
-<div class="ttc" id="classIa_html_a353bf1c34eb9ed6e3608f734ae7b2c38"><div class="ttname"><a href="classIa.html#a353bf1c34eb9ed6e3608f734ae7b2c38">Ia::doit_identifier</a></div><div class="ttdeci">void doit_identifier()</div><div class="ttdoc">Lance la procédure d&#39;identification. </div></div>
-<div class="ttc" id="classIa_html_a73583fe1e77eeccc280e896474ae2a6d"><div class="ttname"><a href="classIa.html#a73583fe1e77eeccc280e896474ae2a6d">Ia::adversaires</a></div><div class="ttdeci">void adversaires(std::vector&lt; std::string &gt; adv)</div><div class="ttdoc">Vérifie que je suis dans la bonne partie, ou me déconnecte. </div></div>
-<div class="ttc" id="classIa_html_aac2222c7c083a3449c1021b58c6641f1"><div class="ttname"><a href="classIa.html#aac2222c7c083a3449c1021b58c6641f1">Ia::formuler_prise</a></div><div class="ttdeci">void formuler_prise(Enchere::Prise p)</div><div class="ttdoc">Émis pour dire que je passe. </div></div>
-<div class="ttc" id="classIa_html_a935128f34e391d914b4b0669d226482f"><div class="ttname"><a href="classIa.html#a935128f34e391d914b4b0669d226482f">Ia::jeu_est</a></div><div class="ttdeci">void jeu_est(std::vector&lt; Carte &gt; cartes)</div><div class="ttdoc">Tient mon jeu à jour. </div></div>
-<div class="ttc" id="classCarte_html"><div class="ttname"><a href="classCarte.html">Carte</a></div><div class="ttdoc">Définition d&#39;une Carte du jeu. </div><div class="ttdef"><b>Definition:</b> carte.hpp:99</div></div>
-<div class="ttc" id="classIa_html_aa9ada6b19f2ada712dffda238d808c7e"><div class="ttname"><a href="classIa.html#aa9ada6b19f2ada712dffda238d808c7e">Ia::requete_refusee</a></div><div class="ttdeci">void requete_refusee(Carte c)</div><div class="ttdoc">Change le numéro de la prochaine carte à tenter. </div></div>
-<div class="ttc" id="classIa_html_a6bf02c2ebbc1a6833e492b986bb61561"><div class="ttname"><a href="classIa.html#a6bf02c2ebbc1a6833e492b986bb61561">Ia::formuler_identification</a></div><div class="ttdeci">void formuler_identification(std::string nom)</div><div class="ttdoc">Émis lorsque je dois m&#39;identifier. </div></div>
-<div class="ttc" id="enchere_8hpp_html"><div class="ttname"><a href="enchere_8hpp.html">enchere.hpp</a></div><div class="ttdoc">Définit une classe d&#39;enchère. </div></div>
-<div class="ttc" id="option_8hpp_html"><div class="ttname"><a href="option_8hpp.html">option.hpp</a></div></div>
-<div class="ttc" id="classIa_html_a4547b23df3f406bfc7f70a0d137ebe9d"><div class="ttname"><a href="classIa.html#a4547b23df3f406bfc7f70a0d137ebe9d">Ia::doit_priser</a></div><div class="ttdeci">void doit_priser(Option&lt; Enchere &gt; opt)</div><div class="ttdoc">Demande à passer. </div></div>
-<div class="ttc" id="classIa_html_a6d535af94f266482a6c75ce845e4bc22"><div class="ttname"><a href="classIa.html#a6d535af94f266482a6c75ce845e4bc22">Ia::doit_jouer</a></div><div class="ttdeci">void doit_jouer()</div><div class="ttdoc">Tente de jouer la carte suivante. </div></div>
-<div class="ttc" id="classIa_html_a890d80b9ae2da9be226017675e1489bf"><div class="ttname"><a href="classIa.html#a890d80b9ae2da9be226017675e1489bf">Ia::deconnecter</a></div><div class="ttdeci">void deconnecter()</div><div class="ttdoc">Émis pour dire que je souhaite me déconnecter (quitter une partie où je ne souhaite pas être)...</div></div>
-<div class="ttc" id="classIa_html_a57bdb2282d73f41d4d519707e8aa43cf"><div class="ttname"><a href="classIa.html#a57bdb2282d73f41d4d519707e8aa43cf">Ia::deconnecte</a></div><div class="ttdeci">void deconnecte()</div><div class="ttdoc">Lance la connexion. </div></div>
-<div class="ttc" id="classIa_html_ac19c9ac0f8dd06d38eeeadc3d937579a"><div class="ttname"><a href="classIa.html#ac19c9ac0f8dd06d38eeeadc3d937579a">Ia::identification_refusee</a></div><div class="ttdeci">void identification_refusee(std::string nom)</div><div class="ttdoc">Quitte. </div></div>
-<div class="ttc" id="carte_8hpp_html"><div class="ttname"><a href="carte_8hpp.html">carte.hpp</a></div><div class="ttdoc">définit une classe de carte à jouer. </div></div>
-<div class="ttc" id="classIa_html_a93828150121be65eff471393f636d2aa"><div class="ttname"><a href="classIa.html#a93828150121be65eff471393f636d2aa">Ia::formuler_requete</a></div><div class="ttdeci">void formuler_requete(Carte c)</div><div class="ttdoc">Émis pour dire que je veux jouer une carte. </div></div>
-<div class="ttc" id="classIa_html_ae4d9fcc453ee6787baabc587fa362d8c"><div class="ttname"><a href="classIa.html#ae4d9fcc453ee6787baabc587fa362d8c">Ia::doit_quitter</a></div><div class="ttdeci">void doit_quitter()</div><div class="ttdoc">Émis pour dire que j&#39;ai fini mon travail. </div></div>
-<div class="ttc" id="classIa_html"><div class="ttname"><a href="classIa.html">Ia</a></div><div class="ttdoc">La classe IA de base. </div><div class="ttdef"><b>Definition:</b> ia.hpp:46</div></div>
-<div class="ttc" id="classIa_html_a700b36d77aaf738ddc4c9b1a6ac954c2"><div class="ttname"><a href="classIa.html#a700b36d77aaf738ddc4c9b1a6ac954c2">Ia::reconnecter</a></div><div class="ttdeci">void reconnecter()</div><div class="ttdoc">Émis pour dire que je souhaite me reconnecter. </div></div>
-<div class="ttc" id="classIa_html_a8d647cd78f1defff7ce5f56f416417b7"><div class="ttname"><a href="classIa.html#a8d647cd78f1defff7ce5f56f416417b7">Ia::Ia</a></div><div class="ttdeci">Ia(const QString &amp;nom, const QVector&lt; QString &gt; &amp;equipe, QObject *parent=0)</div><div class="ttdoc">Constructeur de l&#39;IA. </div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Samedi 7 Février 2015 14:01:26 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Jeudi Février 26 2015 17:39:18 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.6
+</a> 1.8.1.2
 </small></address>
 </body>
 </html>

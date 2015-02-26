@@ -3,7 +3,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.6"/>
 <title>Tarot: PE 46 : tarot virtuel</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -31,7 +30,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.6 -->
+<!-- Généré par Doxygen 1.8.1.2 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -87,41 +86,71 @@ Introduction</h1>
 Installation</h1>
 <h2><a class="anchor" id="etape1"></a>
 Étape 1 : obtenir les sources</h2>
-<p>Les sources sont disponibles sur <a href="https://github.com/Gugurumbe/tarot">GitHub</a>. Une archive <a href="https://github.com/Gugurumbe/tarot/archive/master.zip">.zip</a> ou une archive <a href="https://github.com/Gugurumbe/tarot/archive/master.tar.gz">.tar.gz</a> est également disponible. Le code est sous license GPL. Une fois l'archive décompressée, on peut compiler le tout.</p>
+<p>Les sources sont disponibles sur <a href="https://code.google.com/p/tarot-virtuel">Google Code</a>. Le code est sous license GPL. Les auteurs sont les 5 membres du PE.</p>
+<p>Si vous ne souhaitez pas utiliser git, il y a un lien de téléchargement dans la page des sources.</p>
 <h2><a class="anchor" id="etape2"></a>
 Étape 2 : Obtenez les outils</h2>
-<p>Il faut Qt. Les versions testées par notre équipe sont 4.8 et 5.3. Pensez à prendre les paquets de développement. Pour gcc, les versions 4.6 (Debian wheezy) et 4.8 (Windows) sont testées. Il vous faut également Doxygen si vous voulez compiler la documentation (avec tout le mal que nous nous sommes donné pour l'écrire, vous pourriez bien le faire, tout de même !)</p>
+<p>Il faut Qt. Les versions testées par notre équipe sont 4.8 et 5.3. Pensez à prendre les paquets de développement. Pour gcc, les versions 4.6 (Debian wheezy) et 4.8 (Windows) sont testées. La compatibilité avec clang est de temps en temps vérifiée. Il vous faut également Doxygen si vous voulez compiler la documentation (avec tout le mal que nous nous sommes donné pour l'écrire, vous pourriez bien le faire, tout de même !)</p>
 <p>Qt : <a href="http://www.qt.io/download-open-source/">http://www.qt.io/download-open-source/</a> MinGW sans Qt : <a href="http://www.mingw.org/wiki/Getting_Started">http://www.mingw.org/wiki/Getting_Started</a> Doxygen : <a href="http://www.stack.nl/~dimitri/doxygen/download.html">http://www.stack.nl/~dimitri/doxygen/download.html</a></p>
 <h2><a class="anchor" id="etape3"></a>
 Étape 3 : Compilez les programmes</h2>
-<p>Il y a deux programmes : un dans le dossier client et un autre dans le dossier server. Pour les deux programmes, c'est la même méthode. Il faut tout d'abord utiliser qmake pour générer le Makefile, puis lancer make. Alternativement, on peut ouvrir les fichiers server/serveur.pro et client/client.pro avec QtCreator.</p>
-<p>Compilation bash : </p>
-<div class="fragment"><div class="line">cd chemin/vers/tarot</div>
-<div class="line">doxygen doc.conf              #Compile la doc</div>
-<div class="line">cd server                     #Répertoire du serveur</div>
-<div class="line">qmake                         #Prépare le Makefile</div>
-<div class="line">make                          #Compile le serveur</div>
-<div class="line">cd ../client/moche            #Répertoire du client moche</div>
-<div class="line">qmake                         #Prépare le Makefile</div>
-<div class="line">make                          #Compile le client</div>
-<div class="line">cd ../bete                    #Répertoire de l<span class="stringliteral">&#39;IA bête</span></div>
-<div class="line"><span class="stringliteral">qmake                         </span></div>
-<div class="line"><span class="stringliteral">make                          #Compilation de l&#39;</span>IA bête</div>
-</div><!-- fragment --><p>Pour lancer les différents programmes : le client moche doit recevoir 2 paramètres supplémentaires, l'adresse et le port du serveur. L'IA bête, elle, doit en plus recevoir le nom qu'elle doit emprunter et les noms des 4 autres personnes dont elle acceptera l'invitation.</p>
-<h2><a class="anchor" id="etape4"></a>
+<p>Les programmes sont répartis de la façon suivante :</p>
+<ul>
+<li>À la racine, on sépare les fichiers clients, les fichiers serveurs, et la bibliothèque partagée. Avant de compiler un serveur ou un client, il est nécessaire de compiler la bibliothèque partagée.</li>
+<li>Dans les sous-dossiers client et serveur, il y a un sous-dossier correspondant aux fichiers partagés par tous les clients (ou tous les serveurs). Il est nécessaire de compiler cette autre bibliothèque partagée avant de compiler un certain serveur ou un certain client.</li>
+</ul>
+<p>La compilation produit des objets dans le dossier build. Il y a les binaires compilés, les bibliothèques statiques, les objets et les moc. Dans chaque sous-dossier, il ne subsiste qu'un Makefile.</p>
+<p>On peut bien évidemment tout compiler d'un coup, ou compiler tous les clients (ou les serveurs), ou compiler un client ou un serveur particulier.</p>
+<p>Vu la quantité relativement importante de code, il vaut mieux utiliser plusieurs processus. Par exemple, pour make, spécifier un argument "-j3" pour 3 processus (c'est un exemple).</p>
+<h2>Premier cas : vous voulez tout compiler.</h2>
+<p>Compilation bash, avec Debian : </p>
+<pre class="fragment">cd chemin/vers/tarot
+qmake
+make 
+</pre><h2>Deuxième cas : vous voulez compiler tous les clients.</h2>
+<p>Compilation bash, avec Debian : </p>
+<pre class="fragment">cd chemin/vers/tarot
+cd shared         # Compilation des fichiers partagés
+qmake             # ...
+make              # ok.
+cd ../client      # Compilation de tous les clients
+qmake             # ...
+make              # ok.
+</pre><h2>Troisième cas : vous voulez compiler le serveur théâtre.</h2>
+<p>Compilation bash, avec Debian : </p>
+<pre class="fragment">cd chemin/vers/tarot
+cd shared            # Compilation des fichiers partagés
+qmake                # ...
+make                 # ok.
+cd ../serveur/shared # Compilation des fichiers partagés
+qmake                # ...
+make                 # ok.
+cd ../theatre        # Compilation du théâtre
+qmake                # ...
+make                 # ok.
+</pre><h2><a class="anchor" id="etape4"></a>
 Étape 4 : Compilez la documentation</h2>
 <p>Après avoir installé doxygen, lancez-le sur le fichier doc.conf. La documentation est disponible dans le dossier doc.</p>
 <h2><a class="anchor" id="etape5"></a>
 Étape 5 : Utilisez</h2>
-<p>Pour l'instant, ce n'est pas jouable. Il faut lancer un serveur et lancer des clients.</p>
-<p>Quand ce sera jouable, il n'y aura pas besoin de lancer le serveur.</p>
-<p>En revanche, quelques tests seraient très précieux, notamment en ce qui concerne les cas inattendus voire pathologiques : l'IA est invitée par de mauvaises personnes -vérifier qu'elle se déconnecte, se reconnecte et attend les bonnes invitations-, tester plusieurs tables à la fois -penser à désactiver certaines options de débogage pour éviter de faire exploser la machine-, et surtout, tester le comportement après la fin de la première manche. </p>
+<p>Voici une brève description de chacun des binaires compilables :</p>
+<ul>
+<li>serveur/jeu : le serveur de jeu principal. À utiliser pour faire des parties à 5.</li>
+<li>serveur/theatre : le serveur de test d'un client. À utiliser pour tester la réaction d'un client sans avoir à fournir d'autres clients. Il suit un scénario, qui fixe précisément les questions et les réponses et qu'il suit à chaque nouvelle connexion. Pour plus d'informations, voir la page <a class="el" href="theatre.html">Théâtre : à quoi ça sert ?</a>.</li>
+<li>client/bete : c'est l'IA dite "de base", qui essaye de jouer chaque carte jusqu'à ce que l'une soit acceptée. Son principal avantage est d'être très simple et de faire l'objet d'un tutoriel.</li>
+<li>client/moche : c'est l'interface utilisateur la plus laide que j'aie réussi à faire. Elle permet de tester les réactions d'un serveur, mais c'est bien tout.</li>
+<li>client/debutant : c'est l'IA dite "débutante", qui suit des règles empiriques pour jouer. En construction.</li>
+</ul>
+<p>Pour l'instant, c'est un peu maigre. Un client graphique va bientôt arriver, et l'IA débutante va bientôt fonctionner. Une IA un peu plus puissante est également prévue.</p>
+<h2><a class="anchor" id="etape6"></a>
+Étape 6 : Testez et donnez-nous des retours</h2>
+<p>C'est incroyablement long et ingrat, mais c'est absolument nécessaire. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Samedi 7 Février 2015 14:01:27 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Jeudi Février 26 2015 17:39:21 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.6
+</a> 1.8.1.2
 </small></address>
 </body>
 </html>

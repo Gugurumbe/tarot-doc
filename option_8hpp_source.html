@@ -3,7 +3,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.6"/>
 <title>Tarot:  Fichier source de client/shared/option.hpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -31,7 +30,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.6 -->
+<!-- Généré par Doxygen 1.8.1.2 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -111,26 +110,26 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#ifndef OPTION_DEFINIE</span></div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="option_8hpp.html#a46865461646070840960b77a1711d02a">   32</a></span>&#160;<span class="preprocessor">#define OPTION_DEFINIE</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="code" href="option_8hpp.html#a46865461646070840960b77a1711d02a">   32</a></span>&#160;<span class="preprocessor">#define OPTION_DEFINIE</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;stdexcept&gt;</span></div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="classOption.html">   43</a></span>&#160;<span class="keyword">class </span><a class="code" href="classOption.html">Option</a></div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="code" href="classOption.html">   43</a></span>&#160;<span class="keyword">class </span><a class="code" href="classOption.html" title="Classe gérant une copie d&#39;un objet ou rien.">Option</a></div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;{</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="classOption_1_1none.html">   50</a></span>&#160;  <span class="keyword">class </span><a class="code" href="classOption_1_1none.html">none</a> : <span class="keyword">public</span> std::logic_error</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="code" href="classOption_1_1none.html">   50</a></span>&#160;  <span class="keyword">class </span><a class="code" href="classOption_1_1none.html" title="Exception levée lorsqu&#39;on essaye de récupérer un objet s&#39;il n&#39;y en a pas.">none</a> : <span class="keyword">public</span> std::logic_error</div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;  {</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classOption_1_1none.html#a7954444feb9903f8e5fb3fa724cbbbcb">none</a>();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="classOption_1_1none.html#a7954444feb9903f8e5fb3fa724cbbbcb" title="Constructeur par défaut.">none</a>();</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  };</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <a class="code" href="classOption.html#a50f70a7b4e3ce1fbcb3aca0a5d4f4a5e">Option</a>();</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <a class="code" href="classOption.html#a50f70a7b4e3ce1fbcb3aca0a5d4f4a5e">Option</a>(<span class="keyword">const</span> <a class="code" href="classOption.html">Option&lt;T&gt;</a> &amp; o);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <a class="code" href="classOption.html#a50f70a7b4e3ce1fbcb3aca0a5d4f4a5e">Option</a>(<span class="keyword">const</span> T &amp; obj);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keyword">virtual</span> <a class="code" href="classOption.html#a4917176414c5be4b8296880ef2700b72">~Option</a>();</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classOption.html#a41d13a4a902bfb182f3d039d393de63b">set</a>(<span class="keyword">const</span> T &amp; obj);</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classOption.html#a41d13a4a902bfb182f3d039d393de63b">set</a>();</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classOption.html#a5893eee085f375d1581d340f1197c081">aucun</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  <a class="code" href="classOption.html#a50f70a7b4e3ce1fbcb3aca0a5d4f4a5e" title="Constructeur par défaut.">Option</a>();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <a class="code" href="classOption.html#a50f70a7b4e3ce1fbcb3aca0a5d4f4a5e" title="Constructeur par défaut.">Option</a>(<span class="keyword">const</span> <a class="code" href="classOption.html" title="Classe gérant une copie d&#39;un objet ou rien.">Option&lt;T&gt;</a> &amp; o);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <a class="code" href="classOption.html#a50f70a7b4e3ce1fbcb3aca0a5d4f4a5e" title="Constructeur par défaut.">Option</a>(<span class="keyword">const</span> T &amp; obj);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keyword">virtual</span> <a class="code" href="classOption.html#a4917176414c5be4b8296880ef2700b72" title="Destructeur.">~Option</a>();</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="keywordtype">void</span> <span class="keyword">set</span>(<span class="keyword">const</span> T &amp; obj);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <span class="keywordtype">void</span> <span class="keyword">set</span>();</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classOption.html#a5893eee085f375d1581d340f1197c081" title="Permet de savoir s&#39;il y a un objet représenté.">aucun</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  T <span class="keyword">get</span>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  T * content;</div>
@@ -142,19 +141,12 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;std::ostream &amp; operator&lt;&lt;(std::ostream &amp; out, const Option&lt;T&gt; &amp; t);</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="classOption_html"><div class="ttname"><a href="classOption.html">Option</a></div><div class="ttdoc">Classe gérant une copie d&#39;un objet ou rien. </div><div class="ttdef"><b>Definition:</b> option.hpp:43</div></div>
-<div class="ttc" id="classOption_html_a4917176414c5be4b8296880ef2700b72"><div class="ttname"><a href="classOption.html#a4917176414c5be4b8296880ef2700b72">Option::~Option</a></div><div class="ttdeci">virtual ~Option()</div><div class="ttdoc">Destructeur. </div></div>
-<div class="ttc" id="classOption_1_1none_html"><div class="ttname"><a href="classOption_1_1none.html">Option::none</a></div><div class="ttdoc">Exception levée lorsqu&#39;on essaye de récupérer un objet s&#39;il n&#39;y en a pas. </div><div class="ttdef"><b>Definition:</b> option.hpp:50</div></div>
-<div class="ttc" id="classOption_html_a50f70a7b4e3ce1fbcb3aca0a5d4f4a5e"><div class="ttname"><a href="classOption.html#a50f70a7b4e3ce1fbcb3aca0a5d4f4a5e">Option::Option</a></div><div class="ttdeci">Option()</div><div class="ttdoc">Constructeur par défaut. </div></div>
-<div class="ttc" id="classOption_html_a5893eee085f375d1581d340f1197c081"><div class="ttname"><a href="classOption.html#a5893eee085f375d1581d340f1197c081">Option::aucun</a></div><div class="ttdeci">bool aucun() const </div><div class="ttdoc">Permet de savoir s&#39;il y a un objet représenté. </div></div>
-<div class="ttc" id="classOption_1_1none_html_a7954444feb9903f8e5fb3fa724cbbbcb"><div class="ttname"><a href="classOption_1_1none.html#a7954444feb9903f8e5fb3fa724cbbbcb">Option::none::none</a></div><div class="ttdeci">none()</div><div class="ttdoc">Constructeur par défaut. </div></div>
-<div class="ttc" id="classOption_html_a41d13a4a902bfb182f3d039d393de63b"><div class="ttname"><a href="classOption.html#a41d13a4a902bfb182f3d039d393de63b">Option::set</a></div><div class="ttdeci">void set()</div><div class="ttdoc">S&#39;assure qu&#39;aucun objet n&#39;est représenté. </div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Samedi 7 Février 2015 14:01:26 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Jeudi Février 26 2015 17:39:18 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.6
+</a> 1.8.1.2
 </small></address>
 </body>
 </html>

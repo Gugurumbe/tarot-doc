@@ -1,0 +1,223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<title>Tarot: Théâtre : à quoi ça sert ?</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/search.js"></script>
+<script type="text/javascript">
+  $(document).ready(function() { searchBox.OnSelectItem(0); });
+</script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td style="padding-left: 0.5em;">
+   <div id="projectname">Tarot
+   </div>
+   <div id="projectbrief">PE 46 à l&#39;ECL</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Généré par Doxygen 1.8.1.2 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
+</script>
+  <div id="navrow1" class="tabs">
+    <ul class="tablist">
+      <li><a href="index.html"><span>Page&#160;principale</span></a></li>
+      <li class="current"><a href="pages.html"><span>Pages&#160;associées</span></a></li>
+      <li><a href="namespaces.html"><span>Espaces&#160;de&#160;nommage</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Fichiers</span></a></li>
+      <li>
+        <div id="MSearchBox" class="MSearchBoxInactive">
+        <span class="left">
+          <img id="MSearchSelect" src="search/mag_sel.png"
+               onmouseover="return searchBox.OnSearchSelectShow()"
+               onmouseout="return searchBox.OnSearchSelectHide()"
+               alt=""/>
+          <input type="text" id="MSearchField" value="Recherche" accesskey="S"
+               onfocus="searchBox.OnSearchFieldFocus(true)" 
+               onblur="searchBox.OnSearchFieldFocus(false)" 
+               onkeyup="searchBox.OnSearchFieldChange(event)"/>
+          </span><span class="right">
+            <a id="MSearchClose" href="javascript:searchBox.CloseResultsWindow()"><img id="MSearchCloseImg" border="0" src="search/close.png" alt=""/></a>
+          </span>
+        </div>
+      </li>
+    </ul>
+  </div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>Tout</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Espaces de nommage</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Fichiers</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Fonctions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Énumérations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Valeurs énumérées</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(8)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(9)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Théâtre : à quoi ça sert ? </div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><h1><a class="anchor" id="intro"></a>
+Introduction</h1>
+<p>Vous développez un client de tarot, que vous aimeriez bien tester ? Eh bien, lancez-le sur un serveur officiel. Bon, je vous accorde que :</p>
+<ol type="1">
+<li>Il n'y a pas encore de serveur officiel.</li>
+<li>S'il y en avait un, il serait probablement désert.</li>
+</ol>
+<p>Mais rien ne vous empêche de lancer le serveur et 5 clients. Bon, si vous compilez pour Windows, toutes ces consoles c'est pas pratique. D'autant qu'il faut aller chercher ces ****** de DLL, si on veut passer outre QtCreator qui refuse de nous donner la main dans les consoles.</p>
+<p>Vous n'avez donc pas le choix : il faut utiliser le théâtre, un serveur particulier, qui :</p>
+<ul>
+<li>n'est pas interactif,</li>
+<li>ne s'adresse qu'à un client.</li>
+</ul>
+<p>Le serveur de théâtre se base sur un fichier, scenario.txt, qu'il lit et interprète à chaque nouvelle connexion. La syntaxe d'un tel fichier est simple, mais son fonctionnement est un peu déroutant : selon l'ordre qu'on inscrit dans le scenario, le théâtre va soit envoyer le message approprié au client, soit attendre que le client envoie exactement ce message.</p>
+<p>Voici un exemple de fichier scénario.txt :</p>
+<div class="fragment"><div class="line"><span class="preprocessor">#Tout ce qui suit un dièse est un commentaire.</span></div>
+<div class="line"><span class="preprocessor"></span></div>
+<div class="line"><span class="preprocessor">#Voici les différentes prises : </span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#0 -&gt; passe, 1 -&gt; prise, 2 -&gt; garde, </span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#3 -&gt; garde sans, 4 -&gt; garde contre</span></div>
+<div class="line"><span class="preprocessor"></span></div>
+<div class="line"><span class="preprocessor">#Voici les différentes cartes : </span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#          [0] As de Cœur         [14] As de Pique       [28] As de Carreau</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#        [1] Deux de Cœur       [15] Deux de Pique     [29] Deux de Carreau</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#       [2] Trois de Cœur      [16] Trois de Pique    [30] Trois de Carreau</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#      [3] Quatre de Cœur     [17] Quatre de Pique   [31] Quatre de Carreau</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#        [4] Cinq de Cœur       [18] Cinq de Pique     [32] Cinq de Carreau</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#         [5] Six de Cœur        [19] Six de Pique      [33] Six de Carreau</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#        [6] Sept de Cœur       [20] Sept de Pique     [34] Sept de Carreau</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#        [7] Huit de Cœur       [21] Huit de Pique     [35] Huit de Carreau</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#        [8] Neuf de Cœur       [22] Neuf de Pique     [36] Neuf de Carreau</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#         [9] Dix de Cœur        [23] Dix de Pique      [37] Dix de Carreau</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#      [10] Valet de Cœur      [24] Valet de Pique    [38] Valet de Carreau</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#   [11] Cavalier de Cœur   [25] Cavalier de Pique [39] Cavalier de Carreau</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#       [12] Dame de Cœur       [26] Dame de Pique     [40] Dame de Carreau</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#        [13] Roi de Cœur        [27] Roi de Pique      [41] Roi de Carreau</span></div>
+<div class="line"><span class="preprocessor"></span></div>
+<div class="line"><span class="preprocessor">#       [42] As de Trèfle               [56] Petit       [67] Douze d&#39;Atout</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#     [43] Deux de Trèfle        [57] Deux d&#39;Atout      [68] Treize d&#39;Atout</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#    [44] Trois de Trèfle       [58] Trois d&#39;Atout    [69] Quatorze d&#39;Atout</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#   [45] Quatre de Trèfle      [59] Quatre d&#39;Atout      [70] Quinze d&#39;Atout</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#     [46] Cinq de Trèfle        [60] Cinq d&#39;Atout       [71] Seize d&#39;Atout</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#      [47] Six de Trèfle         [61] Six d&#39;Atout    [72] Dix-sept d&#39;Atout</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#     [48] Sept de Trèfle        [62] Sept d&#39;Atout    [73] Dix-huit d&#39;Atout</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#     [49] Huit de Trèfle        [63] Huit d&#39;Atout    [74] Dix-neuf d&#39;Atout</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#     [50] Neuf de Trèfle        [64] Neuf d&#39;Atout       [75] Vingt d&#39;Atout</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#      [51] Dix de Trèfle         [65] Dix d&#39;Atout         [76] Vingt et un</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#    [52] Valet de Trèfle        [66] Onze d&#39;Atout              [77] Excuse</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># [53] Cavalier de Trèfle                                [78] Fausse excuse</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#     [54] Dame de Trèfle                                                  </span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor">#      [55] Roi de Trèfle                                                  </span></div>
+<div class="line"><span class="preprocessor"></span></div>
+<div class="line"><span class="preprocessor"># Voici les événements que vous pouvez attendre : </span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># identifier &quot;nom exact&quot; # J&#39;attends que le client s&#39;identifie.</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># inviter &quot;adversaire 1&quot; &quot;adv 2&quot; &quot;3&quot; &quot;4&quot;</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># J&#39;attends que le client invite exactement ces quatre personnes.</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># priser x # J&#39;attends que le client prise : 0 -&gt; passe etc.</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># appeler x # J&#39;attends que le client appelle une carte.</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># ecarter x y z # J&#39;attends que le client fasse cet écart.</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># jouer x # J&#39;attends que le client joue cette carte.</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># NB : Lorsqu&#39;il y a plusieurs arguments (inviter, ecarter),</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># l&#39;ordre compte.</span></div>
+<div class="line"><span class="preprocessor"></span></div>
+<div class="line"><span class="preprocessor"># Voici les événements que vous pouvez émettre : </span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># erreur_protocole # J&#39;informe le client qu&#39;il a fait une erreur.</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># refuse # J&#39;informe le client que son action n&#39;est pas valable.</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># entree &quot;nom&quot; # J&#39;informe le client que nom est disponible.</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># sortie &quot;nom&quot; # nom n&#39;est plus disponible.</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># noms &quot;joueur1&quot; &quot;j2&quot; &quot;j3&quot; &quot;j4&quot; &quot;j5&quot;</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># J&#39;informe le client que la partie fait jouer ces 5 joueurs dans</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># cet ordre.</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># numero x # J&#39;informe le client que son numéro de tour change.</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># distribution a b c d e f g h i j k l m n o</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># J&#39;informe le client qu&#39;il dispose de ces 15 cartes.</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># contrat x # J&#39;informe le client que le joueur suivant fait une enchère.</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># appel # J&#39;informe le client qu&#39;il doit appeler une carte.</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># contrat_final x y z # J&#39;informe le client que x fait l&#39;enchère y</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># en appelant la carte z.</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># chien x y z # J&#39;informe le client que le chien est dévoilé.</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># atout a b c # J&#39;informe le client que l&#39;écart contient un ou plusieurs</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># atout(s).</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># jeu # J&#39;informe le client que le jeu commence.</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># carte x # J&#39;informe le client que le joueur suivant joue x.</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># pli y # J&#39;informe le client que le joueur y remporte le pli.</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># resultat a b c d e # J&#39;informe le client des résultats de chacun.</span></div>
+<div class="line"><span class="preprocessor"></span></div>
+<div class="line"><span class="preprocessor"># Voici un exemple :</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># Les joueurs à la table sont truc, toto, machin, bidule, chose,</span></div>
+<div class="line"><span class="preprocessor"></span><span class="preprocessor"># et vous jouez toto. Vous devez inviter les autres.</span></div>
+<div class="line"><span class="preprocessor"></span> identifier toto</div>
+<div class="line"> entree truc</div>
+<div class="line"> entree Guignol</div>
+<div class="line"> entree chose</div>
+<div class="line"> entree machin</div>
+<div class="line"> entree bidule</div>
+<div class="line"> entree toto</div>
+<div class="line"> sortie Guignol</div>
+<div class="line"> inviter truc machin bidule chose</div>
+<div class="line"> noms truc toto machin bidule chose</div>
+<div class="line"> numero 1 # toto joue en deuxième.</div>
+<div class="line"> distribution 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 #J<span class="stringliteral">&#39;ai pas d&#39;</span>inspiration</div>
+<div class="line"> contrat 1 # truc fait une petite.</div>
+<div class="line"> priser 2 # J<span class="stringliteral">&#39;attends que toto, malgré son jeu, garde.</span></div>
+<div class="line"><span class="stringliteral"> contrat 2 # toto garde.</span></div>
+<div class="line"><span class="stringliteral"> contrat 0 # machin passe.</span></div>
+<div class="line"><span class="stringliteral"> contrat 0 # bidule passe.</span></div>
+<div class="line"><span class="stringliteral"> contrat 0 # chose passe.</span></div>
+<div class="line"><span class="stringliteral"> appel #toto doit appeler une carte.</span></div>
+<div class="line"><span class="stringliteral"> appeler 27 #J&#39;</span>attends que le client appelle un roi (voir liste).</div>
+<div class="line"> contrat_final 1 2 27</div>
+<div class="line"> chien 56 76 77 # le chien contient le petit, l<span class="stringliteral">&#39;excuse et le 21.</span></div>
+<div class="line"><span class="stringliteral"> ecarter 0 1 2 # J&#39;</span>attends que le client écarte le 1, le 2 et le 3.</div>
+<div class="line"> jeu carte 34 # truc joue une carte.</div>
+<div class="line"> jouer 56 # J<span class="stringliteral">&#39;attends que toto coupe avec le petit.</span></div>
+<div class="line"><span class="stringliteral"> carte 56 # toto joue le petit.</span></div>
+<div class="line"><span class="stringliteral"># Les autres jouent...</span></div>
+<div class="line"><span class="stringliteral"> pli 1 # toto gagne le pli. C&#39;</span>est à lui de jouer.</div>
+<div class="line"># jouer ... # on attend que toto joue <span class="stringliteral">&#39;...&#39;</span>.</div>
+<div class="line"># carte ...</div>
+<div class="line">#...</div>
+<div class="line"> pli 1</div>
+<div class="line"> resultat 10 20 -10 -10 -10</div>
+<div class="line"><span class="preprocessor"># Et ça repart : rotation cyclique des types.</span></div>
+<div class="line"><span class="preprocessor"></span> noms toto machin bidule chose truc</div>
+<div class="line"> numero 0 #Premier à jouer.</div>
+<div class="line"> distribution 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14</div>
+<div class="line"> priser 0 #Cette fois-ci, toto passe.</div>
+<div class="line"> contrat 0</div>
+<div class="line"> contrat 4</div>
+<div class="line"><span class="preprocessor">#...</span></div>
+</div><!-- fragment --><p>NB : ce fichier n'est PAS COMPLET : à la fin, le client vous dira qu'il n'est pas d'accord avec le serveur sur le numéro de tour.</p>
+<p>Une fois le scénario édité, si le serveur n'est pas déjà lancé, lancez-le. Vous aurez un message d'erreur si le client s'écarte du scénario.</p>
+<p>Si cet écart était souhaité, éditez le fichier scenario.txt et relancez le client. On voit bien que le client doit répondre EXACTEMENT DE LA MÊME FAÇON aux sollicitations du serveur, pour espérer aller plus loin dans le scénario. </p>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Généré le Jeudi Février 26 2015 17:39:19 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.1.2
+</small></address>
+</body>
+</html>

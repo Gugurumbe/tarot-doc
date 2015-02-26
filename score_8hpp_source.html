@@ -3,8 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tarot:  Fichier source de server/score.hpp</title>
+<title>Tarot:  Fichier source de serveur/jeu/score.hpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +30,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.6 -->
+<!-- Généré par Doxygen 1.8.1.2 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -82,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_41e1742e44e2de38b3bc91f993fed282.html">server</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_17197e2a5901f70601536f515e8d47d9.html">serveur</a></li><li class="navelem"><a class="el" href="dir_d77061c510fd25f1617f834790f73545.html">jeu</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -90,7 +89,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">score.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
+<a href="score_8hpp.html">Aller à la documentation de ce fichier.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">  serveur of project tarot virtuel is a server for a card game.</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment">  Copyright (C) 2015  Vivien Kraus</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment">  </span></div>
@@ -108,34 +107,31 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">  along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">*/</span></div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#ifndef SCORE_DEFINI</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define SCORE_DEFINI</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="carte_8hpp.html">carte.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="enchere_8hpp.html">enchere.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;std::vector&lt;int&gt; compter(<span class="keyword">const</span> <a class="code" href="classEnchere.html">Enchere</a> &amp; contrat_final, </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;                         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> joueur_appele, </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;                         <span class="keyword">const</span> std::vector&lt;std::vector&lt;Carte&gt; &gt; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;                         &amp; gagnees,</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                         <span class="keyword">const</span> std::vector&lt;std::vector&lt;Carte&gt; &gt;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                         &amp; perdues,</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                         <span class="keyword">const</span> std::vector&lt;unsigned int&gt; &amp; poignees);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="classEnchere_html"><div class="ttname"><a href="classEnchere.html">Enchere</a></div><div class="ttdoc">Définit une classe pour les enchères. </div><div class="ttdef"><b>Definition:</b> enchere.hpp:50</div></div>
-<div class="ttc" id="enchere_8hpp_html"><div class="ttname"><a href="enchere_8hpp.html">enchere.hpp</a></div><div class="ttdoc">Définit une classe d&#39;enchère. </div></div>
-<div class="ttc" id="carte_8hpp_html"><div class="ttname"><a href="carte_8hpp.html">carte.hpp</a></div><div class="ttdoc">définit une classe de carte à jouer. </div></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#ifndef SCORE_DEFINI</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="code" href="score_8hpp.html#ad33f4cd8f9b867b0929c9425e54fa819">   28</a></span>&#160;<span class="preprocessor">#define SCORE_DEFINI</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="carte_8hpp.html" title="définit une classe de carte à jouer.">carte.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="enchere_8hpp.html" title="Définit une classe d&#39;enchère.">enchere.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;std::vector&lt;int&gt; <a class="code" href="score_8hpp.html#a6bb22c4689913c24a199d2cdd4f8735a" title="À la fin de la partie, compte les points.">compter</a>(<span class="keyword">const</span> <a class="code" href="classEnchere.html" title="Définit une classe pour les enchères.">Enchere</a> &amp; contrat_final, </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;                         <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> joueur_appele, </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                         <span class="keyword">const</span> std::vector&lt;std::vector&lt;Carte&gt; &gt; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;                         &amp; gagnees,</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;                         <span class="keyword">const</span> std::vector&lt;std::vector&lt;Carte&gt; &gt;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;                         &amp; perdues,</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                         <span class="keyword">const</span> std::vector&lt;unsigned int&gt; &amp; poignees);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Samedi 7 Février 2015 14:01:26 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Jeudi Février 26 2015 17:39:19 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.6
+</a> 1.8.1.2
 </small></address>
 </body>
 </html>

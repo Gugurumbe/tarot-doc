@@ -3,7 +3,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.6"/>
 <title>Tarot:  Fichier source de shared/enchere.hpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -31,7 +30,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.6 -->
+<!-- Généré par Doxygen 1.8.1.2 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -111,95 +110,72 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#ifndef ENCHERE_DEFINIE</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="enchere_8hpp.html#a7795e3a7f7d83dc08c9733f25619f15e">   30</a></span>&#160;<span class="preprocessor">#define ENCHERE_DEFINIE</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="code" href="enchere_8hpp.html#a7795e3a7f7d83dc08c9733f25619f15e">   30</a></span>&#160;<span class="preprocessor">#define ENCHERE_DEFINIE</span></div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="carte_8hpp.html">carte.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="protocole_8hpp.html">protocole.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="carte_8hpp.html" title="définit une classe de carte à jouer.">carte.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="protocole_8hpp.html" title="Définit le protocole de communication.">protocole.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="classEnchere.html">   50</a></span>&#160;<span class="keyword">class </span><a class="code" href="classEnchere.html">Enchere</a> </div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="code" href="classEnchere.html">   50</a></span>&#160;<span class="keyword">class </span><a class="code" href="classEnchere.html" title="Définit une classe pour les enchères.">Enchere</a> </div>
 <div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;{</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">public</span>:</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3f">   59</a></span>&#160;  <span class="keyword">enum</span> <a class="code" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3f">Prise</a></div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="code" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3f">   59</a></span>&#160;  <span class="keyword">enum</span> <a class="code" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3f">Prise</a></div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    {</div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3faa40cabb8cd6ac3bed25b69561ebb834f">   64</a></span>&#160;      <a class="code" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3faa40cabb8cd6ac3bed25b69561ebb834f">PASSE</a> = 0,</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="code" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3faa40cabb8cd6ac3bed25b69561ebb834f">   64</a></span>&#160;      <a class="code" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3faa40cabb8cd6ac3bed25b69561ebb834f">PASSE</a> = 0,</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;      </div>
-<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3fabca98d8857355319cdc478dd7eb2d1f8">   69</a></span>&#160;      <a class="code" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3fabca98d8857355319cdc478dd7eb2d1f8">PRISE</a>,</div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="code" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3fabca98d8857355319cdc478dd7eb2d1f8">   69</a></span>&#160;      <a class="code" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3fabca98d8857355319cdc478dd7eb2d1f8">PRISE</a>,</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;      </div>
-<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3facfe1d0f4b04a54d2fae5bf9f272b7364">   74</a></span>&#160;      <a class="code" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3facfe1d0f4b04a54d2fae5bf9f272b7364">GARDE</a>,</div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="code" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3facfe1d0f4b04a54d2fae5bf9f272b7364">   74</a></span>&#160;      <a class="code" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3facfe1d0f4b04a54d2fae5bf9f272b7364">GARDE</a>,</div>
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3fab253c2b309d1f70386529430acb351a8">   80</a></span>&#160;      <a class="code" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3fab253c2b309d1f70386529430acb351a8">GARDE_SANS</a>,</div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="code" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3fab253c2b309d1f70386529430acb351a8">   80</a></span>&#160;      <a class="code" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3fab253c2b309d1f70386529430acb351a8">GARDE_SANS</a>,</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
-<div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3fa94bb573ef602e795d7b4e86b9db4580e">   86</a></span>&#160;      <a class="code" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3fa94bb573ef602e795d7b4e86b9db4580e">GARDE_CONTRE</a></div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="code" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3fa94bb573ef602e795d7b4e86b9db4580e">   86</a></span>&#160;      <a class="code" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3fa94bb573ef602e795d7b4e86b9db4580e">GARDE_CONTRE</a></div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    };</div>
 <div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  <a class="code" href="classEnchere.html#ac10424d5a7b4e6b300f0d0cc2f48dcca">Enchere</a>();</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <a class="code" href="classEnchere.html#ac10424d5a7b4e6b300f0d0cc2f48dcca">Enchere</a>(<span class="keyword">const</span> <a class="code" href="classEnchere.html">Enchere</a> &amp; e);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <a class="code" href="classEnchere.html#ac10424d5a7b4e6b300f0d0cc2f48dcca">Enchere</a>(<span class="keyword">const</span> <a class="code" href="classEnchere.html" title="Définit une classe pour les enchères.">Enchere</a> &amp; e);</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  <a class="code" href="classEnchere.html#ac10424d5a7b4e6b300f0d0cc2f48dcca">Enchere</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classEnchere.html#a057f525e5858ecc9e1fb4a5fc48bb1bb">joueur</a>, <span class="keyword">const</span> <a class="code" href="structProtocole_1_1Msg__prise.html">Protocole::Msg_prise</a> &amp; m);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  <a class="code" href="classEnchere.html#ac10424d5a7b4e6b300f0d0cc2f48dcca">Enchere</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classEnchere.html#a057f525e5858ecc9e1fb4a5fc48bb1bb">joueur</a>, <span class="keyword">const</span> <a class="code" href="structProtocole_1_1Msg__prise.html" title="Contenu d&#39;un Message de prise.">Protocole::Msg_prise</a> &amp; m);</div>
 <div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  <a class="code" href="classEnchere.html#ac10424d5a7b4e6b300f0d0cc2f48dcca">Enchere</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> tour, <span class="keyword">const</span> <a class="code" href="structProtocole_1_1Msg__contrat.html">Protocole::Msg_contrat</a> &amp; c);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  <a class="code" href="classEnchere.html#ac10424d5a7b4e6b300f0d0cc2f48dcca">Enchere</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> tour, <span class="keyword">const</span> <a class="code" href="structProtocole_1_1Msg__contrat.html" title="Contenu d&#39;un Message de contrat.">Protocole::Msg_contrat</a> &amp; c);</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;  <a class="code" href="classEnchere.html#ac10424d5a7b4e6b300f0d0cc2f48dcca">Enchere</a>(<span class="keyword">const</span> <a class="code" href="structProtocole_1_1Msg__contrat__final.html">Protocole::Msg_contrat_final</a> &amp; m);</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;  <a class="code" href="classEnchere.html#ac10424d5a7b4e6b300f0d0cc2f48dcca">Enchere</a>(<span class="keyword">const</span> <a class="code" href="structProtocole_1_1Msg__contrat__final.html" title="Contenu d&#39;un Message d&#39;information du contrat final.">Protocole::Msg_contrat_final</a> &amp; m);</div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  <span class="keyword">virtual</span> <a class="code" href="classEnchere.html#af88c0809f8beddb09c304d385652d079">~Enchere</a>();</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;  <span class="keyword">const</span> <a class="code" href="classCarte.html">Carte</a> * <a class="code" href="classEnchere.html#a258215751be1b852260b684beaae5df6">carte_appelee</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;  <span class="keyword">const</span> <a class="code" href="classCarte.html" title="Définition d&#39;une Carte du jeu.">Carte</a> * <a class="code" href="classEnchere.html#a258215751be1b852260b684beaae5df6">carte_appelee</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classEnchere.html#a6466b15d32523a3f19270ceb3ba08421">appeler</a>(<span class="keyword">const</span> <a class="code" href="classCarte.html">Carte</a> &amp; carte);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classEnchere.html#a6466b15d32523a3f19270ceb3ba08421">appeler</a>(<span class="keyword">const</span> <a class="code" href="classCarte.html" title="Définition d&#39;une Carte du jeu.">Carte</a> &amp; carte);</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;  <a class="code" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3f">Prise</a> <a class="code" href="classEnchere.html#a0dcc2507b7ce818bc497c9c2741e10eb">prise</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;</div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="classEnchere.html#a057f525e5858ecc9e1fb4a5fc48bb1bb">joueur</a>() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;  <span class="keyword">const</span> <a class="code" href="classEnchere.html">Enchere</a> &amp; <a class="code" href="classEnchere.html#a8c8d2c6d5bebba400ead80bd0f43aae0">operator=</a>(<span class="keyword">const</span> <a class="code" href="classEnchere.html">Enchere</a> &amp; e);</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;  <span class="keyword">const</span> <a class="code" href="classEnchere.html" title="Définit une classe pour les enchères.">Enchere</a> &amp; <a class="code" href="classEnchere.html#a8c8d2c6d5bebba400ead80bd0f43aae0">operator=</a>(<span class="keyword">const</span> <a class="code" href="classEnchere.html" title="Définit une classe pour les enchères.">Enchere</a> &amp; e);</div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;  <span class="keyword">const</span> <a class="code" href="classEnchere.html">Enchere</a> &amp; <a class="code" href="classEnchere.html#a8c8d2c6d5bebba400ead80bd0f43aae0">operator=</a>(<span class="keyword">const</span> <a class="code" href="structProtocole_1_1Msg__contrat__final.html">Protocole::Msg_contrat_final</a> &amp; m);</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;  <span class="keyword">const</span> <a class="code" href="classEnchere.html" title="Définit une classe pour les enchères.">Enchere</a> &amp; <a class="code" href="classEnchere.html#a8c8d2c6d5bebba400ead80bd0f43aae0">operator=</a>(<span class="keyword">const</span> <a class="code" href="structProtocole_1_1Msg__contrat__final.html" title="Contenu d&#39;un Message d&#39;information du contrat final.">Protocole::Msg_contrat_final</a> &amp; m);</div>
 <div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classEnchere.html#a0f7f9ed2ff2bed58991857f041ac6f7b">operator&gt;</a>(<span class="keyword">const</span> <a class="code" href="classEnchere.html">Enchere</a> &amp; e) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classEnchere.html#a0f7f9ed2ff2bed58991857f041ac6f7b">operator&gt;</a>(<span class="keyword">const</span> <a class="code" href="classEnchere.html" title="Définit une classe pour les enchères.">Enchere</a> &amp; e) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;</div>
 <div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;  <span class="keywordtype">bool</span> <a class="code" href="classEnchere.html#a0f7f9ed2ff2bed58991857f041ac6f7b">operator&gt;</a>(<a class="code" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3f">Prise</a> p) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;  std::ostream &amp; <a class="code" href="classEnchere.html#a1a47d4660a46367baa996fa3f6e35ecc">presenter</a>(std::ostream &amp; out) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;  std::ostream &amp; <a class="code" href="classEnchere.html#a1a47d4660a46367baa996fa3f6e35ecc" title="Présente l&#39;enchère.">presenter</a>(std::ostream &amp; out) <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;  <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> m_joueur; <span class="comment">//vaut 5 par défaut</span></div>
 <div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;  <a class="code" href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3f">Prise</a> m_prise; <span class="comment">//vaut PASSE par défaut</span></div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;  <a class="code" href="classCarte.html">Carte</a> * m_carte_appelee; <span class="comment">//Vaut 0 tant qu&#39;on ne le sait pas</span></div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;  <a class="code" href="classCarte.html" title="Définition d&#39;une Carte du jeu.">Carte</a> * m_carte_appelee; <span class="comment">//Vaut 0 tant qu&#39;on ne le sait pas</span></div>
 <div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;};</div>
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;std::ostream &amp; <a class="code" href="enchere_8hpp.html#a969a598ba851fdf0885b72484e6042c7">operator&lt;&lt;</a>(std::ostream &amp; out, <span class="keyword">const</span> <a class="code" href="classEnchere.html">Enchere</a> &amp; e);</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;std::ostream &amp; <a class="code" href="interface__moche_8hpp.html#aaf487b9d94ab4af6c11a683e3b67758d" title="Permet d&#39;écrire un QString dans un std::ostream. On le fait en UTF-8.">operator&lt;&lt;</a>(std::ostream &amp; out, <span class="keyword">const</span> <a class="code" href="classEnchere.html" title="Définit une classe pour les enchères.">Enchere</a> &amp; e);</div>
 <div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;</div>
 <div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="classEnchere_html_a6466b15d32523a3f19270ceb3ba08421"><div class="ttname"><a href="classEnchere.html#a6466b15d32523a3f19270ceb3ba08421">Enchere::appeler</a></div><div class="ttdeci">void appeler(const Carte &amp;carte)</div></div>
-<div class="ttc" id="classEnchere_html_a1dfe2ab8eb7d4b82786201f95c453a3f"><div class="ttname"><a href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3f">Enchere::Prise</a></div><div class="ttdeci">Prise</div><div class="ttdef"><b>Definition:</b> enchere.hpp:59</div></div>
-<div class="ttc" id="classEnchere_html_a0f7f9ed2ff2bed58991857f041ac6f7b"><div class="ttname"><a href="classEnchere.html#a0f7f9ed2ff2bed58991857f041ac6f7b">Enchere::operator&gt;</a></div><div class="ttdeci">bool operator&gt;(const Enchere &amp;e) const </div></div>
-<div class="ttc" id="classEnchere_html"><div class="ttname"><a href="classEnchere.html">Enchere</a></div><div class="ttdoc">Définit une classe pour les enchères. </div><div class="ttdef"><b>Definition:</b> enchere.hpp:50</div></div>
-<div class="ttc" id="classEnchere_html_a1dfe2ab8eb7d4b82786201f95c453a3fab253c2b309d1f70386529430acb351a8"><div class="ttname"><a href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3fab253c2b309d1f70386529430acb351a8">Enchere::GARDE_SANS</a></div><div class="ttdef"><b>Definition:</b> enchere.hpp:80</div></div>
-<div class="ttc" id="classCarte_html"><div class="ttname"><a href="classCarte.html">Carte</a></div><div class="ttdoc">Définition d&#39;une Carte du jeu. </div><div class="ttdef"><b>Definition:</b> carte.hpp:99</div></div>
-<div class="ttc" id="classEnchere_html_a1dfe2ab8eb7d4b82786201f95c453a3fabca98d8857355319cdc478dd7eb2d1f8"><div class="ttname"><a href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3fabca98d8857355319cdc478dd7eb2d1f8">Enchere::PRISE</a></div><div class="ttdef"><b>Definition:</b> enchere.hpp:69</div></div>
-<div class="ttc" id="classEnchere_html_a258215751be1b852260b684beaae5df6"><div class="ttname"><a href="classEnchere.html#a258215751be1b852260b684beaae5df6">Enchere::carte_appelee</a></div><div class="ttdeci">const Carte * carte_appelee() const </div></div>
-<div class="ttc" id="classEnchere_html_a057f525e5858ecc9e1fb4a5fc48bb1bb"><div class="ttname"><a href="classEnchere.html#a057f525e5858ecc9e1fb4a5fc48bb1bb">Enchere::joueur</a></div><div class="ttdeci">unsigned int joueur() const </div></div>
-<div class="ttc" id="enchere_8hpp_html_a969a598ba851fdf0885b72484e6042c7"><div class="ttname"><a href="enchere_8hpp.html#a969a598ba851fdf0885b72484e6042c7">operator&lt;&lt;</a></div><div class="ttdeci">std::ostream &amp; operator&lt;&lt;(std::ostream &amp;out, const Enchere &amp;e)</div><div class="ttdoc">Écrit une Enchère. </div></div>
-<div class="ttc" id="classEnchere_html_a8c8d2c6d5bebba400ead80bd0f43aae0"><div class="ttname"><a href="classEnchere.html#a8c8d2c6d5bebba400ead80bd0f43aae0">Enchere::operator=</a></div><div class="ttdeci">const Enchere &amp; operator=(const Enchere &amp;e)</div></div>
-<div class="ttc" id="structProtocole_1_1Msg__contrat_html"><div class="ttname"><a href="structProtocole_1_1Msg__contrat.html">Protocole::Msg_contrat</a></div><div class="ttdoc">Contenu d&#39;un Message de contrat. </div><div class="ttdef"><b>Definition:</b> protocole.hpp:356</div></div>
-<div class="ttc" id="classEnchere_html_a1a47d4660a46367baa996fa3f6e35ecc"><div class="ttname"><a href="classEnchere.html#a1a47d4660a46367baa996fa3f6e35ecc">Enchere::presenter</a></div><div class="ttdeci">std::ostream &amp; presenter(std::ostream &amp;out) const </div><div class="ttdoc">Présente l&#39;enchère. </div></div>
-<div class="ttc" id="classEnchere_html_a1dfe2ab8eb7d4b82786201f95c453a3facfe1d0f4b04a54d2fae5bf9f272b7364"><div class="ttname"><a href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3facfe1d0f4b04a54d2fae5bf9f272b7364">Enchere::GARDE</a></div><div class="ttdef"><b>Definition:</b> enchere.hpp:74</div></div>
-<div class="ttc" id="classEnchere_html_a1dfe2ab8eb7d4b82786201f95c453a3faa40cabb8cd6ac3bed25b69561ebb834f"><div class="ttname"><a href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3faa40cabb8cd6ac3bed25b69561ebb834f">Enchere::PASSE</a></div><div class="ttdef"><b>Definition:</b> enchere.hpp:64</div></div>
-<div class="ttc" id="classEnchere_html_a0dcc2507b7ce818bc497c9c2741e10eb"><div class="ttname"><a href="classEnchere.html#a0dcc2507b7ce818bc497c9c2741e10eb">Enchere::prise</a></div><div class="ttdeci">Prise prise() const </div></div>
-<div class="ttc" id="carte_8hpp_html"><div class="ttname"><a href="carte_8hpp.html">carte.hpp</a></div><div class="ttdoc">définit une classe de carte à jouer. </div></div>
-<div class="ttc" id="classEnchere_html_af88c0809f8beddb09c304d385652d079"><div class="ttname"><a href="classEnchere.html#af88c0809f8beddb09c304d385652d079">Enchere::~Enchere</a></div><div class="ttdeci">virtual ~Enchere()</div></div>
-<div class="ttc" id="classEnchere_html_ac10424d5a7b4e6b300f0d0cc2f48dcca"><div class="ttname"><a href="classEnchere.html#ac10424d5a7b4e6b300f0d0cc2f48dcca">Enchere::Enchere</a></div><div class="ttdeci">Enchere()</div></div>
-<div class="ttc" id="protocole_8hpp_html"><div class="ttname"><a href="protocole_8hpp.html">protocole.hpp</a></div><div class="ttdoc">Définit le protocole de communication. </div></div>
-<div class="ttc" id="structProtocole_1_1Msg__contrat__final_html"><div class="ttname"><a href="structProtocole_1_1Msg__contrat__final.html">Protocole::Msg_contrat_final</a></div><div class="ttdoc">Contenu d&#39;un Message d&#39;information du contrat final. </div><div class="ttdef"><b>Definition:</b> protocole.hpp:402</div></div>
-<div class="ttc" id="structProtocole_1_1Msg__prise_html"><div class="ttname"><a href="structProtocole_1_1Msg__prise.html">Protocole::Msg_prise</a></div><div class="ttdoc">Contenu d&#39;un Message de prise. </div><div class="ttdef"><b>Definition:</b> protocole.hpp:338</div></div>
-<div class="ttc" id="classEnchere_html_a1dfe2ab8eb7d4b82786201f95c453a3fa94bb573ef602e795d7b4e86b9db4580e"><div class="ttname"><a href="classEnchere.html#a1dfe2ab8eb7d4b82786201f95c453a3fa94bb573ef602e795d7b4e86b9db4580e">Enchere::GARDE_CONTRE</a></div><div class="ttdef"><b>Definition:</b> enchere.hpp:86</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Samedi 7 Février 2015 14:01:26 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Jeudi Février 26 2015 17:39:19 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.6
+</a> 1.8.1.2
 </small></address>
 </body>
 </html>

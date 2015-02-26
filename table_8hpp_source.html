@@ -3,8 +3,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.6"/>
-<title>Tarot:  Fichier source de server/table.hpp</title>
+<title>Tarot:  Fichier source de serveur/jeu/table.hpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -31,7 +30,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.6 -->
+<!-- Généré par Doxygen 1.8.1.2 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -82,7 +81,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_41e1742e44e2de38b3bc91f993fed282.html">server</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_17197e2a5901f70601536f515e8d47d9.html">serveur</a></li><li class="navelem"><a class="el" href="dir_d77061c510fd25f1617f834790f73545.html">jeu</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -111,42 +110,42 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#ifndef TABLE_DEFINIE</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="table_8hpp.html#ab77f4b3614f229e0cd67d00e4a6bdf48">   30</a></span>&#160;<span class="preprocessor">#define TABLE_DEFINIE</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="code" href="table_8hpp.html#ab77f4b3614f229e0cd67d00e4a6bdf48">   30</a></span>&#160;<span class="preprocessor">#define TABLE_DEFINIE</span></div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;QObject&gt;</span></div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="protocole_8hpp.html">protocole.hpp</a>&quot;</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="partie__serveur_8hpp.html">partie_serveur.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="protocole_8hpp.html" title="Définit le protocole de communication.">protocole.hpp</a>&quot;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="partie__serveur_8hpp.html" title="Spécialise une Partie côté client.">partie_serveur.hpp</a>&quot;</span></div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="classTable.html">   51</a></span>&#160;<span class="keyword">class </span><a class="code" href="classTable.html">Table</a> : <span class="keyword">public</span> QObject</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="code" href="classTable.html">   51</a></span>&#160;<span class="keyword">class </span><a class="code" href="classTable.html" title="Classe de Table.">Table</a> : <span class="keyword">public</span> QObject</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;{</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  Q_OBJECT;</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <a class="code" href="classTable.html#a8c20b32ca7349af63e31717016103e66">Table</a>(QObject * parent = 0);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <a class="code" href="classTable.html#a8c20b32ca7349af63e31717016103e66" title="Constructeur par défaut.">Table</a>(QObject * parent = 0);</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keyword">virtual</span> <a class="code" href="classTable.html#ac7541d139723d710fb7c39b1898d6e87">~Table</a>();</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  <span class="keyword">virtual</span> <a class="code" href="classTable.html#ac7541d139723d710fb7c39b1898d6e87" title="Déconnecte tous les joueurs encore présents.">~Table</a>();</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;signals:</div>
 <div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classTable.html#a147a6a6c82fa213c3f89ef2250ee5d09">doit_emettre</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> c, <a class="code" href="structProtocole_1_1Message.html">Protocole::Message</a> m);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classTable.html#a147a6a6c82fa213c3f89ef2250ee5d09" title="Relaye le Message.">doit_emettre</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> c, <a class="code" href="structProtocole_1_1Message.html" title="Structure de Message universel.">Protocole::Message</a> m);</div>
 <div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classTable.html#abba1c52883cb52f2aaa33f6ffa9493a5">doit_deconnecter</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> c);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classTable.html#abba1c52883cb52f2aaa33f6ffa9493a5" title="Relaye l&#39;ordre de déconnexion.">doit_deconnecter</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> c);</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classTable.html#afa5f81913df343483231eaed24f332cd">complet</a>(<a class="code" href="classTable.html">Table</a> * t);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classTable.html#afa5f81913df343483231eaed24f332cd" title="Signale au ServeurJeu que la Table est pleine.">complet</a>(<a class="code" href="classTable.html" title="Classe de Table.">Table</a> * t);</div>
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classTable.html#a798a87b642dd6f56d74d57e2a5204550">incomplet</a>(<a class="code" href="classTable.html">Table</a> * t);                     </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classTable.html#a798a87b642dd6f56d74d57e2a5204550" title="Signale au ServeurJeu que la Table doit être complétée.">incomplet</a>(<a class="code" href="classTable.html" title="Classe de Table.">Table</a> * t);                     </div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="keyword">public</span> slots:</div>
 <div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classTable.html#acd0e80a56cf7b0b2df55d7368b8d79a8">ajouter</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> c, std::string nom = <span class="stringliteral">&quot;&quot;</span>);</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classTable.html#acd0e80a56cf7b0b2df55d7368b8d79a8" title="Ajoute un joueur à la Table.">ajouter</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> c, std::string nom = <span class="stringliteral">&quot;&quot;</span>);</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classTable.html#afb140b691eda8c0704cea1aeda9cd300">comprendre</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> c, <a class="code" href="structProtocole_1_1Message.html">Protocole::Message</a> m);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classTable.html#afb140b691eda8c0704cea1aeda9cd300" title="Transmet un Message à la Partie.">comprendre</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> c, <a class="code" href="structProtocole_1_1Message.html" title="Structure de Message universel.">Protocole::Message</a> m);</div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classTable.html#a2508504a656f681899fcb97eb4269cf1">enlever</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> c);</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classTable.html#a2508504a656f681899fcb97eb4269cf1" title="Enlève un joueur de la Table.">enlever</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> c);</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classTable.html#ab59f7e6f1b2d9603bbcce881182c4b9c">doit_transmettre</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j, <a class="code" href="structProtocole_1_1Message.html">Protocole::Message</a> m, <span class="keywordtype">bool</span> analyser);</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classTable.html#ab59f7e6f1b2d9603bbcce881182c4b9c" title="Transmet un message.">doit_transmettre</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> j, <a class="code" href="structProtocole_1_1Message.html" title="Structure de Message universel.">Protocole::Message</a> m, <span class="keywordtype">bool</span> analyser);</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classTable.html#a90915b16dd714c8cfa548d69f7de1edb">doit_recommencer</a>();</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classTable.html#a90915b16dd714c8cfa548d69f7de1edb" title="Commence une nouvelle partie.">doit_recommencer</a>();</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;  </div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="keyword">private</span>:</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;  </div>
@@ -156,34 +155,18 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;  </div>
 <div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;  std::vector&lt;std::string&gt; noms;</div>
 <div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  <a class="code" href="classPartieServeur.html">PartieServeur</a> partie;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  <a class="code" href="classPartieServeur.html" title="Précision d&#39;une Partie, côté serveur.">PartieServeur</a> partie;</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;</div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;  <span class="keyword">static</span> <span class="keywordtype">int</span> nombre_tables;</div>
 <div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;};</div>
 <div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;</div>
 <div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="ttc" id="classTable_html_a147a6a6c82fa213c3f89ef2250ee5d09"><div class="ttname"><a href="classTable.html#a147a6a6c82fa213c3f89ef2250ee5d09">Table::doit_emettre</a></div><div class="ttdeci">void doit_emettre(unsigned int c, Protocole::Message m)</div><div class="ttdoc">Relaye le Message. </div></div>
-<div class="ttc" id="structProtocole_1_1Message_html"><div class="ttname"><a href="structProtocole_1_1Message.html">Protocole::Message</a></div><div class="ttdoc">Structure de Message universel. </div><div class="ttdef"><b>Definition:</b> protocole.hpp:806</div></div>
-<div class="ttc" id="classTable_html_a8c20b32ca7349af63e31717016103e66"><div class="ttname"><a href="classTable.html#a8c20b32ca7349af63e31717016103e66">Table::Table</a></div><div class="ttdeci">Table(QObject *parent=0)</div><div class="ttdoc">Constructeur par défaut. </div></div>
-<div class="ttc" id="partie__serveur_8hpp_html"><div class="ttname"><a href="partie__serveur_8hpp.html">partie_serveur.hpp</a></div><div class="ttdoc">Spécialise une Partie côté client. </div></div>
-<div class="ttc" id="classTable_html_ab59f7e6f1b2d9603bbcce881182c4b9c"><div class="ttname"><a href="classTable.html#ab59f7e6f1b2d9603bbcce881182c4b9c">Table::doit_transmettre</a></div><div class="ttdeci">void doit_transmettre(unsigned int j, Protocole::Message m, bool analyser)</div><div class="ttdoc">Transmet un message. </div></div>
-<div class="ttc" id="classTable_html_a798a87b642dd6f56d74d57e2a5204550"><div class="ttname"><a href="classTable.html#a798a87b642dd6f56d74d57e2a5204550">Table::incomplet</a></div><div class="ttdeci">void incomplet(Table *t)</div><div class="ttdoc">Signale au ServeurJeu que la Table doit être complétée. </div></div>
-<div class="ttc" id="classTable_html_abba1c52883cb52f2aaa33f6ffa9493a5"><div class="ttname"><a href="classTable.html#abba1c52883cb52f2aaa33f6ffa9493a5">Table::doit_deconnecter</a></div><div class="ttdeci">void doit_deconnecter(unsigned int c)</div><div class="ttdoc">Relaye l&#39;ordre de déconnexion. </div></div>
-<div class="ttc" id="classTable_html_a2508504a656f681899fcb97eb4269cf1"><div class="ttname"><a href="classTable.html#a2508504a656f681899fcb97eb4269cf1">Table::enlever</a></div><div class="ttdeci">void enlever(unsigned int c)</div><div class="ttdoc">Enlève un joueur de la Table. </div></div>
-<div class="ttc" id="classTable_html_acd0e80a56cf7b0b2df55d7368b8d79a8"><div class="ttname"><a href="classTable.html#acd0e80a56cf7b0b2df55d7368b8d79a8">Table::ajouter</a></div><div class="ttdeci">void ajouter(unsigned int c, std::string nom=&quot;&quot;)</div><div class="ttdoc">Ajoute un joueur à la Table. </div></div>
-<div class="ttc" id="classTable_html_afa5f81913df343483231eaed24f332cd"><div class="ttname"><a href="classTable.html#afa5f81913df343483231eaed24f332cd">Table::complet</a></div><div class="ttdeci">void complet(Table *t)</div><div class="ttdoc">Signale au ServeurJeu que la Table est pleine. </div></div>
-<div class="ttc" id="classTable_html_ac7541d139723d710fb7c39b1898d6e87"><div class="ttname"><a href="classTable.html#ac7541d139723d710fb7c39b1898d6e87">Table::~Table</a></div><div class="ttdeci">virtual ~Table()</div><div class="ttdoc">Déconnecte tous les joueurs encore présents. </div></div>
-<div class="ttc" id="classTable_html"><div class="ttname"><a href="classTable.html">Table</a></div><div class="ttdoc">Classe de Table. </div><div class="ttdef"><b>Definition:</b> table.hpp:51</div></div>
-<div class="ttc" id="protocole_8hpp_html"><div class="ttname"><a href="protocole_8hpp.html">protocole.hpp</a></div><div class="ttdoc">Définit le protocole de communication. </div></div>
-<div class="ttc" id="classPartieServeur_html"><div class="ttname"><a href="classPartieServeur.html">PartieServeur</a></div><div class="ttdoc">Précision d&#39;une Partie, côté serveur. </div><div class="ttdef"><b>Definition:</b> partie_serveur.hpp:47</div></div>
-<div class="ttc" id="classTable_html_afb140b691eda8c0704cea1aeda9cd300"><div class="ttname"><a href="classTable.html#afb140b691eda8c0704cea1aeda9cd300">Table::comprendre</a></div><div class="ttdeci">void comprendre(unsigned int c, Protocole::Message m)</div><div class="ttdoc">Transmet un Message à la Partie. </div></div>
-<div class="ttc" id="classTable_html_a90915b16dd714c8cfa548d69f7de1edb"><div class="ttname"><a href="classTable.html#a90915b16dd714c8cfa548d69f7de1edb">Table::doit_recommencer</a></div><div class="ttdeci">void doit_recommencer()</div><div class="ttdoc">Commence une nouvelle partie. </div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Samedi 7 Février 2015 14:01:26 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Jeudi Février 26 2015 17:39:19 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.6
+</a> 1.8.1.2
 </small></address>
 </body>
 </html>

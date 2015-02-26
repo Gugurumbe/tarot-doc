@@ -3,7 +3,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
-<meta name="generator" content="Doxygen 1.8.6"/>
 <title>Tarot: Référence du fichier client/shared/option.hpp</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
@@ -31,7 +30,7 @@
 </table>
 </div>
 <!-- end header part -->
-<!-- Généré par Doxygen 1.8.6 -->
+<!-- Généré par Doxygen 1.8.1.2 -->
 <script type="text/javascript">
 var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 </script>
@@ -94,37 +93,36 @@ var searchBox = new SearchBox("searchBox", "search",false,'Recherche');
 <div class="title">Référence du fichier option.hpp</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Définit un type "option", qui permet de contenir un objet d'un certain type (COPIABLE) ou rien.  
+<a href="#details">Plus de détails...</a></p>
 <div class="textblock"><code>#include &lt;stdexcept&gt;</code><br/>
 <code>#include &lt;iostream&gt;</code><br/>
 </div>
 <p><a href="option_8hpp_source.html">Aller au code source de ce fichier.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+<tr class="heading"><td colspan="2"><h2><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOption.html">Option&lt; T &gt;</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Classe gérant une copie d'un objet ou rien.  <a href="classOption.html#details">Plus de détails...</a><br/></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classOption_1_1none.html">Option&lt; T &gt;::none</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Exception levée lorsqu'on essaye de récupérer un objet s'il n'y en a pas.  <a href="classOption_1_1none.html#details">Plus de détails...</a><br/></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+<tr class="heading"><td colspan="2"><h2><a name="define-members"></a>
 Macros</h2></td></tr>
 <tr class="memitem:a46865461646070840960b77a1711d02a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a46865461646070840960b77a1711d02a"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="option_8hpp.html#a46865461646070840960b77a1711d02a">OPTION_DEFINIE</a></td></tr>
 <tr class="memdesc:a46865461646070840960b77a1711d02a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Empêche les inclusions récursives. <br/></td></tr>
-<tr class="separator:a46865461646070840960b77a1711d02a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+<tr class="heading"><td colspan="2"><h2><a name="func-members"></a>
 Fonctions</h2></td></tr>
 <tr class="memitem:aacd77844da4bdac40de1912e93258883"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:aacd77844da4bdac40de1912e93258883"><td class="memTemplItemLeft" align="right" valign="top">std::ostream &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="option_8hpp.html#aacd77844da4bdac40de1912e93258883">operator&lt;&lt;</a> (std::ostream &amp;out, const <a class="el" href="classOption.html">Option</a>&lt; T &gt; &amp;t)</td></tr>
-<tr class="memdesc:aacd77844da4bdac40de1912e93258883"><td class="mdescLeft">&#160;</td><td class="mdescRight">Écrit le contenu d'une option.  <a href="#aacd77844da4bdac40de1912e93258883">Plus de détails...</a><br/></td></tr>
-<tr class="separator:aacd77844da4bdac40de1912e93258883"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memdesc:aacd77844da4bdac40de1912e93258883"><td class="mdescLeft">&#160;</td><td class="mdescRight">Écrit le contenu d'une option.  <a href="#aacd77844da4bdac40de1912e93258883"></a><br/></td></tr>
 </table>
-<a name="details" id="details"></a><h2 class="groupheader">Description détaillée</h2>
+<a name="details" id="details"></a><h2>Description détaillée</h2>
 <div class="textblock"><p>Définit un type "option", qui permet de contenir un objet d'un certain type (COPIABLE) ou rien. </p>
-</div><h2 class="groupheader">Documentation des fonctions</h2>
+</div><h2>Documentation des fonctions</h2>
 <a class="anchor" id="aacd77844da4bdac40de1912e93258883"></a>
 <div class="memitem">
 <div class="memproto">
@@ -153,7 +151,7 @@ template&lt;typename T &gt; </div>
 
 <p>Écrit le contenu d'une option. </p>
 <p>Le résultat a la forme <code>&lt;none&gt;</code> ou <code>&lt;some texte&gt;</code>, où texte est la représentation sous forme de chaîne de T.</p>
-<dl class="tparams"><dt>Paramètres du template</dt><dd>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
   <table class="tparams">
     <tr><td class="paramname">T</td><td>Un type quelconque, pourvu que <code>std::ostream &amp; operator&lt;&lt;(std::ostream &amp;, const T &amp;)</code> soit définie. </td></tr>
   </table>
@@ -173,9 +171,9 @@ template&lt;typename T &gt; </div>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Généré le Samedi 7 Février 2015 14:01:26 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
+Généré le Jeudi Février 26 2015 17:39:19 pour Tarot par &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
-</a> 1.8.6
+</a> 1.8.1.2
 </small></address>
 </body>
 </html>
